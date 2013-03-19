@@ -1,0 +1,5 @@
+- name: Ensure yum-updatesd is removed on RHEL5 installations
+  action: service name=yum-updatesd state=stopped enabled=no
+  only_if: "'${ansible_lsb.major_release}' == '5'"
+
+# Disables auto yum update on RHEL5 based releases

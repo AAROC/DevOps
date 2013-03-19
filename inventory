@@ -1,0 +1,112 @@
+############## Cluster oriented grouping ##############
+# (you may have to administer more than one Grid clusters,
+# so think of grid-cluster in this section as a wild card)
+
+# Worker Nodes
+[grid-cluster-worker-nodes]
+wn001.localdomain
+wn002.localdomain
+wn003.localdomain
+wn004.localdomain
+wn005.localdomain
+wn006.localdomain
+wn007.localdomain
+wn008.localdomain
+wn009.localdomain
+wn010.localdomain
+
+[grid-cluster-site-bdii]
+sbdii.localdomain
+
+[grid-cluster-cream-servers]
+cream01.localdomain
+
+[grid-cluster-storage-elements]
+se01.localdomain
+
+[grid-cluster-wms-servers]
+wms01.localdomain
+
+[grid-cluster-voms-servers]
+voms01.localdomain
+
+[grid-cluster-myproxy-servers]
+myproxy01.localdomain
+
+[grid-cluster-logical-file-catalogs]
+lfc01.localdomain
+
+# Site services are services dedicated for
+# your Grid site only (not other sites)
+
+[grid-cluster-site-services:children]
+grid-cluster-site-bdii
+grid-cluster-cream-servers
+grid-cluster-storage-elements
+
+# Core services are services you may want to 
+# deliver to other Grid sites in the region
+
+[grid-cluster-core-services:children]
+grid-cluster-wms-servers
+grid-cluster-voms-servers
+grid-cluster-myproxy-servers
+grid-cluster-logical-file-catalogs
+
+[grid-cluster-services:children]
+grid-cluster-site-services
+grid-cluster-core-services
+
+[grid-cluster:children]
+grid-cluster-worker-nodes
+grid-cluster-services
+
+############## Service oriented grouping ##############
+# (here comes the magical power of ansible... Group things
+# in as much as you can)
+
+[cream-servers]
+[cream-servers:children]
+grid-cluster-cream-servers
+
+[storage-elements]
+[storage-elements:children]
+grid-cluster-storage-elements
+
+[wms-servers]
+[wms-servers:children]
+grid-cluster-wms-servers
+
+[voms-servers]
+[voms-servers:children]
+grid-cluster-voms-servers
+
+[myproxy-servers]
+[myproxy-servers:children]
+grid-cluster-myproxy-servers
+
+[lfc-servers]
+[lfc-servers:children]
+grid-cluster-logical-file-catalogs
+
+[worker-nodes]
+[worker-nodes:children]
+grid-cluster-worker-nodes
+
+############## Middleware oriented grouping ##############
+
+[umd2]
+[umd2:children]
+cream-servers
+storage-elements
+wms-servers
+voms-servers
+myproxy-servers
+lfc-servers
+worker-nodes
+
+[umd]
+[umd:children]
+umd2
+
+############## END ##############

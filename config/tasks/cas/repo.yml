@@ -1,0 +1,5 @@
+- name: Install EGI-trustanchors repository definitions
+  action: copy src=files/etc/yum.repos.d/EGI-trustanchors.repo dest=/etc/yum.repos.d/EGI-trustanchors.repo owner=root group=root mode=0644
+
+# Copies the EGI trustanchors repository definition file from within git ansible
+# repository onto all nodes this task is running against. 
