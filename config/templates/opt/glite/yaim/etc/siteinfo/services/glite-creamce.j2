@@ -1,0 +1,46 @@
+{% if is_cream -%}
+#
+# YAIM creamCE specific variables
+#
+
+# LSF settings: path where lsf.conf is located
+# BATCH_CONF_DIR=lsf_install_path/conf
+#
+# CE-monitor host (by default CE-monitor is installed on the same machine as 
+# cream-CE)
+CEMON_HOST={{ ce_host }}
+#
+# CREAM database user
+CREAM_DB_USER={{ cream_db_user }}
+CREAM_DB_PASSWORD={{ cream_db_password }}
+
+#
+# Machine hosting the BLAH blparser.
+# In this machine batch system logs must be accessible.
+BLPARSER_HOST={{ ce_host }}
+
+# -------------------------
+# The following variables already have a default value defined in 
+# defaults/glite-creamce.pre, but if needed you can overwrite their values
+#
+# CREAM databases settings
+# By default the cream db is on localhost and accessible from localhost. 
+# Setting ACCESS_BY_DOMAIN to yes, you allow the cream db access from all 
+# computers in your domain.
+#ACCESS_BY_DOMAIN=no
+#
+# To refer to the the port where Blah Log Parser is running
+#BLP_PORT=33333
+#
+# To refer to the parser listening cream port
+#CREAM_PORT=56565
+
+# Value to be published as GlueCEStateStatus instead of Production
+#CREAM_CE_STATE=Special
+#
+# The following parameter sets the BLAH jobId prefix (it MUST be 6 chars 
+# long, begin with cr and terminate by '_')
+# It is important in case of more than one ce connecting to the same blparser.
+# In this case, it is better that each CREAM_CE has its own prefix
+#BLAH_JOBID_PREFIX=cream_
+{% endif -%}

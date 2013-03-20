@@ -1,0 +1,3 @@
+---
+- include: site-bdii-servers-install.yml
+- include: site-bdii-servers-configure.yml

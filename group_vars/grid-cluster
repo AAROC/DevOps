@@ -1,0 +1,88 @@
+---
+vos:
+  - dteam
+  - ops
+queues:
+  - dteam
+  - ops
+
+# use the site name as registered in GOCDB (use the same case)
+site_name: grid-cluster
+site_email: contact@localdomain
+site_security_email: csirt@localdomain
+site_support_email: support@localdomain
+site_latitude: XY.ZW
+site_longitude: XY.ZW
+site_description: "A short description"
+site_other_grid: EGI
+site_bdii_host: sbdii.localdomain
+site_location: "City, Country"
+site_website: http://www.localdomain/
+argus_status: no
+mysql_pass: a_damn_good_password
+domain: localdomain
+ce_host: cream01.localdomain
+
+# Replace the following specs with your own
+ce_cpu_model: Opteron
+ce_cpu_vendor: AMD
+ce_cpu_speed: 2200
+ce_os: CentOS
+ce_os_release: 5.8
+ce_os_version: Final
+ce_os_arch: x86_64
+ce_minphysmem: 2048
+ce_minvirtmem: 6144
+ce_physcpu: 128
+ce_logcpu: 128
+ce_smpsize: 64
+ce_si00: 2105
+ce_sf00: 2601
+ce_outboundip: "TRUE"
+ce_inboundip: "FALSE"
+ce_runtimeenv:
+  - TAG1
+  - TAG2
+ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
+batch_server: cream01.localdomain
+job_manager: lcgpbs
+ce_batch_sys: torque
+batch_log_dir: /var/torque
+batch_version: torque-2.5.7
+apel_db_password: set_this_to_a_good_password
+wms_host: wms01.localdomain
+px_host: myproxy01.localdomain
+
+# vars for service: emi_dpm_mysql
+dpm_host: se01.localdomain
+dpmmgr: { uid: 400, gid: 4000 }
+dpm_filesystems: "sitename_dpm:$DPM_HOST:/storage"
+dpm_db:   { user: dpmmgr,  pass: one_more_password }
+dpm_info: { user: dpminfo, pass: yet_another_password }
+
+# vars for service: emi_lfc_mysql
+lfc_host: lfc01.localdomain
+
+# vars for service: BDII_site
+bdii_regions:
+- name: CREAM
+  endpoint: ldap://cream01.localdomain:2170/mds-vo-name=resource,o=grid
+- name: SE
+  endpoint: ldap://se01.localdomain:2170/mds-vo-name=resource,o=grid
+- name: LFC
+  endpoint: ldap://lfc01.localdomain:2170/mds-vo-name=resource,o=grid
+- name: PX
+  endpoint: ldap://myproxy01.localdomain:2170/mds-vo-name=resource,o=grid
+
+se_list:
+  - se01.localdomain
+
+se_mount_info_list: none
+se_gridftp_logfile: /var/log/dpm-gsiftp/dpm-gsiftp.log
+
+bdii_host: bdii.core.hellasgrid.gr
+
+apel_mysql_host: apel01.localdomain
+
+sandboxdir_on_ce: /var/cream_sandbox
+sandboxdir_on_wn: /cream_sandbox
