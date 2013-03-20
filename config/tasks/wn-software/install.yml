@@ -1,0 +1,20 @@
+- name: Install additional software packages on worker nodes
+  action: yum name=${item} state=latest
+  with_items:
+    - mpich2-devel
+    - gnuplot
+    - python-ldap
+    - openldap-clients
+    - glite-lb-client-progs
+    - dpm-perl
+    - lfc-perl
+    - dpm-devel
+    - lfc-devel
+    - grads
+    - mpiblast
+    - mpiblast-ncbi-data
+    - openmpi-libs
+    - octave
+    - R
+    - ncftp
+    - libXp

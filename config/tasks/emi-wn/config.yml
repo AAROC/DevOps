@@ -1,0 +1,20 @@
+- name: Ensure portrange 15001-15004 tcp for Torque is open
+  action: shell /usr/sbin/lokkit ${lokkit_flags} -p 15001-15004:tcp
+  notify:
+    - restart iptables
+- name: Ensure portrange 15001-15004 udp for Torque is open
+  action: shell /usr/sbin/lokkit ${lokkit_flags} -p 15001-15004:udp
+  notify:
+    - restart iptables
+- name: Create sandbox directory
+  action: file path=${sandboxdir_on_wn} state=directory
+- name: Mount sandbox directory from cream service
+  action: mount name=${sandboxdir_on_wn} src=${ce_host}:${sandboxdir_on_ce} fstype=nfs opts=defaults state=mounted
+- name: Create tmpdir on worker nodes.
+  action: file path=${batch_log_dir}/spool/tmpdir owner=root group=root mode=1777 state=directory
+- name: Create glite custom dir on worker nodes
+  action: file path=${glite_local_customization_dir} owner=root group=root mode=0755 state=directory
+- name: Copy customization file on nodes
+  action: copy src=files/usr/local/etc/glite/cp_1.sh dest=${glite_local_customization_dir}/cp_1.sh owner=root group=root mode=0755
+- name: Patch /etc/mpi-start/mpich2.mpi file on WNs with ssh as default bootstrapper
+  action: lineinfile dest=/etc/mpi-start/mpich2.mpi regexp="....MPI_LOCAL_PARAMS=.-n .MPI_START_NP.*" line='    MPI_LOCAL_PARAMS="-n $MPI_START_NP -bootstrap ssh"' state=present

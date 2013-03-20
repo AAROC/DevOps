@@ -1,0 +1,6 @@
+- name: Install emi-wn from umd repo (please be patient)
+  action: yum name=emi-wn state=latest
+- name: Install emi-torque-client
+  action: yum name=emi-torque-client state=latest
+- name: Install glite-mpi package
+  action: yum name=emi-mpi state=latest
