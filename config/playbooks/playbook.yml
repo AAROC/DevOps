@@ -5,12 +5,10 @@
 - include: site-bdii-servers.yml
 - include: cream-servers.yml
 - include: storage-elements.yml
-- include: sbdii-servers.yml
 - include: apel-servers.yml
 - include: worker-nodes.yml
 
 - include: wms-servers.yml
-- include: voms-servers.yml
 - include: myproxy-servers.yml
 - include: lfc-servers.yml
 
