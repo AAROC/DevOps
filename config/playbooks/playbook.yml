@@ -5,7 +5,6 @@
 - include: site-bdii-servers.yml
 - include: cream-servers.yml
 - include: storage-elements.yml
-- include: sbdii-servers.yml
 - include: apel-servers.yml
 - include: worker-nodes.yml
 
