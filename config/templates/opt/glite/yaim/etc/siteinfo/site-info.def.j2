@@ -413,65 +413,11 @@ QUEUES="{{ queues|join(' ') }}"
 #      MY_TEST_QUEUE_GROUP_ENABLE="ops atlas"
 # <queue-name>_GROUP_ENABLE="fqan1 [fqan2 [...]]"
 
-{% if "alice" in vos -%}
-ALICE_GROUP_ENABLE="alice /alice/ROLE=lcgadmin /alice/ROLE=production"
-{% endif -%}
-{% if "atlas" in vos -%}
-ATLAS_GROUP_ENABLE="atlas /atlas/ROLE=lcgadmin /atlas/ROLE=production"
-{% endif -%}
-{% if "biomed" in vos -%}
-BIOMED_GROUP_ENABLE="biomed /biomed/ROLE=lcgadmin /biomed/ROLE=production"
-{% endif -%}
-{% if "cms" in vos -%}
-CMS_GROUP_ENABLE="cms /cms/ROLE=lcgadmin /cms/ROLE=production /cms/HeavyIons /cms/Higgs /cms/StandardModel /cms/Susy"
-{% endif -%}
-{% if "compchem" in vos -%}
-COMPCHEM_GROUP_ENABLE="compchem /compchem/ROLE=SoftwareManager"
-{% endif -%}
 {% if "dteam" in vos -%}
 DTEAM_GROUP_ENABLE="dteam /dteam/ROLE=lcgadmin /dteam/ROLE=production"
 {% endif -%}
-{% if "env.see-grid-sci.eu" in vos -%}
-ENVIR_GROUP_ENABLE="env.see-grid-sci.eu /env.see-grid-sci.eu/Role=sgmadmin /env.see-grid-sci.eu/Role=ops"
-{% endif -%}
-{% if "esr" in vos -%}
-ESR_GROUP_ENABLE="esr /esr/ROLE=lcgadmin"
-{% endif -%}
-{% if "hgdemo" in vos -%}
-HGDEMO_GROUP_ENABLE="hgdemo /hgdemo/ROLE=VO-Admin"
-{% endif -%}
-{% if "meteo.see-grid-sci.eu" in vos -%}
-METEO_GROUP_ENABLE="meteo.see-grid-sci.eu /meteo.see-grid-sci.eu/ROLE=smanager"
-{% endif -%}
-{% if "nwchem.vo.hellasgrid.gr" in vos -%}
-NWCHEM_GROUP_ENABLE="nwchem.vo.hellasgrid.gr /nwchem.vo.hellasgrid.gr/ROLE=lcgadmin"
-{% endif -%}
 {% if "ops" in vos -%}
 OPS_GROUP_ENABLE="ops /ops/ROLE=lcgadmin"
-{% endif -%}
-{% if "ops.vo.egee-see.org" in vos -%}
-SEEOPS_GROUP_ENABLE="ops.vo.egee-see.org /ops.vo.egee-see.org/ROLE=lcgadmin"
-{% endif -%}
-{% if "see" in vos -%}
-SEE_GROUP_ENABLE="see /see/ROLE=seeadmin"
-{% endif -%}
-{% if "seegrid" in vos -%}
-SEEGRID_GROUP_ENABLE="seegrid /seegrid/ROLE=sgmadmin"
-{% endif -%}
-{% if "seismo.see-grid-sci.eu" in vos -%}
-SEISMO_GROUP_ENABLE="seismo.see-grid-sci.eu /seismo.see-grid-sci.eu/ROLE=sgmadmin /seismo.see-grid-sci.eu/ROLE=production"
-{% endif -%}
-{% if "vo.complex-systems.eu" in vos -%}
-COMPLEX_GROUP_ENABLE="vo.complex-systems.eu /vo.complex-systems.eu/ROLE=lcgadmin"
-{% endif -%}
-{% if "vo.grid.auth.gr" in vos -%}
-AUTH_GROUP_ENABLE="vo.grid.auth.gr /vo.grid.auth.gr/ROLE=lcgadmin"
-{% endif -%}
-{% if "digitalmedia.vo.eu-egee.org" in vos -%}
-DIGITALMEDIA_GROUP_ENABLE="digitalmedia.vo.eu-egee.org /digitalmedia.vo.eu-egee.org/ROLE=lcgadmin"
-{% endif -%}
-{% if "gr-sim.grid.auth.gr" in vos -%}
-GRSIM_GROUP_ENABLE="gr-sim.grid.auth.gr /gr-sim.grid.auth.gr/ROLE=lcgadmin"
 {% endif -%}
 
 # Optional variable to define the default SE used by the VO.

@@ -45,14 +45,6 @@
   action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-px.j2 dest=/opt/glite/yaim/etc/siteinfo/services/glite-px owner=root group=root mode=0644
   notify:
     - run yaim
-#- name: Copy services files needed for voms service
-#  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-voms.j2 dest=/opt/glite/yaim/etc/siteinfo/services/glite-voms owner=root group=root mode=0644
-#  notify:
-#    - run yaim
-- name: Copy the glite-voms file
-  action: copy src=files/opt/glite/yaim/etc/siteinfo/services/glite-voms dest=/opt/glite/yaim/etc/siteinfo/services/glite-voms
-  notify:
-    - run yaim
 - name: Copy services files needed for lfc service
   action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-lfc_mysql.j2 dest=/opt/glite/yaim/etc/siteinfo/services/lfc_mysql owner=root group=root mode=0644
   notify:

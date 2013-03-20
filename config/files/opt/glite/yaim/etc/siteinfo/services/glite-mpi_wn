@@ -1,0 +1,7 @@
+# Setup configuration variables that are common to both the CE and WN
+# Most variables are common to CE and WN. It is easier to define
+# These in a common file ${config_dir}/services/glite-mpi
+
+if [ -r ${config_dir}/services/glite-mpi ]; then
+ source ${config_dir}/services/glite-mpi
+fi

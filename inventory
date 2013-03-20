@@ -27,6 +27,9 @@ se01.localdomain
 [grid-cluster-wms-servers]
 wms01.localdomain
 
+[grid-cluster-apel-servers]
+apel01.localdomain
+
 [grid-cluster-voms-servers]
 voms01.localdomain
 
@@ -43,6 +46,7 @@ lfc01.localdomain
 grid-cluster-site-bdii
 grid-cluster-cream-servers
 grid-cluster-storage-elements
+grid-cluster-apel-servers
 
 # Core services are services you may want to 
 # deliver to other Grid sites in the region
@@ -77,6 +81,10 @@ grid-cluster-storage-elements
 [wms-servers:children]
 grid-cluster-wms-servers
 
+[apel-servers]
+[apel-servers:children]
+grid-cluster-apel-servers
+
 [voms-servers]
 [voms-servers:children]
 grid-cluster-voms-servers
@@ -104,6 +112,7 @@ voms-servers
 myproxy-servers
 lfc-servers
 worker-nodes
+apel-servers
 
 [umd]
 [umd:children]
