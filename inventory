@@ -1,8 +1,9 @@
 ############## Cluster oriented grouping ##############
 # (you may have to administer more than one Grid clusters,
 # so think of grid-cluster in this section as a wild card)
-
+###
 # Worker Nodes
+
 [grid-cluster-worker-nodes]
 wn001.localdomain
 wn002.localdomain
