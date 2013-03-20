@@ -1,4 +1,4 @@
-- hosts: se-servers
+- hosts: storage-elements
   user: ansible
   sudo: True
   vars_files:

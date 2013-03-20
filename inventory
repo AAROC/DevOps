@@ -66,6 +66,10 @@ grid-cluster-services
 # (here comes the magical power of ansible... Group things
 # in as much as you can)
 
+[site-bdii-servers]
+[site-bdii-servers:children]
+grid-cluster-site-bdii
+
 [cream-servers]
 [cream-servers:children]
 grid-cluster-cream-servers
@@ -98,6 +102,7 @@ grid-cluster-worker-nodes
 
 [umd2]
 [umd2:children]
+site-bdii-servers
 cream-servers
 storage-elements
 wms-servers
