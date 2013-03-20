@@ -1,0 +1,61 @@
+##############################################################################
+# Copyright (c) Members of the EGEE Collaboration. 2011. 
+# See http://www.eu-egee.org/partners/ for details on the copyright 
+# holders.  
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); 
+# you may not use this file except in compliance with the License. 
+# You may obtain a copy of the License at 
+#
+#    http://www.apache.org/licenses/LICENSE-2.0 
+#
+# Unless required by applicable law or agreed to in writing, software 
+# distributed under the License is distributed on an "AS IS" BASIS, 
+# WITHOUT WARRANTIES OR CONDITIONS 
+# OF ANY KIND, either express or implied. 
+# See the License for the specific language governing permissions and 
+# limitations under the License.
+##############################################################################
+#
+# DESCRIPTION : DPM mysql configuration variables defined by the user.
+#
+# AUTHORS :     Maria.Alandes.Pradillo@cern.ch
+#
+# NOTES :       There are two ways of storing your YAIM configuration
+#               - Central site-info.def. Copy these variables there and
+#                 give a suitable value.
+#               - Service oriented configuration. Create a services/ directory 
+#                 under your site-info.def directory. Move this
+#                 file there and give a suitable value to these variables.
+#
+# YAIM MODULE:  glite-yaim-dpm
+#                 
+##############################################################################
+
+# DPMDATA is now deprecated. Use an entry like $DPM_HOST:/filesystem in 
+# the DPM_FILESYSTEMS variable. 
+# From now on we use DPM_DB_USER and DPM_DB_PASSWORD to make clear 
+# its different role from that of the dpmmgr unix user who owns the 
+# directories and runs the daemons. 
+
+# The filesystems/partitions parts of the pool 
+DPM_FILESYSTEMS="{{ dpm_filesystems }}"
+
+DPMMGR_UID={{ dpmmgr.uid }}
+
+DPMMGR_GID={{ dpmmgr.gid }}
+
+# The database user 
+DPM_DB_USER={{ dpm_db.user }}
+
+# The database user password 
+DPM_DB_PASSWORD={{ dpm_db.pass }}
+
+# The DPM database host 
+DPM_DB_HOST=$DPM_HOST 
+
+# The DPM infosystem user name 
+DPM_INFO_USER={{ dpm_info.user }}
+
+# The DPM infosystem user password 
+DPM_INFO_PASS={{ dpm_info.pass }}
