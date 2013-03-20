@@ -30,9 +30,6 @@ wms01.localdomain
 [grid-cluster-apel-servers]
 apel01.localdomain
 
-[grid-cluster-voms-servers]
-voms01.localdomain
-
 [grid-cluster-myproxy-servers]
 myproxy01.localdomain
 
@@ -53,7 +50,6 @@ grid-cluster-apel-servers
 
 [grid-cluster-core-services:children]
 grid-cluster-wms-servers
-grid-cluster-voms-servers
 grid-cluster-myproxy-servers
 grid-cluster-logical-file-catalogs
 
@@ -85,10 +81,6 @@ grid-cluster-wms-servers
 [apel-servers:children]
 grid-cluster-apel-servers
 
-[voms-servers]
-[voms-servers:children]
-grid-cluster-voms-servers
-
 [myproxy-servers]
 [myproxy-servers:children]
 grid-cluster-myproxy-servers
@@ -108,7 +100,6 @@ grid-cluster-worker-nodes
 cream-servers
 storage-elements
 wms-servers
-voms-servers
 myproxy-servers
 lfc-servers
 worker-nodes
