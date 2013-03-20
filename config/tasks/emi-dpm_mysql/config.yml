@@ -1,0 +1,36 @@
+# see: https://svnweb.cern.ch/trac/lcgdm/blog/official-release-lcgdm-183
+- name: "Apply fix for EMI DPM known issue #505"
+  action: lineinfile destfile=/etc/sysconfig/${item} regexp='export GLOBUS_THREAD_MODEL="pthread"' value='export GLOBUS_THREAD_MODEL="pthread"' state=present
+  with_items:
+    - dpm
+    - dpnsdaemon
+    - srmv2.2
+
+# https://svnweb.cern.ch/trac/lcgdm/wiki/Dpm/Admin/Install#FirewallPorts
+- name: Ensure EMI DPM firewall ports are open
+  action: shell /usr/sbin/lokkit ${lokkit_flags} -p ${item}
+  with_items:
+    - 5015:tcp
+    - 5010:tcp
+    - 8443:tcp
+    - 8444:tcp
+    - 8446:tcp
+    - 5001:tcp
+    - 2811:tcp
+    - 20000-25000:tcp
+    - 1094:tcp
+    - 1095:tcp
+  notify:
+    - restart iptables
+
+- name: Ensure port 2170 for standard BDII is open
+  action: command /usr/sbin/lokkit ${lokkit_flags} -p 2170:tcp
+  notify:
+    - restart iptables
+
+- name: Change gid for group stapusr
+  action: group name=stapusr gid=166 state=present
+- name: Change gid for group stapsys
+  action: group name=stapsys gid=167 state=present
+- name: Change gid for group stapdev
+  action: group name=stapdev gid=168 state=present
