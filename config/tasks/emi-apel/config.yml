@@ -1,0 +1,5 @@
+- name: Set root password for mysql
+  action: command mysqladmin -uroot password '$mysql_pass'
+
+- name: Set root password for mysql
+  action: command mysqladmin -uroot -h apel01.afroditi.hellasgrid.gr password '$mysql_pass'
