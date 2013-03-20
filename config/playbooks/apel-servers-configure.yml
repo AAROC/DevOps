@@ -1,0 +1,15 @@
+- hosts: apel-servers
+  user: ansible
+  sudo: True
+  vars_files:
+    - vars/distros/${ansible_distribution}-${ansible_lsb.major_release}.yml
+    - vars/yaim.yml
+  tasks:
+    - include: tasks/yaim/config_dirs.yml
+    - include: tasks/yaim/siteinfo.yml
+    - include: tasks/mysql-server/config.yml
+    - include: tasks/emi-apel/config.yml
+  handlers:
+    - include: handlers/emi-apel.yml
+    - include: handlers/network.yml
+
