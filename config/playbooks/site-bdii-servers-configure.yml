@@ -12,3 +12,4 @@
     - include: tasks/yaim/siteinfo.yml
   handlers:
     - include: handlers/emi-bdii-site.yml
+    - include: handlers/network.yml
