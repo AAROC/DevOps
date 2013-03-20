@@ -1,0 +1,4 @@
+- name: Copy nodes confinguration file to appropriate path.
+  action: copy src=files/var/torque/server_priv/nodes.${site_name} dest=/var/torque/server_priv/nodes owner=root group=root mode=0644
+  notify:
+    - restart pbs_server

@@ -1,0 +1,2 @@
+- name: restart iptables
+  action: service name=iptables state=restarted

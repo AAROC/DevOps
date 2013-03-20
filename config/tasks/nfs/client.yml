@@ -1,0 +1,10 @@
+- name: Install nfs-utils package
+  action: yum name=nfs-utils state=latest
+- name: Enable rpcbind service on nfs client
+  action: service name=rpcbind enabled=yes state=started
+  only_if: "'${ansible_lsb.major_release}' == '5'"
+- name: Enable portmap service on nfs client
+  action: service name=portmap enabled=yes state=started
+  only_if: "'${ansible_lsb.major_release}' == '5'"
+- name: Enable nfslock service on nfs client
+  action: service name=nfslock enabled=yes state=started

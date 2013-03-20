@@ -1,0 +1,3 @@
+---
+- include: cream-servers-install.yml
+- include: cream-servers-configure.yml

@@ -1,0 +1,10 @@
+wn001.localdomain np=4  lcgpro tag1
+wn002.localdomain np=4  lcgpro tag2
+wn003.localdomain np=4  lcgpro tag2
+wn004.localdomain np=4  lcgpro tag2
+wn005.localdomain np=4  lcgpro tag2
+wn006.localdomain np=4  lcgpro tag2
+wn007.localdomain np=8  lcgpro tag1
+wn008.localdomain np=8  lcgpro tag1
+wn009.localdomain np=48 lcgpro tag1
+wn010.localdomain np=48 lcgpro tag1 tag2 tag3
