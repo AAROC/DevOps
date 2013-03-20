@@ -1,0 +1,6 @@
+- name: Copy munge key
+  action: copy src=files/etc/munge/munge.key.${site_name} dest=/etc/munge/munge.key owner=munge group=munge mode=0400
+  notify:
+    - restart munge
+- name: Start munge
+  action: service name=munge enabled=on
