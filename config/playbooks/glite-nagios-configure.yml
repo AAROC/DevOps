@@ -1,4 +1,4 @@
-- hosts: glite
+- hosts: nagios-servers
   user: ansible
   sudo: True
   vars_files:

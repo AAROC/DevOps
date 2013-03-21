@@ -1,0 +1,7 @@
+[egi-sam]
+name=EGI SAM repo
+baseurl=http://repository.egi.eu/sw/production/sam/1/$basearch
+enabled=1
+gpgcheck=0
+protect=1
+priority=10
