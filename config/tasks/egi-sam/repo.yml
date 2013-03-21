@@ -1,0 +1,2 @@
+- name: Install egi-sam nagios repository definitions
+  action: copy src=files/etc/yum.repos.d/egi-sam.repo dest=/etc/yum.repos.d/egi-sam.repo owner=root group=root mode=0644

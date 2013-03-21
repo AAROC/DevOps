@@ -1,0 +1,19 @@
+- hosts: glite
+  user: ansible
+  sudo: True
+  vars_files:
+    - vars/yaim.yml
+    - vars/distros/${ansible_distribution}-${ansible_lsb.major_release}.yml
+  tasks:
+    - include: tasks/certificates/config.yml
+    - include: tasks/egi-sam/repo.yml
+    - include: tasks/glite/bdii-repo.yml
+    - include: tasks/egi-sam/install.yml
+    - include: tasks/egi-sam/nagios-server.yml
+    - include: tasks/yaim/config_dirs.yml
+    - include: tasks/yaim/vos/ops.yml
+    - include: tasks/yaim/vos/dteam.yml
+    - include: tasks/yaim/siteinfo.yml
+  handlers:
+    - include: handlers/nagios-server.yml
+    - include: handlers/network.yml

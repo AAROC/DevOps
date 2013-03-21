@@ -1,0 +1,2 @@
+- name: Install glite-BDII (3.2) repository definitions
+  action: copy src=files/etc/yum.repos.d/glite-BDII.repo.${ansible_distribution}-${ansible_distribution_version} dest=/etc/yum.repos.d/glite-BDII.repo owner=root group=root mode=0644

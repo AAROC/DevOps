@@ -37,6 +37,9 @@ myproxy01.localdomain
 [grid-cluster-logical-file-catalogs]
 lfc01.localdomain
 
+[grid-cluster-nagios-servers]
+nagios01.localdomain
+
 # Site services are services dedicated for
 # your Grid site only (not other sites)
 
@@ -53,6 +56,7 @@ grid-cluster-apel-servers
 grid-cluster-wms-servers
 grid-cluster-myproxy-servers
 grid-cluster-logical-file-catalogs
+grid-cluster-nagios-servers
 
 [grid-cluster-services:children]
 grid-cluster-site-services
@@ -94,6 +98,10 @@ grid-cluster-myproxy-servers
 [lfc-servers:children]
 grid-cluster-logical-file-catalogs
 
+[nagios-servers]
+[nagios-servers:children]
+grid-cluster-nagios-servers
+
 [worker-nodes]
 [worker-nodes:children]
 grid-cluster-worker-nodes
@@ -114,5 +122,8 @@ apel-servers
 [umd]
 [umd:children]
 umd2
+
+[glite]
+nagios-servers
 
 ############################ END #########################

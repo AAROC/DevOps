@@ -11,4 +11,5 @@
 - include: wms-servers.yml
 - include: myproxy-servers.yml
 - include: lfc-servers.yml
+- include: glite-nagios-configure.yml
 
