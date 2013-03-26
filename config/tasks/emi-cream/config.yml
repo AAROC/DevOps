@@ -32,14 +32,18 @@
     - 15001:tcp
   notify:
     - restart iptables
+
 - name: Copy pbs_local_submit.sh file to /usr/libexec to enable local software tag forwarding.
   action: copy src=files/usr/libexec/pbs_local_submit_attributes.sh dest=/usr/libexec/pbs_local_submit_attributes.sh owner=root group=root mode=0755
+
 - name: Start pbs_server
   action: service name=pbs_server state=started enabled=yes
+
 - name: Add nfs export line into /etc/exports
   action: lineinfile destfile=/etc/exports regexp="^\/var\/cream_sandbox" value="/var/cream_sandbox wn*.${domain}(rw)" state=present insertafter=EOF
   notify: 
     - restart exportfs
+
 - name: Change gid for group stapusr
   action: group name=stapusr gid=166 state=present
 - name: Change gid for group stapsys

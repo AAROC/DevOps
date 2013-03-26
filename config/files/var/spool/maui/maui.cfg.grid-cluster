@@ -26,7 +26,14 @@ DEFERTIME       0
 # Necessary for MPI grid jobs
 ENABLEMULTIREQJOBS TRUE
 
+#Reservation for specific pool account user
+SRCFG[sam]            PERIOD=INFINITY
+SRCFG[sam]            RESOURCES=PROCS:2
+SRCFG[sam]            USERLIST=ops003
+SRCFG[sam]            HOSTLIST=wn010.localdomain
 
-
-
+#Reservation for a specific group
+SRCFG[dteam]             PERIOD=INFINITY
+SRCFG[dteam]             GROUPLIST=dteam
+SRCFG[dteam]             HOSTLIST=wn011.localdomain,wn013.localdomain
 
