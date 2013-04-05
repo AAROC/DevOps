@@ -6,17 +6,17 @@
     - fix qmgr queues 3
     - fix Proxy_to_sandbox_dir
 - name: fix qmgr queues 1
-  action: raw /usr/bin/qmgr -c "unset queue ${qmgr_queues.name} resources_max.cput"
+  action: raw /usr/bin/qmgr -c "unset queue ${item.name} resources_max.cput"
   with_items: ${qmgr_queues}
   notify:
     - restart pbs_server
 - name: fix qmgr queues 2
-  action: raw /usr/bin/qmgr -c "set queue ${qmgr_queues.name} resources_max.walltime = ${qmgr_queues.max_wall_time} "
+  action: raw /usr/bin/qmgr -c "set queue ${item.name} resources_max.walltime = ${item.max_wall_time} "
   with_items: ${qmgr_queues}
   notify:
     - restart pbs_server
 - name: fix qmgr queues 3
-  action: raw /usr/bin/qmgr -c "set queue ${qmgr_queues.name} resources_default.walltime = ${qmgr_queues.max_wall_time} "
+  action: raw /usr/bin/qmgr -c "set queue ${item.name} resources_default.walltime = ${item.max_wall_time} "
   with_items: ${qmgr_queues}
   notify:
     - restart pbs_server
