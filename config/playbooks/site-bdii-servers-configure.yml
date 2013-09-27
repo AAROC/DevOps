@@ -5,7 +5,6 @@
     - vars/yaim.yml
     - vars/distros/${ansible_distribution}-${ansible_lsb.major_release}.yml
   tasks:
-    - include: tasks/certificates/config.yml
     - include: tasks/emi-bdii-site/config.yml
     - include: tasks/yaim/config_dirs.yml
     - include: tasks/yaim/vos.yml

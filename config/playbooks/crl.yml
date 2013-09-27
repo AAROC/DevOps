@@ -1,0 +1,8 @@
+- hosts: emi
+  user: becker
+  sudo: True
+  tasks:
+    - include: tasks/cas/update-crl.yml
+    - include: tasks/yum-updatesd/config.yml
+	- name: update yum
+	  yum: name="*" state=latest

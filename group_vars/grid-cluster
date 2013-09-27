@@ -2,9 +2,16 @@
 vos:
   - dteam
   - ops
+  - sagrid
+  - enmr.eu
+  - eumed
+  - africacert
 queues:
   - dteam
-  - ops
+  - cert
+  - sagrid
+  - enmr.eu
+
 
 # use the site name as registered in GOCDB (use the same case)
 site_name: grid-cluster
