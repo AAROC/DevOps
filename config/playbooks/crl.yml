@@ -1,8 +1,6 @@
-- hosts: emi
+- hosts: CRL
   user: becker
   sudo: True
   tasks:
-    - include: tasks/cas/update-crl.yml
-    - include: tasks/yum-updatesd/config.yml
-	- name: update yum
-	  yum: name="*" state=latest
+  - name: update CRLs
+    command: /usr/sbin/fetch-crl
