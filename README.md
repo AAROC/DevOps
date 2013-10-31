@@ -1,4 +1,4 @@
-grid-services-deployment
+Grid services deployment
 ========================
 
 Example ansible playbooks that are used to deploy Grid services. 
@@ -9,4 +9,3 @@ Assumptions taken in building these templates:
 * on all of your nodes the packages redhat-lsb, yum-utils are installed
 * an ntp service is installed and operational within your region. All grid nodes have ntp clients configured properly
 * Optional packages (depending on your needs) may also be installed beforehand (i.e. vim-enchanced, screen, ruby etc). 
-

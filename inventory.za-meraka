@@ -22,7 +22,7 @@ site-bdii.c4.csir.co.za
 wms.c4.csir.co.za
 
 [grid-cluster-apel-servers]
-#apel01.localdomain
+apel-server.c4.csir.co.za
 
 [grid-cluster-myproxy-servers]
 #myproxy01.localdomain
@@ -126,4 +126,10 @@ top-bdiis
 [emi]
 [emi:children]
 emi3
+
+[CRL]
+[CRL:children]
+wms-servers
+lfc-servers
+nagios-servers
 ############################ END #########################
