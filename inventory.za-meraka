@@ -11,9 +11,44 @@
 # it is possible that we could separate the development and staging/testing clusters later
 # Typically each production service has a corresponding dev version.
 # BB 10/13
+#############
+# We also want to separate the site services from core services
+# BB 11/13
 
+
+# core services
+
+# BDIIs
 [top-bdiis]
+[top-bdiis-prod]
 top-bdii.c4.csir.co.za
+[top-bdiis-dev]
+top-bdii-dev.c4.csir.co.za
+
+# LFC
+[lfc]
+lfc.c4.csir.co.za
+
+# APEL
+[apel-servers]
+apel-server.c4.csir.co.za
+
+# NAGIOS
+[ngi-nagios]
+[ngi-nagios-prod]
+nagios.c4.csir.co.za
+[ngi-nagios-dev]
+nagios-dev.c4.csir.co.za
+
+[vo-sagrid-nagios]
+
+
+
+
+
+[site-bdiis]
+[site-bdiis-prod]
+site-bdii.c4.csir.co.za
 
 # Worker Nodes
 [grid-cluster-worker-nodes]
@@ -23,7 +58,7 @@ ce01-node002.c4.csir.co.za
 [stage-worker-nodes]
 
 [grid-cluster-site-bdii]
-site-bdii.c4.csir.co.za
+
 
 [grid-cluster-cream-servers]
 ce01-node001.c4.csir.co.za
