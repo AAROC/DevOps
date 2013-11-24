@@ -1,11 +1,11 @@
 - hosts: site-bdiis-prod
   user: ansible
   sudo: True
-  gather_facts: no
+  sudo_user: root
   vars_files:
+    - vars/za-meraka-prod.yml
     - vars/yaim.yml
     - vars/distros/${ansible_distribution}-${ansible_lsb.major_release}.yml
-    - vars/za-meraka-prod.yml
   tasks:
     - include: tasks/emi-bdii-site/firewall.yml
     - include: tasks/yaim/config_dirs.yml

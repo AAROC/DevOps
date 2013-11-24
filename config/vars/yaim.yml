@@ -1,4 +1,4 @@
 ---
 yaim_path: /opt/glite/yaim
-yaim_conf_dir: /opt/glite/yaim/etc/siteinfo
+yaim_conf_dir: /opt/glite/yaim/etc/{{ site_name }}/siteinfo
 

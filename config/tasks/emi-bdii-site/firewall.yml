@@ -1,10 +1,7 @@
 - name: Ensure that Lokkit is installed
-  sudo: yes
   yum: name="lokkit" state=present
-
 - name: Ensure port 2170 for Site BDII is open
 # lokkit may not be installed
-  sudo: yes 
   service: name=iptables state=stopped
 #  action: command /usr/sbin/lokkit ${lokkit_flags} -p 2170:tcp 
   notify:
