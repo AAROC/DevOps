@@ -1,4 +1,4 @@
-- hosts: site-bdii-servers
+- hosts: site-bdiis-prod
   user: ansible
   sudo: True
   tasks:

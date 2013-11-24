@@ -653,7 +653,7 @@ APEL_MYSQL_HOST={{ apel_mysql_host }}
 {% if is_wms -%}
 # WMS specific section
 GLITE_LB_AUTHZ_REGISTER_JOBS=".*"
-GLITE_LB_WMS_DN="/C=GR/O=HellasGrid/OU={{ domain }}/CN={{ wms_host }}"
+GLITE_LB_WMS_DN="/C=IT/O=INFN/OU=Host/L={{ site_name }}/CN={{ wms_host }}"
 {% endif -%}
 
 {% if is_nagios %}

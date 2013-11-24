@@ -2,9 +2,9 @@
 vos:
   - dteam
   - ops
-  - sagrid
-  - eumed
-  - africacert
+#  - sagrid
+#  - eumed
+#  - africacert
 queues:
   - dteam
   - cert
@@ -32,54 +32,56 @@ apel_db_password: redacted
 
 # services at the site
 bdii_host: top-bdii.c4.csir.co.za
-apel_mysql_host: apel.c4.csir.co.za
+apel_mysql_host: cream-ce.c4.csir.co.za
 px_host: myproxy.cern.ch
 wms_host: wms.c4.csir.co.za
 argus_status: no
 # TODO - new LFC has to be deployed here at Meraka | BB 10/13
 lfc_host: devslngrd002.uct.ac.za
 
-# This site is maintained is only for core services
-# - the rest of the variables are kept in here for historical reasons
-ce_host: cream01.localdomain
+ce_host: cream-ce.c4.csir.co.za
 # Replace the following specs with your own
 ce_cpu_model: Opteron
 ce_cpu_vendor: AMD
-ce_cpu_speed: 2200
-ce_os: CentOS
-ce_os_release: 5.8
+ce_cpu_speed: 2600
+ce_os: ScientificSL
+ce_os_release: 6.4
 ce_os_version: Final
 ce_os_arch: x86_64
 ce_minphysmem: 2048
 ce_minvirtmem: 6144
-ce_physcpu: 128
-ce_logcpu: 128
-ce_smpsize: 64
+ce_physcpu: 1
+ce_logcpu: 
+ce_smpsize: 1
 ce_si00: 2105
 ce_sf00: 2601
 ce_outboundip: "TRUE"
 ce_inboundip: "FALSE"
 ce_runtimeenv:
-  - TAG1
-  - TAG2
+  - NGI_ZA
+  - SAGrid
+  - C4 Production cluster
+  - ZA-MERAKA
 ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
-batch_server: cream01.localdomain
+batch_server: cream-ce.c4.csir.co.za
 job_manager: lcgpbs
 ce_batch_sys: torque
 batch_log_dir: /var/torque
 batch_version: torque-2.5.7
 
 # vars for service: emi_dpm_mysql
-dpm_host: se01.localdomain
+dpm_host: se.c4.csir.co.za
 dpmmgr: { uid: 400, gid: 4000 }
 dpm_filesystems: "sitename_dpm:$DPM_HOST:/storage"
-dpm_db:   { user: dpmmgr,  pass: one_more_password }
-dpm_info: { user: dpminfo, pass: yet_another_password }
+dpm_db:   { user: dpmmgr,  pass: redacted }
+dpm_info: { user: dpminfo, pass: redacted }
 
 # vars for service: BDII_site
-#bdii_regions:
-#- name: CREAM
-#  endpoint: ldap://cream01.localdomain:2170/mds-vo-name=resource,o=grid
+bdii_regions:
+- name: CREAM
+  endpoint: ldap://cream-ce.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: site-BDII
+  endpoint: ldap://site-bdii.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
 #- name: SE
 #  endpoint: ldap://se01.localdomain:2170/mds-vo-name=resource,o=grid
 #- name: LFC
@@ -92,7 +94,6 @@ se_list:
 
 se_mount_info_list: none
 se_gridftp_logfile: /var/log/dpm-gsiftp/dpm-gsiftp.log
-
 
 sandboxdir_on_ce: /var/cream_sandbox
 sandboxdir_on_wn: /cream_sandbox

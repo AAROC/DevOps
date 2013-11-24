@@ -1,5 +1,5 @@
 - name: Add configuration for VOs
   action: template src=templates/opt/glite/yaim/etc/siteinfo/vo.d/${item}.j2 dest=/opt/glite/yaim/etc/siteinfo/vo.d/${item} owner=root group=root mode=0644
-  with_items: $vos
+  with_items: "{{ vos }}"
   notify:
     - run yaim
