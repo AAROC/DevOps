@@ -15,170 +15,164 @@
 # We also want to separate the site services from core services
 # BB 11/13
 
+# non-grid services
+[CA]
+security.sanren.ac.za
+[dns-servers]
+# we should put the dns servers in here when we need to move
+# hosts in and out of DNS
 
-# core services
+
+#################
+# core services #
+#################
+
+#myproxy.cern.ch
+#myproxy.ct.infn.it
+[myproxy-servers-prod]
+myproxy.c4.csir.co.za
+[myproxy-servers-dev]
+myproxy-dev.c4.csir.co.za
 
 # BDIIs
-[top-bdiis]
 [top-bdiis-prod]
 top-bdii.c4.csir.co.za
 [top-bdiis-dev]
 top-bdii-dev.c4.csir.co.za
 
+# WMS 
+[wms-servers-prod]
+wms.c4.csir.co.za
+[wms-servers-dev]
+# empty for now
+wms-dev.c4.csir.co.za
+
 # LFC
-[lfc]
+[lfcs-prod]
 lfc.c4.csir.co.za
+[lfcs-dev]
+lfc2.c4.csir.co.za
 
 # APEL
 [apel-servers]
 apel-server.c4.csir.co.za
 
 # NAGIOS
-[ngi-nagios]
 [ngi-nagios-prod]
 nagios.c4.csir.co.za
 [ngi-nagios-dev]
 nagios-dev.c4.csir.co.za
-
 [vo-sagrid-nagios]
+sagrid-monitoring.c4.csir.co.za
 
+#################
+# site services #
+#################
 
-
-
-
-[site-bdiis]
+# Site BDII
 [site-bdiis-prod]
 site-bdii.c4.csir.co.za
+[site-bdiis-dev]
+site-bdii-2.c4.csir.co.za
 
-# Worker Nodes
-[grid-cluster-worker-nodes]
-[dev-worker-nodes]
-ce01-node002.c4.csir.co.za
-
-[stage-worker-nodes]
-
-[grid-cluster-site-bdii]
-
-
-[grid-cluster-cream-servers]
-ce01-node001.c4.csir.co.za
-[stage-cream-servers]
+[cream-ce-prod]
 cream-ce.c4.csir.co.za
+[cream-ce-dev]
+ce01-node001.c4.csir.co.za
 
-[grid-cluster-storage-elements]
+[apel-publishers-prod]
+cream-ce-prod
+[apel-publishers-dev]
+cream-ce-dev
+
+[storage-elements]
 #se01.localdomain
 
-[grid-cluster-wms-servers]
-#wms01.localdomain
-wms.c4.csir.co.za
-
-[grid-cluster-apel-servers]
-apel-server.c4.csir.co.za
-
-[grid-cluster-myproxy-servers]
-myproxy.cern.ch
-myproxy.ct.infn.it
-
-[grid-cluster-logical-file-catalogs]
-#lfc01.localdomain
+# Worker Nodes
+[worker-nodes-prod]
+# empty for now
+[worker-nodes-dev]
+ce01-node002.c4.csir.co.za
 
 
-[grid-cluster-nagios-servers]
-nagios.c4.csir.co.za
-nagios-dev.c4.csir.co.za
+############ grouping and children ############
+# first, group by production and development 
+[core-services-prod:children]
+top-bdiis-prod
+wms-servers-prod
+ngi-nagios-prod
 
-# Site services are services dedicated for
-# your Grid site only (not other sites)
+[core-services-stage:children]
+vo-sagrid-nagios
+myproxy-servers-prod
+apel-servers
+lfcs-prod
 
-[grid-cluster-site-services:children]
-grid-cluster-site-bdii
-grid-cluster-cream-servers
-grid-cluster-storage-elements
-grid-cluster-apel-servers
+[site-prod:children]
+site-bdiis-prod
+cream-ce-prod
+worker-nodes-prod
 
-# Core services are services you may want to 
-# deliver to other Grid sites in the region
+[core-services-dev:children]
+top-bdiis-dev
+wms-servers-dev
+ngi-nagios-dev
+myproxy-servers-dev
+lfcs-dev
 
-[grid-cluster-core-services:children]
-top-bdiis
-grid-cluster-wms-servers
-grid-cluster-logical-file-catalogs
-grid-cluster-nagios-servers
-
-[grid-cluster-services:children]
-grid-cluster-site-services
-grid-cluster-core-services
-
-[grid-cluster:children]
-grid-cluster-worker-nodes
-grid-cluster-services
+[site-dev:children]
+site-bdiis-dev
+cream-ce-dev
+worker-nodes-dev
 
 ############## Service oriented grouping ##############
 # (here comes the magical power of ansible... Group things
 # in as much as you can)
 
-[site-bdii-servers]
 [site-bdii-servers:children]
-grid-cluster-site-bdii
-
-[cream-servers]
+site-bdiis-prod
+site-bdiis-dev
 [cream-servers:children]
-grid-cluster-cream-servers
+cream-ce-prod
+cream-ce-dev
 
-[storage-elements]
-[storage-elements:children]
-grid-cluster-storage-elements
+#[storage-elements]
+#[storage-elements:children]
+#storage-elements
 
-[wms-servers]
 [wms-servers:children]
-grid-cluster-wms-servers
+wms-servers-prod
+wms-servers-dev
 
-[apel-servers]
-[apel-servers:children]
-grid-cluster-apel-servers
-
-[myproxy-servers]
 [myproxy-servers:children]
-grid-cluster-myproxy-servers
+myproxy-servers-prod
+myproxy-servers-dev
 
-[lfc-servers]
 [lfc-servers:children]
-grid-cluster-logical-file-catalogs
+lfcs-prod
+lfcs-dev
 
-[nagios-servers]
 [nagios-servers:children]
-grid-cluster-nagios-servers
+ngi-nagios-prod
+ngi-nagios-dev
 
-[worker-nodes]
 [worker-nodes:children]
-grid-cluster-worker-nodes
+worker-nodes-prod
+worker-nodes-dev
+
 
 ############## Middleware oriented grouping ##############
 
-[umd2]
-[umd2:children]
+#site-bdii-servers
+#cream-servers
+#storage-elements
+#wms-servers
+#myproxy-servers
+#lfc-servers
+#worker-nodes
+#apel-servers
+#top-bdiis
 
-[umd]
-[umd:children]
-umd2
-
-[glite]
-nagios-servers
-
-[emi3]
-[emi3:children]
-site-bdii-servers
-cream-servers
-storage-elements
-wms-servers
-myproxy-servers
-lfc-servers
-worker-nodes
-apel-servers
-top-bdiis
-[emi]
-[emi:children]
-emi3
 
 [CRL]
 [CRL:children]
@@ -186,27 +180,12 @@ wms-servers
 lfc-servers
 nagios-servers
 
-# Dev / prod / stage grouping
-# services in production have been installed, configured and tested
-[production]
-site-bdii.c4.csir.co.za
-top-bdii.c4.csir.co.za
-wms.c4.csir.co.za
-nagios.c4.csir.co.za
-
-# services in dev are for development, update validation
-# services should have an explicitly-named "-dev" in their DNS
-[dev] 
-nagios-dev.c4.csir.co.za
-ce01-node001.c4.csir.co.za
-ce01-node002.c4.csir.co.za
-
 # stage are sites which will become production, but which are currently
 # undergoing installation/configuration/testing
-[stage]
-sagrid-monitoring.c4.csir.co.za
-lfc.c4.csir.co.za
-myproxy.c4.csir.co.za
-cream-ce.c4.csir.co.za
+#[stage]
+#sagrid-monitoring.c4.csir.co.za
+#lfc.c4.csir.co.za
+#myproxy.c4.csir.co.za
+#cream-ce.c4.csir.co.za
 
 ############################ END #########################
