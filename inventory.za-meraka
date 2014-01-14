@@ -75,14 +75,15 @@ site-bdii.c4.csir.co.za
 [site-bdiis-dev]
 site-bdii-2.c4.csir.co.za
 
+# CREAM CE's
 [cream-ce-prod]
 cream-ce.c4.csir.co.za
 [cream-ce-dev]
 ce01-node001.c4.csir.co.za
 
-[apel-publishers-prod]
+[apel-publishers-prod:children]
 cream-ce-prod
-[apel-publishers-dev]
+[apel-publishers-dev:children]
 cream-ce-dev
 
 [storage-elements]
@@ -108,7 +109,7 @@ myproxy-servers-prod
 apel-servers
 lfcs-prod
 
-[site-prod:children]
+[site-services-prod:children]
 site-bdiis-prod
 cream-ce-prod
 worker-nodes-prod
@@ -120,11 +121,24 @@ ngi-nagios-dev
 myproxy-servers-dev
 lfcs-dev
 
-[site-dev:children]
+[site-services-dev:children]
 site-bdiis-dev
 cream-ce-dev
 worker-nodes-dev
 
+############## State Oriented Grouping ###############
+# all production machines
+[prod:children] 
+core-services-prod
+site-services-prod
+
+[stage:children]
+core-services-stage
+#site-services-stage
+
+[dev:children]
+core-services-dev
+site-services-dev 
 ############## Service oriented grouping ##############
 # (here comes the magical power of ansible... Group things
 # in as much as you can)
