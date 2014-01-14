@@ -1,9 +1,18 @@
+- name: clean up yum
+  sudo: True
+  yum: clean-all
+- name: Update YUM
+  sudo: True
+  yum: update -y
 - name: Install emi-cream software in no cluster mode
+  sudo: True
   action: yum name=emi-cream-ce state=latest
 - name: Install batch system specific software
+  sudo: True
   action: yum name=${item} state=latest
   with_items:
     - emi-torque-server
     - emi-torque-utils
 - name: Install emi-mpi software
+  sudo: True
   action: yum name=emi-mpi state=latest
