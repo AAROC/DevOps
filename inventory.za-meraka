@@ -7,12 +7,14 @@ top-bdii.c4.csir.co.za
 # Worker Nodes
 [grid-cluster-worker-nodes]
 # wn001.localdomain
+ce01-node002.c4.csir.co.za
 
 [grid-cluster-site-bdii]
 site-bdii.c4.csir.co.za
 
 [grid-cluster-cream-servers]
 #cream01.localdomain
+ce01-node001.c4.csir.co.za
 
 [grid-cluster-storage-elements]
 #se01.localdomain
@@ -32,6 +34,7 @@ apel-server.c4.csir.co.za
 
 [grid-cluster-nagios-servers]
 nagios.c4.csir.co.za
+sagrid-monitoring.c4.csir.co.za
 
 # Site services are services dedicated for
 # your Grid site only (not other sites)
@@ -104,13 +107,13 @@ grid-cluster-worker-nodes
 
 [umd2]
 [umd2:children]
+cream-servers
+
 
 [umd]
 [umd:children]
 umd2
 
-[glite]
-nagios-servers
 
 [emi3]
 [emi3:children]
@@ -132,4 +135,5 @@ emi3
 wms-servers
 lfc-servers
 nagios-servers
+grid-cluster-cream-servers
 ############################ END #########################

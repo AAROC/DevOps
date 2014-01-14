@@ -1,9 +1,12 @@
 - name: Install emi-cream software in no cluster mode
   action: yum name=emi-cream-ce state=latest
+  sudo: True
 - name: Install batch system specific software
   action: yum name=${item} state=latest
+  sudo: True
   with_items:
     - emi-torque-server
     - emi-torque-utils
 - name: Install emi-mpi software
   action: yum name=emi-mpi state=latest
+  sudo: True

@@ -1,4 +1,4 @@
-- hosts: cream-servers
+- hosts: grid-cluster-cream-servers
   user: ansible
   sudo: True
   tasks:
