@@ -193,6 +193,7 @@ worker-nodes-dev
 wms-servers
 lfc-servers
 nagios-servers
+cream-servers
 
 # stage are sites which will become production, but which are currently
 # undergoing installation/configuration/testing
