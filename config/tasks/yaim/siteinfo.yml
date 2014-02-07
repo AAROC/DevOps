@@ -1,55 +1,55 @@
 - name: Create users.conf file
-  action: template src=templates/opt/glite/yaim/etc/siteinfo/users.conf.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/users.conf owner=root group=root mode=0644
+  action: template src=templates/opt/glite/yaim/etc/siteinfo/users.conf.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/users.conf owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Create groups.conf file
-  action: template src=templates/opt/glite/yaim/etc/siteinfo//groups.conf.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/groups.conf owner=root group=root mode=0644
+  action: template src=templates/opt/glite/yaim/etc/siteinfo//groups.conf.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/groups.conf owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Create wn-list.conf file
-  action: copy src=files/opt/glite/yaim/etc/siteinfo/wn-list.conf.${site_name} dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/wn-list.conf owner=root group=root mode=0644
+  action: copy src=files/opt/glite/yaim/etc/siteinfo/wn-list.conf.{{site_name}} dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/wn-list.conf owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Copy services files needed for wms service
-  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-wms.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/glite-wms owner=root group=root mode=0644
+  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-wms.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-wms owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Copy services files needed for cream service
-  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-creamce.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/glite-creamce owner=root group=root mode=0644
+  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-creamce.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-creamce owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Copy mpi files needed for cream mpi service
-  action: copy src=files/opt/glite/yaim/etc/siteinfo/services/glite-mpi dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/glite-mpi owner=root group=root mode=0644
+  action: copy src=files/opt/glite/yaim/etc/siteinfo/services/glite-mpi dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-mpi owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Copy mpi files needed for wn mpi service
-  action: copy src=files/opt/glite/yaim/etc/siteinfo/services/glite-mpi_wn dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/glite-mpi_wn owner=root group=root mode=0644
+  action: copy src=files/opt/glite/yaim/etc/siteinfo/services/glite-mpi_wn dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-mpi_wn owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Copy mpi_ce files needed for cream mpi service
-  action: copy src=files/opt/glite/yaim/etc/siteinfo/services/glite-mpi_ce dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/glite-mpi_ce owner=root group=root mode=0644
+  action: copy src=files/opt/glite/yaim/etc/siteinfo/services/glite-mpi_ce dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-mpi_ce owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Copy yaim siteinfo services
-  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/${item}.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/${item} owner=root group=root mode=0644
+  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/${item}.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/${item} owner=root group=root mode=0644
   with_items:
     - emi_dpm_mysql
     - emi_lfc_mysql
   notify:
     - run yaim
 - name: Copy services files needed for bdii_site service
-  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-bdii_site.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/glite-bdii_site owner=root group=root mode=0644
+  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-bdii_site.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-bdii_site owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Copy services files needed for myproxy service
-  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-px.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/glite-px owner=root group=root mode=0644
+  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-px.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-px owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Copy services files needed for lfc service
-  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-lfc_mysql.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/lfc_mysql owner=root group=root mode=0644
+  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/glite-lfc_mysql.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/lfc_mysql owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Create site-info.def file
-  action: template src=templates/opt/glite/yaim/etc/siteinfo/site-info.def.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/site-info.def owner=root group=root mode=0600
+  action: template src=templates/opt/glite/yaim/etc/siteinfo/site-info.def.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/site-info.def owner=root group=root mode=0600
   notify:
     - run yaim

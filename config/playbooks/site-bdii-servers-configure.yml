@@ -4,7 +4,7 @@
   sudo_user: root
   vars_files:
     - vars/yaim.yml
-    - vars/distros/${ansible_distribution}-${ansible_lsb.major_release}.yml
+    - vars/distros/{{ ansible_distribution }}-{{ ansible_lsb.major_release }}.yml
   tasks:
     - include: tasks/emi-bdii-site/firewall.yml
     - include: tasks/yaim/config_dirs.yml

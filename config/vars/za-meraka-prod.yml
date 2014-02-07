@@ -2,7 +2,7 @@
 vos:
   - dteam
   - ops
-#  - sagrid
+  - sagrid
 #  - eumed
 #  - africacert
 queues:
@@ -80,7 +80,7 @@ dpm_info: { user: dpminfo, pass: redacted }
 bdii_regions:
 - name: CREAM
   endpoint: ldap://cream-ce.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
-- name: site-BDII
+- name: SITE_BDII
   endpoint: ldap://site-bdii.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
 #- name: SE
 #  endpoint: ldap://se01.localdomain:2170/mds-vo-name=resource,o=grid
