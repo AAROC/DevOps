@@ -1,0 +1,10 @@
+- hosts: cream-ce-dev
+  user: ansible
+  sudo: yes
+  vars_files:
+    - vars/umd2.yml
+  tasks:
+    - include: tasks/umd/repo.yml
+    - include: tasks/nfs/server.yml
+    - include: tasks/emi-cream/install.yml
+ 
