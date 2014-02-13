@@ -72,14 +72,18 @@ sagrid-monitoring.c4.csir.co.za
 # Site BDII
 [site-bdiis-prod]
 site-bdii.c4.csir.co.za
+[site-bdiis-stage]
 [site-bdiis-dev]
-site-bdii-2.c4.csir.co.za
+site-bdii-dev.c4.csir.co.za
+[site-bdiis-bootstrap]
 
 # CREAM CE's
 [cream-ce-prod]
-cream-ce.c4.csir.co.za
-[cream-ce-dev]
+[cream-ce-stage]
 ce01-node001.c4.csir.co.za
+[cream-ce-dev]
+[cream-ce-bootstrap]
+cream-ce.c4.csir.co.za
 
 [apel-publishers-prod:children]
 cream-ce-prod
@@ -93,6 +97,7 @@ cream-ce-dev
 [worker-nodes-prod]
 # empty for now
 [worker-nodes-dev]
+[worker-nodes-bootstrap]
 ce01-node002.c4.csir.co.za
 
 
@@ -114,6 +119,10 @@ site-bdiis-prod
 cream-ce-prod
 worker-nodes-prod
 
+[site-services-stage:children]
+site-bdiis-stage
+
+
 [core-services-dev:children]
 top-bdiis-dev
 wms-servers-dev
@@ -126,6 +135,16 @@ site-bdiis-dev
 cream-ce-dev
 worker-nodes-dev
 
+[core-services-bootstrap:children]
+#top-bdii-bootstrap
+#wms-servers-bootstrap
+#ngi-nagios-bootstrap
+#myproxy-servers-bootstrap
+#lfcs-bootstrap
+
+[site-services-bootstrap:children]
+site-bdiis-bootstrap
+
 ############## State Oriented Grouping ###############
 # all production machines
 [prod:children] 
@@ -134,11 +153,15 @@ site-services-prod
 
 [stage:children]
 core-services-stage
-#site-services-stage
+site-services-stage
 
 [dev:children]
 core-services-dev
 site-services-dev 
+
+[bootstrap:children]
+core-services-bootstrap
+site-services-bootstrap
 ############## Service oriented grouping ##############
 # (here comes the magical power of ansible... Group things
 # in as much as you can)
@@ -146,9 +169,11 @@ site-services-dev
 [site-bdii-servers:children]
 site-bdiis-prod
 site-bdiis-dev
+site-bdiis-bootstrap
 [cream-servers:children]
 cream-ce-prod
 cream-ce-dev
+site-bdiis-bootstrap
 
 #[storage-elements]
 #[storage-elements:children]

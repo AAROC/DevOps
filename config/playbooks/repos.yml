@@ -4,7 +4,7 @@
   sudo_user: root
   vars_files:
     - vars/distros/${ansible_distribution}-${ansible_lsb.major_release}.yml
-    - vars/middleware
+    - vars/middleware/umd3.yml
   tasks:
     - include: tasks/cas/repo.yml
     - include: tasks/epel/repo.yml

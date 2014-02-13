@@ -1,17 +1,16 @@
----
 vos:
   - dteam
   - ops
   - sagrid
-  - eumed
-  - africacert
+#  - eumed
+#  - africacert
 queues:
   - dteam
   - cert
   - shared
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
 # use the site name as registered in GOCDB (use the same case)
-site_name: ZA-MERAKA
+site_name: ZA-MERAKA-DEV
 # contact details
 site_email: sagrid@csir.co.za
 site_security_email: csirt@sanren.ac.za
@@ -20,8 +19,8 @@ site_support_email: za-meraka-ops@lists.sagrid.ac.za
 site_latitude: -25.75593
 site_longitude: 28.27921
 site_description: "Meraka Institute - core grid services"
-site_other_grid: "EGI"
-site_bdii_host: "site-bdii.c4.csir.co.za"
+site_other_grid: "NGI_ZA"
+site_bdii_host: "site-bdii-dev.c4.csir.co.za"
 site_location: "Pretoria, South Africa"
 site_website: "http://www.csir.co.za/meraka"
 site_domain: c4.csir.co.za
@@ -37,11 +36,12 @@ px_host: myproxy.cern.ch
 wms_host: wms.c4.csir.co.za
 argus_status: no
 # TODO - new LFC has to be deployed here at Meraka | BB 10/13
-lfc_host: devslngrd002.uct.ac.za
+#lfc_host: devslngrd002.uct.ac.za
+lfc_host: lfc-dev.c4.csir.co.za
 
 # This site is maintained is only for core services
 # - the rest of the variables are kept in here for historical reasons
-ce_host: cream01.localdomain
+ce_host: {{ cream-ce-dev }}
 # Replace the following specs with your own
 ce_cpu_model: Opteron
 ce_cpu_vendor: AMD
@@ -63,7 +63,7 @@ ce_runtimeenv:
   - TAG1
   - TAG2
 ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
-batch_server: cream01.localdomain
+batch_server: {{ ce_host }}
 job_manager: lcgpbs
 ce_batch_sys: torque
 batch_log_dir: /var/torque

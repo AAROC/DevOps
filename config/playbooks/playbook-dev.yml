@@ -1,9 +1,9 @@
 # prerequisites and extra goodies should be added in tasks/prep.yml
 ---
-#- include: repos-dev.yml
-#- include: default-dev.yml
+- include: repos-dev.yml
+- include: default-dev.yml
 
-#- include: site-bdii-servers-dev.yml
+- include: site-bdii-servers-dev.yml
 - include: cream-servers-dev.yml
 #- include: storage-elements-dev.yml
 #- include: apel-servers-dev.yml

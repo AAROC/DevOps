@@ -1,38 +1,37 @@
 - name: Ensure port 8443 for CREAM Service is open
-  action: command /usr/sbin/lokkit ${lokkit_flags} -p 8443:tcp
+  action: command /usr/sbin/lokkit {{ lokkit_flags }} -p 8443:tcp
   notify:
     - restart iptables
 - name: Ensure port 2811 for Globus GridFTP control channel is open
-  action: command /usr/sbin/lokkit ${lokkit_flags} -p 2811:tcp
+  action: command /usr/sbin/lokkit {{ lokkit_flags }} -p 2811:tcp
   notify:
     - restart iptables
 - name: Ensure portrange 20000-25000 for griftp is open
-  action: shell /usr/sbin/lokkit ${lokkit_flags} -p 20000-25000:tcp
+  action: shell /usr/sbin/lokkit {{ lokkit_flags }} -p 20000-25000:tcp
   notify:
     - restart iptables
 - name: Ensure port 9091 for Notifications by BLparser and JobWrapper is open
-  action: command /usr/sbin/lokkit ${lokkit_flags} -p 9091:tcp
+  action: command /usr/sbin/lokkit {{ lokkit_flags }} -p 9091:tcp
   notify:
     - restart iptables
 - name: Ensure port 49152  for Notifications by BLparser and JobWrapper is open
-  action: command /usr/sbin/lokkit ${lokkit_flags} -p 49152:tcp
+  action: command /usr/sbin/lokkit {{ lokkit_flags }} -p 49152:tcp
   notify:
     - restart iptables
 - name: Ensure ports 9001 and 9002 for LB locallogger are open
-  action: command /usr/sbin/lokkit ${lokkit_flags} -p ${item}:tcp
+  action: command /usr/sbin/lokkit {{ lokkit_flags }} -p {{ item }}:tcp
   with_items:
     - 9001
     - 9002
   notify:
     - restart iptables
 - name: Ensure ports 15001 (udp/tcp) for torque are open
-  action: command /usr/sbin/lokkit ${lokkit_flags} -p ${item}
+  action: command /usr/sbin/lokkit {{ lokkit_flags }} -p {{ item }}
   with_items:
     - 15001:udp
     - 15001:tcp
   notify:
     - restart iptables
-
 - name: Copy pbs_local_submit.sh file to /usr/libexec to enable local software tag forwarding.
   action: copy src=files/usr/libexec/pbs_local_submit_attributes.sh dest=/usr/libexec/pbs_local_submit_attributes.sh owner=root group=root mode=0755
 
@@ -40,7 +39,7 @@
   action: service name=pbs_server state=started enabled=yes
 
 - name: Add nfs export line into /etc/exports
-  action: lineinfile destfile=/etc/exports regexp="^\/var\/cream_sandbox" value="/var/cream_sandbox wn*.${domain}(rw)" state=present insertafter=EOF
+  action: lineinfile destfile=/etc/exports regexp="^\/var\/cream_sandbox" value="/var/cream_sandbox wn*.{{ domain }}(rw)" state=present insertafter=EOF
   notify: 
     - restart exportfs
 

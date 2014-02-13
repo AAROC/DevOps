@@ -1,7 +1,10 @@
+# Do not us this playbook in accelerated mode, since the prerequisites 
+# not be present. 
 - hosts: site-services-dev
   user: ansible
   sudo: True
   sudo_user: root
   tasks:
+    - include: tasks/prep.yml
     - include: tasks/cas/install.yml
     - include: tasks/yum-updatesd/config.yml

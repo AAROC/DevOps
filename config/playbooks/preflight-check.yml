@@ -5,3 +5,8 @@
   tasks:
     - name: check ansible user login
       command: sudo echo hi
+      register: sudo_output
+      ignore_errors: True
+    
+# if this playbook "plays" be sure to move the host to dev
+  

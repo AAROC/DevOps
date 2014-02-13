@@ -1,13 +1,4 @@
-umd_major_release: 2
-  5: 'http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm'
-  6: 'http://repository.egi.eu/sw/production/umd/2/sl6/x86_64/base/umd-release-2.0.0-1.el6.noarch.rpm'
-umd_major_release: 3
-  5: 'http://repository.egi.eu/sw/production/umd/3/sl5/x86_64/base/umd-release-3.0.0-1.el5.noarch.rpm'
-  6: 'http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm'
-emi_major_release: 2
-  5: 'http://emisoft.web.cern.ch/emisoft/dist/EMI/2/sl5/x86_64/base/emi-release-2.0.0-1.sl5.noarch.rpm'
-  6: 'http://emisoft.web.cern.ch/emisoft/dist/EMI/2/sl6/x86_64/base/emi-release-2.0.0-1.sl6.noarch.rpm'
-emi_major_release: 3
-  5: 'http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl5/x86_64/base/emi-release-3.0.0-2.el5.noarch.rpm'
-  6: 'http://emisoft.web.cern.ch/emisoft/dist/EMI/3/sl6/x86_64/base/emi-release-3.0.0-2.el6.noarch.rpm'
-
+---
+#- umd_major_release: 2
+  5: http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm
+  6: http://repository.egi.eu/sw/production/umd/2/sl6/x86_64/base/umd-release-2.0.0-1.el6.noarch.rpm

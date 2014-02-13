@@ -7,7 +7,7 @@
   notify:
     - run yaim
 - name: Create wn-list.conf file
-  action: copy src=files/opt/glite/yaim/etc/siteinfo/wn-list.conf.{{site_name}} dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/wn-list.conf owner=root group=root mode=0644
+  action: copy src=files/opt/glite/yaim/etc/siteinfo/wn-list.conf.{{ site_name }} dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/wn-list.conf owner=root group=root mode=0644
   notify:
     - run yaim
 - name: Copy services files needed for wms service
@@ -31,7 +31,7 @@
   notify:
     - run yaim
 - name: Copy yaim siteinfo services
-  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/${item}.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/${item} owner=root group=root mode=0644
+  action: template src=templates/opt/glite/yaim/etc/siteinfo/services/{{ item }}.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/{{ item }} owner=root group=root mode=0644
   with_items:
     - emi_dpm_mysql
     - emi_lfc_mysql
