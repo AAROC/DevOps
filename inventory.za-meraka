@@ -144,6 +144,7 @@ worker-nodes-dev
 
 [site-services-bootstrap:children]
 site-bdiis-bootstrap
+worker-nodes-bootstrap
 
 ############## State Oriented Grouping ###############
 # all production machines
@@ -173,7 +174,7 @@ site-bdiis-bootstrap
 [cream-servers:children]
 cream-ce-prod
 cream-ce-dev
-site-bdiis-bootstrap
+
 
 #[storage-elements]
 #[storage-elements:children]

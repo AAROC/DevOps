@@ -42,6 +42,6 @@
 # 2. include own host name and ip in /etc/hosts
   handlers:
     - name: reboot
-      action: shell /sbin/reboot -t now
+      action: shell /sbin/reboot
     - name: updatedb
       action: command updatedb
