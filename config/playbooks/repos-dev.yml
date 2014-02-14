@@ -1,14 +1,16 @@
-- hosts: site-services-prod
+- hosts: site-services-dev
   user: ansible
   sudo: True
   sudo_user: root
-  vars_files:
-    - vars/distros/${ansible_distribution}-${ansible_lsb.major_release}.yml
-    - vars/middleware/umd3.yml
   tasks:
-    - include: tasks/cas/repo.yml
+    - include: tasks/cas/repo.yml 
     - include: tasks/epel/repo.yml
     - include: tasks/umd/repo.yml
+  vars_files:
+#    - vars/distros/{{ ansible_distribution }}-{{ ansible_lsb.major_release }}.yml
+    - vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - vars/middleware/umd{{ umd_release_major }}.yml
+
 # comment: This playbook will setup EGI-trustanchors, Epel and Umd repository files
 # within /etc/yum.repos.d/ on all umd2 nodes in your setup. Make sure to update
 # configurations within tasks and vars files whenever you will need to upgrade

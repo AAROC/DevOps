@@ -63,7 +63,11 @@ The [EGI Resource Centre integration procedure](https://wiki.egi.eu/wiki/PROC09)
 ## Quickstart guide
 
 The basic workflow for deploying a site in the ROC using Ansible is as follows :
-1. Define your inventory by adding a file to the top-level directory (e.g. `za-meraka.inventory`)
-2. Define the variables for your site by adding a file in the `group_vars` directory (e.g. `za-meraka`
-3. 
+  1. Define your inventory by adding a file to the top-level directory (e.g. `za-meraka.inventory`)
+  2. Define the variables for your site by adding a file in the `group_vars` directory (e.g. `za-meraka`
+  3. do something
+  4. do something else
+  5. ???
+  6. profit !!!
+
 

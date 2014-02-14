@@ -1,4 +1,4 @@
-- hosts: site-bdii-servers
+- hosts: site-bdiis-dev
   user: ansible
   sudo: True
   sudo_user: root

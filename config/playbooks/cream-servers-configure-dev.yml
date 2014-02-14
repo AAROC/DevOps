@@ -1,0 +1,27 @@
+- hosts: cream-ce-dev
+  user: ansible
+  sudo: yes
+  sudo_user: root
+  #accelerate: true
+  vars_files:
+    - vars/za-meraka-dev.yml
+    - vars/yaim.yml
+    - vars/distros/{{ ansible_distribution }}-{{ ansible_lsb.major_release }}.yml
+    - vars/middleware/umd3.yml
+  tasks:
+    #- include: tasks/nfs/config.yml
+    #- include: tasks/munge/config.yml
+    #- include: tasks/certificates/config.yml
+    #- include: tasks/emi-cream/config.yml
+    #- include: tasks/yaim/config_dirs.yml   
+    #- include: tasks/yaim/vos.yml            
+    # - include: tasks/yaim/siteinfo.yml       
+    # - include: tasks/torque/nodes_config.yml 
+    - include: tasks/maui/config.yml         
+  handlers:
+    - include: handlers/emi-cream.yml
+    - include: handlers/nfs.yml
+    - include: handlers/network.yml
+    - include: handlers/maui.yml
+
+

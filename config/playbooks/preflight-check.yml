@@ -1,0 +1,12 @@
+# this is a playbook to see if we are ready to manage the machine with 
+# ansible. This playbook should be run after bootstrap.yml
+- hosts: bootstrap
+  remote_user: ansible
+  tasks:
+    - name: check ansible user login
+      command: sudo echo hi
+      register: sudo_output
+      ignore_errors: True
+    
+# if this playbook "plays" be sure to move the host to dev
+  

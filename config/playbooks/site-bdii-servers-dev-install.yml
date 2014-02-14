@@ -1,0 +1,5 @@
+- hosts: site-bdiis-dev
+  user: ansible
+  sudo: True
+  tasks:
+    - include: tasks/emi-bdii-site/install.yml

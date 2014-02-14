@@ -1,4 +1,4 @@
 - name: Copy maui conf file to /var/spool/maui/
-  action: copy src=files/var/spool/maui/maui.cfg.${site_name} dest=/var/spool/maui/maui.cfg owner=root group=root mode=0644
+  action: template src=templates/var/spool/maui/maui.cfg.{{ site_name }}.j2 dest=/var/spool/maui/maui.cfg owner=root group=root mode=0644
   notify:
     - restart maui
