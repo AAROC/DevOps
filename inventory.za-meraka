@@ -34,6 +34,7 @@ apel-server.c4.csir.co.za
 
 [grid-cluster-nagios-servers]
 nagios.c4.csir.co.za
+nagios-dev.c4.csir.co.za
 sagrid-monitoring.c4.csir.co.za
 
 # Site services are services dedicated for
@@ -108,6 +109,7 @@ grid-cluster-worker-nodes
 [umd2]
 [umd2:children]
 cream-servers
+nagios-servers
 
 
 [umd]

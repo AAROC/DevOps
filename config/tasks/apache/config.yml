@@ -1,0 +1,4 @@
+- name: Allow incoming connections to HTTP (TCP 80) port
+  action: shell /usr/sbin/lokkit ${lokkit_flags} -p 80:tcp
+  notify:
+    - restart iptables
