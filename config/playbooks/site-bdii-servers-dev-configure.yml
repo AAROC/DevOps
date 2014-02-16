@@ -2,6 +2,7 @@
   user: ansible
   sudo: True
   sudo_user: root
+  accelerate: true
   vars_files:
     - vars/yaim.yml
     - vars/distros/{{ ansible_distribution }}-{{ ansible_lsb.major_release }}.yml

@@ -2,6 +2,7 @@
   user: ansible
   sudo: yes
   sudo_user: root
+  accelerate: true
   vars_files:
     - vars/middleware/umd3.yml
   tasks:

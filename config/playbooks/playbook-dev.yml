@@ -2,12 +2,11 @@
 ---
 - include: repos-dev.yml
 - include: default-dev.yml
-
 - include: site-bdii-servers-dev.yml
 - include: cream-servers-dev.yml
 #- include: storage-elements-dev.yml
 #- include: apel-servers-dev.yml
-#- include: worker-nodes-dev.yml
+- include: worker-nodes-dev.yml
 
 #- include: wms-servers-dev.yml
 #- include: myproxy-servers-dev.yml

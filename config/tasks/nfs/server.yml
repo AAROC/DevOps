@@ -1,4 +1,4 @@
-- name: Install nfs-utils package
+o- name: Install nfs-utils package
   yum: name=nfs-utils state=latest
 - name: Enable rpcbind service on nfs server
   action: service name=rpcbind enabled=yes state=started
