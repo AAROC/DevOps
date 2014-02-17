@@ -1,5 +1,5 @@
 - name: Install additional software packages on worker nodes
-  action: yum name=${item} state=latest
+  action: yum name={{ item }} state=latest
   with_items:
     - mpich2-devel
     - gnuplot
@@ -11,9 +11,10 @@
     - dpm-devel
     - lfc-devel
     - grads
-    - mpiblast
-    - mpiblast-ncbi-data
-    - openmpi-libs
+#    - mpiblast
+#    - mpiblast-ncbi-data
+# these two were missing in the repos
+    - openmpi
     - octave
     - R
     - ncftp

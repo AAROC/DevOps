@@ -80,8 +80,8 @@ site-bdii-dev.c4.csir.co.za
 # CREAM CE's
 [cream-ce-prod]
 [cream-ce-stage]
-ce01-node001.c4.csir.co.za
 [cream-ce-dev]
+ce01-node001.c4.csir.co.za
 [cream-ce-bootstrap]
 cream-ce.c4.csir.co.za
 
@@ -97,8 +97,8 @@ cream-ce-dev
 [worker-nodes-prod]
 # empty for now
 [worker-nodes-dev]
-[worker-nodes-bootstrap]
 ce01-node002.c4.csir.co.za
+[worker-nodes-bootstrap]
 
 
 ############ grouping and children ############

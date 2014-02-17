@@ -2,6 +2,7 @@
   user: ansible
   sudo: True
   sudo_user: root
+  accelerate: true
   tasks:
     - include: tasks/cas/repo.yml 
     - include: tasks/epel/repo.yml
