@@ -1,2 +1,11 @@
 - name: Install egi-sam nagios repository definitions
   action: copy src=files/etc/yum.repos.d/egi-sam.repo dest=/etc/yum.repos.d/egi-sam.repo owner=root group=root mode=0644
+
+- name: Copy sl repos for nagios
+  action: copy src=files/etc/yum.repos.d/sl5-nagios22.repo dest=/etc/yum.repos.d/sl.repo owner=root group=root mode=0644
+
+- name: Copy sl-fastbugs repo for nagios
+  action: copy src=files/etc/yum.repos.d/sl5-fastbugs-nagios22.repo dest=/etc/yum.repos.d/sl-fastbugs.repo owner=root group=root mode=0644
+
+- name: Copy sl-security repo for nagios
+  action: copy src=files/etc/yum.repos.d/sl5-security-nagios22.repo dest=/etc/yum.repos.d/sl-security.repo owner=root group=root mode=0644

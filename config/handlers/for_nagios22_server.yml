@@ -1,0 +1,7 @@
+- name: run yaim
+  action: shell sudo -i ${yaim_path}/bin/yaim -d 6 -c -s ${yaim_conf_dir}/site-info.def -n NAGIOS -n SAM_NAGIOS
+  notify:  
+    - run post yaim1
+
+- name: run post yaim1
+  action: service name=nagios state=restarted

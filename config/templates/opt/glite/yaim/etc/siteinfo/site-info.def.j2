@@ -674,36 +674,23 @@ NAGIOS_NSCA_PASS={{ nagios_nsca_pass }}
 NAGIOS_MYPROXY_NAME={{ nagios_myproxy_name }}
  
 # NGI/ROC Nagios
-COUNTRY_NAME={{ country_name }}
 ATP_ROOT_URL={{ atp_root_url }}
-NAGIOS_NCG_ENABLE_CRON={{ nagios_ncg_enable_cron }}
+POEM_SYNC_URLS="{{ poem_sync_urls }}"
+
 NCG_GOCDB_ROC_NAME={{ ncg_gocdb_roc_name }}
 NCG_TOPOLOGY_USE_GOCDB={{ ncg_topology_use_gocdb }}
-NCG_TOPOLOGY_USE_ENOC={{ ncg_topology_use_enoc }}
 NCG_TOPOLOGY_USE_LDAP={{ ncg_topology_use_ldap }}
 NCG_REMOTE_USE_SAM={{ ncg_remote_use_sam }}
 NCG_REMOTE_USE_NAGIOS={{ ncg_remote_use_nagios }}
-NCG_REMOTE_USE_ENOC={{ ncg_remote_use_enoc }}
-NCG_TOPOLOGY_USE_SAM={{ ncg_topology_use_sam }}
+
 NCG_TOPOLOGY_USE_ATP={{ ncg_topology_use_atp }}
 NCG_TOPOLOGY_ATP_ROOT_URL="{{ ncg_topology_atp_root_url }}"
 NCG_BACKUP_INSTANCE={{ ncg_backup_instance }}
-NCG_CHECK_HOSTS={{ ncg_check_hosts }}
-NCG_INCLUDE_EMPTY_HOSTS={{ ncg_include_empty_hosts }}
-
-#ATP
-NCG_CONTACTS_USE_ATP= {{ ncg_contacts_use_atp }}
-
-# POEM Nagios
-POEM_WEB_ENABLE={{ poem_web_enable }}
-POEM_NAMESPACE="{{ poem_namespace }}"
-POEM_SYNC_URLS="{{ poem_sync_urls }}"
-POEM_SYNC_NS_RESTRICT="{{ poem_sync_ns_restrict }}"
-POEM_USE_ATP_SERVICEMAP="{{ poem_use_atp_servicemap }}"
 
 # DB data
 MYSQL_ADMIN="{{ mysql_pass }}"
-DB_PASS="{{ db_pass }}"
+DB_PASS_R="{{ db_pass_r }}"
+DB_PASS_W="{{ db_pass_w }}"
 
 # Fix storage element to use
 JOBSUBMIT_WN_SE_REP={{ storage_elements_to_use|join(',') }}
@@ -712,5 +699,4 @@ MYEGI_ADMIN_NAME="{{ myegi_admin_name }}"
 MYEGI_ADMIN_EMAIL="{{ myegi_admin_email }}"
 MYEGI_DEFAULT_PROFILE="{{ myegi_default_profile }}"
 MYEGI_REGION="{{ myegi_region }}"
-NCG_MDDB_SUPPORTED_PROFILES="{{ ncg_mddb_supported_profiles|join(',') }}"
 {% endif %}
