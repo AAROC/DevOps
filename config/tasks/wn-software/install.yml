@@ -19,3 +19,8 @@
     - R
     - ncftp
     - libXp
+    - termcap
+    - libtermcap
+    - libtermcap-devel
+    - ncurses
+    - ncurses-devel

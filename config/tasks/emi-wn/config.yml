@@ -33,4 +33,6 @@
     - cvmfs
     - cvmfs-init-scripts
   sudo: true
-  sudo_user: root 
+  sudo_user: root
+  notify: CVMFS setup
+  notify: autofss

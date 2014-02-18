@@ -31,3 +31,14 @@
   action: service name=pbs_mom state=reloaded
 - name: restart munge
   action: service name=munge state=restarted
+- name: CVMFS setup
+  action: command cvmfs_config setup
+- name: autofs
+  service: name=autofs state=restarted
+
+# then, 
+# install the sagrid repo config and gpg public key
+# and mount the repo
+# make a small test
+
+
