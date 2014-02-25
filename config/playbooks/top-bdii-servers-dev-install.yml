@@ -1,0 +1,6 @@
+- hosts: top-bdiis-dev
+  user: ansible
+  sudo: True
+  accelerate: True
+  tasks:
+    - include: tasks/emi-bdii-top/install.yml
