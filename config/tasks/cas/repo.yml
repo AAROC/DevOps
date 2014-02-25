@@ -1,11 +1,7 @@
 - name: Install EGI-trustanchors repository definitions
-<<<<<<< HEAD
   action: get_url url=http://repository.egi.eu/sw/production/cas/1/ca-policy-egi-core-1.55-1/repo-files/EGI-trustanchors.repo dest=/etc/yum.repos.d/EGI-trustanchors.repo owner=root group=root mode=0644
-=======
   action: copy src=files/etc/yum.repos.d/EGI-trustanchors.repo dest=/etc/yum.repos.d/EGI-trustanchors.repo owner=root group=root mode=0644
 # should have a conditional here:
 #  when:  file is not present
-
->>>>>>> 53e0328366551cbd1ca38d3a836edd19f617c480
 # Copies the EGI trustanchors repository definition file from within git ansible
 # repository onto all nodes this task is running against. 

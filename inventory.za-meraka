@@ -39,6 +39,7 @@ myproxy-dev.c4.csir.co.za
 top-bdii.c4.csir.co.za
 [top-bdiis-dev]
 top-bdii-dev.c4.csir.co.za
+[top-bdiis-bootstrap]
 
 # WMS 
 [wms-servers-prod]
@@ -136,7 +137,7 @@ cream-ce-dev
 worker-nodes-dev
 
 [core-services-bootstrap:children]
-#top-bdii-bootstrap
+top-bdiis-bootstrap
 #wms-servers-bootstrap
 #ngi-nagios-bootstrap
 #myproxy-servers-bootstrap
