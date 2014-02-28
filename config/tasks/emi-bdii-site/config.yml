@@ -1,5 +1,0 @@
-- name: Ensure port 2170 for Site BDII is open
-# lokkit may not be installed
-  action: command /usr/sbin/lokkit ${lokkit_flags} -p 2170:tcp
-  notify:
-    - restart iptables

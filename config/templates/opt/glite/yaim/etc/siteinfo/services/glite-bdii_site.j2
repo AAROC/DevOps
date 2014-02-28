@@ -1,4 +1,3 @@
-{% if is_site_bdii -%}
 ##############################################################################
 # Copyright (c) Members of the EGEE Collaboration. 2004. 
 # See http://www.eu-egee.org/partners/ for details on the copyright 
@@ -63,5 +62,3 @@ BDII_REGIONS="{% for region in bdii_regions -%}{{region.name}} {% endfor -%}"
 {% for region in bdii_regions %}
 BDII_{{ region.name }}_URL="{{ region.endpoint }}"
 {% endfor -%}
-
-{% endif -%}

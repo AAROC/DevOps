@@ -1,7 +1,7 @@
-- name: Install nfs-utils package
-  action: yum name=nfs-utils state=latest
+o- name: Install nfs-utils package
+  yum: name=nfs-utils state=latest
 - name: Enable rpcbind service on nfs server
   action: service name=rpcbind enabled=yes state=started
-  only_if: "'${ansible_lsb.major_release}' != '5'"
+  when: ansible_lsb.major_release != '5'
 - name: Enable nfs service on server
-  action: service name=nfs enabled=yes state=started
+  service: name=nfs enabled=yes state=restarted

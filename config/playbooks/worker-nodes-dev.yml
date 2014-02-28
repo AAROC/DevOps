@@ -1,0 +1,3 @@
+---
+- include: worker-nodes-install-dev.yml
+- include: worker-nodes-configure-dev.yml
