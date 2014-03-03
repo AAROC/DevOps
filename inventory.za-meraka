@@ -1,6 +1,10 @@
 ############## Cluster oriented grouping ##############
 # (you may have to administer more than one Grid clusters,
 # so think of grid-cluster in this section as a wild card)
+
+# We have generally two parts to our site : 
+# a production section where services are available to the public
+# and a development / test
 [top-bdiis]
 top-bdii.c4.csir.co.za
 

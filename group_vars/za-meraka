@@ -71,7 +71,7 @@ lfc_host: devslngrd002.uct.ac.za
 
 # vars for service: BDII_site
 bdii_regions:
-- name: CREAM
+- name: C4CREAM
   endpoint: ldap://cream01.localdomain:2170/mds-vo-name=resource,o=grid
 - name: SE
   endpoint: ldap://se01.localdomain:2170/mds-vo-name=resource,o=grid
