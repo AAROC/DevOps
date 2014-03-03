@@ -1,7 +1,7 @@
 - name: run yaim
-  action: shell sudo -i ${yaim_path}/bin/yaim -c -s ${yaim_conf_dir}/site-info.def -n BDII_site
-  notify:
-    - run post yaim 1
+  action: shell sudo -i {{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def -n BDII_site
+#  notify:
+#    - run post yaim 1
 - name: run post yaim 1
   action: copy src=files/var/lib/bdii/gip/ldif/patch.ldif.rb dest=/var/lib/bdii/gip/ldif/patch.ldif.rb owner=root group=root mode=0755
   notify: 

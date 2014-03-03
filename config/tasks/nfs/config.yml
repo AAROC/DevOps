@@ -1,50 +1,50 @@
 - name: Ensure port 2049 (tcp) is open for nfs service
-  action: command /usr/sbin/lokkit ${lokkit_flags} -p 2049:tcp
+  action: command /usr/sbin/lokkit {{ lokkit_flags }} -p 2049:tcp
   notify:
     - restart iptables
 - name: Ensure port 111 tcp for portmap is open (only on CentOS-5)
-  action: shell /usr/sbin/lokkit ${lokkit_flags} -p 111:tcp
-  only_if: "'${ansible_lsb.major_release}' == '5'"
+  action: shell /usr/sbin/lokkit {{ lokkit_flags }} -p 111:tcp
+  when: ansible_lsb.major_release == '5'
   notify:
     - restart iptables
 - name: Ensure port 32803 tcp for nfs are open (only on CentOS-5)
-  action: shell /usr/sbin/lokkit ${lokkit_flags} -p 32803:tcp
-  only_if: "'${ansible_lsb.major_release}' == '5'"
+  action: shell /usr/sbin/lokkit {{ lokkit_flags }} -p 32803:tcp
+  when: ansible_lsb.major_release == '5'
   notify:
     - restart iptables
 - name: Ensure port 32769 udp for nfs are open (only on CentOS-5)
-  action: shell /usr/sbin/lokkit ${lokkit_flags} -p 32769:udp
-  only_if: "'${ansible_lsb.major_release}' == '5'"
+  action: shell /usr/sbin/lokkit {{ lokkit_flags }} -p 32769:udp
+  when: ansible_lsb.major_release == '5'
   notify:
-    - restart iptables   
+    - restart iptables
 - name: Ensure port 892 tcp for nfs are open (only on CentOS-5)
-  action: shell /usr/sbin/lokkit ${lokkit_flags} -p 892:tcp
-  only_if: "'${ansible_lsb.major_release}' == '5'"
+  action: shell /usr/sbin/lokkit {{ lokkit_flags }} -p 892:tcp
+  when: ansible_lsb.major_release == '5'
   notify:
     - restart iptables
 - name: Ensure port 662 tcp for nfs are open (only on CentOS-5)
-  action: shell /usr/sbin/lokkit ${lokkit_flags} -p 662:tcp
-  only_if: "'${ansible_lsb.major_release}' == '5'"
+  action: shell /usr/sbin/lokkit {{ lokkit_flags }} -p 662:tcp
+  when: ansible_lsb.major_release == '5'
   notify:
     - restart iptables
 - name: Ensure that MOUNTD_PORT=892 at /etc/sysconfig/nfs (only on CentOS-5)
   action: lineinfile dest=/etc/sysconfig/nfs regexp="MOUNTD_PORT=892" line="MOUNTD_PORT=892" state=present 
-  only_if: "'${ansible_lsb.major_release}' == '5'"
+  when: ansible_lsb.major_release == '5'
   notify:
     - restart nfs
 - name: Ensure that STATD_PORT=662 at /etc/sysconfig/nfs (only on CentOS-5)
   action: lineinfile dest=/etc/sysconfig/nfs regexp="STATD_PORT=662" line="STATD_PORT=662" state=present 
-  only_if: "'${ansible_lsb.major_release}' == '5'"
+  when: ansible_lsb.major_release == '5'
   notify:
     - restart nfs
 - name: Ensure that LOCKD_TCPPORT=32803 at /etc/sysconfig/nfs (only on CentOS-5)
   action: lineinfile dest=/etc/sysconfig/nfs regexp="LOCKD_TCPPORT=32803" line="LOCKD_TCPPORT=32803" state=present 
-  only_if: "'${ansible_lsb.major_release}' == '5'"
+  when: ansible_lsb.major_release == '5'
   notify:
     - restart nfs
 - name: Ensure that LOCKD_UDPPORT=32769 at /etc/sysconfig/nfs (only on CentOS-5)
   action: lineinfile dest=/etc/sysconfig/nfs regexp="LOCKD_UDPPORT=32769" line="LOCKD_UDPPORT=32769" state=present 
-  only_if: "'${ansible_lsb.major_release}' == '5'"
+  when: ansible_lsb.major_release == '5'
   notify:
     - restart nfs
-
+    

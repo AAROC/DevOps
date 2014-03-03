@@ -1,0 +1,9 @@
+- hosts: worker-nodes-dev
+  user: ansible
+  sudo: True
+  sudo_user: root
+  accelerate: true
+  tasks:
+    - include: tasks/wn-software/install.yml  
+    - include: tasks/nfs/client.yml        
+    - include: tasks/emi-wn/install.yml

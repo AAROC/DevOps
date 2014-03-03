@@ -1,0 +1,3 @@
+---
+- include: top-bdii-servers-dev-install.yml
+- include: top-bdii-servers-dev-configure.yml

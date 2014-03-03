@@ -52,5 +52,22 @@ If your site is only serving local communities and does not need to be visible t
 * on all of your nodes the packages redhat-lsb, yum-utils, vim screen, ruby are installed. A further set of required packages will be installed on a per-service basis - see the individual playbooks and handlers
 * an ntp service is installed and operational within your region. All grid nodes have ntp clients configured properly
 
-# How to use these playbooks 
-This section still has to be completed.
+# How to use these playbooks
+_NOTE : THIS SECTION HAS YET TO BE COMPLETED_
+
+## Site registration - manual steps
+These playbooks are developed to automate as far as possible site deployment. However, there are some manual steps which have to done first. 
+
+The [EGI Resource Centre integration procedure](https://wiki.egi.eu/wiki/PROC09) is a good starting point. Once you have completed the [initial procedure](https://wiki.egi.eu/wiki/HOWTO01) to register your site in [the GOCDB](https://goc.egi.eu/portal), you will be ready to use this code.
+
+## Quickstart guide
+
+The basic workflow for deploying a site in the ROC using Ansible is as follows :
+  1. Define your inventory by adding a file to the top-level directory (e.g. `za-meraka.inventory`)
+  2. Define the variables for your site by adding a file in the `group_vars` directory (e.g. `za-meraka`
+  3. do something
+  4. do something else
+  5. ???
+  6. profit !!!
+
+

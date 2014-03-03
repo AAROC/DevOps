@@ -1,0 +1,14 @@
+[sl-fastbugs]
+name=SL 5 fastbugs area
+baseurl=http://ftp.scientificlinux.org/linux/scientific/510/$basearch/updates/fastbugs
+                http://ftp1.scientificlinux.org/linux/scientific/510/$basearch/updates/fastbugs
+                http://ftp2.scientificlinux.org/linux/scientific/510/$basearch/updates/fastbugs
+                ftp://ftp.scientificlinux.org/linux/scientific/510/$basearch/updates/fastbugs
+#mirrorlist=ftp://ftp.scientificlinux.org/linux/scientific/mirrorlist/sl-fastbugs-510.txt
+enabled=0
+gpgcheck=1
+# To use priorities you must have yum-priorities installed
+priority=2
+protect=1
+exclude=perl-DBI mysql51*
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl5 file:///etc/pki/rpm-gpg/RPM-GPG-KEY-csieh file:///etc/pki/rpm-gpg/RPM-GPG-KEY-dawson file:///etc/pki/rpm-gpg/RPM-GPG-KEY-jpolok file:///etc/pki/rpm-gpg/RPM-GPG-KEY-cern file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5

@@ -1,0 +1,7 @@
+- hosts: cream-ce-prod
+  user: ansible
+  sudo: True
+  sudo_user: root
+  tasks:
+    - include: tasks/nfs/server.yml
+    - include: tasks/emi-cream/install.yml
