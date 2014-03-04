@@ -3,25 +3,6 @@
 # Inventory for the CSIR C4 cluster
 #
 ############## Cluster oriented grouping ##############
-# (you may have to administer more than one Grid clusters,
-# so think of grid-cluster in this section as a wild card)
-<<<<<<< HEAD
-
-# We have generally two parts to our site : 
-# a production section where services are available to the public
-# and a development / test
-[top-bdiis]
-top-bdii.c4.csir.co.za
-
-# Worker Nodes
-[grid-cluster-worker-nodes]
-# wn001.localdomain
-
-[grid-cluster-site-bdii]
-site-bdii.c4.csir.co.za
-=======
->>>>>>> fe0a561dd9837ba0d357031691686ee07d618dd5
-
 ##########################################################################################
 # we define overall two clusters : production and development/staging/testing 
 # it is possible that we could separate the development and staging/testing clusters later
