@@ -1,0 +1,64 @@
+##############################################################################
+# Copyright (c) Members of the EGEE Collaboration. 2004. 
+# See http://www.eu-egee.org/partners/ for details on the copyright 
+# holders.  
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); 
+# you may not use this file except in compliance with the License. 
+# You may obtain a copy of the License at 
+#
+#    http://www.apache.org/licenses/LICENSE-2.0 
+#
+# Unless required by applicable law or agreed to in writing, software 
+# distributed under the License is distributed on an "AS IS" BASIS, 
+# WITHOUT WARRANTIES OR CONDITIONS 
+# OF ANY KIND, either express or implied. 
+# See the License for the specific language governing permissions and 
+# limitations under the License.
+##############################################################################
+#
+# NAME :        glite_bdii-site
+#
+# DESCRIPTION : This file contains the variable list to configure TURBO.
+#
+# AUTHORS :     Laurence.Field@cern.ch, steve.traylen@cern.ch
+#
+# NOTES :       -
+#
+# YAIM MODULE:  glite-yaim-bdii
+#                 
+##############################################################################
+
+# Site-wide settings
+
+# SITE BDII specific section
+SITE_NAME="{{ site_name|upper }}"
+SITE_DESC="{{ site_description }}"
+SITE_SUPPORT_EMAIL="{{ site_support_email }}"
+SITE_SECURITY_EMAIL="{{ site_security_email }}"
+SITE_LOC="{{ site_location }}"
+SITE_WEB="{{ site_website }}"
+
+#############################################################################
+#The SITE_OTHER_* variables are free form after the SITE_OTHER_ prefix.
+# Please see 
+# http://goc.grid.sinica.edu.tw/gocwiki/How_to_publish_my_site_information
+# for more details.
+# Note for multiple values a '|' is used as a delimiter
+#
+# For example:
+SITE_OTHER_GRID="{{ site_other_grid }}"
+# Other SITE_OTHER variables:
+# SITE_OTHER_EGEE_ROC="UK/I"
+# SITE_OTHER_WLCG_TIER="2"
+# SITE_OTHER_WLCG_PARENT="RAL-LCG2"
+
+# List of hosts where there are services that want to publish into the BDII
+BDII_REGIONS="{% for region in bdii_regions -%}{{region.name}} {% endfor -%}"
+
+# The following example is valid for hosts using BDII. 
+# If your host is using MDS instead (all 3.0 nodes)
+# change the port to 2135 and mds-vo-name=local
+{% for region in bdii_regions %}
+BDII_{{ region.name }}_URL="{{ region.endpoint }}"
+{% endfor -%}
