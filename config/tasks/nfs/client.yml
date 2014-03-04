@@ -2,9 +2,16 @@
   action: yum name=nfs-utils state=latest
 - name: Enable rpcbind service on nfs client
   action: service name=rpcbind enabled=yes state=started
-  only_if: "'${ansible_lsb.major_release}' == '6'"
+#  when: ansible_lsb.major_release == '6'
+# have to changed this in the absence of lsb 
+  when: ansible_distribution_release == '6.5 | 6.4'
 - name: Enable portmap service on nfs client
   action: service name=portmap enabled=yes state=started
-  only_if: "'${ansible_lsb.major_release}' == '5'"
+#  when: ansible_lsb.major_release == '5'
+  when: ansible_distribution_release == '5'
+- name: start rpcbind
+  action: service name=rpcbind state=restarted enabled=yes
+- name: restart NFS
+  action: service name=nfs state=restarted 
 - name: Enable nfslock service on nfs client
   action: service name=nfslock enabled=yes state=started

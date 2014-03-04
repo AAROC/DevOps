@@ -1,7 +1,7 @@
 - name: Download umd release package
-  action: get_url url=${umd[${ansible_lsb.major_release}]} dest=/tmp/umd.rpm mode=0644
+  action: get_url url={{ umd_release_url[ansible_distribution_release] }} dest=/tmp/umd.rpm mode=0644
 - name: Install umd release package
-  action: command yum install -y ${yum_flags} /tmp/umd.rpm creates=/etc/yum.repos.d/UMD-${umd_major_release}-base.repo  
+  action: command yum install -y {{ yum_flags }} /tmp/umd.rpm creates=/etc/yum.repos.d/UMD-{{ umd_major_release }}-base.repo  
 
 # downloads and installs UMD2 repository definition files onto all nodes this task
 # is running upon. Variables are defined within group_vars/umd2 and are sourced only

@@ -1,11 +1,12 @@
 - hosts: site-bdii-servers
   user: ansible
   sudo: True
+  sudo_user: root
   vars_files:
     - vars/yaim.yml
-    - vars/distros/${ansible_distribution}-${ansible_lsb.major_release}.yml
+    - vars/distros/{{ ansible_distribution }}-{{ ansible_lsb.major_release }}.yml
   tasks:
-    - include: tasks/emi-bdii-site/config.yml
+    - include: tasks/emi-bdii-site/firewall.yml
     - include: tasks/yaim/config_dirs.yml
     - include: tasks/yaim/vos.yml
     - include: tasks/yaim/siteinfo.yml

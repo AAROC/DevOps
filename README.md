@@ -47,10 +47,11 @@ If your site is only serving local communities and does not need to be visible t
 
 
 ## Assumptions taken in building these templates:
-* Network configurations of all of the nodes is done beforehand. Firewall should be setup to deny all inbound connections except on port 22 - ssh and ntp client ports
+~~* Network configurations of all of the nodes is done beforehand. Firewall should be setup to deny all inbound connections except on port 22 - ssh and ntp client ports
 * a user named ansible (with a home directory preferably on /ansible) exists on all nodes. The user ansible has sudo rights configured on all nodes
 * on all of your nodes the packages redhat-lsb, yum-utils, vim screen, ruby are installed. A further set of required packages will be installed on a per-service basis - see the individual playbooks and handlers
-* an ntp service is installed and operational within your region. All grid nodes have ntp clients configured properly
+* an ntp service is installed and operational within your region. All grid nodes have ntp clients configured properly~~ 
+These are now done in the bootstrap playbook
 
 # How to use these playbooks
 _NOTE : THIS SECTION HAS YET TO BE COMPLETED_
@@ -64,6 +65,10 @@ The [EGI Resource Centre integration procedure](https://wiki.egi.eu/wiki/PROC09)
 
 The basic workflow for deploying a site in the ROC using Ansible is as follows :
   1. Define your inventory by adding a file to the top-level directory (e.g. `za-meraka.inventory`)
-  2. Define the variables for your site by adding a file in the `group_vars` directory (e.g. `za-meraka`
-  3. 
+  2. Define the variables for your site by adding a file in the `group_vars` directory (e.g. `za-meraka`)
+  3. run the bootstrap and preflight test playbooks to see if you can prepare the machines properly. 
+  4. Choose the services you want to configure at your site in the main playbook (`playbook.yml`)
+  5. run the playbook - this will install and configure everything necessary
+  6. let the operations coordinator know that your site is ready and needs to be included in the GOCDB
 
+A detailed guide is in 

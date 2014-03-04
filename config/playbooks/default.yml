@@ -1,4 +1,4 @@
-- hosts: umd
+- hosts: site-services-prod
   user: ansible
   sudo: True
   tasks:

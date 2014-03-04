@@ -1,0 +1,12 @@
+- hosts: cream-ce-dev
+  user: ansible
+  sudo: yes
+  sudo_user: root
+  accelerate: true
+  vars_files:
+    - vars/middleware/umd3.yml
+  tasks:
+    #- include: tasks/umd/repo.yml
+    - include: tasks/nfs/server.yml
+    - include: tasks/emi-cream/install.yml
+ 
