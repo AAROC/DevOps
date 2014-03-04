@@ -7,4 +7,10 @@
   roles:
   - common
   - umd3
-  - site-bdiis
+  - site-bdii
+  
+- hosts: site-bdiis
+  user: ansible
+  roles:
+  - yaim
+

@@ -1,7 +1,7 @@
 # KENET inventory
 
 [site-bdiis]
-bdii.kenet.or.ke
+bdii.kenet.or.ke emi_service=BDII_site
 
 [cream-ces]
 headnode.kenet.or.ke
@@ -33,5 +33,5 @@ site-bdiis
 cream-ces
 worker-nodes
 
-[grid-cluster:children]
+[kenet-grid-cluster:children]
 umd3
