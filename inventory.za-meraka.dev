@@ -1,0 +1,76 @@
+######################################################
+#
+# Inventory for the CSIR C4 cluster
+#
+############## Cluster oriented grouping ##############
+#################
+# core services #
+#################
+[myproxy-servers]
+myproxy-dev.c4.csir.co.za
+
+[top-bdiis]
+top-bdii-dev.c4.csir.co.za
+
+[wms-servers-dev]
+wms-dev.c4.csir.co.za
+
+[lfcs]
+lfc-dev.c4.csir.co.za
+
+[apel-servers]
+apel-server-dev.c4.csir.co.za
+
+[ngi-nagios]
+nagios-dev.c4.csir.co.za
+
+#################
+# site services #
+#################
+[site-bdiis]
+site-bdii-dev.c4.csir.co.za
+
+[cream-ces]
+ce01-node001.c4.csir.co.za
+
+[apel-publishers-dev:children]
+cream-ces
+
+[worker-nodes]
+ce01-node002.c4.csir.co.za
+
+
+############## Service oriented grouping ##############
+# (here comes the magical power of ansible... Group things
+# in as much as you can)
+
+
+############## Middleware oriented grouping ##############
+
+#site-bdii-servers
+#cream-servers
+#storage-elements
+#wms-servers
+#myproxy-servers
+#lfc-servers
+#worker-nodes
+#apel-servers
+#top-bdiis
+
+
+[CRL]
+[CRL:children]
+wms-servers
+lfc-servers
+nagios-servers
+cream-servers
+
+# stage are sites which will become production, but which are currently
+# undergoing installation/configuration/testing
+#[stage]
+#sagrid-monitoring.c4.csir.co.za
+#lfc.c4.csir.co.za
+#myproxy.c4.csir.co.za
+#cream-ce.c4.csir.co.za
+
+############################ END #########################

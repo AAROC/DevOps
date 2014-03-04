@@ -32,3 +32,6 @@ cream-ces
 site-bdiis
 cream-ces
 worker-nodes
+
+[grid-cluster:children]
+umd3

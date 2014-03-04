@@ -1,0 +1,13 @@
+---
+- hosts: cream-ces
+  user: ansible
+  vars_files: 
+#    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_lsb.major_release }}.yml
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    # need to have every bloody combination of the vars files because facter doesn't report
+    # facts consistently.
+    - roles/common/vars/middleware/igtf.yml
+  roles:
+  - common
+  - umd3
+#  - site-bdiis

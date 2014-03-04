@@ -1,0 +1,39 @@
+---
+- name: Download epel-release package
+  action: get_url url={{ epel_release_url }}/{{ epel_release_name }} dest=/tmp/{{ epel_release_name }} mode=0644
+  when: yum name={{ epel_release_name }} state=absent
+  tags:
+    - repos
+    - EPEL
+
+- name: Install epel-release package
+  action: command yum localinstall -y {{ yum_flags }} /tmp/{{ epel_release_name }} creates=/etc/yum.repos.d/epel.repo
+  sudo: true
+  sudo_user: root
+  tags:
+    - repos
+    - EPEL
+
+- name: Download EGI trustanchers release package
+  action: get_url url={{ igtf_repo_url }}/{{ igtf_release_name }} dest=/tmp/{{ igtf_release_name }}
+  tags: 
+    - repos
+    - IGTF
+  
+- name: Install EGI trustanchros release package
+  action: command yum localinstall -y /tmp/{{ igtf_release_pacakge }}
+  sudo: true
+  sudo_user: root
+  tags: 
+    - repos
+    - IGTF
+#- name: Download UMD release package
+#  action: get_url url={{ umd_repo_url }}/{{ umd_release_name }} dest=/tmp/{{ umd_release_name }} mode=0644
+#  tags:
+#    - repos
+#    - UMD
+#- name: Install UMD release package
+#  action: command yum localinstall /tmp/{{ umd_release_name }}
+#  tags:
+#    - repos
+#    - UMD

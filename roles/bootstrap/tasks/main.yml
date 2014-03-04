@@ -1,0 +1,5 @@
+---
+  user: ansible
+  sudo: true
+  sudo_user: root
+  - action: shell /sbin/iptables -A INPUT -i eth0 -p tcp --dport 5099 -j ACCEPT
