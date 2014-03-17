@@ -1,0 +1,8 @@
+# for torque-2.5.7-9.el6.x86_64 destination should be /var/lib/torque/server_priv/nodes
+- name: Copy nodes confinguration file to appropriate path.
+  action: copy src=files/var/torque/server_priv/nodes.{{ site_name }} dest=/var/lib/torque/server_priv/nodes owner=root group=root mode=0644
+  tags: 
+    - torque
+  notify:
+    - restart pbs_server
+    

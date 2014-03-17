@@ -1,0 +1,62 @@
+- name: check that we have cleaned out the firewall rules to avoid duplication
+  action: shell /sbin/iptables -D INPUT -i eth0 {{ item }} -j ACCEPT
+  sudo: true
+  sudo_user: root
+  with_items:
+    - "-p tcp --dport 8443"
+    - "-p tcp --dport 2811"
+    - "-p tcp --dport 9091"
+    - "-p tcp --dport 49152"
+    - "-p tcp --dport 9001"
+    - "-p tcp --dport 9002"
+    - "-p tcp --dport 20000:25000"
+    - "-p tcp --dport 15001"
+    - "-p udp --dport 15001"
+  tags:
+    - CE 
+    - firewall
+
+- name: Open the firewall for CREAM-CE communication to grid services (tcp)
+  action: shell /sbin/iptables -A INPUT -i eth0 {{ item }} -j ACCEPT
+  sudo: true
+  sudo_user: root
+  with_items:
+    - "-p tcp --dport 8443"
+    - "-p tcp --dport 2811"
+    - "-p tcp --dport 9091"
+    - "-p tcp --dport 49152"
+    - "-p tcp --dport 9001"
+    - "-p tcp --dport 9002"
+    - "-p tcp --dport 20000:25000"
+    - "-p tcp --dport 15001"
+    - "-p udp --dport 15001"
+  notify: 
+    - restart iptables
+  tags:
+    - CE
+    - firewall
+    
+- name: Install emi-cream software in no cluster mode
+  sudo: True
+  sudo_user: root
+  action: yum name=emi-cream-ce state=latest
+  tags:
+    - CE
+    - install
+    
+- name: ensure that the repos are up to date
+  sudo: true
+  sudo_user: root
+  yum: name=* state=latest    
+- name: Install batch system specific software
+  sudo: True
+  sudo_user: root
+  action: yum name={{ item }} state=latest
+  with_items:
+    - emi-torque-server
+    - emi-torque-utils
+    - emi-mpi
+  retries: 2
+  tags:
+    - CE
+    - install  

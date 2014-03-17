@@ -1,0 +1,8 @@
+- name: Install prerequisite packages- selinux, python bindings
+  action: yum name={{ item }} state=present
+  with_items: 
+    - python-simplejson
+    - libselinux-python
+    - iptables
+    - iptraf
+    - bind-utils
