@@ -1,10 +1,10 @@
 # KENET inventory
 
 [site-bdiis]
-bdii.kenet.or.ke emi_service=BDII_site
+bdii.kenet.or.ke emi_service='-n BDII_site'
 
 [cream-ces]
-headnode.kenet.or.ke
+headnode.kenet.or.ke emi_service='MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
 
 [worker-nodes]
 worker-1.kenet.or.ke

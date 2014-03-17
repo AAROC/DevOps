@@ -26,13 +26,13 @@ queues:
   
 
 # use the site name as registered in GOCDB (use the same case)
-site_name: KENET-UNIO-01
-site_email: contact@localdomain
-site_security_email: csirt@localdomain
-site_support_email: support@localdomain
-site_latitude: XY.ZW
-site_longitude: XY.ZW
-site_description: "A short description"
+site_name: KE-UONBI-01
+site_email: pmuia@kenet.or.ke
+site_security_email: cert@kenet.or.ke
+site_support_email: pmuia@kenet.or.ke
+site_latitude: -1.280027
+site_longitude: 36.815983
+site_description: "KENET dev site at University of Nairobi"
 site_other_grid: AfricaArabia
 site_bdii_host: bdii.kenet.or.ke
 site_location: "Nairobi, Kenya"
@@ -84,8 +84,10 @@ lfc_host: lfc01.localdomain
 
 # vars for service: BDII_site
 bdii_regions:
+- name: SBDII
+  endpoint: ldap://bdii.kenet.or.ke:2170/mds-vo-name=resource,o=grid
 - name: CREAM
-  endpoint: ldap://cream01.localdomain:2170/mds-vo-name=resource,o=grid
+  endpoint: ldap://headnode.kenet.or.ke:2170/mds-vo-name=resource,o=grid
 - name: SE
   endpoint: ldap://se01.localdomain:2170/mds-vo-name=resource,o=grid
 - name: LFC
