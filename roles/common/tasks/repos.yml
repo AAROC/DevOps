@@ -13,6 +13,8 @@
   tags:
     - repos
     - EPEL
+#- name: change the repos to use the local ones
+#  action: copy src=files/etc/yum.repos.d/epel.repo     
 
 - name: Download EGI trustanchers release package
   action: get_url url={{ igtf_repo_url }}/{{ igtf_release_name }} dest=/tmp/{{ igtf_release_name }}
@@ -21,19 +23,9 @@
     - IGTF
   
 - name: Install EGI trustanchros release package
-  action: command yum localinstall -y /tmp/{{ igtf_release_pacakge }}
+  yum: name=/tmp/{{ igtf_release_name }} state=present
   sudo: true
   sudo_user: root
   tags: 
     - repos
     - IGTF
-#- name: Download UMD release package
-#  action: get_url url={{ umd_repo_url }}/{{ umd_release_name }} dest=/tmp/{{ umd_release_name }} mode=0644
-#  tags:
-#    - repos
-#    - UMD
-#- name: Install UMD release package
-#  action: command yum localinstall /tmp/{{ umd_release_name }}
-#  tags:
-#    - repos
-#    - UMD

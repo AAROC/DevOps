@@ -92,7 +92,7 @@ GROUPS_CONF={{ yaim_conf_dir }}/groups.conf
 
 # Uncomment this variable if you are installing a mysql server
 # It is the MySQL admin password. 
-# MYSQL_PASSWORD=set_this_to_a_good_password
+MYSQL_PASSWORD=set_this_to_a_good_password
 {% if needs_mysql %}
 MYSQL_PASSWORD="{{ mysql_pass }}"
 {% endif %}
@@ -307,7 +307,7 @@ MON_HOST={{ apel_mysql_host }}
 
 # Hostname of the WMS
 WMS_HOST={{ wms_host }}
-
+LB_HOST={{ wms_host }} 
 ###################################
 # myproxy configuration variables #
 ###################################

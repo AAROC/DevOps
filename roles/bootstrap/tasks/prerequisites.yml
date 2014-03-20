@@ -6,3 +6,6 @@
     - iptables
     - iptraf
     - bind-utils
+    - mlocate
+  tags:
+    - bootstrap

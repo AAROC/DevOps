@@ -1,4 +1,9 @@
 - name: create ansible user
   action: user name=ansible comment="ansible user created by bootstrap playbook" generate_ssh_key=yes groups=wheel
+  tags:
+    - bootstrap
 - name: update sudoers to ensure ansible user can sudo
   action: copy src=etc/sudoers dest=/etc/sudoers owner=root mode=0440
+  tags:
+    - bootstrap
+  

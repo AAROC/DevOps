@@ -1,7 +1,7 @@
 vos:
   - dteam
   - ops
-  - sagrid
+#  - sagrid
 #  - eumed
 #  - africacert
 queues:
@@ -34,6 +34,7 @@ bdii_host: top-bdii.c4.csir.co.za
 apel_mysql_host: apel.c4.csir.co.za
 px_host: myproxy.cern.ch
 wms_host: wms.c4.csir.co.za
+lb_host: wms.c4.csir.co.za
 argus_status: no
 # TODO - new LFC has to be deployed here at Meraka | BB 10/13
 #lfc_host: devslngrd002.uct.ac.za

@@ -1,28 +1,26 @@
 ---
 # the first play sets up middelware repos
+#- hosts: wms
+#  name: Bootstrap the WMS
+#  user: root
+#  vars_files:
+#    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+#    - roles/common/vars/middleware/igtf.yml
+#  roles:
+#    - bootstrap
+#  tags: bootstrap
+
+
 - hosts: wms
-  user: root
+  name: Run the rest of the WMS play
+  user: ansible
+  sudo: true
+  sudo_user: root
+  roles:
+    - common
+    - umd3
+    - wms
+    - yaim
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/igtf.yml
-  roles:
-    - bootstrap
-    - common
-#    - umd3
-#    - wms
-#    - yaim
-#  handlers:
-#    - roles/common/handlers/main.yml
-#- hosts: wms
-#  user: ansible
-#  roles:
-#    - wms
-#  handlers:
-#    - roles/common/handlers/main.yml
-
-# the second play configures it with yaim
-#- hosts: wms
-#  name: Configure the service 
-#  user: ansible
-#  roles:
-#    - yaim

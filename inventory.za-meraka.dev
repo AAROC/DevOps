@@ -10,28 +10,28 @@
 myproxy-dev.c4.csir.co.za
 
 [top-bdiis]
-top-bdii-dev.c4.csir.co.za emi_service='-n BDII_top'
+top-bdii-dev.c4.csir.co.za emi_service='BDII_top' yaim_options='-n BDII_top'
 
 [wms]
-wms-dev.c4.csir.co.za emi_service='-n WMS'
+wms-dev.c4.csir.co.za emi_service='WMS' yaim_options='-n WMS'
 
 [lfcs]
-lfc-dev.c4.csir.co.za emi_service='-n emi_lfc_mysql'
+lfc-dev.c4.csir.co.za emi_service='lfc' yaim_options='-n emi_lfc_mysql'
 
 [apel-servers]
 apel-server-dev.c4.csir.co.za
 
 [ngi-nagios]
-nagios-dev.c4.csir.co.za
+nagios-dev.c4.csir.co.za emi_service='SAM-NAGIOS' yaim_options='-n NAGIOS -n SAM_NAGIOS'
 
 #################
 # site services #
 #################
 [site-bdiis]
-site-bdii-dev.c4.csir.co.za emi_service='-n BDII_site'
+site-bdii-dev.c4.csir.co.za emi_service='BDII_site' yaim_options='-n BDII_site'
 
 [cream-ces]
-ce01-node001.c4.csir.co.za emi_service='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
+ce01-node001.c4.csir.co.za emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
 
 [apel-publishers-dev:children]
 cream-ces
