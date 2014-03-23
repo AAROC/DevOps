@@ -5,6 +5,7 @@
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/igtf.yml
   roles:
+#  - bootstrap
   - common
   - umd3
   - site-bdii

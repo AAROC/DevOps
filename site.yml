@@ -1,5 +1,7 @@
 ---
 #- include: site-bdiis.yml
+#- include: top-bdiis.yml
 #- include: cream-ces.yml
 #- include: worker-nodes.yml
- - include: wms.yml
+#- include: wms.yml
+- include: sam-nagios.yml
