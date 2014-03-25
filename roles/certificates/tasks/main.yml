@@ -1,0 +1,46 @@
+- name: create /etc/grid-security directory
+  file: path=/etc/grid-security/ owner=root group=root mode=775 state=directory force=true
+  sudo: true
+  sudo_user: root
+  tags: 
+    - certificates
+
+- name: Copy host x509 certificate into /etc/grid-security
+  sudo: true
+  sudo_user: root
+  action: copy src=etc/grid-security/hostcert.pem-{{ ansible_fqdn }} dest=/etc/grid-security/hostcert.pem owner=root group=root mode=0644 force=true
+  tags: 
+    - certificates
+
+- name: Copy host x509 private key into /etc/grid-security
+  sudo: true
+  sudo_user: root
+  action: copy src=etc/grid-security/hostkey.pem-{{ ansible_fqdn }} dest=/etc/grid-security/hostkey.pem owner=root group=root mode=0400
+  tags: 
+    - certificates
+
+#- name: Copy SA e-Science CA cert
+#  action: copy src=ca_SAGRID-1.0-1.noarch.rpm dest=/tmp/sa-escience.rpm
+
+#- name: Install SA e-Science CA cert
+#  yum: name=/tmp/sa-escience.rpm state=present
+ 
+- name: Copy over CA certs by hand
+  sudo: true
+  sudo_user: root
+  copy: src=etc/grid-security/certificates/{{ item }} dest=/etc/grid-security/certificates/{{ item }}
+  with_items:
+    - SAGrid-eScience.0
+    - 0759aedc.crl_url
+    - 0759aedc.signing_policy
+    - 760fd687.crl_url
+    - 760fd687.signing_policy
+    - SAGrid-eScience.r0
+    - 0759aedc.0
+    - 0759aedc.r0
+    - 760fd687.0
+    - 760fd687.r0
+    - SAGrid-eScience.crl_url
+    - SAGrid-eScience.signing_policy
+  tags:
+    - certificates
