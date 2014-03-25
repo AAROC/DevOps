@@ -1,4 +1,3 @@
-{% if is_cream -%}
 #
 # YAIM creamCE specific variables
 #
@@ -8,12 +7,14 @@
 #
 # CE-monitor host (by default CE-monitor is installed on the same machine as 
 # cream-CE)
-CEMON_HOST={{ ce_host }}
+# CEMON_HOST={{ ce_host }}
 #
 # CREAM database user
-CREAM_DB_USER={{ cream_db_user }}
-CREAM_DB_PASSWORD={{ cream_db_password }}
+#CREAM_DB_USER={{ cream_db_user }}
+#CREAM_DB_PASSWORD={{ cream_db_password }}
 
+CREAM_DB_USER=cream
+CREAM_DB_PASSWORD=creampw
 #
 # Machine hosting the BLAH blparser.
 # In this machine batch system logs must be accessible.
@@ -43,4 +44,3 @@ BLPARSER_HOST={{ ce_host }}
 # It is important in case of more than one ce connecting to the same blparser.
 # In this case, it is better that each CREAM_CE has its own prefix
 #BLAH_JOBID_PREFIX=cream_
-{% endif -%}

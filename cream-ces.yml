@@ -7,23 +7,12 @@
     # facts consistently.
     - roles/common/vars/middleware/igtf.yml
   roles:
-#  - common
-#  - umd3
-#  - cream-ce
+  - common
+  - certificates
+  - umd3
+  - cream-ce
   - munge
-  
-- hosts: cream-ces
-  user: ansible
-  sudo: true 
-  sudo_user: root
-
-  pre_tasks:
-    - include: config/tasks/nfs/server.yml
-    - include: config/tasks/certificates/config.yml
-
-  roles:
-    - yaim
-    
+  - yaim    
   post_tasks:
     - name: fix qmgr queues 1
       action: raw /usr/bin/qmgr -c "unset queue {{ item.name }} {{ resources_max.cput }}"

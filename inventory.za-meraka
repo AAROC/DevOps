@@ -60,11 +60,11 @@ sagrid-monitoring.c4.csir.co.za
 site-bdii.c4.csir.co.za emi_service='BDII_site' yaim_options='-n BDII_site'
 
 # CREAM CE's
-[cream-ce]
+[cream-ces]
 ce01-node001.c4.csir.co.za emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
 
 [apel-publishers:children]
-cream-ce
+cream-ces
 
 [storage-elements]
 #se01.localdomain
@@ -84,7 +84,7 @@ ngi-nagios
 
 [site-services:children]
 site-bdiis
-cream-ce
+cream-ces
 worker-nodes
 
 ############## Service oriented grouping ##############
@@ -110,10 +110,10 @@ worker-nodes
 wms-servers
 lfcs
 ngi-nagios
-cream-ce
+cream-ces
 
 [za-meraka:children]
-cream-ce
+cream-ces
 site-bdiis
 worker-nodes
 top-bdiis

@@ -92,7 +92,7 @@ GROUPS_CONF={{ yaim_conf_dir }}/groups.conf
 
 # Uncomment this variable if you are installing a mysql server
 # It is the MySQL admin password. 
-MYSQL_PASSWORD=P@55W0rd
+MYSQL_PASSWORD={{ mysql_pass }}
 {% if needs_mysql %}
 MYSQL_PASSWORD="{{ mysql_pass }}"
 {% endif %}
@@ -586,27 +586,27 @@ OPS_GROUP_ENABLE="ops /ops/ROLE=lcgadmin"
 #########
 # dteam #
 #########
-# VO_DTEAM_SW_DIR=$VO_SW_DIR/dteam
-# VO_DTEAM_DEFAULT_SE=$SE_HOST
-# VO_DTEAM_STORAGE_DIR=$CLASSIC_STORAGE_DIR/dteam
-# VO_DTEAM_VOMS_SERVERS='vomss://voms.hellasgrid.gr:8443/voms/dteam?/dteam/'
-# VO_DTEAM_VOMSES="\
-# 'dteam lcg-voms.cern.ch 15004 \
-# /DC=ch/DC=cern/OU=computers/CN=lcg-voms.cern.ch dteam 24' \
-# 'dteam voms.cern.ch 15004 \
-# /DC=ch/DC=cern/OU=computers/CN=voms.cern.ch dteam 24' \
-# 'dteam voms.hellasgrid.gr 15004 \
-# /C=GR/O=HellasGrid/OU=hellasgrid.gr/CN=voms.hellasgrid.gr dteam 24' \
-# 'dteam voms2.hellasgrid.gr 15004 \
-# /C=GR/O=HellasGrid/OU=hellasgrid.gr/CN=voms2.hellasgrid.gr dteam 24' \
-# "
-# VO_DTEAM_VOMS_CA_DN="\
-# '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
-# '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
-# '/C=GR/O=HellasGrid/OU=Certification Authorities/CN=HellasGrid CA 2006' \
-# '/C=GR/O=HellasGrid/OU=Certification Authorities/CN=HellasGrid CA 2006' \
-# "
-#
+VO_DTEAM_SW_DIR=$VO_SW_DIR/dteam
+ VO_DTEAM_DEFAULT_SE=$SE_HOST
+ VO_DTEAM_STORAGE_DIR=$CLASSIC_STORAGE_DIR/dteam
+ VO_DTEAM_VOMS_SERVERS='vomss://voms.hellasgrid.gr:8443/voms/dteam?/dteam/'
+ VO_DTEAM_VOMSES="\
+ 'dteam lcg-voms.cern.ch 15004 \
+ /DC=ch/DC=cern/OU=computers/CN=lcg-voms.cern.ch dteam 24' \
+ 'dteam voms.cern.ch 15004 \
+ /DC=ch/DC=cern/OU=computers/CN=voms.cern.ch dteam 24' \
+ 'dteam voms.hellasgrid.gr 15004 \
+ /C=GR/O=HellasGrid/OU=hellasgrid.gr/CN=voms.hellasgrid.gr dteam 24' \
+ 'dteam voms2.hellasgrid.gr 15004 \
+ /C=GR/O=HellasGrid/OU=hellasgrid.gr/CN=voms2.hellasgrid.gr dteam 24' \
+ "
+ VO_DTEAM_VOMS_CA_DN="\
+ '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
+ '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
+ '/C=GR/O=HellasGrid/OU=Certification Authorities/CN=HellasGrid CA 2006' \
+ '/C=GR/O=HellasGrid/OU=Certification Authorities/CN=HellasGrid CA 2006' \
+ "
+
 ##########
 # biomed #
 ##########
@@ -625,20 +625,20 @@ OPS_GROUP_ENABLE="ops /ops/ROLE=lcgadmin"
 #######
 # ops #
 #######
-# VO_OPS_SW_DIR=$VO_SW_DIR/ops
-# VO_OPS_DEFAULT_SE=$SE_HOST
-# VO_OPS_STORAGE_DIR=$CLASSIC_STORAGE_DIR/ops
-# VO_OPS_VOMS_SERVERS="vomss://voms.cern.ch:8443/voms/ops?/ops/"
-# VO_OPS_VOMSES="\
-# 'ops lcg-voms.cern.ch 15009 \
-# /DC=ch/DC=cern/OU=computers/CN=lcg-voms.cern.ch ops 24' \
-# 'ops voms.cern.ch 15009 \
-# /DC=ch/DC=cern/OU=computers/CN=voms.cern.ch ops 24' \
-# "
-# VO_OPS_VOMS_CA_DN="\
-# '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
-# '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
-# "
+VO_OPS_SW_DIR=$VO_SW_DIR/ops
+VO_OPS_DEFAULT_SE=$SE_HOST
+ VO_OPS_STORAGE_DIR=$CLASSIC_STORAGE_DIR/ops
+ VO_OPS_VOMS_SERVERS="vomss://voms.cern.ch:8443/voms/ops?/ops/"
+ VO_OPS_VOMSES="\
+ 'ops lcg-voms.cern.ch 15009 \
+ /DC=ch/DC=cern/OU=computers/CN=lcg-voms.cern.ch ops 24' \
+ 'ops voms.cern.ch 15009 \
+ /DC=ch/DC=cern/OU=computers/CN=voms.cern.ch ops 24' \
+ "
+ VO_OPS_VOMS_CA_DN="\
+ '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
+ '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
+ "
 
 {% if is_cream -%}
 # CREAM specific section
@@ -648,6 +648,8 @@ CONFIG_TORQUE_NODES={{ config_torque_nodes }}
 CONFIG_MAUI={{ config_maui }}
 {% endif -%}
 APEL_MYSQL_HOST={{ apel_mysql_host }}
+CREAM_DB_USER=cream
+CREAM_DB_PASSWORD=creampw
 {% endif -%}
 
 {% if is_wms -%}
@@ -688,7 +690,7 @@ NCG_TOPOLOGY_ATP_ROOT_URL="{{ ncg_topology_atp_root_url }}"
 NCG_BACKUP_INSTANCE={{ ncg_backup_instance }}
 
 # DB data
-MYSQL_ADMIN="{{ mysql_pass }}"
+MYSQL_ADMIN="{{ mysql_admin_pass }}"
 DB_PASS_R="{{ db_pass_r }}"
 DB_PASS_W="{{ db_pass_w }}"
 

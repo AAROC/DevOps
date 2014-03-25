@@ -1,13 +1,13 @@
 ---
 #Nagios related
 nagios_host: nagios.c4.csir.co.za
-nagios_nsca_pass: password
+nagios_nsca_pass: redacted
 ncg_backup_instance: "true"
 
 #MySQL related
-mysql_pass: Aey3F5lQLqtOWTop10o9skDfvbCrAlwW
-db_pass_r: Aey3F5lQLqtOWTop10o9skDfvbCrAlwW
-db_pass_w: Aey3F5lQLqtOWTop10o9skDfvbCrAlwW
+mysql_pass: redacted
+db_pass_r: redacted
+db_pass_w: redacted
 
 is_nagios: 1
 
@@ -39,7 +39,7 @@ nagios_ncg_enable_config: "true"
 nagios_nagios_enable_config: "true"
 nagios_cgi_enable_config: "true"
 
-nagios_myproxy_name: "NagiosRetrieve-nagios.c4.csir.co.za-ops"
+nagios_myproxy_name: "NagiosRetrieve-nagios.c4.csir.co.za"
 
 #NCG_TOPOLOGY
 ncg_topology_use_ldap: "false"

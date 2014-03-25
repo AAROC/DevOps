@@ -1,6 +1,11 @@
 ---
 - name: Install UMD WMS software
-  action: yum name=emi-wms state=latest
+  action: yum name={{ item }} state=latest
+  with_items:
+    - emi-wms
+    - argus-gsi-pep-callout
+    - emir-serp
+    - condor-emi
   sudo: True
   sudo_user: root
   tags: 

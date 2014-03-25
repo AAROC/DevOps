@@ -41,7 +41,7 @@
   action: template src=opt/glite/yaim/etc/siteinfo/services/glite-creamce.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-creamce owner=root group=root mode=0644
   sudo: true
   sudo_user: root
-  when: emi_service == 'CREAM_CE'
+# when: emi_service == 'CREAM_CE'
   notify:
     - run yaim
   tags: 
