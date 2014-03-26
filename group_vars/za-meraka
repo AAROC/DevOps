@@ -30,9 +30,9 @@ site_website: "http://www.csir.co.za/meraka"
 site_domain: c4.csir.co.za
 
 # passwords
-mysql_pass: 'P@55W0rd'
-mysql_admin_pass: 'Aey3F5lQLqtOWTop10o9skDfvbCrAlwW'
-apel_db_password: 
+mysql_pass: 'redacted'
+mysql_admin_pass: 'redacted'
+apel_db_password: 'redacted'
 
 # services at the site
 bdii_host: top-bdii.c4.csir.co.za
