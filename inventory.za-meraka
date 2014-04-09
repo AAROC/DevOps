@@ -35,7 +35,7 @@ top-bdii.c4.csir.co.za emi_service='BDII_top' yaim_options='-n BDII_top'
 
 # WMS 
 [wms-servers]
-wms.c4.csir.co.za emi_service='WMS' yaim_options='-n WMS'
+wms.c4.csir.co.za emi_service='WMS' yaim_options='-n WMS -n LB'
 
 # LFC
 [lfcs]
@@ -73,7 +73,7 @@ cream-ces
 [worker-nodes]
 # empty for now
 [worker-nodes]
-ce01-node002.c4.csir.co.za 
+ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
 
 ############ grouping and children ############
 # first, group by production and development 
