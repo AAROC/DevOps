@@ -24,6 +24,9 @@ apel-server-dev.c4.csir.co.za
 [ngi-nagios]
 nagios-dev.c4.csir.co.za emi_service='SAM-NAGIOS' yaim_options='-n NAGIOS -n SAM_NAGIOS'
 
+[voms]
+voms-stage.c4.csir.co.za emi_service='emi-voms-mysql'
+
 #################
 # site services #
 #################

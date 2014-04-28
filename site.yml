@@ -5,4 +5,5 @@
 #- include: worker-nodes.yml
 #- include: wms.yml
 #- include: sam-nagios.yml
-- include: worker-nodes.yml
+#- include: worker-nodes.yml
+- include: voms.yml

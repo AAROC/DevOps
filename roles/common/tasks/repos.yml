@@ -24,6 +24,13 @@
     - repos
     - IGTF
     - download
+
+- name: Ensure that the repo is properly configured for yum
+  action: get_url url=http://repository.egi.eu/sw/production/cas/1/current/repo-files/egi-trustanchors.repo dest=/etc/yum.repos.d/egi-trustanchors.repo
+  tags:
+    - repos
+    - IGTF
+    - download
   
 - name: Install EGI trustanchros release package
   yum: name=/tmp/{{ igtf_release_name }} state=present
