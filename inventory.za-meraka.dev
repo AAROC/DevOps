@@ -42,16 +42,6 @@ cream-ces
 [worker-nodes]
 ce01-node002.c4.csir.co.za
 
-# machines which have been bootstrapped, but need to be configured
-[dev:children]
-
-
-# machines that have been configured, but need to be tested
-[stage:children]
-
-# machines that have been tested and are in production
-[prod:children]
-
 # middleware grouping
 [umd3:children]
 top-bdiis
@@ -60,8 +50,9 @@ myproxy-servers
 site-bdiis
 cream-ces
 worker-nodes
+voms
 
 [za-meraka-dev:children]
 umd3
-
+voms
 ############################ END #########################

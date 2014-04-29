@@ -97,3 +97,14 @@ se_gridftp_logfile: /var/log/dpm-gsiftp/dpm-gsiftp.log
 
 sandboxdir_on_ce: /var/cream_sandbox
 sandboxdir_on_wn: /cream_sandbox
+
+# voms variables
+voname: sagrid.ac.za
+dbtype: mysql
+dbauser: root
+dbapwd: aCxwcUjIizry2nMf-U9OIs8GdnDmqnKU
+dbusername: vomsadmin
+dbpassword: cpbYOaAA4hv4PKCwzGZCu_OFVLbMqccv
+coreport: 15000
+smtphost: localhost
+mailfrom: voms-admin@voms-stage.sagrid.ac.za

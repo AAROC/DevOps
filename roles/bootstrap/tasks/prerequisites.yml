@@ -7,5 +7,8 @@
     - iptraf
     - bind-utils
     - mlocate
+    - initscripts
+    - chkconfig
+    - system-config-services
   tags:
     - bootstrap

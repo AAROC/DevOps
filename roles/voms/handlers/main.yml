@@ -1,9 +1,4 @@
 ---
-- name: restart ntpd
-  service: name=ntpd state=restarted
-- name: restart iptables
-  service: name=iptables state=restarted
-  ignore_errors: true 
-# we ignore the error on this one because iptables doesn't give Ansible
-# a "clean" exit code. Need to register the output and check that this is
-# restarting
+- name: install VO
+  action: shell voms-configure install --vo test --dbtype mysql --createdb --deploy-database --dbauser {{ dbauser }} --dbapwd {{ dbapwd }} --dbusername {{ vomsadmin }} --dbpassword {{ dbpassword }} --core-port {{ coreport }} --smtp-host {{ smtphost }} --mail-from {{ mailfrom }}
+
