@@ -41,6 +41,9 @@ wms.c4.csir.co.za emi_service='WMS' yaim_options='-n WMS -n LB'
 [lfcs]
 lfc.c4.csir.co.za emi_service='lfc' yaim_options='-n lfc_mysql'
 
+# FTS
+[fts]
+fts.c4.csir.co.za emi_service='fts-3'
 # APEL
 [apel-servers]
 apel-server.c4.csir.co.za

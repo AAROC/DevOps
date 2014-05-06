@@ -1,0 +1,10 @@
+---
+IP: 146.64.82.202
+DbUserName: fts3
+DbPassword: redacted
+Alias: ui
+Infosys: top-bdii-c4.csir.co.za
+SiteName: ZA-MERAKA
+MonitoringMessaging: false
+Profiling: 20
+DbConnectString: localhost/fts3

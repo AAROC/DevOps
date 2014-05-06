@@ -47,6 +47,7 @@
   sudo: true
   sudo_user: root
   yum: name=* state=latest    
+
 - name: Install batch system specific software
   sudo: True
   sudo_user: root
