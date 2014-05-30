@@ -1,3 +1,4 @@
+https://zenodo.org/badge/1514/AAROC/ansible-for-grid.png
 # Ansible playbooks for grid services deployment
 
 ## Audience and content
