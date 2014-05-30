@@ -70,5 +70,6 @@ The basic workflow for deploying a site in the ROC using Ansible is as follows :
   4. Choose the services you want to configure at your site in the main playbook (`playbook.yml`)
   5. run the playbook - this will install and configure everything necessary
   6. let the operations coordinator know that your site is ready and needs to be included in the GOCDB
+  1. proceed to create the roles and tasks for your site. 
 
-A detailed guide is in 
+A detailed guide is in each of the roles of the playbooks. 
