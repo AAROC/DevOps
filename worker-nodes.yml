@@ -1,0 +1,30 @@
+---
+
+#- hosts: worker-nodes
+#  name: bootstrap the worker nodes
+#  user: ansible
+#  sudo: true
+#  sudo_user: root
+#  roles:
+#    - bootstrap
+#  vars_files:
+#    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+#    - roles/common/vars/middleware/igtf.yml
+
+- hosts: worker-nodes
+  name: install and configure worker-nodes
+  user: ansible
+  sudo: true
+  sudo_user: root
+  roles:
+#    - common
+#    - certificates    
+#    - umd
+#    - worker-nodes
+#    - yaim
+#    - torque
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/igtf.yml
+    
+ 
