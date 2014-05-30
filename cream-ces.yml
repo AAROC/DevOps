@@ -15,30 +15,38 @@
   - yaim    
   post_tasks:
     - name: fix qmgr queues 1
+      sudo: true
       action: raw /usr/bin/qmgr -c "unset queue {{ item.name }} {{ resources_max.cput }}"
       with_items: qmgr_queues
       notify:
       - restart pbs_server
 
     - name: fix qmgr queues 2
-      action: raw /usr/bin/qmgr -c "set queue "{{ item.name }} resources_max.walltime = {{ item.max_wall_time }}"
+      sudo: true
+      action: raw /usr/bin/qmgr -c "set queue {{ item.name }} resources_max.walltime = {{ item.max_wall_time }}"
       with_items: qmgr_queues
       notify:
         - restart pbs_server
 
     - name: fix qmgr queues 3
       action: raw /usr/bin/qmgr -c "set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}"
-      with_items: qmgr_queues
+      sudo: true
+      with_items: 
+        - qmgr_queues
       notify:
         - restart pbs_server
 
     - name: fix Proxy_to_sandbox_dir
+      sudo: true
       action: copy src=config/files/usr/bin/glite-cream-copyProxyToSandboxDir.sh dest=/usr/bin/glite-cream-copyProxyToSandboxDir.sh owner=root  group=root mode=755
-      name: restart munge
-      action: service name=munge state=restarted
-
+    
+    - name: restart munge
+      sudo: true
+      service: name=munge state=restarted
+        
     - name: restart exportfs
       action: shell sudo -i exportfs -r
-
+      sudo: true
     - name: restart pbs_server
+      sudo: true
       action: service name=pbs_server state=restarted enabled=yes  

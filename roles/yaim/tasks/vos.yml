@@ -5,6 +5,7 @@
   with_items:
     - dteam 
     - ops
+    - sagrid.ac.za
   tags: 
     - yaim
     - vos

@@ -44,3 +44,7 @@
     - SAGrid-eScience.signing_policy
   tags:
     - certificates
+
+- name: Add SAGrid VO certs
+  sudo: true
+  copy: src=etc/grid-security/vomsdir dest=/etc/grid-security/vomsdir owner=root group=root mode=0644

@@ -19,7 +19,9 @@ security.sanren.ac.za
 # we should put the dns servers in here when we need to move
 # hosts in and out of DNS
 
-
+[UI]
+ui-dev.c4.csir.co.za
+ui-stage.sagrid.ac.za
 #################
 # core services #
 #################
@@ -44,6 +46,11 @@ lfc.c4.csir.co.za emi_service='lfc' yaim_options='-n lfc_mysql'
 # FTS
 [fts]
 fts.c4.csir.co.za emi_service='fts-3'
+
+# DIRAC
+[dirac]
+dirac.c4.csir.co.za
+
 # APEL
 [apel-servers]
 apel-server.c4.csir.co.za
@@ -84,6 +91,7 @@ ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TOR
 top-bdiis
 wms-servers
 ngi-nagios
+fts
 
 [site-services:children]
 site-bdiis
@@ -122,6 +130,7 @@ worker-nodes
 top-bdiis
 wms-servers
 ngi-nagios
+fts
 
 [nagios-servers:children]
 ngi-nagios

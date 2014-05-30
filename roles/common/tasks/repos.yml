@@ -1,6 +1,6 @@
 ---
 - name: Download epel-release package
-  action: get_url url={{ epel_release_url }}/{{ epel_release_name }} dest=/tmp/{{ epel_release_name }} mode=0644
+  get_url: url={{ epel_release_url }}/{{ epel_release_name }} dest=/tmp/{{ epel_release_name }} mode=0644
   tags:
     - repos
     - EPEL
@@ -27,7 +27,8 @@
     - download
 
 - name: Ensure that the repo is properly configured for yum
-  action: get_url url=http://repository.egi.eu/sw/production/cas/1/current/repo-files/egi-trustanchors.repo dest=/etc/yum.repos.d/egi-trustanchors.repo
+  get_url: url=http://repository.egi.eu/sw/production/cas/1/current/repo-files/egi-trustanchors.repo dest=/etc/yum.repos.d/egi-trustanchors.repo
+  sudo: True
   tags:
     - repos
     - IGTF

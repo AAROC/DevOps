@@ -4,3 +4,10 @@
 - name: restart iptables
   service: name=iptables state=restarted
   when: ansible_distribution == 'CentOS'
+- name: update yaim
+  yum: name=* state=latest
+- name: restart sshd
+  action: service name=sshd state=restarted
+
+- name: restart iptables
+  action: service name=iptables state=restarted

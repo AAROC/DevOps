@@ -9,6 +9,7 @@
     - mysql-server
     - MySQL-python
     - httpd
+    - fetch-crl
   tags: 
     - packages
     - install
