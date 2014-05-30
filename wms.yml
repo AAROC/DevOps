@@ -3,7 +3,6 @@
   name: WMS plays
   user: ansible
   sudo: true
-  sudo_user: root
   roles:
     - common
     - certificates
