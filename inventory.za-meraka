@@ -19,47 +19,45 @@ security.sanren.ac.za
 # we should put the dns servers in here when we need to move
 # hosts in and out of DNS
 
-
+[UI]
+ui-dev.c4.csir.co.za
+ui-stage.sagrid.ac.za
 #################
 # core services #
 #################
 
 #myproxy.cern.ch
 #myproxy.ct.infn.it
-[myproxy-servers-prod]
+[myproxy-servers]
 myproxy.c4.csir.co.za
-[myproxy-servers-dev]
-myproxy-dev.c4.csir.co.za
 
 # BDIIs
-[top-bdiis-prod]
-top-bdii.c4.csir.co.za
-[top-bdiis-dev]
-top-bdii-dev.c4.csir.co.za
-[top-bdiis-bootstrap]
+[top-bdiis]
+top-bdii.c4.csir.co.za emi_service='BDII_top' yaim_options='-n BDII_top'
 
 # WMS 
-[wms-servers-prod]
-wms.c4.csir.co.za
-[wms-servers-dev]
-# empty for now
-wms-dev.c4.csir.co.za
+[wms-servers]
+wms.c4.csir.co.za emi_service='WMS' yaim_options='-n WMS -n LB'
 
 # LFC
-[lfcs-prod]
-lfc.c4.csir.co.za
-[lfcs-dev]
-lfc2.c4.csir.co.za
+[lfcs]
+lfc.c4.csir.co.za emi_service='lfc' yaim_options='-n lfc_mysql'
+
+# FTS
+[fts]
+fts.c4.csir.co.za emi_service='fts-3'
+
+# DIRAC
+[dirac]
+dirac.c4.csir.co.za
 
 # APEL
 [apel-servers]
 apel-server.c4.csir.co.za
 
 # NAGIOS
-[ngi-nagios-prod]
-nagios.c4.csir.co.za
-[ngi-nagios-dev]
-nagios-dev.c4.csir.co.za
+[ngi-nagios]
+nagios.c4.csir.co.za  emi_service='SAM-NAGIOS' yaim_options='-n NAGIOS -n SAM_NAGIOS'
 [vo-sagrid-nagios]
 sagrid-monitoring.c4.csir.co.za
 
@@ -68,135 +66,41 @@ sagrid-monitoring.c4.csir.co.za
 #################
 
 # Site BDII
-[site-bdiis-prod]
-site-bdii.c4.csir.co.za
-[site-bdiis-stage]
-[site-bdiis-dev]
-site-bdii-dev.c4.csir.co.za
-[site-bdiis-bootstrap]
+[site-bdiis]
+site-bdii.c4.csir.co.za emi_service='BDII_site' yaim_options='-n BDII_site'
 
 # CREAM CE's
-[cream-ce-prod]
-[cream-ce-stage]
-[cream-ce-dev]
-ce01-node001.c4.csir.co.za
-[cream-ce-bootstrap]
-cream-ce.c4.csir.co.za
+[cream-ces]
+ce01-node001.c4.csir.co.za emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
 
-[apel-publishers-prod:children]
-cream-ce-prod
-[apel-publishers-dev:children]
-cream-ce-dev
+[apel-publishers:children]
+cream-ces
 
 [storage-elements]
 #se01.localdomain
 
 # Worker Nodes
-[worker-nodes-prod]
+[worker-nodes]
 # empty for now
-[worker-nodes-dev]
-ce01-node002.c4.csir.co.za
-[worker-nodes-bootstrap]
-
+[worker-nodes]
+ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
 
 ############ grouping and children ############
 # first, group by production and development 
-[core-services-prod:children]
-top-bdiis-prod
-wms-servers-prod
-ngi-nagios-prod
+[core-services:children]
+top-bdiis
+wms-servers
+ngi-nagios
+fts
 
-[core-services-stage:children]
-vo-sagrid-nagios
-myproxy-servers-prod
-apel-servers
-lfcs-prod
+[site-services:children]
+site-bdiis
+cream-ces
+worker-nodes
 
-[site-services-prod:children]
-site-bdiis-prod
-cream-ce-prod
-worker-nodes-prod
-
-[site-services-stage:children]
-site-bdiis-stage
-
-
-[core-services-dev:children]
-top-bdiis-dev
-wms-servers-dev
-ngi-nagios-dev
-myproxy-servers-dev
-lfcs-dev
-
-[site-services-dev:children]
-site-bdiis-dev
-cream-ce-dev
-worker-nodes-dev
-
-[core-services-bootstrap:children]
-top-bdiis-bootstrap
-#wms-servers-bootstrap
-#ngi-nagios-bootstrap
-#myproxy-servers-bootstrap
-#lfcs-bootstrap
-
-[site-services-bootstrap:children]
-site-bdiis-bootstrap
-worker-nodes-bootstrap
-
-############## State Oriented Grouping ###############
-# all production machines
-[prod:children] 
-core-services-prod
-site-services-prod
-
-[stage:children]
-core-services-stage
-site-services-stage
-
-[dev:children]
-core-services-dev
-site-services-dev 
-
-[bootstrap:children]
-core-services-bootstrap
-site-services-bootstrap
 ############## Service oriented grouping ##############
 # (here comes the magical power of ansible... Group things
 # in as much as you can)
-
-[site-bdii-servers:children]
-site-bdiis-prod
-site-bdiis-dev
-site-bdiis-bootstrap
-[cream-servers:children]
-cream-ce-prod
-cream-ce-dev
-
-
-#[storage-elements]
-#[storage-elements:children]
-#storage-elements
-
-[wms-servers:children]
-wms-servers-prod
-wms-servers-dev
-
-[myproxy-servers:children]
-myproxy-servers-prod
-myproxy-servers-dev
-
-[lfc-servers:children]
-lfcs-prod
-lfcs-dev
-
-[nagios-servers:children]
-ngi-nagios-prod
-ngi-nagios-dev
-
-[worker-nodes:children]
-worker-nodes-prod
-worker-nodes-dev
 
 
 ############## Middleware oriented grouping ##############
@@ -215,16 +119,19 @@ worker-nodes-dev
 [CRL]
 [CRL:children]
 wms-servers
-lfc-servers
-nagios-servers
-cream-servers
+lfcs
+ngi-nagios
+cream-ces
 
-# stage are sites which will become production, but which are currently
-# undergoing installation/configuration/testing
-#[stage]
-#sagrid-monitoring.c4.csir.co.za
-#lfc.c4.csir.co.za
-#myproxy.c4.csir.co.za
-#cream-ce.c4.csir.co.za
+[za-meraka:children]
+cream-ces
+site-bdiis
+worker-nodes
+top-bdiis
+wms-servers
+ngi-nagios
+fts
 
+[nagios-servers:children]
+ngi-nagios
 ############################ END #########################

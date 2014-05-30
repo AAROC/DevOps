@@ -13,22 +13,15 @@
 --- 
 - hosts: bootstrap
   remote_user: root
-  #ask_pass: true
   tasks:
-    - name: test connection
-      ping:
     - name: create ansible user
       user: name=ansible comment="ansible user created by bootstrap playbook" generate_ssh_key=yes groups=wheel
-    - name: Install prerequisite packages- selinux, python bindings, mlocate
+    - name: Install prerequisite packages- selinux, python bindings
       yum: name={{ item }} state=present
       with_items: 
         - python-simplejson
-        - lokkit 
         - libselinux-python
-        - mlocate
         - iptables
-      notify: 
-        - updatedb
       notify: 
         - restart iptables
     - name: include (only) my rsa key in authorized_keys
@@ -38,10 +31,12 @@
     - name: disable SELinux
       selinux: state=disabled
 # at this point, we have to reboot
-      notify:
-        - reboot
+      notify: reboot
       async: 60
       poll: 15
+    - name: disallow root login
+      action: lineinfile dest="/etc/ssh/sshd_config" line="PermitRootLogin no" state=present
+      notify: restart ssh
 #  - include: task/prep.yml       
 # other things to include in here
 # 1. ensure that dns servers are inserted properly

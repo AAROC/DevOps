@@ -5,21 +5,7 @@
   sudo: true
   sudo_user: root
   tasks:
-    - name: check ansible user login
-      command: sudo echo hi
-      register: sudo_output
-      ignore_errors: True
-    - name: save iptables
-      action: command /etc/init.d/iptables save
-    - name: save ip6tables
-      action: command /etc/init.d/ip6tables save 
-    - name: start iptables
-      action: command service iptables start
-    - name: ensure that 5099 is open for accelerate
-      # changing this to use iptables directly
-# this should be put into a template      action: shell {{ iptables }} {{ iptables_vars }}
-      action: shell /sbin/iptables -A INPUT -i eth0 -p tcp --dport 5099 -j ACCEPT
-      notify: restart iptables
+    - 
     - name: ensure that python-keyczar is enabled
       yum: name=python-keyczar state=latest
   vars_files:

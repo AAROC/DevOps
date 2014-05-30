@@ -1,0 +1,32 @@
+# the first play is to set up the ansible user (as root) and ensure
+# that the key necessary to access the machine is present
+# we also have to add the ansible user to the wheel group
+# so that it can sudo
+
+# there may be the issue with notty as well.
+
+# we need to define a group of bootstrap hosts which have not yet been 
+# touched by ansible. These are directly created-vm's e.g.
+
+# Note that this playbook has to be executed with --ask-pass since we are
+# connecting for the first time. 
+--- 
+- include: prerequisites.yml
+- include: user.yml
+- include: keys.yml
+#- include: selinux.yml
+#- include: ssh.yml
+# 
+#    - name: disable SELinux
+#      selinux: state=disabled
+# at this point, we have to reboot
+#      notify: reboot
+#      async: 60
+#      poll: 15
+#    - name: disallow root login
+#      action: lineinfile dest="/etc/ssh/sshd_config" line="PermitRootLogin no" state=present
+#      notify: restart ssh
+#  - include: task/prep.yml       
+# other things to include in here
+# 1. ensure that dns servers are inserted properly
+# 2. include own host name and ip in /etc/hosts

@@ -1,0 +1,6 @@
+[fts3]
+name=fts3
+baseurl=http://grid-deployment.web.cern.ch/grid-deployment/dms/fts3/repos/el6/x86_64
+enabled=1
+gpgcheck=0
+priority=15

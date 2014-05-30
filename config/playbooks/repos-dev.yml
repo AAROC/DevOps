@@ -1,8 +1,8 @@
-- hosts: site-services-dev
+- hosts: bootstrap
   user: ansible
   sudo: True
   sudo_user: root
-  accelerate: true
+  accelerate: False
   tasks:
     - include: tasks/cas/repo.yml 
     - include: tasks/epel/repo.yml

@@ -1,0 +1,4 @@
+- name: include (only) my rsa key in authorized_keys
+  action: copy src=id_rsa.pub.becker.serbaggio dest=/home/ansible/.ssh/authorized_keys owner=ansible mode=400
+  tags:
+    - bootstrap

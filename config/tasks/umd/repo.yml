@@ -1,5 +1,5 @@
 - name: Download umd release package
-  action: get_url url={{ umd_release_url[ansible_distribution_release] }} dest=/tmp/umd.rpm mode=0644
+  action: get_url url={{ umd_release_url.{{ ansible_distribution_release}}  }} dest=/tmp/umd.rpm mode=0644
 - name: Install umd release package
   action: command yum install -y {{ yum_flags }} /tmp/umd.rpm creates=/etc/yum.repos.d/UMD-{{ umd_major_release }}-base.repo  
 

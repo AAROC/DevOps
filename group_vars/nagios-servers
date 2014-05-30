@@ -1,24 +1,24 @@
 ---
-
 #Nagios related
-nagios_host: nagios-dev.c4.csir.co.za
-nagios_nsca_pass: password
+nagios_host: nagios.c4.csir.co.za
+nagios_nsca_pass: redacted
 ncg_backup_instance: "true"
 
 #MySQL related
-mysql_pass: password
-db_pass_r: password
-db_pass_w: password
+mysql_pass: redacted
+db_pass_r: redacted
+db_pass_w: redacted
 
 is_nagios: 1
 
-bdii_host: bdii.core.hellasgrid.gr
+#bdii_host: bdii.core.hellasgrid.gr
+bdii_host: bdii.c4.csir.co.za
 px_host: myproxy.cern.ch
 wms_host: wms.c4.csir.co.za
 
 nagios_admin_dns:
-  - put_your_cert_dn_here
-ncg_nagios_admin: your_email
+  - /C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker
+ncg_nagios_admin: bbecker@csir.co.za
 
 ncg_vo: ops
 
@@ -39,7 +39,7 @@ nagios_ncg_enable_config: "true"
 nagios_nagios_enable_config: "true"
 nagios_cgi_enable_config: "true"
 
-nagios_myproxy_name: "NagiosRetrieve-<put_the_hostname>"
+nagios_myproxy_name: "NagiosRetrieve-nagios.c4.csir.co.za"
 
 #NCG_TOPOLOGY
 ncg_topology_use_ldap: "false"
@@ -47,7 +47,7 @@ ncg_topology_use_gocdb: "false"
 ncg_remote_use_sam: "false"
 ncg_remote_use_nagios: "false"
 ncg_topology_use_atp: "true"
-ncg_gocdb_roc_name: NGI_ZA
+ncg_gocdb_roc_name: AfricaArabia
 
 #ATP variable in order to support transparent migration of SAM to CNRS
 atp_root_url: http://mon.egi.eu/atp
@@ -58,5 +58,5 @@ poem_sync_urls: http://mon.egi.eu/poem/api/0.1/json/
 #MyEGI
 myegi_admin_name: Bruce Becker
 myegi_default_profile: ROC
-myegi_admin_email: your_email
-myegi_region: NGI_ZA
+myegi_admin_email: bbecker@csir.co.za
+myegi_region: AfricaArabia

@@ -1,0 +1,15 @@
+---
+- hosts: ngi-nagios
+  name: Configure NGI-NAGOS
+  user: ansible
+  sudo: true
+  sudo_user: root
+  roles:
+    - common
+    - certificates
+    - umd
+    - sam-nagios
+    - yaim
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/igtf.yml

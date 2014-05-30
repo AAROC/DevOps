@@ -1,0 +1,24 @@
+- name: ensure that NTP is installed
+  sudo: true
+  sudo_user: root
+  yum: name=ntp state=installed
+  tags: ntp
+
+- name: ensure that NTP is configured
+  sudo: true
+  sudo_user: root
+  template: src=etc/ntp.conf.j2 dest=/etc/ntp.conf
+  tags: ntp
+
+# see https://wiki.gutzmann.com/confluence/display/HowTo/NTPD+-+cap_set_proc()+failed+to+drop+root+privileges%3A+Operation+not+permitted
+- name: disable drop to root priveliges for NTP
+  sudo: true
+  sudo_user: root
+  lineinfile: dest=/etc/sysconfig/ntpd regexp=^OPTIONS= line=#OPTIONS=
+  when: ansible_virtualization_role == "guest"
+  notify:
+    - restart ntpd
+  tags: ntp
+  async: 45
+  poll: 0
+

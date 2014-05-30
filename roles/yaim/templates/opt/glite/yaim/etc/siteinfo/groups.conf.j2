@@ -1,0 +1,20 @@
+{% if "dteam" in vos -%}
+"/dteam/ROLE=lcgadmin":::sgm:
+"/dteam/ROLE=production":::prd:
+"/dteam"::::
+{% endif -%}
+{% if "ops" in vos -%}
+"/ops/ROLE=lcgadmin":::sgm:
+"/ops"::::
+"/ops/*"::::
+{% endif -%}
+{% if "sagrid" in vos -%}
+"/sagrid/ROLE=SoftwareManager":::sgm:
+"/sagrid"::::
+"/sagrid/*"::::
+{% endif -%}
+{% if "sagrid.ac.za" in vos -%}
+"/sagrid.ac.za/ROLE=SoftwareManager":::sgm:
+"/sagrid.ac.za"::::
+"/sagrid.ac.za/*"::::
+{% endif -%}

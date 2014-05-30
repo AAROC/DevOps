@@ -1,0 +1,14 @@
+- name: start services
+  action: service name={{ item }} state=started
+  sudo: True
+  with_items:
+    - fts-server
+    - fts-msg-bulk
+    - fts-bdii-cache-updater
+    - fts-bringonline
+    - fts-msg-cron
+    - fts-records-cleaner
+    - fts-info-publisher
+    - bdii
+  tags: 
+    - start

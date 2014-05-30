@@ -1,0 +1,95 @@
+vos:
+  - dteam
+  - ops
+#  - sagrid
+#  - eumed
+#  - africacert
+queues:
+  - dteam
+  - cert
+  - shared
+# See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
+# use the site name as registered in GOCDB (use the same case)
+site_name: ZA-UCT-CBIO
+# contact details
+site_email: gerrit@cbio.uct.ac.za
+site_security_email: gerrit@cbio.uct.ac.za
+site_support_email: gerrit@cbio.uct.ac.za
+# location
+site_latitude: -33.942611
+site_longitude: 18.465600
+site_description: "CBIO - grid SE"
+site_other_grid: "NGI_ZA"
+site_bdii_host: "site-bdii-dev.c4.csir.co.za"
+site_location: "Cape Town, South Africa"
+site_website: "http://www.cbio.uct.acc.za"
+site_domain: kiela.cbio.uct.ac.za
+
+# passwords
+mysql_pass: redacted
+apel_db_password: redacted
+
+# services at the site
+bdii_host: top-bdii.c4.csir.co.za
+apel_mysql_host: apel.c4.csir.co.za
+px_host: myproxy.cern.ch
+wms_host: wms.c4.csir.co.za
+lb_host: wms.c4.csir.co.za
+argus_status: no
+lfc_host: lfc-dev.c4.csir.co.za
+
+ce_host: ce01-node001.c4.csir.co.za
+# Replace the following specs with your own
+ce_cpu_model: Opteron
+ce_cpu_vendor: AMD
+ce_cpu_speed: 2425
+ce_os: CentOS
+ce_os_release: 6.5
+ce_os_version: Final
+ce_os_arch: x86_64
+ce_minphysmem: 1024
+ce_minvirtmem: 2048
+ce_physcpu: 1
+ce_logcpu: 1
+ce_smpsize: 1
+ce_si00: 2105
+ce_sf00: 2601
+ce_outboundip: "TRUE"
+ce_inboundip: "FALSE"
+ce_runtimeenv:
+  - TAG1
+  - TAG2
+ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
+batch_server: ce01-node001.c4.csir.co.za
+job_manager: lcgpbs
+ce_batch_sys: torque
+batch_log_dir: /var/torque
+batch_version: torque-2.5.7
+
+# vars for service: emi_dpm_mysql
+dpm_host: se01.localdomain
+dpmmgr: { uid: 400, gid: 4000 }
+dpm_filesystems: "sitename_dpm:$DPM_HOST:/storage"
+dpm_db:   { user: dpmmgr,  pass: one_more_password }
+dpm_info: { user: dpminfo, pass: yet_another_password }
+
+# vars for service: BDII_site
+bdii_regions:
+- name: CREAM
+  endpoint: ldap://ce01-node001.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: SE
+  endpoint: ldap://se-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: LFC
+  endpoint: ldap://lfc-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: PX
+  endpoint: ldap://myproxy-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+
+se_list:
+  - se-dev.c4.csir.co.za
+
+se_mount_info_list: none
+se_gridftp_logfile: /var/log/dpm-gsiftp/dpm-gsiftp.log
+
+
+sandboxdir_on_ce: /var/cream_sandbox
+sandboxdir_on_wn: /cream_sandbox

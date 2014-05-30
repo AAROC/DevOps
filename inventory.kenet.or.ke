@@ -1,0 +1,37 @@
+# KENET inventory
+
+[site-bdiis]
+bdii.kenet.or.ke emi_service='-n BDII_site'
+
+[cream-ces]
+headnode.kenet.or.ke emi_service='MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
+
+[worker-nodes]
+worker-1.kenet.or.ke
+worker-2.kenet.or.ke
+
+# machines which need to be deployed still are here
+[bootstrap:children]
+site-bdiis
+cream-ces
+#worker-nodes
+
+
+# machines which have been bootstrapped, but need to be configured
+[dev:children]
+
+
+# machines that have been configured, but need to be tested
+[stage:children]
+
+# machines that have been tested and are in production
+[prod:children]
+
+# middleware grouping
+[umd3:children]
+site-bdiis
+cream-ces
+worker-nodes
+
+[kenet-grid-cluster:children]
+umd3

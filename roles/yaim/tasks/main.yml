@@ -1,0 +1,4 @@
+---
+  - include: config_dirs.yml
+  - include: vos.yml
+  - include: siteinfo.yml
