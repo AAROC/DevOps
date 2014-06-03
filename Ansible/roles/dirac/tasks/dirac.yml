@@ -11,13 +11,16 @@
   file: path=/home/dirac/DIRAC state=directory
 
 - name: download the installation script
-  copy: src={{ item }} dest=/home/dirac/DIRAC/{{ item }}install_site.sh
+  copy: src={{ item }} dest=/home/dirac/DIRAC/{{ item }}
   with_items: 
     - install_site.sh
     - install.cfg
   tags:
     - dirac
     - installation
+
+- name: execute the installation
+  script: /home/dirac/DIRAC/install_site.sh /home/dirac/DIRAC/install.cfg
   
  
   

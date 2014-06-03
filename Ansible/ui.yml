@@ -1,15 +1,13 @@
 ---
-- hosts: wms-servers
-  name: WMS plays
-  user: ansible
+- hosts: UI
   sudo: true
-  sudo_user: root
   roles:
+    - bootstrap
     - common
     - certificates
-    - umd
-    - wms
+    - ui
     - yaim
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/igtf.yml
+  handlers:
