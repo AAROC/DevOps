@@ -37,4 +37,21 @@
 {% endfor -%}
 {% endif -%}
 
+{% if "magrid" in vos -%}
+{% for number in range(200) -%}
+{{ 36000 + number}}:magrid{{ 36000 + number }}:36000:magrid:magrid::
+{% endfor -%}
+{% for number in range(20) -%}
+{{ 36900 + number }}:sgmmagrid{{ 36900 + number }}:36900,36000:sgmmagrid,magrid:magrid:sgm:
+{% endfor -%}}
+{% endif -%}}
+
+{% if "eumed" in vos -%}
+{% for number in range(200) -%}
+{{ 37000 + number}}:eumed{{ 37000 + number }}:37000:eumed:eumed::
+{% endfor -%}
+{% for number in range(20) -%}
+{{ 37900 + number }}:sgmeumed{ 37900 + number }}:37900,37000:sgmeumed,eumed:eumed:sgm:
+{% endfor -%}}
+{% endif -%}}
 
