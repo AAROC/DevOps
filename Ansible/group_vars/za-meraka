@@ -4,12 +4,14 @@ vo_sw_dir: /opt/exp_soft
 vos:
   - dteam
   - ops
-#  - sagrid
-#  - eumed
+  - sagrid.ac.za
+  - eumed
 #  - africacert
 queues:
   - dteam
   - ops
+  - sagrid.ac.za
+  - eumed
 #  - cert
 #  - shared
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information

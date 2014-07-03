@@ -21,10 +21,10 @@
   notify: restart sshd
   sudo: true
 
-- name: Setup SSH host based authentication (client configuration file; enable `HostbasedAuthentication` option)
-  action: lineinfile dest=/etc/ssh/ssh_config regexp='HostbasedAuthentication.*' line="HostbasedAuthentication yes"
-  sudo: true
+#- name: Setup SSH host based authentication (client configuration file; enable `HostbasedAuthentication` option)
+#  action: lineinfile dest=/etc/ssh/ssh_config regexp='HostbasedAuthentication.*' line="HostbasedAuthentication yes"
+#  sudo: true
 
-- name: Setup SSH host based authentication (client configuration file; enable `EnableSSHKeysign` option)
-  action: lineinfile dest=/etc/ssh/ssh_config regexp='EnableSSHKeysign.*' line="EnableSSHKeysign yes"
-  sudo: true
+#- name: Setup SSH host based authentication (client configuration file; enable `EnableSSHKeysign` option)
+#  action: lineinfile dest=/etc/ssh/ssh_config regexp='EnableSSHKeysign.*' line="EnableSSHKeysign yes"
+#  sudo: true
