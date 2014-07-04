@@ -1,4 +1,5 @@
 ---
+yaim_path: /opt/glite/yaim
 bdii_port: 2170
 vo_sw_dir: /opt/exp_soft
 vos:
@@ -41,6 +42,7 @@ bdii_host: top-bdii.c4.csir.co.za
 apel_mysql_host: ce01-node001.c4.csir.co.za
 px_host: myproxy.cern.ch
 wms_host: wms.hellasgrid.gr
+
 argus_status: no
 # TODO - new LFC has to be deployed here at Meraka | BB 10/13
 lfc_host: devslngrd002.uct.ac.za
