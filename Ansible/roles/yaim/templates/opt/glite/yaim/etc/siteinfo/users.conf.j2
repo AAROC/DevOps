@@ -30,28 +30,27 @@
 
 {% if "sagrid.ac.za" in vos -%}
 {% for number in range(20) -%}
-{{ 5000 + number }}:sauser{{ 5000 + number }}:5000:sauser:sauser:sagrid.ac.za:
+{{ 5000 + number }}:sauser{{ 5000 + number }}:5000:sagrid.ac.za:sagrid.ac.za:sauser:
 {% endfor -%}
 {% for number in range(20) -%}
-{{ 5900 + number }}:sasgm{{ 5900 + number }}:5900,500:sasgm,sagrid:sagrid.ac.za:sgm:
+{{ 5900 + number }}:sasgm{{ 5900 + number }}:5900,500:sasgm,sagrid.ac.za:sauser:sgm:
 {% endfor -%}
 {% endif -%}
 
 {% if "magrid" in vos -%}
 {% for number in range(200) -%}
-{{ 36000 + number}}:magrid{{ 36000 + number }}:36000:magrid:magrid::
+{{ 36000 + number }}:magrid{{ 36000 + number }}:36000:magrid:magrid::
 {% endfor -%}
 {% for number in range(20) -%}
 {{ 36900 + number }}:sgmmagrid{{ 36900 + number }}:36900,36000:sgmmagrid,magrid:magrid:sgm:
-{% endfor -%}}
-{% endif -%}}
+{% endfor -%}
+{% endif -%}
 
 {% if "eumed" in vos -%}
 {% for number in range(200) -%}
-{{ 37000 + number}}:eumed{{ 37000 + number }}:37000:eumed:eumed::
+{{ 37000 + number }}:eumed{{ 37000 + number }}:37000:eumed:eumed::
 {% endfor -%}
 {% for number in range(20) -%}
-{{ 37900 + number }}:sgmeumed{ 37900 + number }}:37900,37000:sgmeumed,eumed:eumed:sgm:
-{% endfor -%}}
-{% endif -%}}
-
+{{ 37900 + number }}:sgmeumed{{ 37900 + number }}:37900,37000:sgmeumed,eumed:eumed:sgm:
+{% endfor -%}
+{% endif -%}

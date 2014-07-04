@@ -20,6 +20,7 @@
   action: copy src=opt/glite/yaim/etc/siteinfo/wn-list.conf.{{ site_name }} dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/wn-list.conf owner=root group=root mode=0644
   sudo: true
   sudo_user: root
+  when: emi_service == 'CREAM_CE'
   notify:
     - run yaim
   tags: 
@@ -138,8 +139,10 @@
     - yaim
     
 - name: run yaim
-  action: shell sudo -i {{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{ yaim_options }}
+  action: shell sudo -i {{yaim_path}}/bin/yaim -c -s {{yaim_conf_dir}}/site-info.def {{yaim_options}}
   sudo: true
   sudo_user: root
   tags:
     - yaim
+
+  

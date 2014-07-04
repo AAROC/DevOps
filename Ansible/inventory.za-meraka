@@ -19,9 +19,9 @@ security.sanren.ac.za
 # we should put the dns servers in here when we need to move
 # hosts in and out of DNS
 
-[UI]
-ui-dev.c4.csir.co.za
-ui-stage.sagrid.ac.za
+[UIs]
+ui-dev.c4.csir.co.za needs_cert='no' emi_service='UI' yaim_options='-n UI'
+ui-stage.sagrid.ac.za needs_cert='no' emi_service='UI' yaim_options='-n UI'
 #################
 # core services #
 #################
@@ -131,6 +131,7 @@ top-bdiis
 wms-servers
 ngi-nagios
 fts
+UIs
 
 [nagios-servers:children]
 ngi-nagios

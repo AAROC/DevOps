@@ -14,13 +14,13 @@
     - repos
     - UMD2
     
-#- name: add EGI GPG key to RPM
-#  sudo: True
-#  sudo_user: root
-#  rpm_key: key=http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY state=present
-#  tags:  
-#    - repos
-#    - UMD
+- name: add EGI GPG key to RPM
+  sudo: True
+  sudo_user: root
+  rpm_key: key=http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY state=present
+  tags:  
+    - repos
+    - UMD
 
 - name: Install UMD repo.
   sudo: True

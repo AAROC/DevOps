@@ -1,5 +1,5 @@
 ---
-- include: site-bdiis.yml
+#- include: site-bdiis.yml
 #- include: top-bdiis.yml
 #- include: cream-ces.yml
 #- include: worker-nodes.yml
@@ -7,5 +7,5 @@
 #- include: sam-nagios.yml
 #- include: voms.yml
 #- include: fts.yml
-#- include: ui.yml
+- include: ui.yml
 #- include: dirac.yml
