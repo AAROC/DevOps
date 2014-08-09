@@ -55,6 +55,10 @@ dirac.c4.csir.co.za
 [apel-servers]
 apel-server.c4.csir.co.za
 
+# ARGUS
+[argus-servers]
+argus.c4.csir.co.za emi_service='ARGUS'
+
 # NAGIOS
 [ngi-nagios]
 nagios.c4.csir.co.za  emi_service='SAM-NAGIOS' yaim_options='-n NAGIOS -n SAM_NAGIOS'
@@ -92,6 +96,7 @@ top-bdiis
 wms-servers
 ngi-nagios
 fts
+argus-servers
 
 [site-services:children]
 site-bdiis

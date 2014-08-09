@@ -9,7 +9,7 @@
   sudo: true
   sudo_user: root
   action: copy src=etc/grid-security/hostcert.pem-{{ ansible_fqdn }} dest=/etc/grid-security/hostcert.pem owner=root group=root mode=0644 force=true
-  when: needs_certificate == 'yes'
+  when: needs_certificate == 'true'
   tags: 
     - certificates
 

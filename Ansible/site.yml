@@ -7,5 +7,6 @@
 #- include: sam-nagios.yml
 #- include: voms.yml
 #- include: fts.yml
-- include: ui.yml
+#- include: ui.yml
 #- include: dirac.yml
+- include: argus.yml
