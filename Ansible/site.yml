@@ -1,5 +1,5 @@
 ---
-#- include: site-bdiis.yml
+- include: site-bdiis.yml
 #- include: top-bdiis.yml
 #- include: cream-ces.yml
 #- include: worker-nodes.yml

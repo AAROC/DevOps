@@ -46,7 +46,10 @@ apel_mysql_host: ce01-node001.c4.csir.co.za
 px_host: myproxy.cern.ch
 wms_host: wms.hellasgrid.gr
 
-argus_status: no
+argus_status: yes
+argus_host: argus.c4.csir.co.za
+pap_admin_dn: "'/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker'"
+
 # TODO - new LFC has to be deployed here at Meraka | BB 10/13
 lfc_host: devslngrd002.uct.ac.za
 
@@ -101,6 +104,8 @@ bdii_regions:
 #  endpoint: ldap://myproxy01.localdomain:2170/mds-vo-name=resource,o=grid
 - name: FTS
   endpoint: ldap://fts.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: ARGUS
+  endpoint: ldap://argus.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
 
 se_list:
   - se01.localdomain

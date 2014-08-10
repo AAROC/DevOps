@@ -1,4 +1,4 @@
-- name: create /etc/grid-security directory
+- name: Create /etc/grid-security directory
   file: path=/etc/grid-security/ owner=root group=root mode=775 state=directory force=true
   sudo: true
   sudo_user: root
@@ -17,7 +17,7 @@
   sudo: true
   sudo_user: root
   action: copy src=etc/grid-security/hostkey.pem-{{ ansible_fqdn }} dest=/etc/grid-security/hostkey.pem owner=root group=root mode=0400
-  when: needs_certificate == 'yes'
+  when: needs_certificate == 'true'
   tags: 
     - certificates
 

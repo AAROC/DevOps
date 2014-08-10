@@ -1,0 +1,19 @@
+---
+#- hosts: argus-servers
+#  name: Bootstrap the Argus Server
+#  user: root
+#  roles:
+#    - bootstrap
+- hosts: argus-servers
+  name: Complete installation and configuration
+  user: ansible
+  sudo: true
+  roles:
+    - common
+    - certificates
+    - umd
+    - argus
+    - yaim
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/igtf.yml

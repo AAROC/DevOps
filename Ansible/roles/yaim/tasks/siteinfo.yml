@@ -130,7 +130,7 @@
     - lfc    
 
 - name: Create site-info.def file
-  action: template src=opt/glite/yaim/etc/siteinfo/site-info.def.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/site-info.def owner=root group=root mode=0600
+  action: template src=opt/glite/yaim/etc/siteinfo/site-info.def.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/site-info.def owner=root group=root mode=0600
   sudo: true
   sudo_user: root
   notify:
@@ -139,7 +139,7 @@
     - yaim
     
 - name: run yaim
-  action: shell sudo -i {{yaim_path}}/bin/yaim -c -s {{yaim_conf_dir}}/site-info.def {{yaim_options}}
+  action: shell sudo -i {{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{ yaim_options }}
   sudo: true
   sudo_user: root
   tags:

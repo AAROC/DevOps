@@ -12,3 +12,12 @@
     - system-config-services
   tags:
     - bootstrap
+- name: Install some useful packages
+  action: yum name={{ item }} state=present
+  with_items:
+    - htop
+    - iptraf
+    - emacs
+    - vim
+  tags:
+    - bootstrap

@@ -57,7 +57,7 @@ apel-server.c4.csir.co.za
 
 # ARGUS
 [argus-servers]
-argus.c4.csir.co.za emi_service='ARGUS'
+argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_certificate='true'
 
 # NAGIOS
 [ngi-nagios]
@@ -137,6 +137,7 @@ wms-servers
 ngi-nagios
 fts
 UIs
+argus-servers
 
 [nagios-servers:children]
 ngi-nagios
