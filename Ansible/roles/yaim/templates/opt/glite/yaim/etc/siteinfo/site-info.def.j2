@@ -420,6 +420,13 @@ DTEAM_GROUP_ENABLE="dteam /dteam/ROLE=lcgadmin /dteam/ROLE=production"
 OPS_GROUP_ENABLE="ops /ops/ROLE=lcgadmin"
 {% endif -%}
 
+{% if "sagrid.ac.za" in vos -%}
+SAGRID_AC_ZA_GROUP_ENABLE="sagrid.ac.za /sagrid.ac.za"
+{% endif -%}
+
+{% if "eumed" in vos -%}
+EUMED_GROUP_ENABLE="eumed /eumed"
+{% endif -%}
 # Optional variable to define the default SE used by the VO.
 # Define the SE hostname if you want a specific SE to be the default one.
 # If this variable is not defined, the first SE in SE_LIST will be used

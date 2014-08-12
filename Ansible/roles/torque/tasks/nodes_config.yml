@@ -8,3 +8,5 @@
   notify:
     - restart pbs_server
     
+- name: Add ssh key to the authorized_hosts
+    
