@@ -13,7 +13,7 @@
     - BDII
     - install
 - name: Open the firewall for bdii 
-  action: shell /sbin/iptables -A INPUT -i eth0 -p tcp --dport {{ bdii_port }} -j ACCEPT
+  template: src=etc/sysconfig/iptables dest=/etc/sysconfig/iptables backup=yes 
   sudo: true
   sudo_user: root
   notify: 
