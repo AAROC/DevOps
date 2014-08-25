@@ -2,7 +2,7 @@
 #Nagios related
 nagios_host: nagios.c4.csir.co.za
 nagios_nsca_pass: redacted
-ncg_backup_instance: "true"
+ncg_backup_instance: "false"
 
 #MySQL related
 mysql_pass: redacted
