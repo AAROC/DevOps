@@ -19,5 +19,6 @@
     - iptraf
     - emacs
     - vim
+    - facter
   tags:
     - bootstrap
