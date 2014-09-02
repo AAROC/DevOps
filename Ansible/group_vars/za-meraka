@@ -44,8 +44,9 @@ apel_db_password:
 bdii_host: top-bdii.c4.csir.co.za
 apel_mysql_host: ce01-node001.c4.csir.co.za
 px_host: myproxy.cern.ch
-wms_host: wms.hellasgrid.gr
-
+#wms_host: wms.hellasgrid.gr
+# check GOCDB for relevant services in the AfricaArabia https://goc.egi.eu/portal/index.php?Page_Type=Service_Group&id=926
+wms_host: wms.c4.csir.co.za 
 argus_status: yes
 argus_host: argus.c4.csir.co.za
 pap_admin_dn: "'/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker'"
