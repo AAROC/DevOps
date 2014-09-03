@@ -61,7 +61,7 @@ argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_cer
 
 # NAGIOS
 [ngi-nagios]
-nagios.c4.csir.co.za   emi_service='SAM-NAGIOS' yaim_options='-n NAGIOS -n SAM_NAGIOS'
+nagios.c4.csir.co.za   emi_service='SAM-NAGIOS' yaim_options='-n NAGIOS -n SAM_NAGIOS' needs_certificate='true'
 [vo-sagrid-nagios]
 sagrid-monitoring.c4.csir.co.za
 

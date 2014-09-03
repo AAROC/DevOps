@@ -1,6 +1,6 @@
 ---
 - hosts: ngi-nagios
-  name: Configure NGI-NAGOS
+  name: Configure NGI-NAGIOS
   user: ansible
   sudo: true
   sudo_user: root

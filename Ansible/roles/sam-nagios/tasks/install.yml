@@ -5,3 +5,5 @@
     - nagios.x86_64
     - sam-nagios
     - PyYAML
+  tags: 
+    - install
