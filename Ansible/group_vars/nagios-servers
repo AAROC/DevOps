@@ -15,6 +15,7 @@ is_nagios: 1
 bdii_host: bdii.c4.csir.co.za
 px_host: myproxy.cern.ch
 wms_host: wms.c4.csir.co.za
+jobsubmit_wn_se_rep: fs01.grid.uj.ac.za
 
 nagios_admin_dns:
   - /C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker
