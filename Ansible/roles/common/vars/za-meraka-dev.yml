@@ -1,4 +1,5 @@
 ---
+hosts: "{{ groups.all }}"
 umd_major_release: 3
 vos:
   - dteam
