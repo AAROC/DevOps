@@ -1,0 +1,59 @@
+######################################################
+#
+# Inventory for the CHPC
+#
+############## Cluster oriented grouping ###################
+######################################################
+
+[user-interfaces]
+grid-ui.chpc.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n UI'
+
+#############
+# site services #
+#############
+
+# Site BDII
+[site-bdiis]
+grid-bdii.c4.csir.co.za needs_certificate='false' emi_service='BDII_site' yaim_options='-n BDII_site'
+
+# CREAM CE's
+[cream-ces]
+grid-ce.choc.ac.za needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
+
+[apel-publishers:children]
+cream-ces
+
+[storage-elements]
+# Xrootd machine
+grid-se.chpc.ac.za needs_certificate='true'
+
+# Worker Nodes
+[worker-nodes]
+chpcc001.chpc.ac.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+
+############ grouping and children ############
+[site-services:children]
+site-bdiis
+cream-ces
+worker-nodes
+
+############## Service oriented grouping ##############
+# (here comes the magical power of ansible... Group things
+# in as much as you can)
+
+
+############## Middleware oriented grouping ##############
+
+[CRL]
+[CRL:children]
+cream-ces
+user-interfaces
+storage-elements
+
+[za-chpc:children]
+cream-ces
+site-bdiis
+worker-nodes
+user-interfaces
+
+############################ END #########################
