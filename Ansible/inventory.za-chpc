@@ -14,7 +14,11 @@ grid-ui.chpc.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n U
 
 # Site BDII
 [site-bdiis]
-grid-bdii.c4.csir.co.za needs_certificate='false' emi_service='BDII_site' yaim_options='-n BDII_site'
+#grid-bdii.c4.csir.co.za needs_certificate='false' emi_service='BDII_site' yaim_options='-n BDII_site'
+
+# Top BDII
+[top-bdiis]
+grid-bdii.chpc.ac.za needs_vertificate='false' emi_service='BDII_site' yaim_options='-n BDII_site -n BDII_top'
 
 # CREAM CE's
 [cream-ces]
