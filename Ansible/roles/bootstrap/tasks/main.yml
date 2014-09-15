@@ -14,19 +14,6 @@
 - include: prerequisites.yml
 - include: user.yml
 - include: keys.yml
-#- include: selinux.yml
-#- include: ssh.yml
-# 
-#    - name: disable SELinux
-#      selinux: state=disabled
-# at this point, we have to reboot
-#      notify: reboot
-#      async: 60
-#      poll: 15
-#    - name: disallow root login
-#      action: lineinfile dest="/etc/ssh/sshd_config" line="PermitRootLogin no" state=present
-#      notify: restart ssh
-#  - include: task/prep.yml       
 # other things to include in here
 # 1. ensure that dns servers are inserted properly
 # 2. include own host name and ip in /etc/hosts
