@@ -1,5 +1,6 @@
 - name: Install prerequisite packages
   action: yum name={{ item }} state=present
+  #sudo: true
   with_items: 
     - python-simplejson
     - libselinux-python
@@ -10,6 +11,7 @@
     - initscripts
     - chkconfig
     - system-config-services
+    - openssh-clients
   tags:
     - bootstrap
 - name: Install some useful packages

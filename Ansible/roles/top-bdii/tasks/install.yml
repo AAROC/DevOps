@@ -1,22 +1,24 @@
 - name: Install emi top BDII software
-  action: yum name=emi-bdii-top state=latest
+  yum: name=emi-bdii-top state=latest
   sudo: True
   sudo_user: root
   tags: 
     - BDII
     - install
+
 - name: Install ruby (we will need it)
-  action: yum name=ruby state=present
+  yum: name=ruby state=present
   sudo: True
   sudo_user: root
   tags: 
     - BDII
     - install
+    
 - name: Open the firewall for bdii 
-  action: shell /sbin/iptables -A INPUT -i eth0 -p tcp --dport {{ bdii_port }} -j ACCEPT
+  template: src=etc/sysconfig/iptables dest=/etc/sysconfig/iptables
   sudo: true
   sudo_user: root
-  notify: 
+  notify:
     - restart iptables
   tags:
     - BDII

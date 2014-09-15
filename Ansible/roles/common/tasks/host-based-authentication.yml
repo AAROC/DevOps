@@ -16,7 +16,8 @@
   #action: template dest=/root/.shosts src=etc/ssh/shosts.equiv.j2 owner=root group=root
   #sudo: true
   #tags:
-    #- ssh
+    #- ssh    
+
     
 - name: Setup SSH host based authentication (server configuration file; enable `HostbasedAuthentication` option)
   action: lineinfile dest=/etc/ssh/sshd_config regexp='HostbasedAuthentication.*' line="HostbasedAuthentication yes"
