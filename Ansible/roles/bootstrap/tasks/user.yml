@@ -3,7 +3,7 @@
   tags:
     - bootstrap
 - name: update sudoers to ensure ansible user can sudo
-  action: copy src=etc/sudoers dest=/etc/sudoers owner=root mode=0440
+  copy: src=etc/sudoers dest=/etc/sudoers owner=root mode=0440
   tags:
     - bootstrap
   
