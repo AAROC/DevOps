@@ -1,0 +1,2 @@
+- name: allow packet forwarding on head node
+  lineinfile: dest=/proc/sys/net/ipv4/ip_forward line="1"

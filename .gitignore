@@ -1,5 +1,10 @@
 # Ingore munge keys
 munge.key.*
 # Ignore public/private x509 credential pairs
-hostkey.pem.*
-hostcert.pem.*
+hostkey.pem*
+# ignore editor backup files
+*~
+\#*
+# ignore geany files
+*debuglog*
+
