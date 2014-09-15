@@ -1,4 +1,4 @@
-- name: Install prerequisite packages- selinux, python bindings
+- name: Install prerequisite packages
   action: yum name={{ item }} state=present
   with_items: 
     - python-simplejson
