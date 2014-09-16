@@ -7,9 +7,26 @@
   vars_files:
   - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
 
+- name: Install compiler on the machine
+  hosts: shibboleth-idps
+  apt: name=build-essential state=present
+  when: ansible_os_family == "Debian"
+
+- name: Install compiler on the machine
+  hosts: shibboleth-idps
+  yum: name={{ item }} state=present
+  when: ansible_os_family == "Redhat"
+  with_items:
+    - gcc
+    - gcc-devel
+    - python
+    - python-devel
+
+
 - name: Prepare the identity machine common environment
   hosts: identity
   user: ansible
   roles: 
   - common
-  
+
+
