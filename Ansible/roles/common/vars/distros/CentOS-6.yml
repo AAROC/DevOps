@@ -12,3 +12,4 @@ ldap_packages:
   - openldap
   - openldap-servers
   - openldap-clients
+ldap_service: slapd

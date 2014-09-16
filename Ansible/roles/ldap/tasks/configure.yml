@@ -1,5 +1,5 @@
-- name: 
-  service: name={{ ldap_service }} state=installed
+- name: shut down ldap 
+  service: name={{ ldap_service }} state=stopped
   sudo: True
   with_items:
     - openldap-server 
