@@ -7,4 +7,4 @@ before_install:
   - sudo python setup.py install
 
 install:
-  - ansible_playbook -i inventories/inventory.identity.dev -C idp-ldap.yml
+  - ansible-playbook -i inventories/inventory.identity.dev -C idp-ldap.yml
