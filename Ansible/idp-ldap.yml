@@ -1,0 +1,15 @@
+---
+- name: Bootstrap the identity machines
+  hosts: identity
+  user: root
+  roles:
+  - bootstrap
+  vars_files:
+  - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+
+- name: Prepare the identity machine common environment
+  hosts: identity
+  user: ansible
+  roles: 
+  - common
+  

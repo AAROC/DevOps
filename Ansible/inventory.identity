@@ -1,0 +1,9 @@
+[ldap-servers]
+ldap.sagrid.ac.za needs_certificate=false
+
+[shibboleth-idps]
+idp.sagrid.ac.za needs_certificate=false
+[identity-all]
+
+
+############################ END #########################
