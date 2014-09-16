@@ -1,0 +1,45 @@
+######################################################
+#
+# Inventory for the SANBI site
+#
+############## Cluster oriented grouping ##############
+################
+# site services #
+#################
+
+# Site BDII
+[site-bdiis]
+sanbi-bdii.sanbi.ac.za emi_service='BDII_site' yaim_options='-n BDII_site'
+
+# CREAM CE's
+#[cream-ces]
+#ce01-node001.c4.csir.co.za emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
+
+[apel-publishers:children]
+#cream-ces
+
+[storage-elements]
+sanbi-se.sanbi.ac.za
+
+# Worker Nodes
+[worker-nodes]
+# empty for now
+[worker-nodes]
+#ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+
+[site-services:children]
+site-bdiis
+#cream-ces
+#worker-nodes
+
+
+#[CRL]
+#[CRL:children]
+
+
+[za-sanbi:children]
+#cream-ces
+site-bdiis
+#worker-nodes
+
+############################ END #########################

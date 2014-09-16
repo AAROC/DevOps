@@ -1,0 +1,33 @@
+---
+- name: Bootstrap the identity machines
+  hosts: identity-all
+  user: root
+  roles:
+  - bootstrap
+  vars_files:
+  - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+
+- hosts: shibboleth-idps
+  name: Install compiler on the machine
+  tasks: 
+    apt: name=build-essential state=present
+    when: ansible_os_family == "Debian"
+
+- hosts: shibboleth-idps
+  name: Install compiler on the machine
+  tasks:
+    yum: name={{ item }} state=present
+    when: ansible_os_family == "Redhat"
+    with_items:
+      - gcc
+      - gcc-devel
+      - python
+      - python-devel
+
+- name: Prepare the identity machine common environment
+  hosts: identity-all
+  user: ansible
+  sudo: true
+  roles: 
+  - common
+

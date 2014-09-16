@@ -1,0 +1,10 @@
+language: bash
+
+before_install:
+  - git clone https://github.com/ansible/ansible.git
+  - sudo apt-get install python
+  - cd ansible/
+  - sudo python setup.py install
+
+install:
+  - ansible_playbook -i inventor.za-meraka.dev -C wms.yml

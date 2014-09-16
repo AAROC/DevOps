@@ -1,6 +1,6 @@
 ######################################################
 #
-# Inventory for the CSIR C4 Dev cluster
+# Inventory for the CSIR C4 cluster
 #
 ############## Cluster oriented grouping ##############
 #################
@@ -31,7 +31,7 @@ voms-stage.c4.csir.co.za emi_service='emi-voms-mysql'
 # site services #
 #################
 [site-bdiis]
-site-bdii-dev.c4.csir.co.za emi_service='BDII_site' yaim_options='-n BDII_site' hosts={{groups.all}}
+site-bdii-dev.c4.csir.co.za emi_service='BDII_site' yaim_options='-n BDII_site'
 
 [cream-ces]
 ce01-node001.c4.csir.co.za emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'

@@ -15,7 +15,7 @@
   tags:
     - bootstrap
 - name: Install some useful packages
-  action: yum name={{ item }} state=present
+  action: yum name={{ item }} state=present enablerepo=epel
   with_items:
     - htop
     - iptraf
@@ -24,3 +24,4 @@
     - facter
   tags:
     - bootstrap
+  ignore_errors: yes

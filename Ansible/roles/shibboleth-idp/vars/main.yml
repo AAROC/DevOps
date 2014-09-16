@@ -1,0 +1,5 @@
+---
+# vars file for shibboleth-idp
+idp_version: 2.4.1
+idp_url: http://shibboleth.net/downloads/identity-provider/latest/
+idp_package_name: shibboleth-identityprovider
