@@ -2,7 +2,7 @@ language: bash
 
 before_install:
   - git clone https://github.com/ansible/ansible.git
-  - sudo apt-get install python26
+  - sudo apt-get install python
   - cd ansible/ansible
   - sudo python setup.py install
 
