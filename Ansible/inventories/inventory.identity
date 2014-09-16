@@ -3,7 +3,8 @@ ldap.sagrid.ac.za needs_certificate=false
 
 [shibboleth-idps]
 idp.sagrid.ac.za needs_certificate=false
-[identity-all]
+
+[identity-all:children]
 ldap-servers
 shibboleth-idps
 
