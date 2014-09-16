@@ -1,5 +1,5 @@
-- name: install OpenLDAP server
-  yum: name={{ item }} state=installed
+- name: 
+  service: name={{ ldap_service }} state=installed
   sudo: True
   with_items:
     - openldap-server 

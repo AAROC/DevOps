@@ -5,6 +5,9 @@
 
 # generic vars
 organisation: SAGrid
+admin: admin
+Administrator: Administrator
+idp_group: idp
 
 #  vars for ppolicy
 

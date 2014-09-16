@@ -1,5 +1,5 @@
 ---
-	- hosts: site-bdiis
+- hosts: site-bdiis
   name: Prepare the machine for yaim configuration
   sudo: true
   sudo_user: root
