@@ -1,0 +1,13 @@
+dn: olcOverlay={1}memberof,olcDatabase={2}bdb,cn=config
+changeType: modify
+add: olcMemberOfDangling
+olcMemberOfDangling: drop
+-
+add: olcMemberOfRefInt
+olcMemberOfRefInt: TRUE
+-
+add: olcMemberOfGroupOC
+olcMemberOfGroupOC: groupOfUniqueNames
+-
+add: olcMemberOfMemberAD
+olcMemberOfMemberAD: uniqueMember

@@ -1,2 +1,12 @@
 ---
 # vars file for ldap/
+
+# system vars
+
+# generic vars
+organisation: SAGrid
+
+#  vars for ppolicy
+
+# vars for hdb_back
+

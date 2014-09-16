@@ -7,3 +7,8 @@ epel_release_name: epel-release-6-8.noarch.rpm
 # This contains the actual name of the iptables command which differs from distro to distro.
 iptables_command: iptables
 iptables_package: iptables
+# openldap stuff
+ldap_packages:
+  - openldap
+  - openldap-servers
+  - openldap-clients

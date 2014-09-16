@@ -1,0 +1,30 @@
+---
+- name: Install Java
+  apt: name={{ java6_name }} state=latest
+  when: ansible_os_family == "Debian"
+
+- name: Install Java
+  yum: name={{ java6_name }} state=latest
+  when: ansible_os_family == "RedHat"
+ 
+- name: correct java version selected
+  alternatives: name=java path=/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+
+- name: Download the shibboleth package
+  user: ansible
+  get_url: url={{ idp_url }}/{{ idp_package }}-{{ idp_version }}-bin.tar.gz dest=/tmp/{{ idp_package }}-{{ idp_version }}.tar.gz
+  
+- name: Unpack the tarball
+  user: ansible
+  command: tar xvfz {{idp_package }}-{{ idp_version }}-bin.tar.gz
+  - chdir: /tmp 
+  - creates {{ idp_package }}-{{ idp_version }}/install.sh
+
+- name: Install the package
+  user: ansible
+  sudo: True
+  command: install.sh
+  - chdir: /tmp/{{idp_package }}-{{ idp_version }}
+  - args: JAVA_HOME=
+  
+

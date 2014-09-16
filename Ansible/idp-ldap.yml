@@ -30,4 +30,11 @@
   sudo: true
   roles: 
   - common
+  
+- name: Configure the LDAP machine
+  hosts: ldap-servers
+  user: ansible
+  sudo: true
+  roles:
+  - ldap
 
