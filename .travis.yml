@@ -7,5 +7,5 @@ before_install:
   - sudo python setup.py install
 
 install:
-  - cd $TRAVIS_BUILD_DIR
+  - echo $TRAVIS_BUILD_DIR ; cd $TRAVIS_BUILD_DIR ; ls
   - ansible-playbook -i inventories/inventory.identity.dev -C idp-ldap.yml
