@@ -27,6 +27,7 @@
 - name: Prepare the identity machine common environment
   hosts: identity-all
   user: ansible
+  sudo: true
   roles: 
   - common
 
