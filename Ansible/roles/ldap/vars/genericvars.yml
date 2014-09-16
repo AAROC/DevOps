@@ -1,0 +1,7 @@
+env:
+ RUNLEVEL: 1
+# vars file for ldap/
+organisation: SAGrid
+admin: admin
+Administrator: Administrator
+idp_group: idp

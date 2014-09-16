@@ -1,15 +1,9 @@
 ---
-# vars file for ldap/
+- include: uservars.yml
+- include: ppolicyvars.yml
+- include: genericvars.yml
 
 # system vars
-
-# generic vars
-organisation: SAGrid
-admin: admin
-Administrator: Administrator
-idp_group: idp
-
 #  vars for ppolicy
 
 # vars for hdb_back
-

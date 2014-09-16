@@ -1,10 +1,35 @@
-- name: shut down ldap 
+- name: shut down ldap server
   service: name={{ ldap_service }} state=stopped
   sudo: True
-  with_items:
-    - openldap-server 
-    - openldap-clients 
-    - openldap
   tags: 
     - LDAP
-    - install
+    - config
+
+- name: Add Password Policy to ldap server
+  user: ansible
+  sudo: true
+  template: src=ppolicy.ldif.j2 dest=/tmp/ppolicy.ldif
+  tags: 
+    - LDAP
+    - config
+  
+- name:  Create hdb LDIF 
+  user: ansible
+  sudo: true
+  template: src=hdb.ldif.j2 dest=/tmp/hdb.ldif
+  tags: 
+    - LDAP
+    - config
+    
+- name: Create User and Group Overlay LDIF
+  user: ansible
+  sudo: true
+  copy: src=etc/openldap/slapd.d/overlay.ldif dest=/tmp/overlay.ldif
+  tags: 
+    - LDAP
+    - config
+
+- name: Create the config LDIF
+  copy: src='cn=module{0}.ldif' dest=/etc/openldap/slapd.d/cn=config
+  notify: 
+    - restart slapd

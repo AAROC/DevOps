@@ -1,0 +1,11 @@
+- name: Create the first user ldif
+  user: ansible
+  sudo: True
+  template: src=user.ldif.j2 dest=/tmp/user.ldif
+
+- name: Add first user to ou=People
+  user: ansible
+  sudo: True
+  command: ldapadd -x -W -D cn=admin,dc=local -f -H ldap:/// -f /tmp/user.ldif
+
+- name: Add user to the IdP Group
