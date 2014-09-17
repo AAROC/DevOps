@@ -7,3 +7,4 @@ ldap_pkgs:
 app_path: "/etc/openldap/"
 ldap_user: ldap
 
+apache: httpd
