@@ -1,18 +1,18 @@
 [ldap-servers]
-vm1.ct.infn.it
-vm3.ct.infn.it
+vm01.ct.infn.it
+vm03.ct.infn.it
 
 [shibboleth-idps]
-vm2.ct.infn.it
-vm4.ct.infn.it
+vm02.ct.infn.it
+vm04.ct.infn.it
 
 [CentOS-servers]
-vm1.ct.infn.it
-vm2.ct.infn.it
+vm03.ct.infn.it
+vm04.ct.infn.it
 
 [Debian-servers]
-vm3.ct.infn.it
-vm4.ct.infn.it
+vm01.ct.infn.it
+vm02.ct.infn.it
 
 [identity-all:children]
 ldap-servers
