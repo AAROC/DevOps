@@ -1,0 +1,21 @@
+[ldap-servers]
+vm1.ct.infn.it
+vm3.ct.infn.it
+
+[shibboleth-idps]
+vm2.ct.infn.it
+vm4.ct.infn.it
+
+[CentOS-servers]
+vm1.ct.infn.it
+vm2.ct.infn.it
+
+[Debian-servers]
+vm3.ct.infn.it
+vm4.ct.infn.it
+
+[identity-all:children]
+ldap-servers
+shibboleth-idps
+
+############################ END #########################
