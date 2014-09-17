@@ -1,12 +1,9 @@
-- name: Install prerequisite packages
-  action: yum name={{ item }} state=present
-  #sudo: true
+- name: Install prerequisite packages (RedHat)
+  yum: name={{ item }} state=present
   with_items: 
     - python-simplejson
     - libselinux-python
     - iptables
-    - iptraf
-    - bind-utils
     - mlocate
     - initscripts
     - chkconfig
@@ -14,14 +11,34 @@
     - openssh-clients
   tags:
     - bootstrap
-- name: Install some useful packages
-  action: yum name={{ item }} state=present enablerepo=epel
+  when: ansible_os_family=="RedHat"
+- name: Install some useful packages (RedHat)
+  yum: name={{ item }} state=present
   with_items:
-    - htop
-    - iptraf
-    - emacs
     - vim
-    - facter
   tags:
     - bootstrap
   ignore_errors: yes
+  when: ansible_os_family=="RedHat"
+
+- name: Install prerequisite packages (Debian)
+  apt: name={{ item }} state=present
+  with_items: 
+    - python-simplejson
+    - iptables
+    - mlocate
+    - initscripts
+    - chkconfig
+    - openssh-client
+  tags:
+    - bootstrap
+  when: ansible_os_family=="Debian"
+- name: Install some useful packages (Debian)
+  apt: name={{ item }} state=present
+  with_items:
+    - htop
+    - vim
+  tags:
+    - bootstrap
+  ignore_errors: yes
+  when: ansible_os_family=="Debian"

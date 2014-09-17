@@ -1,0 +1,9 @@
+---
+# This contains the actual name of the iptables command which differs from distro to distro.
+iptables_command: iptables
+iptables_package: iptables
+# openldap stuff
+ldap_packages:
+  - slapd 
+  - ldap-utils 
+ldap_service: slapd
