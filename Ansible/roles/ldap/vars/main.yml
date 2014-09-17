@@ -1,9 +1,9 @@
 ---
-- include: uservars.yml
-- include: ppolicyvars.yml
-- include: genericvars.yml
-- include: passwords.yml
-- include: security.yml
+include: uservars.yml
+include: ppolicyvars.yml
+include: genericvars.yml
+include: passwords.yml
+include: security.yml
 
 # system vars
 #  vars for ppolicy

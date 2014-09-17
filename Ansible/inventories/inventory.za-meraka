@@ -141,4 +141,9 @@ argus-servers
 
 [nagios-servers:children]
 ngi-nagios
+
+# OS-oriented grouping
+[CentOS5-servers:children]
+ngi-nagios
+
 ############################ END #########################
