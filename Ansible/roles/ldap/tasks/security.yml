@@ -1,0 +1,22 @@
+---
+- name: Enable Secure Communications with the LDAP server
+  lineinfile: dest=/etc/rc.d/init.d/slapd regexp=^{{ item }}= line={{ item }}=yes  
+  when: ansible_os_family=="Redhat" 
+  with_items:
+    - SLAPD_LDAPI
+    - SLAPD_LDAPS
+
+- name: Enable protocols in sysconfig startup script
+  lineinfile: dest=/etc/sysconfig/ldap regexp=^SLAPD_LDAP= line=SLAPD_LDAP=yes
+  when: ansible_os_family=="Redhat"
+  
+- name: Add host certificate
+  copy: src={{ item }} dest=/etc/openldap/certs
+  when: ansible_os_family=="Redhat"
+  with_items:
+    - hostcert.pem
+    - hostkey.pem
+# TODO - ensure that the correct permissions are placed on hostkey.pem
+    
+- name: Ensure that TLS CA Certi dir is set
+  lineinfile: dest=/etc/openldap/certs regexp=^TLS_CACERTDIR= line={{ tls_cacert_dir }}

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<afp:AttributeFilterPolicyGroup id="ShibbolethFilterPolicy"
+xmlns:afp="urn:mace:shibboleth:2.0:afp"
+xmlns:basic="urn:mace:shibboleth:2.0:afp:mf:basic"
+xmlns:saml="urn:mace:shibboleth:2.0:afp:mf:saml"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="urn:mace:shibboleth:2.0:afp
+classpath:/schema/shibboleth-2.0-afp.xsd
+urn:mace:shibboleth:2.0:afp:mf:basic classpath:/schema/shibboleth-2.0-afp-mfbasic.xsd
+urn:mace:shibboleth:2.0:afp:mf:saml classpath:/schema/shibboleth-2.0-afp-mfsaml.xsd">
+<!-- Release the transient ID to anyone -->
+<afp:AttributeFilterPolicy id="releaseTransientIdToAnyone">
+<afp:PolicyRequirementRule xsi:type="basic:ANY"/>
+<afp:AttributeRule attributeID="transientId">
+<afp:PermitValueRule xsi:type="basic:ANY"/>
+</afp:AttributeRule>
+</afp:AttributeFilterPolicy>
+<afp:AttributeFilterPolicy id="attributeToAnyone">
+<afp:PolicyRequirementRule xsi:type="basic:ANY"/>
+<afp:AttributeRule attributeID="surname">
+<afp:PermitValueRule xsi:type="basic:ANY"/>
+</afp:AttributeRule>
+<afp:AttributeRule attributeID="givenName">
+<afp:PermitValueRule xsi:type="basic:ANY"/>
+</afp:AttributeRule>
+</afp:AttributeFilterPolicyGroup>
