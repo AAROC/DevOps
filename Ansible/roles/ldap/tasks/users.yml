@@ -1,3 +1,14 @@
+- name: create the root user ldif change file
+  user: ansible
+  sudo: True
+  template: src=root_user.ldif.j2 dest=/tmp/root_user.ldif
+
+- name: Create the root user
+  user: ansible
+  sudo: True
+  command: 
+# when: root user is not already in the tree
+
 - name: Create the first user ldif
   user: ansible
   sudo: True
@@ -7,5 +18,32 @@
   user: ansible
   sudo: True
   command: ldapadd -x -W -D cn=admin,dc=local -f -H ldap:/// -f /tmp/user.ldif
+# could also be
+# notify: 
+# - ldapadd file=/tmp/user.ldif
 
 - name: Add user to the IdP Group
+  user: ansible
+  sudo: True
+  template: src=newuserintogroup.ldif.j2 dest=/tmp/newuserintogroup.ldif
+  notify:
+  - ldapmodify file=/tmp/newuserintogroup.ldif
+# when: user is not already in the group #27
+
+- name: Add a generic IdP user 
+  user: ansible
+  sudo: True
+  template: src=idp_user.ldif.j2 dest=/tmp/idp_user.ldif
+  notify:
+  - ldapadd file=/tmp/idp_user.ldif
+  
+- name: Configure the services group
+  user: ansible
+  sudo: True
+  template: src=services.ldif.j2 dest=/tmp/services.ldif
+ # notify: ???
+ 
+ 
+ 
+
+    
