@@ -1,29 +1,24 @@
+---
 - name: shut down ldap server
   service: name={{ ldap_service }} state=stopped
   sudo: True
   tags: 
     - LDAP
     - config
-
+    
 - name: Add Password Policy to ldap server
-  user: ansible
-  sudo: true
   template: src=ppolicy.ldif.j2 dest=/tmp/ppolicy.ldif
   tags: 
     - LDAP
     - config
   
 - name:  Create hdb LDIF 
-  user: ansible
-  sudo: true
   template: src=hdb.ldif.j2 dest=/tmp/hdb.ldif
   tags: 
     - LDAP
     - config
     
 - name: Create User and Group Overlay LDIF
-  user: ansible
-  sudo: true
   copy: src=etc/openldap/slapd.d/overlay.ldif dest=/tmp/overlay.ldif
   tags: 
     - LDAP
