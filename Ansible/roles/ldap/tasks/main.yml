@@ -1,2 +1,6 @@
 ---
 # tasks file for ldap/
+- include: install.yml
+- include: configure.yml
+- include: organisation.yml
+- include: users.yml

@@ -1,0 +1,8 @@
+dn: cn=module{0}
+objectClass: olcModuleList
+cn: module{0}
+olcModulePath: /usr/lib64/openldap
+olcModuleLoad: {0}back_hdb
+olcModuleLoad: {1}memberof
+olcModuleLoad: {2}ppolicy
+structuralObjectClass: olcModuleList

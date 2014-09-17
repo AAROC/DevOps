@@ -7,4 +7,5 @@ before_install:
   - sudo python setup.py install
 
 install:
-  - ansible_playbook -i inventor.za-meraka.dev -C wms.yml
+  - cd $TRAVIS_BUILD_DIR/Ansible
+  - ansible-playbook -i inventories/inventory.identity.dev -C idp-ldap.yml

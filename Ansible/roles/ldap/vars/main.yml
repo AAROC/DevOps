@@ -1,2 +1,11 @@
 ---
-# vars file for ldap/
+- include: uservars.yml
+- include: ppolicyvars.yml
+- include: genericvars.yml
+- include: passwords.yml
+- include: security.yml
+
+# system vars
+#  vars for ppolicy
+
+# vars for hdb_back

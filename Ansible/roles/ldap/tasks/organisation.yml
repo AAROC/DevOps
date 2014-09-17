@@ -1,0 +1,10 @@
+- name: Create Organisations LDIF
+  copy: src=etc/openldap/slapd.d/orgs.ldif dest=/tmp/orgs.ldif
+  user: ansible
+  sudo: True
+
+- name: Add Organisations to the server
+  command: ldapadd -x -W -D cn=admin,dc=local -H ldap:/// -f /tmp/orgs.ldif
+  user: ansible
+  sudo: True
+  

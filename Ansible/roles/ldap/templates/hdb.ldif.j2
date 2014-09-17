@@ -1,0 +1,10 @@
+dn: olcDatabase={2}bdb,cn=config
+changeType: modify
+replace: olcAccess
+olcAccess: {0}to attrs=userPassword,shadowLastChange by self write by anonymous auth by dn="cn={{ admin }},dc=local" write by group/groupOfUniqueNames/uniqueMember="cn={{ Administrator }},ou=Group,dc={{ idp_group }},ou=Services,dc=local" write by * none
+-
+replace: olcAccess
+olcAccess: {1}to dn.base="" by * read
+-
+replace: olcAccess
+olcAccess: {2}to * by self write by dn="cn={{ admin }},dc=local" write by group/groupOfUniqueNames/uniqueMember="cn={{ Administrator }},ou=Group,dc={{ idp_group }},ou=Services,dc=local" write by * read

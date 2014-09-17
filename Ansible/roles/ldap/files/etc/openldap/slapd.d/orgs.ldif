@@ -1,0 +1,3765 @@
+version: 1
+
+dn: ou=Organisations,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Organisations
+
+dn: o=PekingUniversity,c=CN,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: PekingUniversity
+description: Peking University
+
+dn: o=NTUA,c=GR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: NTUA
+description: Image, Video and Multimedia Systems Laboratory. National Techni
+ cal University of Athens
+
+dn: o=CIEMAT,c=ES,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CIEMAT
+description:: Q2VudHJvIGRlIEludmVzdGlnYWN0aW9uZXMgRW5lcmfDqXRpY2EsIE1lZGlvYW
+ 1iaWVudGFsZXMgeSBUZWNub2zDs2dpY2Fz
+
+dn: o=CESNET,c=CZ,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CESNET
+description: Czech academic network
+
+dn: o=CULTNAT,c=EG,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CULTNAT
+description: Center for Documentation of Cultural and Natural Heritage
+
+dn: o=UNIVPROVENCE,c=FR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIVPROVENCE
+description:: VW5pdmVyc2l0w6kgZGUgUHJvdmVuY2U=
+
+dn: o=TELECOMBretagne,c=FR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: TELECOMBretagne
+description: Telecom Bretagne
+
+dn: o=CNRST,c=MA,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CNRST
+description:: Q2VudHJlIE5hdGlvbmFsIHBvdXIgbGEgUmVjaGVyY2hlIFNjaWVudGlmaXF1ZS
+ BldCBUZWNobmlxdWUg
+
+dn: o=maatG,c=ES,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: maatG
+description: maatG International
+
+dn: o=grnet,c=GR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: grnet
+description: Greek Research & Technology Network
+
+dn: o=CEFET/RJ,c=BR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CEFET/RJ
+description:: Q2VudHJvIEZlZGVyYWwgZGUgRWR1Y2HDp8OjbyBUZWNub2zDs2dpY2EgQ2Vsc2
+ 8gU3Vja293IGRhIEZvbnNlY2E=
+
+dn: o=UFCG,c=BR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UFCG
+description: Universidade Federal de Campina Grande
+
+dn: o=UNAM,c=MX,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNAM
+description:: VW5pdmVyc2lkYWQgTmFjaW9uYWwgQXV0w7Nub21hIGRlIE3DqXhpY28=
+
+dn: o=CPPM,c=FR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CPPM
+description: Centre de physique des particules de Marseille
+
+dn: o=UPV,c=ES,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UPV
+description:: VW5pdi4gUG9saXTDqWNuaWNhIGRlIFZhbGVuY2lhLCBEU0lDLCBDYW1pbm8gZG
+ UgVmVyYSBzL24=
+
+dn: o=UNIANDES,c=CO,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIANDES
+description:: VW5pdmVyc2lkYWQgZGUgbG9zIEFuZGVzIA==
+
+dn: o=UPORTO,c=PT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UPORTO
+description: Universidade do Porto
+
+dn: o=CERIST,c=DZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CERIST
+description:: Q2VudHJlIGRlIFJlY2hlcmNoZSBzdXIgbOKAmUluZm9ybWF0aW9uIFNjaWVudG
+ lmaXF1ZSBldCBUZWNobmlxdWU=
+
+dn: o=USTHB,c=DZ,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: USTHB
+description:: VW5pdmVyc2l0w6kgZGVzIFNjaWVuY2VzIGV0IGRlIGxhIFRlY2hub2xvZ2llIE
+ hvdWFyaSBCb3VtZWRpZW5l
+
+dn: o=JUNET,c=JO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: JUNET
+description: Jordanian Universities Network
+
+dn: o=UnilosAndes,c=VE,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UnilosAndes
+description: Universidad de Los Andes
+
+dn: o=FCCN,c=PT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: FCCN
+description:: RnVuZGHDp8OjbyBwYXJhIENvbXB1dGHDp8OjbyBDaWVudGlmaWNhIE5hY2lvbm
+ Fs
+
+dn: o=ULA,c=VE,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: ULA
+description: Universidad De Los Andes
+
+dn: o=UNET,c=VE,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNET
+description:: VW5pdmVyc2lkYWQgTmFjaW9uYWwgRXhwZXJpbWVudGFsIGRlbCBUw6FjaGlyYQ
+ ==
+
+dn: o=UdelaR,c=UY,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UdelaR
+description:: VW5pdmVyc2lkYWQgZGUgbGEgUmVww7pibGljYQ==
+
+dn: ou=fing,o=UdelaR,c=UY,ou=Organisations,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: fing
+description:: RmFjdWx0YWQgZGUgSW5nZW5pZXLDrWE=
+
+dn: o=AABU,c=JO,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: AABU
+description: Alalbayt university
+
+dn: o=Ankabut,c=AE,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: Ankabut
+description:: QW5rYWJ1dCBpcyB0aGUgVW5pdGVkIEFyYWIgRW1pcmF0ZXPigJkgTmF0aW9uYW
+ wgUmVzZWFyY2ggYW5kIEVkdWNhdGlvbiBOZXR3b3JrIChOUkVOKSBvZmZlcmluZyBhY2FkZW1pY
+ yBpbnN0aXR1dGlvbnMgY29ubmVjdGl2aXR5IHRvIG90aGVyIGVkdWNhdGlvbiBuZXR3b3JrcyBh
+ cm91bmQgdGhlIHdvcmxkLg==
+
+dn: o=UVIGO,c=ES,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UVIGO
+description: Universidad de Vigo
+
+dn: o=INPE,c=BR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: INPE
+description: National Institute for Space Research
+
+dn: o=CAFe,c=BR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CAFe
+description:: Q29tdW5pZGFkZSBBY2Fkw6ptaWNhIEZlZGVyYWRh
+
+dn: o=UTE,c=EC,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UTE
+description:: VW5pdmVyc2lkYWQgVGVjbm9sw7NnaWNhIEVxdWlub2NjaWFs
+
+dn: o=INOCAR,c=EC,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: INOCAR
+description:: SW5zdGl0dXRvIE9jZWFub2dyw6FmaWNvIGRlIGxhIEFybWFkYQ==
+
+dn: o=ESPE,c=EC,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ESPE
+description:: RXNjdWVsYSBQb2xpdMOpY25pY2EgZGUgRWrDqXJjaXRv
+
+dn: o=ImperialCollegeLondon,c=GB,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: ImperialCollegeLondon
+description: Science-based institution with a reputation for excellence in t
+ eaching and research.
+
+dn: o=CEDIA,c=EC,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CEDIA
+description: Consorcio Ecuatoriano para el Desarrollo de Internet Avanzado
+
+dn: o=EPN,c=EC,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: EPN
+description:: RXNjdWVsYSBQb2xpdMOpY25pY2EgTmFjaW9uYWw=
+
+dn: o=UIS,c=CO,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UIS
+description: Universidad Industrial de Santander
+
+dn: o=CESIMO,c=VE,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CESIMO
+description:: Q2VudHJvIGRlIFNpbXVsYWNpw7NuIHkgTW9kZWxvcw==
+
+dn: o=Cinvestav,c=MX,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: Cinvestav
+description:: Q2VudHJvIGRlIEludmVzdGlnYWNpw7NuIHkgZGUgRXN0dWRpb3MgQXZhbnphZG
+ 9zIGRlbCBJbnN0aXR1dG8gUG9saXTDqWNuaWNvIE5hY2lvbmFs
+
+dn: o=UBA,c=AR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UBA
+description: Universidad de Buenos Aires
+
+dn: o=LNCC,c=BR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: LNCC
+description:: TGFib3JhdMOzcmlvIE5hY2lvbmFsIGRlIENvbXB1dGHDp8OjbyBDaWVudMOtZm
+ ljYQ==
+
+dn: o=CNRS,c=FR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CNRS
+description:: Q1JFQVRJUyBDTlJTIFVNUiA1MjIwIOKAkyBJTlNFUk0gVTEwNDQg4oCTIFVuaX
+ ZlcnNpdMOpIEx5b24gMQ==
+
+dn: o=UNRC,c=AR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNRC
+description:: VW5pdmVyc2lkYWQgTmFjaW9uYWwgZGUgUsOtbyBDdWFydG8=
+
+dn: o=USC,c=CO,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: USC
+description: UNIVERSIDAD SANTIAGO DE CALI
+
+dn: o=IUTLV,c=VE,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: IUTLV
+description:: VW5pdmVyc2lkYWQgUG9saXTDqWNuaWNhIFRlcnJpdG9yaWFsIGRlIEFyYWd1YS
+ DigJxGZWRlcmljbyBCcml0byBGaWd1ZXJvYeKAnQ==
+
+dn: o=FLENI,c=AR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: FLENI
+description:: RnVuZGFjacOzbiBwYXJhIGxhIEx1Y2hhIGNvbnRyYSBsYXMgRW5mZXJtZWRhZG
+ VzIE5ldXJvbMOzZ2ljYXMgZGUgbGEgSW5mYW5jaWE=
+
+dn: o=LUZ,c=VE,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: LUZ
+description: Universidad del Zulia
+
+dn: o=CUBAENERGIA,c=CU,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CUBAENERGIA
+description: Cuba Energia
+
+dn: o=SCIE-UESTC,c=CN,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SCIE-UESTC
+description:: VW5pdmVyc2l0eSBvZiBFbGVjdHJvbmljIFNjaWVuY2UgYW5kIFRlY2hub2xvZ3
+ kgb2YgQ2hpbmEg
+
+dn: o=FrenchCulture,c=FR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: FrenchCulture
+description: French Culture
+
+dn: o=ITESM,c=MX,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ITESM
+description:: SW5zdGl0dXRvIFRlY25vbMOzZ2ljbyB5IGRlIEVzdHVkaW9zIFN1cGVyaW9yZX
+ MgZGUgTW9udGVycmV5
+
+dn: o=IFCA,c=ES,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: IFCA
+description:: SW5zdGl0dXRvIGRlIEbDrXNpY2EgZGUgQ2FudGFicmlh
+
+dn: o=USON,c=MX,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: USON
+description: Universidad de Sonora
+
+dn: o=DANTE,c=GB,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: DANTE
+description: Delivery of Advanced Network Technology to Europe
+
+dn: o=JacobsUniversity,c=DE,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: JacobsUniversity
+description: Jacob University http://www.jacobs-university.de
+
+dn: o=rasdaman,c=DE,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: rasdaman
+description: rasdaman GmbH (www.rasdaman.com()
+
+dn: o=EOX,c=AT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: EOX
+description: EOX IT Services GmbH
+
+dn: o=AthenaRIC,c=GR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: AthenaRIC
+description: Athena-Research and Innovation Centre in Information, Communica
+ tion and Knowledge Technologies
+
+dn: o=PML,c=GB,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: PML
+description: Plymouth Marine Laboratory
+
+dn: o=BGS,c=GB,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: BGS
+description: British Geological Survey
+
+dn: o=FraunhoferIGD,c=DE,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: FraunhoferIGD
+description:: RnJhdW5ob2Zlci1JbnN0aXR1dCBmw7xyIEdyYXBoaXNjaGUgRGF0ZW52ZXJhcm
+ JlaXR1bmcgSUdE
+
+dn: o=UTP,c=PA,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UTP
+description:: VW5pdmVyc2lkYWQgVGVjbm9sw7NnaWNhIGRlIFBhbmFtw6E=
+
+dn: o=EGI,c=EU,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: EGI
+description: European Grid Infrastructure
+
+dn: o=CeCalCULA,c=VE,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CeCalCULA
+
+dn: o=UDU,c=VE,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UDU
+description: Universidad de Oriente
+
+dn: o=UNICH,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNICH
+description:: VW5pdmVyc2l0w6AgZGkgQ2hpZXRp
+
+dn: o=RNP,c=BR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: RNP
+description: Rede nacional de Ensino e Pesquisa
+
+dn: o=SETIF,c=DZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SETIF
+description:: VW5pdmVyc2l0w6kgZGUgRmVyaGF0IEFiYmFzIFPDqXRpZi4=
+
+dn: o=Univ-Blida,c=DZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: Univ-Blida
+description:: VW5pdmVyc2l0w6kgU0FBRCBEQUhMQUIgQmxpZGE=
+
+dn: o=USDB,c=DZ,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: USDB
+description:: VW5pdmVyc2l0w6kgU2FhZCBEYWhsYWIgQmxpZGE=
+
+dn: o=CRND,c=DZ,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CRND
+description: Nuclear research center of Draria
+
+dn: o=EMP,c=DZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: EMP
+description: Ecole Military Polytechnic
+
+dn: o=MAST,c=BR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MAST
+description: Museu de Astronomia e Ciencias Afins
+
+dn: o=UIIP-NASB,c=BY,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UIIP-NASB
+description: United Institute of Informatics Problems of the National Academ
+ y of Sciences of Belarus
+
+dn: o=IFMT,c=BR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: IFMT
+description:: IEluc3RpdHV0byBGZWRlcmFsIGRlIE1hdG8gR3Jvc3Nv
+
+dn: o=KUNIV,c=KW,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: KUNIV
+description: Kuwait University
+
+dn: o=CCI-UCAD,c=SN,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CCI-UCAD
+description: Centre de Calcul - University Cheikh Anta Diop
+
+dn: o=UNIV-OUAGA,c=BF,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIV-OUAGA
+description: University of Ouagadougou
+
+dn: ou=France,o=maatG,c=ES,ou=Organisations,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: France
+l: France
+
+dn: o=KYGM,c=TR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: KYGM
+description:: S8OcVMOcUEhBTkVMRVIgVkUgWUFZSU1MQVIgR0VORUwgTcOcRMOcUkzDnMSew5
+ w=
+
+dn: o=COMETA,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: COMETA
+description: Consorzio Multi-Ente per la promozione e l'adozione di Tecnolog
+ ie di calcolo Avanzato
+
+dn: o=INFN,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: INFN
+description: National Institute of Nuclear Physics
+
+dn: ou=Catania,o=INFN,c=IT,ou=Organisations,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Catania
+
+dn: o=GARR,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: GARR
+description: Consortium GARR
+
+dn: o=UNIGE,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIGE
+description:: VW5pdmVyc2l0w6AgZGkgR2Vub3Zh
+
+dn: o=FondazioneSDN,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: FondazioneSDN
+description: Fondazione SDN
+
+dn: o=IRCCS-FBF,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: IRCCS-FBF
+description: Centro San Giovanni di Dio - Fatebenefratelli
+
+dn: o=Promoter,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: Promoter
+description: Promoter
+
+dn: o=UNIMIB,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIMIB
+description: Universita' degli Studi di Milano Bicocca
+
+dn: o=SoftwareEngeneering,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: SoftwareEngeneering
+description: Software Engeneering company
+
+dn: o=CASPUR,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CASPUR
+description:: Q29uc29yemlvIHVuaXZlcnNpdGFyaW8gcGVyIGxlIEFwcGxpY2F6aW9uaSBkaS
+ BTdXBlcmNhbGNvbG8gUGVyIFVuaXZlcnNpdMOgIGUgUmljZXJjYQ==
+
+dn: o=TRUST-IT,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: TRUST-IT
+description: Trust-IT specialises in communicating innovation and standards 
+ in Information and Communication Technologies.
+
+dn: o=UNIFI,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIFI
+description: University of Florence
+
+dn: o=IRCCS,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: IRCCS
+description: Istituto di Ricovero e Cura a Carattere Scientifico
+
+dn: o=INAF,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: INAF
+description: National Institute for Astrophysics
+
+dn: o=UNIFG,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNIFG
+description:: VW5pdmVyc2l0w6AgZGVnbGkgU3R1ZGkgZGkgRm9nZ2lh
+
+dn: o=MEEO,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: MEEO
+description: Meteorological Environmental Earth Observation Srl
+
+dn: ou=Torino,o=INFN,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Torino
+
+dn: ou=CNAF,o=INFN,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: CNAF
+
+dn: ou=Bari,o=INFN,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Bari
+
+dn: o=CNR,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CNR
+description: Consiglio Nazionale delle Ricerche
+
+dn: ou=IFC,o=CNR,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: IFC
+description: National Research Council Institute of Clinical Physiology
+l: Italy
+
+dn: ou=IBFM,o=CNR,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: IBFM
+description: Istituto di Bioimmagini e Fisiologia Molecolare
+l: Italy
+
+dn: o=FBF,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: FBF
+description: Instituto Fate Beni Fratelli
+
+dn: ou=AFAR,o=FBF,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: AFAR
+description: Associazione Fatebenefratelli per la ricerca
+l: Italy
+
+dn: o=UNIMI,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIMI
+description: Universita' degli Studi di Milano
+
+dn: o=LHSR,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: LHSR
+description: LATO-HSR GIGLIO CEFALU'
+
+dn: o=SDN,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SDN
+description: SDN Istituto di Ricerca Diagnostica e Nucleare
+registeredAddress: http://www.sdn-napoli.it
+
+dn: o=ANM,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ANM
+description: AO Niguarda Milan
+
+dn: o=HSG,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: HSG
+description:: QVpJRU5EQSBPU1BFREFMSUVSQSBTQU4gR0VSQVJETyA=
+
+dn: o=ARCEM,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ARCEM
+description: Associazione Italiana per la Ricerca sulle Patologie Cerebrali 
+ e del Midollo Spinale
+
+dn: o=MARIONEGRI,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MARIONEGRI
+description: Istituto di ricerche farmacologiche Mario Negri
+
+dn: o=ISTAT,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ISTAT
+description: Istituto di Statistica
+
+dn: ou=CETA,o=CIEMAT,c=ES,ou=Organisations,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: CETA
+
+dn: o=CIDETYS,c=PA,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CIDETYS
+description:: Q0VOVFJPIElOVEVSTkFDSU9OQUwgREUgREVTQVJST0xMTyBURUNOT0zDk0dJQ0
+ 8gWSBTT0ZUV0FSRSBMSUJSRQ==
+
+dn: o=UMA,c=PT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UMA
+description: Universidade da Madeira
+
+dn: ou=LNS,o=INFN,c=IT,ou=Organisations,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: LNS
+description: Laboratorio Nazionale del Sud
+
+dn: ou=IIT,o=CNR,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: IIT
+description: Istituto di Informatica e Telematica del CNR
+l: Italy
+
+dn: o=ASREN,c=JO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: ASREN
+description: Arab States Research and Education Network
+
+dn: o=LATO,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: LATO
+description:: UG9sbyBvbmNvbG9naWNvIGRpIENlZmFsw7k=
+
+dn: o=PUCRS,c=BR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: PUCRS
+description:: UG9udGlmw61jaWEgVW5pdmVyc2lkYWRlIENhdMOzbGljYSBkbyBSaW8gR3Jhbm
+ RlIGRvIFN1bA==
+
+dn: o=USAL,c=ES,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: USAL
+description: Universidad de Salamanca
+
+dn: o=IHEP,c=CN,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: IHEP
+description: Institute of High Energy Physics
+
+dn: o=MiBAC,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MiBAC
+description: Ministero per i Beni Culturali e Ambientali
+
+dn: o=i2cat,c=ES,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: i2cat
+description: i2CAT Foundation
+
+dn: o=kultur,c=TR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: kultur
+description: REPUBLIC OF TURKEY MINISTRY OF CULTURE AND TOURISM
+
+dn: o=CRA,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CRA
+description: Consiglio per la Ricerca e la Sperimentazione in Agricoltura
+
+dn: ou=ABP,o=CRA,c=IT,ou=Organisations,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: ABP
+description:: Q2VudHJvIGRpIHJpY2VyY2EgcGVyIGzigJlhZ3JvYmlvbG9naWEgZSBsYSBwZW
+ RvbG9naWEgKEZpcmVuemUpIChDUkEtQUJQKQ==
+
+dn: o=CIMAROSA,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CIMAROSA
+description: Conservatorio di musica Domenico Cimarosa di Avellino
+
+dn: o=CICESE,c=MX,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CICESE
+description:: Q2VudHJvIGRlIEludmVzdGlnYWNpw7NuIENpZW50w61maWNhIHkgZGUgRWR1Y2
+ FjacOzbiBTdXBlcmlvciBkZSBFbnNlbmFkYSwgQmFqYSBDYWxpZm9ybmlh
+
+dn: ou=ASTROSEN,o=UNAM,c=MX,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: ASTROSEN
+description: Instituto Astronomia Ensenada
+
+dn: o=UNAH,c=CU,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNAH
+description: Universidad Agraria de la Habana
+
+dn: o=UPEMOR,c=MX,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UPEMOR
+description:: VW5pdmVyc2lkYWQgUG9saXTDqWNuaWNhIGRlbCBFc3RhZG8gZGUgTW9yZWxvcw
+ ==
+
+dn: o=INE,c=MX,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: INE
+description:: SW5zdGl0dXRvIE5hY2lvbmFsIGRlIEVjb2xvZ8OtYQ==
+
+dn: o=Unizar,c=ES,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: Unizar
+description: Universidad de Zaragoza
+
+dn: o=Ivie,c=ES,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: Ivie
+description:: SW5zdGl0dXRvIFZhbGVuY2lhbm8gZGUgSW52ZXN0aWdhY2lvbmVzIEVjb27Ds2
+ 1pY2Fz
+
+dn: o=SystemsX.ch,c=CH,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: SystemsX.ch
+description: SystemsX.ch is aresearch initiative with the mandate to promote
+  Systems Biology
+
+dn: o=UPB,c=CO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UPB
+description: Universidad Pontificia Bolivariana
+
+dn: o=UDISTRITAL,c=CO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UDISTRITAL
+description:: VW5pdmVyc2lkYWQgRGlzdHJpdGFsIEZyYW5jaXNjbyBKb3PDqSBkZSBDYWxkYX
+ M=
+
+dn: ou=Milano Bicocca,o=INFN,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Milano Bicocca
+
+dn: o=EAFIT,c=CO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: EAFIT
+description:: VW5pdmVyc2lkYWQgRUFGSVQg
+
+dn: o=PHY,c=RS,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: PHY
+description: Institute of Physics Belgrade - University of Belgrade
+
+dn: ou=ILC,o=CNR,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: ILC
+description: Istituto di Linguistica Computazionale "Antonio Zampolli"
+l: Italy
+
+dn: o=GIS3W,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: GIS3W
+description: gis3w applicazioni web e webgis
+postalAddress: Montecatini Terme (PT)
+registeredAddress: http://gis3w.it/
+
+dn: o=AgroKnow,c=GR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: AgroKnow
+description: Agro-Know Technologies
+postalAddress: Grammou 17, 152 35, Vrilissia, Greece
+registeredAddress: http://agroknow.gr
+
+dn: o=UNIPANAMERICANA,c=CO,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIPANAMERICANA
+description:: RnVuZGFjacOzbiBVbml2ZXJzaXRhcmlhIFBhbmFtZXJpY2FuYQ==
+
+dn: o=HRE,c=PA,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: HRE
+description: Hospital Rafael Estevez
+registeredAddress: Av Alejandro Tapia Aguadulce
+
+dn: o=PST,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: PST
+description: Parco Scientifico e Tecnologico della Sicilia
+
+dn: o=CISHLKO,c=IN,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CISHLKO
+description: Central Institute for Subtropical Horticulture
+
+dn: o=UAH,c=ES,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UAH
+description:: VW5pdmVyc2lkYWQgZGUgQWxjYWzDoQ==
+postalAddress:: UHphLiBTYW4gRGllZ28sIHMvbiAtIDI4ODAxIEFsY2Fsw6EgZGUgSGVuYXJl
+ cyAoTWFkcmlkKQ==
+registeredAddress: http://www.uah.es/
+
+dn: o=CIC-IPN,c=MX,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CIC-IPN
+description:: Q2VudHJvIGRlIEludmVzdGlnYWNpw7NuIGVuIENvbXB1dGFjacOzbiBkZWwgSW
+ 5zdGl0dXRvIFBvbGl0w6ljbmljbyBOYWNpb25hbA==
+
+dn: o=UNIPG,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNIPG
+description:: VW5pdmVyc2l0w6AgZGVnbGkgU3R1ZGkgZGkgUGVydWdpYQ==
+
+dn: o=ISPRA,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ISPRA
+description: Istituto Superiore per la protezione e la Ricerca Ambientale
+
+dn: o=RegioneLiguria,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: RegioneLiguria
+description: Regione Liguria
+
+dn: o=MMC,c=FR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MMC
+description:: TWluaXN0w6hyZSBkZSBsYSBDdWx0dXJlIGV0IGRlIGxhIENvbW11bmljYXRpb2
+ 4=
+
+dn: o=LAORE,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: LAORE
+description: Sardinia Region-Laore
+
+dn: o=JRC,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: JRC
+description: Joint Research Centre - The European Commission's in-house scie
+ nce service
+
+dn: o=UNIMORE,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIMORE
+description: University of Modena e Reggio Emilia
+
+dn: o=UNINA,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNINA
+description:: VW5pdmVyc2l0w6AgZGkgTmFwb2xpIEZlZGVyaWNvIElJ
+
+dn: ou=DISSPAPA,o=UNINA,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: DISSPAPA
+description:: VW5pdmVyc2l0w6AgZGkgTmFwb2xpIEZlZGVyaWNvIElJIC0gRmFjb2x0w6AgZG
+ kgQWdyYXJpYQ==
+
+dn: o=UNIVALLE,c=CO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNIVALLE
+description: Universidad del Valle
+
+dn: o=UU,c=NL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UU
+description: Utrecht University
+
+dn: o=RENATA,c=CO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: RENATA
+description:: UkVOQVRBOiBSZWQgTmFjaW9uYWwgQWNhZMOpbWljYSBkZSBUZWNub2xvZ8OtYS
+ BBdmFuemFkYQ==
+
+dn: o=RedCONARE,c=CR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: RedCONARE
+description:: UmVkIE5hY2lvbmFsIGRlIEludmVzdGlnYWNpw7NuIHkgRWR1Y2FjacOzbiBkZS
+ BDb3N0YSBSaWNh
+
+dn: o=UNIVR,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIVR
+description:: VW5pdmVyc2l0w6AgZGVnbGkgU3R1ZGkgZGkgVmVyb25h
+
+dn: o=UNN,c=NG,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNN
+description: University of Nigeria
+
+dn: o=KingsCollegeLondon,c=GB,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: KingsCollegeLondon
+description: King's is one of the world's leading research and teaching univ
+ ersities based in the heart of London.
+
+dn: ou=Institute of Psychiatry,o=KingsCollegeLondon,c=GB,ou=Organisations,dc
+ =local
+objectClass: top
+objectClass: organizationalUnit
+ou: Institute of Psychiatry
+
+dn: o=UNIPD,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIPD
+description: Universita' degli studi di Padova
+
+dn: o=UGENT,c=BE,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UGENT
+description: University of Ghent
+
+dn: o=AlzheimerHellas,c=GR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: AlzheimerHellas
+description: Greek Association of Alzheimer's Disease and Related Disorders
+registeredAddress: http://www.alzheimer-hellas.gr/
+
+dn: o=PlymouthUniversity,c=GB,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: PlymouthUniversity
+description: Plymouth University
+
+dn: o=MMRC,c=PL,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: IMDiK
+o: MMRC
+description: Mossakowski Medical Research Centre Polish Academy of Sciences
+postalAddress: 02-106 Warsaw, 5 Pawinskiego Street
+registeredAddress: http://imdik.pan.pl/en/
+
+dn: o=DEU,c=TR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: DEU
+description:: RE9LVVogRVlMw5xMIMOcTsSwVkVSU8SwVEVTxLAgUkVLVMOWUkzDnMSew5w=
+registeredAddress: http://www.deu.edu.tr/deuwebv2/en/
+
+dn: o=UDE,c=DE,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UDE
+description: University of Duisburg-Essen
+postalAddress: Virchowstrasse 174, 45147 Essen
+registeredAddress: http://www.uni-due.de/index.shtml.en
+
+dn: o=UNIBA,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNIBA
+description:: VW5pdmVyc2l0w6AgZGVnbGkgU3R1ZGkgZGkgQmFyaSBBbGRvIE1vcm8=
+registeredAddress: http://www.uniba.it/
+
+dn: o=UNISANGIL,c=CO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNISANGIL
+description: Fundacion Universitaria de San Gil
+
+dn: ou=BioLab,o=MMRC,c=PL,ou=Organisations,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: BioLab
+description: Bioinformatics Laboratory, Medical Research Institute, Polish A
+ cademy of Science
+postalAddress: Dworkowa 3, 00-784 Warsaw
+
+dn: o=UNISAL,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNISAL
+description:: VW5pdmVyc2l0w6AgZGVsIFNhbGVudG8=
+
+dn: o=UA,c=PT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UA
+description: University of Aveiro
+
+dn: o=AGRIFOLIA,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: AGRIFOLIA
+description: Agrifolia Studio Associato
+
+dn: o=SCP,c=RO,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SCP
+description: "Prof. Dr. Al. Obregia" Spitalul Clinic de Psihiatrie
+postalAddress: Sos. Berceni 10-12, District 4,  Bucharest
+registeredAddress: http://www.spital-obregia.ro/
+
+dn: o=TCD,c=IE,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: TCD
+description: Trinity College Dublin
+registeredAddress: http://www.tcd.ie/
+
+dn: o=ORB,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ORB
+description: Ospedali Riuniti di Bergamo
+registeredAddress: http://www.ospedaliriuniti.bergamo.it/
+
+dn: o=UNICATT,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNICATT
+description:: VW5pdmVyc2l0w6AgQ2F0dG9saWNhIGRlbCBTYWNybyBDdW9yZQ==
+registeredAddress: http://roma.unicatt.it/
+
+dn: o=SAPIENZA,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SAPIENZA
+description:: VW5pdmVyc2l0w6AgZGVnbGkgU3R1ZGkgZGkgUm9tYSAiTGEgU2FwaWVuemEi
+registeredAddress: http://www.uniroma1.it/
+
+dn: o=INSERM,c=FR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: INSERM
+description:: SW5zdGl0dXQgbmF0aW9uYWwgZGUgbGEgc2FudMOpIGV0IGRlIGxhIHJlY2hlcm
+ NoZSBtw6lkaWNhbGU=
+registeredAddress: http://www.inserm.fr/
+
+dn: ou=U825,o=INSERM,c=FR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: U825
+description:: VU1SIDgyNSBJbnNlcm0gLyBVbml2ZXJzaXTDqSBUb3Vsb3VzZSBJSUkgLSBQYX
+ VsIFNhYmF0aWVy
+l: France
+registeredAddress: http://www.u825.inserm.fr/
+
+dn: o=MUEDU,c=ET,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MUEDU
+description:: TWVrZWxsZSBVbml2ZXJzaXR5IA==
+
+dn: o=UCV,c=VE,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UCV
+description: Universidade Central de Venezuela
+
+dn: o=C-DAC,c=IN,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: C-DAC
+description: C-DAC: Centre for Development of Advanced Computing
+
+dn: o=IFES,c=BR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: IFES
+description:: SW5zdGl0dXRvIEZlZGVyYWwgZG8gRXNww61yaXRvIFNhbnRv
+
+dn: o=UBUNTUNET,c=MW,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UBUNTUNET
+description: UbuntuNet Alliance - Regional Research and Education Network fo
+ r Eastern and Southern Africa
+
+dn: o=PSNC,c=PL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: PSNC
+description:: UG96bmHFhCBTdXBlcmNvbXB1dGluZyBhbmQgTmV0d29ya2luZyBDZW50ZXI=
+
+dn: o=SWITCH,c=CH,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: SWITCH
+description: Serving Swiss Universities
+
+dn: o=RAU,c=AM,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: RAU
+description: Russian-Armenian (Slavonic) University
+
+dn: o=UACJ,c=MX,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UACJ
+description:: VW5pdmVyc2lkYWQgQXV0w7Nub21hIGRlIENpdWRhZCBKdcOhcmV6
+
+dn: o=CUDI,c=MX,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CUDI
+description:: Q29ycG9yYWNpw7NuIFVuaXZlcnNpdGFyaWEgcGFyYSBlbCBEZXNhcm9sbG8gZG
+ UgSW50ZXJuZXQ=
+
+dn: o=UNIUD,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIUD
+description: Universita' degli studi di Udine
+
+dn: o=FLUP,c=PT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: FLUP
+description: Faculdade de Letras da Universidade do Porto
+
+dn: o=NACOSS,c=NG,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: NACOSS
+description: Nigerian Association of Computer Science Students
+
+dn: o=NABDA,c=NG,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: NABDA
+description: National Biotechnology Development Agency
+registeredAddress: http://nabda.gov.ng
+
+dn: o=ESUT,c=NG,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: ESUT
+description: Enugu State University of Science and Technology
+registeredAddress: http://www.esut.edu.ng/
+
+dn: o=CBSS,c=NG,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CBSS
+description: Centre for Basic Space Science - University of Nigeria, Nsukka
+registeredAddress: http://www.cbssonline.com/
+
+dn: o=UNA,c=PY,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNA
+description:: VW5pdmVyc2lkYWQgTmFjaW9uYWwgZGUgQXN1bmNpw7NuIGh0dHA6Ly93d3cudW
+ 5hLnB5
+
+dn: ou=CNC,o=UNA,c=PY,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: CNC
+description:: Q2VudHJvIE5hY3Rpb25hbCBkZSBDb21wdXRhY2nDs24gaHR0cDovL3d3dy5jbm
+ MudW5hLnB5
+l: Paraguay
+
+dn: o=CERN,c=EU,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CERN
+description: European Organization for Nuclear Research
+
+dn: o=ErasmusMC,c=NL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: ErasmusMC
+description: University Medical Center Rotterdam
+
+dn: o=UCUENCA,c=EC,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UCUENCA
+description: Universidad de Cuenca
+
+dn: ou=GCTA,o=UCUENCA,c=EC,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: GCTA
+description: Grupo de Ciencias de la Tierra y el Ambiente http://diuc.ucuenc
+ a.edu.ec/cta/
+l: Ecuador
+
+dn: o=UNL,c=EC,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNL
+description: Universidad Nacional de Loja
+postalAddress: http://www.unl.edu.ec
+
+dn: o=UTPL,c=EC,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UTPL
+description:: VW5pdmVyc2lkYWQgVMOpY25pY2EgUGFydGljdWxhciBkZSBMb2ph
+
+dn: o=CNCA,c=CR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CNCA
+description: Colaboratorio Nacional de Computacion Avanzada http://www.cenat
+ .ac.cr
+
+dn: o=SHEF,c=GB,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: SHEF
+description: The University of Sheffield http://www.shef.ac.uk
+
+dn: o=UNITO,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNITO
+description:: VW5pdmVyc2l0w6AgZGVnbGkgU3R1ZGkgZGkgVG9yaW5v
+
+dn: o=UNIGE,c=CH,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNIGE
+description: University of Geneva
+registeredAddress: http://www.unige.ch/international/index_en.html
+
+dn: o=UNL,c=PT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNL
+description: Universidade Nova de Lisboa http://www.unl.pt
+
+dn: ou=ITQB,o=UNL,c=PT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: ITQB
+description:: SW5zdGl0dXRvIGRlIHRlY25vbG9naWEgcXXDrW1pY2EgZSBiaW9sw7NnaWNhIG
+ h0dHA6Ly93d3cuaXRxYi51bmwucHQ=
+l: Portugal
+
+dn: o=UNCUYO,c=AR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNCUYO
+description: Universidad Nactional de Cuyo http://www.uncu.edu.ar
+
+dn: o=salzburgresearch,c=AT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: salzburgresearch
+description: Salzburg Research
+
+dn: ou=LaboratoryofEpidemiologyNeuroimagingTelemedicine,o=IRCCS-FBF,c=IT,ou=
+ Organisations,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: LaboratoryofEpidemiologyNeuroimagingTelemedicine
+l: Brescia
+
+dn: o=ISI,c=IN,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ISI
+description: Indian Statistical Institute http://www.isical.ac.in
+
+dn: o=ESPOCH,c=EC,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ESPOCH
+description:: RXNjdWVsYSBTdXBlcmlvciBQb2xpdMOpY25pYSBkZSBDaGltYm9yYXpv
+
+dn: o=UTEXAS,c=US,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UTEXAS
+description: University of Texas at Austin
+
+dn: o=FAO,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: FAO
+description: Food and Agriculture Organization of the United Nations
+
+dn: o=ENEA,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ENEA
+description: Agenzia nazionale per le nuove tecnologie, l'energia e lo svilu
+ ppo economico sostenibile
+
+dn: o=BSAUNIV,c=IN,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: BSAUNIV
+description: B.S.Abdur Rahman University
+
+dn: o=HUNNUEDU,c=CN,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: HUNNUEDU
+description: Hunan Normal University
+
+dn: ou=Firenze,o=INFN,c=IT,ou=Organisations,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Firenze
+
+dn: o=EC,c=EU,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: EC
+description: European Commission
+
+dn: o=ICCU,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ICCU
+description: Istituto Centrale per il Catalogo Unico
+
+dn: o=UCOL,c=MX,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UCOL
+description: Universidad de Colima http://www.ucol.mx
+
+dn: o=UVG,c=GT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UVG
+description: Universidad del Valle de Guatemala
+
+dn: o=UNAD,c=CO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNAD
+description: Universidad Nacional Abierta y a Distancia Colombia, http://www
+ .unad.edu.co
+
+dn: o=CHU,c=FR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CHU
+description: Centres Hospitaliers Universitaires (CHU)
+
+dn: ou=Toulouse,o=CHU,c=FR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: Toulouse
+description: Le Centre Hospitalier Universitaire de Toulouse
+l: France
+registeredAddress: http://chu-toulouse.fr/
+
+dn: o=POLIMI,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: POLIMI
+description: Politecnico di Milano http://www.polimi.it
+
+dn: o=IPM,c=IR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: IPM
+description: Institute for Research in Fundamental Sciences
+registeredAddress: http://ipm.ir/
+
+dn: c=AF,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AF
+co: Afghanistan
+description: Asia, Southern Asia
+
+dn: c=AL,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AL
+co: Albania
+description: Europe, Southern Europe
+
+dn: c=DZ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: DZ
+co: Algeria
+description: Africa, Northern Africa
+
+dn: c=AS,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AS
+co: American Samoa
+description: Oceania, Polynesia
+
+dn: c=AD,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AD
+co: Andorra
+description: Europe, Southern Europe
+
+dn: c=AO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AO
+co: Angola
+description: Africa, Middle Africa
+
+dn: c=AI,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AI
+co: Anguilla
+description: Americas, Caribbean
+
+dn: c=AQ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AQ
+co: Antarctica
+
+dn: c=AG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AG
+co: Antigua and Barbuda
+description: Americas, Caribbean
+
+dn: c=AR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AR
+co: Argentina
+description: Americas, South America
+
+dn: c=AM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AM
+co: Armenia
+description: Asia, Western Asia
+
+dn: c=AW,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AW
+co: Aruba
+description: Americas, Caribbean
+
+dn: c=AU,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AU
+co: Australia
+description: Oceania, Australia and New Zealand
+
+dn: c=AT,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AT
+co: Austria
+description: Europe, Western Europe
+
+dn: c=AZ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AZ
+co: Azerbaijan
+description: Asia, Western Asia
+
+dn: c=BS,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BS
+co: Bahamas
+description: Americas, Caribbean
+
+dn: c=BH,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BH
+co: Bahrain
+description: Asia, Western Asia
+
+dn: c=BD,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BD
+co: Bangladesh
+description: Asia, Southern Asia
+
+dn: c=BB,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BB
+co: Barbados
+description: Americas, Caribbean
+
+dn: c=BY,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BY
+co: Belarus
+description: Europe, Eastern Europe
+
+dn: c=BE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BE
+co: Belgium
+description: Europe, Western Europe
+
+dn: c=BZ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BZ
+co: Belize
+description: Americas, Central America
+
+dn: c=BJ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BJ
+co: Benin
+description: Africa, Western Africa
+
+dn: c=BM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BM
+co: Bermuda
+description: Americas, Northern America
+
+dn: c=BT,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BT
+co: Bhutan
+description: Asia, Southern Asia
+
+dn: c=BO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BO
+co: Bolivia, Plurinational State Of
+description: Americas, South America
+
+dn: c=BQ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BQ
+co: Bonaire, Sint Eustatius and Saba
+
+dn: c=BA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BA
+co: Bosnia and Herzegovina
+description: Europe, Southern Europe
+
+dn: c=BW,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BW
+co: Botswana
+description: Africa, Southern Africa
+
+dn: c=BV,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BV
+co: Bouvet Island
+
+dn: c=BR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BR
+co: Brazil
+description: Americas, South America
+
+dn: c=IO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: IO
+co: British Indian Ocean Territory
+description: Africa, Eastern Africa
+
+dn: c=BN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BN
+co: Brunei Darussalam
+description: Asia, South-Eastern Asia
+
+dn: c=BG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BG
+co: Bulgaria
+description: Europe, Eastern Europe
+
+dn: c=BF,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BF
+co: Burkina Faso
+description: Africa, Western Africa
+
+dn: c=BI,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BI
+co: Burundi
+description: Africa, Eastern Africa
+
+dn: c=KH,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KH
+co: Cambodia
+description: Asia, South-Eastern Asia
+
+dn: c=CM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CM
+co: Cameroon
+description: Africa, Middle Africa
+
+dn: c=CA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CA
+co: Canada
+description: Americas, Northern America
+
+dn: c=CV,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CV
+co: Cape Verde
+description: Africa, Western Africa
+
+dn: c=KY,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KY
+co: Cayman Islands
+description: Americas, Caribbean
+
+dn: c=CF,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CF
+co: Central African Republic
+description: Africa, Middle Africa
+
+dn: c=TD,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TD
+co: Chad
+description: Africa, Middle Africa
+
+dn: c=CL,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CL
+co: Chile
+description: Americas, South America
+
+dn: c=CN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CN
+co: China
+description: Asia, Eastern Asia
+
+dn: c=CX,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CX
+co: Christmas Island
+description: Oceania, Australia and New Zealand
+
+dn: c=CC,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CC
+co: Cocos (Keeling) Islands
+description: Oceania, Australia and New Zealand
+
+dn: c=CO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CO
+co: Colombia
+description: Americas, South America
+
+dn: c=KM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KM
+co: Comoros
+description: Africa, Eastern Africa
+
+dn: c=CG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CG
+co: Congo
+description: Africa, Middle Africa
+
+dn: c=CD,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CD
+co: Congo, The Democratic Republic Of The
+description: Africa, Middle Africa
+
+dn: c=CK,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CK
+co: Cook Islands
+description: Oceania, Polynesia
+
+dn: c=CR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CR
+co: Costa Rica
+description: Americas, Central America
+
+dn: c=HR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: HR
+co: Croatia
+description: Europe, Southern Europe
+
+dn: c=CU,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CU
+co: Cuba
+description: Americas, Caribbean
+
+dn: c=CW,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CW
+co:: Q3VyYcOnYW8=
+
+dn: c=CY,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CY
+co: Cyprus
+description: Asia, Western Asia
+
+dn: c=CZ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CZ
+co: Czech Republic
+description: Europe, Eastern Europe
+
+dn: c=CI,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CI
+co:: Q8O0dGUgRCdJdm9pcmU=
+description: Africa, Western Africa
+
+dn: c=DK,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: DK
+co: Denmark
+description: Europe, Northern Europe
+
+dn: c=DJ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: DJ
+co: Djibouti
+description: Africa, Eastern Africa
+
+dn: c=DM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: DM
+co: Dominica
+description: Americas, Caribbean
+
+dn: c=DO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: DO
+co: Dominican Republic
+description: Americas, Caribbean
+
+dn: c=EC,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: EC
+co: Ecuador
+description: Americas, South America
+
+dn: c=EG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: EG
+co: Egypt
+description: Africa, Northern Africa
+
+dn: c=SV,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SV
+co: El Salvador
+description: Americas, Central America
+
+dn: c=GQ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GQ
+co: Equatorial Guinea
+description: Africa, Middle Africa
+
+dn: c=ER,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: ER
+co: Eritrea
+description: Africa, Eastern Africa
+
+dn: c=EE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: EE
+co: Estonia
+description: Europe, Northern Europe
+
+dn: c=ET,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: ET
+co: Ethiopia
+description: Africa, Eastern Africa
+
+dn: c=FK,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: FK
+co: Falkland Islands  (Malvinas)
+description: Americas, South America
+
+dn: c=FO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: FO
+co: Faroe Islands
+description: Europe, Northern Europe
+
+dn: c=FJ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: FJ
+co: Fiji
+description: Oceania, Melanesia
+
+dn: c=FI,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: FI
+co: Finland
+description: Europe, Northern Europe
+
+dn: c=FR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: FR
+co: France
+description: Europe, Western Europe
+
+dn: c=GF,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GF
+co: French Guiana
+description: Americas, South America
+
+dn: c=PF,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PF
+co: French Polynesia
+description: Oceania, Polynesia
+
+dn: c=TF,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TF
+co: French Southern Territories
+
+dn: c=GA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GA
+co: Gabon
+description: Africa, Middle Africa
+
+dn: c=GM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GM
+co: Gambia
+description: Africa, Western Africa
+
+dn: c=GE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GE
+co: Georgia
+description: Asia, Western Asia
+
+dn: c=DE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: DE
+co: Germany
+description: Europe, Western Europe
+
+dn: c=GH,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GH
+co: Ghana
+description: Africa, Western Africa
+
+dn: c=GI,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GI
+co: Gibraltar
+description: Europe, Southern Europe
+
+dn: c=GR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GR
+co: Greece
+description: Europe, Southern Europe
+
+dn: c=GL,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GL
+co: Greenland
+description: Americas, Northern America
+
+dn: c=GD,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GD
+co: Grenada
+description: Americas, Caribbean
+
+dn: c=GP,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GP
+co: Guadeloupe
+description: Americas, Caribbean
+
+dn: c=GU,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GU
+co: Guam
+description: Oceania, Micronesia
+
+dn: c=GT,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GT
+co: Guatemala
+description: Americas, Central America
+
+dn: c=GG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GG
+co: Guernsey
+description: Europe, Northern Europe
+
+dn: c=GN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GN
+co: Guinea
+description: Africa, Western Africa
+
+dn: c=GW,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GW
+co: Guinea-Bissau
+description: Africa, Western Africa
+
+dn: c=GY,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GY
+co: Guyana
+description: Americas, South America
+
+dn: c=HT,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: HT
+co: Haiti
+description: Americas, Caribbean
+
+dn: c=HM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: HM
+co: Heard Island and McDonald Islands
+
+dn: c=VA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: VA
+co: Holy See (Vatican City State)
+description: Europe, Southern Europe
+
+dn: c=HN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: HN
+co: Honduras
+description: Americas, Central America
+
+dn: c=HK,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: HK
+co: Hong Kong
+description: Asia, Eastern Asia
+
+dn: c=HU,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: HU
+co: Hungary
+description: Europe, Eastern Europe
+
+dn: c=IS,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: IS
+co: Iceland
+description: Europe, Northern Europe
+
+dn: c=IN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: IN
+co: India
+description: Asia, Southern Asia
+
+dn: c=ID,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: ID
+co: Indonesia
+description: Asia, South-Eastern Asia
+
+dn: c=IR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: IR
+co: Iran, Islamic Republic Of
+description: Asia, Southern Asia
+
+dn: c=IQ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: IQ
+co: Iraq
+description: Asia, Western Asia
+
+dn: c=IE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: IE
+co: Ireland
+description: Europe, Northern Europe
+
+dn: c=IM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: IM
+co: Isle of Man
+description: Europe, Northern Europe
+
+dn: c=IL,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: IL
+co: Israel
+description: Asia, Western Asia
+
+dn: c=IT,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: IT
+co: Italy
+description: Europe, Southern Europe
+
+dn: c=JM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: JM
+co: Jamaica
+description: Americas, Caribbean
+
+dn: c=JP,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: JP
+co: Japan
+description: Asia, Eastern Asia
+
+dn: c=JE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: JE
+co: Jersey
+description: Europe, Northern Europe
+
+dn: c=JO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: JO
+co: Jordan
+description: Asia, Western Asia
+
+dn: c=KZ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KZ
+co: Kazakhstan
+description: Asia, Central Asia
+
+dn: c=KE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KE
+co: Kenya
+description: Africa, Eastern Africa
+
+dn: c=KI,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KI
+co: Kiribati
+description: Oceania, Micronesia
+
+dn: c=KP,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KP
+co: Korea, Democratic People's Republic Of
+description: Asia, Eastern Asia
+
+dn: c=KR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KR
+co: Korea, Republic of
+description: Asia, Eastern Asia
+
+dn: c=KW,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KW
+co: Kuwait
+description: Asia, Western Asia
+
+dn: c=KG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KG
+co: Kyrgyzstan
+description: Asia, Central Asia
+
+dn: c=LA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LA
+co: Lao People's Democratic Republic
+description: Asia, South-Eastern Asia
+
+dn: c=LV,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LV
+co: Latvia
+description: Europe, Northern Europe
+
+dn: c=LB,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LB
+co: Lebanon
+description: Asia, Western Asia
+
+dn: c=LS,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LS
+co: Lesotho
+description: Africa, Southern Africa
+
+dn: c=LR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LR
+co: Liberia
+description: Africa, Western Africa
+
+dn: c=LY,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LY
+co: Libya
+description: Africa, Northern Africa
+
+dn: c=LI,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LI
+co: Liechtenstein
+description: Europe, Western Europe
+
+dn: c=LT,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LT
+co: Lithuania
+description: Europe, Northern Europe
+
+dn: c=LU,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LU
+co: Luxembourg
+description: Europe, Western Europe
+
+dn: c=MO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MO
+co: Macao
+description: Asia, Eastern Asia
+
+dn: c=MK,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MK
+co: Macedonia, the Former Yugoslav Republic Of
+description: Europe, Southern Europe
+
+dn: c=MG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MG
+co: Madagascar
+description: Africa, Eastern Africa
+
+dn: c=MW,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MW
+co: Malawi
+description: Africa, Eastern Africa
+
+dn: c=MY,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MY
+co: Malaysia
+description: Asia, South-Eastern Asia
+
+dn: c=MV,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MV
+co: Maldives
+description: Asia, Southern Asia
+
+dn: c=ML,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: ML
+co: Mali
+description: Africa, Western Africa
+
+dn: c=MT,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MT
+co: Malta
+description: Europe, Southern Europe
+
+dn: c=MH,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MH
+co: Marshall Islands
+description: Oceania, Micronesia
+
+dn: c=MQ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MQ
+co: Martinique
+description: Americas, Caribbean
+
+dn: c=MR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MR
+co: Mauritania
+description: Africa, Western Africa
+
+dn: c=MU,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MU
+co: Mauritius
+description: Africa, Eastern Africa
+
+dn: c=YT,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: YT
+co: Mayotte
+description: Africa, Eastern Africa
+
+dn: c=MX,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MX
+co: Mexico
+description: Americas, Central America
+
+dn: c=FM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: FM
+co: Micronesia, Federated States Of
+description: Oceania, Micronesia
+
+dn: c=MD,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MD
+co: Moldova, Republic of
+description: Europe, Eastern Europe
+
+dn: c=MC,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MC
+co: Monaco
+description: Europe, Western Europe
+
+dn: c=MN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MN
+co: Mongolia
+description: Asia, Eastern Asia
+
+dn: c=ME,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: ME
+co: Montenegro
+description: Europe, Southern Europe
+
+dn: c=MS,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MS
+co: Montserrat
+description: Americas, Caribbean
+
+dn: c=MA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MA
+co: Morocco
+description: Africa, Northern Africa
+
+dn: c=MZ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MZ
+co: Mozambique
+description: Africa, Eastern Africa
+
+dn: c=MM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MM
+co: Myanmar
+description: Asia, South-Eastern Asia
+
+dn: c=NA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NA
+co: Namibia
+description: Africa, Southern Africa
+
+dn: c=NR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NR
+co: Nauru
+description: Oceania, Micronesia
+
+dn: c=NP,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NP
+co: Nepal
+description: Asia, Southern Asia
+
+dn: c=NL,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NL
+co: Netherlands
+description: Europe, Western Europe
+
+dn: c=NC,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NC
+co: New Caledonia
+description: Oceania, Melanesia
+
+dn: c=NZ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NZ
+co: New Zealand
+description: Oceania, Australia and New Zealand
+
+dn: c=NI,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NI
+co: Nicaragua
+description: Americas, Central America
+
+dn: c=NE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NE
+co: Niger
+description: Africa, Western Africa
+
+dn: c=NG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NG
+co: Nigeria
+description: Africa, Western Africa
+
+dn: c=NU,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NU
+co: Niue
+description: Oceania, Polynesia
+
+dn: c=NF,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NF
+co: Norfolk Island
+description: Oceania, Australia and New Zealand
+
+dn: c=MP,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MP
+co: Northern Mariana Islands
+description: Oceania, Micronesia
+
+dn: c=NO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: NO
+co: Norway
+description: Europe, Northern Europe
+
+dn: c=OM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: OM
+co: Oman
+description: Asia, Western Asia
+
+dn: c=PK,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PK
+co: Pakistan
+description: Asia, Southern Asia
+
+dn: c=PW,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PW
+co: Palau
+description: Oceania, Micronesia
+
+dn: c=PS,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PS
+co: Palestinian Territory, Occupied
+description: Asia, Western Asia
+
+dn: c=PA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PA
+co: Panama
+description: Americas, Central America
+
+dn: c=PG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PG
+co: Papua New Guinea
+description: Oceania, Melanesia
+
+dn: c=PY,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PY
+co: Paraguay
+description: Americas, South America
+
+dn: c=PE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PE
+co: Peru
+description: Americas, South America
+
+dn: c=PH,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PH
+co: Philippines
+description: Asia, South-Eastern Asia
+
+dn: c=PN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PN
+co: Pitcairn
+description: Oceania, Polynesia
+
+dn: c=PL,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PL
+co: Poland
+description: Europe, Eastern Europe
+
+dn: c=PT,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PT
+co: Portugal
+description: Europe, Southern Europe
+
+dn: c=PR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PR
+co: Puerto Rico
+description: Americas, Caribbean
+
+dn: c=QA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: QA
+co: Qatar
+description: Asia, Western Asia
+
+dn: c=RO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: RO
+co: Romania
+description: Europe, Eastern Europe
+
+dn: c=RU,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: RU
+co: Russian Federation
+description: Europe, Eastern Europe
+
+dn: c=RW,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: RW
+co: Rwanda
+description: Africa, Eastern Africa
+
+dn: c=RE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: RE
+co:: UsOpdW5pb24=
+description: Africa, Eastern Africa
+
+dn: c=BL,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: BL
+co:: U2FpbnQgQmFydGjDqWxlbXk=
+description: Americas, Caribbean
+
+dn: c=SH,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SH
+co: Saint Helena, Ascension and Tristan Da Cunha
+description: Africa, Western Africa
+
+dn: c=KN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: KN
+co: Saint Kitts And Nevis
+description: Americas, Caribbean
+
+dn: c=LC,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LC
+co: Saint Lucia
+description: Americas, Caribbean
+
+dn: c=MF,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: MF
+co: Saint Martin (French Part)
+description: Americas, Caribbean
+
+dn: c=PM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: PM
+co: Saint Pierre And Miquelon
+description: Americas, Northern America
+
+dn: c=VC,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: VC
+co: Saint Vincent And The Grenadines
+description: Americas, Caribbean
+
+dn: c=WS,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: WS
+co: Samoa
+description: Oceania, Polynesia
+
+dn: c=SM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SM
+co: San Marino
+description: Europe, Southern Europe
+
+dn: c=ST,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: ST
+co: Sao Tome and Principe
+description: Africa, Middle Africa
+
+dn: c=SA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SA
+co: Saudi Arabia
+description: Asia, Western Asia
+
+dn: c=SN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SN
+co: Senegal
+description: Africa, Western Africa
+
+dn: c=RS,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: RS
+co: Serbia
+description: Europe, Southern Europe
+
+dn: c=SC,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SC
+co: Seychelles
+description: Africa, Eastern Africa
+
+dn: c=SL,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SL
+co: Sierra Leone
+description: Africa, Western Africa
+
+dn: c=SG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SG
+co: Singapore
+description: Asia, South-Eastern Asia
+
+dn: c=SX,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SX
+co: Sint Maarten (Dutch part)
+
+dn: c=SK,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SK
+co: Slovakia
+description: Europe, Eastern Europe
+
+dn: c=SI,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SI
+co: Slovenia
+description: Europe, Southern Europe
+
+dn: c=SB,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SB
+co: Solomon Islands
+description: Oceania, Melanesia
+
+dn: c=SO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SO
+co: Somalia
+description: Africa, Eastern Africa
+
+dn: c=ZA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: ZA
+co: South Africa
+description: Africa, Southern Africa
+
+dn: c=GS,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GS
+co: South Georgia and the South Sandwich Islands
+description: Americas, South America
+
+dn: c=SS,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SS
+co: South Sudan
+
+dn: c=ES,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: ES
+co: Spain
+description: Europe, Southern Europe
+
+dn: c=LK,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: LK
+co: Sri Lanka
+description: Asia, Southern Asia
+
+dn: c=SD,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SD
+co: Sudan
+description: Africa, Northern Africa
+
+dn: c=SR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SR
+co: Suriname
+description: Americas, South America
+
+dn: c=SJ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SJ
+co: Svalbard And Jan Mayen
+description: Europe, Northern Europe
+
+dn: c=SZ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SZ
+co: Swaziland
+description: Africa, Southern Africa
+
+dn: c=SE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SE
+co: Sweden
+description: Europe, Northern Europe
+
+dn: c=CH,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: CH
+co: Switzerland
+description: Europe, Western Europe
+
+dn: c=SY,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: SY
+co: Syrian Arab Republic
+description: Asia, Western Asia
+
+dn: c=TW,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TW
+co: Taiwan, Province Of China
+description: Asia, Eastern Asia
+
+dn: c=TJ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TJ
+co: Tajikistan
+description: Asia, Central Asia
+
+dn: c=TZ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TZ
+co: Tanzania, United Republic of
+description: Africa, Eastern Africa
+
+dn: c=TH,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TH
+co: Thailand
+description: Asia, South-Eastern Asia
+
+dn: c=TL,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TL
+co: Timor-Leste
+description: Asia, South-Eastern Asia
+
+dn: c=TG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TG
+co: Togo
+description: Africa, Western Africa
+
+dn: c=TK,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TK
+co: Tokelau
+description: Oceania, Polynesia
+
+dn: c=TO,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TO
+co: Tonga
+description: Oceania, Polynesia
+
+dn: c=TT,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TT
+co: Trinidad and Tobago
+description: Americas, Caribbean
+
+dn: c=TN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TN
+co: Tunisia
+description: Africa, Northern Africa
+
+dn: c=TR,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TR
+co: Turkey
+description: Asia, Western Asia
+
+dn: c=TM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TM
+co: Turkmenistan
+description: Asia, Central Asia
+
+dn: c=TC,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TC
+co: Turks and Caicos Islands
+description: Americas, Caribbean
+
+dn: c=TV,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: TV
+co: Tuvalu
+description: Oceania, Polynesia
+
+dn: c=UG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: UG
+co: Uganda
+description: Africa, Eastern Africa
+
+dn: c=UA,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: UA
+co: Ukraine
+description: Europe, Eastern Europe
+
+dn: c=AE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AE
+co: United Arab Emirates
+description: Asia, Western Asia
+
+dn: c=GB,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: GB
+co: United Kingdom
+description: Europe, Northern Europe
+
+dn: c=US,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: US
+co: United States
+description: Americas, Northern America
+
+dn: c=UM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: UM
+co: United States Minor Outlying Islands
+description: Americas, Northern America
+
+dn: c=UY,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: UY
+co: Uruguay
+description: Americas, South America
+
+dn: c=UZ,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: UZ
+co: Uzbekistan
+description: Asia, Central Asia
+
+dn: c=VU,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: VU
+co: Vanuatu
+description: Oceania, Melanesia
+
+dn: c=VE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: VE
+co: Venezuela, Bolivarian Republic of
+description: Americas, South America
+
+dn: c=VN,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: VN
+co: Viet Nam
+description: Asia, South-Eastern Asia
+
+dn: c=VG,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: VG
+co: Virgin Islands, British
+description: Americas, Caribbean
+
+dn: c=VI,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: VI
+co: Virgin Islands, U.S.
+description: Americas, Caribbean
+
+dn: c=WF,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: WF
+co: Wallis and Futuna
+description: Oceania, Polynesia
+
+dn: c=EH,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: EH
+co: Western Sahara
+description: Africa, Northern Africa
+
+dn: c=YE,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: YE
+co: Yemen
+description: Asia, Western Asia
+
+dn: c=ZM,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: ZM
+co: Zambia
+description: Africa, Eastern Africa
+
+dn: c=ZW,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: ZW
+co: Zimbabwe
+description: Africa, Eastern Africa
+
+dn: c=AX,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: AX
+co:: w4VsYW5kIElzbGFuZHM=
+description: Europe, Northern Europe
+
+dn: o=CSIR,c=ZA,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CSIR
+description: Council for Scientific and Industrial Research
+
+dn: o=HeunisSolutions,c=ZA,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: HeunisSolutions
+description: Heunis Solutions
+
+dn: o=MerakaInstitute,c=ZA,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: MerakaInstitute
+description: Meraka Institute
+
+dn: o=SAAO,c=ZA,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: SAAO
+description: Observatory Road, Observatory
+
+dn: o=TLABS,c=ZA,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: TLABS
+description: iThemba Laboratory for Accelerator-Based Sciences
+
+dn: o=UCT,c=ZA,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UCT
+description: University of Cape Town
+
+dn: o=UP,c=ZA,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UP
+description: University of Pretoria
+
+dn: c=EU,ou=Organisations,dc=local
+objectClass: friendlyCountry
+objectClass: country
+objectClass: top
+c: EU
+co: Europe
+description: Europe
+
+dn: o=AS,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: AS
+description: Antenna Sicilia
+registeredAddress: http://www.antennasicilia.it/
+
+dn: o=ISARAS,c=RU,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ISARAS
+description: Institute for Systems Analysis of the Russian Academy of Scienc
+ es
+registeredAddress: http://www.isa.ru/
+
+dn: o=CeNAT,c=CR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CeNAT
+description:: Q2VudHJvIE5hY2lvbmFsIGRlIEFsdGEgVGVjbm9sb2fDrWEgaHR0cDovL3d3dy
+ 5jZW5hdC5hYy5jcg==
+
+dn: o=IL-IBM,c=IL,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: IL-IBM
+description: IBM Research
+registeredAddress: http://www.ibm.com/il/he/
+
+dn: o=SIGMAORIONIS,c=FR,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SIGMAORIONIS
+description: Sigma Orionis
+
+dn: o=UDC,c=ES,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UDC
+description: Universidade da Coruna
+
+dn: o=UWEDU,c=PL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UWEDU
+description: UNIVERSITY OF WARSAW
+
+dn: o=MOLINETTE,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MOLINETTE
+description:: QS5PLiBDaXR0w6AgZGVsbGEgU2FsdXRlIGUgZGVsbGEgU2NpZW56YSBkaSBUb3
+ Jpbm8g
+registeredAddress: http://www.molinette.piemonte.it
+
+dn: o=DONGNOCCHI,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: DONGNOCCHI
+description: Fondazione don Carlo Gnocchi ONLUS
+
+dn: o=RMCASELAS,c=PT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: RMCASELAS
+description:: UmVzc29uw6JuY2lhIE1hZ27DqXRpY2EtQ2FzZWxhcyBodHRwOi8vcm1jYXNlbG
+ FzLnBhaS5wdA==
+
+dn: o=SCamilloForlanini,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SCamilloForlanini
+description: Azienda Ospedaliera San Camillo-Forlanini
+registeredAddress: http://www.scamilloforlanini.rm.it/html/
+
+dn: o=TUM,c=AT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: TUM
+description:: VGVjaG5pc2NoZSBVbml2ZXJzaXTDpHQgTcO8bmNoZW4=
+
+dn: o=CSKMSWIA,c=PL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CSKMSWIA
+description: Central Clinical Hospital of Ministry of Interior  in Warsaw
+
+dn: o=SUM,c=PL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: SUM
+description:: xZpsxIVza2kgVW5pd2VyeXRldCBNZWR5Y256eSB3IEthdG93aWNhY2ggKE1lZG
+ ljYWwgVW5pdmVyc2l0eSBvZiBTaWxlc2lhKQ==
+registeredAddress: http://sum.edu.pl
+
+dn: o=WUM,c=PL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: WUM
+description: Warszawski Uniwersytet Medyczny
+registeredAddress: http://www.wum.edu.pl
+
+dn: o=CMKP,c=PL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: CMKP
+description: Centrum Medyczne Ksztalcenia Podyplomoewgo
+registeredAddress: http://www.cmkp.edu.pl
+
+dn: o=UMLUB,c=PL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UMLUB
+description: Medical University in Lublin
+registeredAddress: http://www.umlub.pl/
+
+dn: o=AlzheimerPolska,c=PL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: AlzheimerPolska
+description: Polkie Towarzystwo Alzheimerowskie
+registeredAddress: http://www.alzheimerpolska.pl
+
+dn: o=IIMCB,c=PL,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: IIMCB
+description: The International Institute of Molecular and Cell Biology
+registeredAddress: http://www.iimcb.gov.pl
+
+dn: o=FCUP,c=PT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: FCUP
+description:: RmFjdWxkYWRlIGRlIENpw6puY2lhcyBkYSBVbml2ZXJzaWRhZGUgZG8gUG9ydG
+ 8=
+registeredAddress: http://sigarra.up.pt/fcup/pt/web_page.inicial
+
+dn: o=UNIPV,c=IT,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UNIPV
+description:: VW5pdmVyc2l0w6AgZGVnbGkgc3R1ZGkgZGkgUGF2aWE=
+
+dn: o=UPCH,c=PE,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: UPCH
+description: Universidad Peruana Cayetano Heredia
+registeredAddress: http://www.upch.edu.pe/portal/
+
+dn: o=KGWU,c=JP,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: KGWU
+description: Kawamura Gakuen Women's University
+registeredAddress: http://www.kgwu.ac.jp/
+
+dn: o=NeCTAR,c=AU,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: NeCTAR
+description: National eResearch Collaboration Tools and Resources
+
+dn: o=UNIBS,c=IT,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNIBS
+description:: VW5pdmVyc2l0w6AgZGVnbGkgU3R1ZGkgZGkgQnJlc2NpYQ==
+registeredAddress: http://www.unibs.it/
+
+dn: o=USP,c=BR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: USP
+description:: VW5pdmVyc2lkYWRlIGRlIFPDo28gUGF1bG8=
+l: Brazil
+registeredAddress: http://www5.usp.br
+
+dn: o=GJUEDU,c=JO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: GJUEDU
+description: German Jordanian University
+
+dn: ou=POLI,o=USP,c=BR,ou=Organisations,dc=local
+objectClass: top
+objectClass: organizationalUnit
+ou: POLI
+description:: RXNjb2xhIFBvbGl0w6ljbmljYSBkYSBVU1A=
+l: Brazil
+registeredAddress: http://www.poli.usp.br
+
+dn: o=UNILIBRECALI,c=CO,ou=Organisations,dc=local
+objectClass: top
+objectClass: organization
+o: UNILIBRECALI
+description: Universidad Libre Seccional Cali
+registeredAddress: http://www.unilibrecali.edu.co/home/

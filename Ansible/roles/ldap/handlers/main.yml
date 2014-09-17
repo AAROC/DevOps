@@ -1,2 +1,16 @@
 ---
 # handlers file for ldap/
+- name: restart iptables
+  service: name=iptables state=restarted enabled=yes
+
+- name: restart slapd
+  service: name=slapd state=restarted enabled=yes
+
+- name: restart httpd
+  service: name=httpd state=restarted enabled=yes
+  
+- name: ldapadd
+  command: ldapadd -x -W -D cn=admin,dc=local -H ldap:/// -f {{ file }}
+  
+- name: ldapmodify
+  command: ldapmodify -x -W -D cn=admin,dc=local -H ldap:/// -f {{ file }}
