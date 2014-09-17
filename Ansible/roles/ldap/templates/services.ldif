@@ -1,0 +1,31 @@
+dn: ou=Services,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Services
+
+dn: dc=idp,ou=Services,dc=local
+objectClass: top
+objectClass: domain
+objectClass: domainRelatedObject
+objectClass: dcObject
+associatedDomain: idp.sagrid.ac.za
+dc: idp
+
+dn: ou=Group,dc=idp,ou=Services,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Group
+
+dn: cn=Administrator,ou=Group,dc=idp,ou=Services,dc=local
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Administrator
+uniqueMember: cn=brucellino,ou=People,dc=local 
+description: Users in this group have administrative privileges on this server
+
+dn: cn=Users,ou=Group,dc=idp,ou=Services,dc=local
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Users
+uniqueMember: cn=brucellino,ou=People,dc=local 
+description: List of users using this server for authentication
