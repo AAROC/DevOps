@@ -13,3 +13,4 @@ ldap_packages:
   - openldap-servers
   - openldap-clients
 ldap_service: slapd
+ldap_config_path: /etc/openldap

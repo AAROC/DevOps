@@ -1,17 +1,10 @@
 ---
-- name: Bootstrap the identity machines
-  hosts: identity-all
-#  user: root
-  remote_user: root 
+- name: Configure the LDAP machine
+  hosts: ldap-servers
+  remote_user: ansible
+  sudo: yes 
   roles:
-  - bootstrap
-
-#- name: Configure the LDAP machine
-#  hosts: ldap-servers
-#  remote_user: ansible
-#  sudo: true
-#  roles:
-#  - ldap
+  - ldap
 
 #- name: Prepare the identity machine common environment
 #  hosts: shibboleth-idps

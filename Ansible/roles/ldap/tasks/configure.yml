@@ -7,7 +7,7 @@
     - config
     
 - name: Add Password Policy to ldap server
-  template: src=ppolicy.ldif.j2 dest=/tmp/ppolicy.ldif
+  copy: src=etc/openldap/slapd.d/ppolicy.ldif dest=/tmp/pppolicy.ldif
   tags: 
     - LDAP
     - config
@@ -25,6 +25,6 @@
     - config
 
 - name: Create the config LDIF
-  copy: src='cn=module{0}.ldif' dest=/etc/openldap/slapd.d/cn=config
+  copy: src='cn=module{0}.ldif' dest={{ ldap_config_path }}/slapd.d/cn=config
   notify: 
     - restart slapd

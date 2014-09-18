@@ -7,3 +7,4 @@ ldap_packages:
   - slapd 
   - ldap-utils 
 ldap_service: slapd
+ldap_config_path: /etc/ldap

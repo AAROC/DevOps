@@ -1,8 +1,3 @@
-dn: dc=local
-objectClass: organization
-objectclass: dcObject
-dc: local
-o: {{ organisation }}
 dn: ou=policies,dc=local
 objectClass: organizationalUnit
 objectClass: top
