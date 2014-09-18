@@ -16,7 +16,6 @@
 - name: Install the openldap and required Packages for Ubuntu
   apt: name={{ item }} state=installed update_cache=yes
   with_items: ldap_pkgs
-  environment: env
   when: ansible_os_family == 'Debian'
   tags: 
     - LDAP

@@ -15,7 +15,7 @@
 - name: Install some useful packages (RedHat)
   yum: name={{ item }} state=present
   with_items:
-    - vim
+    - vim-minimal
   tags:
     - bootstrap
   ignore_errors: yes

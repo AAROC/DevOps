@@ -13,12 +13,12 @@
   - certificates
   
   
-#- name: Configure the LDAP machine
-#  hosts: ldap-servers
-#  remote_user: ansible
-#  sudo: true
-#  roles:
-#  - ldap
+- name: Configure the LDAP machine
+  hosts: ldap-servers
+  remote_user: ansible
+  sudo: true
+  roles:
+  - ldap
 
 #- name: Prepare the identity machine common environment
 #  hosts: shibboleth-idps
