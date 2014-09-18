@@ -1,6 +1,8 @@
 ---
 # vars file for shibboleth-idp
 idp_version: 2.4.1
+shibboleth_install_path: /opt/shibboleth-idp
+idp_log_level: DEBUG
 idp_url: http://shibboleth.net/downloads/identity-provider/latest/
 idp_package_name: shibboleth-identityprovider
 idp_host_ip: 196.21.182.116
@@ -10,6 +12,38 @@ shibboleth_secure_port:8443
 # the organisation scope of the eduPerson lookup.
 shibboleth_attribute_scope: 'ac.za'
 # this should be 
-ldap_server:
+ldap_server: ldap.sagrid.ac.za
+idp_base_dn: "ou=people,dc=local"
+idp_principal: "cn=idp,dc=local"
+idp_principal_credential: hahanewpassword
+
+# Federation variables
+# You can have more than one metadata provider.
+# here we define a test federation and a production federation
+
+
+# Should have a loop in here
+federations:
+  - prod_federation:
+    - provider: CatchAllFederation
+    - metadata_URL: https://gridp.garr.it/metadata/gridp.xml
+    - backing_file: CatchAllFederation
+  - test_federation
+    - provider: TestCatchAllFederation
+    - metadata_URL: https://gridp.garr.it/metadata/gridp.xml
+    - backing_file: 
+
+other_service_providers:
+  - science_gateway_1: 
+    - provider: url.of.service.provider
+    - metadata_URL: https://url.of.service.provider/Shibboleth.sso/Metadata
+    - backing_file: url.of.service.provider.xml
+ 
+ # security and certs - just the file name without the path
+ 
+ idp_private_key_file: key.key
+ idp_cert_file: cert.crt
+    
+
 
 

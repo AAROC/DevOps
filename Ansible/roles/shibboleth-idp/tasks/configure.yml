@@ -1,0 +1,14 @@
+- name: Create Attribute Filters
+  copy: src=attribute-filter.xml dest={{ shibboleth_install_path }}/attribute-filter.xml
+
+- name: Create Attribute Resolver
+  template: src=attribute_resolver.xml.j2 dest={{ shibboleth_install_path }}/attribute_resolver.xml
+  
+- name: Create Logger
+  template: src=logging.xml.j2 dest={{ shibboleth_install_path }}/logging.xml
+  
+- name: Create Handler
+  template: src=handler.xml.j2 dest={{ shibboleth_install_path }}/handler.xml
+  
+- name: Create Relying Parties
+  template: src=

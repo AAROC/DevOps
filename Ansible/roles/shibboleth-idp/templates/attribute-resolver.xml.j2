@@ -287,7 +287,7 @@
 
     <!-- Example Static Connector -->
     <!--
-    <resolver:DataConnector id="staticAttributes" xsi:type="dc:Static">
+    <resolver: id="staticAttributes" xsi:type="dc:Static">
         <dc:Attribute id="eduPersonAffiliation">
             <dc:Value>member</dc:Value>
         </dc:Attribute>
@@ -332,10 +332,10 @@
     -->
     
     <resolver:DataConnector id="myLDAP" xsi:type="dc:LDAPDirectory"
-			    ldapURL="ldap://ldap.sagrid.ac.za" 
-			    baseDN="ou=people,dc=local"
-			    principal="cn=idp,dc=local"
-			    principalCredential="hahanewpassword">
+			    ldapURL="{{ ldap_server }}"
+			    baseDN="{{ idp_base_dn}}"
+			    principal="{{ idp_principal }}"
+			    principalCredential="{{ principle_credential }}">
       <dc:FilterTemplate>
 	<![CDATA[
             (cn=$requestContext.principalName)

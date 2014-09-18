@@ -1,4 +1,14 @@
-- name: include (only) my rsa key in authorized_keys
-  action: copy src=id_rsa.pub.marco dest=/home/ansible/.ssh/authorized_keys owner=ansible mode=400
+- name: create the authorized_keys file for the site
+  local_action: command cat "{{ item }} >> /tmp/authorized_keys"
+  with_items: 
+   - "{{ group.administrator_keys }}"
   tags:
     - bootstrap
+    - keys
+
+- name: include admin rsa key in authorized_keys
+  action: copy src=/tmp/authorized_keys dest=/home/ansible/.ssh/authorized_keys owner=ansible mode=400
+  tags:
+    - bootstrap
+    - keys
+    
