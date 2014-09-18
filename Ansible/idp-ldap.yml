@@ -6,6 +6,13 @@
   roles:
   - bootstrap
 
+- name: Add certificates
+  hosts: shibboleth-idps
+  remote_user: root
+  roles:
+  - certificates
+  
+  
 #- name: Configure the LDAP machine
 #  hosts: ldap-servers
 #  remote_user: ansible

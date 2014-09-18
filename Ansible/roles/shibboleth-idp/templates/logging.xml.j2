@@ -6,13 +6,13 @@
         Levels: OFF, ERROR, WARN, INFO, DEBUG, TRACE, ALL
     -->
     <!-- Logs IdP, but not OpenSAML, messages -->
-    <logger name="edu.internet2.middleware.shibboleth" level="DEBUG"/>
+    <logger name="edu.internet2.middleware.shibboleth" level="{{ shibboleth_idp_log_level }}"/>
 
     <!-- Logs OpenSAML, but not IdP, messages -->
     <logger name="org.opensaml" level="WARN"/>
     
     <!-- Logs LDAP related messages -->
-    <logger name="edu.vt.middleware.ldap" level="DEBUG"/>
+    <logger name="edu.vt.middleware.ldap" level="{{ shibboleth_ldap_log_level }}"/>
     
     <!-- Logs inbound and outbound protocols messages at DEBUG level -->
     <!--

@@ -2,7 +2,8 @@
 # vars file for shibboleth-idp
 idp_version: 2.4.1
 shibboleth_install_path: /opt/shibboleth-idp
-idp_log_level: DEBUG
+shibboleth_idp_log_level: DEBUG
+shibboleth_ldap_log_level: DEBUG
 idp_url: http://shibboleth.net/downloads/identity-provider/latest/
 idp_package_name: shibboleth-identityprovider
 idp_host_ip: 196.21.182.116
@@ -20,9 +21,6 @@ idp_principal_credential: hahanewpassword
 # Federation variables
 # You can have more than one metadata provider.
 # here we define a test federation and a production federation
-
-
-# Should have a loop in here
 federations:
   - prod_federation:
     - provider: CatchAllFederation
@@ -43,6 +41,8 @@ other_service_providers:
  
  idp_private_key_file: key.key
  idp_cert_file: cert.crt
+ # this can be set to either something under /etc/grid-security/certificates (for EUGridPMA-issued certs) or something in /etc/pki/CA/certs
+ ca_cert_file: /etc/grid-security/INFN-CA-2006.pem
     
 
 

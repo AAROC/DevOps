@@ -1,0 +1,18 @@
+# this task assumes that the certificates role has been applied
+
+- name: copy over host certs
+  copy: src=etc/grid-security/hostcert.pem dest=/etc/grid-security/hostcert.pem owner=root  mode=0644
+
+- name: copy over host key
+  copy: src=etc/grid-security/hostkey.pem dest=/etc/grid-security/hostkey.pem owner=root  mode=0400
+
+- name: Create p12 from pem cert and key
+  command: openssl pkcs12 -export -in /etc/grid-security/hostcert.pem -inkey /etc/grid-security/hostkey.pem -out /tmp/idp.p12  creates=/tmp/idp.p12
+
+- name: Import p12 into Java Key Store
+  command: keytool -importkeystore -srckeystore /tmp/idp.p12 -srcstoretype PKCS -destkeystore /tmp/idp.jks creates /tmp/idp.jks
+
+- name: Add the CA cert to the keystore
+  keytool -importcert -trustcacert -keystore idp.jks -file {{ ca_cert_file }}
+
+

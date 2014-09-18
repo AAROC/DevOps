@@ -11,4 +11,7 @@
   template: src=handler.xml.j2 dest={{ shibboleth_install_path }}/handler.xml
   
 - name: Create Relying Parties
-  template: src=
+  template: src=relying-party.xml.j2 dest={{ shibboleth_install_path }}/relying-party.xml
+  
+- name: Configure the Login module
+  template: src=login.conf.j2 dest={{ shibboleth_install_path }}/login.conf
