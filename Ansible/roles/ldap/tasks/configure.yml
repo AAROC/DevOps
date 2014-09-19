@@ -1,19 +1,34 @@
----
-- name: shut down ldap server
-  service: name={{ ldap_service }} state=stopped
-  sudo: True
+---   
+- name: Copy modules file LDIF
+  copy: src=etc/openldap/slapd.d/{{ ldap_module_file }} dest=/tmp/{{ ldap_module_file }}
+  sudo: yes
   tags: 
     - LDAP
     - config
-    
+
+- name: Add modules
+  command: ldapmodify -Y EXTERNAL ldapi:/// -f /tmp/{{ ldap_module_file }}
+  sudo: yes 
+  when: ansible_os_family == 'Debian'
+  tags: 
+    - LDAP
+    - config
+ 
+- name: Restart ldap server
+  service: name={{ ldap_service }} state=restarted enabled=yes
+  sudo: yes 
+  tags: 
+    - LDAP
+    - config
+ 
 - name: Add Password Policy to ldap server
-  copy: src=etc/openldap/slapd.d/ppolicy.ldif dest=/tmp/pppolicy.ldif
+  copy: src=etc/openldap/slapd.d/ppolicy.ldif dest=/tmp/ppolicy.ldif
   tags: 
     - LDAP
     - config
   
 - name:  Create hdb LDIF 
-  template: src=hdb.ldif.j2 dest=/tmp/hdb.ldif
+  template: src=db.ldif.j2 dest=/tmp/db.ldif
   tags: 
     - LDAP
     - config
@@ -24,7 +39,3 @@
     - LDAP
     - config
 
-- name: Create the config LDIF
-  copy: src='cn=module{0}.ldif' dest={{ ldap_config_path }}/slapd.d/cn=config
-  notify: 
-    - restart slapd
