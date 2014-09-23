@@ -1,6 +1,12 @@
 language: bash
 
 before_install:
+  - sudo apt-get install traceroute
+  - sudo cat /etc/resolv.conf
+  - sudo chmod 666 /run/resolvconf/resolv.conf
+  - sudo ls -lht /run/resolvconf/resolv.conf
+  - sudo echo "nameserver 8.8.8.8" >> /run/resolvconf/resolv.conf
+  - traceroute 212.189.145.20
   - git clone https://github.com/ansible/ansible.git
   - sudo apt-get install python
   - cd ansible/
@@ -8,4 +14,5 @@ before_install:
 
 install:
   - cd $TRAVIS_BUILD_DIR/Ansible
-  - ansible-playbook -i inventories/inventory.identity.dev -C idp-ldap.yml
+  - chmod 400 $PWD/roles/bootstrap/files/public_keys/*
+  - ansible-playbook -vvvv -i inventories/inventory.identity.dev -C idp-ldap.yml --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio
