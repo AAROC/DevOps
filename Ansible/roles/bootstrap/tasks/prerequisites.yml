@@ -26,6 +26,7 @@
   with_items: 
     - python-simplejson
     - iptables
+    - iptables-persistent
     - mlocate
     - initscripts
     - chkconfig
