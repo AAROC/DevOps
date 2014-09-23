@@ -1,6 +1,7 @@
 language: bash
 
 before_install:
+  - sudo apt-get install traceroute
   - sudo cat /etc/resolv.conf
   - sudo chmod 666 /run/resolvconf/resolv.conf
   - sudo ls -lht /run/resolvconf/resolv.conf
