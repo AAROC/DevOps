@@ -8,3 +8,5 @@ ldap_packages:
   - ldap-utils 
 ldap_service: slapd
 ldap_config_path: /etc/ldap
+ldap_db: "{1}hdb"
+ldap_module_file: moduleadd-Deb.ldif 

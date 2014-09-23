@@ -1,4 +1,4 @@
-dn: olcDatabase={2}bdb,cn=config
+dn: olcDatabase={{ ldap_db }},cn=config
 changeType: modify
 replace: olcAccess
 olcAccess: {0}to attrs=userPassword,shadowLastChange by self write by anonymous auth by dn="cn={{ admin }},dc=local" write by group/groupOfUniqueNames/uniqueMember="cn={{ Administrator }},ou=Group,dc={{ idp_group }},ou=Services,dc=local" write by * none

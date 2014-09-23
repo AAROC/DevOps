@@ -14,3 +14,4 @@ ldap_packages:
   - openldap-clients
 ldap_service: slapd
 ldap_config_path: /etc/openldap
+ldap_db: "{2}bdb"
