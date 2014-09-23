@@ -1,13 +1,15 @@
 language: bash
 
 before_install:
+  - sudo cat /etc/resolv.conf
+  - sudo chmod u+rw /etc/resolv.conf
+  - sudo ls -lht /etc/resolv.conf
+  - sudo echo "nameserver 8.8.8.8" >> /etc/resolv.conf
   - git clone https://github.com/ansible/ansible.git
   - sudo apt-get install python
   - cd ansible/
   - sudo python setup.py install
-  - sudo cat /etc/resolv.conf
-  - sudo chmod u+rw /etc/resolv.conf
-  - sudo echo "nameserver 8.8.8.8" > /etc/resolv.conf
+
 install:
   - cd $TRAVIS_BUILD_DIR/Ansible
   - chmod 400 $PWD/roles/bootstrap/files/public_keys/*
