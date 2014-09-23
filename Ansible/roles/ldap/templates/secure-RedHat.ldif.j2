@@ -1,0 +1,7 @@
+dn: cn=config
+changeType: modify
+replace: olcTLSCertificateFile
+olcTLSCertificateFile: {{ ldap_config_path }}/certs/cert.crt
+-
+replace: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: {{ ldap_config_path }}/certs/my.key
