@@ -1,0 +1,7 @@
+dn: cn=module,cn=config
+objectClass: olcModuleList
+cn: module
+olcModulePath: /usr/lib64/openldap
+olcModuleLoad: memberof
+olcModuleLoad: ppolicy
+

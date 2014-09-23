@@ -1,0 +1,39 @@
+- name: Create the root node
+  template: src=root.ldif.j2 dest=/tmp/root.ldif
+
+- name: Add the root node 
+  command: ldapadd -x -w {{ root_password }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/root.ldif
+
+- name: Create Organisations LDIF
+  copy: src=etc/openldap/slapd.d/orgs.ldif dest=/tmp/orgs.ldif
+
+- name: Add Organisations to the server
+  command: ldapadd -x -w {{ root_password }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/orgs.ldif
+
+- name: Copy Default policies
+  copy: src=etc/openldap/slapd.d/ppolicy.ldif dest=/tmp/ppolicy.ldif
+  tags: 
+    - LDAP
+
+- name: Apply overlays 
+  command: ldapadd -x -w {{ root_password }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/ppolicy.ldif
+  tags: 
+    - LDAP
+
+- name: Create the first user ldif
+  template: src=user.ldif.j2 dest=/tmp/user.ldif
+
+- name: Add first user to ou=People
+  command: ldapadd -x -w {{ root_password }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/user.ldif
+# could also be
+# notify: 
+# - ldapadd file=/tmp/user.ldif
+
+- name: Create the services group
+  template: src=services.ldif.j2 dest=/tmp/services.ldif
+
+- name: Configure the services group
+  command: ldapadd -x -w {{ root_password }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/services.ldif
+
+
+ 

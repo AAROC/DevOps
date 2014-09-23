@@ -1,8 +1,10 @@
-dn: ou=Services,dc=local
-objectClass: organizationalUnit
-objectClass: top
-ou: Services
-
+# extended LDIF
+#
+# LDAPv3
+# base <ou=Organisations,dc=local> with scope oneLevel
+# filter: (objectclass=*)
+# requesting: ALL
+#
 dn: dc=idp,ou=Services,dc=local
 objectClass: top
 objectClass: domain

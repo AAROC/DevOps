@@ -1,16 +1,9 @@
 ---
-- name: Bootstrap the identity machines
-  hosts: identity-all
-#  user: root
-  remote_user: root 
-  roles:
-  - bootstrap
-
-- name: Add certificates
-  hosts: shibboleth-idps
-  remote_user: root
-  roles:
-  - certificates
+#- name: Add certificates
+#  hosts: shibboleth-idps
+#  remote_user: root
+#  roles:
+#  - certificates
   
   
 - name: Configure the LDAP machine

@@ -1,0 +1,20 @@
+dn: olcOverlay=ppolicy,olcDatabase={{ ldap_db }},cn=config
+objectClass: top
+objectClass: olcConfig
+objectClass: olcOverlayConfig
+objectClass: olcPPolicyConfig
+olcOverlay: ppolicy
+olcPPolicyDefault: cn=default,ou=policies,dc=local
+olcPPolicyHashCleartext: TRUE
+
+dn: olcOverlay=memberof,olcDatabase={{ ldap_db }},cn=config
+objectClass: top
+objectClass: olcConfig
+objectClass: olcOverlayConfig
+objectClass: olcMemberOf
+olcOverlay: {1}memberof
+olcMemberOfMemberAD: uniqueMember
+olcMemberOfGroupOC: groupOfUniqueNames
+olcMemberOfRefInt: TRUE
+olcMemberOfDangling: drop
+

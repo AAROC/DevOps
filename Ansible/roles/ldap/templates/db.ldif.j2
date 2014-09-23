@@ -1,10 +1,15 @@
 dn: olcDatabase={{ ldap_db }},cn=config
 changeType: modify
 replace: olcAccess
-olcAccess: {0}to attrs=userPassword,shadowLastChange by self write by anonymous auth by dn="cn={{ admin }},dc=local" write by group/groupOfUniqueNames/uniqueMember="cn={{ Administrator }},ou=Group,dc={{ idp_group }},ou=Services,dc=local" write by * none
+olcAccess: to attrs=userPassword,shadowLastChange by self write by anonymous auth by dn="cn={{ admin }},dc=local" write by group/groupOfUniqueNames/uniqueMember="cn={{ Administrator }},ou=Group,dc={{ idp_group }},ou=Services,dc=local" write by * none
+olcAccess: to dn.base="" by * read
+olcAccess: to * by self write by dn="cn={{ admin }},dc=local" write by group/groupOfUniqueNames/uniqueMember="cn={{ Administrator }},ou=Group,dc={{ idp_group }},ou=Services,dc=local" write by * read
 -
-replace: olcAccess
-olcAccess: {1}to dn.base="" by * read
+replace: olcSuffix
+olcSuffix: dc=local
 -
-replace: olcAccess
-olcAccess: {2}to * by self write by dn="cn={{ admin }},dc=local" write by group/groupOfUniqueNames/uniqueMember="cn={{ Administrator }},ou=Group,dc={{ idp_group }},ou=Services,dc=local" write by * read
+replace: olcRootDN
+olcRootDN: cn={{ admin }},dc=local
+-
+replace: olcRootPW
+olcRootPW: {{ root_password }}

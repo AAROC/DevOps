@@ -1,46 +1,54 @@
-dn: ou=policies,dc=local
-objectClass: organizationalUnit
-objectClass: top
-ou: policies
+# extended LDIF
+#
+# LDAPv3
+# base <ou=policies,dc=local> with scope subtree
+# filter: (objectclass=*)
+# requesting: ALL
+#
+
+# default, policies, local
 dn: cn=default,ou=policies,dc=local
-objectClass: person
-objectClass: pwdPolicy
 objectClass: top
-cn: default
+objectClass: pwdPolicy
+objectClass: person
 pwdAttribute: userPassword
 sn: Default Policy
-pwdAllowUserChange: TRUE
-pwdCheckQuality: 0
-pwdExpireWarning: 0
-pwdFailureCountInterval: 0
-pwdGraceAuthNLimit: 0
+cn: default
+pwdMinAge: 0
+pwdMaxAge: 0
 pwdInHistory: 3
+pwdCheckQuality: 0
+pwdMinLength: 6
+pwdExpireWarning: 0
+pwdGraceAuthNLimit: 0
 pwdLockout: TRUE
 pwdLockoutDuration: 3600
-pwdMaxAge: 0
 pwdMaxFailure: 4
-pwdMinAge: 0
-pwdMinLength: 6
+pwdFailureCountInterval: 0
 pwdMustChange: FALSE
+pwdAllowUserChange: TRUE
 pwdSafeModify: FALSE
+
+# admin, policies, local
 dn: cn=admin,ou=policies,dc=local
-objectClass: person
-objectClass: pwdPolicy
 objectClass: top
-cn: admin
+objectClass: pwdPolicy
+objectClass: person
 pwdAttribute: userPassword
 sn: Administrator policy
-pwdAllowUserChange: FALSE
-pwdCheckQuality: 0
-pwdExpireWarning: 0
-pwdFailureCountInterval: 100
-pwdGraceAuthNLimit: 0
+cn: admin
+pwdMinAge: 0
+pwdMaxAge: 0
 pwdInHistory: 0
+pwdCheckQuality: 0
+pwdMinLength: 0
+pwdExpireWarning: 0
+pwdGraceAuthNLimit: 0
 pwdLockout: TRUE
 pwdLockoutDuration: 1800
-pwdMaxAge: 0
 pwdMaxFailure: 3
-pwdMinAge: 0
-pwdMinLength: 0
+pwdFailureCountInterval: 100
 pwdMustChange: FALSE
+pwdAllowUserChange: FALSE
 pwdSafeModify: FALSE
+
