@@ -3,7 +3,7 @@
 iptables_command: iptables
 iptables_package: iptables
 # openldap stuff
-ldap_packages:
+ldap_pkgs:
   - slapd 
   - ldap-utils 
 ldap_service: slapd

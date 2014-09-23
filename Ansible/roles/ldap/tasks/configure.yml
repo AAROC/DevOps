@@ -1,4 +1,11 @@
 ---   
+- name: Start ldap server
+  service: name={{ ldap_service }} state=started enabled=yes
+  sudo: yes 
+  tags: 
+    - LDAP
+    - config
+
 - name: Copy modules file LDIF
   copy: src=etc/openldap/slapd.d/{{ ldap_module_file }} dest=/tmp/{{ ldap_module_file }}
   sudo: yes
@@ -6,36 +13,69 @@
     - LDAP
     - config
 
-- name: Add modules
-  command: ldapmodify -Y EXTERNAL ldapi:/// -f /tmp/{{ ldap_module_file }}
+- name: Add modules (Debian)
+  command: ldapmodify -Y EXTERNAL -H ldapi:/// -f /tmp/{{ ldap_module_file }}
   sudo: yes 
   when: ansible_os_family == 'Debian'
   tags: 
     - LDAP
     - config
+
+- name: Add modules (RedHat)
+  command: ldapadd -Y EXTERNAL -H ldapi:/// -f /tmp/{{ ldap_module_file }}
+  sudo: yes 
+  when: ansible_os_family == 'RedHat'
+  tags: 
+    - LDAP
+    - config
  
 - name: Restart ldap server
-  service: name={{ ldap_service }} state=restarted enabled=yes
+  service: name={{ ldap_service }} state=restarted
   sudo: yes 
   tags: 
     - LDAP
     - config
- 
-- name: Add Password Policy to ldap server
-  copy: src=etc/openldap/slapd.d/ppolicy.ldif dest=/tmp/ppolicy.ldif
-  tags: 
-    - LDAP
-    - config
-  
-- name:  Create hdb LDIF 
+
+- name:  Create db LDIF 
   template: src=db.ldif.j2 dest=/tmp/db.ldif
   tags: 
     - LDAP
     - config
-    
-- name: Create User and Group Overlay LDIF
-  copy: src=etc/openldap/slapd.d/overlay.ldif dest=/tmp/overlay.ldif
+
+- name: Customise DB 
+  command: ldapmodify -Y EXTERNAL -H ldapi:/// -f /tmp/db.ldif
+  sudo: yes 
   tags: 
     - LDAP
     - config
+
+
+- name: Copy Password Policy Schema ldap server (Debian)
+  copy: src=etc/openldap/slapd.d/ppolicySchema.ldif dest=/tmp/ppolicySchema.ldif
+  when: ansible_os_family == 'Debian'
+  tags: 
+    - LDAP
+    - config
+
+- name: Apply ppolicy schema 
+  command: ldapadd -Y EXTERNAL -H ldapi:/// -f /tmp/ppolicySchema.ldif
+  sudo: yes 
+  when: ansible_os_family == 'Debian'
+  tags: 
+    - LDAP
+    - config
+
+- name: Copy Overlay LDIF
+  template: src=overlays.ldif.j2 dest=/tmp/overlays.ldif
+  tags: 
+    - LDAP
+    - config
+
+- name: Apply overlays 
+  command: ldapadd -Y EXTERNAL -H ldapi:/// -f /tmp/overlays.ldif
+  sudo: yes 
+  tags: 
+    - LDAP
+    - config
+
 

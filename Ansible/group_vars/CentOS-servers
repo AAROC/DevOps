@@ -8,10 +8,11 @@ epel_release_name: epel-release-6-8.noarch.rpm
 iptables_command: iptables
 iptables_package: iptables
 # openldap stuff
-ldap_packages:
+ldap_pkgs:
   - openldap
   - openldap-servers
   - openldap-clients
 ldap_service: slapd
 ldap_config_path: /etc/openldap
 ldap_db: "{2}bdb"
+ldap_module_file: moduleadd-Red.ldif 
