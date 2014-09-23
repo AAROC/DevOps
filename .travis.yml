@@ -9,4 +9,4 @@ before_install:
 install:
   - cd $TRAVIS_BUILD_DIR/Ansible
   - chmod 400 $PWD/roles/bootstrap/files/public_keys/*
-  - ansible-playbook -i inventories/inventory.identity.dev -C idp-ldap.yml --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio
+  - ansible-playbook -vvvv -i inventories/inventory.identity.dev -C idp-ldap.yml --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio
