@@ -2,8 +2,8 @@ language: bash
 
 before_install:
   - sudo cat /etc/resolv.conf
-  - sudo chmod u+rw /etc/resolv.conf
-  - sudo ls -lht /etc/resolv.conf
+  - sudo chmod u+rw /run/resolvconf/resolv.conf
+  - sudo ls -lht /run/resolvconf/resolv.conf
   - sudo echo "nameserver 8.8.8.8" >> /run/resolvconf/resolv.conf
   - git clone https://github.com/ansible/ansible.git
   - sudo apt-get install python
