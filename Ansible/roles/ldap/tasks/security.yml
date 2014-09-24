@@ -60,3 +60,34 @@
   tags: 
     - LDAP
     - config
+
+- name: Copy iptable rules for LDAP
+  template: src=iptables.sh.j2 dest=/tmp/iptables.sh mode=0755
+  sudo: yes 
+  tags: 
+    - LDAP
+    - config
+
+- name: Apply rules
+  shell: /tmp/iptables.sh 
+  sudo: yes 
+  tags: 
+    - LDAP
+    - config
+
+- name: Save iptable rules
+  shell: /sbin/iptables-save > /etc/iptables/rules
+  sudo: yes 
+  when: ansible_os_family=="Debian" 
+  tags: 
+    - LDAP
+    - config
+
+- name: Save iptable rules
+  command: service iptables save
+  sudo: yes 
+  when: ansible_os_family=="RedHat" 
+  tags: 
+    - LDAP
+    - config
+
