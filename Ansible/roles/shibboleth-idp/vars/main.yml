@@ -9,7 +9,7 @@ idp_package_name: shibboleth-identityprovider
 idp_host_ip: 196.21.182.116
 idp_hostname: idp.sagrid.ac.za
 shibboleth_port: 8080
-shibboleth_secure_port:8443
+shibboleth_secure_port: 8443
 # the organisation scope of the eduPerson lookup.
 shibboleth_attribute_scope: 'ac.za'
 # this should be 
