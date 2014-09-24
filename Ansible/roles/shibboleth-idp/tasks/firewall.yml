@@ -1,11 +1,4 @@
-- name: ensure that httpd is stopped 
-  user: ansible
-  sudo: True
-  service: name={{ apache }} state=stopped
-
 - name: Add port 80 redirect to firewall
-  user: ansible
-  sudo: True
   # lineinfile: dest=/etc/sysconfig/iptables line='-A PREROUTING -p tcp -m tcp --dport 80 -j DNAT --to-destination {{ idp_host_ip }}:{{ shibboleth_port }}'
 # -A PREROUTING -p tcp -m tcp --dport 443 -j DNAT --to-destination {{ idp_host_ip }}:{{ shibboleth_secure_port }}
   command: iptables  -A PREROUTING -p tcp -m tcp --dport 443 -j DNAT --to-destination {{ idp_host_ip }}:{{ shibboleth_secure_port }}

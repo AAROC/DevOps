@@ -1,5 +1,5 @@
 ---
-- hosts: voms
+- hosts: voms-servers
   name: VOMS plays
   sudo: true
   sudo_user: root

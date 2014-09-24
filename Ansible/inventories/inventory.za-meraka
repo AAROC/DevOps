@@ -89,6 +89,15 @@ cream-ces
 [worker-nodes]
 ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
 
+[voms-servers]
+voms-stage.c4.csir.co.za needs_certificate='true'
+
+
+[CentOS-servers]
+
+[Debian-servers]
+
+
 ############ grouping and children ############
 # first, group by production and development 
 [core-services:children]

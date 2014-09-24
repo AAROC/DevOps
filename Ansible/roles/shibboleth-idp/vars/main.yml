@@ -1,4 +1,9 @@
 ---
+# basic variables
+apache:
+  - 'Debian': 'apache2'
+  - 'Redhat': 'httpd'
+
 # vars file for shibboleth-idp
 idp_version: 2.4.1
 shibboleth_install_path: /opt/shibboleth-idp
@@ -23,26 +28,26 @@ idp_principal_credential: hahanewpassword
 # here we define a test federation and a production federation
 federations:
   - prod_federation:
-    - provider: CatchAllFederation
-    - metadata_URL: https://gridp.garr.it/metadata/gridp.xml
-    - backing_file: CatchAllFederation
-  - test_federation
-    - provider: TestCatchAllFederation
-    - metadata_URL: https://gridp.garr.it/metadata/gridp.xml
-    - backing_file: 
+    provider: CatchAllFederation
+    metadata_URL: https://gridp.garr.it/metadata/gridp.xml
+    backing_file: CatchAllFederation
+  - test_federation:
+    provider: TestCatchAllFederation
+    metadata_URL: https://gridp.garr.it/metadata/gridp.xml
+    backing_file: TestCatchAllFederation
 
 other_service_providers:
   - science_gateway_1: 
-    - provider: url.of.service.provider
-    - metadata_URL: https://url.of.service.provider/Shibboleth.sso/Metadata
-    - backing_file: url.of.service.provider.xml
+    provider: url.of.service.provider
+    metadata_URL: https://url.of.service.provider/Shibboleth.sso/Metadata
+    backing_file: url.of.service.provider.xml
  
  # security and certs - just the file name without the path
  
- idp_private_key_file: key.key
- idp_cert_file: cert.crt
+idp_private_key_file: "key.key"
+idp_cert_file: "cert.crt"
  # this can be set to either something under /etc/grid-security/certificates (for EUGridPMA-issued certs) or something in /etc/pki/CA/certs
- ca_cert_file: /etc/grid-security/INFN-CA-2006.pem
+ca_cert_file: "/etc/grid-security/INFN-CA-2006.pem"
     
 
 

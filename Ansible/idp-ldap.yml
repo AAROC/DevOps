@@ -13,9 +13,9 @@
   roles:
   - ldap
 
-#- name: Prepare the identity machine common environment
-#  hosts: shibboleth-idps
-#  remote_user: ansible
-#  roles: 
-#  - fmarco76.tomcat 
-  
+- name: Prepare the identity machine common environment
+  hosts: shibboleth-idps
+  remote_user: ansible
+  roles: 
+  - fmarco76.tomcat 
+  - shibboleth-idp
