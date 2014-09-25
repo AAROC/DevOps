@@ -2,7 +2,7 @@
 - hosts: all
   tasks: 
   - name: test bash
-    script: ./test.sh
+    script: ./config/files/test-bashpocalypse.sh
     register: result
     ignore_errors: True
 
@@ -21,6 +21,6 @@
   
   handlers:
   - name: check
-    script: ./test.sh
+    script: ./config/files/test-bashpocalypse.sh
     register: result
     ignore_errors: True
