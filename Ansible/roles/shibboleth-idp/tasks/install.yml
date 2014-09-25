@@ -1,15 +1,18 @@
 --- 
-- name: correct java version selected
-  alternatives: name=java path=/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+#- name: correct java version selected
+# alternatives: name=java path=/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
 
 - name: Download the shibboleth package
-  get_url: url={{ idp_url }}/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz dest=/tmp/{{ idp_package_name }}-{{ idp_version }}.tar.gz
-  
+  get_url: url={{ idp_url }}/{{ idp_version }}/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz dest=/tmp/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz
+
+- name: Create the installation directory
+  file: path={{ ansible_env.HOME }}/idp state=directory owner=ansible
+
 - name: Unpack the tarball
-  command: tar xvfz {{ idp_package_name }}-{{ idp_version }}-bin.tar.gz chdir=/tmp creates={{ idp_package_name }}-{{ idp_version }}/install.sh
+  unarchive: src=/tmp/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz dest={{ ansible_env.HOME }}/idp creates={{ idp_package_name }}-{{ idp_version }}/install.sh copy=no
 
 - name: Install the package
   sudo: True
-  command: install.sh chdir=/tmp/{{ idp_package }}-{{ idp_version }} args="JAVA_HOME=/usr/lib/jvm/"
+  shell: {{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install.sh chdir={{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}
   
 

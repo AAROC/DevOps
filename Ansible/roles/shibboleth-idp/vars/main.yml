@@ -9,7 +9,7 @@ idp_version: 2.4.1
 shibboleth_install_path: /opt/shibboleth-idp
 shibboleth_idp_log_level: DEBUG
 shibboleth_ldap_log_level: DEBUG
-idp_url: http://shibboleth.net/downloads/identity-provider/latest/
+idp_url: http://shibboleth.net/downloads/identity-provider/
 idp_package_name: shibboleth-identityprovider
 idp_host_ip: 196.21.182.116
 idp_hostname: idp.sagrid.ac.za

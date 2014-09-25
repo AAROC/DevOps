@@ -101,23 +101,23 @@
         </metadata:MetadataProvider>
         -->
         
-{{% for federation in federations %}}
+{%- for federation in federations %}
         
       <metadata:MetadataProvider id="{{ federation.metadata_provider }} CatchAllFederation" xsi:type="metadata:FileBackedHTTPMetadataProvider"
 				 metadataURL="{{ federation.metadata_URL }} "
 				 backingFile="{{ shibboleth_install_path }}/metadata/{{ backing_file }}.xml"
 				 disregardSslCertificate="true">
 	</metadata:MetadataProvider>
-{{% endfor %}}
+{% endfor %}
 
 <!-- various service providers --> 
-{{% for sp in other_service_providers %}}
+{%- for sp in other_service_providers %}
         <metadata:MetadataProvider id="sp.provider" xsi:type="metadata:FileBackedHTTPMetadataProvider"
 				 metadataURL="sp.metadata_URL"
 				 backingFile="{{ shibboleth_install_path }}/metadata/sp.backing_file"
 				 disregardSslCertificate="true">
 	</metadata:MetadataProvider>
-{{% endfor %}}	  
+{% endfor %}
     <!-- end of chain -->
     </metadata:MetadataProvider>
 

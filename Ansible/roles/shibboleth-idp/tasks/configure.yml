@@ -2,7 +2,7 @@
   copy: src=attribute-filter.xml dest={{ shibboleth_install_path }}/attribute-filter.xml
 
 - name: Create Attribute Resolver
-  template: src=attribute_resolver.xml.j2 dest={{ shibboleth_install_path }}/attribute_resolver.xml
+  template: src=attribute-resolver.xml.j2 dest={{ shibboleth_install_path }}/attribute-resolver.xml
   
 - name: Create Logger
   template: src=logging.xml.j2 dest={{ shibboleth_install_path }}/logging.xml
