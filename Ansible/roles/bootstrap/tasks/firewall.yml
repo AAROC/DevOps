@@ -1,0 +1,18 @@
+---
+- name: Copy firewall rules (RedHat)
+  copy: src=etc/sysconfig/iptables dest=/etc/sysconfig/iptables 
+  when: ansible_os_family=="RedHat"
+  tags: 
+    - firewall
+
+- name: Restart iptables (RedHat)
+  service: name=iptables state=restarted
+  when: ansible_os_family=="RedHat"
+  tags: 
+    - LDAP
+ 
+- name: Config firewall rules (Debian)
+  script: iptables.sh 
+  when: ansible_os_family=="Debian"
+  tags: 
+    - firewall

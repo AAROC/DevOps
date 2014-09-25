@@ -13,7 +13,7 @@
     - LDAP
     - install
 
-- name: Install the openldap and required Packages for Ubuntu
+- name: Install the openldap and required Packages for Debian
   apt: name={{ item }} state=installed update_cache=yes
   with_items: ldap_pkgs
   when: ansible_os_family == 'Debian'

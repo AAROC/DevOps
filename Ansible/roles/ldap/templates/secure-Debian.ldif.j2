@@ -1,0 +1,13 @@
+dn: cn=config
+changeType: modify
+add: olcTLSCertificateFile
+olcTLSCertificateFile: {{ ldap_config_path }}/certs/cert.crt
+-
+add: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: {{ ldap_config_path }}/certs/my.key
+-
+add: olcTLSCACertificatePath
+olcTLSCACertificatePath: {{ ldap_config_path }}/certs
+-
+add: olcTLSVerifyClient
+olcTLSVerifyClient: never
