@@ -1,0 +1,6 @@
+- name: Install Perun Repo
+  copy: src=etc/yum.repos.d/perun.repo dest=/etc/yum.repos.d/perun.repo
+
+- name: Install Perun slave scripts
+  yum: name=perun-slave state=present
+  when: perun_managed == 'true'
