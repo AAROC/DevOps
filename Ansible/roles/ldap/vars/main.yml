@@ -18,4 +18,5 @@ user_country: ZA
 user_registered_address: bbecker@csir.co.za
 
 # Passwords
-root_password: thisismyldapadminpassword
+root_password_clear: thisismyldapadminpassword
+root_password: '{SSHA}YN4DR1KHnl7cSEFiG0ISc1oUOVxCYqzA'
