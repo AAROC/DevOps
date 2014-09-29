@@ -1,6 +1,6 @@
 ---
 # tasks file for fmarco76.tomcat
-- name: Install Java platform and server on the machine
+- name: Install Java platform and server on the machine (Debian)
   sudo: yes
   apt: name={{ item }} state=present
   with_items:
@@ -8,12 +8,13 @@
     - tomcat6 
   when: ansible_os_family == "Debian"
 
-- name: Install Java platform and server on the machine
+- name: Install Java platform and server on the machine (RedHat)
   sudo: yes
   yum: name={{ item }} state=present
   with_items:
     - java-1.7.0-openjdk 
+    - java-1.7.0-openjdk-devel
     - tomcat6 
-  when: ansible_os_family == "Redhat"
+  when: ansible_os_family == "RedHat"
 
 

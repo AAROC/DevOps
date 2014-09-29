@@ -9,10 +9,10 @@
   file: path={{ ansible_env.HOME }}/idp state=directory owner=ansible
 
 - name: Unpack the tarball
-  unarchive: src=/tmp/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz dest={{ ansible_env.HOME }}/idp creates={{ idp_package_name }}-{{ idp_version }}/install.sh copy=no
+  unarchive: src=/tmp/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz dest={{ ansible_env.HOME }}/idp creates={{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install.sh copy=no
 
 - name: Install the package
   sudo: yes
   shell: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install.sh chdir={{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}"
-  
+  environment: java_env
 
