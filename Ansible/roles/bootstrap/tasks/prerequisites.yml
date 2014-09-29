@@ -1,6 +1,6 @@
  Use this task when there are dns problems
 - name: set google public DNS
- lineinfile: dest=/etc/resolv.conf regexp=^nameserver line=nameserver 8.8.8.8
+  lineinfile: dest=/etc/resolv.conf regexp=^nameserver line=nameserver 8.8.8.8
   
 - name: Install prerequisite packages (RedHat)
   yum: name={{ item }} state=present
