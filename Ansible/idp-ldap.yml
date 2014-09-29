@@ -1,21 +1,14 @@
 ---
-#- name: Add certificates
-#  hosts: shibboleth-idps
-#  remote_user: root
+#- name: Configure the LDAP machine
+#  hosts: ldap-servers
+#  remote_user: ansible
+#  sudo: true
 #  roles:
-#  - certificates
-  
-  
-- name: Configure the LDAP machine
-  hosts: ldap-servers
-  remote_user: ansible
-  sudo: true
-  roles:
-  - ldap
+#  - ldap
 
 - name: Prepare the identity machine common environment
   hosts: shibboleth-idps
   remote_user: ansible
   roles: 
-#  - fmarco76.tomcat 
+  - fmarco76.tomcat 
   - shibboleth-idp
