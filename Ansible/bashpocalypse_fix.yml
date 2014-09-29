@@ -1,3 +1,4 @@
+# This fixes http://seclists.org/oss-sec/2014/q3/649 on CentOS machines
 ---
 - hosts: all
   tasks: 
