@@ -41,15 +41,16 @@
 - name: Copy secure config (RedHat)
   sudo: yes
   template: src=secure-RedHat.ldif.j2 dest=/tmp/secure.ldif
-  when: ansible_os_family=="RedHat" 
+  when: ansible_os_family=="RedHat" and ldap_config.stdout.find('certs/my.key')==-1
   
 - name: Copy secure config (Debian)
   template: src=secure-Debian.ldif.j2 dest=/tmp/secure.ldif
-  when: ansible_os_family=="Debian" 
+  when: ansible_os_family=="Debian" and ldap_config.stdout.find('certs/my.key')==-1
   
-- name: Add modules (Debian)
+- name: Config certificates 
   command: ldapmodify -Y EXTERNAL -H ldapi:/// -f /tmp/secure.ldif
   sudo: yes 
+  when: ldap_config.stdout.find('certs/my.key')==-1
   tags: 
     - LDAP
     - certs
@@ -57,13 +58,23 @@
 - name: Restart ldap server
   service: name={{ ldap_service }} state=restarted
   sudo: yes 
+  when: ldap_config.stdout.find('certs/my.key')==-1
+  tags: 
+    - LDAP
+    - config
+
+- name: Retrieve iptables rules 
+  command: iptables -L 
+  register: iptables_rules 
+  changed_when: "False"
+  sudo: yes 
   tags: 
     - LDAP
     - config
 
 - name: Copy iptable rules for LDAP
   template: src=iptables.sh.j2 dest=/tmp/iptables.sh mode=0755
-  sudo: yes 
+  when: iptables_rules.stdout.find('dpt:ldap')==-1
   tags: 
     - LDAP
     - config
@@ -71,6 +82,7 @@
 - name: Apply rules
   shell: /tmp/iptables.sh 
   sudo: yes 
+  when: iptables_rules.stdout.find('dpt:ldap')==-1
   tags: 
     - LDAP
     - config
@@ -78,7 +90,7 @@
 - name: Save iptable rules
   shell: /sbin/iptables-save > /etc/iptables/rules
   sudo: yes 
-  when: ansible_os_family=="Debian" 
+  when: ansible_os_family=="Debian" and iptables_rules.stdout.find('dpt:ldap')==-1
   tags: 
     - LDAP
     - config
@@ -86,7 +98,7 @@
 - name: Save iptable rules
   command: service iptables save
   sudo: yes 
-  when: ansible_os_family=="RedHat" 
+  when: ansible_os_family=="RedHat" and iptables_rules.stdout.find('dpt:ldap')==-1
   tags: 
     - LDAP
     - config
