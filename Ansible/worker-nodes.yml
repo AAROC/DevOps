@@ -18,7 +18,6 @@
 
 - hosts: worker-nodes
   name: install and configure worker-nodes
-  delegate_to: ce01-node001.c4.csir.co.za 
   roles:
     - bootstrap 
     - common
