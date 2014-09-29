@@ -6,6 +6,7 @@
   with_items:
     - default-jdk 
     - tomcat6 
+    - expect
   when: ansible_os_family == "Debian"
 
 - name: Install Java platform and server on the machine (RedHat)
@@ -15,6 +16,7 @@
     - java-1.7.0-openjdk 
     - java-1.7.0-openjdk-devel
     - tomcat6 
+    - expect
   when: ansible_os_family == "RedHat"
 
 

@@ -11,8 +11,11 @@
 - name: Unpack the tarball
   unarchive: src=/tmp/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz dest={{ ansible_env.HOME }}/idp creates={{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install.sh copy=no
 
+- name: Copy the installer
+  template: src=install-shib.expect.j2 dest="{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install-shib.expect" mode="u+x"
+
 - name: Install the package
   sudo: yes
-  shell: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install.sh chdir={{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}"
+  shell: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install-shib.expect chdir={{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }} creates={{ shibboleth_install_path }}/war/idp.war"
   environment: java_env
 
