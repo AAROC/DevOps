@@ -15,7 +15,6 @@
   linenfile: dest=/etc/resolv.conf regexp=^nameserver= line=nameserver=8.8.8.8
   
 
-
 - hosts: worker-nodes
   name: install and configure worker-nodes
   delegate_to: ce01-node001.c4.csir.co.za 
