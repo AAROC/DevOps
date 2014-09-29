@@ -15,6 +15,7 @@
 # non-grid services
 [CA]
 security.sanren.ac.za
+
 [dns-servers]
 # we should put the dns servers in here when we need to move
 # hosts in and out of DNS
@@ -87,13 +88,11 @@ cream-ces
 [worker-nodes]
 # empty for now
 [worker-nodes]
-ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+192.168.11.3 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client' needs_certificate='False'
+#ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
 
 [voms-servers]
 voms-stage.c4.csir.co.za needs_certificate='true'
-
-
-[CentOS-servers]
 
 [Debian-servers]
 
@@ -112,30 +111,15 @@ site-bdiis
 cream-ces
 worker-nodes
 
-############## Service oriented grouping ##############
-# (here comes the magical power of ansible... Group things
-# in as much as you can)
-
-
 ############## Middleware oriented grouping ##############
-
-#site-bdii-servers
-#cream-servers
-#storage-elements
-#wms-servers
-#myproxy-servers
-#lfc-servers
-#worker-nodes
-#apel-servers
-#top-bdiis
-
-
 [CRL]
 [CRL:children]
 wms-servers
 lfcs
 ngi-nagios
 cream-ces
+argus-servers
+
 
 [za-meraka:children]
 cream-ces
@@ -155,4 +139,19 @@ ngi-nagios
 [CentOS5-servers:children]
 ngi-nagios
 
+[CentOS6-servers:children]
+CA
+argus-servers
+worker-nodes
+site-bdiis
+cream-ces
+UIs
+wms-servers
+fts
+top-bdiis
+voms-servers
+
+[CentOS-servers:children]
+CentOS5-servers
+CentOS6-servers
 ############################ END #########################

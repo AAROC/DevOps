@@ -42,6 +42,10 @@ cream-ces
 [worker-nodes]
 ce01-node002.c4.csir.co.za
 
+[uis]
+ui-dev.c4.csir.co.za
+ui-stage.sagrid.ac.za
+
 # middleware grouping
 [umd3:children]
 top-bdiis

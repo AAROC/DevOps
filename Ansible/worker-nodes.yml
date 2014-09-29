@@ -13,18 +13,16 @@
 
 - hosts: worker-nodes
   name: install and configure worker-nodes
-  user: ansible
-  sudo: true
-  sudo_user: root
+  delegate_to: ce01-node001.c4.csir.co.za 
   roles:
-#    - common
-#    - certificates    
-#    - umd
-#    - worker-nodes
-#    - yaim
-#    - torque
+    - bootstrap 
+    - common
+    - certificates    
+    - umd
+    - worker-nodes
+    - yaim
+    - torque
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/igtf.yml
-    
  
