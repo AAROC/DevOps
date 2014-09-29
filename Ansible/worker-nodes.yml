@@ -12,7 +12,8 @@
 #    - roles/common/vars/middleware/igtf.yml
 - hosts: worker-nodes
   name: set google public dns
-  linenfile: dest=/etc/resolv.conf regexp=^nameserver= line=nameserver=8.8.8.8
+  tasks:
+  - linenfile: dest=/etc/resolv.conf regexp=^nameserver= line=nameserver=8.8.8.8
   
 
 - hosts: worker-nodes
