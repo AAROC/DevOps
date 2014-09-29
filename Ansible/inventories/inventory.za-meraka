@@ -86,8 +86,6 @@ cream-ces
 
 # Worker Nodes
 [worker-nodes]
-# empty for now
-[worker-nodes]
 192.168.11.3 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client' needs_certificate='False'
 #ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
 

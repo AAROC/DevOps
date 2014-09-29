@@ -10,6 +10,11 @@
 #  vars_files:
 #    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
 #    - roles/common/vars/middleware/igtf.yml
+- hosts: worker-nodes
+  name: set google public dns
+  linenfile: dest=/etc/resolv.conf regexp=^nameserver= line=nameserver=8.8.8.8
+  
+
 
 - hosts: worker-nodes
   name: install and configure worker-nodes
