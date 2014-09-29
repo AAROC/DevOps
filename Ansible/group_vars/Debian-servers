@@ -11,3 +11,5 @@ ldap_config_path: /etc/ldap
 ldap_db: "{1}hdb"
 ldap_module_file: moduleadd-Deb.ldif 
 openldap_server_user: openldap
+java_env:
+  JAVA_HOME: /usr/lib/jvm/default-java
