@@ -1,0 +1,19 @@
+# this is the task which configures the networking parameters of the head node.
+# It does the following: 
+# 1.) enables TCP forwarding from by the head node from the worker node
+# 2.) configures NFS exports and services
+# 3.) Enables masquerading of the WN in the LAN
+# 4.) Adds all worker nodes to the known-hosts file
+
+- name: Allow TCP forwarding
+  command: /bin/echo 1 > /proc/sys/net/ipv4/ip_forward
+  
+- name: Enabled masquerading
+  
+
+- name: restart exportfs
+   action: shell sudo -i exportfs -r
+  
+- name: start nfs
+  service: name=nfs state=restarted
+  
