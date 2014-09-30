@@ -1,0 +1,40 @@
+---
+# tasks file for fmarco76.firewall
+- name: Retrieve iptables rules 
+  command: iptables -t {{ table }} -L -n 
+  register: iptables_rules 
+  changed_when: "False"
+  sudo: yes 
+  tags: 
+    - security
+
+- name: Count iptables rules 
+  raw: 'iptables -t {{ table }} -S {{ chain }} | grep -v "\-P" | wc -l'
+  register: iptables_count 
+  changed_when: "False"
+  sudo: yes 
+  tags: 
+    - security
+
+- name: Apply rules
+  command: iptables -t {{ table }} -I {{ chain }} {{ iptables_count.stdout }} -p tcp -m state --state NEW -s {{ ansible_default_ipv4.address }}/{{ ansible_default_ipv4.netmask }}  --dport {{ item }} -j ACCEPT
+  register: applied_rules
+  sudo: yes 
+  when: 'iptables_rules.stdout.find("dpt:{{ item }}")==-1'
+  with_items: ports
+  tags: 
+    - security
+
+- name: Save iptable rules
+  shell: /sbin/iptables-save > /etc/iptables/rules
+  sudo: yes 
+  when: ansible_os_family=="Debian" and applied_rules.changed
+  tags: 
+    - security
+
+- name: Save iptable rules
+  command: service iptables save
+  sudo: yes 
+  when: ansible_os_family=="RedHat" and applied_rules.changed
+  tags: 
+    - security
