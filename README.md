@@ -7,6 +7,10 @@ We support Ansible and Puppet.
 
 Pull requests should be made on the dev branch. Merges from dev to master will happen after Operations meetings.
 
+# Citing
+
+If you like it, please use it, but also cite us, so that our funders will be happy: [![DOI](https://zenodo.org/badge/1514/AAROC/DevOps.png)](http://dx.doi.org/10.5281/zenodo.11914)
+
 
 ## Ansible
 Contribute inventory spec to Ansible/inventory.site. If your playbooks are very site-specific, create a subdirectory in Ansible/sites for your site as declared in the GOCDB and work there.
