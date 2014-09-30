@@ -1,0 +1,16 @@
+# Place hoder for ZAMREN inventory
+
+[ldap-servers]
+ldap.zamren.zm
+[shibboleth-idps]
+idp.zamren.zm
+
+[CentOS-servers:children]
+
+[Debian-servers]
+idp.zamren.zm
+ldap.zamren.zm
+
+[identity-zamren:children]
+ldap-servers
+shibboleth-idps
