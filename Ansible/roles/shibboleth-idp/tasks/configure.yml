@@ -1,3 +1,5 @@
+#- name: Ensure that tomcat can write to 
+
 - name: Create Attribute Filters
   copy: src=attribute-filter.xml dest={{ shibboleth_install_path }}/attribute-filter.xml
 
@@ -15,3 +17,4 @@
   
 - name: Configure the Login module
   template: src=login.conf.j2 dest={{ shibboleth_install_path }}/login.conf
+  - notify: restart tomcat

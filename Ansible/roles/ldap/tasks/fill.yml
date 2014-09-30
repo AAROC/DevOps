@@ -53,6 +53,7 @@
   when: 'ldap_policy.stdout.find("objectClass: pwdPolicy")==-1'
   tags: 
     - LDAP
+    - create
 
 - name: Retrieve ldap user 
   command: ldapsearch -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -b ou=People,dc=local
@@ -66,10 +67,16 @@
 - name: Create the first user ldif
   template: src=user.ldif.j2 dest=/tmp/user.ldif
   when: 'ldap_user.stdout.find("objectClass: inetOrgPerson")==-1'
+  tags:
+    - LDAP
+    - create
 
 - name: Add first user to ou=People
   command: ldapadd -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/user.ldif
   when: 'ldap_user.stdout.find("objectClass: inetOrgPerson")==-1'
+  tags:
+    - LDAP
+    - create
 # could also be
 # notify: 
 # - ldapadd file=/tmp/user.ldif
@@ -86,10 +93,15 @@
 - name: Create the services group
   template: src=services.ldif.j2 dest=/tmp/services.ldif
   when: 'ldap_service.stdout.find("objectClass: groupOfUniqueNames")==-1'
+  tags: 
+    - LDAP
+    - create
 
 - name: Configure the services group
   command: ldapadd -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/services.ldif
   when: 'ldap_service.stdout.find("objectClass: groupOfUniqueNames")==-1'
+  #register: status
+  #failed_when: "'FAILED' in status.stderr"
 
 
  
