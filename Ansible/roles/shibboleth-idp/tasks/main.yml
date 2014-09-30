@@ -2,4 +2,4 @@
 # tasks file for shibboleth-idp
 - include: install.yml
 - include: firewall.yml
-#- include: configure.yml
+- include: configure.yml

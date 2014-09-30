@@ -1,0 +1,4 @@
+---
+# vars file for fmarco76.firewall
+table: filter
+chain: INPUT
