@@ -1,7 +1,3 @@
- Use this task when there are dns problems
-- name: set google public DNS
-  lineinfile: dest=/etc/resolv.conf regexp=^nameserver line=nameserver 8.8.8.8
-  
 - name: Install prerequisite packages (RedHat)
   yum: name={{ item }} state=present
   with_items: 
@@ -33,11 +29,11 @@
     - iptables-persistent
     - mlocate
     - initscripts
-    - chkconfig
     - openssh-client
   tags:
     - bootstrap
   when: ansible_os_family=="Debian"
+  
 - name: Install some useful packages (Debian)
   apt: name={{ item }} state=present
   with_items:
