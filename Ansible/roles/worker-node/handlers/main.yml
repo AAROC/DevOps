@@ -1,0 +1,5 @@
+---
+# handlers file for worker-node
+- name: Check whether we can ping google
+  ping: []
+  register: ping_test_result
