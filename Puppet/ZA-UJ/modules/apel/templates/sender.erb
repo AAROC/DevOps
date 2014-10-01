@@ -1,0 +1,47 @@
+################################################################################
+# Required: broker configuration options
+#
+
+[broker]
+
+# The SSM will query a BDII to find brokers available.  These details are for the 
+# EGI production broker network
+bdii: <%= sbroker_bdii %>
+network: <%= sbroker_network %>
+# OR (these details will only be used if the broker network settings aren't used)
+#host: test-msg01.afroditi.hellasgrid.gr
+#port: 6163
+
+# broker authentication.  If use_ssl is set, the certificates configured
+# in the mandatory [certificates] section will be used. 
+use_ssl: <%= sbroker_use_ssl %>
+
+
+################################################################################
+# Required: Certificate configuration
+
+[certificates]
+certificate: <%= certificate %>
+key: <%= host_key %>
+capath: <%= ca_path %>
+# If this is supplied, outgoing messages will be encrypted
+# using this certificate
+#server_cert: <%= certificate %>
+
+################################################################################
+# Messaging configuration.
+#
+[messaging]
+
+# Queue to which SSM will send messages
+#destination: /queue/global.accounting.cputest.CENTRAL
+destination: <%= smessaging_dest %>
+# Outgoing messages will be read and removed from this directory.
+path: <%= smessaging_path %>
+
+[logging]
+logfile: /var/log/apel/ssmsend.log
+# Available logging levels:
+# DEBUG, INFO, WARN, ERROR, CRITICAL
+level: INFO
+console: true
