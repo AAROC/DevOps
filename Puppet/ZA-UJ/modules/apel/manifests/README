@@ -1,0 +1,12 @@
+## Written by: Christopher Lee (ZA-UJ) ##
+
+This module requires the crond module for creating cron jobs.
+Either install that as well, or create your own crons by modifying the crond::jobs within the modules
+You will also need to manuall create the mysql database for now. See client.pp for more details
+
+To use this module:
+* Complete all the paramaters found in the params file
+* For the client include apel::client
+* For the parser include apel::parser
+
+ 
