@@ -62,3 +62,4 @@ class apel::params {
   $rmessaging_dest	= "/queue/ssm2test"
   $rmessaging_path	= "/var/spool/apel"
 }
+
