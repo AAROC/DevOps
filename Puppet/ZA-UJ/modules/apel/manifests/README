@@ -9,7 +9,7 @@
 ## mysql -p –e "create database apelclient"
 ## mysql -p apelclient < /usr/share/apel/client.sql
 ## From in MYSQL:
-## mysql> GRANT ALL PRIVILEGES ON apelclient.* TO 'apel'@'localhost' IDENTIFIED BY '<apel-password>';
+## mysql> GRANT ALL PRIVILEGES ON apelclient.* TO '<database_user>'@'localhost' IDENTIFIED BY '<apel-password>';
 
 To use this module:
 * Complete all the paramaters found in the params file
