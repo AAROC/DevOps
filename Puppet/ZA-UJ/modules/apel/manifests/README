@@ -1,12 +1,19 @@
 ## Written by: Christopher Lee (ZA-UJ) ##
 
-This module requires the crond module for creating cron jobs.
-Either install that as well, or create your own crons by modifying the crond::jobs within the modules
-You will also need to manuall create the mysql database for now. See client.pp for more details
+## This module requires the crond module for creating cron jobs. 
+## either install that as well, or create your own crons by removing the crond::job
+##
+## NB: 	For now, you will have to create the database manually before the client can run.
+## 		   After applying this module, run the following manually on the host:
+##
+## mysql -p –e "create database apelclient"
+## mysql -p apelclient < /usr/share/apel/client.sql
+## From in MYSQL:
+## mysql> GRANT ALL PRIVILEGES ON apelclient.* TO 'apel'@'localhost' IDENTIFIED BY '<apel-password>';
 
 To use this module:
 * Complete all the paramaters found in the params file
-* For the client include apel::client
-* For the parser include apel::parser
+* For the client: include apel::client
+* For the parser: include apel::parser
 
  
