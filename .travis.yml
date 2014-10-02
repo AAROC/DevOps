@@ -1,5 +1,8 @@
 language: bash
-
+cache:
+  directories:
+    - ansible
+   
 before_install:
   - sudo apt-get install traceroute
   - sudo cat /etc/resolv.conf
@@ -10,7 +13,7 @@ before_install:
   - git clone https://github.com/ansible/ansible.git
   - sudo apt-get install python
   - cd ansible/
-  - source ./hackig/env-setup
+  - source ./hacking/env-setup
   - sudo python setup.py install
 
 install:
