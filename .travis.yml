@@ -10,6 +10,7 @@ before_install:
   - git clone https://github.com/ansible/ansible.git
   - sudo apt-get install python
   - cd ansible/
+  - source ./hackig/env-setup
   - sudo python setup.py install
 
 install:
