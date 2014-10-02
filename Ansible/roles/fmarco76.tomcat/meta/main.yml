@@ -19,5 +19,6 @@ galaxy_info:
       - all
   - web
 dependencies: 
-  - { role: fmarco76.firewall, ports: [{ port: 80, dport: 8080 }, { port: 443, dport: 8443 }], table: nat, chain: PREROUTING }
+  - { role: fmarco76.firewall, ports: [{ port: 80, dport: 8080 }], table: nat, chain: PREROUTING }
+  - { role: fmarco76.firewall, ports: [80]}
   

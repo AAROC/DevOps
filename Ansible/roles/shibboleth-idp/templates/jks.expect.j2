@@ -1,0 +1,31 @@
+#!/usr/bin/expect
+
+spawn keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass password -validity 360 -keysize 2048
+
+expect "What is your first and last name?"
+send "myhost.net\r"
+
+
+expect "What is the name of your organizational unit?"
+send "CT\r"
+
+
+expect "What is the name of your organization?"
+send "INFN\r"
+
+expect "What is the name of your City or Locality?"
+send "Catania\r"
+
+expect "What is the name of your State or Province?"
+send "\r"
+
+expect "What is the two-letter country code for this unit?"
+send "IT\r"
+
+expect "Is CN="
+send "yes\r"
+
+expect "Enter key password for <selfsigned>"
+send "\r"
+expect eof
+
