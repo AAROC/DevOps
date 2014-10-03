@@ -1,4 +1,4 @@
 ---
 # handlers file for shibboleth-idp
 - name: restart tomcat
-  service: tomcat6 state=restarted
+  service: name={{ tomcat6_service }}  state=restarted
