@@ -43,13 +43,24 @@
   lineinfile: dest={{ tomcat6_config_start }}  line='JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"'
   changed_when: new_opts.changed and remove_old_opts.found==0
 
+- name: Add jar for SSL Implementation supporting SOAP
+  sudo: yes 
+  get_url: url=https://build.shibboleth.net/nexus/content/repositories/releases/edu/internet2/middleware/security/tomcat6/tomcat6-dta-ssl/1.0.0/tomcat6-dta-ssl-1.0.0.jar dest={{ tomcat6_lib_path }}
 
+- name: Enable the ssl 
+  sudo: yes 
+  register: new_server
+  template: src=server-{{ ansible_os_family }}.xml.j2 dest={{ tomcat6_config_path }}/server.xml
 
+- name: Enble the shibboleth idp application
+  sudo: yes
+  register: idp_app
+  template: src=idp.xml.j2 dest={{ tomcat6_config_path }}/Catalina/localhost/idp.xml
 
 - name: Restart tomcat server
   service: name={{ tomcat6_service }} state=restarted
   sudo: yes 
-  when: ldap_config.stdout.find('certs/my.key')==-1
+  when: new_server.changed or new_opts.changed or idp_app.changed
   tags: 
     - LDAP
     - config
