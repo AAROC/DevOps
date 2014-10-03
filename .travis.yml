@@ -1,6 +1,7 @@
 language: bash
    
 before_install:
+  - rm -rf ansible
   - git clone git://github.com/ansible/ansible.git --recursive
   - sudo apt-get install python
   - cd ansible/
