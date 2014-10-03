@@ -42,6 +42,7 @@
   register: new_opts
   lineinfile: dest={{ tomcat6_config_start }}  line='JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"'
   changed_when: new_opts.changed and remove_old_opts.found==0
+  notify: restart tomcat
 
 - name: Add jar for SSL Implementation supporting SOAP
   sudo: yes 
@@ -49,19 +50,11 @@
 
 - name: Enable the ssl 
   sudo: yes 
-  register: new_server
   template: src=server-{{ ansible_os_family }}.xml.j2 dest={{ tomcat6_config_path }}/server.xml
+  notify: restart tomcat
 
 - name: Enble the shibboleth idp application
   sudo: yes
-  register: idp_app
   template: src=idp.xml.j2 dest={{ tomcat6_config_path }}/Catalina/localhost/idp.xml
-
-- name: Restart tomcat server
-  service: name={{ tomcat6_service }} state=restarted
-  sudo: yes 
-  when: new_server.changed or new_opts.changed or idp_app.changed
-  tags: 
-    - LDAP
-    - config
+  notify: restart tomcat
 
