@@ -14,6 +14,8 @@ openldap_server_user: openldap
 java_env:
   JAVA_HOME: /usr/lib/jvm/default-java
 tomcat6_config_path: /etc/tomcat6
+tomcat6_endorsed_path: /usr/share/tomcat6/endorsed 
 tomcat6_service: tomcat6
 tomcat6_user: tomcat6
 tomcat6_group: tomcat6
+tomcat6_config_start: /etc/default/tomcat6

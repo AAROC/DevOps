@@ -10,5 +10,5 @@
   hosts: shibboleth-idps
   remote_user: ansible
   roles: 
-  - fmarco76.tomcat 
+#  - fmarco76.tomcat 
   - shibboleth-idp

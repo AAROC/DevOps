@@ -1,19 +1,47 @@
 ---
-- name: Create the directory for tomcat certificates
-  sudo: yes
-  file: path={{ tomcat6_config_path }}/certs/ state=directory owner={{ tomcat6_user }} group={{ tomcat6_group }}
 
-- name: Generate the private key for certificate request
+- name: Copy JKS generator script
   sudo: yes
-  shell: openssl genrsa -des3 -passout pass:password -out my1.key 1024 chdir={{ tomcat6_config_path }} creates={{ tomcat6_config_path }}/my1.key
+  template: src=jks.expect.j2 dest={{ tomcat6_config_path }}/jks.expect mode="u+x"  
 
-- name: Strip the passphrase from the key 
+- name: Create JKS for tomcat
   sudo: yes
-  shell: openssl rsa -in my1.key -passin pass:password -out my.key chdir={{ tomcat6_config_path }} creates={{ tomcat6_config_path }}/my.key
+  command: creates={{ tomcat6_config_path }}/keystore.jks chdir={{ tomcat6_config_path }} ./jks.expect
 
-- name: Create and sign the the new certificate 
+- name: Create endorsed directory
   sudo: yes
-  shell: openssl req -new -x509 -subj '/C={{ server_country }}/ST={{ server_state }}/L={{ server_location }}/O={{ server_organization }}/CN={{ ansible_hostname }}/' -days 3650 -key my.key -out cert.crt -extensions v3_ca chdir={{ tomcat6_config_path }}  creates={{ tomcat6_config_path }}/cert.crt
+  file: dest={{ tomcat6_endorsed_path }} mode=755 state=directory
+
+- name: Copy endorsed libraries
+  sudo: yes
+  command: creates={{ tomcat6_endorsed_path }}/{{ item }} cp {{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/endorsed/{{ item }} {{ tomcat6_endorsed_path }}/
+  with_items: idp_package_endorsed_jars
+
+- name: Set endorsed path
+  sudo: yes
+  lineinfile: 'dest="{{ tomcat6_config_start }}"  line="JAVA_ENDORSED_DIRS={{ tomcat6_endorsed_path }}"'
+
+- name: Remove Custom java memory size
+  sudo: yes
+  register: remove_old_opts
+  lineinfile: dest={{ tomcat6_config_start }}  line='JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"' state=absent
+  changed_when: False
+
+- name: UnSet current java memory size
+  sudo: yes
+  register: memory_size 
+  replace: 'dest="{{ tomcat6_config_start }}"  regexp="-Xmx\d*m" replace=""'
+
+- name: UnSet java perm gen memory size
+  sudo: yes
+  register: perm_gen_memory_size 
+  replace: 'dest="{{ tomcat6_config_start }}"  regexp="-XX:MaxPermSize=\d*m" replace=""'
+
+- name: Add java memory size
+  sudo: yes
+  register: new_opts
+  lineinfile: dest={{ tomcat6_config_start }}  line='JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"'
+  changed_when: new_opts.changed and remove_old_opts.found==0
 
 
 
