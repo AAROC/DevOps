@@ -1,16 +1,7 @@
 language: bash
-#cache:
-#  directories:
-#    - ansible
    
 before_install:
-#  - sudo apt-get install traceroute
-#  - sudo cat /etc/resolv.conf
-#  - sudo chmod 666 /run/resolvconf/resolv.conf
-#  - sudo ls -lht /run/resolvconf/resolv.conf
-#  - sudo echo "nameserver 8.8.8.8" >> /run/resolvconf/resolv.conf
-#  - traceroute 212.189.145.20
-  - git clone git://github.com/ansible/ansible.git
+  - git clone git://github.com/ansible/ansible.git --recursive
   - sudo apt-get install python
   - cd ansible/
   - git submodule update --init --recursive
