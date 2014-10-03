@@ -1,10 +1,10 @@
 [ldap-servers]
-vm01.ct.infn.it
-vm03.ct.infn.it
+vm01.ct.infn.it ansible_ssh_port=4422
+vm03.ct.infn.it ansible_ssh_port=4422
 
 [shibboleth-idps]
-vm02.ct.infn.it
-vm04.ct.infn.it
+vm02.ct.infn.it ansible_ssh_port=4422
+vm04.ct.infn.it ansible_ssh_port=4422
 
 [CentOS-servers]
 vm03.ct.infn.it
