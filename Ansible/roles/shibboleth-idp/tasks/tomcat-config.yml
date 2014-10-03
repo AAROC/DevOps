@@ -1,0 +1,67 @@
+---
+
+- name: Copy JKS generator script
+  sudo: yes
+  template: src=jks.expect.j2 dest={{ tomcat6_config_path }}/jks.expect mode="u+x"  
+
+- name: Create JKS for tomcat
+  sudo: yes
+  command: creates={{ tomcat6_config_path }}/keystore.jks chdir={{ tomcat6_config_path }} ./jks.expect
+
+- name: Create endorsed directory
+  sudo: yes
+  file: dest={{ tomcat6_endorsed_path }} mode=755 state=directory
+
+- name: Copy endorsed libraries
+  sudo: yes
+  command: creates={{ tomcat6_endorsed_path }}/{{ item }} cp {{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/endorsed/{{ item }} {{ tomcat6_endorsed_path }}/
+  with_items: idp_package_endorsed_jars
+
+- name: Set endorsed path
+  sudo: yes
+  lineinfile: 'dest="{{ tomcat6_config_start }}"  line="JAVA_ENDORSED_DIRS={{ tomcat6_endorsed_path }}"'
+
+- name: Remove Custom java memory size
+  sudo: yes
+  register: remove_old_opts
+  lineinfile: dest={{ tomcat6_config_start }}  line='JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"' state=absent
+  changed_when: False
+
+- name: UnSet current java memory size
+  sudo: yes
+  register: memory_size 
+  replace: 'dest="{{ tomcat6_config_start }}"  regexp="-Xmx\d*m" replace=""'
+
+- name: UnSet java perm gen memory size
+  sudo: yes
+  register: perm_gen_memory_size 
+  replace: 'dest="{{ tomcat6_config_start }}"  regexp="-XX:MaxPermSize=\d*m" replace=""'
+
+- name: Add java memory size
+  sudo: yes
+  register: new_opts
+  lineinfile: dest={{ tomcat6_config_start }}  line='JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"'
+  changed_when: new_opts.changed and remove_old_opts.found==0
+
+- name: Add jar for SSL Implementation supporting SOAP
+  sudo: yes 
+  get_url: url=https://build.shibboleth.net/nexus/content/repositories/releases/edu/internet2/middleware/security/tomcat6/tomcat6-dta-ssl/1.0.0/tomcat6-dta-ssl-1.0.0.jar dest={{ tomcat6_lib_path }}
+
+- name: Enable the ssl 
+  sudo: yes 
+  register: new_server
+  template: src=server-{{ ansible_os_family }}.xml.j2 dest={{ tomcat6_config_path }}/server.xml
+
+- name: Enble the shibboleth idp application
+  sudo: yes
+  register: idp_app
+  template: src=idp.xml.j2 dest={{ tomcat6_config_path }}/Catalina/localhost/idp.xml
+
+- name: Restart tomcat server
+  service: name={{ tomcat6_service }} state=restarted
+  sudo: yes 
+  when: new_server.changed or new_opts.changed or idp_app.changed
+  tags: 
+    - LDAP
+    - config
+

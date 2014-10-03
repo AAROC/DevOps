@@ -12,6 +12,12 @@ shibboleth_idp_log_level: DEBUG
 shibboleth_ldap_log_level: DEBUG
 idp_url: http://shibboleth.net/downloads/identity-provider/
 idp_package_name: shibboleth-identityprovider
+idp_package_endorsed_jars:
+  - serializer-2.10.0.jar
+  - xalan-2.7.1.jar
+  - xercesImpl-2.10.0.jar
+  - xml-apis-2.10.0.jar
+  - xml-resolver-1.2.jar
 idp_host_ip: 196.21.182.116
 idp_hostname: idp.sagrid.ac.za
 shibboleth_port: 8080
