@@ -1,0 +1,20 @@
+# EKO Konnect Inventory
+
+[ldap-servers]
+ldap.eko-konnect.net.ng
+
+[shibboleth-idps]
+ngidp.eko-konnect.net.ng
+
+[CentOS-servers:children]
+#idp.ternet.or.tz
+#ldap.ternet.or.tz
+ldap-servers
+shibboleth-idps
+
+[Debian-servers]
+
+[identity-all:children]
+ldap-servers
+shibboleth-idps
+
