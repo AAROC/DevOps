@@ -22,8 +22,8 @@ shibboleth_port: 8080
 shibboleth_secure_port: 8443
 # this should be 
 idp_base_dn: "ou=People,dc=local"
-idp_principal: "cn=idp,dc=local"
-idp_principal_credential: hahanewpassword
+idp_principal: "cn=useradmin,dc=local"
+idp_principal_credential: choose_a_good_pass
 
 # Federation variables
 # You can have more than one metadata provider.

@@ -1,0 +1,8 @@
+dn: cn=useradmin,dc=local
+objectClass: simpleSecurityObject
+objectClass: person
+objectClass: top
+cn: useradmin
+sn: useradmin
+userPassword: {{ useradmin_password }}
+description: Account used by external tools to manage the users (e.g. the IdP)
