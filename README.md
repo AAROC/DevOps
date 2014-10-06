@@ -14,10 +14,14 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 We like our code so much, we put a DOI on it ! If you like it, please use it, but also cite us, so that our funders will be happy. 
 
+# Getting started.
 
 ## Ansible
-Contribute inventory spec to Ansible/inventory.site. If your playbooks are very site-specific, create a subdirectory in Ansible/sites for your site as declared in the GOCDB and work there.
+Contribute inventory spec to `Ansible/inventories/inventory.site`. If your playbooks are very site-specific, create a subdirectory in Ansible/sites for your site as declared in the GOCDB and work there.
 
 ## Puppet
 Contribute your code to Puppet/ If your Puppet modules are site-specific, create a subdirectory in Puppet/sites for your site as declared in GOCDB and work there.
 
+# Issues
+
+If you have questions, comments or suggestions, please open an issue and assign it the right tag.
