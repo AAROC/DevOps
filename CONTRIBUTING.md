@@ -19,3 +19,7 @@ This repository contains Puppet and Ansible code for instantiating production se
 ## Experimental or unfinished code
 
 If you want to try out something new and need this repo for code base, please create a new branch called `dev` and make changes to that. Pull requests should be made on the dev branch on this repo. Merges from dev to master will happen after Operations meetings.
+
+# Planning and issues
+
+Please feel free to use the github issues to submit support requests or discuss issues. Please make sure that you mark issues accurately with the provided tags (*e.g.* questions should be specifically marked as such, *etc*.
