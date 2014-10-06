@@ -7,7 +7,7 @@ We support Ansible and Puppet.
 
 # Contributing
 
-Pull requests should be made on the dev branch. Merges from dev to master will happen after Operations meetings.
+See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 # Citing
 [![DOI](https://zenodo.org/badge/1514/AAROC/DevOps.png)](http://dx.doi.org/10.5281/zenodo.11914)
