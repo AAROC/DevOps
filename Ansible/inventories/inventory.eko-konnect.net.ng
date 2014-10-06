@@ -1,5 +1,4 @@
 # EKO Konnect Inventory
-
 [ldap-servers]
 ldap.eko-konnect.net.ng
 
@@ -14,7 +13,7 @@ shibboleth-idps
 
 [Debian-servers]
 
-[identity-all:children]
+[identity-eko-konnect:children]
 ldap-servers
 shibboleth-idps
 
