@@ -10,8 +10,9 @@ We support Ansible and Puppet.
 Pull requests should be made on the dev branch. Merges from dev to master will happen after Operations meetings.
 
 # Citing
+[![DOI](https://zenodo.org/badge/1514/AAROC/DevOps.png)](http://dx.doi.org/10.5281/zenodo.11914)
 
-If you like it, please use it, but also cite us, so that our funders will be happy: [![DOI](https://zenodo.org/badge/1514/AAROC/DevOps.png)](http://dx.doi.org/10.5281/zenodo.11914)
+We like our code so much, we put a DOI on it ! If you like it, please use it, but also cite us, so that our funders will be happy. 
 
 
 ## Ansible
