@@ -1,0 +1,163 @@
+######################################################
+#
+# Inventory for the CSIR C4 cluster
+#
+############## Cluster oriented grouping ##############
+##########################################################################################
+# we define overall two clusters : production and development/staging/testing 
+# it is possible that we could separate the development and staging/testing clusters later
+# Typically each production service has a corresponding dev version.
+# BB 10/13
+#############
+# We also want to separate the site services from core services
+# BB 11/13
+
+# non-grid services
+[CA]
+security.sanren.ac.za
+
+[dns-servers]
+# we should put the dns servers in here when we need to move
+# hosts in and out of DNS
+
+# user interfaces
+[UIs]
+ui-dev.c4.csir.co.za
+ui-stage.sagrid.ac.za
+
+##############
+# core services #
+##############
+
+# credential stores
+[myproxy-servers]
+myproxy.c4.csir.co.za
+
+# information systems
+[top-bdiis]
+top-bdii.c4.csir.co.za 
+
+# workload management 
+[wms-servers]
+wms.c4.csir.co.za 
+
+# metadata catalogues
+[lfc-servers]
+lfc.c4.csir.co.za 
+
+# file transfer 
+[fts-servers]
+fts.c4.csir.co.za
+
+# web user interface
+[dirac]
+dirac.c4.csir.co.za needs_certificate='true'
+
+# accounting
+[apel-servers]
+apel-server.c4.csir.co.za needs_certificate='true'
+
+# authorisation
+[voms-servers]
+voms-stage.c4.csir.co.za needs_certificate='true'
+[argus-servers]
+argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_certificate='true'
+
+# monitoring
+[ngi-nagios]
+nagios.c4.csir.co.za  
+#[vo-sagrid-nagios]
+#sagrid-monitoring.c4.csir.co.za
+
+#############
+# site services #
+#############
+
+# Site BDII
+[site-bdiis]
+site-bdii.c4.csir.co.za
+
+# CREAM CE's
+[cream-ces]
+ce01-node001.c4.csir.co.za needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
+
+[apel-publishers:children]
+cream-ces
+
+[storage-elements]
+#se01.localdomain
+
+# Worker Nodes
+[worker-nodes]
+192.168.11.3 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client' needs_certificate='False'
+#ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+
+[cluster-head-nodes]
+ce01-node001.c4.csir.co.za
+
+##########
+# Groups  #
+#########
+
+[core-services:children]
+top-bdiis
+wms-servers
+ngi-nagios
+fts
+argus-servers
+
+[site-services:children]
+site-bdiis
+cream-ces
+worker-nodes
+
+[CRL]
+# the group of machines that needs to keep CRLs up to date
+[CRL:children]
+wms-servers
+lfc-servers
+ngi-nagios
+cream-ces
+argus-servers
+UIs
+worker-nodes
+
+
+# groups belonging to a site
+[za-meraka:children]
+cream-ces
+site-bdiis
+worker-nodes
+top-bdiis
+wms-servers
+ngi-nagios
+fts-servers
+UIs
+argus-servers
+
+[nagios-servers:children]
+ngi-nagios
+
+# OS-oriented grouping
+[Debian-servers]
+
+[CentOS5-servers:children]
+ngi-nagios
+
+[CentOS6-servers:children]
+CA
+argus-servers
+worker-nodes
+site-bdiis
+cream-ces
+UIs
+wms-servers
+fts-servers
+top-bdiis
+voms-servers
+
+[CentOS-servers:children]
+CentOS5-servers
+CentOS6-servers
+############################ END #########################
+
