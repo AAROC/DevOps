@@ -5,6 +5,13 @@
 # 3.) Enables masquerading of the WN in the LAN
 # 4.) Adds all worker nodes to the known-hosts file
 
+# look up the IP addresses of the hosts
+
+# Add all the worker nodes to the list of hosts in /etc/hosts
+# Their host names and addresses are added to the /etc/hosts file
+- name: Update /etc/hosts
+  template: src=etc/hosts.j2 dest=/etc/hosts
+
 - name: Allow TCP forwarding
   command: /bin/echo 1 > /proc/sys/net/ipv4/ip_forward
   

@@ -20,59 +20,62 @@ security.sanren.ac.za
 # we should put the dns servers in here when we need to move
 # hosts in and out of DNS
 
+# user interfaces
 [UIs]
-ui-dev.c4.csir.co.za needs_certificate='false' emi_service='UI' yaim_options='-n UI'
-ui-stage.sagrid.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n UI'
-#################
-# core services #
-#################
+ui-dev.c4.csir.co.za
+ui-stage.sagrid.ac.za
 
-#myproxy.cern.ch
-#myproxy.ct.infn.it
+##############
+# core services #
+##############
+
+# credential stores
 [myproxy-servers]
 myproxy.c4.csir.co.za
 
-# BDIIs
+# information systems
 [top-bdiis]
-top-bdii.c4.csir.co.za needs_certificate='false' emi_service='BDII_top' yaim_options='-n BDII_top'
+top-bdii.c4.csir.co.za 
 
-# WMS 
+# workload management 
 [wms-servers]
-wms.c4.csir.co.za needs_certificate='true' emi_service='WMS' yaim_options='-n WMS -n LB'
+wms.c4.csir.co.za 
 
-# LFC
-[lfcs]
-lfc.c4.csir.co.za needs_certificate='true' emi_service='lfc' yaim_options='-n lfc_mysql'
+# metadata catalogues
+[lfc-servers]
+lfc.c4.csir.co.za 
 
-# FTS
-[fts]
-fts.c4.csir.co.za needs_certificate='true' emi_service='fts-3'
+# file transfer 
+[fts-servers]
+fts.c4.csir.co.za
 
-# DIRAC
+# web user interface
 [dirac]
 dirac.c4.csir.co.za needs_certificate='true'
 
-# APEL
+# accounting
 [apel-servers]
 apel-server.c4.csir.co.za needs_certificate='true'
 
-# ARGUS
+# authorisation
+[voms-servers]
+voms-stage.c4.csir.co.za needs_certificate='true'
 [argus-servers]
 argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_certificate='true'
 
-# NAGIOS
+# monitoring
 [ngi-nagios]
-nagios.c4.csir.co.za   emi_service='SAM-NAGIOS' yaim_options='-n NAGIOS -n SAM_NAGIOS' needs_certificate='true'
-[vo-sagrid-nagios]
-sagrid-monitoring.c4.csir.co.za
+nagios.c4.csir.co.za  
+#[vo-sagrid-nagios]
+#sagrid-monitoring.c4.csir.co.za
 
-#################
+#############
 # site services #
-#################
+#############
 
 # Site BDII
 [site-bdiis]
-site-bdii.c4.csir.co.za needs_certificate='false' emi_service='BDII_site' yaim_options='-n BDII_site'
+site-bdii.c4.csir.co.za
 
 # CREAM CE's
 [cream-ces]
@@ -89,14 +92,13 @@ cream-ces
 192.168.11.3 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client' needs_certificate='False'
 #ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
 
-[voms-servers]
-voms-stage.c4.csir.co.za needs_certificate='true'
+[cluster-head-nodes]
+ce01-node001.c4.csir.co.za
 
-[Debian-servers]
+##########
+# Groups  #
+#########
 
-
-############ grouping and children ############
-# first, group by production and development 
 [core-services:children]
 top-bdiis
 wms-servers
@@ -109,16 +111,19 @@ site-bdiis
 cream-ces
 worker-nodes
 
-############## Middleware oriented grouping ##############
 [CRL]
+# the group of machines that needs to keep CRLs up to date
 [CRL:children]
 wms-servers
-lfcs
+lfc-servers
 ngi-nagios
 cream-ces
 argus-servers
+UIs
+worker-nodes
 
 
+# groups belonging to a site
 [za-meraka:children]
 cream-ces
 site-bdiis
@@ -126,7 +131,7 @@ worker-nodes
 top-bdiis
 wms-servers
 ngi-nagios
-fts
+fts-servers
 UIs
 argus-servers
 
@@ -134,6 +139,8 @@ argus-servers
 ngi-nagios
 
 # OS-oriented grouping
+[Debian-servers]
+
 [CentOS5-servers:children]
 ngi-nagios
 
@@ -145,7 +152,7 @@ site-bdiis
 cream-ces
 UIs
 wms-servers
-fts
+fts-servers
 top-bdiis
 voms-servers
 

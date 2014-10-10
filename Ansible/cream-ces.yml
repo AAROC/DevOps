@@ -7,11 +7,11 @@
     # facts consistently.
     - roles/common/vars/middleware/igtf.yml
   roles:
-  - common
-  - certificates
-  - umd3
-  - cream-ce
-  - munge
+#  - common
+#  - certificates
+#  - umd3
+#  - cream-ce
+#  - munge
   - yaim    
   post_tasks:
     - name: fix qmgr queues 1

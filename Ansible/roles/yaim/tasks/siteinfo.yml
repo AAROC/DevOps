@@ -17,7 +17,8 @@
     - yaim
 
 - name: Create wn-list.conf file
-  action: copy src=opt/glite/yaim/etc/siteinfo/wn-list.conf.{{ site_name }} dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/wn-list.conf owner=root group=root mode=0644
+#  action: copy src=opt/glite/yaim/etc/siteinfo/wn-list.conf.{{ site_name }} dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/wn-list.conf owner=root group=root mode=0644
+  template: src=opt/glite/yaim/etc/siteinfo/wn-list.conf.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/wn-list.conf owner=root group=root mode=0644
   sudo: true
   sudo_user: root
   when: emi_service == 'CREAM_CE'
@@ -143,6 +144,6 @@
   sudo: true
   sudo_user: root
   tags:
-    - yaim
+    - runyaim
 
   
