@@ -19,3 +19,6 @@
   shell: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install-shib.expect chdir={{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }} creates={{ shibboleth_install_path }}/war/idp.war"
   environment: java_env
 
+- name: Associate the correct owner
+  sudo: yes
+  file: path=/opt/shibboleth-idp owner={{ tomcat6_user }} state=directory recurse=yes
