@@ -103,7 +103,7 @@ ce01-node001.c4.csir.co.za
 top-bdiis
 wms-servers
 ngi-nagios
-fts
+fts-servers
 argus-servers
 
 [site-services:children]
