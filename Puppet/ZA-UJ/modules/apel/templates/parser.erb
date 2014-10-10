@@ -1,0 +1,50 @@
+# Information about the apel client database
+[db]
+hostname = <%= db_hostname %>
+port = <%= db_port %>
+name = <%= db_name %>
+username = <%= db_username %>
+password = <%= db_password %>
+
+[site_info]
+# Specify the site name from GOCDB
+site_name = <%= site_name %>
+# Batch system hostname.  This does not need to be a definitive hostname,
+# but it should uniquely identify the batch system.
+# Example: pbs.gridpp.rl.ac.uk
+lrms_server = <%= lrms_server %>
+
+[blah]
+enabled = <%= blah_enabled %>
+dir = <%= blah_directory %>
+# typical logfile name is blahp.log-yyyymmdd
+filename_prefix = <%= blah_filname_pre %>
+subdirs = <%= blah_subdir %>
+
+[batch]
+enabled = <%= batch_enabled %>
+
+# Reparse all batch system log files and replace them in the database.
+# Use with caution!
+reparse = false
+
+# Batch system specific options.
+# Valid types are LSF, PBS, SGE, SLURM
+type = <%= batch_type %>
+# Whether to try to parse multi-core details
+parallel = <%= batch_parallel %>
+# Directory to search for accounting logfiles
+dir =  <%= batch_directory %>
+# Prefix shared by all log files to parse 
+filename_prefix = <%= batch_file_pre %>
+# Whether to search subdirectories for logfiles
+subdirs = <%= batch_subdir %>
+
+# LSF only: scale CPU and wall durations according to 
+# 'HostFactor' value in logfiles
+#scale_host_factor = false
+
+[logging]
+logfile = /var/log/apelparser.log
+level = INFO
+console = true

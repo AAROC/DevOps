@@ -1,0 +1,3 @@
+---
+- include: networking.yml
+- include: install.yml

@@ -1,0 +1,8 @@
+#  Change the order so that the nearest server is the first in the list ...
+#  Note that port 8000 is preferred for the servers below but,  if it does not work, use port 80 instead.
+
+# if you are in Europe (uncomment)
+CVMFS_SERVER_URL="http://cvmfs-stratum-one.cern.ch:8000/opt/@org@;http://cernvmfs.gridpp.rl.ac.uk:8000/opt/@org@;http://cvmfs.racf.bnl.gov:8000/opt/@org@"
+
+# if you are in North America (uncomment)
+#CVMFS_SERVER_URL="http://cvmfs.racf.bnl.gov:8000/opt/@org@;http://cvmfs-stratum-one.cern.ch:8000/opt/@org@;http://cernvmfs.gridpp.rl.ac.uk:8000/opt/@org@"

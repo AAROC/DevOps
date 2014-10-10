@@ -1,0 +1,20 @@
+#- name: Ensure that tomcat can write to 
+
+- name: Create Attribute Filters
+  copy: src=attribute-filter.xml dest={{ shibboleth_install_path }}/attribute-filter.xml
+
+- name: Create Attribute Resolver
+  template: src=attribute-resolver.xml.j2 dest={{ shibboleth_install_path }}/attribute-resolver.xml
+  
+- name: Create Logger
+  template: src=logging.xml.j2 dest={{ shibboleth_install_path }}/logging.xml
+  
+- name: Create Handler
+  template: src=handler.xml.j2 dest={{ shibboleth_install_path }}/handler.xml
+  
+- name: Create Relying Parties
+  template: src=relying-party.xml.j2 dest={{ shibboleth_install_path }}/relying-party.xml
+  
+- name: Configure the Login module
+  template: src=login.conf.j2 dest={{ shibboleth_install_path }}/login.conf
+  notify: restart tomcat

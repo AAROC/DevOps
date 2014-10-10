@@ -1,0 +1,143 @@
+######################################################
+#
+# Inventory for the CHPC
+#
+############## Cluster oriented grouping ###################
+######################################################
+
+[user-interfaces]
+grid-ui.chpc.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n UI'
+
+#############
+# site services #
+#############
+
+# Site BDII
+[site-bdiis]
+grid-bdii.c4.csir.co.za needs_certificate='false' emi_service='BDII_site' yaim_options='-n BDII_site'
+
+# CREAM CE's
+[cream-ces]
+grid-ce.chpc.ac.za needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
+
+[apel-publishers:children]
+cream-ces
+
+[storage-elements]
+# Xrootd machine
+grid-se.chpc.ac.za needs_certificate='true'
+grid-xrootd.chpc.ac.za need_certificate='true'
+
+# Worker Nodes
+[worker-nodes]
+gnode-1-1 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-2 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-3 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-4 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-5 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-6 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-7 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-8 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-9 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-10 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-11 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-12 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-13 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-14 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-15 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-16 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-17 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-18 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-19 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-20 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-21 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-22 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-23 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-24 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-25 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-26 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-27 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-28 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-29 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-30 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-31 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-32 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-33 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-34 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-35 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-36 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-37 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-38 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-39 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-40 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-41 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-42 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-43 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-44 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-45 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-46 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-47 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-48 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-49 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-1-50 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+gnode-2-1 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-2 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-3 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-4 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-5 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-6 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-7 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-8 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-9 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-10 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-11 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-12 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-13 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-14 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-15 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-16 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-17 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-18 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-19 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-20 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-21 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-22 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-23 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-24 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-25 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-26 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-27 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-28 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-29 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-30 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-31 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-32 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-33 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+gnode-2-34 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+
+############ grouping and children ############
+[site-services:children]
+site-bdiis
+cream-ces
+worker-nodes
+
+############## Service oriented grouping ##############
+# (here comes the magical power of ansible... Group things
+# in as much as you can)
+
+
+############## Middleware oriented grouping ##############
+
+[CRL]
+[CRL:children]
+cream-ces
+user-interfaces
+storage-elements
+
+[za-chpc:children]
+cream-ces
+site-bdiis
+worker-nodes
+user-interfaces
+
+############################ END #########################

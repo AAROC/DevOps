@@ -1,0 +1,16 @@
+- name: create ansible user
+  action: user name=ansible comment="ansible user created by bootstrap playbook" generate_ssh_key=yes groups=wheel
+  tags:
+    - bootstrap
+  when: ansible_os_family=="RedHat"
+- name: create ansible user
+  action: user name=ansible comment="ansible user created by bootstrap playbook" generate_ssh_key=yes groups=sudo
+  tags:
+    - bootstrap
+  when: ansible_os_family=="Debian"
+
+- name: update sudoers to ensure ansible user can sudo
+  lineinfile: "dest=/etc/sudoers state=present regexp='^ansible' line='ansible ALL=(ALL) NOPASSWD: ALL'"
+  tags:
+    - bootstrap
+

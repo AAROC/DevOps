@@ -1,0 +1,6 @@
+---
+- include: site-bdiis.yml
+#- include: cream-ces.yml
+#- include: worker-nodes.yml
+#- include: ui.yml
+#- include: se.yml

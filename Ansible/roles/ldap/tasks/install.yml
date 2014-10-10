@@ -1,0 +1,22 @@
+---
+#- name: Add the OS specific varibles
+#  include_vars: "{{ ansible_os_family }}.yml"
+#  tags: 
+#    - LDAP
+#    - install
+
+- name: Install the openldap and required Packages for RedHat
+  yum: name={{ item }} state=installed
+  with_items: ldap_pkgs
+  when: ansible_os_family == 'RedHat'
+  tags: 
+    - LDAP
+    - install
+
+- name: Install the openldap and required Packages for Debian
+  apt: name={{ item }} state=installed update_cache=yes
+  with_items: ldap_pkgs
+  when: ansible_os_family == 'Debian'
+  tags: 
+    - LDAP
+    - install

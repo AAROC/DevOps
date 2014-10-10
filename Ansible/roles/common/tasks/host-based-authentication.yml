@@ -1,0 +1,41 @@
+---
+#- name: Setup SSH known hosts file
+  #template: dest=/etc/ssh/ssh_known_hosts src=etc/ssh/ssh_known_hosts.j2 owner=root group=root
+  #sudo: true
+  #ignore_errors: yes
+  #tags:
+    #- ssh
+    
+#- name: Setup /etc/ssh/shosts.equiv file
+  #action: template dest=/etc/ssh/shosts.equiv src=etc/ssh/shosts.equiv.j2 owner=root group=root
+  #sudo: true
+  #tags:
+    #- ssh
+    
+#- name: Setup /root/.shosts file
+  #action: template dest=/root/.shosts src=etc/ssh/shosts.equiv.j2 owner=root group=root
+  #sudo: true
+  #tags:
+    #- ssh    
+
+    
+- name: Setup SSH host based authentication (server configuration file; enable `HostbasedAuthentication` option)
+  action: lineinfile dest=/etc/ssh/sshd_config regexp='HostbasedAuthentication.*' line="HostbasedAuthentication yes"
+  notify: restart sshd
+  sudo: true
+  tags:
+    - ssh
+    
+- name: Setup SSH host based authentication (server configuration file; disable `IgnoreRhosts` option)
+  action: lineinfile dest=/etc/ssh/sshd_config regexp='IgnoreRhosts.*' line="IgnoreRhosts no"
+  notify: restart sshd
+  sudo: true
+  tags:
+    - ssh
+- name: Setup SSH host based authentication (client configuration file; enable `HostbasedAuthentication` option)
+  action: lineinfile dest=/etc/ssh/ssh_config regexp='HostbasedAuthentication.*' line="HostbasedAuthentication yes"
+  sudo: true
+
+- name: Setup SSH host based authentication (client configuration file; enable `EnableSSHKeysign` option)
+  action: lineinfile dest=/etc/ssh/ssh_config regexp='EnableSSHKeysign.*' line="EnableSSHKeysign yes"
+  sudo: true

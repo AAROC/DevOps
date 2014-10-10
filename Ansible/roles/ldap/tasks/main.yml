@@ -1,0 +1,6 @@
+---
+# tasks file for ldap/
+- include: install.yml
+- include: configure.yml
+- include: security.yml
+- include: fill.yml

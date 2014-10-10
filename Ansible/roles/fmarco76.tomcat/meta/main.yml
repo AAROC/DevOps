@@ -1,0 +1,24 @@
+---
+galaxy_info:
+  author: Marco Fargetta 
+  description: 
+  company: INFN 
+   - BSD (default)
+  license: license (GPLv2, CC-BY, etc)
+  min_ansible_version: 1.2
+  
+  platforms:
+  - name: EL
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+      - all
+  - web
+dependencies: 
+  - { role: fmarco76.firewall, ports: [{ port: 80, dport: 8080 }], table: nat, chain: PREROUTING }
+  - { role: fmarco76.firewall, ports: [80]}
+  

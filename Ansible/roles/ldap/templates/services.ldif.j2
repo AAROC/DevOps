@@ -1,0 +1,34 @@
+# extended LDIF
+#
+# LDAPv3
+# base <ou=Organisations,dc=local> with scope oneLevel
+# filter: (objectclass=*)
+# requesting: ALL
+#
+dn: dc=idp,ou=Services,dc=local
+objectClass: top
+objectClass: domain
+objectClass: domainRelatedObject
+objectClass: dcObject
+associatedDomain: {{ domain }} 
+dc: idp
+
+dn: ou=Group,dc=idp,ou=Services,dc=local
+objectClass: organizationalUnit
+objectClass: top
+ou: Group
+
+dn: cn=Administrator,ou=Group,dc=idp,ou=Services,dc=local
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Administrator
+uniqueMember: cn=useradmin,dc=local
+uniqueMember: cn={{ user_cn }},ou=People,dc=local 
+description: Users in this group have administrative privileges on this server
+
+dn: cn=Users,ou=Group,dc=idp,ou=Services,dc=local
+objectClass: groupOfUniqueNames
+objectClass: top
+cn: Users
+uniqueMember: cn={{ user_cn }},ou=People,dc=local 
+description: List of users using this server for authentication

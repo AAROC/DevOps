@@ -1,0 +1,25 @@
+---
+# Generic
+#domain: idp.sagrid.ac.za
+admin: admin
+Administrator: Administrator
+idp_group: idp
+
+# The first test user
+user_cn: test
+user_sn: test
+user_given: Test
+user_initials: t
+user_email: test@test.com
+# This *MUST* be different to the primary email
+user_secondary_email: test1@test.com
+user_org: 'Test Institute'
+user_country: NA 
+user_registered_address: test@test.com
+
+user_pass: choose_a_good_pass
+useradmin_password: choose_a_good_pass
+
+# Passwords
+root_password_clear: thisismyldapadminpassword
+root_password: '{SSHA}YN4DR1KHnl7cSEFiG0ISc1oUOVxCYqzA'

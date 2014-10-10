@@ -1,0 +1,31 @@
+#!/usr/bin/expect
+
+spawn keytool -genkey -keyalg RSA -alias selfsigned -keystore keystore.jks -storepass password -validity 360 -keysize 2048
+
+expect "What is your first and last name?"
+send "{{ ansible_fqdn }}\r"
+
+
+expect "What is the name of your organizational unit?"
+send "{{ server_organization_unit }}\r"
+
+
+expect "What is the name of your organization?"
+send "{{ server_organization }}\r"
+
+expect "What is the name of your City or Locality?"
+send "{{ server_location }}\r"
+
+expect "What is the name of your State or Province?"
+send "{{ server_state }}\r"
+
+expect "What is the two-letter country code for this unit?"
+send "{{ server_country }}\r"
+
+expect "Is CN="
+send "yes\r"
+
+expect "Enter key password for <selfsigned>"
+send "\r"
+expect eof
+

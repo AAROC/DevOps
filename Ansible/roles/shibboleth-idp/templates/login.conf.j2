@@ -1,0 +1,34 @@
+/*
+  This is the JAAS configuration file used by the Shibboleth IdP.
+  
+  A JAAS configuration file is a grouping of LoginModules defined in the following manner:
+  <LoginModuleClass> <Flag> <ModuleOptions>;
+  
+  LoginModuleClass - fully qualified class name of the LoginModule class
+  Flag             - indicates whether the requirement level for the modules; 
+                         allowed values: required, requisite, sufficient, optional
+  ModuleOptions    - a space delimited list of name="value" options
+  
+  For complete documentation on the format of this file see:
+  http://java.sun.com/j2se/1.5.0/docs/api/javax/security/auth/login/Configuration.html
+  
+  For LoginModules available within the Sun JVM see:
+  http://java.sun.com/j2se/1.5.0/docs/guide/security/jaas/tutorials/LoginConfigFile.html
+  
+  Warning: Do NOT use Sun's JNDI LoginModule to authentication against an LDAP directory,
+  Use the LdapLoginModule that ships with Shibboleth and is demonstrated below.
+
+  Note, the application identifier MUST be ShibUserPassAuth
+*/
+
+
+ShibUserPassAuth {
+
+edu.vt.middleware.ldap.jaas.LdapLoginModule required
+      ldapUrl="ldap://{{ ldap_server }}}"
+      baseDn="{{ idp_base_dn }}"
+      tls="true"
+      userFilter="(&(cn={0})(memberOf=cn=Users,ou=Group,dc=idp,ou=Services,dc=local))";
+
+
+};

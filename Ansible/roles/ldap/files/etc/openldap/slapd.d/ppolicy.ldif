@@ -1,0 +1,54 @@
+# extended LDIF
+#
+# LDAPv3
+# base <ou=policies,dc=local> with scope subtree
+# filter: (objectclass=*)
+# requesting: ALL
+#
+
+# default, policies, local
+dn: cn=default,ou=policies,dc=local
+objectClass: top
+objectClass: pwdPolicy
+objectClass: person
+pwdAttribute: userPassword
+sn: Default Policy
+cn: default
+pwdMinAge: 0
+pwdMaxAge: 0
+pwdInHistory: 3
+pwdCheckQuality: 0
+pwdMinLength: 6
+pwdExpireWarning: 0
+pwdGraceAuthNLimit: 0
+pwdLockout: TRUE
+pwdLockoutDuration: 3600
+pwdMaxFailure: 4
+pwdFailureCountInterval: 0
+pwdMustChange: FALSE
+pwdAllowUserChange: TRUE
+pwdSafeModify: FALSE
+
+# admin, policies, local
+dn: cn=admin,ou=policies,dc=local
+objectClass: top
+objectClass: pwdPolicy
+objectClass: person
+pwdAttribute: userPassword
+sn: Administrator policy
+cn: admin
+pwdMinAge: 0
+pwdMaxAge: 0
+pwdInHistory: 0
+pwdCheckQuality: 0
+pwdMinLength: 0
+pwdExpireWarning: 0
+pwdGraceAuthNLimit: 0
+pwdLockout: TRUE
+pwdLockoutDuration: 1800
+pwdMaxFailure: 3
+pwdFailureCountInterval: 100
+pwdMustChange: FALSE
+pwdAllowUserChange: FALSE
+pwdSafeModify: FALSE
+

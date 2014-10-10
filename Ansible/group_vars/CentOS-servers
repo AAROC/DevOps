@@ -1,0 +1,28 @@
+---
+yum_flags: " "
+lokkit_flags: " "
+# change following line to point to an EPEL mirror closeby to your region
+epel_release_url: http://fedora.mirror.ac.za/epel/6/x86_64/
+epel_release_name: epel-release-6-8.noarch.rpm
+# This contains the actual name of the iptables command which differs from distro to distro.
+iptables_command: iptables
+iptables_package: iptables
+# openldap stuff
+ldap_pkgs:
+  - openldap
+  - openldap-servers
+  - openldap-clients
+ldap_service: slapd
+ldap_config_path: /etc/openldap
+ldap_db: "{2}bdb"
+ldap_module_file: moduleadd-Red.ldif 
+openldap_server_user: ldap
+java_env:
+  JAVA_HOME: /usr/lib/jvm/java-openjdk
+tomcat6_config_path: /etc/tomcat6
+tomcat6_endorsed_path: /usr/share/tomcat6/lib/endorsed 
+tomcat6_service: tomcat6
+tomcat6_user: tomcat
+tomcat6_group: tomcat
+tomcat6_config_start: /etc/tomcat6/tomcat6.conf
+tomcat6_lib_path: /usr/share/tomcat6/lib/

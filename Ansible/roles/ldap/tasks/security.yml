@@ -1,0 +1,65 @@
+---
+- name: Enable Secure Communications with the LDAP server (RedHat)
+  lineinfile: dest=/etc/rc.d/init.d/slapd regexp="^{{ item }}=" line='{{ item }}="yes"'
+  sudo: yes
+  when: ansible_os_family=="RedHat" 
+  with_items:
+    - SLAPD_LDAPI
+    - SLAPD_LDAPS
+
+- name: Enable protocols in sysconfig startup script (RedHat)
+  lineinfile: dest=/etc/sysconfig/ldap regexp="^{{ item }}=" line='{{ item }}="yes"'
+  when: ansible_os_family=="RedHat"
+  sudo: yes
+  with_items:
+    - SLAPD_LDAPI
+    - SLAPD_LDAPS
+  
+- name: Enable Secure Communications with the LDAP server
+  lineinfile: dest=/etc/default/slapd regexp="^{{ item }}=" line='{{ item }}="ldap:/// ldapi:/// ldaps:///"'
+  when: ansible_os_family=="Debian" 
+  sudo: yes
+  with_items:
+    - SLAPD_SERVICES 
+
+- name: Create the directory for ldap certificates
+  sudo: yes
+  file: path={{ ldap_config_path }}/certs/ state=directory owner={{ openldap_server_user }} group={{ openldap_server_user }}
+
+- name: Generate the private key for certificate request
+  sudo: yes
+  shell: openssl genrsa -des3 -passout pass:password -out my1.key 1024 chdir={{ ldap_config_path }}/certs/ creates={{ ldap_config_path }}/certs/my1.key
+
+- name: Strip the passphrase from the key 
+  sudo: yes
+  shell: openssl rsa -in my1.key -passin pass:password -out my.key chdir={{ ldap_config_path }}/certs/ creates={{ ldap_config_path }}/certs/my.key
+
+- name: Create and sign the the new certificate 
+  sudo: yes
+  shell: openssl req -new -x509 -subj '/C={{ server_country }}/ST={{ server_state }}/L={{ server_location }}/O={{ server_organization }}/CN={{ ansible_hostname }}/' -days 3650 -key my.key -out cert.crt -extensions v3_ca chdir={{ ldap_config_path }}/certs/   creates={{ ldap_config_path }}/certs/cert.crt
+
+- name: Copy secure config (RedHat)
+  sudo: yes
+  template: src=secure-RedHat.ldif.j2 dest=/tmp/secure.ldif
+  when: ansible_os_family=="RedHat" and ldap_config.stdout.find('certs/my.key')==-1
+  
+- name: Copy secure config (Debian)
+  template: src=secure-Debian.ldif.j2 dest=/tmp/secure.ldif
+  when: ansible_os_family=="Debian" and ldap_config.stdout.find('certs/my.key')==-1
+  
+- name: Config certificates 
+  command: ldapmodify -Y EXTERNAL -H ldapi:/// -f /tmp/secure.ldif
+  sudo: yes 
+  when: ldap_config.stdout.find('certs/my.key')==-1
+  tags: 
+    - LDAP
+    - certs
+
+- name: Restart ldap server
+  service: name={{ ldap_service }} state=restarted
+  sudo: yes 
+  when: ldap_config.stdout.find('certs/my.key')==-1
+  tags: 
+    - LDAP
+    - config
+

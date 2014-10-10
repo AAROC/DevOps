@@ -1,0 +1,135 @@
+---
+- name: Retrieve ldap root dn 
+  command: ldapsearch -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -b dc=local -s base
+  register: ldap_base
+  changed_when: "False"
+  failed_when: "'FAILED' in ldap_base.stderr"
+  tags: 
+    - LDAP
+    - fili
+
+- name: Create the root node
+  template: src=root.ldif.j2 dest=/tmp/root.ldif
+  when: 'ldap_base.stdout.find("objectClass: dcObject")==-1'
+
+- name: Add the root node 
+  command: ldapadd -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/root.ldif
+  when: 'ldap_base.stdout.find("objectClass: dcObject")==-1'
+
+- name: Retrieve ldap orgs
+  command: ldapsearch -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -b ou=Organisations,dc=local -s one
+  register: ldap_orgs
+  changed_when: "False"
+  failed_when: "'FAILED' in ldap_orgs.stderr"
+  tags: 
+    - LDAP
+    - fill
+
+- name: Create Organisations LDIF
+  copy: src=etc/openldap/slapd.d/orgs.ldif dest=/tmp/orgs.ldif
+  when: 'ldap_orgs.stdout.find("objectClass: friendlyCountry")==-1'
+
+- name: Add Organisations to the server
+  command: ldapadd -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/orgs.ldif
+  when: 'ldap_orgs.stdout.find("objectClass: friendlyCountry")==-1'
+
+- name: Retrieve ldap default policy 
+  command: ldapsearch -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -b cn=default,ou=policies,dc=local
+  register: ldap_policy
+  changed_when: "False"
+  failed_when: "'FAILED' in ldap_policy.stderr"
+  tags: 
+    - LDAP
+    - fill
+
+- name: Copy Default policies
+  copy: src=etc/openldap/slapd.d/ppolicy.ldif dest=/tmp/ppolicy.ldif
+  when: 'ldap_policy.stdout.find("objectClass: pwdPolicy")==-1'
+  tags: 
+    - LDAP
+
+- name: Apply overlays 
+  command: ldapadd -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/ppolicy.ldif
+  when: 'ldap_policy.stdout.find("objectClass: pwdPolicy")==-1'
+  tags: 
+    - LDAP
+    - create
+
+- name: Retrieve ldap user 
+  command: ldapsearch -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -b ou=People,dc=local
+  register: ldap_user
+  changed_when: "False"
+  failed_when: "'FAILED' in ldap_user.stderr"
+  tags: 
+    - LDAP
+    - fill
+
+- name: Create the first user ldif
+  template: src=user.ldif.j2 dest=/tmp/user.ldif
+  when: 'ldap_user.stdout.find("objectClass: inetOrgPerson")==-1'
+  tags:
+    - LDAP
+    - create
+
+- name: Add first user to ou=People
+  command: ldapadd -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/user.ldif
+  when: 'ldap_user.stdout.find("objectClass: inetOrgPerson")==-1'
+  tags:
+    - LDAP
+    - create
+# could also be
+# notify: 
+# - ldapadd file=/tmp/user.ldif
+
+- name: Retrieve ldap useradmin 
+  command: ldapsearch -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -b cn=useradmin,dc=local -s base
+  register: ldap_useradmin
+  changed_when: "False"
+  failed_when: "'FAILED' in ldap_useradmin.stderr"
+  tags: 
+    - LDAP
+    - fill
+
+- name: Create the useradmin ldif
+  template: src=useradmin.ldif.j2 dest=/tmp/useradmin.ldif
+  when: 'ldap_useradmin.stdout.find("objectClass: simpleSecurityObject")==-1'
+  tags:
+    - LDAP
+    - create
+
+- name: Add first user to ou=People
+  command: ldapadd -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/useradmin.ldif
+  when: 'ldap_useradmin.stdout.find("objectClass: simpleSecurityObject")==-1'
+  tags:
+    - LDAP
+    - create
+# could also be
+# notify: 
+# - ldapadd file=/tmp/user.ldif
+
+
+
+- name: Retrieve ldap services 
+  command: ldapsearch -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -b ou=Services,dc=local
+  register: ldap_service
+  changed_when: "False"
+  failed_when: "'FAILED' in ldap_service.stderr"
+  tags: 
+    - LDAP
+    - fill
+
+- name: Create the services group
+  template: src=services.ldif.j2 dest=/tmp/services.ldif
+  when: 'ldap_service.stdout.find("objectClass: groupOfUniqueNames")==-1'
+  tags: 
+    - LDAP
+    - create
+
+- name: Configure the services group
+  command: ldapadd -x -w {{ root_password_clear }} -D cn={{ admin }},dc=local -H ldap:/// -f /tmp/services.ldif
+  when: 'ldap_service.stdout.find("objectClass: groupOfUniqueNames")==-1'
+  #register: status
+  #failed_when: "'FAILED' in status.stderr"
+
+
+ 

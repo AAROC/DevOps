@@ -1,0 +1,9 @@
+# Group variables for WMS servers
+---
+needs_certificate:'true' 
+prerequisites: []
+emi_service:'WMS' 
+yaim_options:'-n WMS -n LB'
+ports: 
+  - inbound: []
+  - outbound: []

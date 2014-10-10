@@ -1,0 +1,45 @@
+- name: Install prerequisite packages (RedHat)
+  yum: name={{ item }} state=present
+  with_items: 
+    - python-simplejson
+    - libselinux-python
+    - iptables
+    - mlocate
+    - initscripts
+    - chkconfig
+    - system-config-services
+    - openssh-clients
+  tags:
+    - bootstrap
+  when: ansible_os_family=="RedHat"
+- name: Install some useful packages (RedHat)
+  yum: name={{ item }} state=present
+  with_items:
+    - vim-minimal
+  tags:
+    - bootstrap
+  ignore_errors: yes
+  when: ansible_os_family=="RedHat"
+
+- name: Install prerequisite packages (Debian)
+  apt: name={{ item }} state=present
+  with_items: 
+    - python-simplejson
+    - iptables
+    - iptables-persistent
+    - mlocate
+    - initscripts
+    - openssh-client
+  tags:
+    - bootstrap
+  when: ansible_os_family=="Debian"
+  
+- name: Install some useful packages (Debian)
+  apt: name={{ item }} state=present
+  with_items:
+    - htop
+    - vim
+  tags:
+    - bootstrap
+  ignore_errors: yes
+  when: ansible_os_family=="Debian"

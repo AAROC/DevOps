@@ -44,9 +44,6 @@
       sudo: true
       service: name=munge state=restarted
         
-    - name: restart exportfs
-      action: shell sudo -i exportfs -r
-      sudo: true
     - name: restart pbs_server
       sudo: true
       action: service name=pbs_server state=restarted enabled=yes  
