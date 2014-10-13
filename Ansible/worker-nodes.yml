@@ -4,7 +4,6 @@
   name: Prepare worker nodes
   roles:
     - worker-node
-    - bootstrap
 
 - hosts: worker-nodes
   name: Apply the common role and CA certs
