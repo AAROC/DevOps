@@ -1,5 +1,5 @@
 - name: check connectivity
-  module: name=ping www.google.com
+  ping: www.google.com
   register: hosttest
   
 - name: use Google public DNS if necessary
