@@ -1,10 +1,10 @@
 # Group variables for user interfaces
 ---
-needs_certificate:'false'
-perun_slave:'true' # this can be overridden in the playbook
+needs_certificate: 'false'
+perun_slave: 'true' # this can be overridden in the playbook
 prerequisites: []
-emi_service:'UI' 
-yaim_options:'-n UI'
+emi_service: 'UI' 
+yaim_options: '-n UI'
 ports: 
   - inbound: []
   - outbound: []

@@ -7,13 +7,24 @@
 
 - name: Allow TCP forwarding
   command: /bin/echo 1 > /proc/sys/net/ipv4/ip_forward
+  tags: 
+  - network
   
 - name: Enabled masquerading
-  
+  command: '{{ iptables_command }} -t nat -A POSTROUTING -o eth0 -j MASQUERADE'
+  tags:
+  - network
+  - firewall
 
 - name: restart exportfs
-   action: shell sudo -i exportfs -r
+  command: exportfs -r
+  tags:
+  - network
+  - nfs
   
 - name: start nfs
   service: name=nfs state=restarted
+  tags:
+  - network
+  - nfs
   

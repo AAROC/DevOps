@@ -1,9 +1,9 @@
 # Group variables for NGI Nagios machines
 ---
-needs_certificate:'true'
+needs_certificate: 'true'
 prerequisites: []
 emi_service: 'SAM-NAGIOS' 
-yaim_options:'-n NAGIOS -n SAM_NAGIOS' 
+yaim_options: '-n NAGIOS -n SAM_NAGIOS' 
 ports:
   - inbound: []
   - outbound: []

@@ -1,7 +1,7 @@
  # Group vars for File Transfer Service servers
 ---
-needs_certificate:'true'
-emi_service:'fts-3'
+needs_certificate: 'true'
+emi_service: 'fts-3'
 prerequisites: []
 ports: 
  - inbound: []
