@@ -4,7 +4,7 @@
   ignore_errors: true
   
 - name: use Google public DNS if necessary
-  lineinfile: dest=/etc/resolv.conf regexp=^nameserver line=nameserver 8.8.8.8
+  lineinfile: dest=/etc/resolv.conf regexp=^nameserver line='nameserver 8.8.8.8'
   when: "'ping: unknown host www.google.com' in hosttest.stderr"
 
 - name: Install prerequisite packages (RedHat)
