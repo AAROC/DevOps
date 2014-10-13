@@ -1,0 +1,29 @@
+# worker nodes playbook
+--- 
+- hosts: worker-nodes
+  name: Prepare worker nodes
+  roles:
+    - worker-node
+    - bootstrap
+
+- hosts: worker-nodes
+  name: Apply the common role and CA certs
+  roles:
+    - common
+    - certificates
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/igtf.yml
+
+- hosts: worker-nodes 
+  name: install middleware
+  roles:
+    - umd
+    - emi-worker-node
+
+- hosts: worker-nodes
+  name: configure middleware with yaim
+  roles:
+    - yaim
+
+#- hosts: worker-nodes
