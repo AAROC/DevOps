@@ -1,10 +1,10 @@
 # known hosts file for the worker nodes
 # /etc/ssh/ssh_known_hosts
 {% for host in groups['worker-nodes'] %}
-{{  hostvars[host]['ansible_ssh_host_key_rsa_public'] }}
+{{   hostvars[host]['ansible_eth0']['ipv4']['address'] hostvars[host]['ansible_ssh_host_key_rsa_public'] }}
 {% endfor %}
 
 # and head node can contact all worker nodes
 {% for host in groups['cluster-head-nodes'] %}
-{{ hostvars[host]['ansible_ssh_host_key_rsa_public'] }}
+{{  hostvars[host]['ansible_eth1']['ipv4']['address'] hostvars[host]['ansible_ssh_host_key_rsa_public'] }}
 {% endfor %}

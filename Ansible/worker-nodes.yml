@@ -12,7 +12,9 @@
 - hosts: worker-nodes
   name: Add head node 
   user: root
-  template: src=etc/ssh/shosts.equiv.j2 dest=/etc/ssh/shosts.equiv
+  tasks: 
+  - template: src=etc/ssh/shosts.equiv.j2 dest=/etc/ssh/shosts.equiv
+  - template: src=etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/shosts.equiv
 
 - hosts: worker-nodes
   name: add head node public key to WN authorized_keys
