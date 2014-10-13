@@ -1,11 +1,21 @@
 # worker nodes playbook
+# this assumes that you've already run the bootstrap role as root.
 --- 
+- hosts: worker-nodes
+  name: add head node ansible user key to authorized_keys
+  assemble: src=~/.ssh/id.rsa.pub dest=/home/ansible/.ssh/authorized_keys owner=ansible:ansible mode=400 remote_src=False
+  tags:
+    - bootstrap
+    - keys
+
+
 - hosts: worker-nodes
   name: Prepare worker nodes
   user: ansible
   sudo: true
   roles:
     - worker-node
+
 
 - hosts: worker-nodes
   name: Apply the common role and CA certs
