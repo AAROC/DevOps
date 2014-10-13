@@ -1,5 +1,5 @@
 - name: check connectivity
-  command: /usr/bin/host www.google.com
+  module: name=ping www.google.com
   register: hosttest
   
 - name: use Google public DNS if necessary
