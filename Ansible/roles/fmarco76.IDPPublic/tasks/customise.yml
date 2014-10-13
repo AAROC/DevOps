@@ -7,13 +7,13 @@
   replace: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/cleaner.properties regexp='test@idp-domain.org' replace={{ mail_contact }}
 
 - name: Fix ldap server
-  lineinfile: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties regexp='^url=ldaps://ldap.sagrid.ac.za:636' line='url=ldap://{{ ldap_server }}:389'
+  replace: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties regexp='^url=ldaps://ldap.sagrid.ac.za:636$' replace='url=ldap://{{ ldap_server }}:389'
 
 - name: Set bind DN
-  lineinfile: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties regexp='^bindDN=cn=idp,dc=local' line='bindDN=cn=useradmin,dc=local'
+  replace: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties regexp='^bindDN=cn=idp,dc=locali$' replace='bindDN=cn=useradmin,dc=local'
 
 - name: Set bind Password 
-  lineinfile: "dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties regexp='^bindPass=xxxxxxxxxxxxxxxxxxxx' line='bindPass={{ useradmin_password }}'"
+  replace: "dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties regexp='^bindPass=xxxxxxxxxxxxxxxxxxxx' replace='bindPass={{ useradmin_password }}'"
 
 - name: Create DB directory
   sudo: yes

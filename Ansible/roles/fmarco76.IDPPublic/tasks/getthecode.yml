@@ -10,3 +10,8 @@
 
 - name: Unarchive di IDPPublic
   unarchive: copy=no src={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic.tar.gz dest={{ ansible_env.HOME }}/idpFrontEnd/ creates={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/README.md 
+
+- name: Copy mail.jar in tomcat
+  sudo: yes
+  copy: src=mail.jar dest=/usr/share/tomcat6/lib/mail.jar
+
