@@ -1,10 +1,10 @@
 - name: check connectivity
-  command: /bin/ping www.google.com
+  command: /bin/ping -c 1 www.google.com
   register: hosttest
   
 - name: use Google public DNS if necessary
   lineinfile: dest=/etc/resolv.conf regexp=^nameserver line=nameserver 8.8.8.8
-  when: "'FAILED' in hosttest.stderr"
+  when: "'unknown host' in hosttest.stderr"
 
 - name: Install prerequisite packages (RedHat)
   yum: name={{ item }} state=present
