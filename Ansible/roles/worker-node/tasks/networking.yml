@@ -8,4 +8,4 @@
 #  shell
   
 #- name: set mount points
-#  lineinfile: dest=/etc/fstab line=
+#te  lineinfile: dest=/etc/fstab line=
