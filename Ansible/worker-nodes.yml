@@ -2,11 +2,15 @@
 --- 
 - hosts: worker-nodes
   name: Prepare worker nodes
+  user: ansible
+  sudo: true
   roles:
     - worker-node
 
 - hosts: worker-nodes
   name: Apply the common role and CA certs
+  user: ansible
+  sudo: true
   roles:
     - common
     - certificates
@@ -16,12 +20,16 @@
 
 - hosts: worker-nodes 
   name: install middleware
+  user: ansible
+  sudo: true
   roles:
     - umd
     - emi-worker-node
 
 - hosts: worker-nodes
   name: configure middleware with yaim
+  user: ansible
+  sudo: true
   roles:
     - yaim
 
