@@ -1,12 +1,12 @@
 ---
 - name: Add head node IP to known hosts
-  template: src=roles/worker-node/etc/ssh/shosts.equiv.j2 dest=/etc/ssh/shosts.equiv owner=root group=root mode=644
+  template: src=etc/ssh/shosts.equiv.j2 dest=/etc/ssh/shosts.equiv owner=root group=root mode=644
   sudo: true
   tags: 
   - networking
 
 - name: Add head node public key to worker node
-  template: src=roles/worker-node/etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/shosts.equiv owner=root group=root mode=644
+  template: src=etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/shosts.equiv owner=root group=root mode=644
   sudo: true
   tags: 
   - networking
