@@ -1,2 +1,4 @@
 ---
 # handlers file for worker-node
+- name: restart ssh
+  service: name=sshd state=restarted
