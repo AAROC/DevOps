@@ -13,8 +13,8 @@
   name: Add head node IP and public keys to known hosts
   user: root
   tasks: 
-  - template: src=etc/ssh/shosts.equiv.j2 dest=/etc/ssh/shosts.equiv
-  - template: src=etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/shosts.equiv
+  - template: src=roles/worker-node/etc/ssh/shosts.equiv.j2 dest=/etc/ssh/shosts.equiv
+  - template: src=roles/worker-node/etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/shosts.equiv
 
 - hosts: worker-nodes
   name: add head node public key to WN authorized_keys
