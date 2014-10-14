@@ -2,6 +2,12 @@
 # this assumes that you've already run the bootstrap role as root.
 --- 
 - hosts: cluster-head-nodes
+  name: run the head node role on the head node
+  connection: local
+  roles:
+  - head-node
+
+- hosts: cluster-head-nodes
   name: Look up local facts and create key vars file
   connection: local
   tasks: 
