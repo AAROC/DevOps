@@ -9,17 +9,11 @@
   - debug: msg="key is {{ ansible_ssh_host_key_rsa_public }} "
   - local_action: lineinfile dest=roles/worker-node/vars/public_keys.yml line="public_keys{{':'}} ssh-rsa {{ ansible_ssh_host_key_rsa_public }} ansible@{{ ansible_hostname }}" state=present create=yes
 
-#- hosts: worker-nodes
-#  name: Prepare worker nodes
-#  user: root
-#  roles:
-#    - worker-node
-    
 - hosts: worker-nodes
-  name: Apply the common role and CA certs
-  user: ansible
-  sudo: true
+  name: Prepare worker nodes for installation
+  user: root
   roles:
+    - worker-node
     - common
     - certificates
   vars_files:
@@ -27,7 +21,7 @@
     - roles/common/vars/middleware/igtf.yml
 
 - hosts: worker-nodes 
-  name: install middleware
+  name: Install middleware
   user: ansible
   sudo: true
   roles:
