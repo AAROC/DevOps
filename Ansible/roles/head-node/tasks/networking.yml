@@ -6,7 +6,6 @@
 # 4.) Adds all worker nodes to the known-hosts file
 
 - name: Allow TCP forwarding
-  hosts: cluster-head-node
   command: /bin/echo 1 > /proc/sys/net/ipv4/ip_forward
   tags: 
   - network
