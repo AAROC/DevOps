@@ -9,22 +9,9 @@
   - debug: msg="key is {{ ansible_ssh_host_key_rsa_public }} "
   - local_action: lineinfile dest=roles/worker-node/vars/public_keys.yml line="public_keys{{':'}} ssh-rsa {{ ansible_ssh_host_key_rsa_public }} ansible@{{ ansible_hostname }}" state=present create=yes
 
-#- hosts: worker-nodes
-  #name: add head node public key to WN authorized_keys
-  #user: root
-  #vars_files:
-  #- roles/worker-node/vars/public_keys.yml
-  #tasks:
-   #- debug: var=public_keys
-   #- lineinfile: dest=/root/.ssh/authorized_keys line="{{ public_keys }}" state=present create=yes mode=400 
-   #- lineinfile: dest=/home/ansible/.ssh/authorized_keys line="{{ public_keys }}" state=present create=yes owner=ansible group=ansible
-  #tags:
-    #- keys
-
 - hosts: worker-nodes
   name: Prepare worker nodes
   user: root
-  sudo: true
   roles:
     - worker-node
     
