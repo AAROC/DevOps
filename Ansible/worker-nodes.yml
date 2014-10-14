@@ -23,7 +23,7 @@
 
 - hosts: worker-nodes
   name: Prepare worker nodes
-  user: ansible
+  user: root
   sudo: true
   roles:
     - worker-node
