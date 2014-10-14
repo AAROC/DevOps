@@ -4,6 +4,7 @@
 - hosts: cluster-head-nodes
   name: run the head node role on the head node
   connection: local
+  sudo: true
   roles:
   - head-node
 
