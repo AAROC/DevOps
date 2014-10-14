@@ -13,4 +13,5 @@
   
 - name: Enable host-based authentication
   lineinfile: dest=/etc/ssh/sshd_config regexp="^#HostbasedAuthentication no" line="HostbasedAuthentication yes"
-  notify: restart ssh
+  notify: 
+  - restart ssh
