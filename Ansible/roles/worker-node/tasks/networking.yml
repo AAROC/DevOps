@@ -14,3 +14,6 @@
   lineinfile: dest=/etc/ssh/sshd_config regexp="^#HostbasedAuthentication no" line="HostbasedAuthentication yes"
   notify: 
   - restart ssh
+
+- name: Set worker node hostname
+  hostname: {{ item }}.{{ site_domain }} 

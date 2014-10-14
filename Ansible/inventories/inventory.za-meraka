@@ -89,8 +89,8 @@ cream-ces
 
 # Worker Nodes
 [worker-nodes]
-192.168.11.3 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client' needs_certificate='False'
-192.168.11.4 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client' needs_certificate='False'
+192.168.11.3 alias='ce01-node003' 
+192.168.11.4 alias='ce01-node004'
 
 [cluster-head-nodes]
 ce01-node001.c4.csir.co.za

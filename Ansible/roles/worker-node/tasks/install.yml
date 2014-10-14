@@ -2,7 +2,7 @@
 - name: Install UMD worker-node software
   action: yum name={{ item }} state=latest
   with_items:
-    - none
+    - bind-utils
   tags: 
     - worker-nodes
     - install
