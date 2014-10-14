@@ -1,7 +1,7 @@
 ---
 - name: Add head node IP to known hosts
   template: src=etc/ssh/shosts.equiv.j2 dest=/etc/ssh/shosts.equiv owner=root group=root mode=644
-  debug: msg="created shosts.equiv file"
+#  debug: msg="created shosts.equiv file"
   tags: 
   - networking
 
