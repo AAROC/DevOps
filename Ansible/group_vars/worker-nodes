@@ -1,0 +1,4 @@
+---
+emi_service: WN
+yaim_options: '-n MPI_WN -n WN -n TORQUE_client'
+needs_certificate: false
