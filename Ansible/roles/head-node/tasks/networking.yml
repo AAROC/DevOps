@@ -6,7 +6,8 @@
 # 4.) Adds all worker nodes to the known-hosts file
 
 - name: Allow TCP forwarding
-  command: /bin/echo 1 > /proc/sys/net/ipv4/ip_forward
+#  command: /bin/echo 1 > /proc/sys/net/ipv4/ip_forward
+  lineinfile: dest=/proc/sys/net/ipv4/ip_forward line=1
   tags: 
   - network
   
