@@ -1,0 +1,3 @@
+---
+- name: install worker node middleware
+  yum: name={{ umd_metapackage }}
