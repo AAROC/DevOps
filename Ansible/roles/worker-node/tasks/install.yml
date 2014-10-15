@@ -1,5 +1,5 @@
 ---
-- name: Install UMD worker-node software
+- name: Install worker-node base packages
   action: yum name={{ item }} state=latest
   with_items:
     - bind-utils
