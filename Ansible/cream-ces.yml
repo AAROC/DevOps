@@ -1,6 +1,8 @@
 ---
 - hosts: cream-ces
+  name: Install all the packages
   user: ansible
+  sudo: true
   vars_files: 
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     # need to have every bloody combination of the vars files because facter doesn't report
@@ -11,8 +13,19 @@
   - certificates
   - umd3
   - cream-ce
+- hosts: cream-ces
+  name: Configure cluster head node
+  user: ansible
+  sudo: true
+  roles:
+  - head-node
   - munge
-  - yaim    
+- hosts: cream-ces
+  name: Configure cluster head node
+  user: ansible
+  sudo: true
+  roles:
+  - yaim
   post_tasks:
     - name: fix qmgr queues 1
       sudo: true

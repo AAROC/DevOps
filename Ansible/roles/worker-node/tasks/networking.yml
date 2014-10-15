@@ -1,14 +1,19 @@
 ---
-- name: set google public DNS
-  lineinfile: dest=/etc/resolv.conf regexp=^nameserver line=nameserver 8.8.8.8
-  when: result != 'pong'
- 
-- name: check default route
-  shell: route
-  register: default_gw
+- name: Add head node IP to known hosts
+  template: dest=/etc/ssh/shosts.equiv src=etc/ssh/shosts.equiv.j2 owner=root group=root
+#  debug: msg="created shosts.equiv file"
+  tags: 
+  - networking
+
+- name: Setup known hosts for host-based authentication
+  template: src=etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/ssh_known_hosts owner=root group=root mode=0644
+  tags: 
+  - networking
   
-- name: set default route
-  shell
-  
-- name: set mount points
-  lineinfile: dest=/etc/fstab line=
+- name: Enable host-based authentication
+  lineinfile: dest=/etc/ssh/sshd_config regexp="^#HostbasedAuthentication no" line="HostbasedAuthentication yes"
+  notify: 
+  - restart ssh
+
+#- name: Set worker node hostname
+#  hostname: {{ item }}.{{ site_domain }} 

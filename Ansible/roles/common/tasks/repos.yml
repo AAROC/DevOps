@@ -34,7 +34,7 @@
     - IGTF
     - download
   
-- name: Install EGI trustanchros release package
+- name: Install EGI trustanchors release package
   yum: name=/tmp/{{ igtf_release_name }} state=present
   sudo: true
   sudo_user: root

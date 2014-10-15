@@ -11,6 +11,6 @@ galaxy_info:
   - Middleware
   - HPC
   - Grid
-dependencies: []
+dependencies:
   - worker-node
   

@@ -1,5 +1,5 @@
 ---
 # tasks file for worker-node
-include: networking.yml
-include: install.yml
+- include: networking.yml
+- include: install.yml
 
