@@ -16,4 +16,4 @@
   - restart ssh
 
 - name: Set worker node hostname
-  hostname: name={{ ansible.hostname }}.{{ site_domain }}
+  hostname: name="{{ ansible.hostname }}.{{ site_domain }}"
