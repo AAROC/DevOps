@@ -1,5 +1,8 @@
 # worker nodes playbook
 # this assumes that you've already run the bootstrap role as root.
+
+# since this is to manage the worker nodes, we are also assuming that they are on a local network
+# and that you can happily ssh to them as root
 --- 
 - hosts: cluster-head-nodes
   name: run the head node role on the head node
@@ -18,7 +21,7 @@
 
 - hosts: worker-nodes
   name: Prepare worker nodes for installation
-  user: ansible
+  user: root
   roles:
     - worker-node
     - common
@@ -29,15 +32,14 @@
 
 - hosts: worker-nodes 
   name: Install middleware
-  user: ansible
-  sudo: true
+  user: root
   roles:
     - umd
     - emi-worker-node
 
 - hosts: worker-nodes
   name: configure middleware with yaim
-  user: ansible
+  user: root
   sudo: true
   roles:
     - yaim
