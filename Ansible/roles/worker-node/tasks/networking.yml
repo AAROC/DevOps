@@ -15,5 +15,5 @@
   notify: 
   - restart ssh
 
-- name: Set worker node hostname
-  hostname: {{ item }}.{{ site_domain }} 
+#- name: Set worker node hostname
+#  hostname: {{ item }}.{{ site_domain }} 
