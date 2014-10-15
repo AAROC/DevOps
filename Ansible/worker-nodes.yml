@@ -18,7 +18,7 @@
 
 - hosts: worker-nodes
   name: Prepare worker nodes for installation
-  user: root
+  user: ansible
   roles:
     - worker-node
     - common
