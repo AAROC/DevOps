@@ -3,7 +3,6 @@
 # MANAGED BY ANSIBLE, DO NOT TOUCH
 
 {% for host in  groups['cluster-head-nodes']  %}
-{% if hostvars[host].ansible_ssh_host_key_dsa_public %}
 {{ host }},{{ hostvars[host].ansible_default_ipv4.address }} ssh-dsa {{ hostvars[host].ansible_ssh_host_key_dsa_public }}
 {{ host }},{{ hostvars[host].ansible_default_ipv4.address }} ssh-rsa {{ hostvars[host].ansible_ssh_host_key_rsa_public }}
 {% endfor %}
