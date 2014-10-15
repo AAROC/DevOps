@@ -14,6 +14,10 @@
   lineinfile: dest=/etc/ssh/sshd_config regexp="^#HostbasedAuthentication no" line="HostbasedAuthentication yes"
   notify: 
   - restart ssh
+  tags:
+  - networking
 
 - name: Set worker node hostname
   hostname: name="{{ ansible.hostname }}.{{ site_domain }}"
+  tags:
+  - networking
