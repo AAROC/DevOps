@@ -23,7 +23,7 @@
   name: Create .shosts file for host-based authentication later
   user: root
   tasks:
-  - template: src=roles/worker-node/templates/shosts.j2 dest=~/root/.shosts mode=0444
+  - template: src=roles/worker-node/templates/shosts.j2 dest=/root/.shosts mode=0444
 
 - hosts: worker-nodes
   name: Prepare worker nodes for installation
