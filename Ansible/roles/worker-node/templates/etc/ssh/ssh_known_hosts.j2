@@ -2,16 +2,11 @@
 # /etc/ssh/ssh_known_hosts
 # MANAGED BY ANSIBLE, DO NOT TOUCH
 
-{% if hosts %}
-{% for host in hosts %}
+{% for host in  groups['cluster-head-nodes']  %}
 {% if hostvars[host].ansible_ssh_host_key_dsa_public %}
 {{ host }},{{ hostvars[host].ansible_default_ipv4.address }} ssh-dsa {{ hostvars[host].ansible_ssh_host_key_dsa_public }}
-{% endif %}
-{% if hostvars[host].ansible_ssh_host_key_rsa_public %}
 {{ host }},{{ hostvars[host].ansible_default_ipv4.address }} ssh-rsa {{ hostvars[host].ansible_ssh_host_key_rsa_public }}
-{% endif %}
 {% endfor %}
-{% else %}
 
 {% for host in groups['all'] %}
 {% if hostvars[host].ansible_ssh_host_key_dsa_public %}
@@ -21,4 +16,3 @@
 {{ host }},{{ hostvars[host].ansible_default_ipv4.address }} ssh-rsa {{ hostvars[host].ansible_ssh_host_key_rsa_public }}
 {% endif %}
 {% endfor %}
-{% endif %}
