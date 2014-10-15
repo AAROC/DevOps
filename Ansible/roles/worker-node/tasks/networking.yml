@@ -18,7 +18,7 @@
   - networking
 
 - name: Set worker node hostname
-  hostname: name="'{{ ansible_hostname }}'.'{{ site_domain }}'"
+  hostname: name={{ ansible_hostname }}.{{ site_domain }}
   tags:
   - networking
 
