@@ -40,6 +40,7 @@
 - hosts: cluster-head-nodes
   name: create munge key
   user: root
+  connection=local
   tasks:
   - command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=root group=root
   - copy: src=/etc/munge/munge.key dest=/etc/munge/munge.key mode=0600 owner=root group=root

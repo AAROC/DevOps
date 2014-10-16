@@ -9,6 +9,9 @@
   sudo_user: root
   template: src=etc/ntp.conf.j2 dest=/etc/ntp.conf
   tags: ntp
+  notify:
+  - restart ntpd
+  tags: ntp
 
 # see https://wiki.gutzmann.com/confluence/display/HowTo/NTPD+-+cap_set_proc()+failed+to+drop+root+privileges%3A+Operation+not+permitted
 - name: disable drop to root priveliges for NTP
@@ -19,6 +22,6 @@
   notify:
     - restart ntpd
   tags: ntp
-  async: 45
-  poll: 0
+#  async: 45
+#  poll: 0
 
