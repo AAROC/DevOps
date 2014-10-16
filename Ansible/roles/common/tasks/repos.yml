@@ -51,9 +51,7 @@
 #    - yumconfig
 
 - name: Install yum-priorities package
-  action: command yum install -y ${yum_flags} yum-priorities
-  sudo: true
-  sudo_user: root
+  yum: name=yum-priorities state=present
   tags: 
     - yumconfig
 
