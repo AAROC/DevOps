@@ -46,6 +46,7 @@
 
 - hosts: worker-nodes
   name: Copy munge key to worker nodes
+  user: root
   tasks:
   - copy: src=/etc/munge/munge.key dest=/etc/munge/munge.key mode=0600 owner=root group=root
 
