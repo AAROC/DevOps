@@ -21,12 +21,13 @@
   template: src=opt/glite/yaim/etc/siteinfo/wn-list.conf.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/wn-list.conf owner=root group=root mode=0644
   sudo: true
   sudo_user: root
-  when: emi_service == 'CREAM_CE' or emi_service == 'WN'
+  when: emi_service == "CREAM_CE" or emi_service == "WN"
   notify:
     - run yaim
   tags: 
     - yaim
     - CE
+    - WN
 
 - name: Copy services files needed for wms service
   action: template src=opt/glite/yaim/etc/siteinfo/services/glite-wms.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-wms owner=root group=root mode=0644
