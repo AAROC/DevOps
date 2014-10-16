@@ -37,6 +37,13 @@
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/igtf.yml
 
+- hosts: cluster-head-nodes
+  name: create munge key
+  user: root
+  tasks:
+  - command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=root group=root
+  - copy: src=/etc/munge/munge.key dest=/etc/munge/munge.key mode=0600 owner=root group=root
+
 #- hosts: worker-nodes 
   #name: Install middleware
   #user: root
