@@ -42,7 +42,7 @@
   user: root
   connection: local
   tasks:
-  - command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=root group=root
+  - command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=munge group=munge
 
 - hosts: worker-nodes
   name: Copy munge key to worker nodes
