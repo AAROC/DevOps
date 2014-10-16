@@ -1,3 +1,5 @@
+- debug: msg="emi_service is {{ emi_service }}"
+
 - name: Create users.conf file
   sudo: true
   sudo_user: root
