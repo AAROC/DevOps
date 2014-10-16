@@ -3,9 +3,9 @@
 127.0.0.1 localhost.localdomain localhost
 
 {% for host in groups['cluster-head-nodes'] %}
-{{ hostvars[host].ansible_eth0.ipv4.address }} {{ host }}.{{ site_domain }} {{ ansible_hostname }}
+{{ hostvars[host].ansible_eth1.ipv4.address }} {{ hostvars[host].ansible_hostname }}.{{ site_domain }} {{ hostvars[host].ansible_hostname }}
 {% endfor -%}
 
 {% for host in groups['worker-nodes']|sort %}
-{{ hostvars[host].ansible_default_ipv4.address }} {{ ansible_hostname }}.{{ site_domain }} {{ ansible_hostname }}
+{{ hostvars[host].ansible_default_ipv4.address }} {{ hostvars[host].ansible_hostname }}.{{ site_domain }} {{ hostvars[host].ansible_hostname }}
 {% endfor %}
