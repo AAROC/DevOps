@@ -11,11 +11,27 @@
   - networking
   
 - name: Enable host-based authentication
-  lineinfile: dest=/etc/ssh/sshd_config regexp="^#HostbasedAuthentication no" line="HostbasedAuthentication yes"
+  template: src=etc/ssh/sshd_config.j2 dest=/etc/ssh/sshd_config owner=root group=root mode=0644
   notify: 
   - restart ssh
-  tags:
+  tags: 
+  - ssh
   - networking
+    
+#- name: Enable host-based authentication
+  #lineinfile: dest=/etc/ssh/sshd_config regexp="^#HostbasedAuthentication no" line="HostbasedAuthentication yes" backrefs=yes
+  #notify: 
+  #- restart ssh
+  #tags:
+  #- networking
+
+#- name: Enable rhosts for root
+  #lineinfile: dest=/etc/ssh/sshd_config regexp="^#IgnoreRhosts yes" line="IgnoreRhosts no" backrefs=yes
+  #notify: 
+  #- restart ssh
+  #tags:
+  #- networking
+
 
 - name: Set worker node hostname
   hostname: name="{{ ansible_hostname }}"."{{ site_domain }}"
@@ -23,4 +39,7 @@
   - networking
 
 - debug: msg="set host to  is {{ ansible_hostname }}.{{ site_domain }}"
+
+- name: Create /etc/hosts template
+  template: dest=/etc/hosts src=etc/hosts.j2 owner=root group=root mode=0644
 
