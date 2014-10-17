@@ -1,0 +1,11 @@
+---
+# These should be taken care of by yaim, but in case it doesn't or you're configuring "stand-alone" worker nodes
+# you should set the pbs host name to the cluster head node
+- name: Ensure that the server is set to the head node
+  lineinfile: dest=/var/lib/torque/mom_priv/config regexp='$pbsserver ' line='$pbsserver {{ cluster-head-nodes }}
+  tags:
+  - torque
+- name: Ensure that server_name is {{ cluster-head-nodes }}
+  copy: content="{{ cluster-head-nodes }}" dest=/var/lib/torque/server_name
+
+    
