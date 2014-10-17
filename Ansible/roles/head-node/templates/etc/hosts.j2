@@ -12,7 +12,7 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 
 # Create the entry for the head node - use the private address
-{% for host in groups['cluster-head-nodes'] -%}
+{% for host in groups['cluster-head-nodes'] %}
 {{ host.ansible_default_ipv4.address }} {{ host }}
 {% endfor -%}
 
@@ -20,4 +20,4 @@ ff02::2 ip6-allrouters
 # may have to speficy the IP address in the inventory or host vars file if they are static IPs and not obtained with facts
 {% for host in groups['worker-nodes'] %}
   {{ host.ansible_eth0.address }} {{ host }} {{ host.ansible_hostname }} 
-{ % endfor -%}
+{ % endfor %}
