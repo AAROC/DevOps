@@ -13,6 +13,9 @@
   - certificates
   - umd
   - cream-ce
+  handlers:
+  - roles/common/handlers/main.yml
+  
 - hosts: cream-ces
   name: Configure cluster head node
   user: ansible
