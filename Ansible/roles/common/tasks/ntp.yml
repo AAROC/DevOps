@@ -15,6 +15,6 @@
   notify:
     - restart ntpd
   tags: ntp
-#  async: 45
-#  poll: 0
+  async: 45
+  poll: 0
 
