@@ -36,8 +36,8 @@ site_website: "http://www.csir.co.za/meraka"
 site_domain: c4.csir.co.za
 
 # passwords
-mysql_pass: '##'
-mysql_admin_pass: '##'
+mysql_pass: 'P@55W0rd'
+mysql_admin_pass: 'P@55W0rd'
 apel_db_password: '##'
 
 # services at the site
