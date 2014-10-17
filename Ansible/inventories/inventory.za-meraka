@@ -79,7 +79,7 @@ site-bdii.c4.csir.co.za
 
 # CREAM CE's
 [cream-ces]
-ce01-node001.c4.csir.co.za needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
+ce01-node001.c4.csir.co.za needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n creamCE -n TORQUE_server -n TORQUE_utils -n MPI_CE '
 
 [apel-publishers:children]
 cream-ces

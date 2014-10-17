@@ -14,20 +14,23 @@
   - umd
   - cream-ce
   handlers:
-  - roles/common/handlers/main.yml
+  - include: roles/common/handlers/main.yml
   
-- hosts: cream-ces
-  name: Configure cluster head node
+- hosts: cluster-head-nodes
+  name: Configure as head node
   user: ansible
   sudo: true
   roles:
   - head-node
+
 - hosts: cream-ces
-  name: Configure cluster head node
+  name: run YAIM for CREAM-CE on head node
   user: ansible
   sudo: true
   roles:
   - yaim
+#  - torque
+  
   post_tasks:
     - name: fix qmgr queues 1
       sudo: true
@@ -61,4 +64,5 @@
         
     - name: restart pbs_server
       sudo: true
-      action: service name=pbs_server state=restarted enabled=yes  
+      action: service name=pbs_server state=restarted enabled=yes
+ 
