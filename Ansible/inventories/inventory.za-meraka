@@ -101,6 +101,9 @@ ce01-node001.c4.csir.co.za
 # Groups  #
 #########
 
+
+############ grouping and children ############
+# first, group by production and development 
 [core-services:children]
 top-bdiis
 wms-servers
@@ -113,6 +116,7 @@ site-bdiis
 cream-ces
 worker-nodes
 
+############## Middleware oriented grouping ##############
 [CRL]
 # the group of machines that needs to keep CRLs up to date
 [CRL:children]

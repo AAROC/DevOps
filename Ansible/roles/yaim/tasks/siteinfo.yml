@@ -137,6 +137,6 @@
   sudo: true
   sudo_user: root
   tags:
-    - yaim
+    - runyaim
 
   
