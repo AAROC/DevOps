@@ -6,6 +6,7 @@
   with_items:
     - default-jdk 
     - tomcat6 
+    - ant 
     - expect
   when: ansible_os_family == "Debian"
 
@@ -16,6 +17,8 @@
     - java-1.7.0-openjdk 
     - java-1.7.0-openjdk-devel
     - tomcat6 
+    - ant 
+    - ant-apache-regexp
     - expect
   when: ansible_os_family == "RedHat"
 
