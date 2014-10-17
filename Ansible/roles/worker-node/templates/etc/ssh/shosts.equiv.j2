@@ -1,0 +1,17 @@
+# all worker nodes can talk to all worker nodes
+{% for host in groups['worker-nodes'] %}
+{{  hostvars[host]['ansible_eth0']['ipv4']['address'] }}
+{% endfor %}
+
+{% if hosts %}
+{% for host in hosts %}
+{{ host }}
+{{ hostvars[host].ansible_default_ipv4.address | default('') }}
+{% endfor %}
+{% endif %}
+
+# and head node can contact all worker nodes
+# be careful of selecting the correct 
+{% for host in groups['cluster-head-nodes'] %}
+{{ hostvars[host]['ansible_eth1']['ipv4']['address'] }}
+{% endfor %}

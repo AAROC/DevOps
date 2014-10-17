@@ -1,14 +1,45 @@
 ---
-- name: set google public DNS
-  lineinfile: dest=/etc/resolv.conf regexp=^nameserver line=nameserver 8.8.8.8
-  when: result != 'pong'
- 
-- name: check default route
-  shell: route
-  register: default_gw
+- name: Add head node IP to known hosts
+  template: dest=/etc/ssh/shosts.equiv src=etc/ssh/shosts.equiv.j2 owner=root group=root
+#  debug: msg="created shosts.equiv file"
+  tags: 
+  - networking
+
+- name: Setup known hosts for host-based authentication
+  template: src=etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/ssh_known_hosts owner=root group=root mode=0644
+  tags: 
+  - networking
   
-- name: set default route
-  shell
-  
-- name: set mount points
-  lineinfile: dest=/etc/fstab line=
+- name: Enable host-based authentication
+  template: src=etc/ssh/sshd_config.j2 dest=/etc/ssh/sshd_config owner=root group=root mode=0644
+  notify: 
+  - restart ssh
+  tags: 
+  - ssh
+  - networking
+    
+#- name: Enable host-based authentication
+  #lineinfile: dest=/etc/ssh/sshd_config regexp="^#HostbasedAuthentication no" line="HostbasedAuthentication yes" backrefs=yes
+  #notify: 
+  #- restart ssh
+  #tags:
+  #- networking
+
+#- name: Enable rhosts for root
+  #lineinfile: dest=/etc/ssh/sshd_config regexp="^#IgnoreRhosts yes" line="IgnoreRhosts no" backrefs=yes
+  #notify: 
+  #- restart ssh
+  #tags:
+  #- networking
+
+
+- name: Set worker node hostname
+  hostname: name="{{ ansible_hostname }}"."{{ site_domain }}"
+  tags:
+  - networking
+
+- debug: msg="set host to  is {{ ansible_hostname }}.{{ site_domain }}"
+
+- name: Create /etc/hosts template
+  template: dest=/etc/hosts src=etc/hosts.j2 owner=root group=root mode=0644
+

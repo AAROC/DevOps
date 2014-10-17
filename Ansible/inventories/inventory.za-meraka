@@ -79,7 +79,7 @@ site-bdii.c4.csir.co.za
 
 # CREAM CE's
 [cream-ces]
-ce01-node001.c4.csir.co.za needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
+ce01-node001.c4.csir.co.za needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n creamCE -n TORQUE_server -n TORQUE_utils -n MPI_CE '
 
 [apel-publishers:children]
 cream-ces
@@ -89,8 +89,10 @@ cream-ces
 
 # Worker Nodes
 [worker-nodes]
-192.168.11.3 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client' needs_certificate='False'
-#ce01-node002.c4.csir.co.za emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+#192.168.11.3 alias='ce01-node003' 
+#192.168.11.4 alias='ce01-node004'
+ce01-node003 
+ce01-node004
 
 [cluster-head-nodes]
 ce01-node001.c4.csir.co.za
@@ -99,11 +101,14 @@ ce01-node001.c4.csir.co.za
 # Groups  #
 #########
 
+
+############ grouping and children ############
+# first, group by production and development 
 [core-services:children]
 top-bdiis
 wms-servers
 ngi-nagios
-fts
+fts-servers
 argus-servers
 
 [site-services:children]
@@ -111,6 +116,7 @@ site-bdiis
 cream-ces
 worker-nodes
 
+############## Middleware oriented grouping ##############
 [CRL]
 # the group of machines that needs to keep CRLs up to date
 [CRL:children]
@@ -160,3 +166,4 @@ voms-servers
 CentOS5-servers
 CentOS6-servers
 ############################ END #########################
+

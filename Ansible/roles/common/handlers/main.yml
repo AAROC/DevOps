@@ -13,7 +13,7 @@
   service: name=iptables state=restarted 
   when: ansible_os_family == 'RedHat'
   
-- name: update yaim
+- name: update yum
   yum: name=* state=latest
   
 - name: restart sshd

@@ -9,5 +9,5 @@ galaxy_info:
   - CentOS6
   categories:
   - HPC
-dependencies:
-  - head-node
+#dependencies:
+#  - head-node
