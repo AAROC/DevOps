@@ -22,6 +22,6 @@ ff02::2 ip6-allrouters
 
 # now, worker nodes
 # may have to speficy the IP address in the inventory or host vars file if they are static IPs and not obtained with facts
-{{% for host in groups['worker-nodes'] %}}
+{% for host in groups['worker-nodes'] %}
   {{ host.ansible_eth0.address }} {{ host }} {{ host.ansible_hostname }} 
-{{ % endfor }}
+{ % endfor }
