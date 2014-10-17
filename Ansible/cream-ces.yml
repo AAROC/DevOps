@@ -11,7 +11,7 @@
   roles:
   - common
   - certificates
-  - umd3
+  - umd
   - cream-ce
 - hosts: cream-ces
   name: Configure cluster head node
