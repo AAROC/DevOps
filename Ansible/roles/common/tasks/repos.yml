@@ -8,8 +8,6 @@
 
 - name: Install epel-release package
   action: command yum localinstall -y {{ yum_flags }} /tmp/{{ epel_release_name }} creates=/etc/yum.repos.d/epel.repo
-  sudo: true
-  sudo_user: root
   tags:
     - repos
     - EPEL
@@ -19,7 +17,7 @@
 #  action: copy src=files/etc/yum.repos.d/epel.repo     
 
 - name: Download EGI trustanchors release package
-  action: get_url url={{ igtf_repo_url }}/{{ igtf_release_name }} dest=/tmp/{{ igtf_release_name }}
+  action: get_url url={{ igtf_repo_url }}/{{ igtf_release_name }} dest=/tmp/{{ igtf_release_name }} force=no
 # should have a when file state==abset here
   tags: 
     - repos
@@ -27,8 +25,7 @@
     - download
 
 - name: Ensure that the repo is properly configured for yum
-  get_url: url=http://repository.egi.eu/sw/production/cas/1/current/repo-files/egi-trustanchors.repo dest=/etc/yum.repos.d/egi-trustanchors.repo
-  sudo: True
+  get_url: url=http://repository.egi.eu/sw/production/cas/1/current/repo-files/egi-trustanchors.repo dest=/etc/yum.repos.d/egi-trustanchors.repo force=no
   tags:
     - repos
     - IGTF
@@ -36,19 +33,10 @@
   
 - name: Install EGI trustanchors release package
   yum: name=/tmp/{{ igtf_release_name }} state=present
-  sudo: true
-  sudo_user: root
   tags: 
     - repos
     - IGTF
     - install
-    
-#- name: Install yum-plugin-replace package
-#  action: yum name=yum-plugin-replace state=latest
-#  sudo: true
-#  sudo_user: root
-#  tags: 
-#    - yumconfig
 
 - name: Install yum-priorities package
   yum: name=yum-priorities state=present
@@ -57,7 +45,5 @@
 
 - name: Install yum-protectbase package
   action: yum name=yum-protectbase state=latest
-  sudo: true
-  sudo_user: root
   tags: 
     - yumconfig
