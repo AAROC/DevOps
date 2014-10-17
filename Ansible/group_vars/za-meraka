@@ -56,6 +56,14 @@ pap_admin_dn: "'/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker
 lfc_host:
 
 ce_host: ce01-node001.c4.csir.co.za
+#  MPI capabilities
+mpich2_enabled: true
+openmpi_enabled: true
+mpich2_version: 1.2.1
+openmpi_version: 1.5.4
+# are the home directories shared over nfs ? 
+mpi_shared_home: no
+mpi_host_based_auth: yes
 # Replace the following specs with your own
 ce_cpu_model: Opteron
 ce_cpu_vendor: AMD

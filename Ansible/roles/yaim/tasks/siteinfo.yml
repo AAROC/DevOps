@@ -57,7 +57,7 @@
   action: copy src=opt/glite/yaim/etc/siteinfo/services/glite-mpi dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-mpi owner=root group=root mode=0644
   sudo: true
   sudo_user: root
-  when: emi_service == 'CREAM_CE'
+  when: emi_service == 'CREAM_CE' || emi_service == 'WN'
   notify:
     - run yaim
   tags: 
