@@ -4,3 +4,5 @@ server_state:
 server_location: Lusaka
 server_organization: ZAMREN
 organisation: ZAMREN
+mail_contact: test@test.com
+useradmin_password: 
