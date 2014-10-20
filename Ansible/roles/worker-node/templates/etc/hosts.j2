@@ -4,7 +4,7 @@
 
 {% for host in groups['cluster-head-nodes'] %}
 {{ hostvars[host].ansible_eth1.ipv4.address }} {{ hostvars[host].ansible_hostname }}.{{ site_domain }} {{ hostvars[host].ansible_hostname }}
-{% endfor -%}
+{% endfor %}
 
 {% for host in groups['worker-nodes']|sort %}
 {{ hostvars[host].ansible_default_ipv4.address }} {{ hostvars[host].ansible_hostname }}.{{ site_domain }} {{ hostvars[host].ansible_hostname }}
