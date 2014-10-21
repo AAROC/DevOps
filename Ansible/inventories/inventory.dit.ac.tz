@@ -1,20 +1,19 @@
 # Place hoder for DIT inventory
 
-[ldap-servers]
-#ldap.ternet.or.tz
-41.93.32.33
-[shibboleth-idps]
+[ldap-server]
+ldap.ternet.or.tz
+[shibboleth-idp]
 idp.ternet.or.tz
 
 [CentOS-servers:children]
 #idp.ternet.or.tz
 #ldap.ternet.or.tz
-ldap-servers
-shibboleth-idps
+ldap-server
+shibboleth-idp
 
 [Debian-servers]
 
-[identity-all:children]
-ldap-servers
-shibboleth-idps
+[identity-ternet:children]
+ldap-server
+shibboleth-idp
 
