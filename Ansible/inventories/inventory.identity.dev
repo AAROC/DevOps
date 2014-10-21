@@ -6,6 +6,14 @@ vm03.ct.infn.it ansible_ssh_port=4422
 vm02.ct.infn.it ansible_ssh_port=4422
 vm04.ct.infn.it ansible_ssh_port=4422
 
+[science-gateways]
+vm01.ct.infn.it ansible_ssh_port=4422
+vm04.ct.infn.it ansible_ssh_port=4422
+
+[db-servers]
+vm02.ct.infn.it ansible_ssh_port=4422
+vm03.ct.infn.it ansible_ssh_port=4422
+
 [CentOS-servers]
 vm03.ct.infn.it
 vm04.ct.infn.it
