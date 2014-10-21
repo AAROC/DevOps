@@ -6,7 +6,7 @@
   failed_when: "'FAILED' in ldap_base.stderr"
   tags: 
     - LDAP
-    - fili
+    - fill
 
 - name: Create the root node
   template: src=root.ldif.j2 dest=/tmp/root.ldif

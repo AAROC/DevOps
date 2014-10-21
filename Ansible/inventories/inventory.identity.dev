@@ -18,5 +18,9 @@ vm02.ct.infn.it
 ldap-servers
 shibboleth-idps
 
+[site-test-1:children]
+Debian-servers
 
+[site-test-2:children]
+CentOS-servers
 ############################ END #########################

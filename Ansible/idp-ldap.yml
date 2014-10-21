@@ -1,14 +1,16 @@
 ---
 - name: Configure the LDAP machine
-  hosts: ldap-servers
+  hosts: ldap-server
   remote_user: ansible
   sudo: true
   roles:
   - ldap
 
 - name: Prepare the identity machine common environment
-  hosts: shibboleth-idps
+  hosts: shibboleth-idp
   remote_user: ansible
+  sudo: true
   roles: 
   - fmarco76.tomcat 
   - shibboleth-idp
+  - fmarco76.IDPPublic

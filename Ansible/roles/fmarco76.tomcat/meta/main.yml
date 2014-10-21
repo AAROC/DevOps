@@ -3,8 +3,7 @@ galaxy_info:
   author: Marco Fargetta 
   description: 
   company: INFN 
-   - BSD (default)
-  license: license (GPLv2, CC-BY, etc)
+  license: BSD 
   min_ansible_version: 1.2
   
   platforms:
@@ -17,8 +16,9 @@ galaxy_info:
   - name: Debian
     versions:
       - all
+  catetories:
   - web
 dependencies: 
   - { role: fmarco76.firewall, ports: [{ port: 80, dport: 8080 }], table: nat, chain: PREROUTING }
-  - { role: fmarco76.firewall, ports: [80]}
+  - { role: fmarco76.firewall, ports: [80], source_host_net: 0.0.0.0/0}
   
