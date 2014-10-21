@@ -1,0 +1,14 @@
+---
+- name: Ensure mysql server is present (RHEL)
+  yum: name=mysql-server state=present
+  when: ansible_os_family == 'RedHat'
+  tags:
+  - mysql
+  - install
+  
+- name: Ensure mysql server is present (Deb)
+  apt: name=mysql-server state=present
+  when: ansible_os_family == 'Debian'
+  tags:
+  - mysql
+  - install
