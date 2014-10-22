@@ -5,13 +5,12 @@
   roles: 
   - liferay-mysql
 
-#- name: Prerequisites for Science Gateway
-  #hosts: science-gateways
-  #remote_user: root
-  #sudo: true
-  #roles:
+- name: Prerequisites for Science Gateway
+  hosts: science-gateways
+  sudo: true
+  roles:
   #- shibboleth-sp
-  #- glassfish
+  - glassfish
   #- liferay
   
 #- name: Install CSGF
