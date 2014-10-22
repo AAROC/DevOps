@@ -337,7 +337,7 @@
 			    ldapURL="{{ ldap_server }}"
 			    baseDN="{{ idp_base_dn}}"
 			    principal="{{ idp_principal }}"
-			    principalCredential="{{ principle_credential }}">
+			    principalCredential="{{ idp_principle_credential }}">
       <dc:FilterTemplate>
 	<![CDATA[
             (cn=$requestContext.principalName)
