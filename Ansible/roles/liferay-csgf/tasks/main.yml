@@ -1,0 +1,3 @@
+---
+# tasks file for liferay-csgf
+- include: repos.yml

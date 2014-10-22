@@ -1,0 +1,28 @@
+---
+- name: Add Shibboleth repo
+  copy: src=etc/CentOS-Shibboleth.repo dest=/etc/{{ item }} owner=root group=root
+  with_items:
+  - CentOS-Shibboleth.repo  
+  - EGI-trustanchors.repo
+  - EUGRIDPMA-fetch-crl3.repo
+  tags:
+  - repos
+
+- name: Update Yum
+  yum: name=* state=latest
+  tags:
+  - yum
+
+- name: Install Prerequisites
+  yum: name={{ item }} state=present
+  with_items:
+  - shibboleth 
+  - httpd
+  - lcg-CA
+  - java-1.7.0-openjdk-devel.x86_64 
+  - fontpackages-tools
+  - mysql.x86_64
+  - mod_ssl.x86_64
+  - php.x86_64 
+  - vim-enhanced.x86_64 
+  - fetch-crl

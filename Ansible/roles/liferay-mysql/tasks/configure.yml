@@ -1,0 +1,7 @@
+---
+# Taken from :http://sourceforge.net/p/ctsciencegtwys/wiki/ConfigLportalInMySQL/
+- name: Tell dev what's going on
+  debug: 'msg="Note to dev: if thing break, see http://sourceforge.net/p/ctsciencegtwys/wiki/ConfigLportalInMySQL/"'
+  tags:
+  - notetodev
+  - debug
