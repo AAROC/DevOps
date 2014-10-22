@@ -1,2 +1,19 @@
 ---
-# defaults file for liferay-mysql
+mysql_port: 3306
+mysql_bind_address: "0.0.0.0"
+mysql_root_db_pass: foobar
+
+# Set the database names you want to create here
+mysql_db: 
+     - name: userstracking
+       replicate: no
+     - name: bar
+       replicate: no
+
+# Set the mysql users you want to create here
+mysql_users:
+     - name: tracking_user
+       pass: userstracking
+       priv: "userstracking.*:ALL"
+
+# no replication is necessary

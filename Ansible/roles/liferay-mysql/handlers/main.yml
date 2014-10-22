@@ -1,2 +1,3 @@
 ---
-# handlers file for liferay-mysql
+- name: restart mysql
+  service: name={{ mysql_service }} state=restarted 
