@@ -334,7 +334,7 @@
     -->
     
     <resolver:DataConnector id="myLDAP" xsi:type="dc:LDAPDirectory"
-			    ldapURL="{{ ldap_server }}"
+			    ldapURL="ldap://{{ ldap_server }}"
 			    baseDN="{{ idp_base_dn}}"
 			    principal="{{ idp_principal }}"
 			    principalCredential="{{ idp_principal_credential }}">
