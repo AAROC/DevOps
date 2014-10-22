@@ -1,4 +1,6 @@
 # Place hoder for DIT inventory
+[science-gateways]
+sgw.ternet.or.tz
 
 [ldap-server]
 ldap.ternet.or.tz
@@ -10,6 +12,7 @@ idp.ternet.or.tz
 #ldap.ternet.or.tz
 ldap-server
 shibboleth-idp
+science-gateways
 
 [Debian-servers]
 
