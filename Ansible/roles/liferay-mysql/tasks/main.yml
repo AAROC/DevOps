@@ -5,3 +5,4 @@
   
 - include: install.yml
 - include: configure.yml
+- include: create_dbs.yml

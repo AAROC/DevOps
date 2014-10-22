@@ -43,8 +43,6 @@
    - localhost
    - "{{ ansible_hostname }}"
 
-
-  
 - name: remove the test database
   mysql_db: name=test state=absent
 
