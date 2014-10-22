@@ -1,20 +1,20 @@
 #- name: Ensure that tomcat can write to 
 
 - name: Create Attribute Filters
-  copy: src=attribute-filter.xml dest={{ shibboleth_install_path }}/attribute-filter.xml owner=tomcat group=root
+  copy: src=attribute-filter.xml dest={{ shibboleth_install_path }}/conf/attribute-filter.xml owner=tomcat group=root
 
 - name: Create Attribute Resolver
-  template: src=attribute-resolver.xml.j2 dest={{ shibboleth_install_path }}/attribute-resolver.xml owner=tomcat group=root
+  template: src=attribute-resolver.xml.j2 dest={{ shibboleth_install_path }}/conf/attribute-resolver.xml owner=tomcat group=root
   
 - name: Create Logger
-  template: src=logging.xml.j2 dest={{ shibboleth_install_path }}/logging.xml owner=tomcat group=root
+  template: src=logging.xml.j2 dest={{ shibboleth_install_path }}/conf/logging.xml owner=tomcat group=root
   
 - name: Create Handler
-  template: src=handler.xml.j2 dest={{ shibboleth_install_path }}/handler.xml owner=tomcat group=root
+  template: src=handler.xml.j2 dest={{ shibboleth_install_path }}/conf/handler.xml owner=tomcat group=root
   
 - name: Create Relying Parties
-  template: src=relying-party.xml.j2 dest={{ shibboleth_install_path }}/relying-party.xml owner=tomcat group=root
+  template: src=relying-party.xml.j2 dest={{ shibboleth_install_path }}/conf/relying-party.xml owner=tomcat group=root
   
 - name: Configure the Login module
-  template: src=login.conf.j2 dest={{ shibboleth_install_path }}/login.conf owner=tomcat group=root
+  template: src=login.conf.j2 dest={{ shibboleth_install_path }}/conf/login.conf owner=tomcat group=root
   notify: restart tomcat

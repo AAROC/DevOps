@@ -7,7 +7,7 @@
 #  - ldap
 
 - name: Prepare the identity machine common environment
-  hosts: shibboleth-idps
+  hosts: shibboleth-idp
   remote_user: ansible
   roles: 
 #  - fmarco76.tomcat 
