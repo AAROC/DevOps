@@ -103,7 +103,7 @@
         
 {%- for federation in federations %}
         
-      <metadata:MetadataProvider id="{{ federation.metadata_provider }} CatchAllFederation" xsi:type="metadata:FileBackedHTTPMetadataProvider"
+      <metadata:MetadataProvider id="{{ federation.provider }}" xsi:type="metadata:FileBackedHTTPMetadataProvider"
 				 metadataURL="{{ federation.metadata_URL }} "
 				 backingFile="{{ shibboleth_install_path }}/metadata/{{ backing_file }}.xml"
 				 disregardSslCertificate="true">
@@ -112,9 +112,9 @@
 
 <!-- various service providers --> 
 {%- for sp in other_service_providers %}
-        <metadata:MetadataProvider id="sp.provider" xsi:type="metadata:FileBackedHTTPMetadataProvider"
-				 metadataURL="sp.metadata_URL"
-				 backingFile="{{ shibboleth_install_path }}/metadata/sp.backing_file"
+        <metadata:MetadataProvider id="{{ sp.provider }}" xsi:type="metadata:FileBackedHTTPMetadataProvider"
+				 metadataURL="{{ sp.metadata_URL }}"
+				 backingFile="{{ shibboleth_install_path }}/metadata/{{ sp.backing_file }}"
 				 disregardSslCertificate="true">
 	</metadata:MetadataProvider>
 {% endfor %}
@@ -127,7 +127,7 @@
     <!--     Security Configurations                -->
     <!-- ========================================== -->
     <security:Credential id="IdPCredential" xsi:type="security:X509Filesystem">
-        <security:PrivateKey>{{ shibboleth_install_path }}/credentials/{{ idp_key_cert }}</security:PrivateKey>
+        <security:PrivateKey>{{ shibboleth_install_path }}/credentials/{{ idp_private_key_file }}</security:PrivateKey>
         <security:Certificate>{{ shibboleth_install_path }}/credentials/{{ idp_cert_file }}</security:Certificate>
     </security:Credential>
     
