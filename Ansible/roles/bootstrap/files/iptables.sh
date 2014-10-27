@@ -7,5 +7,5 @@ iptables -t filter -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 iptables -t filter -A INPUT -p all -j REJECT --reject-with icmp-admin-prohibited
 iptables -t filter -A FORWARD -p all -j REJECT --reject-with icmp-admin-prohibited
 
-mkdir iptables
+mkdir -p /etc/iptables
 iptables-save > /etc/iptables/rules
