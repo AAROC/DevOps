@@ -1,0 +1,20 @@
+# LionGrid Inventory
+
+[science-gateways]
+
+
+[ldap-server]
+
+
+[shibboleth-idp]
+
+
+[CentOS-servers:children]
+
+
+[Debian-servers]
+
+[identity-liongrid:children]
+ldap-server
+shibboleth-idp
+

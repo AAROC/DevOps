@@ -1,7 +1,8 @@
 # Place hoder for DIT inventory
 [science-gateways]
 sgw.ternet.or.tz
-
+[db-servers]
+sgw.ternet.or.tz
 [ldap-server]
 ldap.ternet.or.tz
 [shibboleth-idp]
@@ -19,4 +20,5 @@ science-gateways
 [identity-ternet:children]
 ldap-server
 shibboleth-idp
+
 
