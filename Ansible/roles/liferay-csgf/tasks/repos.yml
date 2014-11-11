@@ -26,3 +26,6 @@
   - php.x86_64 
   - vim-enhanced.x86_64 
   - fetch-crl
+
+- name: Add Liferay user
+  user: name=liferay group=liferay state=present
