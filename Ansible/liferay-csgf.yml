@@ -11,7 +11,7 @@
   roles:
   #- shibboleth-sp
   - glassfish
-  #- liferay
+  - liferay-csgf
   
 #- name: Install CSGF
   #hosts: science-gateways
