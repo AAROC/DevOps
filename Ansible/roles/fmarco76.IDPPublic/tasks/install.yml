@@ -20,6 +20,7 @@
   command: ant dist creates={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war chdir={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}
   tags:
   -  install
+  
 - name: Rename the old ROOT webapp 
   sudo: yes
   command: mv {{ tomcat6_webapps }}/ROOT {{ tomcat6_webapps }}/ROOT.old creates={{ tomcat6_webapps }}/ROOT.old/META-INF/context.xml
