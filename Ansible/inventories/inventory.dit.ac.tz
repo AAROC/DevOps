@@ -1,4 +1,4 @@
-# Place hoder for DIT inventory
+# Inventory of Dar-es Salaam Institute of Technology
 [science-gateways]
 sgw.ternet.or.tz
 [db-servers]
@@ -9,8 +9,6 @@ ldap.ternet.or.tz
 idp.ternet.or.tz
 
 [CentOS-servers:children]
-#idp.ternet.or.tz
-#ldap.ternet.or.tz
 ldap-server
 shibboleth-idp
 science-gateways
