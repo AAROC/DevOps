@@ -1,0 +1,5 @@
+---
+- name: Add Liferay user
+  sudo: true
+  user: name=liferayadmin group=liferayadmin state=present
+  

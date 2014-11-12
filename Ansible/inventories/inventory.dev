@@ -1,0 +1,34 @@
+[ldap-servers]
+vm01.ct.infn.it ansible_ssh_port=4422
+vm03.ct.infn.it ansible_ssh_port=4422
+
+[shibboleth-idps]
+vm02.ct.infn.it ansible_ssh_port=4422
+vm04.ct.infn.it ansible_ssh_port=4422
+
+[science-gateways]
+vm01.ct.infn.it ansible_ssh_port=4422
+vm04.ct.infn.it ansible_ssh_port=4422
+
+[db-servers]
+vm02.ct.infn.it ansible_ssh_port=4422
+vm03.ct.infn.it ansible_ssh_port=4422
+
+[CentOS-servers]
+vm03.ct.infn.it
+vm04.ct.infn.it
+
+[Debian-servers]
+vm01.ct.infn.it
+vm02.ct.infn.it
+
+[identity-all:children]
+ldap-servers
+shibboleth-idps
+
+[site-test-1:children]
+Debian-servers
+
+[site-test-2:children]
+CentOS-servers
+############################ END #########################
