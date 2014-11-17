@@ -1,12 +1,14 @@
-# Inventory of Dar-es Salaam Institute of Technology
+# Inventory of MAREN
 [science-gateways]
-sgw.ternet.or.tz
+41.70.24.6
+
 [db-servers]
-sgw.ternet.or.tz
+
 [ldap-server]
-ldap.ternet.or.tz
+41.70.24.6
+
 [shibboleth-idp]
-idp.ternet.or.tz
+41.70.24.6
 
 [CentOS-servers:children]
 ldap-server
@@ -15,7 +17,7 @@ science-gateways
 
 [Debian-servers]
 
-[identity-ternet:children]
+[identity-maren:children]
 ldap-server
 shibboleth-idp
 

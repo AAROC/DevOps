@@ -1,0 +1,21 @@
+---
+- name: Configure Liferay database   
+  hosts: db-servers
+  sudo: true
+  roles: 
+  - liferay-mysql
+
+- name: Prerequisites for Science Gateway
+  hosts: science-gateways
+  sudo: true
+  roles:
+  #- shibboleth-sp
+  - glassfish
+  - liferay-csgf
+  
+#- name: Install CSGF
+  #hosts: science-gateways
+  #roles:
+  #- csgf
+  
+    

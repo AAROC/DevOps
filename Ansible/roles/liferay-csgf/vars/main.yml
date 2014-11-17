@@ -1,0 +1,8 @@
+---
+# vars file for liferay-csgf
+base_packages:
+repos:
+  - CentOS-Shibboleth
+  - EGI-trustanchors
+  - EUGRIDPMA-fetch-crl3
+  

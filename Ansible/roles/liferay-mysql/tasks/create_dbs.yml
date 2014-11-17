@@ -1,0 +1,17 @@
+---
+- name: Create the database's
+  mysql_db: name={{ item.name }} state=present
+  with_items: mysql_db
+  when: mysql_db|lower() != 'none'
+
+- name: Create the database users
+  mysql_user: name={{ item.name }}  password={{ item.pass|default("foobar") }}  
+                priv={{ item.priv|default("*.*:ALL") }} state=present host={{ item.host | default("localhost") }}
+  with_items: mysql_users
+  when: mysql_users|lower() != 'none'
+  
+- name: copy schema
+  copy: src=UsersTrackingDB.sql dest=/tmp/UserTrackingDB.sql
+
+- name: import schema
+  mysql_db: name=userstracking state=import target=/tmp/UserTrackingDB.sql
