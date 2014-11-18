@@ -258,6 +258,7 @@
           <network-listener port="8080" protocol="http-listener-1" transport="tcp" name="http-listener-1" thread-pool="http-thread-pool"></network-listener>
           <network-listener port="8181" protocol="http-listener-2" transport="tcp" name="http-listener-2" thread-pool="http-thread-pool"></network-listener>
           <network-listener port="4848" protocol="admin-listener" transport="tcp" name="admin-listener" thread-pool="admin-thread-pool"></network-listener>
+          <network-listener port="8009" protocol="http-listener-1" transport="tcp" name="apache" jk-enabled="true" thread-pool="http-thread-pool"></network-listener>
         </network-listeners>
         <transports>
           <transport name="tcp"></transport>
