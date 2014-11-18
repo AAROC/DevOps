@@ -2,4 +2,9 @@
 - name: Add Liferay user
   sudo: true
   user: name=liferayadmin group=liferayadmin state=present
-  
+
+- name: Ensure that the hostname is in /etc/hosts
+  lineinfile:
+    dest=/etc/hosts
+    line="{{ ansible_eth0_ipv4 }} {{ ansible_fqdn }} {{ ansible_hostname }}"
+    state=present
