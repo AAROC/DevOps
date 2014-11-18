@@ -1,6 +1,7 @@
 # Inventory of Dar-es Salaam Institute of Technology
 [science-gateways]
-sgw.ternet.or.tz
+sgw.ternet.or.tz min_jvm_size=1024m max_jvm_size=1024m db-server=sgw.ternet.or.tz
+
 [db-servers]
 sgw.ternet.or.tz
 [ldap-server]
@@ -18,5 +19,3 @@ science-gateways
 [identity-ternet:children]
 ldap-server
 shibboleth-idp
-
-
