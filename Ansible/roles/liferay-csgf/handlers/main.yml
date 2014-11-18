@@ -3,16 +3,16 @@
 - name: restart httpd
   service: name=httpd state=restarted
 
-- name: stop domain
+- name: stop-domain
   command: /opt/glassfish/glassfish3/glassfish/bin/asadmin stop-domain liferay
   sudo: true
   sudo_user: liferayadmin
   async: 45
   poll: 5
 
-- name: start domain
+- name: start-domain
   command: /opt/glassfish/glassfish3/glassfish/bin/asadmin start-domain liferay
   sudo: true
   sudo_user: liferayadmin
-  async: 45
+  async: 600
   poll: 5
