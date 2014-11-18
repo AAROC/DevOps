@@ -1,9 +1,9 @@
 ---
-# - name: Configure Liferay database
-#   hosts: db-servers
-#   sudo: true
-#   roles:
-#   - liferay-mysql
+- name: Configure Liferay database
+  hosts: db-servers
+  sudo: true
+  roles:
+  - liferay-mysql
 
 - name: Prerequisites for Science Gateway
   hosts: science-gateways
@@ -11,9 +11,10 @@
   sudo: true
   vars_files:
     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
+    - roles/liferay-mysql/vars/main.yml
   roles:
   #- shibboleth-sp
-  #  - glassfish 
+    - glassfish
     - liferay-csgf
 
 #- name: Install CSGF
