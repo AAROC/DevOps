@@ -1,0 +1,17 @@
+---
+- name: Create the domain.xml
+  template: src=opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml.j2 dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml owner=liferayadmin group=liferayadmin
+
+- name: check whether the domain is running
+  command: /opt/glassfish/glassfish3/glassfish/bin/asadmin list-domains
+  register: domain_status
+  failed_when: domain_status | match("error")
+
+- name: Start the Liferay Domain
+  command: /opt/glassfish/glassfish3/glassfish/bin/asadmin start-domain liferay
+  sudo: true
+  sudo_user: liferayadmin
+  async: 45
+  poll: 5
+  when: domain_status.stdout | match("liferay not running")
+  register: domain_info
