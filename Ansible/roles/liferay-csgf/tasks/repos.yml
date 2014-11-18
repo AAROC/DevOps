@@ -1,31 +1,16 @@
 ---
 - name: Add Shibboleth repo
-  copy: src=etc/CentOS-Shibboleth.repo dest=/etc/{{ item }} owner=root group=root
+  copy: src=etc/yum.repos.d/CentOS-Shibboleth.repo dest=/etc/yum.repos.d/{{ item }} owner=root group=root
   with_items:
-  - CentOS-Shibboleth.repo  
+  - CentOS-Shibboleth.repo
   - EGI-trustanchors.repo
   - EUGRIDPMA-fetch-crl3.repo
+  when: ansible_os_family == "RedHat"
   tags:
   - repos
 
 - name: Update Yum
   yum: name=* state=latest
+  when: ansible_os_family == "RedHat"
   tags:
   - yum
-
-- name: Install Prerequisites
-  yum: name={{ item }} state=present
-  with_items:
-  - shibboleth 
-  - httpd
-  - lcg-CA
-  - java-1.7.0-openjdk-devel.x86_64 
-  - fontpackages-tools
-  - mysql.x86_64
-  - mod_ssl.x86_64
-  - php.x86_64 
-  - vim-enhanced.x86_64 
-  - fetch-crl
-
-- name: Add Liferay user
-  user: name=liferay group=liferay state=present

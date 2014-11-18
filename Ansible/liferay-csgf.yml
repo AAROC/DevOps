@@ -13,7 +13,7 @@
     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
   roles:
   #- shibboleth-sp
-    - glassfish 
+  #  - glassfish 
     - liferay-csgf
 
 #- name: Install CSGF

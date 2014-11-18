@@ -1,7 +1,8 @@
 ---
-
 server_country: IT
 server_state:
 server_location: Catania
 server_organization: INFN
 server_organization_unit: CT
+
+sgw_admin: brucellino@gmail.com
