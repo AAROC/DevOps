@@ -1,5 +1,10 @@
 ---
 # handlers file for liferay-csgf
+- name: reboot
+  command: /sbin/reboot 
+  async: 600
+  poll: 5
+
 - name: restart httpd
   service: name=httpd state=restarted
 
@@ -9,6 +14,7 @@
   sudo_user: liferayadmin
   async: 45
   poll: 5
+  register: stop_domain
 
 - name: start-domain
   command: /opt/glassfish/glassfish3/glassfish/bin/asadmin start-domain liferay
@@ -16,3 +22,4 @@
   sudo_user: liferayadmin
   async: 600
   poll: 5
+  register: start_domain
