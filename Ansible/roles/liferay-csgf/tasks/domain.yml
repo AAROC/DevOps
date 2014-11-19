@@ -1,4 +1,7 @@
 ---
+- name: Ensure that liferay directory exists
+  file: name=/opt/glassfish/glassfish3/glassfish/domains/liferay/config state=directory owner=liferayadmin group=liferayadmin
+
 - name: Create the domain.xml
   template: src=opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml.j2 dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml owner=liferayadmin group=liferayadmin
 
@@ -12,11 +15,14 @@
 - name: download the Liferay application
   get_url: url='http://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.1.1%20GA2/liferay-portal-6.1.1-ce-ga2-20120731132656558.war/download' dest=/tmp/liferay.war
 
+- name: Ensure that the liferay lib directory is present
+  file: name=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/ state=directory owner=liferayadmin group=liferayadmin
+
 - name: unpack the glassfish connector
   unarchive:
-    src=/tmp/mysql-connector-java.tar.gz
-    dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
-    copy=no
+   src=/tmp/mysql-connector-java.tar.gz
+   dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
+   copy=no
 
 - name: unpack the liferay dependencies
   unarchive:
@@ -32,6 +38,27 @@
 
 - name: what is up with the domain ?
   debug: msg="{{ domain_status.stdout }} {{ domain_status.stderr }}"
+
+- name: copy the password file
+  copy: src=passwordfile dest=/opt/glassfish/glassfish3/bin/passwordfile owner=liferayadmin group=liferayadmin
+
+- name: Enable secure admin
+  shell:
+    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin  enable-secure-admin
+    chdir=/opt/glassfish/glassfish3/bin/
+  register: secure_admin_status
+
+- name: Are we secure ?
+  debug: "msg={{ secure_admin_status.stdout}}"
+
+- name: start the server
+  sudo: true
+  sudo_user: liferayadmin
+#  shell: ./asadmin create-domain --user=liferayadmin  --nopassword liferay  chdir=/opt/glassfish/glassfish3/bin/
+  shell:
+    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin  create-domain liferay
+    chdir=/opt/glassfish/glassfish3/bin/
+  register: domain_status
 
 - name: Start the Liferay Domain
   command: /opt/glassfish/glassfish3/glassfish/bin/asadmin start-domain liferay
