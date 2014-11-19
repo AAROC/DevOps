@@ -1,0 +1,24 @@
+---
+base_packages:
+  - curl
+  - shibboleth-sp2-schemas
+  - libshibsp-dev
+  - libshibsp-doc
+  - libapache2-mod-shib2
+  - opensaml2-tools
+#  - "{{ httpd }}"
+#  - lcg-CA
+#  - java-1.7.0-openjdk-devel.x86_64
+#  - fontpackages-tools
+  - mysql.x86_64
+  - mod_ssl.x86_64
+  - php.x86_64
+  - vim-enhanced.x86_64
+  - fetch-crl
+
+repos:
+  - shibboleth
+  - EGI-trustanchors
+  - EUGRIDPMA-fetch-crl3
+
+apache: 'apache2'

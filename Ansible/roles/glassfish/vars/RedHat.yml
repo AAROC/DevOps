@@ -1,0 +1,19 @@
+---
+base_packages:
+- shibboleth
+- httpd
+- lcg-CA
+- java-1.7.0-openjdk-devel.x86_64
+- fontpackages-tools
+- mysql.x86_64
+- mod_ssl.x86_64
+- php.x86_64
+- vim-enhanced.x86_64
+- fetch-crl
+
+repos:
+  - CentOS-Shibboleth
+  - EGI-trustanchors
+  - EUGRIDPMA-fetch-crl3
+
+apache: 'httpd'
