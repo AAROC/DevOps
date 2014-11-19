@@ -1,20 +1,38 @@
 ---
-- name: Configure Liferay database
-  hosts: db-servers
-  sudo: true
-  roles:
-  - liferay-mysql
+# - name: Configure Liferay database
+#   hosts: db-servers
+#   sudo: true
+#   roles:
+#   - liferay-mysql
 
 - name: Prerequisites for Science Gateway
   hosts: science-gateways
-  user: ansible
+  remote_user: ansible
   sudo: true
+  sudo_user: liferayadmin
   vars_files:
     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
     - roles/liferay-mysql/vars/main.yml
+  pre_tasks:
+    - name: Ensure that the system is up to date (Deb)
+      apt: name=* state=latest
+      when: ansible_os_family == 'Debian'
+      sudo: true
+
+    - name: Install EPEL repo
+      yum: name='http://mirror.ufs.ac.za/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm' state=present
+      sudo: true
+      sudo_user: root
+
+    - name: Ensure that system is up to date (EL)
+      yum: name=* state=latest
+      when: ansible_os_family == 'RedHat'
+      sudo: true
+      sudo_user: root
+
   roles:
   #- shibboleth-sp
-    - glassfish
+  #  - glassfish
     - liferay-csgf
 
 #- name: Install CSGF

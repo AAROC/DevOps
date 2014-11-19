@@ -1,6 +1,6 @@
 ---
 # tasks file for liferay-csgf
-- include: prep.yml
-- include: repos.yml
-- include: apache.yml
+#- include: prep.yml
+#- include: repos.yml
+#- include: apache.yml
 - include: domain.yml

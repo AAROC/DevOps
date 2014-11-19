@@ -1,4 +1,14 @@
 ---
+- name: check that the domain hasn't been created
+  sudo: true
+  sudo_user: liferayadmin
+  shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
+  register: domains
+
+- name: start the server
+  shell: ./asadmin create-domain --user=liferayadmin  --nopassword liferay  chdir=/opt/glassfish/glassfish3/bin/
+  when: domains.stdout | match("liferay not running")
+
 - name: Ensure that liferay directory exists
   file: name=/opt/glassfish/glassfish3/glassfish/domains/liferay/config state=directory owner=liferayadmin group=liferayadmin
 
@@ -59,6 +69,8 @@
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin  create-domain liferay
     chdir=/opt/glassfish/glassfish3/bin/
   register: domain_status
+  when: domain_status.stdout | match('liferay')
+
 
 - name: Start the Liferay Domain
   command: /opt/glassfish/glassfish3/glassfish/bin/asadmin start-domain liferay

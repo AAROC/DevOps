@@ -36,11 +36,11 @@
   shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
   register: domains
 
-- name: start the server
-  sudo: true
-  sudo_user: liferayadmin
-  shell: ./asadmin create-domain --user=liferayadmin  --nopassword liferay  chdir=/opt/glassfish/glassfish3/bin/
-  when: domains.stdout | match("liferay")
+# - name: start the server
+#   sudo: true
+#   sudo_user: liferayadmin
+#   shell: ./asadmin create-domain --user=liferayadmin  --nopassword liferay  chdir=/opt/glassfish/glassfish3/bin/
+#   when: domains.stdout | match("liferay")
 
 #- name: Configure jvm parameters
 #  copy:
