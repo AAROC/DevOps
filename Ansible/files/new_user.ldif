@@ -1,0 +1,23 @@
+# extended LDIF
+#
+# LDAPv3
+# base <ou=Organisations,dc=local> with scope oneLevel
+# filter: (objectclass=*)
+# requesting: ALL
+#
+
+# {{ user_cn }}, People, Local
+dn: cn=Bob,ou=People,dc=local
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Bob
+sn: Jones
+givenName: Bob
+initials: B
+mail: bob@test.com
+mail: bob@othertest.com
+o: o=TERNET,c=TZ,ou=Organisations,dc=local
+registeredAddress: bob@test.com
+userPassword: fakepass

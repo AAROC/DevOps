@@ -6,9 +6,11 @@ vm03.ct.infn.it ansible_ssh_port=4422
 vm02.ct.infn.it ansible_ssh_port=4422
 vm04.ct.infn.it ansible_ssh_port=4422
 
+# We need to include the mapping between science gateways and db servers
 [science-gateways]
-vm01.ct.infn.it ansible_ssh_port=4422
-vm04.ct.infn.it ansible_ssh_port=4422
+# We don't support Debian yet
+# vm01.ct.infn.it ansible_ssh_port=4422 min_jvm_size=1024m max_jvm_size=1024m db-server=vm02.ct.infn.it
+vm04.ct.infn.it ansible_ssh_port=4422 min_jvm_size=1024m max_jvm_size=1024m db-server=vm03.ct.infn.it
 
 [db-servers]
 vm02.ct.infn.it ansible_ssh_port=4422

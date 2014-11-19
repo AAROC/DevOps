@@ -1,17 +1,20 @@
 --- 
 - name: Replace mail in struts
   replace: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/struts.xml regexp='test@idp-domain.org' replace={{ mail_contact }}
+  ignore_errors: True
   tags:
   - customise
   
 
 - name: Replace mail in cleaner config
   replace: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/cleaner.properties regexp='test@idp-domain.org' replace={{ mail_contact }}
+  ignore_errors: True
   tags:
   - customise
 
 - name: check whether we have read ldap server
   debug: msg="ldap server is {{ ldap_server }}"
+  ignore_errors: True
   tags:
   - customise
 

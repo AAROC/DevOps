@@ -1,2 +1,17 @@
 ---
 # vars file for liferay-mysql
+# Set the database names you want to create here
+mysql_db:
+     - name: userstracking
+       replicate: no
+     - name: lportal
+       replicate: no
+
+# Set the mysql users you want to create here
+mysql_users:
+     - name: tracking_user
+       pass: userstracking
+       priv: "userstracking.*:ALL"
+     - name: tracking_user
+       pass: userstracking
+       priv: "lportal.*:ALL"

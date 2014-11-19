@@ -5,4 +5,5 @@ repos:
   - CentOS-Shibboleth
   - EGI-trustanchors
   - EUGRIDPMA-fetch-crl3
-  
+liferay_admin_name: 'Liferay Admin'
+liferay_admin_email: 'admin@{{ ansible_fqdn }}'

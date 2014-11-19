@@ -1,0 +1,57 @@
+---
+- name: Create the domain.xml
+  template: src=opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml.j2 dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml owner=liferayadmin group=liferayadmin
+
+- name: download the mysql driver for glassfish
+  get_url: url=http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.34.tar.gz dest=/tmp/mysql-connector-java.tar.gz
+
+- name: download the liferay dependencies
+  get_url: url='http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/6.1.1%20GA2/liferay-portal-dependencies-6.1.1-ce-ga2-20120731132656558.zip'
+    dest=/tmp/liferay-dependencies.zip
+
+- name: download the Liferay application
+  get_url: url='http://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.1.1%20GA2/liferay-portal-6.1.1-ce-ga2-20120731132656558.war/download' dest=/tmp/liferay.war
+
+- name: unpack the glassfish connector
+  unarchive:
+    src=/tmp/mysql-connector-java.tar.gz
+    dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
+    copy=no
+
+- name: unpack the liferay dependencies
+  unarchive:
+    src=/tmp/liferay-dependencies.zip
+    dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
+    copy=no
+
+- name: check whether the domain is running
+  command: /opt/glassfish/glassfish3/glassfish/bin/asadmin list-domains
+  register: domain_status
+  failed_when: domain_status.stdout | match('error')
+  changed_when: false
+
+- name: what is up with the domain ?
+  debug: msg="{{ domain_status.stdout }} {{ domain_status.stderr }}"
+
+- name: Start the Liferay Domain
+  command: /opt/glassfish/glassfish3/glassfish/bin/asadmin start-domain liferay
+  sudo: true
+  sudo_user: liferayadmin
+  async: 45
+  poll: 5
+  when: domain_status.stdout.find('liferay not running') != -1
+  register: domain_info
+
+- name: Deploy liferay application
+  command: /opt/glassfish/glassfish3/glassfish/bin/asadmin -u liferayadmin deploy --contextroot / --verify=true --name liferay611cega2 /tmp/liferay.war
+  async: 600
+  poll: 20
+  notify: stop-domain
+
+- name: Configure Liferay Portal properties
+  template:
+     src=opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes/portal-ext.properties.j2
+     dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes/portal-ext.properties
+     owner=liferayadmin
+     group=liferayadmin
+  notify: start-domain

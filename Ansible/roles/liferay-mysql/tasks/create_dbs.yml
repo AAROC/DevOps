@@ -5,11 +5,15 @@
   when: mysql_db|lower() != 'none'
 
 - name: Create the database users
-  mysql_user: name={{ item.name }}  password={{ item.pass|default("foobar") }}  
-                priv={{ item.priv|default("*.*:ALL") }} state=present host={{ item.host | default("localhost") }}
+  mysql_user:
+    name={{ item.name }}
+    password={{ item.pass|default("foobar") }}
+    priv='{{ item.priv|default("*.*:ALL") }}'
+    state=present
+    host='{{ item.host | default("localhost") }}'
   with_items: mysql_users
   when: mysql_users|lower() != 'none'
-  
+
 - name: copy schema
   copy: src=UsersTrackingDB.sql dest=/tmp/UserTrackingDB.sql
 
