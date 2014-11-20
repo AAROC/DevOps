@@ -1,13 +1,14 @@
 ---
 - name: Configure Liferay database
   hosts: db-servers
+  user: ansible
   sudo: true
   roles:
   - liferay-mysql
 
 - name: Prerequisites for Science Gateway
   hosts: science-gateways
-  user: ansible
+  remote_user: ansible
   sudo: true
   vars_files:
     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
