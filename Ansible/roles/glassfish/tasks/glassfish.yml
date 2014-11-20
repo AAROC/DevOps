@@ -30,11 +30,11 @@
   command: /usr/bin/unzip -d /opt/glassfish glassfish-3.1.2.2.zip creates=/opt/glassfish/glassfish3/
   when: asadmin_stat.stat.exists == false
 
-- name: check that the domain hasn't been created
-  sudo: true
-  sudo_user: liferayadmin
-  shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
-  register: domains
+# - name: check that the domain hasn't been created
+#   sudo: true
+#   sudo_user: liferayadmin
+#   shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
+#   register: domains
 
 # - name: start the server
 #   sudo: true
