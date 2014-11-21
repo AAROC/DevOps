@@ -1,5 +1,7 @@
 ---
 - name: Add Shibboleth repo
+  sudo: true
+  sudo_user: root
   copy: src=etc/yum.repos.d/CentOS-Shibboleth.repo dest=/etc/yum.repos.d/{{ item }} owner=root group=root
   with_items:
   - CentOS-Shibboleth.repo
@@ -8,9 +10,4 @@
   when: ansible_os_family == "RedHat"
   tags:
   - repos
-
-- name: Update Yum
-  yum: name=* state=latest
-  when: ansible_os_family == "RedHat"
-  tags:
-  - yum
+  notify: Update Yum

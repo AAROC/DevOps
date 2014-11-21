@@ -1,52 +1,154 @@
 ---
-- name: Create the domain.xml
-  template: src=opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml.j2 dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml owner=liferayadmin group=liferayadmin
+# We will need some admin passwords for the glassfish server. We store them
+# this file. This may become a template later, taking variables from the
+# role_vars
+- name: Copy the Glassfish server password file
+  copy:
+    src=passwordfile dest=/opt/glassfish/glassfish3/bin/passwordfile
+    owner=liferayadmin
+    group=liferayadmin
 
-- name: download the mysql driver for glassfish
-  get_url: url=http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.34.tar.gz dest=/tmp/mysql-connector-java.tar.gz
+################################################################################
+# start domain
+################################################################################
 
-- name: download the liferay dependencies
-  get_url: url='http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/6.1.1%20GA2/liferay-portal-dependencies-6.1.1-ce-ga2-20120731132656558.zip'
-    dest=/tmp/liferay-dependencies.zip
+################################################################################
+# We need to see whether the liferay domain has been created, so that we can
+# create it without error later, or skip the step. We don't consider this to
+# influence the state of the service, so we ignore changes
 
-- name: download the Liferay application
-  get_url: url='http://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.1.1%20GA2/liferay-portal-6.1.1-ce-ga2-20120731132656558.war/download' dest=/tmp/liferay.war
-
-- name: unpack the glassfish connector
-  unarchive:
-    src=/tmp/mysql-connector-java.tar.gz
-    dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
-    copy=no
-
-- name: unpack the liferay dependencies
-  unarchive:
-    src=/tmp/liferay-dependencies.zip
-    dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
-    copy=no
-
-- name: check whether the domain is running
-  command: /opt/glassfish/glassfish3/glassfish/bin/asadmin list-domains
+- name: check the domains
+  sudo: true
+  sudo_user: liferayadmin
+  shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
   register: domain_status
-  failed_when: domain_status.stdout | match('error')
   changed_when: false
 
-- name: what is up with the domain ?
-  debug: msg="{{ domain_status.stdout }} {{ domain_status.stderr }}"
+################################################################################
+# Create the Liferay domain
+################################################################################
+# If the liferay domain has not been created, we need to create it
+# we register the variable domain_start so that we can check the status of the
+# domain afterwards.
+# We only need to create the domain if the previous list of domains has shown
+# that the liferay domain was not created.
+- name: create liferay domain
+  sudo: true
+  sudo_user: liferayadmin
+  shell:
+    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin create-domain liferay
+    chdir=/opt/glassfish/glassfish3/bin/
+  register: domain_start
+  when: domain_status.stdout.find('liferay') == -1
 
+# We need the domain customised, so that it connects to the mysql server and has
+# the correct connectors, etc.
+# This is taken care of in the config.xml file that describes the domain.
+# We provide it with a template, but first we need to ensure that the remote
+# directory into which it will be copied exists.
+- name: Ensure that liferay directory exists
+  file: name=/opt/glassfish/glassfish3/glassfish/domains/liferay/config state=directory owner=liferayadmin group=liferayadmin
+- name: Create the domain.xml
+  template:
+    src=opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml.j2
+    dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml
+    owner=liferayadmin group=liferayadmin
+
+# We have now ensured that the liferay domain has been created and that the conf
+# is customised according to our liking.
+# Proceed to start the domain, only if the domain is stopped.
+# This may take some time, so we set an asynch
 - name: Start the Liferay Domain
-  command: /opt/glassfish/glassfish3/glassfish/bin/asadmin start-domain liferay
+  shell:
+    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin start-domain liferay
+    chdir=/opt/glassfish/glassfish3/bin/
   sudo: true
   sudo_user: liferayadmin
   async: 45
   poll: 5
-  when: domain_status.stdout.find('liferay not running') != -1
-  register: domain_info
+  when: domain_status.stdout.find('liferay not running') == 0
+  register: domain
 
+# enable secure access to the server so that we can have access later to the
+# web interface running on 4848.
+- name: Enable secure admin
+  shell:
+    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin  enable-secure-admin
+    chdir=/opt/glassfish/glassfish3/bin/
+  register: secure_admin_status
+  notify: stop-domain
+
+###############################################################################
+# Download other libraries
+###############################################################################
+# We have a glassfish server and a liferay domain running, but a few extra libs
+# are required by liferay for our use case. In particular, the mysql connectors
+# We need to download them from the web.
+# Of course, we need the liferay application itself
+- name: download the mysql driver for glassfish
+  get_url: url=http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.34.tar.gz dest=/tmp/mysql-connector-java.tar.gz
+- name: download the liferay dependencies
+  get_url: url='http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/6.1.1%20GA2/liferay-portal-dependencies-6.1.1-ce-ga2-20120731132656558.zip'
+    dest=/tmp/liferay-dependencies.zip
+- name: download the Liferay application
+  get_url: url='http://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.1.1%20GA2/liferay-portal-6.1.1-ce-ga2-20120731132656558.war/download' dest=/tmp/liferay.war
+
+# Before we unpack the dependencies and liferay itself, let's ensure that the
+# target directory exists
+- name: Ensure that the liferay lib directory is present
+  file: name=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/ state=directory owner=liferayadmin group=liferayadmin
+# Now, we can pull in the required jars.
+# We can't use unarchive, because the tarballs have the jars in a directory
+# structure, and we need them in the top-level dir for the liferay jars.
+# So, we use command +(tar,zip) to do the job, even though ansible complains.
+- name: unpack the glassfish connector
+  command:
+    /bin/tar xvfz /tmp/mysql-connector-java.tar.gz --show-transformed-names --wildcards --no-anchored '*.jar' --strip=3 --strip-components=3
+    chdir=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
+    creates=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/jboss-common-jdbc-wrapper.jar
+- name: unpack the liferay dependencies
+  command: /usr/bin/unzip -j -d /opt/glassfish/glassfish3/glassfish/domains/liferay/lib/ /tmp/liferay-dependencies.zip
+    creates=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/hsql.jar
+
+################################################################################
+# Restart the domain to take effect
+################################################################################
+# Now that the domain has been properly configured, we need to restart it, so
+# that the libraries can be loaded and the application deployed properly.
+# First, we stop the domain, then start it (checking that it has actually stopped)
+- name: stop-domain
+  command: /opt/glassfish/glassfish3/glassfish/bin/asadmin stop-domain liferay
+  #when: domain_status.stdout.find('liferay not running') != -1
+  async: 45
+  poll: 5
+  register: stop_domain
+
+- name: check the domains (again)
+  sudo: true
+  sudo_user: liferayadmin
+  shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
+  register: domain_status
+
+- name: start-domain
+  command:
+    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin start-domain liferay
+    chdir=/opt/glassfish/glassfish3/bin/
+  when: domain_status.stdout.find('liferay not running') == 0
+  async: 600
+  poll: 5
+  register: start_domain
+################################################################################
+# Deploy application
+################################################################################
+# Tada, it's time to deploy the liferay war. This may take a very long time, so
+# we set an asynch to 10 minutes.
+################################################################################
 - name: Deploy liferay application
-  command: /opt/glassfish/glassfish3/glassfish/bin/asadmin -u liferayadmin deploy --contextroot / --verify=true --name liferay611cega2 /tmp/liferay.war
+  command:
+    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile  -u liferayadmin deploy --contextroot / --verify=true --name liferay611cega2 /tmp/liferay.war
+    chdir=/opt/glassfish/glassfish3/glassfish/bin
   async: 600
   poll: 20
-  notify: stop-domain
 
 - name: Configure Liferay Portal properties
   template:

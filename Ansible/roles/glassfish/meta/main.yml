@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Bruce Becker
+  description: Glassfish application server installation and configuration role
+  company: CSIR Meraka Institute
+  license: Apache
+  min_ansible_version: 1.5
+  platforms:
+  - name: EL
+    versions:
+      - 6
+  - name: Debian
+      - lenny
+      - squeeze
+      - wheezy
+  categories:
+      - web
+dependencies: []
