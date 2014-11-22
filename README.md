@@ -1,9 +1,22 @@
 # AAROC DevOps
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/AAROC/DevOps?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-This is the repository for the DevOps code which executes AAROC infrastructure
+This is the repository for the DevOps code which executes AAROC infrastructure. We support Ansible and Puppet.
 
-We support Ansible and Puppet.
+# Communicating and Collaborating.
+
+We're on [sagrid](https://sagrid.slack.com) team on Slack.io. Come on over if you want to hang out and work with us. If you have something you want to help on, see [Contributing.md](CONTRIBUTING.md). The usual [workflow](https://guides.github.com/introduction/flow/index.html) for collaboration on Github is recommended. If you want to request documentation or guides, or would like to contrbute to the more 'meta' aspects, discuss these things with on [slack].
+
+## Development Status and Roadmap
+
+You can see the development roadmap on the [project milestones](../../milestones). Feel free to propose new milestones based on features you would like to see. 
+
+There is a development status board at https://waffle.io/aaroc/devops, a snapshot of the current state is below.
+
+[![Issues Ready](https://badge.waffle.io/aaroc/devops.svg?label=ready&title=Ready)](http://waffle.io/aaroc/devops)
+[![Issues Diagnosed](https://badge.waffle.io/aaroc/devops.svg?label=ready&title=Diagnosed)](http://waffle.io/aaroc/devops)
+[![Issues Identified](https://badge.waffle.io/aaroc/devops.svg?label=ready&title=Identified)](http://waffle.io/aaroc/devops)
+
+
 
 # Contributing
 
