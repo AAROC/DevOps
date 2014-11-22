@@ -15,7 +15,7 @@
   sudo_user: liferayadmin
   stat: path=/home/liferayadmin/glassfish-3.1.2.2.zip
   register: glassfish_stat
-  when: asadmin_stat.stat.exists != True
+#  when: asadmin_stat.stat.exists != True
 
 
 - name: What is  the glassfish stat ?
@@ -25,7 +25,7 @@
   sudo: true
   sudo_user: liferayadmin
   get_url: url=http://download.java.net/glassfish/3.1.2.2/release/glassfish-3.1.2.2.zip dest=/home/liferayadmin/glassfish-3.1.2.2.zip
-  when: glassfish_stat.stat.exists != True
+  when: glassfish_stat.stat.exists | bool != True
 
 - name: extract the zip
   sudo: true
@@ -33,18 +33,3 @@
 #  unarchive: src=/home/liferayadmin/glassfish-3.1.2.2.zip  dest=/opt/glassfish copy=no creates=/opt/glassfish/glassfish3/glassfish/bin/asadmin
   command: /usr/bin/unzip -d /opt/glassfish glassfish-3.1.2.2.zip creates=/opt/glassfish/glassfish3/
   when: asadmin_stat.stat.exists == false
-
-# - name: check that the domain hasn't been created
-#   sudo: true
-#   sudo_user: liferayadmin
-#   shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
-#   register: domains
-
-# - name: start the server
-#   sudo: true
-#   sudo_user: liferayadmin
-#   shell: ./asadmin create-domain --user=liferayadmin  --nopassword liferay  chdir=/opt/glassfish/glassfish3/bin/
-#   when: domains.stdout | match("liferay")
-
-#- name: Configure jvm parameters
-#  copy:

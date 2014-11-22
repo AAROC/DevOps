@@ -1,14 +1,11 @@
 ---
-- name: what is apache ?
-  debug: msg=" Apache is {{ apache }}"
-
 - name: install apache webserver (RedHat)
   yum: name={{ apache }} state=present
   notify: restart apache
   when: ansible_os_family == 'RedHat'
- 
 
-- name: install apache webserver (Debian) 
+
+- name: install apache webserver (Debian)
   apt: name={{ apache }} state=present
   notify: restart apache
   when: ansible_os_family == 'Debian'
@@ -17,19 +14,46 @@
   copy: src=etc/httpd/conf.d/proxy_ajp.conf dest=/etc/httpd/conf.d/proxy_ajp.conf owner=root
   notify: restart apache
   when: ansible_os_family == 'RedHat'
-  
+
 - name: Configure virtual host
   template: src=etc/httpd/conf.d/virtualhost.conf.j2 dest=/etc/httpd/conf.d/virtualhost.conf
   notify: restart apache
   when: ansible_os_family == 'RedHat'
 
 - name: Comment out mod_proxy_ajp
-  lineinfile: dest=/etc/httpd/conf/httpd.conf regexp="^LoadModule proxy_ajp_module" line="#LoadModule proxy_ajp_module"
+  lineinfile:
+    dest=/etc/httpd/conf/httpd.conf
+    regexp="^LoadModule proxy_ajp_module"
+    line="#LoadModule proxy_ajp_module"
+    backrefs=yes
+
   notify: restart apache
   when: ansible_os_family == 'RedHat'
-  
+
 - name: Ensure that KeepAlive is present
   lineinfile: dest=/etc/httpd//conf/httpd.conf line="KeepAlive On" state=present
   notify: restart apache
   when: ansible_os_family == 'RedHat'
 
+- name: Include Valid-User for Shibboleth
+  lineinfile:
+    dest=/etc/httpd/conf.d/shib.conf
+    line="require valid-user"
+    insertbefore="^</Location>"
+    state=present
+
+- name: Configure Shibboleth proxy access
+  replace:
+    dest=/etc/httpd/conf.d/proxy_ajp.conf
+    regexp='^#ProxyPass /shibboleth/ !'
+    replace='ProxyPass /shibboleth !'
+
+- name: Enable Shibboleth.sso
+  replace:
+    dest=/etc/httpd/conf.d/proxy_ajp.conf
+    regexp='^#ProxyPass /Shibboleth.sso/ !'
+    replace='ProxyPass /Shibboleth.sso/ !'
+
+
+
+#ProxyPass /Shibboleth.sso/ !
