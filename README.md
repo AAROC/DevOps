@@ -12,9 +12,13 @@ You can see the development roadmap on the [project milestones](../../milestones
 
 There is a development status board at https://waffle.io/aaroc/devops, a snapshot of the current state is below.
 
+[![Backlog](https://badge.waffle.io/aaroc/devops.svg?label=backlog&title=Backlog)](http://waffle.io/aaroc/devops)
+[![Issues Identified](https://badge.waffle.io/aaroc/devops.svg?label=identified&title=Identified)](http://waffle.io/aaroc/devops)
+[![Issues Diagnosed](https://badge.waffle.io/aaroc/devops.svg?label=diagnosed&title=Diagnosed)](http://waffle.io/aaroc/devops)
+[![Issues in Progress](https://badge.waffle.io/aaroc/devops.svg?&label=In%20Progress&title=In%20Progress)](http://waffle.io/aaroc/devops)
+
 [![Issues Ready](https://badge.waffle.io/aaroc/devops.svg?label=ready&title=Ready)](http://waffle.io/aaroc/devops)
-[![Issues Diagnosed](https://badge.waffle.io/aaroc/devops.svg?label=ready&title=Diagnosed)](http://waffle.io/aaroc/devops)
-[![Issues Identified](https://badge.waffle.io/aaroc/devops.svg?label=ready&title=Identified)](http://waffle.io/aaroc/devops)
+[![Issues Closed](https://badge.waffle.io/aaroc/devops.svg?label=done&title=done)](http://waffle.io/aaroc/devops)
 
 
 
