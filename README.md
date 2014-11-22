@@ -4,7 +4,7 @@ This is the repository for the DevOps code which executes AAROC infrastructure. 
 
 # Communicating and Collaborating.
 
-We're on [sagrid](https://sagrid.slack.com) team on Slack.io. Come on over if you want to hang out and work with us. If you have something you want to help on, see [Contributing.md](CONTRIBUTING.md). The usual [workflow](https://guides.github.com/introduction/flow/index.html) for collaboration on Github is recommended. If you want to request documentation or guides, or would like to contrbute to the more 'meta' aspects, discuss these things with on [slack].
+We're on [sagrid](https://sagrid.slack.com) team on Slack.io. Come on over if you want to hang out and work with us. If you have something you want to help on, see [Contributing.md](CONTRIBUTING.md). The usual [workflow](https://guides.github.com/introduction/flow/index.html) for collaboration on Github is recommended. If you want to request documentation or guides, or would like to contrbute to the more 'meta' aspects, discuss these things with on [slack](http://slack.io).
 
 ## Development Status and Roadmap
 
