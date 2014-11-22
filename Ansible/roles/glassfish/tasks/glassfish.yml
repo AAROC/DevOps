@@ -15,13 +15,17 @@
   sudo_user: liferayadmin
   stat: path=/home/liferayadmin/glassfish-3.1.2.2.zip
   register: glassfish_stat
-  when: asadmin_stat.stat.exists == false
+  when: asadmin_stat.stat.exists != True
+
+
+- name: What is  the glassfish stat ?
+  debug: msg="{{ glassfish_stat.stat.exists }}"
 
 - name: download glassfish
   sudo: true
   sudo_user: liferayadmin
   get_url: url=http://download.java.net/glassfish/3.1.2.2/release/glassfish-3.1.2.2.zip dest=/home/liferayadmin/glassfish-3.1.2.2.zip
-  when: glassfish_stat.stat.exists == false
+  when: glassfish_stat.stat.exists != True
 
 - name: extract the zip
   sudo: true
