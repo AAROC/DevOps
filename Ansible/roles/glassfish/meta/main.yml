@@ -15,4 +15,5 @@ galaxy_info:
       - wheezy
   categories:
       - web
-dependencies: []
+dependencies:
+  - { role: fmarco76.firewall, ports: [80,443], source_host_net: 0.0.0.0/0}
