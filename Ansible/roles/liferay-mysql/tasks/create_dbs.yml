@@ -6,12 +6,14 @@
 
 - name: Create the database users
   mysql_user:
-    name={{ item.name }}
-    password={{ item.pass|default("foobar") }}
-    priv='{{ item.priv|default("*.*:ALL") }}'
+    name={{ item[0].name }}
+    password={{ item[0].pass|default("foobar") }}
+    priv='{{ item[0].priv|default("*.*:ALL") }}'
     state=present
-    host='{{ item.host | default("localhost") }}'
-  with_items: mysql_users
+    host='{{ item[1] | default("localhost") }}'
+  with_nested: 
+    - mysql_users
+    - "{{ groups['science-gateways'] }}"
   when: mysql_users|lower() != 'none'
 
 - name: copy schema
