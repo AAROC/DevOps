@@ -20,17 +20,17 @@
   command: ant dist creates={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war chdir={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}
   tags:
   -  install
-  
+
 - name: Rename the old ROOT webapp 
   sudo: yes
-  command: mv {{ tomcat6_webapps }}/ROOT {{ tomcat6_webapps }}/ROOT.old creates={{ tomcat6_webapps }}/ROOT.old/META-INF/context.xml
+  command: creates="{{ tomcat6_webapps }}/ROOT.old/META-INF/context.xml" mv {{ tomcat6_webapps }}/ROOT {{ tomcat6_webapps }}/ROOT.old
   tags:
     - tomcat6
     - install
 
 - name: Copy the application into the webapps 
   sudo: yes
-  command: cp {{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war {{ tomcat6_webapps }}/ROOT.war creates={{ tomcat6_webapps }}/ROOT.war
+  command: creates="{{ tomcat6_webapps }}/ROOT.war" cp {{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war {{ tomcat6_webapps }}/ROOT.war
 
 - name: Configure the ROOT
   sudo: yes

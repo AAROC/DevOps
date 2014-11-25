@@ -1,5 +1,6 @@
 ---
 
+organisation: INFN
 mail_contact: test@site-test-1
 ldap_server: vm01.ct.infn.it
 mail_server: mail.vm01.ct.infn.it

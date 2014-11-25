@@ -19,5 +19,5 @@ tomcat6_service: tomcat6
 tomcat6_user: tomcat6
 tomcat6_group: tomcat6
 tomcat6_config_start: /etc/default/tomcat6
-tomcat6_lib_path: /usr/share/tomcat6/lib/
-tomcat6_webapps: /var/lib/tomcat6/webapps/
+tomcat6_lib_path: /usr/share/tomcat6/lib
+tomcat6_webapps: /var/lib/tomcat6/webapps

@@ -7,9 +7,9 @@ apache:
 # vars file for shibboleth-idp
 idp_version: 2.4.1
 shibboleth_install_path: /opt/shibboleth-idp
-shibboleth_install_cert_pass: thisismystupidpassphrase 
-shibboleth_idp_log_level: DEBUG
-shibboleth_ldap_log_level: DEBUG
+shibboleth_install_cert_pass: thisismystupidpassphrase
+shibboleth_idp_log_level: INFO
+shibboleth_ldap_log_level: INFO
 idp_url: http://shibboleth.net/downloads/identity-provider/
 idp_package_name: shibboleth-identityprovider
 idp_package_endorsed_jars:
@@ -35,19 +35,19 @@ federations:
     backing_file: CatchAllFederation
   - test_federation:
     provider: TestCatchAllFederation
-    metadata_URL: https://gridp.garr.it/metadata/gridp.xml
+    metadata_URL: https://gridp.garr.it/metadata/gridp-test.xml
     backing_file: TestCatchAllFederation
 
-other_service_providers:
-  - science_gateway_1: 
-    provider: url.of.service.provider
-    metadata_URL: https://url.of.service.provider/Shibboleth.sso/Metadata
-    backing_file: url.of.service.provider.xml
+other_service_providers: []
+#  - science_gateway_1: 
+#    provider: url.of.service.provider
+#    metadata_URL: https://url.of.service.provider/Shibboleth.sso/Metadata
+#    backing_file: url.of.service.provider.xml
  
  # security and certs - just the file name without the path
  
-idp_private_key_file: "key.key"
-idp_cert_file: "cert.crt"
+idp_private_key_file: "idp.key"
+idp_cert_file: "idp.crt"
  # this can be set to either something under /etc/grid-security/certificates (for EUGridPMA-issued certs) or something in /etc/pki/CA/certs
 ca_cert_file: "/etc/grid-security/INFN-CA-2006.pem"
     

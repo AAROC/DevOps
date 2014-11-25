@@ -12,7 +12,6 @@ class cvmfs::base {
 	    source => 'puppet:///modules/cvmfs/cern.ch.local';
 	'/etc/auto.cvmfs':
 	    source => 'puppet:///modules/cvmfs/auto.cvmfs', mode =>755;
-	    
     }
 
     service { 'autofs':
@@ -22,7 +21,10 @@ class cvmfs::base {
     exec { "/sbin/service autofs restart":
 	refreshonly => true, 
 	subscribe => File['/etc/cvmfs/default.local','/etc/cvmfs/domain.d/cern.ch.local'],
-    
+    }
+    crond::job { "cvmfs_talk_cleanup":
+        comment=>"Attempts to cleanup the cache from cvmfs to 1G",
+        jobs=>" 06 10 * * * root /usr/bin/cvmfs_talk cleanup 1000 > /dev/null 2>&1",
     }
 }
 
