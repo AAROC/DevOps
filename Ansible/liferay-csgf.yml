@@ -1,20 +1,20 @@
 ---
 # in principle, we should add the common or bootstrap roles as well.
 
- - name: Configure Liferay database (Mysql)
-   hosts: db-servers
-   sudo: true
-   roles:
-   - liferay-mysql
+# - name: Configure Liferay database (Mysql)
+#   hosts: db-servers
+#   sudo: true
+#   roles:
+#     - liferay-mysql
 
-- name: Prepare the Application and Web Server (Glassfish)
-  hosts: science-gateways
-  user: ansible
-  sudo: true
-  vars_files:
-    - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
-  roles:
-    - glassfish
+# - name: Prepare the Application and Web Server (Glassfish)
+#   hosts: science-gateways
+#   user: ansible
+#   sudo: true
+#   vars_files:
+#     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
+#   roles:
+#     - glassfish
 
 - name: Deploy and Configure Liferay Application
   hosts: science-gateways
