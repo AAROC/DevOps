@@ -12,6 +12,6 @@ mysql_users:
      - name: tracking_user
        pass: userstracking
        priv: "userstracking.*:ALL"
-     - name: tracking_user
-       pass: userstracking
+     - name: liferayadmin
+       pass: liferayadmindbpass
        priv: "lportal.*:ALL"

@@ -25,8 +25,8 @@ tomcat6_service: tomcat6
 tomcat6_user: tomcat
 tomcat6_group: tomcat
 tomcat6_config_start: /etc/tomcat6/tomcat6.conf
-tomcat6_lib_path: /usr/share/tomcat6/lib/
-tomcat6_webapps: /var/lib/tomcat6/webapps/
+tomcat6_lib_path: /usr/share/tomcat6/lib
+tomcat6_webapps: /var/lib/tomcat6/webapps
 
 yum_flags: " "
 lokkit_flags: " "

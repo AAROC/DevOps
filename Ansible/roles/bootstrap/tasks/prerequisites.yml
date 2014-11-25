@@ -8,7 +8,9 @@
   
 - name: use Google public DNS if necessary
   lineinfile: dest=/etc/resolv.conf regexp=^nameserver line='nameserver 8.8.8.8'
-  when: '"ping: unknown host www.google.com" in hosttest.stderr'
+  when: "'ping: unknown host www.google.com' in hosttest.stderr"
+  tags:
+    - DNS
 
 - name: Install prerequisite packages (RedHat)
   yum: name={{ item }} state=present

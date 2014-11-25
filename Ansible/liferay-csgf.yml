@@ -1,16 +1,15 @@
 ---
-# in principle, we should add the common or bootstrap roles as well.
-
- - name: Configure Liferay database (Mysql)
-   hosts: db-servers
-   sudo: true
-   roles:
-   - liferay-mysql
+- name: Configure Liferay database (MySQL)
+  hosts: db-servers
+  remote_user: ansible
+  sudo: yes 
+  roles:
+  - liferay-mysql
 
 - name: Prepare the Application and Web Server (Glassfish)
   hosts: science-gateways
-  user: ansible
-  sudo: true
+  remote_user: ansible
+  sudo: yes
   vars_files:
     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
   roles:
@@ -19,7 +18,7 @@
 - name: Deploy and Configure Liferay Application
   hosts: science-gateways
   remote_user: ansible
-  sudo: true
+  sudo: yes
   sudo_user: liferayadmin
   vars_files:
     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
@@ -28,17 +27,18 @@
     - name: Ensure that the system is up to date (Deb)
       apt: name=* state=latest
       when: ansible_os_family == 'Debian'
-      sudo: true
+      sudo: yes
+      sudo_user: root
 
     - name: Install EPEL repo
       yum: name='http://mirror.ufs.ac.za/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm' state=present
-      sudo: true
+      sudo: yes
       sudo_user: root
 
     - name: Ensure that system is up to date (EL)
       yum: name=* state=latest
       when: ansible_os_family == 'RedHat'
-      sudo: true
+      sudo: yes
       sudo_user: root
 
   roles:
