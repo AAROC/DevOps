@@ -1,7 +1,7 @@
 DROP DATABASE userstracking;
 
 CREATE DATABASE userstracking;
-
+/*
 GRANT ALL PRIVILEGES
 ON userstracking.*
 TO 'tracking_user'@'localhost'
@@ -13,7 +13,7 @@ ON userstracking.*
 TO 'tracking_user'@'%'
 IDENTIFIED BY 'usertracking'
 WITH GRANT OPTION;
-
+*/
 USE userstracking;
 
 
