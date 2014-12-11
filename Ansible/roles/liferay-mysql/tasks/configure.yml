@@ -17,14 +17,8 @@
 - name: let's check the actual root password we're using
   debug: msg="password is {{ mysql_root_db_pass }}"
 
-# - name: update mysql root password for all root accounts
-#   mysql_user: name=root host={{ item }} password={{ mysql_root_db_pass }}
-#   with_items:
-#    - "{{ ansible_fqdn }}"
-#    - 127.0.0.1
-#    - ::1
-#    - localhost
-#   when: ansible_hostname != 'localhost'
+- name: update mysql root password for main root accounts
+  mysql_user: name=root host=localhost password={{ mysql_root_db_pass }}
 
 - name: copy .my.cnf file with root password credentials
   template: src=.my.cnf.j2 dest=/root/.my.cnf mode=0600
@@ -33,15 +27,14 @@
   mysql_user: name=root host={{ item }} password={{ mysql_root_db_pass }}
   with_items:
    - 127.0.0.1
-   - ::1
-   - localhost
-  when: ansible_hostname == 'localhost'
+   - "{{ ansible_fqdn }}"
 
 - name: ensure anonymous users are not in the database
   mysql_user: name='' host={{ item }} state=absent
   with_items:
    - localhost
    - "{{ ansible_hostname }}"
+   - "{{ ansible_fqdn }}"
 
 - name: remove the test database
   mysql_db: name=test state=absent
