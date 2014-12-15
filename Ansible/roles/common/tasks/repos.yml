@@ -32,7 +32,7 @@
     - download
 
 - name: Install EGI trustanchors release package
-  yum: name=/tmp/{{ igtf_release_name }} state=present
+  yum: name=/tmp/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm state=present
   tags:
     - repos
     - IGTF
