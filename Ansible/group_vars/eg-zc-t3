@@ -42,7 +42,7 @@ lfc_host: lfc-dev.c4.csir.co.za
 
 # This site is maintained is only for core services
 # - the rest of the variables are kept in here for historical reasons
-ce_host: ce01-node001.c4.csir.co.za
+ce_host: ce-cfp.zewailcity.edu.eg
 # Replace the following specs with your own
 ce_cpu_model: Opteron
 ce_cpu_vendor: AMD
@@ -80,14 +80,11 @@ dpm_info: { user: dpminfo, pass: yet_another_password }
 # vars for service: BDII_site
 bdii_regions:
 - name: CREAM
-  endpoint: ldap://ce01-node001.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+  endpoint: ldap://ce-cfp.zewailcity.edu.eg:2170/mds-vo-name=resource,o=grid
 - name: SE
-  endpoint: ldap://se-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
-- name: LFC
-  endpoint: ldap://lfc-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
-- name: PX
-  endpoint: ldap://myproxy-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
-
+  endpoint: ldap://dpm-cfp.zewailcity.edu.eg:2170/mds-vo-name=resource,o=grid
+- name: BDII_SITE
+  endpoint: ldap://sbd-cfp.zewailcity.edu.eg:2170/mds-vo-name=resource,o=grid
 se_list:
   - dpm-cfp.zewailcity.edu.eg
 
