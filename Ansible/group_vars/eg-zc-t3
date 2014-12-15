@@ -64,7 +64,7 @@ ce_runtimeenv:
   - TAG1
   - TAG2
 ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
-batch_server: {{ }}
+batch_server: {{ groups.cream-ces }}
 job_manager: lcgpbs
 ce_batch_sys: torque
 batch_log_dir: /var/torque
