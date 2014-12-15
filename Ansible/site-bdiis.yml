@@ -9,6 +9,6 @@
     - roles/common/vars/za-meraka-prod.yml
   roles:
     - common
-    - umd3
+    - umd
     - site-bdii
     - yaim
