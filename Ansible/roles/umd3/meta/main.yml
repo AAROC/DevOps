@@ -1,0 +1,15 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: brucellino
+  description: UMD3 repository for CentOS 6.x
+  company: "SAGrid"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 1.4
+  platforms:
+  - name: CentOS
+    versions:
+    - 6
+  categories:
+    - packaging
