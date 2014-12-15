@@ -18,7 +18,7 @@ site_support_email: akassem@zewailcity.edu.eg
 # location
 site_latitude: 30.012254
 site_longitude: 30.986166
-site_description: "Meraka Institute - core grid services"
+site_description: "Zewail City T3"
 site_other_grid: "AfricaArabia"
 site_bdii_host: "sbd-cfp.zewailcity.edu.eg"
 site_location: "Sheikh Zayed District , 6th of October City Egypt"
@@ -64,7 +64,7 @@ ce_runtimeenv:
   - TAG1
   - TAG2
 ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
-batch_server: ce01-node001.c4.csir.co.za
+batch_server: {{ }}
 job_manager: lcgpbs
 ce_batch_sys: torque
 batch_log_dir: /var/torque
