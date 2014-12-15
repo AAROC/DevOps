@@ -19,8 +19,8 @@ site_support_email: akassem@zewailcity.edu.eg
 site_latitude: 30.012254
 site_longitude: 30.986166
 site_description: "Zewail City T3"
-site_other_grid: "AfricaArabia"
-site_bdii_host: "sbd-cfp.zewailcity.edu.eg"
+site_other_grid: AfricaArabia
+site_bdii_host: sbd-cfp.zewailcity.edu.eg
 site_location: "Sheikh Zayed District , 6th of October City Egypt"
 site_website: "http://www.zewailcity.edu.eg/"
 site_domain: zewailcity.edu.eg
@@ -64,7 +64,7 @@ ce_runtimeenv:
   - TAG1
   - TAG2
 ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
-batch_server: {{ hostvars['cream-ces'][ansible_fqdn] }}
+batch_server: ce-cfp.zewailcity.edu.eg
 job_manager: lcgpbs
 ce_batch_sys: torque
 batch_log_dir: /var/torque
@@ -74,6 +74,7 @@ batch_version: torque-2.5.7
 dpm_host: se01.localdomain
 dpmmgr: { uid: 400, gid: 4000 }
 dpm_filesystems: "sitename_dpm:$DPM_HOST:/storage"
+# DB passwords need to be moved to a vault fil
 dpm_db:   { user: dpmmgr,  pass: one_more_password }
 dpm_info: { user: dpminfo, pass: yet_another_password }
 
