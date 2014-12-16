@@ -1,10 +1,15 @@
 ---
+# - hosts: top-bdiis
+#   name: Bootstrap the BDII machine
+#   user: root
+#   roles:
+#     - bootstrap
+
 - hosts: top-bdiis
   name: BDII_TOP plays
   user: ansible
   sudo: true
   roles:
-    - bootstrap
     - common
     - certificates
     - umd
