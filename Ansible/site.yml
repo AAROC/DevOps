@@ -1,0 +1,20 @@
+# playbooks for a normal site
+
+---
+- name: Run Bootstrap play on all hosts
+  hosts: all
+  user: ansible
+  sudo: true
+  roles:
+    - bootstrap
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+
+- name: Apply the common role to all hosts
+  hosts: all
+  user: ansible
+  sudo: true
+  roles:
+    - common
+  vars_files:
+    - roles/common/vars/middleware/IGTF.yml
