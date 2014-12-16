@@ -1,6 +1,6 @@
 ---
 - name: Bootstrap the identity machines
   hosts: all
-#  remote_user: root 
+  remote_user: root 
   roles:
   - bootstrap
