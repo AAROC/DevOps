@@ -8,6 +8,6 @@
     - roles/common/vars/middleware/IGTF.yml
   roles:
     - common
-    - umd3
+    - umd
     - site-bdii
     - yaim

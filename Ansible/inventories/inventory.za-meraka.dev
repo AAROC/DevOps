@@ -36,8 +36,11 @@ site-bdii-dev.c4.csir.co.za needs_certificate=false emi_service='BDII_site' yaim
 [cream-ces]
 ce01-node001.c4.csir.co.za needs_certificate=true emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
 
-[apel-publishers-dev:children]
+[apel-publishers:children]
 cream-ces
+
+[head-nodes]
+ce01-node001.c4.csir.co.za
 
 [worker-nodes]
 ce01-node002.c4.csir.co.za
@@ -55,6 +58,20 @@ site-bdiis
 cream-ces
 worker-nodes
 voms
+ngi-nagios
+
+[site-services:children]
+site-bdiis
+cream-ces
+worker-nodes
+uis
+
+
+[core-services:children]
+top-bdiis
+wms-servers
+myproxy-servers
+ngi-nagios
 
 [za-meraka-dev:children]
 umd3
