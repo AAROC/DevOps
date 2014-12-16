@@ -18,3 +18,11 @@
     - common
   vars_files:
     - roles/common/vars/middleware/IGTF.yml
+
+- name: Deploy site-bdiis
+  hosts: site-bdiis
+  user: ansible
+  roles:
+    - umd3
+    - site-bdii
+    - yaim
