@@ -17,7 +17,7 @@
 #  action: copy src=files/etc/yum.repos.d/epel.repo
 
 - name: Download EGI trustanchors release package
-  action: get_url url={{ igtf_repo_url }}/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm dest=/tmp/{{ igtf_release_name }} force=no
+  action: get_url url={{ igtf_repo_url }}/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm dest=/tmp/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm force=no
 # should have a when file state==abset here
   tags:
     - repos
