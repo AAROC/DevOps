@@ -1,0 +1,6 @@
+# playbooks for a normal site
+
+---
+- name: Run Bootstrap play on all hosts
+  user: ansible
+  sudo: true
