@@ -1,0 +1,28 @@
+---
+- name: install the dependency repos for RedHat
+  copy: src=etc/yum.repos.d/{{ item }}.repo dest=/etc/yum.repos.d/{{ item }}.repo
+  with_items: repos
+  when: ansible_os_family == 'RedHat'
+
+# name: install dependency repos for Debian
+
+- name: install dependencies (RedHat)
+  yum: name={{ item }} state=present
+  with_items: base_packages
+  when: ansible_os_family == 'RedHat'
+
+- name: install Dependencies (Debian)
+  apt: name={{ item }} state=present
+  with_items: base_packages
+  when: ansible_os_family == 'Debian'
+  
+- name: Add liferay user
+  user: name=liferayadmin state=present
+
+- name: ensure that the unzip package is available (Debian)
+  apt: name=unzip state=present
+  when: ansible_os_family == 'Debian'
+
+- name: ensure that the unzip package is available (RedHat)
+  yum: name=unzip state=present
+  when: ansible_os_family == 'RedHat'

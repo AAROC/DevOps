@@ -6,7 +6,6 @@ vos:
 #  - africacert
 queues:
   - dteam
-  - cert
   - shared
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
 # use the site name as registered in GOCDB (use the same case)
@@ -26,8 +25,8 @@ site_website: "http://www.csir.co.za/meraka"
 site_domain: c4.csir.co.za
 
 # passwords
-mysql_pass: redacted
-apel_db_password: redacted
+mysql_pass: 
+apel_db_password: 
 
 # services at the site
 bdii_host: top-bdii.c4.csir.co.za

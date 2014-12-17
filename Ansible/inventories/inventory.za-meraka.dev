@@ -7,7 +7,7 @@
 # core services #
 #################
 [myproxy-servers]
-myproxy-dev.c4.csir.co.za
+#myproxy-dev.c4.csir.co.za
 
 [top-bdiis]
 top-bdii-dev.c4.csir.co.za needs_certificate=false emi_service='BDII_top' yaim_options='-n BDII_top'
@@ -16,16 +16,16 @@ top-bdii-dev.c4.csir.co.za needs_certificate=false emi_service='BDII_top' yaim_o
 wms-dev.c4.csir.co.za needs_certificate=true emi_service='WMS' yaim_options='-n WMS'
 
 [lfcs]
-lfc-dev.c4.csir.co.za needs_certificate=true emi_service='lfc' yaim_options='-n emi_lfc_mysql'
+#lfc-dev.c4.csir.co.za needs_certificate=true emi_service='lfc' yaim_options='-n emi_lfc_mysql'
 
 [apel-servers]
-apel-server-dev.c4.csir.co.za needs_certificate=true
+#apel-server-dev.c4.csir.co.za needs_certificate=true
 
 [ngi-nagios]
-nagios-dev.c4.csir.co.za needs_certificate=true emi_service='SAM-NAGIOS' yaim_options='-n NAGIOS -n SAM_NAGIOS' 
+nagios-dev.c4.csir.co.za needs_certificate=true emi_service='SAM-NAGIOS' yaim_options='-n NAGIOS -n SAM_NAGIOS'
 
 [voms]
-voms-stage.c4.csir.co.za needs_certificate=false emi_service='emi-voms-mysql'
+#voms-stage.c4.csir.co.za needs_certificate=false emi_service='emi-voms-mysql'
 
 #################
 # site services #
@@ -36,15 +36,18 @@ site-bdii-dev.c4.csir.co.za needs_certificate=false emi_service='BDII_site' yaim
 [cream-ces]
 ce01-node001.c4.csir.co.za needs_certificate=true emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
 
-[apel-publishers-dev:children]
+[apel-publishers:children]
 cream-ces
+
+[head-nodes]
+ce01-node001.c4.csir.co.za
 
 [worker-nodes]
 ce01-node002.c4.csir.co.za
 
 [uis]
 ui-dev.c4.csir.co.za
-ui-stage.sagrid.ac.za
+#ui-stage.sagrid.ac.za
 
 # middleware grouping
 [umd3:children]
@@ -55,6 +58,20 @@ site-bdiis
 cream-ces
 worker-nodes
 voms
+ngi-nagios
+
+[site-services:children]
+site-bdiis
+cream-ces
+worker-nodes
+uis
+
+
+[core-services:children]
+top-bdiis
+wms-servers
+myproxy-servers
+ngi-nagios
 
 [za-meraka-dev:children]
 umd3

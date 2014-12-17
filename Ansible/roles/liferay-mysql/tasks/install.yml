@@ -1,0 +1,23 @@
+---
+# This role is an implementation of http://sourceforge.net/p/ctsciencegtwys/wiki/ConfigUserTrackingDBInMySQL/
+- name: Tell the user what's going on
+  debug: 'msg="Note to dev: If things break, please check http://sourceforge.net/p/ctsciencegtwys/wiki/ConfigUserTrackingDBInMySQL/"'
+  tags:
+  - notetodev
+  - debug
+
+- name: Ensure mysql server is present (RHEL)
+  yum: name={{ item }} state=present
+  with_items: mysql_pkgs
+  when: ansible_os_family == 'RedHat'
+  tags:
+  - mysql
+  - install
+  
+- name: Ensure mysql server is present (Deb)
+  apt: name={{ item }} state=present
+  with_items: mysql_pkgs
+  when: ansible_os_family == 'Debian'
+  tags:
+  - mysql
+  - install

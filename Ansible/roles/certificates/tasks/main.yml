@@ -1,5 +1,5 @@
 - name: Create /etc/grid-security directory
-  file: path=/etc/grid-security/ owner=root group=root mode=775 state=directory force=true
+  file: path=/etc/grid-security/certificates owner=root group=root mode=775 state=directory force=true
   sudo: true
   sudo_user: root
   tags: 
