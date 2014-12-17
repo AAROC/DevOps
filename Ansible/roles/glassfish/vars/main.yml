@@ -1,0 +1,10 @@
+---
+# vars file for glassfish
+repos:
+  - CentOS-Shibboleth
+  - EGI-trustanchors
+  - EUGRIDPMA-fetch-crl3
+
+domain: ct.infn.it
+admin_username: brucellino
+glassfish_install_dir: /opt/glassfish

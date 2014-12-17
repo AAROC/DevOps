@@ -1,0 +1,34 @@
+jdbc.default.jndi.name=jdbc/liferay
+
+web.server.http.port=80
+web.server.https.port=443
+
+# Parameter in other to avoid Lifery to append sessionID to link
+session.enable.url.with.session.id=false
+
+# In order not to show portlet that can't be visualized by the user
+layout.show.portlet.access.denied=false
+
+# Set this to true to convert the tracked paths to friendly URLs.
+#session.tracker.persistence.enabled=true
+#session.tracker.friendly.paths.enabled=true
+#
+# Set this to true to enable the ability to compile tags from the URL.
+# Disabling it can speed up performance.
+#
+tags.compiler.enabled=false
+
+#
+# Disable locale in friendly url
+#
+locale.prepend.friendly.url.style=0
+
+# Configure email notification settings.
+admin.email.from.name={{ liferay_admin_name }}
+admin.email.from.address={{ liferay_admin_email }}
+
+## Live Users
+## Set this to true to enable tracking via Live Users.
+live.users.enabled=false
+
+session.tracker.persistence.enabled=true

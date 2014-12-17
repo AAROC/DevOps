@@ -1,19 +1,21 @@
-# Place hoder for DIT inventory
+# Inventory of Dar-es Salaam Institute of Technology
+[science-gateways]
+sgw.ternet.or.tz min_jvm_size=1024m max_jvm_size=1024m db-server=sgw.ternet.or.tz
 
+[db-servers]
+sgw.ternet.or.tz
 [ldap-server]
 ldap.ternet.or.tz
 [shibboleth-idp]
 idp.ternet.or.tz
 
 [CentOS-servers:children]
-#idp.ternet.or.tz
-#ldap.ternet.or.tz
 ldap-server
 shibboleth-idp
+science-gateways
 
 [Debian-servers]
 
 [identity-ternet:children]
 ldap-server
 shibboleth-idp
-
