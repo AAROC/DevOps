@@ -1,20 +1,56 @@
 # playbooks for a normal site
 
 ---
-- name: Run Bootstrap play on all hosts
-  hosts: all
-  user: ansible
-  sudo: true
-  roles:
-    - bootstrap
-  vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+# - name: Run Bootstrap play on all hosts
+#   hosts: all
+#   user: ansible
+#   sudo: true
+#   roles:
+#     - bootstrap
+#   vars_files:
+#     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
 
 - name: Apply the common role to all hosts
-  hosts: all
+  hosts: site-services
   user: ansible
   sudo: true
   roles:
     - common
+    - boundary-monitor
   vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
+
+- name: Deploy site-bdiis
+  hosts: site-bdiis
+  user: ansible
+  sudo: true
+  roles:
+    - umd
+    - site-bdii
+    - yaim
+
+- name: Deploy CREAM-CEs
+  hosts: cream-ces
+  user: ansible
+  sudo: true
+  roles:
+    - certificates
+    - umd
+    - cream-ce
+  handlers:
+    - include: roles/common/handlers/main.yml
+
+- hosts: cluster-head-nodes
+  name: Configure as head node
+  user: ansible
+  sudo: true
+  roles:
+    - head-node
+
+- hosts: cream-ces
+  name: run YAIM for CREAM-CE on head node
+  user: ansible
+  sudo: true
+  roles:
+    - yaim
