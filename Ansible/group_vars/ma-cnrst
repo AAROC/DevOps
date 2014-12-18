@@ -1,0 +1,64 @@
+site_name: MA-01-CNRST
+bdii_host: top-bdii.magrid.ma
+
+#Nagios related
+nagios_host: nagios.magrid.ma
+nagios_nsca_pass: xxxx 
+ncg_backup_instance: "true"
+
+#MySQL related
+mysql_pass: xxxx
+db_pass_r: xxxx
+db_pass_w: xxxx
+
+is_nagios: 1"
+
+#px_host: myproxy.cern.ch
+#wms_host: wms.c4.csir.co.za
+#jobsubmit_wn_se_rep: fs01.grid.uj.ac.za
+
+nagios_admin_dns:
+  - /C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker
+ncg_nagios_admin: bbecker@csir.co.za
+
+ncg_vo: ops
+
+vos:
+  - ops
+  - dteam
+queues:
+  - ops
+  - dteam
+
+nagios_role: ngi
+
+ncg_probes_type: local
+ncg_vo: ops
+nagios_httpd_enable_config: "true"
+nagios_sudo_enable_config: "true"
+nagios_ncg_enable_config: "true"
+nagios_nagios_enable_config: "true"
+nagios_cgi_enable_config: "true"
+
+nagios_myproxy_name: "NagiosRetrieve-nagios.magrid.ma"
+
+#NCG_TOPOLOGY
+ncg_topology_use_ldap: "false"
+ncg_topology_use_gocdb: "false"
+ncg_remote_use_sam: "false"
+ncg_remote_use_nagios: "false"
+ncg_topology_use_atp: "true"
+ncg_gocdb_roc_name: AfricaArabia
+
+#ATP variable in order to support transparent migration of SAM to CNRS
+atp_root_url: http://mon.egi.eu/atp
+
+#POEM variable in order to support transparent migration of SAM to CNRS
+poem_sync_urls: http://mon.egi.eu/poem/api/0.1/json/
+
+#MyEGI
+myegi_admin_name: Bruce Becker
+myegi_default_profile: ROC
+myegi_admin_email: bbecker@csir.co.za
+myegi_region: AfricaArabia
+
