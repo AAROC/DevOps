@@ -1,6 +1,33 @@
 SW_DIR=$VO_SW_DIR/ops
 DEFAULT_SE=$DPM_HOST
 QUEUES="ops"
-VOMS_SERVERS="vomss://voms.cern.ch:8443/voms/ops?/ops/"
-VOMSES="'ops lcg-voms.cern.ch 15009 /DC=ch/DC=cern/OU=computers/CN=lcg-voms.cern.ch ops 24' 'ops voms.cern.ch 15009 /DC=ch/DC=cern/OU=computers/CN=voms.cern.ch ops 24'"
-VOMS_CA_DN="'/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority'"
+#VOMS_SERVERS="vomss://voms.cern.ch:8443/voms/ops?/ops/"
+#VOMSES="'ops lcg-voms.cern.ch 15009 /DC=ch/DC=cern/OU=computers/CN=lcg-voms.cern.ch ops 24' 'ops voms.cern.ch 15009 #/DC=ch/DC=cern/OU=computers/CN=voms.cern.ch ops 24'"
+#VOMS_CA_DN="'/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority'"
+
+VOMSES="\
+'ops lcg-voms.cern.ch 15009 \
+/DC=ch/DC=cern/OU=computers/CN=lcg-voms.cern.ch ops 24' \
+'ops voms.cern.ch 15009 \
+/DC=ch/DC=cern/OU=computers/CN=voms.cern.ch ops 24' \
+'ops lcg-voms2.cern.ch 15009 \
+/DC=ch/DC=cern/OU=computers/CN=lcg-voms2.cern.ch ops 24' \
+'ops voms2.cern.ch 15009 \
+/DC=ch/DC=cern/OU=computers/CN=voms2.cern.ch ops 24' \
+"
+VOMS_CA_DN="\
+'/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
+'/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
+'/DC=ch/DC=cern/CN=CERN Grid Certification Authority' \
+'/DC=ch/DC=cern/CN=CERN Grid Certification Authority' \
+"
+
+#
+# only 3 of them can be used for making grid-mapfiles
+#
+
+VOMS_SERVERS="\
+'vomss://voms.cern.ch:8443/voms/ops?/ops/' \
+'vomss://voms2.cern.ch:8443/voms/ops?/ops/' \
+'vomss://lcg-voms2.cern.ch:8443/voms/ops?/ops/' \
+"

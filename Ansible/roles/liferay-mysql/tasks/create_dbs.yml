@@ -1,0 +1,23 @@
+---
+- name: Create the database's
+  mysql_db: name={{ item.name }} state=present
+  with_items: mysql_db
+  when: mysql_db|lower() != 'none'
+
+- name: Create the database users
+  mysql_user:
+    name={{ item[0].name }}
+    password={{ item[0].pass|default("foobar") }}
+    priv='{{ item[0].priv|default("*.*:ALL") }}'
+    state=present
+    host='{{ item[1] | default("localhost") }}'
+  with_nested: 
+    - mysql_users
+    - "{{ groups['science-gateways'] }}"
+  when: mysql_users|lower() != 'none'
+
+- name: copy schema
+  copy: src=UsersTrackingDB.sql dest=/tmp/UserTrackingDB.sql
+
+- name: import schema
+  mysql_db: name=userstracking state=import target=/tmp/UserTrackingDB.sql
