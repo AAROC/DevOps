@@ -5,12 +5,12 @@
 
 # there may be the issue with notty as well.
 
-# we need to define a group of bootstrap hosts which have not yet been 
+# we need to define a group of bootstrap hosts which have not yet been
 # touched by ansible. These are directly created-vm's e.g.
 
 # Note that this playbook has to be executed with --ask-pass since we are
-# connecting for the first time. 
---- 
+# connecting for the first time.
+---
 - include: prerequisites.yml
 - include: user.yml
 - include: keys.yml
