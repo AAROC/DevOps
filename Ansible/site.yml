@@ -10,6 +10,23 @@
 #   vars_files:
 #     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
 
+- hosts: site-services
+  user: ansible
+  sudo: true
+  sudo_user: root
+  tasks:
+    - name: Send slack message
+      action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        token: 6EJfIMngdMiwrmnScAA4znB5
+        msg: "Starting site playbook on {{ site_name }} ( including {{ inventory_hostname }})"
+        channel: "#devopssite"
+        username: "Ansible on site {{ site_name }}"
+     #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 0
+        parse: 'none'
+
 - name: Apply the common role to all hosts
   hosts: site-services
   user: ansible
@@ -20,6 +37,7 @@
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
 
 - name: Deploy site-bdiis
   hosts: site-bdiis
