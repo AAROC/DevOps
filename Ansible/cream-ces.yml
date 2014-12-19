@@ -3,11 +3,11 @@
   name: Install all the packages
   user: ansible
   sudo: true
-  vars_files: 
+  vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     # need to have every bloody combination of the vars files because facter doesn't report
     # facts consistently.
-    - roles/common/vars/middleware/igtf.yml
+    - roles/common/vars/middleware/IGTF.yml
   roles:
   - common
   - certificates
@@ -15,7 +15,7 @@
   - cream-ce
   handlers:
   - include: roles/common/handlers/main.yml
-  
+
 - hosts: cluster-head-nodes
   name: Configure as head node
   user: ansible
@@ -29,10 +29,6 @@
   sudo: true
   roles:
   - yaim
-  vars_files:
-  - roles/yaim/vars/passwords.yml
-#  - torque
-  
   post_tasks:
     - name: fix qmgr queues 1
       sudo: true
@@ -51,7 +47,7 @@
     - name: fix qmgr queues 3
       action: raw /usr/bin/qmgr -c "set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}"
       sudo: true
-      with_items: 
+      with_items:
         - qmgr_queues
       notify:
         - restart pbs_server
@@ -59,12 +55,11 @@
     - name: fix Proxy_to_sandbox_dir
       sudo: true
       action: copy src=config/files/usr/bin/glite-cream-copyProxyToSandboxDir.sh dest=/usr/bin/glite-cream-copyProxyToSandboxDir.sh owner=root  group=root mode=755
-    
+
     - name: restart munge
       sudo: true
       service: name=munge state=restarted
-        
+
     - name: restart pbs_server
       sudo: true
       action: service name=pbs_server state=restarted enabled=yes
- 

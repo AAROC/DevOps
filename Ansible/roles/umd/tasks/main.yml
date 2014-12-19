@@ -7,18 +7,18 @@
     - repos
     - UMD3
 
-- name: Download UMD 2 repo
-  get_url: url=http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm dest=/tmp/umd-release.rpm 
-  when: ansible_hostname.find("nagios") != -1
-  tags:
-    - repos
-    - UMD2
-    
+# - name: Download UMD 2 repo
+#   get_url: url=http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm dest=/tmp/umd-release.rpm
+#   when: ansible_hostname.find("nagios") != -1
+#   tags:
+#     - repos
+#     - UMD2
+
 - name: add EGI GPG key to RPM
   sudo: True
   sudo_user: root
   rpm_key: key=http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY state=present
-  tags:  
+  tags:
     - repos
     - UMD
 

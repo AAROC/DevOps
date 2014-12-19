@@ -1,19 +1,19 @@
 ##############################################################################
-# Copyright (c) Members of the EGEE Collaboration. 2004. 
-# See http://www.eu-egee.org/partners/ for details on the copyright 
-# holders.  
+# Copyright (c) Members of the EGEE Collaboration. 2004.
+# See http://www.eu-egee.org/partners/ for details on the copyright
+# holders.
 #
-# Licensed under the Apache License, Version 2.0 (the "License"); 
-# you may not use this file except in compliance with the License. 
-# You may obtain a copy of the License at 
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
 #
-#    http://www.apache.org/licenses/LICENSE-2.0 
+#    http://www.apache.org/licenses/LICENSE-2.0
 #
-# Unless required by applicable law or agreed to in writing, software 
-# distributed under the License is distributed on an "AS IS" BASIS, 
-# WITHOUT WARRANTIES OR CONDITIONS 
-# OF ANY KIND, either express or implied. 
-# See the License for the specific language governing permissions and 
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS
+# OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
 # limitations under the License.
 ##############################################################################
 #
@@ -25,36 +25,36 @@
 #
 # AUTHORS :     yaim-contact@cern.ch
 #
-# NOTES :       - site-info.def will contain the list of variables common to 
-#                 multiple node types. Node type specific variables are 
-#                 distributed by its corresponding module although a unique 
-#                 site-info.def can still be used at configuration time. 
-#               
-#               - Service specific variables are be distributed under 
+# NOTES :       - site-info.def will contain the list of variables common to
+#                 multiple node types. Node type specific variables are
+#                 distributed by its corresponding module although a unique
+#                 site-info.def can still be used at configuration time.
+#
+#               - Service specific variables are be distributed under
 #                    /opt/glite/yaim/examples/siteinfo/services/<node_type_name>
 #                 Copy this file under you siteinfo/services directory or also copy the variables
-#                 manually in site-info.def. 
+#                 manually in site-info.def.
 #                 DPM and LFC variables are not yet distributed in their
-#                 corresponding YAIM modules. Find the list of relevant variables in: 
-#                    - https://twiki.cern.ch/twiki/bin/view/LCG/Site-info_configuration_variables#DPM  
+#                 corresponding YAIM modules. Find the list of relevant variables in:
+#                    - https://twiki.cern.ch/twiki/bin/view/LCG/Site-info_configuration_variables#DPM
 #                    - https://twiki.cern.ch/twiki/bin/view/LCG/Site-info_configuration_variables#LFC
 #
 #               - site-info.pre and site-info.post contain default variables. When sys admins
 #                 want to set their own values, they can just define the variable in site-info.def
 #                 and that will overwrite the value in site-info.pre/post.
 #
-#               - VO variables for LCG VOs are currently distributed with example values. 
+#               - VO variables for LCG VOs are currently distributed with example values.
 #                 For up to date information of any VO please check the CIC portal VO ID Card information:
-#                 http://cic.in2p3.fr/ 
+#                 http://cic.in2p3.fr/
 #
 #               - For more information on YAIM, please check:
 #                 https://twiki.cern.ch/twiki/bin/view/EGEE/YAIM
 #
 #               - For a detailed description of site-info.def variables, please check:
 #                 https://twiki.cern.ch/twiki/bin/view/LCG/Site-info_configuration_variables#site_info_def
-#   
+#
 # YAIM MODULE:  glite-yaim-core
-#                 
+#
 ##############################################################################
 
 ###################################
@@ -62,7 +62,7 @@
 ###################################
 
 # List of the batch nodes hostnames and optionally the subcluster ID the
-# WN belongs to. An example file is available in 
+# WN belongs to. An example file is available in
 # ${INSTALL_ROOT}/glite/yaim/examples/wn-list.conf
 # Change the path according to your site settings.
 WN_LIST={{ yaim_conf_dir }}/wn-list.conf
@@ -72,7 +72,7 @@ WN_LIST={{ yaim_conf_dir }}/wn-list.conf
 # UID:LOGIN:GID1,GID2,...:GROUP1,GROUP2,...:VO:FLAG:
 # An example file is available in ${INSTALL_ROOT}/glite/yaim/examples/users.conf
 # Change the path according to your site settings.
-# For more information please check ${INSTALL_ROOT}/glite/yaim/examples/users.conf.README 
+# For more information please check ${INSTALL_ROOT}/glite/yaim/examples/users.conf.README
 USERS_CONF={{ yaim_conf_dir }}/users.conf
 
 # List of the local accounts which a user should be mapped to.
@@ -85,13 +85,13 @@ USERS_CONF={{ yaim_conf_dir }}/users.conf
 # under the group.d/ directory.
 GROUPS_CONF={{ yaim_conf_dir }}/groups.conf
 
-# Uncomment this variable if you want to specify a local groups.conf 
+# Uncomment this variable if you want to specify a local groups.conf
 # It is similar to GROUPS_CONF but used to specify a separate file
 # where local accounts specific to the site are defined.
 # LOCAL_GROUPS_CONF=my_local_groups.conf
 
 # Uncomment this variable if you are installing a mysql server
-# It is the MySQL admin password. 
+# It is the MySQL admin password.
 MYSQL_PASSWORD={{ mysql_pass }}
 {% if needs_mysql %}
 MYSQL_PASSWORD="{{ mysql_pass }}"
@@ -99,7 +99,7 @@ MYSQL_PASSWORD="{{ mysql_pass }}"
 
 # Uncomment this variable if you want to explicitely use pool
 # accounts for special users when generating the grid-mapfile.
-# If not defined, YAIM will decide whether to use special 
+# If not defined, YAIM will decide whether to use special
 # pool accounts or not automatically
 # SPECIAL_POOL_ACCOUNTS=yes or no
 
@@ -111,18 +111,18 @@ MYSQL_PASSWORD="{{ mysql_pass }}"
 SITE_NAME={{ site_name|upper }}
 
 # The contact e-mail of your site.
-# A coma separated list of email addresses. 
+# A coma separated list of email addresses.
 SITE_EMAIL="{{ site_email }}"
 SITE_SUPPORT_EMAIL="{{ site_email }}"
 
-# It is the position of your site north or south of the equator 
-# measured from -90. to 90. with positive values going north and 
-# negative values going south. 
+# It is the position of your site north or south of the equator
+# measured from -90. to 90. with positive values going north and
+# negative values going south.
 SITE_LAT={{ site_latitude }}
 
-# It is the position of the site east or west of Greenwich, England 
-# measured from -180. to 180. with positive values going east and 
-# negative values going west.  
+# It is the position of the site east or west of Greenwich, England
+# measured from -180. to 180. with positive values going east and
+# negative values going west.
 SITE_LONG={{ site_longitude }}
 
 # Uncomment this variable if your site has an http proxy
@@ -164,13 +164,13 @@ PAP_ADMIN_DN={{ pap_admin_dn }}
 # CE configuration variables #
 ##############################
 
-# Optional variable to define the path of a shared directory 
-# available for application data. 
-# Typically a POSIX accessible transient disk space shared 
-# between the Worker Nodes. It may be used by MPI applications 
-# or to store intermediate files that need further processing by 
-# local jobs or as staging area, specially if the Worker Node 
-# have no internet connectivity 
+# Optional variable to define the path of a shared directory
+# available for application data.
+# Typically a POSIX accessible transient disk space shared
+# between the Worker Nodes. It may be used by MPI applications
+# or to store intermediate files that need further processing by
+# local jobs or as staging area, specially if the Worker Node
+# have no internet connectivity
 # CE_DATADIR=/mypath
 
 # Hostname of the CE
@@ -180,22 +180,22 @@ CE_HOST={{ ce_host }}
 # SubCluster configuration #
 ############################
 
-# Name of the processor model as defined by the vendor 
+# Name of the processor model as defined by the vendor
 # for the Worker Nodes in a SubCluster.
 CE_CPU_MODEL={{ ce_cpu_model }}
 
-# Name of the processor vendor 
+# Name of the processor vendor
 # for the Worker Nodes in a SubCluster
 CE_CPU_VENDOR={{ ce_cpu_vendor }}
 
-# Processor clock speed expressed in MHz 
+# Processor clock speed expressed in MHz
 # for the Worker Nodes in a SubCluster.
 CE_CPU_SPEED={{ ce_cpu_speed }}
 
 # For the following variables please check:
 # http://goc.grid.sinica.edu.tw/gocwiki/How_to_publish_the_OS_name
 #
-# Operating system name used on the Worker Nodes 
+# Operating system name used on the Worker Nodes
 # part of the SubCluster.
 CE_OS={{ ce_os }}
 
@@ -208,7 +208,7 @@ CE_OS_RELEASE={{ ce_os_release }}
 CE_OS_VERSION="{{ ce_os_version }}"
 
 # Platform Type of the WN in the SubCluster
-# Check: http://goc.grid.sinica.edu.tw/gocwiki/How_to_publish_my_machine_architecture 
+# Check: http://goc.grid.sinica.edu.tw/gocwiki/How_to_publish_my_machine_architecture
 CE_OS_ARCH={{ ce_os_arch }}
 
 # Total physical memory of a WN in the SubCluster
@@ -219,17 +219,17 @@ CE_MINPHYSMEM={{ ce_minphysmem }}
 # expressed in Megabytes.
 CE_MINVIRTMEM={{ ce_minvirtmem }}
 
-# Total number of real CPUs/physical chips in 
-# the SubCluster, including the nodes part of the 
-# SubCluster that are temporary down or offline. 
+# Total number of real CPUs/physical chips in
+# the SubCluster, including the nodes part of the
+# SubCluster that are temporary down or offline.
 CE_PHYSCPU={{ ce_physcpu }}
 
-# Total number of cores/hyperthreaded CPUs in 
-# the SubCluster, including the nodes part of the 
+# Total number of cores/hyperthreaded CPUs in
+# the SubCluster, including the nodes part of the
 # SubCluster that are temporary down or offline
 CE_LOGCPU={{ ce_logcpu }}
 
-# Number of Logical CPUs (cores) of the WN in the 
+# Number of Logical CPUs (cores) of the WN in the
 # SubCluster
 CE_SMPSIZE={{ ce_smpsize }}
 
@@ -239,13 +239,13 @@ CE_SI00={{ ce_si00 }}
 # Performance index of your fabric in SpecFloat 2000
 CE_SF00={{ ce_sf00 }}
 
-# Set this variable to either TRUE or FALSE to express 
-# the permission for direct outbound connectivity 
+# Set this variable to either TRUE or FALSE to express
+# the permission for direct outbound connectivity
 # for the WNs in the SubCluster
 CE_OUTBOUNDIP={{ ce_outboundip }}
 
-# Set this variable to either TRUE or FALSE to express 
-# the permission for inbound connectivity 
+# Set this variable to either TRUE or FALSE to express
+# the permission for inbound connectivity
 # for the WNs in the SubCluster
 CE_INBOUNDIP={{ ce_inboundip }}
 
@@ -257,15 +257,15 @@ CE_RUNTIMEENV="{{ ce_runtimeenv|join(' ') }}"
 # https://twiki.cern.ch/twiki/bin/view/LCG/Site-info_configuration_variables#site_info_def
 #
 # The following values must be defined by the sys admin:
-# - CPUScalingReferenceSI00=<referenceCPU-SI00> 
-# - Share=<vo-name>:<vo-share> (optional, multiple definitons) 
+# - CPUScalingReferenceSI00=<referenceCPU-SI00>
+# - Share=<vo-name>:<vo-share> (optional, multiple definitons)
 CE_CAPABILITY="CPUScalingReferenceSI00={{ ce_si00 }}"
 
 # The following values must be defined by the sys admin:
 # - Cores=value
 # - value-HEP-SPEC06 (optional), where value is the CPU power computed
 #   using the HEP-SPEC06 benchmark
-CE_OTHERDESCR="{{ ce_otherdescr }}" 
+CE_OTHERDESCR="{{ ce_otherdescr }}"
 
 
 ########################################
@@ -273,7 +273,7 @@ CE_OTHERDESCR="{{ ce_otherdescr }}"
 ########################################
 
 # Hostname of the Batch server
-# Change this if your batch server is not installed 
+# Change this if your batch server is not installed
 # in the same host of the CE
 BATCH_SERVER={{ batch_server }}
 
@@ -307,7 +307,7 @@ MON_HOST={{ apel_mysql_host }}
 
 # Hostname of the WMS
 WMS_HOST={{ wms_host }}
-LB_HOST={{ wms_host }} 
+LB_HOST={{ wms_host }}
 ###################################
 # myproxy configuration variables #
 ###################################
@@ -324,7 +324,7 @@ PX_HOST={{ px_host }}
 #MON_HOST=my-mon.$MY_DOMAIN                      #
 ##################################################
 
-###################################    
+###################################
 # FTS configuration variables #
 ###################################
 
@@ -335,14 +335,14 @@ PX_HOST={{ px_host }}
 # DPM configuration variables #
 ###############################
 
-# Hostname of the DPM head node 
+# Hostname of the DPM head node
 DPM_HOST="{{ dpm_host }}"
 
 ###############################
 # LFC configuration variables #
 ###############################
 
-# Hostname of the LFC head node 
+# Hostname of the LFC head node
 LFC_HOST="{{ lfc_host }}"
 
 ########################
@@ -352,24 +352,24 @@ LFC_HOST="{{ lfc_host }}"
 # Space separated list of SEs hostnames
 SE_LIST="{{ se_list|join(' ') }}"
 
-# Space separated list of SE hosts from SE_LIST containing 
-# the export directory from the Storage Element and the 
-# mount directory common to the worker nodes that are part 
-# of the Computing Element. If any of the SEs in SE_LIST 
-# does not support the mount concept, do not define 
-# anything for that SE in this variable. If this is the case 
-# for all the SEs in SE_LIST then put the value "none"  
+# Space separated list of SE hosts from SE_LIST containing
+# the export directory from the Storage Element and the
+# mount directory common to the worker nodes that are part
+# of the Computing Element. If any of the SEs in SE_LIST
+# does not support the mount concept, do not define
+# anything for that SE in this variable. If this is the case
+# for all the SEs in SE_LIST then put the value "none"
 #SE_MOUNT_INFO_LIST="[SE1:export_dir1,mount_dir1 [SE2:export_dir2,mount_dir2 [...]]|none]"
 SE_MOUNT_INFO_LIST="{{ se_mount_info_list }}"
 
 # Variable necessary to configure Gridview service client on the SEs.
-# It sets the location and filename of the gridftp server logfile on 
-# different types of SEs. Needed gridftp logfile for gridview is the 
+# It sets the location and filename of the gridftp server logfile on
+# different types of SEs. Needed gridftp logfile for gridview is the
 # netlogger file which contain info for each transfer (created with
-# -Z/-log-transfer option for globus-gridftp-server). 
-# Ex: DATE=20071206082249.108921 HOST=hostname.cern.ch PROG=globus-gridftp-server 
-# NL.EVNT=FTP_INFO START=20071206082248.831173 USER=atlas102 FILE=/storage/atlas/ 
-# BUFFER=0 BLOCK=262144 NBYTES=330 VOLUME=/ STREAMS=1 STRIPES=1 DEST=[127.0.0.1] 
+# -Z/-log-transfer option for globus-gridftp-server).
+# Ex: DATE=20071206082249.108921 HOST=hostname.cern.ch PROG=globus-gridftp-server
+# NL.EVNT=FTP_INFO START=20071206082248.831173 USER=atlas102 FILE=/storage/atlas/
+# BUFFER=0 BLOCK=262144 NBYTES=330 VOLUME=/ STREAMS=1 STRIPES=1 DEST=[127.0.0.1]
 # TYPE=LIST CODE=226
 # Default locations for DPM: /var/log/dpm-gsiftp/dpm-gsiftp.log
 #            and SE_classic: /var/log/globus-gridftp.log
@@ -387,8 +387,8 @@ BDII_HOST={{ bdii_host }}
 SITE_BDII_HOST={{ site_bdii_host }}
 
 # Uncomment this variable if you want to define a list of
-# top level BDIIs to support the automatic failover in the GFAL clients 
-# BDII_LIST=my-bdii1.$MY_DOMAIN:port1[,my-bdii22.$MY_DOMAIN:port2[...]] 
+# top level BDIIs to support the automatic failover in the GFAL clients
+# BDII_LIST=my-bdii1.$MY_DOMAIN:port1[,my-bdii22.$MY_DOMAIN:port2[...]]
 
 ##############################
 # VO configuration variables #
@@ -405,7 +405,7 @@ VO_SW_DIR={{ vo_sw_dir }}
 # Space separated list of queues configured in your CE
 QUEUES="{{ queues|join(' ') }}"
 
-# For each queue defined in QUEUES, define a _GROUP_ENABLE variable 
+# For each queue defined in QUEUES, define a _GROUP_ENABLE variable
 # which is a space separated list of VO names and VOMS FQANs:
 # Ex.: MYQUEUE_GROUP_ENABLE="ops atlas cms /cms/Higgs /cms/ROLE=production"
 # In QUEUE names containing dots and dashes replace them with underscore:
@@ -416,67 +416,68 @@ QUEUES="{{ queues|join(' ') }}"
 {% if "dteam" in vos -%}
 DTEAM_GROUP_ENABLE="dteam /dteam/ROLE=lcgadmin /dteam/ROLE=production"
 {% endif -%}
+
 {% if "ops" in vos -%}
 OPS_GROUP_ENABLE="ops /ops/ROLE=lcgadmin"
 {% endif -%}
 
 {% if "sagrid.ac.za" in vos -%}
-SAGRID_AC_ZA_GROUP_ENABLE="sagrid.ac.za /sagrid.ac.za"
+SHARED_GROUP_ENABLE="sagrid.ac.za /sagrid.ac.za"
 {% endif -%}
 
 {% if "eumed" in vos -%}
-EUMED_GROUP_ENABLE="eumed /eumed"
+SHARED_GROUP_ENABLE="eumed /eumed"
 {% endif -%}
 # Optional variable to define the default SE used by the VO.
 # Define the SE hostname if you want a specific SE to be the default one.
 # If this variable is not defined, the first SE in SE_LIST will be used
-# as the default one.  
+# as the default one.
 # VO_<vo_name>_DEFAULT_SE=vo-default-se
 
 # Optional variable to define a list of LBs used by the VO.
 # Define a space separated list of LB hostnames.
 # If this variable is not defined LB_HOST will be used.
-# VO_<vo_name>_LB_HOSTS="vo-lb1 [vo-lb2 [...]]" 
+# VO_<vo_name>_LB_HOSTS="vo-lb1 [vo-lb2 [...]]"
 
-# Optional variable to automatically add wildcards per FQAN 
-# in the LCMAPS gripmap file and groupmap file. Set it to 'yes' 
-# if you want to add the wildcards in your VO. Do not define it 
-# or set it to 'no' if you do not want to configure wildcards in your VO. 
+# Optional variable to automatically add wildcards per FQAN
+# in the LCMAPS gripmap file and groupmap file. Set it to 'yes'
+# if you want to add the wildcards in your VO. Do not define it
+# or set it to 'no' if you do not want to configure wildcards in your VO.
 # VO_<vo_name>_MAP_WILDCARDS=no
 
-# Optional variable to define the Myproxy server supported by the VO. 
-# Define the Myproxy hostname if you want a specific Myproxy server. 
-# If this variable is not defined PX_HOST will be used. 
+# Optional variable to define the Myproxy server supported by the VO.
+# Define the Myproxy hostname if you want a specific Myproxy server.
+# If this variable is not defined PX_HOST will be used.
 # VO_<vo_name>_PX_HOST=vo-myproxy
 
 # Optional variable to define a list of RBs used by the VO.
 # Define a space separated list of RB hostnames.
 # If this variable is not defined RB_HOST will be used.
-# VO_<vo_name>_RBS="vo-rb1 [vo-rb2 [...]]" 
+# VO_<vo_name>_RBS="vo-rb1 [vo-rb2 [...]]"
 
-# Area on the WN for the installation of the experiment software. 
-# If on the WNs a predefined shared area has been mounted where 
-# VO managers can pre-install software, then these variable 
-# should point to this area. If instead there is not a shared 
-# area and each job must install the software, then this variables 
-# should contain a dot ( . ). Anyway the mounting of shared areas, 
-# as well as the local installation of VO software is not managed 
-# by yaim and should be handled locally by Site Administrators. 
+# Area on the WN for the installation of the experiment software.
+# If on the WNs a predefined shared area has been mounted where
+# VO managers can pre-install software, then these variable
+# should point to this area. If instead there is not a shared
+# area and each job must install the software, then this variables
+# should contain a dot ( . ). Anyway the mounting of shared areas,
+# as well as the local installation of VO software is not managed
+# by yaim and should be handled locally by Site Administrators.
 # VO_<vo_name>_SW_DIR=wn_exp_soft_dir
 
-# This variable contains the vomses file parameters needed 
-# to contact a VOMS server. Multiple VOMS servers can be given 
-# if the parameters are enclosed in single quotes. 
+# This variable contains the vomses file parameters needed
+# to contact a VOMS server. Multiple VOMS servers can be given
+# if the parameters are enclosed in single quotes.
 # VO_<vo_name>_VOMSES="'vo_name voms_server_hostname port voms_server_host_cert_dn vo_name' ['...']"
 
-# DN of the CA that signs the VOMS server certificate. 
-# Multiple values can be given if enclosed in single quotes. 
-# Note that there must be as many entries as in the VO_<vo-name>_VOMSES variable. 
-# There is a one to one relationship in the elements of both lists, 
+# DN of the CA that signs the VOMS server certificate.
+# Multiple values can be given if enclosed in single quotes.
+# Note that there must be as many entries as in the VO_<vo-name>_VOMSES variable.
+# There is a one to one relationship in the elements of both lists,
 # so the order must be respected
 # VO_<vo_name>_VOMS_CA_DN="'voms_server_ca_dn' ['...']"
 
-# A list of the VOMS servers used to create the DN grid-map file. 
+# A list of the VOMS servers used to create the DN grid-map file.
 # Multiple values can be given if enclosed in single quotes.
 # VO_<vo_name>_VOMS_SERVERS="'vomss://<host-name>:8443/voms/<vo-name>?/<vo-name>' ['...']"
 
@@ -682,7 +683,7 @@ NAGIOS_NAGIOS_ENABLE_CONFIG={{ nagios_nagios_enable_config }}
 NAGIOS_CGI_ENABLE_CONFIG={{ nagios_cgi_enable_config }}
 NAGIOS_NSCA_PASS={{ nagios_nsca_pass }}
 NAGIOS_MYPROXY_NAME={{ nagios_myproxy_name }}
- 
+
 # NGI/ROC Nagios
 ATP_ROOT_URL={{ atp_root_url }}
 POEM_SYNC_URLS="{{ poem_sync_urls }}"
