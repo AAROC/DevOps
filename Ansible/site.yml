@@ -65,6 +65,7 @@
   sudo: true
   roles:
     - head-node
+    - munge
 
 - hosts: cream-ces
   name: run YAIM for CREAM-CE on head node
