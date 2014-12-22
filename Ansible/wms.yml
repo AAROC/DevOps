@@ -29,7 +29,7 @@
     - include: roles/common/handlers/main.yml
   post_tasks:
     - name: Announce the play outcome
-      local_action:
+      action:
           module: slack
           domain: africa-arabia-roc.slack.com
           token: 6EJfIMngdMiwrmnScAA4znB5
@@ -43,7 +43,7 @@
 - hosts: wms-servers
   tasks:
     - name: tweak WMS
-      template: src=etc/glite-wms/glite_wms.conf.j2 dest=/etc/glite-wms/glite_wms.conf owner=root group=root
+      template: src=roles/wms/templates/etc/glite-wms/glite_wms.conf.j2 dest=/etc/glite-wms/glite_wms.conf owner=root group=root
       notify: restart-wms-wm
   handlers:
     - name: restart-wms-wm

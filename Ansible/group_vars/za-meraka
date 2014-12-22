@@ -9,7 +9,7 @@ vos:
   - dteam
   - ops
   - sagrid.ac.za
-  - eumed
+#  - eumed
 #  - africacert
 queues:
   - dteam
