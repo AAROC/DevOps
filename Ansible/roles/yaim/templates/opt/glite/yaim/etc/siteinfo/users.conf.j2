@@ -1,3 +1,10 @@
+# Ansible managed
+#
+# Template to generate  users
+#
+# uid:login:gid:group:VO:sgm_flag
+
+#----------------------dteam-----------------------#
 {% if "dteam" in vos -%}
 {% for number in range(200) -%}
 {{ 35000 + number }}:dteam{{ 35000 + number }}:35000:dteam:dteam::
@@ -10,6 +17,10 @@
 {% endfor -%}
 {% endif -%}
 
+#----------------ops--------------------------------#
+#      45001:ops001:45000:ops:ops::
+# e.g. 60701:sgmops01:46001,45000:opssgm,ops:ops:sgm
+
 {% if "ops" in vos -%}
 {% for number in range(200) -%}
 {{ 34000 + number }}:ops{{ 34000 + number }}:34000:ops:ops::
@@ -19,22 +30,22 @@
 {% endfor -%}
 {% endif -%}
 
+{% if "sagrid.ac.za" in vos -%}
+{% for number in range(20) -%}
+{{ 38000 + number }}:sa{{ 38000 + number }}:38000:sa:sagrid.ac.za::
+{% endfor -%}
+
+{% for number in range(20) -%}
+{{ 38000 + number }}:sgmsa{{ 38900 + number }}:38900,38000:sgmsa,sa:sagrid.ac.za:sgm:
+{% endfor -%}
+{% endif -%}
+
 {% if "sagrid" in vos -%}
 {% for number in range(20) -%}
 {{ 4000 + number }}:sagrid{{ 4000 + number }}:4000:sagrid:sagrid::
 {% endfor -%}
 {% for number in range(20) -%}
 {{ 4900 + number }}:sgmsagrid{{ 4900 + number }}:4900,4000:sgmsagrid,sagrid:sagrid:sgm:
-{% endfor -%}
-{% endif -%}
-
-{% if "sagrid.ac.za" in vos -%}
-{% for number in range(20) -%}
-{{ 5100 + number }}:savo{{ 5100 + number }}:5100:savo:sagrid.ac.za::
-{% endfor -%}
-
-{% for number in range(20) -%}
-{{ 5900 + number }}:sgmsavo{{ 5900 + number }}:5900,5100:sgmsavo,sagridvo:sagrid.ac.za:sagrid.ac.za:sgm:
 {% endfor -%}
 {% endif -%}
 
