@@ -1,8 +1,0 @@
----
-# RHEL5 specific flags for yum and lokkit to work in batch mode
-yum_flags: --nogpgcheck
-lokkit_flags: -q
-# change following line to point to an EPEL mirror closeby to your region
-# epel_release_url: http://ftp.ntua.gr/pub/linux/fedora-epel/5/i386/
-epel_release_url: http://mirror.zol.co.zw/epel/5/x86_64/
-epel_release_name: epel-release-5-4.noarch.rpm
