@@ -1,11 +1,15 @@
 - name: Create munge key
   sudo: true
-  sudo_user: root
-  action: command /usr/sbin/create-munge-key creates=/etc/munge/munge.key 
+  sudo_user: munge
+  action: command /usr/sbin/create-munge-key creates=/etc/munge/munge.key
+  tags:
+    - munge
+- name: Fix munge permissions if necessary
+  sudo: true
+  file: path=/etc/munge/munge.key owner=munge group=munge
   tags:
     - munge
 #  notify:
 #    - restart munge
 - name: Start munge
   action: service name=munge enabled=on
-
