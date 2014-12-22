@@ -7,18 +7,18 @@
     - repos
     - UMD3
 
-- name: Download UMD 2 repo
-  get_url: url=http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm dest=/tmp/umd-release.rpm 
-  when: ansible_hostname.find("nagios") != -1
-  tags:
-    - repos
-    - UMD2
-    
+# - name: Download UMD 2 repo
+#   get_url: url=http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm dest=/tmp/umd-release.rpm
+#   when: ansible_hostname.find("nagios") != -1
+#   tags:
+#     - repos
+#     - UMD2
+
 - name: add EGI GPG key to RPM
   sudo: True
   sudo_user: root
   rpm_key: key=http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY state=present
-  tags:  
+  tags:
     - repos
     - UMD
 
@@ -30,3 +30,9 @@
   tags:
     - repos
     - UMD
+
+- name: Ensure prorities plugin is configured
+  copy: src=etc/yum/pluginconf.d/priorities.conf dest=/etc/yum/pluginconf.d/prorities.conf
+
+- name: Set priorities of UMD repos
+  lineinfile: dest=/etc//yum.repos.d/UMD-3-base.repo regexp='^priority=' line='priority=1' insertafter='enabled=1'

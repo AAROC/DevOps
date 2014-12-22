@@ -1,15 +1,15 @@
 vos:
   - dteam
   - ops
-#  - sagrid
+  - sagrid.ac.za
 #  - eumed
 #  - africacert
 queues:
-  - dteam
+  - ops
   - shared
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
 # use the site name as registered in GOCDB (use the same case)
-site_name: ZA-MERAKA-DEV
+site_name: za-meraka-dev
 # contact details
 site_email: sagrid@csir.co.za
 site_security_email: csirt@sanren.ac.za
@@ -18,15 +18,11 @@ site_support_email: za-meraka-ops@lists.sagrid.ac.za
 site_latitude: -25.75593
 site_longitude: 28.27921
 site_description: "Meraka Institute - core grid services"
-site_other_grid: "NGI_ZA"
+site_other_grid: "AfricaArabia"
 site_bdii_host: "site-bdii-dev.c4.csir.co.za"
 site_location: "Pretoria, South Africa"
 site_website: "http://www.csir.co.za/meraka"
 site_domain: c4.csir.co.za
-
-# passwords
-mysql_pass: 
-apel_db_password: 
 
 # services at the site
 bdii_host: top-bdii.c4.csir.co.za
@@ -63,6 +59,9 @@ ce_runtimeenv:
   - TAG1
   - TAG2
 ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
+
+vo_sw_dir: /opt/exp_soft/
+
 batch_server: ce01-node001.c4.csir.co.za
 job_manager: lcgpbs
 ce_batch_sys: torque
