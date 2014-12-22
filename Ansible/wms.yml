@@ -25,6 +25,7 @@
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-za-meraka.yml
   handlers:
     - include: roles/common/handlers/main.yml
   post_tasks:
