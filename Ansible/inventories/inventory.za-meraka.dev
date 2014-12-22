@@ -36,6 +36,10 @@ site-bdii-dev.c4.csir.co.za needs_certificate=false emi_service='BDII_site' yaim
 [cream-ces]
 ce01-node001.c4.csir.co.za needs_certificate=true emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
 
+# Since you may want a stand-alone cluster head node - no CREAM-CE - we specify this here too
+[cluster-head-nodes:children]
+cream-ces
+
 [apel-publishers:children]
 cream-ces
 
