@@ -41,7 +41,7 @@ apel_mysql_host: ce01-node001.c4.csir.co.za
 px_host: myproxy.cern.ch
 #wms_host: wms.hellasgrid.gr
 # check GOCDB for relevant services in the AfricaArabia https://goc.egi.eu/portal/index.php?Page_Type=Service_Group&id=926
-wms_host: wms.c4.csir.co.za 
+wms_host: wms.c4.csir.co.za
 argus_status: yes
 argus_host: argus.c4.csir.co.za
 pap_admin_dn: "'/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker'"
@@ -56,7 +56,7 @@ mpich2_enabled: true
 openmpi_enabled: true
 mpich2_version: 1.2.1
 openmpi_version: 1.5.4
-# are the home directories shared over nfs ? 
+# are the home directories shared over nfs ?
 mpi_shared_home: no
 mpi_host_based_auth: yes
 # Replace the following specs with your own
@@ -70,7 +70,7 @@ ce_os_arch: x86_64
 ce_minphysmem: 2048
 ce_minvirtmem: 6144
 ce_physcpu: 1
-ce_logcpu: 
+ce_logcpu:
 ce_smpsize: 1
 ce_si00: 2105
 ce_sf00: 2601
