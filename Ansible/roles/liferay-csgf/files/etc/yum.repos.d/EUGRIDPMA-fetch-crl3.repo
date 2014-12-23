@@ -1,6 +1,0 @@
-[EUGRIDPMA-fetch-crl3]
-name=EUGRIDPMA fetch-crl3 repository
-baseurl=https://dist.eugridpma.info/distribution/util/fetch-crl3/
-enabled=1
-metadata_expire=300
-gpgcheck=0

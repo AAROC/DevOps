@@ -1,5 +1,0 @@
----
-# tasks file for boundary-monitor
-- name: download boundary install script
-  script: setup_meter.sh
-  

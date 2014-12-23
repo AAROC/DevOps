@@ -1,8 +1,0 @@
----
-- name: download GridEngine libraries
-  get_url: url=https://sourceforge.net/projects/ctsciencegtwys/files/catania-grid-engine/1.5.1/Liferay6.1/GridEngine_v1.5.1.zip/download dest=/tmp/GridEngine1.5.1.zip
-
-- name: unarchive the GridEngine
-  unarchive: src=/tmp/GridEngine1.5.1.zip dest=/opt/
-
-# - name: get the jsaga libraries.

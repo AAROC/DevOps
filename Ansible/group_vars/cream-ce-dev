@@ -1,4 +1,0 @@
-umd_major_release: 3
-umd: 
-  5: http://koji.afroditi.hellasgrid.gr/packages/umd-release/2.0.0/1.el5/noarch/umd-release-2.0.0-1.el5.noarch.rpm
-  6: http://koji.afroditi.hellasgrid.gr/packages/umd-release/2.0.0/1.el6/noarch/umd-release-2.0.0-1.el6.noarch.rpm

@@ -1,4 +1,0 @@
----
-# vars file for worker-node
-openmpi_version: 1.5.4
-mpich2_version: 1.2.1

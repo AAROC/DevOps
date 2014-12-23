@@ -1,8 +1,0 @@
-#  Group vars for top-bdiis
----
-needs_certificate: 'false' 
-emi_service: 'BDII_top' 
-yaim_options: '-n BDII_top'
-ports: 
-  - inbound: 2170
-  - outbound: []

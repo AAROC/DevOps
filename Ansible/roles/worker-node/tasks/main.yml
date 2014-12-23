@@ -1,5 +1,0 @@
----
-# tasks file for worker-node
-- include: networking.yml
-- include: install.yml
-# - include: torque_config

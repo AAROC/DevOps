@@ -1,8 +1,0 @@
-- name: add dirac user
-  user: name=dirac comment='Dirac generic user' shell=/bin/bash group=dirac
-
-- create the installation directory
-  file: path=/opt/dirac state=directory owner=dirac group=dirac
-
-  
-  

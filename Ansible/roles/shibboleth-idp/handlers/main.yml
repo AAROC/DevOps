@@ -1,5 +1,0 @@
----
-# handlers file for shibboleth-idp
-- name: restart tomcat
-  service: name={{ tomcat6_service }}  state=restarted
-  sudo: yes

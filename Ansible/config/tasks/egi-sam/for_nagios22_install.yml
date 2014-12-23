@@ -1,6 +1,0 @@
-- name: Install sam-nagios from egi-sam repo
-  action: yum name=$item state=latest
-  with_items:
-    - mysql51
-    - nagios.x86_64
-    - sam-nagios

@@ -1,5 +1,0 @@
-# ANSIBLE-MANAGED  : DO NOT TOUCH
-# Create the shosts entry on the worker nodes for the head node private address
-{% for host in groups['cluster-head-nodes'] %}
-{{ hostvars[host]['ansible_eth1']['ipv4']['address'] }}
-{% endfor %}

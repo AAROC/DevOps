@@ -1,9 +1,0 @@
-# note that the munge key is created only after you start the service on the cream
-# thus this task is only used to set the record straight. (you cannot have a valid 
-# munge key within your ansible trunk before starting the service) 
-- name: Copy munge key
-  action: copy src=files/etc/munge/munge.key.{{ site_name }} dest=/etc/munge/munge.key owner=munge group=munge mode=0400
-  notify:
-    - restart munge
-- name: Start munge
-  action: service name=munge enabled=on

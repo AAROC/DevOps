@@ -1,5 +1,0 @@
----
-- include: repos.yml
-- include: install.yml
-- include: apache.yml
-#- include: configure.yml

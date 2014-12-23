@@ -1,5 +1,0 @@
----
-# tasks file for glassfish
-- include: dependencies.yml
-- include: apache_config.yml
-- include: glassfish.yml

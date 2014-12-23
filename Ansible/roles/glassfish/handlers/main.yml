@@ -1,4 +1,0 @@
----
-# handlers file for glassfish
-- name: restart apache
-  service: name={{ apache }} state=restarted

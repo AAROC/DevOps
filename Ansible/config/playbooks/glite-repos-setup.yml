@@ -1,9 +1,0 @@
-- hosts: glite
-  user: ansible
-  sudo: True
-  vars_files:
-    - vars/default.yml
-    - vars/distros/${ansible_distribution}-${ansible_lsb.major_release}.yml
-  tasks:
-    - include: tasks/dag/repo.yml
-    - include: tasks/cas/install/egi.yml

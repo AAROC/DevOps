@@ -1,8 +1,0 @@
----
-- name: Install worker-node base packages
-  action: yum name={{ item }} state=latest
-  with_items:
-    - bind-utils
-  tags: 
-    - worker-nodes
-    - install

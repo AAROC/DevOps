@@ -1,7 +1,0 @@
-#!/bin/bash
-
-num=$( iptables -S INPUT | wc -l)
-
-
-/sbin/iptables -t filter -I INPUT $((num-1)) -p tcp -m state --state NEW -s {{ ansible_default_ipv4.address }}/{{ ansible_default_ipv4.netmask }}  --dport 389 -j ACCEPT
-/sbin/iptables -t filter -I INPUT $num -p tcp -m state --state NEW -s {{ ansible_default_ipv4.address }}/{{ ansible_default_ipv4.netmask }}  --dport 636 -j ACCEPT

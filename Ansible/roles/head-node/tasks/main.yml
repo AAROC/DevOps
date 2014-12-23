@@ -1,4 +1,0 @@
----
-# tasks file for head-node
-- include: networking.yml
-#- include: cluster.yml

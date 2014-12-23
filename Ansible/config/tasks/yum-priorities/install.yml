@@ -1,2 +1,0 @@
-- name: Install yum-priorities package
-  action: command yum install -y ${yum_flags} yum-priorities

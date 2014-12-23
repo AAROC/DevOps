@@ -1,3 +1,0 @@
-#!/bin/bash
-# execute the voms admin configuration
-voms-configure install --vo test --dbtype mysql --createdb --deploy-database --dbauser {{ dbauser }} --dbapwd {{ dbapwd }} --dbusername {{ vomsadmin }} --dbpassword {{ dbpassword }} --core-port {{ coreport }} --smtp-host {{ smtphost }} --mail-from {{ mailfrom }}

@@ -1,2 +1,0 @@
-- name: Enable Apache HTTP Server
-  action: service name=httpd enabled=yes state=started

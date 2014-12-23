@@ -1,7 +1,0 @@
----
-- name: install worker node middleware
-  yum: name={{ item }} state=present disable_gpg_check=yes
-  with_items: "{{ umd_metapackages }}"
-  tags: 
-  - UMD
-  - emi-wn

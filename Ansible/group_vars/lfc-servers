@@ -1,9 +1,0 @@
-# Group variables for Logical File Catalogue hosts
----
-needs_certificate: 'true' 
-prerequisites: []
-emi_service: 'lfc' 
-yaim_options: '-n lfc_mysql'
-ports:
-  - inbound: []
-  - outboud: []
