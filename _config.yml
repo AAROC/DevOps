@@ -1,0 +1,183 @@
+title:            Africa-Arabia Regional Operations Centre
+description:      Daily Chaos from Africa and Arabia
+logo:             SANCG_logoTransparent-cropped.png
+disqus_shortname: aarocblog
+# Assign a default image for your site's header and footer
+#default_bg:       default-bg.png
+default_bg:       operations-portal.gif
+search:           true
+share:            true
+# Read Time is a calculator tp provide post read-time based on word count. Usage is recommended.
+readtime:         true
+# Turn on or off the fin animations in the header and footer
+animated_fins:	  true
+# Specify the fin color in RGB value
+#fin_color:        "255,255,255"
+fin_color:        "139, 115, 74"
+# Change url to your domain. Leave localhost server or blank when working locally.
+url:              http://aaroc.github.io
+#url: http://localhost:4000
+# Owner/author information
+owner:
+  name:           Africa-Arabia Regional Operations Centre.
+  avatar:         SANCG_logoTransparent-cropped.png
+  email:          thesagrid@gmail.com
+  # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
+  description:    "The Africa-Arabia Regional Operations Team"
+  # Social networking links used in footer. Update and remove as you like
+  twitter:        thesagrid
+  facebook:       SAGrid
+  github:         AAROC
+  slack:          africa-arabia-roc
+  stackexchange:
+  linkedin:
+  instagram:
+  flickr:
+  tumblr:
+
+  # For Google Authorship https://plus.google.com/authorship
+  google_plus:
+
+# Analytics and webmaster tools stuff goes here
+google_analytics: UA-51099001-2
+google_verify:
+# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
+bing_verify:
+
+# Links to include in footer navigation
+# For external links add external: true
+links:
+  - title: Home
+    url: /
+    external: false
+    icon: home
+  - title: Overview
+    url: /AAROC/
+    external: false
+    icon: group
+
+  - title: Categories
+    url: /categories
+    external: false
+  - title: Tags
+    url: /tags
+    icon: tags
+  - title: The AAROC Team
+    url: /team/
+    icon: group
+    external: false
+  - title: Collaborators
+    url: /How-to-contribute
+    external: false
+    icon: merge
+
+top_links:
+#  - title: ROC website
+#    url: http://roc.africa-grid.org
+#    icon: web
+#    image: aaroc-logo.png
+  - title: Conntinuous Integration Platform
+    url: http://ci.sagrid.ac.za:8080
+    icon: jenkins
+    image: jenkinslogo.svg
+  - title: Slack Team
+    url: https://africa-arabia-roc.slack.com
+    icon: slack
+    image: slack-logo-2x.png
+  - title: Science Gateway
+    url: https://sgw.africa-grid.org
+    icon: earth
+    image: default-bg-logo.png
+  - title: Powered by Ansible
+    url: https://github.com/AAROC/DevOps
+    image: image-ansible.png
+#  - title: Perun Identity Management
+#    url: https://perun.c4.csir.co.za
+#    image: perun-logo.png
+
+sites:
+  - name: ZA-UCT-ICTS
+    url: http://hpc.uc.ac.za
+    logo: uct.png
+    GOC_entry:
+
+  - name: ZA-CHPC
+    url: http://www.chpc.ac.za
+    GOC_entry:
+    logo: chpc.png
+
+  - name: ZA-UFS
+    url: http://www.hpc.ufs.ac.za
+    GOC_entry:
+    logo: ufs.png
+
+  - name: ZA-UJ
+    url: http://grid.uj.ac.za
+    GOC_entry:
+    logo: uj.png
+
+  - name: ZA-WITS-CORE
+    url: http://grid.wits.ac.za
+    GOC_entry:
+    logo: wits.png
+
+  - name: ZA-MERAKA
+    url: http://www.csir.co.za/meraka
+    GOC_entry:
+    logo: csir.png
+
+  - name:
+
+supporters:
+  - name: CHAIN-REDS Project
+    logo: logo-chain-reds.png
+    url: http://www.chain-project.eu
+    type: project
+
+  - name: ASREN
+    logo: asren.jpg
+    url: http://asren.org
+    type: national
+
+  - name: SANREN
+    logo: SANReN_tiny_0.png
+    type: national
+
+  - name: ei4Africa Project
+    logo: ei4arica.png
+    type: project
+
+
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    Africa/Johannesburg
+future:      true
+highlighter: pygments
+#pygments:    true
+markdown:    kramdown
+paginate:    4
+toc_levels: 1..6
+paginate_path: "page:num"
+
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+permalink:   /:categories/:title/
+excerpt_separator: --
+kramdown:
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  use_coderay: false
+
+  coderay:
+    coderay_line_numbers:
+    coderay_line_numbers_start: 1
+    coderay_tab_width: 4
+    coderay_bold_every: 10
+    coderay_css: class
+
+include: [".htaccess"]
+exclude: ["lib", "config.rb", "Gemfile", "Capfile", "Gemfile.lock", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "less", "*.sublime-project", "*.sublime-workspace", "test", "spec", "Gruntfile.js", "package.json", "node_modules"]
+gems:
+  - jemoji
+#  - dashing
