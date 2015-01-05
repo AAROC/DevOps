@@ -24,6 +24,7 @@
 
 - name: Hand Ansible to ansible
   file: name=/opt/ansible state=directory owner=ansible group=ansible
+  
 
 - name: Get Ansible
   git:

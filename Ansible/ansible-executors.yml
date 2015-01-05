@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: wms-servers
   name: Make all the hosts ansible executors
   sudo: true
   roles:
@@ -13,7 +13,7 @@
         module: slack
         domain: africa-arabia-roc.slack.com
         token: 6EJfIMngdMiwrmnScAA4znB5
-        msg: "Running {{ playbook }} on {{ inventory_hostname }} at {{ site_name }}"
+        msg: "Running {{ playbook }} on {{ inventory_hostname }} at {{ site_name }} :worried: "
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
         link_names: 1
@@ -24,7 +24,7 @@
         module: slack
         domain: africa-arabia-roc.slack.com
         token: 6EJfIMngdMiwrmnScAA4znB5
-        msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :) "
+        msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :smile: "
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
         link_names: 1

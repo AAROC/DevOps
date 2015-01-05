@@ -1,6 +1,6 @@
 ---
 - name: Which site are we on ?
-  debug: msg={{ site_name }}
+  debug: msg="{{ site_name }}"
   changed_when: false
 
 - name: Create siteinfo directory
@@ -29,7 +29,7 @@
   changed_when: false
 
 - name: what was there ?
-  debug: msg={{ item }}
+  debug: msg="{{ item }}"
   with_items:
     - "{{ node_types.stdout_lines }}"
   changed_when: false
