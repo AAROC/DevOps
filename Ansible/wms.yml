@@ -13,8 +13,8 @@
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
         #icon_url: "http://www.example.com/some-image-file.png"
-        link_names: 0
-        parse: 'none'
+        link_names: 1
+        parse: 'full'
   roles:
     - bootstrap
     - ansible-executor
@@ -35,12 +35,12 @@
           module: slack
           domain: africa-arabia-roc.slack.com
           token: "{{ slack_token }}"
-          msg: "Running WMS play on {{ inventory_hostname }} at {{ site_name }}"
+          msg: "WMS play on {{ inventory_hostname }} at {{ site_name }} finished O/ ... running tweaks..."
           channel: "#devopssite"
           username: "Ansible on {{ inventory_hostname }}"
           #icon_url: "http://www.example.com/some-image-file.png"
-          link_names: 0
-          parse: 'none'
+          link_names: 1
+          parse: 'full'
 
 - hosts: wms-servers
   tasks:
@@ -50,3 +50,17 @@
   handlers:
     - name: restart-wms-wm
       command: '/etc/init.d/glite-wms-wm restart'
+
+- hosts: wms-servers
+  tasks:
+    - name: announce play outcome via Slack
+      action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "WMS play on {{ inventory_hostname }} at {{ site_name }} finished O/"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 1
+        parse: 'full'
