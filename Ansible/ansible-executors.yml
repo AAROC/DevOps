@@ -1,18 +1,22 @@
 ---
-- hosts: wms-servers
+- hosts: all
   name: Make all the hosts ansible executors
   sudo: true
   roles:
     - bootstrap
     - ansible-executor
+  vars_files:
+    - group_vars/passwords-{{ site_name }}.yml
   pre_tasks:
     - name: set some facts
       set_fact: playbook=ansible-executor
+    - name: what's our token ?
+      debug: msg="{{ slack_token }}"
     - name: Announce the play via Slack
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: "{{ slack_token }}"
         msg: "Running {{ playbook }} on {{ inventory_hostname }} at {{ site_name }} :worried: "
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
@@ -23,8 +27,8 @@
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
-        msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/""
+        token: "{{ slack_token }}"
+        msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
         link_names: 1
