@@ -49,4 +49,4 @@
       notify: restart-wms-wm
   handlers:
     - name: restart-wms-wm
-      command: name='/opt/glite/etc/init.d/glite-wms-wm restart'
+      command: '/etc/init.d/glite-wms-wm restart'
