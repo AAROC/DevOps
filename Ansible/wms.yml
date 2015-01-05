@@ -8,7 +8,7 @@
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: "{{ slack_token }}"
         msg: "Running WMS play on {{ inventory_hostname }} at {{ site_name }}"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
@@ -26,6 +26,7 @@
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
+    - "group_vars/passwords-{{ site_name }}.yml"
   handlers:
     - include: roles/common/handlers/main.yml
   post_tasks:
@@ -33,7 +34,7 @@
       action:
           module: slack
           domain: africa-arabia-roc.slack.com
-          token: 6EJfIMngdMiwrmnScAA4znB5
+          token: "{{ slack_token }}"
           msg: "Running WMS play on {{ inventory_hostname }} at {{ site_name }}"
           channel: "#devopssite"
           username: "Ansible on {{ inventory_hostname }}"
