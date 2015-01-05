@@ -39,4 +39,4 @@
   lineinfile: line="^config_crl" dest="/opt/glite/yaim/node-info.d/{{ item }}" state=absent
   with_items:
     - "{{ node_types.stdout_lines }}"
-  when: SkipCRLs ==  "true" | default("false")
+  when: SkipCRLs ==  'true' | default('true')
