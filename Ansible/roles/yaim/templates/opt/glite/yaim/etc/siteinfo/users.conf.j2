@@ -1,66 +1,57 @@
-# Ansible managed
-#
-# Template to generate  users
-#
-# uid:login:gid:group:VO:sgm_flag
-
-#----------------------dteam-----------------------#
 {% if "dteam" in vos -%}
 {% for number in range(2) -%}
-{{ 35000 + number }}:dteam{{ number }}:35000:dteam:dteam::
+{{ 18001 + number }}:dteam{{ number }}:1800:dteam:dteam::
 {% endfor -%}
 {% for number in range(2) -%}
-{{ 35800 + number }}:prddteam{{ number }}:35800,35000:prddteam,dteam:dteam:prd
+{{ 18101 + number }}:prddteam{{ number }}:1810,1800:prddteam,dteam:dteam:prd
 {% endfor -%}
 {% for number in range(2) -%}
-{{ 35900 + number }}:sgmdteam{{ number }}:35900,35000:sgmdteam,dteam:dteam:sgm
+{{ 18201 + number }}:sgmdteam{{ number }}:{{ 1810 + number }},1800:sgmdteam,dteam:dteam:sgm
 {% endfor -%}
 {% endif -%}
-#----------------ops--------------------------------#
-#      45001:ops001:45000:ops:ops::
-# e.g. 60701:sgmops01:46001,45000:opssgm,ops:ops:sgm
+
 {% if "ops" in vos -%}
 {% for number in range(2) -%}
-{{ 34000 + number }}:ops{{ number }}:34000:ops:ops::
+{{ 19001 + number }}:ops{{ number }}:1900:ops:ops::
 {% endfor -%}
 {% for number in range(2) -%}
-{{ 34900 + number }}:sgmops{{  number }}:34900,34000:sgmops,ops:ops:sgm
+{{ 19101 + number }}:sgmops{{  number }}:1910,1900:sgmops,ops:ops:sgm
 {% endfor -%}
 {% endif -%}
-#-----------------sagrid.ac.za------------------------#
+
 {% if "sagrid.ac.za" in vos -%}
 {% for number in range(2) -%}
-{{ 38000 + number }}:sa{{ number }}:38000:sa:sagrid.ac.za::
+{{ 40001 + number }}:sa{{ number }}:4000:sa:'sagrid.ac.za'::
 {% endfor -%}
 {% for number in range(2) -%}
-{{ 38900 + number }}:sgmsa{{ number }}:38900,38000:sgmsa,sa:sagrid.ac.za:sgm
+{{ 40101 + number }}:sgmsa{{ number }}:4100,4000:sgmsa,sa:'sagrid.ac.za':sgm
 {% endfor -%}
 {% endif -%}
 
 {% if "sagrid" in vos -%}
 {% for number in range(20) -%}
-{{ 39000 + number }}:sagrid{{ number }}:39000:sagrid:sagrid::
+{{ 50001 + number }}:sagrid{{ number }}:5000:sagrid:sagrid::
 {% endfor -%}
 
 {% for number in range(20) -%}
-{{ 39900 + number }}:sgmsagrid{{ number }}:39000,39900:sgmsagrid,sagrid:sagrid:sgm
+{{ 51001 + number }}:sgmsagrid{{ number }}:5100,5000:sgmsagrid,sagrid:sagrid:sgm
 {% endfor -%}
 {% endif -%}
 
 {% if "magrid" in vos -%}
 {% for number in range(2) -%}
-{{ 36000 + number }}:magrid{{ number }}:36000:magrid:magrid::
+{{ 70001 + number }}:magrid{{ number }}:7000:magrid:magrid::
 {% endfor -%}
 {% for number in range(2) -%}
-{{ 36900 + number }}:sgmmagrid{{ number }}:36900,36000:sgmmagrid,magrid:magrid:sgm
+{{ 71001 + number }}:sgmmagrid{{ number }}:7100,7000:sgmmagrid,magrid:magrid:sgm
 {% endfor -%}
 {% endif -%}
 
 {% if "eumed" in vos -%}
 {% for number in range(2) -%}
-{{ 37000 + number }}:eumed{{ number }}:37000:eumed:eumed::
+{{ 60001 + number }}:eumed{{ number }}:6000:eumed:eumed::
 {% endfor -%}
 {% for number in range(2) -%}
-{{ 37900 + number }}:sgmeumed{{ number }}:37900,37000:sgmeumed,eumed:eumed:sgm
+{{ 61001 + number }}:sgmeumed{{ number }}:6100,6000:sgmeumed,eumed:eumed:sgm
 {% endfor -%}
 {% endif -%}
