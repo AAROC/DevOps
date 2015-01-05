@@ -24,7 +24,7 @@
         module: slack
         domain: africa-arabia-roc.slack.com
         token: 6EJfIMngdMiwrmnScAA4znB5
-        msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :smile: "
+        msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/""
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
         link_names: 1
