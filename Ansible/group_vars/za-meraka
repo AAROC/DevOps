@@ -42,6 +42,8 @@ px_host: myproxy.cern.ch
 #wms_host: wms.hellasgrid.gr
 # check GOCDB for relevant services in the AfricaArabia https://goc.egi.eu/portal/index.php?Page_Type=Service_Group&id=926
 wms_host: wms.c4.csir.co.za
+is_both_wms_and_lb: true
+#glite_wms_lb_type: both
 argus_status: yes
 argus_host: argus.c4.csir.co.za
 pap_admin_dn: "'/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker'"
