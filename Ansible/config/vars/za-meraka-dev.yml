@@ -27,12 +27,8 @@ site_location: "Pretoria, South Africa"
 site_website: "http://www.csir.co.za/meraka"
 site_domain: c4.csir.co.za
 
-# passwords
-mysql_pass: redacted
-apel_db_password: redacted
-
 # services at the site - these should be taken from the inventory in a perfect world
-# However, the inventory only defines groups and roles of machines... not 
+# However, the inventory only defines groups and roles of machines... not
 # individual hosts
 bdii_host: top-bdii.c4.csir.co.za
 apel_mysql_host: ce01-node001.c4.csir.co.za
@@ -54,7 +50,7 @@ ce_os_arch: x86_64
 ce_minphysmem: 2048
 ce_minvirtmem: 6144
 ce_physcpu: 1
-ce_logcpu: 
+ce_logcpu:
 ce_smpsize: 1
 ce_si00: 2105
 ce_sf00: 2601
