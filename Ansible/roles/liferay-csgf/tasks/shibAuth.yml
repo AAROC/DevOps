@@ -6,6 +6,12 @@
   register: domain_applications
   changed_when: "False"
 
+- name: Backup portal-ext.properties file
+  command:
+    cp portal-ext.properties portal-ext-Orig.properties 
+    chdir=/opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes
+  when: domain_applications.stdout.find('federated-login-ext') == -1
+
 
 
 # Get the liferay extension to enable shibboleth and deploy it
@@ -13,6 +19,19 @@
   get_url: url='http://sourceforge.net/projects/ctsciencegtwys/files/catania-science-gateway/wars/1501/federated-login-ext-6.1.1.1.war/download'
     dest=/opt/glassfish/glassfish3/deploy/federated-login-ext-6.1.1.1.war
   when: domain_applications.stdout.find('federated-login-ext') == -1
+
+# Wait for the deploy to complete
+- wait_for: path=/opt/glassfish/glassfish3/glassfish/domains/liferay/autodeploy/federated-login-ext_deployed
+  changed_when: "False"
+
+
+- name: Recovery portal-ext.properties file
+  shell:
+    cat portal-ext.properties >> portal-ext-Orig.properties ; mv portal-ext-Orig.properties portal-ext.properties
+    chdir=/opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes
+  when: domain_applications.stdout.find('federated-login-ext') == -1
+
+
 
 ################################################################################
 # Restart the domain to take effect
@@ -39,7 +58,7 @@
   command:
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin start-domain liferay
     chdir=/opt/glassfish/glassfish3/bin/
-  when: domain_status.stdout.find('liferay not running') == 0 and domain_applications.stdout.find('federated-login-ext') == -1
+  when: domain_applications.stdout.find('federated-login-ext') == 0 and domain_status.stdout.find('liferay not running') == -1
   async: 600
   poll: 5
   register: start_domain
