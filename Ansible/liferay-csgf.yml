@@ -14,7 +14,7 @@
     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
   roles:
     - glassfish
-    
+
 - name: Deploy and Configure Liferay Application
   hosts: science-gateways
   remote_user: ansible
@@ -43,3 +43,14 @@
 
   roles:
     - liferay-csgf
+  post_tasks:
+    - name: Announce via Slack
+      action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
