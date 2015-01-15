@@ -25,12 +25,17 @@
   changed_when: "False"
 
 
-- name: Recovery portal-ext.properties file
-  shell:
-    cat portal-ext.properties >> portal-ext-Orig.properties ; mv portal-ext-Orig.properties portal-ext.properties
+- name: Rename portal-ext.properties file
+  command:
+    cp /opt/glassfish/glassfish3/glassfish/domains/liferay/autodeploy/federated-login-ext/WEB-INF/ext-web/docroot/WEB-INF/classes/portal-ext.properties portal-ext-Fed.properties
     chdir=/opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes
   when: domain_applications.stdout.find('federated-login-ext') == -1
 
+- name: Combine old and new portal-ext.properties file
+  shell:
+    cat portal-ext-Orig.properties portal-ext-Fed.properties > portal-ext.properties
+    chdir=/opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes
+  when: domain_applications.stdout.find('federated-login-ext') == -1
 
 
 ################################################################################

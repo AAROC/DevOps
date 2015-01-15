@@ -133,7 +133,7 @@
   command:
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin start-domain liferay
     chdir=/opt/glassfish/glassfish3/bin/
-  when: domain_status.stdout.find('liferay not running') == 0
+  #when: domain_status.stdout.find('liferay not running') == 0
   async: 600
   poll: 5
   register: start_domain
