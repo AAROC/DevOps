@@ -1,0 +1,69 @@
+---
+- name: Check federated plug-in is installed
+  command:
+    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile  -u liferayadmin list-applications 
+    chdir=/opt/glassfish/glassfish3/glassfish/bin
+  register: domain_applications
+  changed_when: "False"
+
+- name: Backup portal-ext.properties file
+  command:
+    cp portal-ext.properties portal-ext-Orig.properties 
+    chdir=/opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes
+  when: domain_applications.stdout.find('federated-login-ext') == -1
+
+
+
+# Get the liferay extension to enable shibboleth and deploy it
+- name: download the federation plug-in for liferay 
+  get_url: url='http://sourceforge.net/projects/ctsciencegtwys/files/catania-science-gateway/wars/1501/federated-login-ext-6.1.1.1.war/download'
+    dest=/opt/glassfish/glassfish3/deploy/federated-login-ext-6.1.1.1.war
+  when: domain_applications.stdout.find('federated-login-ext') == -1
+
+# Wait for the deploy to complete
+- wait_for: path=/opt/glassfish/glassfish3/glassfish/domains/liferay/autodeploy/federated-login-ext_deployed
+  changed_when: "False"
+
+
+- name: Rename portal-ext.properties file
+  command:
+    cp /opt/glassfish/glassfish3/glassfish/domains/liferay/autodeploy/federated-login-ext/WEB-INF/ext-web/docroot/WEB-INF/classes/portal-ext.properties portal-ext-Fed.properties
+    chdir=/opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes
+  when: domain_applications.stdout.find('federated-login-ext') == -1
+
+- name: Combine old and new portal-ext.properties file
+  shell:
+    cat portal-ext-Orig.properties portal-ext-Fed.properties > portal-ext.properties
+    chdir=/opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes
+  when: domain_applications.stdout.find('federated-login-ext') == -1
+
+
+################################################################################
+# Restart the domain to take effect
+################################################################################
+# Now that the domain has been properly configured, we need to restart it, so
+# that the libraries can be loaded and the application deployed properly.
+# First, we stop the domain, then start it (checking that it has actually stopped)
+- name: stop-domain
+  command: /opt/glassfish/glassfish3/glassfish/bin/asadmin stop-domain liferay
+  #when: domain_status.stdout.find('liferay not running') != -1
+  async: 45
+  poll: 5
+  register: stop_domain
+  when: domain_applications.stdout.find('federated-login-ext') == -1
+
+- name: check the domains (again)
+  sudo: true
+  sudo_user: liferayadmin
+  shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
+  register: domain_status
+  when: domain_applications.stdout.find('federated-login-ext') == -1
+
+- name: start-domain
+  command:
+    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin start-domain liferay
+    chdir=/opt/glassfish/glassfish3/bin/
+  when: domain_applications.stdout.find('federated-login-ext') == 0 and domain_status.stdout.find('liferay not running') == -1
+  async: 600
+  poll: 5
+  register: start_domain
