@@ -66,7 +66,7 @@
   sudo_user: liferayadmin
   async: 45
   poll: 5
-  when: domain_status.stdout.find('liferay') == -1
+  when: domain_status.stdout.find('liferay') == -1 or domain_status.stdout.find('liferay not running') == 0
   register: domain
 
 # enable secure access to the server so that we can have access later to the
@@ -76,8 +76,9 @@
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin  enable-secure-admin
     chdir=/opt/glassfish/glassfish3/bin/
   register: secure_admin_status
-  notify: stop-domain
-
+  notify: 
+    - stop-domain
+    - start-domain
 ###############################################################################
 # Download other libraries
 ###############################################################################
@@ -106,9 +107,11 @@
     /bin/tar xvfz /tmp/mysql-connector-java.tar.gz  --show-transformed-names --wildcards --no-anchored '*connector*.jar'  --strip-components=1 --exclude '*wrapp*' --exclude '*api*' --exclude '*lib*'
     chdir=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
     creates=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/mysql-connector-java-5.1.34-bin.jar
+  register: connector
 - name: unpack the liferay dependencies
   command: /usr/bin/unzip -j -d /opt/glassfish/glassfish3/glassfish/domains/liferay/lib/ /tmp/liferay-dependencies.zip
     creates=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/hsql.jar
+  register: dependencies
 
 ################################################################################
 # Restart the domain to take effect
@@ -118,7 +121,7 @@
 # First, we stop the domain, then start it (checking that it has actually stopped)
 - name: stop-domain
   command: /opt/glassfish/glassfish3/glassfish/bin/asadmin stop-domain liferay
-  #when: domain_status.stdout.find('liferay not running') != -1
+  when: connector.changed or dependencies.changed 
   async: 45
   poll: 5
   register: stop_domain
@@ -127,13 +130,14 @@
   sudo: true
   sudo_user: liferayadmin
   shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
+  when: stop_domain.changed
   register: domain_status
 
 - name: start-domain
   command:
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin start-domain liferay
     chdir=/opt/glassfish/glassfish3/bin/
-  #when: domain_status.stdout.find('liferay not running') == 0
+  when: stop_domain.changed
   async: 600
   poll: 5
   register: start_domain
