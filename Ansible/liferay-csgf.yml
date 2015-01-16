@@ -43,14 +43,8 @@
 
   roles:
     - liferay-csgf
-  post_tasks:
-    - name: Announce via Slack
-      action:
-        module: slack
-        domain: africa-arabia-roc.slack.com
-        token: "{{ slack_token }}"
-        msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/"
-        channel: "#devopssite"
-        username: "Ansible on {{ inventory_hostname }}"
-        link_names: 1
-        parse: 'full'
+
+  post-task:
+    - name: Inform the user to complete liferay setup
+      debug: msg="after the playbook completes, you have to access the liferay web page and confirm the configuration. Then you have to manually restart the liferay domain in order to complete the installation"
+      

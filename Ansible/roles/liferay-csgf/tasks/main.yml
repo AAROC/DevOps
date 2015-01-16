@@ -4,3 +4,4 @@
 #- include: repos.yml
 #- include: apache.yml
 - include: domain.yml
+- include: shibAuth.yml
