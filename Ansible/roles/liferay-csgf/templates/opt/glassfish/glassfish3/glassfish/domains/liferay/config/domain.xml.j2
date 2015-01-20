@@ -64,6 +64,45 @@
       <property name="url" value="jdbc:mysql://{{ hostvars[ansible_fqdn]['db-server']}}:3306/lportal"></property>
       <property name="password" value="liferayadmindbpass"></property>
     </jdbc-connection-pool>
+    <!---- from grid engine --->
+
+    <jdbc-connection-pool driver-classname="" max-pool-size="256" datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource" res-type="javax.sql.ConnectionPoolDataSource" steady-pool-size="64" description="" name="UserTrackingPool">
+      <property name="Password" value="usertracking"></property>
+      <property name="User" value="tracking_user"></property>
+      <property name="Url" value="jdbc:mysql://{{ hostvars[ansible_fqdn]['db-server']}}:3306/userstracking"></property>
+</jdbc-connection-pool>
+<jdbc-connection-pool driver-classname="" datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" res-type="javax.sql.DataSource" description="" name="GEHibernateConnPool">
+      <property name="Url" value="jdbc:mysql://{{ hostvars[ansible_fqdn]['db-server']}}:3306/userstracking"></property>
+      <property name="Password" value="usertracking"></property>
+      <property name="User" value="tracking_user"></property>
+</jdbc-connection-pool>
+<jdbc-resource pool-name="UserTrackingPool" description="" jndi-name="jdbc/UserTrackingPool"></jdbc-resource>
+<jdbc-resource pool-name="GEHibernateConnPool" description="" jndi-name="jdbc/gehibernatepool"></jdbc-resource>
+<custom-resource res-type="it.infn.ct.ThreadPool.ThreadPoolExecutor" description="" jndi-name="GridEngine-Pool" factory-class="it.infn.ct.ThreadPool.ThreadPoolExecutorFactory">
+      <property name="prestartAllCoreThreads" value="true"></property>
+      <property name="allowCoreThreadTimeOut" value="true"></property>
+      <property name="timeUnit" value="MINUTES"></property>
+      <property name="keepAliveTime" value="4"></property>
+      <property name="maximumPoolSize" value="100"></property>
+      <property name="corePoolSize" value="50"></property>
+</custom-resource>
+<custom-resource res-type="it.infn.ct.ThreadPool.CheckJobStatusThreadPoolExecutor" description="" jndi-name="GridEngine-CheckStatusPool" factory-class="it.infn.ct.ThreadPool.CheckJobStatusThreadPoolExecutorFactory">
+      <property name="timeUnit" value="MINUTES"></property>
+      <property name="allowCoreThreadTimeOut" value="true"></property>
+      <property name="prestartAllCoreThreads" value="true"></property>
+      <property name="corePoolSize" value="50"></property>
+      <property name="maximumPoolSize" value="100"></property>
+      <property name="keepAliveTime" value="4"></property>
+</custom-resource>
+<custom-resource res-type="it.infn.ct.GridEngine.JobService.JobCheckStatusService" description="" jndi-name="JobCheckStatusService" factory-class="it.infn.ct.GridEngine.JobService.JobCheckStatusServiceFactory">
+      <property name="jobsupdatinginterval" value="900"></property>
+</custom-resource>
+<custom-resource res-type="it.infn.ct.GridEngine.JobService.JobServicesDispatcher" jndi-name="JobServices-Dispatcher" factory-class="it.infn.ct.GridEngine.JobService.JobServicesDispatcherFactory">
+      <property name="retrycount" value="3"></property>
+      <property name="resubnumber" value="10"></property>
+</custom-resource>
+<!---- from grid engine --->
+
   </resources>
   <servers>
     <server name="server" config-ref="server-config">
