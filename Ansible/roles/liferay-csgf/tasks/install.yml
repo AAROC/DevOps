@@ -6,7 +6,4 @@
   get_url: url=sourceforge.net/p/ctsciencegtwys/liferay/HEAD/tree/trunk/core/GridEngine/lib/jsaga-job-management-1.5.9.jar?format=raw dest=/opt/GridEngine/jsaga-job-management-1.5.9.jar creates=/opt/GridEngine/jsaga-job-management-1.5.9.jar owner=liferayadmin group=liferayadmin
 
 - name: unpack the dependencies
-  command: tar xvfz /tmp/GridEngine_dependencies.tar.gz --strip-components=1
-    args:
-      chdir: /opt/GridEngine
-      creates: /opt/GridEngine/jsaga-adaptor-linux-1.1.0.jar
+  command: tar xvfz /tmp/GridEngine_dependencies.tar.gz --strip-components=1 chdir=/opt/GridEngine creates=/opt/GridEngine/jsaga-adaptor-linux-1.1.0.jar
