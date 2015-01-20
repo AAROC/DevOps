@@ -109,6 +109,14 @@
       <resource-ref ref="jdbc/__TimerPool" />
       <resource-ref ref="jdbc/__default" />
       <resource-ref ref="jdbc/liferay" />
+      <!--- for gridengine --->
+    <resource-ref ref="jdbc/UserTrackingPool"></resource-ref>
+<resource-ref ref="jdbc/gehibernatepool"></resource-ref>
+<resource-ref ref="GridEngine-Pool"></resource-ref>
+<resource-ref ref="GridEngine-CheckStatusPool"></resource-ref>
+<resource-ref ref="JobCheckStatusService"></resource-ref>
+<resource-ref ref="JobServices-Dispatcher"></resource-ref>
+<!---- for gridengine --->
     </server>
   </servers>
   <nodes>
