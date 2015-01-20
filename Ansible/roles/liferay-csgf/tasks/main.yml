@@ -5,4 +5,5 @@
 - include: install.yml
 - include: apache.yml
 - include: domain.yml
+- include: shibSP.yml
 - include: shibAuth.yml
