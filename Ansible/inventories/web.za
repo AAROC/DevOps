@@ -1,0 +1,16 @@
+[science-gateways]
+science-gateway.sagrid.ac.za
+
+[ldap-servers]
+ldap.sagrid.ac.za needs_certificate=false
+
+[shibboleth-idps]
+idp.sagrid.ac.za needs_certificate=false
+
+[identity-all:children]
+ldap-servers
+shibboleth-idps
+
+[CentOS-servers:children]
+identity-all
+############################ END #########################
