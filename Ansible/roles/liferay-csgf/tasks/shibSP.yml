@@ -11,10 +11,10 @@
 - name: Announce that there is a new SP
   action:
     module: slack
-      domain: africa-arabia-roc.slack.com
-      token: "{{ slack_token }}"
-      msg: "ShibSP on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/. Federated Authentication has been enabled. Please send the metadata URL to the Federation manager @fmarco76"
-      channel: "#webops"
-      username: "Ansible on {{ ansible_fqdn }}"
-      link_names: 1
-      parse: 'full'
+    domain: africa-arabia-roc.slack.com
+    token: "{{ slack_token }}"
+    msg: "ShibSP on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/. Federated Authentication has been enabled. Please send the metadata URL to the Federation manager @fmarco76"
+    channel: "#webops"
+    username: "Ansible on {{ ansible_fqdn }}"
+    link_names: 1
+    parse: 'full'
