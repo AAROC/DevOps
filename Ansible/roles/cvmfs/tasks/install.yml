@@ -12,26 +12,23 @@
   yum: name={{ item }} state=present disable_gpg_check=yes
   with_items:
     - cvmfs-release
-    - cvmfs-keys 
-    - cvmfs 
+    - cvmfs-keys
+    - cvmfs
     - cvmfs-init-scripts
     - cvmfs-auto-setup
   tags:
     - cvmfs
     - install
-      
+
 - name: copy over the local config files
   sudo: true
   copy: src=etc/cvmfs/default.local dest=/etc/cvmfs/default.local
-  tags: 
+  tags:
     - cvmfs
     - config
-    
+
 - name: ensure that autofs is running
   sudo: true
   service: name=autofs state=started
   tags:
     - cvmfs
-
-   
-  
