@@ -24,6 +24,9 @@
   register: domain_status
   changed_when: false
 
+# when there is a corrupt domain config, this fails, but the subsequent logic fails
+# domain status is also not done anywhere
+
 ################################################################################
 # Create the Liferay domain
 ################################################################################
@@ -38,8 +41,8 @@
   shell:
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin create-domain liferay
     chdir=/opt/glassfish/glassfish3/bin/
-  register: domain_start
-  when: domain_status.stdout.find('liferay') == -1
+  register: domain_create
+  when: domain_status.stdout.find('liferay running') == -1
 
 # We need the domain customised, so that it connects to the mysql server and has
 # the correct connectors, etc.
@@ -76,7 +79,7 @@
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin  enable-secure-admin
     chdir=/opt/glassfish/glassfish3/bin/
   register: secure_admin_status
-  notify: 
+  notify:
     - stop-domain
     - start-domain
 ###############################################################################
@@ -121,7 +124,7 @@
 # First, we stop the domain, then start it (checking that it has actually stopped)
 - name: stop-domain
   command: /opt/glassfish/glassfish3/glassfish/bin/asadmin stop-domain liferay
-  when: connector.changed or dependencies.changed 
+  when: connector.changed or dependencies.changed
   async: 45
   poll: 5
   register: stop_domain
@@ -149,7 +152,7 @@
 ################################################################################
 - name: Check liferay application is installed
   command:
-    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile  -u liferayadmin list-applications 
+    ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile  -u liferayadmin list-applications
     chdir=/opt/glassfish/glassfish3/glassfish/bin
   register: domain_applications
   changed_when: "False"

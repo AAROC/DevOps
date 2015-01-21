@@ -7,3 +7,4 @@
 - include: domain.yml
 - include: shibSP.yml
 - include: shibAuth.yml
+- include: portlets.yml

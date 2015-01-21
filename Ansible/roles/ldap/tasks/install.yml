@@ -5,7 +5,7 @@
 #    - LDAP
 #    - install
 - name: what are we installing?
-  debug: msg=ldap_pkgs
+  debug: msg="{{ldap_pkgs}} will be installed in {{ ldap_config_path }}"
 
 - name: Install the openldap and required Packages for RedHat
   yum: name={{ item }} state=installed
