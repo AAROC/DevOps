@@ -1,9 +1,9 @@
 ---
-# - name: Add Liferay user
-#   sudo: true
-#   user: name=liferayadmin group=liferayadmin state=present
-#   tags:
-#     - prep
+- name: Add Liferay user
+  sudo: true
+  user: name=liferayadmin group=liferayadmin state=present
+  tags:
+    - prep
 
 - name: disable selinux
   sudo: true
@@ -34,15 +34,21 @@
     - prep
 
 - name: Ensure that VOMS directories are present
+  sudo: true
+  sudo_user: root
   file: name=/etc/grid-security/vomsdir state=directory owner=root group=root
   tags:
     - prep
 
 - name: Ensure that liferayadmin can joboutput to /tmp
   file: name=/tmp/jobOutput state=directory owner=liferayadmin group=liferayadmin
+  sudo: true
+  sudo_user: root
   tags:
     - prep
 - name: Ensure that GridEngine directory is writeabl
   file: name=/opt/GridEngine state=directory owner=liferayadmin group=liferayadmin
+  sudo: true
+  sudo_user: root
   tags:
     - prep
