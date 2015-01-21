@@ -1,9 +1,9 @@
 [ldap-servers]
-vm01.ct.infn.it ansible_ssh_port=4422
+#vm01.ct.infn.it ansible_ssh_port=4422
 vm03.ct.infn.it ansible_ssh_port=4422
 
 [shibboleth-idps]
-vm02.ct.infn.it ansible_ssh_port=4422
+#vm02.ct.infn.it ansible_ssh_port=4422
 vm04.ct.infn.it ansible_ssh_port=4422
 
 # We need to include the mapping between science gateways and db servers
@@ -21,8 +21,14 @@ vm03.ct.infn.it
 vm04.ct.infn.it
 
 [Debian-servers]
-vm01.ct.infn.it
-vm02.ct.infn.it
+#vm01.ct.infn.it
+#vm02.ct.infn.it
+
+[identity.dev:children]
+ldap-servers
+shibboleth-idps
+db-servers
+science-gateways
 
 [identity-all:children]
 ldap-servers
