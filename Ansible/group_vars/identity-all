@@ -1,8 +1,9 @@
 ---
-server_country: IT
+server_country: ZA
 server_state:
-server_location: Catania
-server_organization: INFN
-server_organization_unit: CT
-
+server_location: Bloemfontein
+server_organization: CSIR
+server_organization_unit: SAGrid
+organisation: SAGrid
+ldap_server: ldap.sagrid.ac.za
 sgw_admin: brucellino@gmail.com
