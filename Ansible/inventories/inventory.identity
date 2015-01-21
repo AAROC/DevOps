@@ -8,4 +8,6 @@ idp.sagrid.ac.za needs_certificate=false
 ldap-servers
 shibboleth-idps
 
+[CentOS-servers:children]
+identity-all
 ############################ END #########################
