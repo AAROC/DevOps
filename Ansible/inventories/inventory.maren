@@ -3,22 +3,21 @@
 41.70.24.6
 
 [db-servers]
-
-[ldap-server]
 41.70.24.6
 
-[shibboleth-idp]
+[ldap-servers]
+41.70.24.6
+
+[shibboleth-idps]
 41.70.24.6
 
 [CentOS-servers:children]
-ldap-server
-shibboleth-idp
+ldap-servers
+shibboleth-idps
 science-gateways
 
 [Debian-servers]
 
 [identity-maren:children]
-ldap-server
-shibboleth-idp
-
-
+ldap-servers
+shibboleth-idps
