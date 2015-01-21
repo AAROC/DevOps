@@ -1,11 +1,17 @@
 ---
 - name: Copy the Federation Public Key
-  file: src=etc/shibboleth/federation.pem dest=/etc/shibboleth/federation.pem mode=644 owner=root group=root
+  sudo: true
+  sudo_user: root
+  copy: src=etc/shibboleth/federation.pem dest=/etc/shibboleth/federation.pem mode=644 owner=root group=root
 
 - name: Enable Shibboleth LDAP attribute maps
+  sudo: true
+  sudo_user: root
   template: src=etc/shibboleth/attribute-map.xml.j2 dest=/etc/shibboleth/attribute-map.xml mode=644 owner=root group=root
 
 - name: Enable service discovery
+  sudo: true
+  sudo_user: root
   template: src=etc/shibboleth/shibboleth2.xml.j2 dest=/etc/shibboleth/shibboleth2.xml mode=644 owner=root group=root
 
 - name: Announce that there is a new SP
@@ -13,7 +19,7 @@
     module: slack
     domain: africa-arabia-roc.slack.com
     token: "{{ slack_token }}"
-    msg: "ShibSP on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/. Federated Authentication has been enabled. Please send the metadata URL to the Federation manager @fmarco76"
+    msg: "ShibSP on {{ inventory_hostname }} at {{ site_name }} has finished :smile: o/  Federated Authentication has been enabled. Please send the metadata URL to the Federation manager @fmarco76"
     channel: "#webops"
     username: "Ansible on {{ ansible_fqdn }}"
     link_names: 1
