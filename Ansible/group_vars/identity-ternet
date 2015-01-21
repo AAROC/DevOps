@@ -6,3 +6,5 @@ server_organization: TERNET
 server_organization_unit: DIT
 ldap_server: ldap.ternet.or.tz
 root_password_clear: Qw3rty4T3r
+site_name: DIT
+sgw_admin: damas@ternet.or.tz
