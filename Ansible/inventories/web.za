@@ -1,5 +1,8 @@
+[db-servers]
+db.sagrid.ac.za
+
 [science-gateways]
-science-gateway.sagrid.ac.za
+science-gateway.sagrid.ac.za db-server=db.sagrid.ac.za
 
 [ldap-servers]
 ldap.sagrid.ac.za needs_certificate=false

@@ -1,0 +1,36 @@
+---
+- hosts: all
+  user: root
+  sudo: true
+  sudo_user: root
+  tasks:
+  - name: Send slack message
+    action:
+      module: slack
+      domain: africa-arabia-roc.slack.com
+      token: 6EJfIMngdMiwrmnScAA4znB5
+      msg: "Starting bootstrap on {{ inventory_hostname }}"
+      channel: "#devops-bootstrap"
+      username: "Ansible on {{ inventory_hostname }}"
+      #icon_url: "http://www.example.com/some-image-file.png"
+      link_names: 1
+      parse: 'full'
+
+- name: bootstrap the machines
+  hosts: all
+  user: root
+  sudo: true
+  roles:
+    - bootstrap
+  post_tasks:
+    - name: Send notification message via Slack
+      action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        token: 6EJfIMngdMiwrmnScAA4znB5
+        msg: "bootstrap on {{ inventory_hostname }} has run"
+        channel: "#devops-bootstrap"
+        username: "Ansible on {{ inventory_hostname }}"
+        #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 1
+        parse: 'full'
