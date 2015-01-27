@@ -20,3 +20,11 @@
   pre_tasks:
     - name: debug output
       debug: msg="Needs certificate ? {{ needs_certificate }}"
+  post_tasks:
+    - name: check that the services are running
+      sudo: true
+      service: name={{ item }} state=started
+      with_items:
+        - argus-pepd
+        - argus-pap
+        - argus-pdp
