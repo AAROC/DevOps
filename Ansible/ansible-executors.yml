@@ -36,8 +36,8 @@
     - name: Test Ansible
       command: /opt/ansible/hacking/env-setup
       args:
-        - executable: /bin/bash
-        - chdir: /opt/ansible/hacking
+        executable: /bin/bash
+        chdir: /opt/ansible/hacking
       register: setup
     - name: Tell the user
       debug: msg=setup.stdout.lines
