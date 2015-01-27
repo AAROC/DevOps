@@ -3,13 +3,13 @@ yaim_path: /opt/glite/yaim
 bdii_port: 2170
 vo_sw_dir: /opt/exp_soft
 cvmfs_repos:
-  - sagrid.
-  - atlas
+  - apprepo.sagrid.ac.za
+  - atlashttps://www.youtube.com/watch?v=07Hwz-ZTRxYhttps://www.youtube.com/watch?v=07Hwz-ZTRxYhttps://www.youtube.com/watch?v=07Hwz-ZTRxYhttps://www.youtube.com/watch?v=07Hwz-ZTRxYhttps://www.youtube.com/watch?v=07Hwz-ZTRxY
 vos:
   - dteam
   - ops
   - sagrid.ac.za
-#  - eumed
+  - eumed
 #  - africacert
 queues:
   - dteam
