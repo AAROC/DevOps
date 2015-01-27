@@ -34,6 +34,10 @@
         link_names: 1
         parse: 'full'
     - name: Test Ansible
-      command: env-setup executable=/bin/bash chdir=/opt/ansible/hacking register=setup
+      command: env-setup
+      args:
+        - executable: /bin/bash
+        - chdir: /opt/ansible/hacking
+        - register: setup
     - name: Tell the user
       debug: msg=setup.stdout.lines
