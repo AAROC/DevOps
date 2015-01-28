@@ -20,7 +20,6 @@
 # user interfaces
 [UIs]
 ui-dev.c4.csir.co.za
-ui-stage.sagrid.ac.za
 
 ##############
 # core services #

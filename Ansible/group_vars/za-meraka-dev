@@ -9,7 +9,7 @@ queues:
   - shared
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
 # use the site name as registered in GOCDB (use the same case)
-site_name: za-meraka-dev
+site_name: ZA-MERAKA-DEV
 # contact details
 site_email: sagrid@csir.co.za
 site_security_email: csirt@sanren.ac.za
