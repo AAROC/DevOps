@@ -1,12 +1,12 @@
 ---
-- name: download the CVMFS repo 
+- name: download the CVMFS repo
   sudo: True
   sudo_user: root
   get_url: url=http://cvmrepo.web.cern.ch/cvmrepo/yum/cernvm.repo dest=/etc/yum.repos.d/cernvm.repo mode=0644
   tags:
     - cvmfs
     - repos
-- name: Install CMFS client
+- name: Install CVMFS client
   sudo: true
   sudo_user: root
   yum: name={{ item }} state=present disable_gpg_check=yes
@@ -22,13 +22,25 @@
 
 - name: copy over the local config files
   sudo: true
-  copy: src=etc/cvmfs/default.local dest=/etc/cvmfs/default.local
+  copy: src=etc/cvmfs/{{ item }} dest=/etc/cvmfs/{{ item }}
+  with_items:
+    - default.local
+    - keys/apprepo.sagrid.ac.za.pub
+    - config.d/apprepo.sagrid.ac.za.conf
   tags:
     - cvmfs
     - config
+
 
 - name: ensure that autofs is running
   sudo: true
   service: name=autofs state=started
   tags:
     - cvmfs
+
+- name: check that the repo is mounted
+  stat: path=/cvmfs/apprepo.sagrid.ac.za
+  register: p
+
+- debug: msg="Path exists and is a directory"
+  when: p.stat.isdir is defined and p.stat.isdir
