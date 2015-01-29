@@ -15,5 +15,8 @@
     state: present
     key_options: 'from="perun.c4.csir.co.za",command="/opt/perun/bin/perun"'
 
+- name: Configure Kerberos
+  copy: src=etc/krb.conf dest=/etc/krb.conf owner=root group=root mode=644
+
 - name: Tell Sysadmin to get in touch with Perun admin
   debug: msg="You need to run remctl perun.c4.csir.co.za perun propagate, but AFTER the facility has been registered in SAGrid's Perun instance."
