@@ -20,8 +20,9 @@
     -->
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
-    <ApplicationDefaults entityID="https://{{ hostvars[ansible_fqdn]['science-gateways']}}/shibboleth"
-                         REMOTE_USER="eppn persistent-id targeted-id">
+    <ApplicationDefaults entityID="https://{{ ansible_fqdn }}/shibboleth"
+                         REMOTE_USER="eppn persistent-id targeted-id"
+                         attributePrefix="AJP_">
 
         <!--
         Controls session lifetimes, address checks, cookie handling, and the protocol handlers.
@@ -70,11 +71,17 @@
             styleSheet="/shibboleth-sp/main.css"/>
 
         <!-- Example of remotely supplied batch of signed metadata. -->
-
         <MetadataProvider type="XML" uri="https://gridp.garr.it/metadata/gridp.xml"
               backingFilePath="federation-metadata.xml" reloadInterval="7200">
-            <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
+          <MetadataFilter type="Signature" verifyName="false">
+          <MetadataFilter type="RequireValidUntil" maxValidityInterval="2419200"/>
             <MetadataFilter type="Signature" certificate="federation.pem"/>
+            <CredentialResolver type="Chaining">
+              <CredentialResolver type="File" certificate="/etc/security/certs/gridp.pem"/>
+              <CredentialResolver type="File" certificate="/etc/security/certs/IDPSOCIAL.pem"/>
+              <CredentialResolver type="File" certificate="/etc/security/certs/INFNIDP.pem"/>
+            </CredentialResolver>
+          </MetadataFilter>
         </MetadataProvider>
 
 
