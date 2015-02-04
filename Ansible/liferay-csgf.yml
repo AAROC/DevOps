@@ -29,18 +29,15 @@
       when: ansible_os_family == 'Debian'
       sudo: yes
       sudo_user: root
-
     - name: Install EPEL repo
       yum: name='http://mirror.ufs.ac.za/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm' state=present
       sudo: yes
       sudo_user: root
-
     - name: Ensure that system is up to date (EL)
       yum: name=* state=latest
       when: ansible_os_family == 'RedHat'
       sudo: yes
       sudo_user: root
-
   roles:
     - liferay-csgf
   post_tasks:
@@ -51,7 +48,7 @@
         module: slack
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
-        msg: "Science Gateway playook has been run on {{ ansible_fqdn }} at {{ site_name }} ; please check that the "
+        msg: "Science Gateway playook has been run on {{ ansible_fqdn }} at {{ site_name }} ; please check that the web interface https://{{ ansible_fqdn }} and perform post-configuration (please see https://github.com/AAROC/DevOps/wiki/liferay-csgf-playbook)"
         channel: "#webops"
         username: "Ansible on {{ ansible_fqdn }}"
         link_names: 1
