@@ -1,6 +1,7 @@
 ---
 - name: Add Liferay user
   sudo: true
+  sudo_user: root
   user: name=liferayadmin group=liferayadmin state=present
   tags:
     - prep
