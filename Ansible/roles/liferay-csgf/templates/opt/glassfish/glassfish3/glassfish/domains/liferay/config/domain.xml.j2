@@ -61,16 +61,19 @@
     </jdbc-connection-pool>
     <jdbc-connection-pool datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource" res-type="javax.sql.ConnectionPoolDataSource" name="LiferayPool">
       <property name="user" value="liferayadmin"></property>
+      <!-- This does not work
       <property name="url" value="jdbc:mysql://{{ hostvars[ansible_fqdn]['db-server']}}:3306/lportal"></property>
+    -->
+      <property name="url" value="jdbc:mysql://{{ hostvars[groups['db-servers'][0]]['ansible_fqdn'] }}:3306/lportal"></property>
       <property name="password" value="liferayadmindbpass"></property>
     </jdbc-connection-pool>
     <jdbc-connection-pool driver-classname="" max-pool-size="256" datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource" res-type="javax.sql.ConnectionPoolDataSource" steady-pool-size="64" description="" name="UserTrackingPool">
       <property name="Password" value="usertracking"></property>
       <property name="User" value="tracking_user"></property>
-      <property name="Url" value="jdbc:mysql://{{ hostvars[ansible_fqdn]['db-server']}}:3306/userstracking"></property>
+      <property name="Url" value="jdbc:mysql://{{  hostvars[groups['db-servers'][0]]['ansible_fqdn'] }}:3306/userstracking"></property>
 </jdbc-connection-pool>
 <jdbc-connection-pool driver-classname="" datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" res-type="javax.sql.DataSource" description="" name="GEHibernateConnPool">
-      <property name="Url" value="jdbc:mysql://{{ hostvars[ansible_fqdn]['db-server']}}:3306/userstracking"></property>
+      <property name="Url" value="jdbc:mysql://{{ hostvars[groups['db-servers'][0]]['ansible_fqdn'] }}:3306/userstracking"></property>
       <property name="Password" value="usertracking"></property>
       <property name="User" value="tracking_user"></property>
 </jdbc-connection-pool>
