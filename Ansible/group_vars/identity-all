@@ -7,3 +7,4 @@ server_organization_unit: SAGrid
 organisation: SAGrid
 ldap_server: ldap.sagrid.ac.za
 sgw_admin: brucellino@gmail.com
+mail_contact: bbecker@csir.co.za
