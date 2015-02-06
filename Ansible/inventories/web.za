@@ -2,7 +2,7 @@
 db.sagrid.ac.za
 
 [science-gateways]
-science-gateway.sagrid.ac.za db-server=db.sagrid.ac.za
+science-gateway.sagrid.ac.za db-server=db.sagrid.ac.za min_jvm_size=1024m
 
 [ldap-servers]
 ldap.sagrid.ac.za needs_certificate=false
