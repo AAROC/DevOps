@@ -2,7 +2,7 @@
 ldap.sagrid.ac.za needs_certificate=false
 
 [shibboleth-idps]
-idp.sagrid.ac.za needs_certificate=false
+idp.sagrid.ac.za needs_certificate=false min_jvm_size=1024m
 
 [identity-all:children]
 ldap-servers
