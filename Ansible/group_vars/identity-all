@@ -20,3 +20,4 @@ idp:
   - admin_user: Bruce Becker
   - admin_email: bbecker@csir.co.za
 metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}
+mail_server: smtp.google.com
