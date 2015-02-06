@@ -20,7 +20,7 @@ idp_package_endorsed_jars:
   - xml-resolver-1.2.jar
 shibboleth_port: 8080
 shibboleth_secure_port: 8443
-# this should be 
+# this should be
 idp_base_dn: "ou=People,dc=local"
 idp_principal: "cn=useradmin,dc=local"
 idp_principal_credential: choose_a_good_pass
@@ -39,18 +39,14 @@ federations:
     backing_file: TestCatchAllFederation
 
 other_service_providers: []
-#  - science_gateway_1: 
+#  - science_gateway_1:
 #    provider: url.of.service.provider
 #    metadata_URL: https://url.of.service.provider/Shibboleth.sso/Metadata
 #    backing_file: url.of.service.provider.xml
- 
+
  # security and certs - just the file name without the path
- 
+
 idp_private_key_file: "idp.key"
 idp_cert_file: "idp.crt"
  # this can be set to either something under /etc/grid-security/certificates (for EUGridPMA-issued certs) or something in /etc/pki/CA/certs
 ca_cert_file: "/etc/grid-security/INFN-CA-2006.pem"
-    
-
-
-
