@@ -1,4 +1,10 @@
 ---
+# institute metadata
+host_institute:
+  - name: Africa-Arabia Regional Operations Centre
+  - url: http://aaroc.github.io
+
+# LDAP variables
 server_country: ZA
 server_state:
 server_location: Bloemfontein
@@ -8,3 +14,9 @@ organisation: SAGrid
 ldap_server: ldap.sagrid.ac.za
 sgw_admin: brucellino@gmail.com
 mail_contact: bbecker@csir.co.za
+# IDP variables
+idp:
+  - name: Catch-All Identity Provider
+  - admin_user: Bruce Becker
+  - admin_email: bbecker@csir.co.za
+metadata_url: https://{{ hostvars['idp-server']['ansible_fqdn']}}
