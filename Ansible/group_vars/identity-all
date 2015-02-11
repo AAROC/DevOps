@@ -1,8 +1,9 @@
 ---
 # institute metadata
+site_name: Catch-All
 host_institute:
-  - name: Africa-Arabia Regional Operations Centre
-  - url: http://aaroc.github.io
+  name: Africa-Arabia Regional Operations Centre
+  url: http://aaroc.github.io
 
 # LDAP variables
 server_country: ZA
@@ -10,14 +11,17 @@ server_state:
 server_location: Bloemfontein
 server_organization: CSIR
 server_organization_unit: SAGrid
-organisation: SAGrid
+organisation:
+  name: SAGrid
+  logo: csir_meraka.jpg
 ldap_server: ldap.sagrid.ac.za
 sgw_admin: brucellino@gmail.com
 mail_contact: bbecker@csir.co.za
-# IDP variables
+# IDP variables. these are specifically related to the IdPOpen Web front end.
 idp:
-  - name: Catch-All Identity Provider
-  - admin_user: Bruce Becker
-  - admin_email: bbecker@csir.co.za
-metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}
-mail_server: smtp.google.com
+  name: Catch-All Identity Provider
+  admin_user: Bruce Becker
+  admin_email: bbecker@csir.co.za
+  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}
+  mail_server: smtp.google.com
+  header_logo: Logo.jpg

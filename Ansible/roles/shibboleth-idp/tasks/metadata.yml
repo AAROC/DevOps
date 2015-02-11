@@ -1,0 +1,63 @@
+---
+# This puts the file in the executing machine on /tmp/ansible-fetched/{{ ansible_fqdn }}/full/remote/path
+# IE /tmp/ansible-fetched
+#- name: Fetch the metadata
+#  fetch: src={{ shibboleth_install_path }}/metadata/idp-metadata.xml dest=/tmp/ansible-fetched/
+
+# Now, include the relevant organisation metadata
+- name: debugging
+  debug: msg="{{ organisation.name }}"
+
+# the last line in the metadata file which is generated is </EntityDescriptor>
+# We therefore add each line in sequence using insertbefore this last line.
+# This logic holds in the case of the "vanilla" metadata, however is not explicitly idempotent
+# Note : beware ! and check the resulting file
+
+- name: Open Organization stanza to metadata
+  lineinfile:
+    dest: "{{ shibboleth_install_path }}/metadata/idp-metadata.xml"
+    insertbefore: "</EntityDescriptor>"
+    regexp: "^<Organization>"
+    line: "<Organization>"
+    state: present
+
+# The following  could probably done with a nested loop.
+- name: add the Organisation name to the metadata
+  lineinfile:
+    dest: "{{ shibboleth_install_path }}/metadata/idp-metadata.xml"
+    insertbefore: "</EntityDescriptor>"
+    regexp: "^<OrganisationName>"
+    line: "<OrganizationName xml:lang=\"en\">{{ host_institute.name }}</OrganizationName>"
+    state: present
+
+- name: Add the IdP Display name
+  lineinfile:
+    dest: "{{ shibboleth_install_path }}/metadata/idp-metadata.xml"
+    insertbefore: "</EntityDescriptor>"
+    regexp: "^<OrganizationDisplayName>"
+    line: "<OrganizationDisplayName xml:lang=\"en\">{{ idp.name }}</OrganizationDisplayName>"
+    state: present
+
+- name: Add Organisation URL
+  lineinfile:
+    regexp: "^<OrganizationURL>"
+    dest: "{{ shibboleth_install_path }}/metadata/idp-metadata.xml"
+    insertbefore: "</EntityDescriptor>"
+    line: "<OrganizationURL xml:lang=\"en\">{{ host_institute.url }}</OrganizationURL>"
+    state: present
+
+- name: Close Organization Stanza
+  lineinfile:
+    dest: "{{ shibboleth_install_path }}/metadata/idp-metadata.xml"
+    insertbefore: "</EntityDescriptor>"
+    regexp: "^</Organization>"
+    line: "</Organization>"
+    state: present
+
+- name: Insert Contact Person Stanza
+  lineinfile:
+    dest: "{{ shibboleth_install_path }}/metadata/idp-metadata.xml"
+    insertbefore: "</EntityDescriptor>"
+    regexp: "^<ContactPerson contactType=\"technical\">"
+    line: "<ContactPerson contactType=\"technical\"><GivenName>System</GivenName><SurName>Support</SurName><EmailAddress>mailto:{{ idp.admin_email }}</EmailAddress></ContactPerson>"
+    state: present
