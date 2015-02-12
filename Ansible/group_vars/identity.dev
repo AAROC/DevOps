@@ -29,6 +29,6 @@ idp:
   name: Catch-All Identity Provider Dev Instance
   admin_user: Administrator
   admin_email: test@test.com
-  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/metadata
+  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth
   mail_server: smtp.google.com
   header_logo: Logo.jpg

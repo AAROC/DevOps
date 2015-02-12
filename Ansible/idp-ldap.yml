@@ -14,3 +14,14 @@
   - fmarco76.tomcat
   - shibboleth-idp
   - fmarco76.IDPPublic
+  post_tasks:
+    - name: Announce new IdP to the federation manager
+      action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "A new Shib-IdP has been deployed. Metadata is at {{ idp.metadata_url }}. Ask @fmarco76 to check it and add it to the test federation."
+        channel: "#webops"
+        username: "Ansible on {{ ansible_fqdn }}"
+        link_names: 1
+        parse: 'full'
