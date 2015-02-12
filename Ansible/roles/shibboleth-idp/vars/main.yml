@@ -50,3 +50,17 @@ idp_private_key_file: "idp.key"
 idp_cert_file: "idp.crt"
  # this can be set to either something under /etc/grid-security/certificates (for EUGridPMA-issued certs) or something in /etc/pki/CA/certs
 ca_cert_file: "/etc/grid-security/INFN-CA-2006.pem"
+
+# These are the sections that have to be added to the metadata once the IdP has been created.
+# There are two stanzas, one for Organisation, one for contact people.
+# They are kept in a flat dictionary because we have to a single lineinfile for each of them.
+metadata_lines: ["</ContactPerson>",
+                 "<EmailAddress>mailto:{{ idp.admin_email }}</EmailAddress>",
+                 "<SurName>Support</SurName>",
+                 "<GivenName>System</GivenName>",
+                 "<ContactPerson contactType=\"technical\">",
+                 "</Organization>",
+                 "<OrganizationURL xml:lang=\"en\">{{ host_institute.url }}</OrganizationURL>",
+                 "<OrganizationDisplayName xml:lang=\"en\">{{ idp.name }}</OrganizationDisplayName>",
+                 "<OrganizationName xml:lang=\"en\">{{ host_institute.name }}</OrganizationName>",
+                 "<Organization>"]
