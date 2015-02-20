@@ -39,11 +39,13 @@
       sudo: yes
       sudo_user: root
   roles:
+    - certificates
     - liferay-csgf
   post_tasks:
     - name: Inform the user to complete liferay setup
       debug: msg="after the playbook completes, you have to access the liferay web page and confirm the configuration. Then you have to manually restart the liferay domain in order to complete the installation. Please see https://github.com/AAROC/DevOps/wiki/liferay-csgf-playbook"
     - name: Announce via Slack
+      sudo: false
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
