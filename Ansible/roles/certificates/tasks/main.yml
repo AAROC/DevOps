@@ -47,6 +47,7 @@
   tags:
     - certificates
 
-- name: Add SAGrid VO certs
+- name: Add SAGrid VO certs and LSC files
   sudo: true
-  copy: src=etc/grid-security/vomsdir dest=/etc/grid-security/vomsdir owner=root group=root mode=0644
+  sudo_user: root
+  copy: src=etc/grid-security/vomsdir dest=/etc/grid-security/ owner=root group=root directory_mode
