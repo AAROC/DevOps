@@ -6,5 +6,5 @@
     line: "{{ item }}"
     insertafter: "</AttributeAuthorityDescriptor>"
     state: present
-  with_items: "{{ metadata_lines }}"
+  with_items: metadata_lines
   tags: metadata
