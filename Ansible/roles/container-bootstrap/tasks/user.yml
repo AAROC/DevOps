@@ -1,0 +1,19 @@
+- name: create ansible user (RedHat)
+  user:
+    name: ansible
+    comment: "ansible user created by bootstrap playbook"
+    generate_ssh_key: yes
+    groups: wheel
+  tags:
+    - bootstrap
+  when: ansible_os_family=="RedHat"
+
+- name: create ansible user (Debian)
+  user:
+    name: ansible
+    comment: "ansible user created by bootstrap playbook"
+    generate_ssh_key: yes
+    groups: sudo
+  tags:
+    - bootstrap
+  when: ansible_os_family=="Debian"
