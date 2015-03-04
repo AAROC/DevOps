@@ -20,3 +20,4 @@ ENV ANSIBLE_LIBRARY /opt/ansible/ansible/library
 WORKDIR /root
 RUN git clone https://github.com/AAROC/DevOps
 WORKDIR DevOps/Ansible
+RUN ansible-playbook -c local -i /etc/ansible/hosts docker-ui.yml
