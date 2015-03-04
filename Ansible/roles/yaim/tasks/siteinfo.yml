@@ -3,7 +3,7 @@
 
 - name: Create users.conf file
   template: src=opt/glite/yaim/etc/siteinfo/users.conf.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/users.conf owner=root group=root mode=0644
-  tags: 
+  tags:
     - yaim
     - yaimfiles
   notify:
@@ -13,7 +13,7 @@
   template: src=opt/glite/yaim/etc/siteinfo//groups.conf.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/groups.conf owner=root group=root mode=0644
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
     - yaimfiles
 
@@ -25,7 +25,7 @@
   when: emi_service == "CREAM_CE"  or emi_service == "WN"
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
     - yaimfiles
     - CE
@@ -36,27 +36,27 @@
   when: emi_service == 'WMS'
   notify:
     - run yaim
-  tags: 
-    - yaim 
+  tags:
+    - yaim
     - yaimfiles
-    - WMS 
+    - WMS
 
 - name: Copy services files needed for cream service
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-creamce.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-creamce owner=root group=root mode=0644
   when: emi_service == 'CREAM_CE'
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
     - yaimfiles
-    - CE    
+    - CE
 
 - name: Copy mpi files needed for cream mpi service
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-mpi.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/glite-mpi owner=root group=root mode=0644
   when: emi_service == 'CREAM_CE' or emi_service == 'WN'
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
     - yaimfiles
     - CE
@@ -66,17 +66,17 @@
   when: emi_service == 'WN'
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
     - yaimfiles
     - WN
 
 - name: Copy mpi_ce files needed for cream mpi service
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-mpi_ce.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-mpi_ce owner=root group=root mode=0644
-  when: emi_service == 'CREAM_CE' 
+  when: emi_service == 'CREAM_CE'
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
     - yaimfiles
     - CE
@@ -86,57 +86,55 @@
   with_items:
     - emi_dpm_mysql
     - emi_lfc_mysql
-  when: emi_service == 'lfc'  
+  when: emi_service == 'lfc'
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
     - yaimfiles
-    - DPM   
+    - DPM
 
 - name: Copy services files needed for bdii_site service
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-bdii_site.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-bdii_site owner=root group=root mode=0644
   when: emi_service == 'BDII_site'
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
     - yaimfiles
-    - bdii    
+    - bdii
 
 - name: Copy services files needed for myproxy service
   action: template src=opt/glite/yaim/etc/siteinfo/services/glite-px.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-px owner=root group=root mode=0644
   when: emi_service == 'myproxy'
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
-    - px    
+    - px
 
 - name: Copy services files needed for lfc service
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-lfc_mysql.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/lfc_mysql owner=root group=root mode=0644
   when: emi_service == 'emi_lfc'
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
     - yaimfiles
-    - lfc    
+    - lfc
 
 - name: Create site-info.def file
   template: src=opt/glite/yaim/etc/siteinfo/site-info.def.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/site-info.def owner=root group=root mode=0600
   notify:
     - run yaim
-  tags: 
+  tags:
     - yaim
     - yaimfiles
     - site-info
-    
+
 - name: run yaim
-  shell: sudo -i {{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{ yaim_options }}
+  shell: {{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{ yaim_options }}
   sudo: true
   sudo_user: root
   tags:
     - runyaim
-
-  
