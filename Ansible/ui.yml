@@ -1,6 +1,6 @@
 ---
 - hosts: uis
-  user: ansible
+  user: root
   sudo: true
   roles:
     - bootstrap
