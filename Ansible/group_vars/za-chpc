@@ -96,11 +96,11 @@ dpm_info: { user: dpminfo, pass: redacted }
 # vars for service: BDII_site
 bdii_regions:
 - name: CREAM
-  endpoint: ldap://grid-ce.chpc.ac.za:2170/mds-vo-name=resource,o=grid
--name: VOBOX
-  endpoint: ldap://grid-vobox.chpc.ac.za:2170/mds-vo-name=resource,o=grid
+  endpoint: "ldap://grid-ce.chpc.ac.za:2170/mds-vo-name=resource,o=grid"
+- name: VOBOX
+  endpoint: "ldap://grid-vobox.chpc.ac.za:2170/mds-vo-name=resource,o=grid"
 - name: SE
-  endpoint: ldap://grid-se.chpc.ac.za:2170/mds-vo-name=resource,o=grid
+  endpoint: "ldap://grid-se.chpc.ac.za:2170/mds-vo-name=resource,o=grid"
 
 se_list:
   - grid-se.chpc.ac.za
