@@ -3,8 +3,9 @@ yaim_path: /opt/glite/yaim
 bdii_port: 2170
 vo_sw_dir: /opt/exp_soft
 cvmfs_repos:
-  - sagrid.
+  - sagrid
   - atlas
+  - alice
 vos:
   - dteam
   - ops
