@@ -13,6 +13,7 @@
   vars_files:
     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
   roles:
+    - certificates
     - glassfish
 
 - name: Deploy and Configure Liferay Application
@@ -39,7 +40,6 @@
       sudo: yes
       sudo_user: root
   roles:
-    - certificates
     - liferay-csgf
   post_tasks:
     - name: Inform the user to complete liferay setup
