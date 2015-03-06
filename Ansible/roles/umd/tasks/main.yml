@@ -35,4 +35,6 @@
   copy: src=etc/yum/pluginconf.d/priorities.conf dest=/etc/yum/pluginconf.d/prorities.conf
 
 - name: Set priorities of UMD repos
-  lineinfile: dest=/etc//yum.repos.d/UMD-3-base.repo regexp='^priority=' line='priority=1' insertafter='enabled=1'
+  lineinfile: dest=/etc/yum.repos.d/UMD-3-base.repo regexp='^priority=' line='priority=1' insertafter='enabled=1'
+  tags:
+    - UMD_priority
