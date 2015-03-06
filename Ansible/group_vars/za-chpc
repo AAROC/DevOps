@@ -3,7 +3,7 @@ yaim_path: /opt/glite/yaim
 bdii_port: 2170
 vo_sw_dir: /opt/exp_soft
 cvmfs_repos:
-  - sagrid
+  -  apprepo.sagrid.ac.za
   - atlas
   - alice
 vos:
@@ -34,7 +34,7 @@ site_website: "http://www.chpc.ac.za"
 site_domain: chpc.ac.za
 
 # services at the site
-bdii_host: grid-bdii.chpc.ac.za 
+bdii_host: top-bdii.c4.csir.co.za
 #apel_mysql_host: ce01-node001.c4.csir.co.za
 px_host: myproxy.cern.ch
 wms_host: wms.c4.csir.co.za 
