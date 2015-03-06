@@ -4,10 +4,10 @@
   sudo_user: root
   copy: src=etc/yum.repos.d/CentOS-Shibboleth.repo dest=/etc/yum.repos.d/{{ item }} owner=root group=root
   with_items:
-  - CentOS-Shibboleth.repo
-  - EGI-trustanchors.repo
-  - EUGRIDPMA-fetch-crl3.repo
-  when: ansible_os_family == "RedHat"
+    - CentOS-Shibboleth.repo
+    - EGI-trustanchors.repo
+    - EUGRIDPMA-fetch-crl3.repo
+  when: ansible_os_family == 'RedHat'
   tags:
-  - repos
+    - repos
   notify: Update Yum
