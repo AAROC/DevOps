@@ -33,13 +33,12 @@ site_website: "http://www.chpc.ac.za"
 site_domain: chpc.ac.za
 
 # services at the site
-bdii_host: grid-bdii.chpc.co.za
+bdii_host: top-bdii.c4.csir.co.za 
 #apel_mysql_host: ce01-node001.c4.csir.co.za
-#px_host: myproxy.cern.ch
+px_host: myproxy.cern.ch
 #wms_host: wms.hellasgrid.gr
 # check GOCDB for relevant services in the AfricaArabia https://goc.egi.eu/portal/index.php?Page_Type=Service_Group&id=926
-#wms_host: wms.c4.csir.co.za
-#argus_status: yes
+argus_status: no 
 #argus_host: argus.c4.csir.co.za
 #pap_admin_dn: "'/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker'"
 
@@ -47,7 +46,7 @@ bdii_host: grid-bdii.chpc.co.za
 #lfc_host: devslngrd002.uct.ac.za
 lfc_host:
 
-ce_host: grid-bdii.chpc.co.za
+ce_host: grid-ce.chpc.co.za
 #  MPI capabilities
 mpich2_enabled: true
 openmpi_enabled: true
