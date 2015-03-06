@@ -24,6 +24,8 @@
   register: domain_status
   changed_when: false
 
+- name: debug domain status
+  debug: var="{{ domain_status }}"
 # when there is a corrupt domain config, this fails, but the subsequent logic fails
 # domain status is also not done anywhere
 
@@ -42,13 +44,17 @@
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin create-domain liferay
     chdir=/opt/glassfish/glassfish3/bin/
   register: domain_create
-  when: domain_status.stdout.find('liferay running') == -1
+  when: domain_status.stdout.find('liferay') == -1
 
 # We need the domain customised, so that it connects to the mysql server and has
 # the correct connectors, etc.
 # This is taken care of in the config.xml file that describes the domain.
 # We provide it with a template, but first we need to ensure that the remote
 # directory into which it will be copied exists.
+
+- name: debug
+  debug: var="{{ hostvars[groups['db-servers'][0]]['ansible_fqdn'] }}"
+
 - name: Ensure that liferay directory exists
   file: name=/opt/glassfish/glassfish3/glassfish/domains/liferay/config state=directory owner=liferayadmin group=liferayadmin
 - name: Create the domain.xml
@@ -69,7 +75,7 @@
   sudo_user: liferayadmin
   async: 45
   poll: 5
-  when: domain_status.stdout.find('liferay') == -1 or domain_status.stdout.find('liferay not running') == 0
+  when: "'liferay not running' in domain_status.stdout"
   register: domain
 
 # enable secure access to the server so that we can have access later to the
