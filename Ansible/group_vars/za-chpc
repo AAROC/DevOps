@@ -34,10 +34,10 @@ site_website: "http://www.chpc.ac.za"
 site_domain: chpc.ac.za
 
 # services at the site
-bdii_host: top-bdii.c4.csir.co.za 
+bdii_host: grid-bdii.chpc.ac.za 
 #apel_mysql_host: ce01-node001.c4.csir.co.za
 px_host: myproxy.cern.ch
-#wms_host: wms.hellasgrid.gr
+wms_host: wms.c4.csir.co.za 
 # check GOCDB for relevant services in the AfricaArabia https://goc.egi.eu/portal/index.php?Page_Type=Service_Group&id=926
 argus_status: no 
 #argus_host: argus.c4.csir.co.za

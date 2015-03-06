@@ -16,9 +16,6 @@ grid-ui.chpc.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n U
 [site-bdiis]
 grid-bdii.chpc.co.za needs_certificate='false' emi_service='BDII_site' yaim_options='-n BDII_site'
 
-[top-bdiis]
-top-bdii.c4.csir.co.za
-
 # CREAM CE's
 [cream-ces]
 grid-ce.chpc.ac.za needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
