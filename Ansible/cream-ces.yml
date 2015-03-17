@@ -65,7 +65,7 @@
   roles:
   - yaim
   vars_files:
-    - group_vars/passwords-za-meraka-dev.yml
+    - group_vars/passwords-{{ site_name }}.yml
   post_tasks:
     - name: fix qmgr queues 1
       sudo: true
@@ -100,7 +100,7 @@
     - name: restart pbs_server
       sudo: true
       action: service name=pbs_server state=restarted enabled=yes
-  
+
     - name: Announce the play via Slack
       action:
         module: slack
