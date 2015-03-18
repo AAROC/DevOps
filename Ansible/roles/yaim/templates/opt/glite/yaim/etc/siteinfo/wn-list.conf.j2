@@ -1,3 +1,3 @@
 {% for host in groups['worker-nodes'] %}
-{{ host }}.{{ site_domain }} {{ host.ansible_default_ipv4.address }}
+{{ host }}.{{ site_domain }} {{ host.ansible_eth0.ipv4.address }}
 {% endfor %}
