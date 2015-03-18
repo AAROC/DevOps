@@ -4,20 +4,18 @@ bdii_port: 2170
 vo_sw_dir: /opt/exp_soft
 cvmfs_repos:
   - apprepo.sagrid.ac.za
-  - atlashttps://www.youtube.com/watch?v=07Hwz-ZTRxYhttps://www.youtube.com/watch?v=07Hwz-ZTRxYhttps://www.youtube.com/watch?v=07Hwz-ZTRxYhttps://www.youtube.com/watch?v=07Hwz-ZTRxYhttps://www.youtube.com/watch?v=07Hwz-ZTRxY
+  - atlas
 vos:
   - dteam
   - ops
+  - sagrid
   - sagrid.ac.za
   - eumed
-#  - africacert
 queues:
   - dteam
   - ops
   - sagrid.ac.za
   - eumed
-#  - cert
-#  - shared
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
 # use the site name as registered in GOCDB (use the same case)
 site_name: ZA-MERAKA
@@ -43,7 +41,7 @@ px_host: myproxy.cern.ch
 # check GOCDB for relevant services in the AfricaArabia https://goc.egi.eu/portal/index.php?Page_Type=Service_Group&id=926
 wms_host: wms.c4.csir.co.za
 is_both_wms_and_lb: true
-#glite_wms_lb_type: both
+lb_proxy_type: both
 argus_status: yes
 argus_host: argus.c4.csir.co.za
 pap_admin_dn: "'/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker'"
