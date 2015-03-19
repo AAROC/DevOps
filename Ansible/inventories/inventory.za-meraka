@@ -96,8 +96,20 @@ cream-ces
 [worker-nodes]
 #192.168.11.3 alias='ce01-node003'
 #192.168.11.4 alias='ce01-node004'
+ce01-node002
 ce01-node003
 ce01-node004
+ce01-node005
+ce01-node006
+ce01-node007
+ce01-node008
+ce01-node009
+ce01-node010
+ce01-node011
+ce01-node012
+ce01-node013 # 192.168.11.13 alias='ce01-node013.internal.net'
+ce01-node014
+ce01-node015
 
 [cluster-head-nodes]
 ce01-node001.c4.csir.co.za

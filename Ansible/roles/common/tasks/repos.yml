@@ -33,6 +33,21 @@
     - IGTF
     - download
 
+- name: Install prerequisite packages (RedHat)
+  yum: name={{ item }} state=present
+  with_items:
+    - python-simplejson
+    - libselinux-python
+    - iptables
+    - mlocate
+    - initscripts
+    - chkconfig
+    - system-config-services
+    - openssh-clients
+  tags:
+    - bootstrap
+  when: ansible_os_family=="RedHat"
+
 - name: Install EGI trustanchors release package
   sudo: true
   yum: name=/tmp/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm state=present
