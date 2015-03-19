@@ -57,6 +57,7 @@
 
 - name: Ensure that liferay directory exists
   file: name=/opt/glassfish/glassfish3/glassfish/domains/liferay/config state=directory owner=liferayadmin group=liferayadmin
+
 - name: Create the domain.xml
   template:
     src=opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml.j2

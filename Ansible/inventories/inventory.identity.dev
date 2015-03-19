@@ -27,10 +27,6 @@ shibboleth-idps
 db-servers
 science-gateways
 
-[identity-all:children]
-ldap-servers
-shibboleth-idps
-
 [site-test-1:children]
 Debian-servers
 
