@@ -1,33 +1,36 @@
 ---
+- name: what is the head node's ipv4 address ?
+  debug:
+    var: "{{ hostvars['cluster-head-nodes'][0].ansible_ipv4 }}"
 - name: Add head node IP to known hosts
   template: dest=/etc/ssh/shosts.equiv src=etc/ssh/shosts.equiv.j2 owner=root group=root
 #  debug: msg="created shosts.equiv file"
-  tags: 
+  tags:
   - networking
 
 - name: Setup known hosts for host-based authentication
   template: src=etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/ssh_known_hosts owner=root group=root mode=0644
-  tags: 
+  tags:
   - networking
-  
+
 - name: Enable host-based authentication
   template: src=etc/ssh/sshd_config.j2 dest=/etc/ssh/sshd_config owner=root group=root mode=0644
-  notify: 
+  notify:
   - restart ssh
-  tags: 
+  tags:
   - ssh
   - networking
-    
+
 #- name: Enable host-based authentication
   #lineinfile: dest=/etc/ssh/sshd_config regexp="^#HostbasedAuthentication no" line="HostbasedAuthentication yes" backrefs=yes
-  #notify: 
+  #notify:
   #- restart ssh
   #tags:
   #- networking
 
 #- name: Enable rhosts for root
   #lineinfile: dest=/etc/ssh/sshd_config regexp="^#IgnoreRhosts yes" line="IgnoreRhosts no" backrefs=yes
-  #notify: 
+  #notify:
   #- restart ssh
   #tags:
   #- networking
@@ -42,4 +45,3 @@
 
 - name: Create /etc/hosts template
   template: dest=/etc/hosts src=etc/hosts.j2 owner=root group=root mode=0644
-

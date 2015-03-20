@@ -57,17 +57,8 @@
   tasks:
   - copy: src=/etc/munge/munge.key dest=/etc/munge/munge.key mode=0600 owner=root group=root
 
-#- hosts: worker-nodes
-  #name: Install middleware
-  #user: root
-  #roles:
-    #- umd
-    #- emi-worker-node
-
 - hosts: worker-nodes
   name: configure middleware with yaim
   user: root
   roles:
     - yaim
-
-#- hosts: worker-nodes
