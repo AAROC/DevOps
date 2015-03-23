@@ -11,11 +11,13 @@ vos:
   - sagrid
   - sagrid.ac.za
   - eumed
+  - atlas
 queues:
   - dteam
   - ops
   - sagrid.ac.za
   - eumed
+  - atlas
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
 # use the site name as registered in GOCDB (use the same case)
 site_name: ZA-MERAKA
@@ -111,6 +113,8 @@ bdii_regions:
   endpoint: ldap://fts.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
 - name: ARGUS
   endpoint: ldap://argus.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: WMS
+  endpoint: ldap://wms.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
 
 se_list:
   - se01.localdomain
