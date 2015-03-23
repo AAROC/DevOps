@@ -85,6 +85,8 @@ bdii_regions:
   endpoint: ldap://lfc-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
 - name: PX
   endpoint: ldap://myproxy-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: WMS
+  endpoint: ldap://wms.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
 
 se_list:
   - se-dev.c4.csir.co.za
@@ -100,9 +102,7 @@ sandboxdir_on_wn: /cream_sandbox
 voname: sagrid.ac.za
 dbtype: mysql
 dbauser: root
-dbapwd: aCxwcUjIizry2nMf-U9OIs8GdnDmqnKU
 dbusername: vomsadmin
-dbpassword: cpbYOaAA4hv4PKCwzGZCu_OFVLbMqccv
 coreport: 15000
 smtphost: localhost
 mailfrom: voms-admin@voms-stage.sagrid.ac.za
