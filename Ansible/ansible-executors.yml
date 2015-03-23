@@ -10,8 +10,6 @@
   pre_tasks:
     - name: set some facts
       set_fact: playbook=ansible-executor
-    - name: what's our token ?
-      debug: msg="{{ slack_token }}"
     - name: Announce the play via Slack
       action:
         module: slack
