@@ -43,7 +43,7 @@
   sudo: true
   roles:
    - munge
-#   - head-node
+   - head-node
 # Head node has to be run after you've configured all of the worker nodes, else the facts are not available.
 
 - hosts: cream-ces
