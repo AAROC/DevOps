@@ -45,6 +45,7 @@
 - hosts: wms-servers
   tasks:
     - name: tweak WMS
+      sudo: true
       template: src=roles/wms/templates/etc/glite-wms/glite_wms.conf.j2 dest=/etc/glite-wms/glite_wms.conf owner=root group=root
       notify: restart-wms-wm
   handlers:
