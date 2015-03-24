@@ -1,3 +1,0 @@
----
-- name: ensure that 5009 is open for accelerated mode
-  action: shell /usr/sbin/lokkit {{ lokkit_flags }} -p 5009:tcp
