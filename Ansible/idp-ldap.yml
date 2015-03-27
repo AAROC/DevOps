@@ -5,6 +5,8 @@
   sudo: true
   roles:
   - ldap
+  vars_files:
+    - "group_vars/passwords-{{ site_name }}.yml"
 
 - name: Prepare the identity machine common environment
   hosts: shibboleth-idps
