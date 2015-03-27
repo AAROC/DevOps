@@ -2,10 +2,9 @@
 administrator_keys:
   - id_rsa.pub.becker.serbaggio
   - id_rsa.pub.marco
-site_name: dev
+site_name: identity-dev
 sgw_admin: test@test.com
 # institute metadata
-site_name: Dev
 host_institute:
   name: INFN Catania Dev Site
   url: http://grid.ct.infn.it
