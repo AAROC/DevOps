@@ -28,7 +28,7 @@ site_domain: c4.csir.co.za
 bdii_host: top-bdii.c4.csir.co.za
 apel_mysql_host: apel.c4.csir.co.za
 px_host: myproxy.cern.ch
-wms_host: wms.c4.csir.co.za
+wms_host: "wms.c4.csir.co.za, wms.magrid.ma"
 lb_proxy_type: both
 lb_host: wms.c4.csir.co.za
 argus_status: no
