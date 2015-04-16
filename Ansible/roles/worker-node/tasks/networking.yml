@@ -40,6 +40,6 @@
 
 - debug: msg="set host to  is {{ ansible_hostname }}.{{ site_domain }}"
 
-- name: Create /etc/hosts template
-  template: dest=/etc/hosts src=etc/hosts.j2 owner=root group=root mode=0644
+#- name: Create /etc/hosts template
+#  template: dest=/etc/hosts src=etc/hosts.j2 owner=root group=root mode=0644
 

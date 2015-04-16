@@ -1,1 +1,3 @@
-SAGrid-eScience.signing_policy
+access_id_CA            X509    '/C=ZA/O=South African e-Science/CN=South African e-Science CA'
+pos_rights              globus  CA:sign
+cond_subjects           globus  '"/C=ZA/O=South African e-Science/*"'

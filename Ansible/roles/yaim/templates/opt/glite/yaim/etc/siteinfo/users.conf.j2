@@ -6,35 +6,50 @@
 {{ 18101 + number }}:prddteam{{ number }}:1810,1800:prddteam,dteam:dteam:prd
 {% endfor -%}
 {% for number in range(2) -%}
-{{ 18201 + number }}:sgmdteam{{ number }}:{{ 1810 + number }},1800:sgmdteam,dteam:dteam:sgm
+{{ 18201 + number }}:sgmdteam{{ number }}:{{ 1811 + number }},1800:sgmdteam,dteam:dteam:sgm
 {% endfor -%}
 {% endif -%}
 
 {% if "ops" in vos -%}
-{% for number in range(2) -%}
-{{ 19001 + number }}:ops{{ number }}:1900:ops:ops::
+{% for number in range(50) -%}
+{% if number > 9 -%}
+{{ 19001 + number }}:ops0{{ number + 1 }}:1900:ops:ops::
+{% else -%}
+{{ 19001 + number }}:ops00{{ number + 1 }}:1900:ops:ops::
+{% endif -%}
 {% endfor -%}
-{% for number in range(2) -%}
-{{ 19101 + number }}:sgmops{{  number }}:1910,1900:sgmops,ops:ops:sgm
+{% for number in range(50) -%}
+{% if number > 9 -%}
+{{ 19101 + number }}:sgmops0{{  number + 1 }}:1910,1900:sgmops,ops:ops:sgm
+{% else -%}
+{{ 19101 + number }}:sgmops00{{  number + 1 }}:1910,1900:sgmops,ops:ops:sgm
+{% endif -%}
 {% endfor -%}
 {% endif -%}
 
 {% if "sagrid.ac.za" in vos -%}
 {% for number in range(2) -%}
-{{ 40001 + number }}:sa{{ number }}:4000:sa:'sagrid.ac.za'::
+{{ 40001 + number }}:sa{{ number }}:4000:sa:sagrid.ac.za::
 {% endfor -%}
 {% for number in range(2) -%}
-{{ 40101 + number }}:sgmsa{{ number }}:4100,4000:sgmsa,sa:'sagrid.ac.za':sgm
+{{ 40101 + number }}:sgmsa{{ number }}:4100,4000:sgmsa,sa:sagrid.ac.za:sgm
 {% endfor -%}
 {% endif -%}
 
 {% if "sagrid" in vos -%}
 {% for number in range(20) -%}
-{{ 50001 + number }}:sagrid{{ number }}:5000:sagrid:sagrid::
+{% if number > 9 -%}
+{{ 50001 + number }}:sagrid0{{ number + 1 }}:5000:sagrid:sagrid::
+{% else -%}
+{{ 50001 + number }}:sagrid00{{ number + 1 }}:5000:sagrid:sagrid::
+{% endif -%}
 {% endfor -%}
-
 {% for number in range(20) -%}
-{{ 51001 + number }}:sgmsagrid{{ number }}:5100,5000:sgmsagrid,sagrid:sagrid:sgm
+{% if number > 9 -%}
+{{ 51001 + number }}:sgmsagrid0{{ number + 1 }}:5100,5000:sgmsagrid,sagrid:sagrid:sgm
+{% else -%}
+{{ 51001 + number }}:sgmsagrid00{{ number + 1 }}:5100,5000:sgmsagrid,sagrid:sagrid:sgm
+{% endif -%}
 {% endfor -%}
 {% endif -%}
 

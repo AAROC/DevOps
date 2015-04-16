@@ -1,1 +1,29 @@
-SAGrid-eScience.r0
+Certificate Revocation List (CRL):
+        Version 1 (0x0)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: /C=ZA/O=South African e-Science/CN=South African e-Science CA
+        Last Update: Jan 16 14:19:30 2014 GMT
+        Next Update: Feb 15 14:19:30 2014 GMT
+Revoked Certificates:
+    Serial Number: 02
+        Revocation Date: Jan 13 09:57:47 2014 GMT
+    Serial Number: 03
+        Revocation Date: Jan 16 14:18:09 2014 GMT
+    Signature Algorithm: sha1WithRSAEncryption
+         0e:1b:65:7d:40:63:5b:f1:12:cd:7c:25:37:7c:3e:0d:45:2c:
+         37:fa:9e:b1:c2:a5:97:58:42:cb:2c:b4:25:07:6d:f0:2b:38:
+         ca:62:35:11:5f:12:c6:c9:3e:70:67:26:9b:d1:ee:2a:9b:22:
+         18:42:21:c1:f5:42:1f:08:98:08:80:78:d8:5d:55:d9:f3:44:
+         48:2e:df:bf:63:03:ff:ac:6d:6c:eb:70:50:71:ab:66:57:d1:
+         65:28:91:31:a5:87:d5:d4:b7:94:c7:ad:f3:07:f1:91:d4:02:
+         1f:90:60:82:e1:e1:2a:e8:e5:cb:58:4d:40:0e:ca:ac:d2:a2:
+         bc:68
+-----BEGIN X509 CRL-----
+MIIBQzCBrTANBgkqhkiG9w0BAQUFADBUMQswCQYDVQQGEwJaQTEgMB4GA1UEChMX
+U291dGggQWZyaWNhbiBlLVNjaWVuY2UxIzAhBgNVBAMTGlNvdXRoIEFmcmljYW4g
+ZS1TY2llbmNlIENBFw0xNDAxMTYxNDE5MzBaFw0xNDAyMTUxNDE5MzBaMCgwEgIB
+AhcNMTQwMTEzMDk1NzQ3WjASAgEDFw0xNDAxMTYxNDE4MDlaMA0GCSqGSIb3DQEB
+BQUAA4GBAA4bZX1AY1vxEs18JTd8Pg1FLDf6nrHCpZdYQssstCUHbfArOMpiNRFf
+EsbJPnBnJpvR7iqbIhhCIcH1Qh8ImAiAeNhdVdnzREgu379jA/+sbWzrcFBxq2ZX
+0WUokTGlh9XUt5THrfMH8ZHUAh+QYILh4Sro5ctYTUAOyqzSorxo
+-----END X509 CRL-----

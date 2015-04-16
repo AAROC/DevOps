@@ -1,1 +1,9 @@
-../../site-bdii/handlers/main.yml
+---
+- name: restart ntpd
+  service: name=ntpd state=restarted
+- name: restart iptables
+  service: name=iptables state=restarted
+  ignore_errors: true 
+# we ignore the error on this one because iptables doesn't give Ansible
+# a "clean" exit code. Need to register the output and check that this is
+# restarting

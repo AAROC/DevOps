@@ -19,11 +19,11 @@
   - debug: msg="key is {{ ansible_ssh_host_key_rsa_public }} "
   - local_action: lineinfile dest=roles/worker-node/vars/public_keys.yml line="public_keys{{':'}} ssh-rsa {{ ansible_ssh_host_key_rsa_public }} ansible@{{ ansible_hostname }}" state=present create=yes
 
-- hosts: worker-nodes
-  name: Create .shosts file for host-based authentication later
-  user: root
-  tasks:
-  - template: src=roles/worker-node/templates/shosts.j2 dest=/root/.shosts mode=0444
+#- hosts: worker-nodes
+#  name: Create .shosts file for host-based authentication later
+#  user: root
+#  tasks:
+#  - template: src=roles/worker-node/templates/shosts.j2 dest=/root/.shosts mode=0444
 
 - hosts: worker-nodes
   name: Prepare worker nodes for installation
@@ -37,12 +37,12 @@
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/igtf.yml
 
-- hosts: cluster-head-nodes
-  name: create munge key
-  user: root
-  connection: local
-  tasks:
-  - command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=munge group=munge
+#- hosts: cluster-head-nodes
+#  name: create munge key
+#  user: root
+#  connection: local
+#  tasks:
+#  - command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=munge group=munge
 
 - hosts: worker-nodes
   name: Copy munge key to worker nodes
