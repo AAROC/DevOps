@@ -1,0 +1,39 @@
+# MAUI configuration example
+
+SERVERHOST              cream01.localdomain
+ADMIN1                  root
+ADMIN3                  edginfo rgma edguser ldap
+ADMINHOSTS              cream01.localdomain
+RMCFG[base]             TYPE=PBS
+SERVERPORT              40559
+SERVERMODE              NORMAL
+
+# Set PBS server polling interval. If you have short # queues or/and jobs it is worth to set a short interval. (10 seconds)
+
+RMPOLLINTERVAL        00:00:10
+
+# a max. 10 MByte log file in a logical location
+
+LOGFILE               /var/log/maui.log
+LOGFILEMAXSIZE        100000000
+LOGLEVEL              1
+
+# Set the delay to 1 minute before Maui tries to run a job again, # in case it failed to run the first time.
+# The default value is 1 hour.
+
+DEFERTIME       0
+
+# Necessary for MPI grid jobs
+ENABLEMULTIREQJOBS TRUE
+
+#Reservation for specific pool account user
+SRCFG[sam]            PERIOD=INFINITY
+SRCFG[sam]            RESOURCES=PROCS:2
+SRCFG[sam]            USERLIST=ops003
+SRCFG[sam]            HOSTLIST=wn010.localdomain
+
+#Reservation for a specific group
+SRCFG[dteam]             PERIOD=INFINITY
+SRCFG[dteam]             GROUPLIST=dteam
+SRCFG[dteam]             HOSTLIST=wn011.localdomain,wn013.localdomain
+

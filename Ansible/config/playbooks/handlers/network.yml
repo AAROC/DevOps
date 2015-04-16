@@ -1,0 +1,5 @@
+- name: restart iptables
+  action: command 'service iptables save'
+  action: command 'service ip6tables save'
+  action: service name=iptables state=restarted
+  ignore_errors: True

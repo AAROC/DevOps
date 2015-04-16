@@ -1,0 +1,106 @@
+############################################
+# Mandatory parameters in services/mpi     #
+############################################
+
+# N.B. this file contains common configuration for CE and WN
+# As such, it should be included in your site-info.def to ensure
+# that the configuration of the CE and WNs remains in sync.
+
+#----------------------------------
+# MPI-related configuration:
+#----------------------------------
+# Several MPI implementations (or "flavours") are available.
+# If you do NOT want a flavour to be configured, set its variable
+# to "no". Otherwise, set it to "yes". If you want to use an
+# already installed version of an implementation, set its "_PATH" and
+# "_VERSION" variables to match your setup (examples below).
+#
+# NOTE 1: the CE_RUNTIMEENV will be automatically updated in the file
+# functions/config_mpi_ce, so that the CE advertises the MPI implementations
+# you choose here - you do NOT have to change it manually in this file.
+# It will become something like this:
+#
+#   CE_RUNTIMEENV="$CE_RUNTIMEENV
+#              MPICH
+#              MPICH-1.2.7p4
+#              MPICH2
+#              MPICH2-1.0.4
+#              OPENMPI
+#              OPENMPI-1.1
+#              LAM"
+#
+# NOTE 2: it is currently NOT possible to configure multiple concurrent
+# versions of the same implementations (e.g. MPICH-1.2.3 and MPICH-1.2.7)
+# using YAIM. Customize "/opt/glite/yaim/functions/config_mpi_ce" file
+# to do so.
+
+###############
+# The following example are applicable to default SL 5.3 x86_64 (gLite 3.2 WN)
+# Support for MPICH 1 is dropped
+MPI_MPICH_ENABLE="no"
+MPI_MPICH2_ENABLE="yes"
+MPI_OPENMPI_ENABLE="no"
+MPI_LAM_ENABLE="no"
+
+#---
+# Example for using an already installed version of MPI.
+# Just fill in the path to its current installation (e.g. "/usr")
+# and which version it is (e.g. "6.5.9").
+#---
+
+# DEFAULT Parameters
+# The following parameters are correct for a default SL 5.X x86_64 WN
+#MPI_MPICH_PATH="/opt/mpich-1.2.7p1/"
+#MPI_MPICH_VERSION="1.2.7p1"
+MPI_MPICH2_PATH="/usr/"
+MPI_MPICH2_VERSION="1.2.1"
+#MPI_OPENMPI_PATH="/usr/lib64/openmpi/1.2.7-gcc/"
+#MPI_OPENMPI_VERSION="1.2.7"
+#MPI_LAM_VERSION="7.1.2"
+
+# If you provide mpiexec (http://www.osc.edu/~pw/mpiexec/index.php)
+# for MPICH or MPICH2, please state the full path to that file here.
+# Otherwise do not set this variable. (Default is to set this to
+# the location of mpiexec set by the glite-MPI_WN metapackage.
+
+# Most versions of MPI now distribute their own versions of mpiexec
+# However, I had some problems with the MPICH2 version - so use standard mpiexec
+#MPI_MPICH_MPIEXEC="/usr/bin/mpiexec"
+MPI_MPICH2_MPIEXEC="/usr/bin/mpiexec"
+#MPI_OPENMPI_MPIEXEC="/usr/lib64/openmpi/1.2.7-gcc/bin/mpiexec"
+
+
+#########  MPI_SHARED_HOME section
+# Set this variable to one of the following:
+# MPI_SHARED_HOME="no" if a shared directory is not used
+# MPI_SHARED_HOME="yes" if the HOME directory area is shared
+# MPI_SHARED_HOME="/Path/to/Shared/Location" if a shared area other
+#    than the HOME dirirectory is used.
+
+# If you do NOT provide a shared home, set MPI_SHARED_HOME to "no" (default).
+#MPI_SHARED_HOME=${MPI_SHARED_HOME:-"no"}
+
+# If you do provide a shared home and Grid jobs normally start in that area,
+# set MPI_SHARED_HOME to "yes".
+MPI_SHARED_HOME="yes"
+
+# If you have a shared area but Grid jobs don't start there, then set
+# MPI_SHARED_HOME to the location of this shared area. The permissions
+# of this area need to be the same as /tmp (i.e. 1777) so that users
+# can create their own subdirectories.
+#MPI_SHARED_HOME=/share/cluster/mpi
+
+
+######## Intra WN authentication
+# This variable is normally set to yes when shared homes are not used.
+# This allows the wrapper script to copy the job data to the other nodes
+#
+# If enabling SSH Hostbased Authentication you must ensure that
+# the appropriate ssh config files are deployed.
+# Affected files are the system ssh_config, sshd_config and ssh_know_hosts.
+# The edg-pbs-knownhosts can be use to generate the ssh_know_hosts
+#
+# If you do NOT have SSH Hostbased Authentication between your WNs, 
+# set this variable to "no" (default). Otherwise set it to "yes".
+#
+MPI_SSH_HOST_BASED_AUTH=${MPI_SSH_HOST_BASED_AUTH:-"yes"}

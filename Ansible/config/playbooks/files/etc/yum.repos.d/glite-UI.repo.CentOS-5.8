@@ -1,0 +1,28 @@
+
+# This is the official YUM repository string for the glite 3.2 User Interface
+# Fetched from: http://grid-deployment.web.cern.ch/grid-deployment/yaim/repos/glite-UI.repo
+# Place it to /etc/yum.repos.d/ and run 'yum update' 
+
+[glite-UI]
+name=gLite 3.2 User Interface
+baseurl=http://glitesoft.cern.ch/EGEE/gLite/R3.2/glite-UI/sl5/x86_64/RPMS.release/
+gpgkey=http://glite.web.cern.ch/glite/glite_key_gd.asc
+gpgcheck=1
+enabled=1
+priority=16
+
+[glite-UI_updates]
+name=gLite 3.2 User Interface
+baseurl=http://glitesoft.cern.ch/EGEE/gLite/R3.2/glite-UI/sl5/x86_64/RPMS.updates/
+gpgkey=http://glite.web.cern.ch/glite/glite_key_gd.asc
+gpgcheck=1
+enabled=1
+priority=16
+
+
+[glite-UI_ext]
+name=gLite 3.2 User Interface
+baseurl=http://glitesoft.cern.ch/EGEE/gLite/R3.2/glite-UI/sl5/x86_64/RPMS.externals/
+gpgcheck=0
+enabled=1
+priority=16

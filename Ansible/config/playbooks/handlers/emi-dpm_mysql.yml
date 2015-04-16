@@ -1,0 +1,2 @@
+- name: run yaim
+  action: shell sudo -i ${yaim_path}/bin/yaim -c -s ${yaim_conf_dir}/site-info.def -n emi_dpm_mysql

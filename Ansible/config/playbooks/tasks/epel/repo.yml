@@ -1,0 +1,9 @@
+- name: Download epel-release package
+  action: get_url url={{ epel_release_url }}/{{ epel_release_name }} dest=/tmp/{{ epel_release_name }} mode=0644
+#  when: yum name={{ epel_release_name }} state == absent
+- name: Install epel-release package
+  action: command yum install -y {{ yum_flags }} /tmp/{{ epel_release_name }} creates=/etc/yum.repos.d/epel.repo
+
+# downloads and installs epel repository definition file onto all nodes this task
+# is running upon. Variables epel_release_url and epel_release_name are defined 
+# within vars/distros files. These should be included in the playbook section

@@ -1,0 +1,5 @@
+- name: Install EGI CA certificates
+  action: yum name=ca-policy-egi-core state=latest
+  sudo: true
+
+# Installs latest EGI CA certificate chains on nodes

@@ -1,0 +1,10 @@
+{% if "dteam" in vos -%}
+"/dteam/ROLE=lcgadmin":::sgm:
+"/dteam/ROLE=production":::prd:
+"/dteam"::::
+{% endif -%}
+{% if "ops" in vos -%}
+"/ops/ROLE=lcgadmin":::sgm:
+"/ops"::::
+"/ops/*"::::
+{% endif -%}
