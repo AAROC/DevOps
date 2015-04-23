@@ -77,6 +77,5 @@ wms-servers
 top-bdiis
 
 [CentOS-servers:children]
-CentOS5-servers
 CentOS6-servers
 ############################ END #########################
