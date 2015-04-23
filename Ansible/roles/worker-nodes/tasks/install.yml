@@ -5,6 +5,19 @@
     - emi-wn
   sudo: True
   sudo_user: root
-  tags: 
+  tags:
     - worker-nodes
     - install
+
+- name: Install OpenMPI packages
+  yum: name={{ item }} state=present
+  with_items:
+    openmpi_packages
+  when: openmpi_enabled == true
+
+
+- name: Install MPICH2 packages
+  yum: name={{ item }} state=present
+  with_item:
+    mpich2_packages
+  when: mpich2_enabled == true
