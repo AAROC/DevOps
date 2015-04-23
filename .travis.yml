@@ -1,7 +1,7 @@
 language: bash
 
 before_install:
-  - sudo apt-get install setuptools
+  - sudo apt-get install python-setuptools
   - sudo easy_install pip
   - sudo pip install paramiko PyYAML Jinja2 httplib2
   - echo .known_hosts.travis >> ~/.ssh/known_hosts
