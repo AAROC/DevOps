@@ -39,9 +39,6 @@ localhost
 [core-services:children]
 top-bdiis
 wms-servers
-ngi-nagios
-fts-servers
-argus-servers
 
 [site-services:children]
 site-bdiis
@@ -53,10 +50,7 @@ worker-nodes
 # the group of machines that needs to keep CRLs up to date
 [CRL:children]
 wms-servers
-lfc-servers
-ngi-nagios
 cream-ces
-argus-servers
 UIs
 worker-nodes
 
@@ -68,9 +62,7 @@ site-bdiis
 worker-nodes
 top-bdiis
 wms-servers
-fts-servers
 UIs
-argus-servers
 
 # OS-oriented grouping
 [Debian-servers]
@@ -78,15 +70,12 @@ argus-servers
 
 [CentOS6-servers:children]
 CA
-argus-servers
 worker-nodes
 site-bdiis
 cream-ces
 UIs
 wms-servers
-fts-servers
 top-bdiis
-voms-servers
 
 [CentOS-servers:children]
 CentOS5-servers
