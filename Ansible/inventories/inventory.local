@@ -69,7 +69,6 @@ UIs
 
 
 [CentOS6-servers:children]
-CA
 worker-nodes
 site-bdiis
 cream-ces
