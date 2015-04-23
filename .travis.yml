@@ -1,6 +1,9 @@
 language: bash
 
 before_install:
+  - apt-get install setuptools
+  - easy_install pip
+  - pip install paramiko PyYAML Jinja2 httplib2
   - echo .known_hosts.travis >> ~/.ssh/known_hosts
   - git clone https://github.com/ansible/ansible --recursive
   - source ansible/hacking/env-setup
