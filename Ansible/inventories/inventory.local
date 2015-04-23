@@ -68,19 +68,13 @@ site-bdiis
 worker-nodes
 top-bdiis
 wms-servers
-ngi-nagios
 fts-servers
 UIs
 argus-servers
 
-[nagios-servers:children]
-ngi-nagios
-
 # OS-oriented grouping
 [Debian-servers]
 
-[CentOS5-servers:children]
-ngi-nagios
 
 [CentOS6-servers:children]
 CA

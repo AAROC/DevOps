@@ -2,15 +2,11 @@ language: bash
 
 before_install:
   - echo .known_hosts.travis >> ~/.ssh/known_hosts
-  - sudo apt-get install software-properties-common
-  - sudo apt-add-repository ppa:ansible/ansible -y
-  - sudo apt-get update
-  - sudo apt-get install ansible
-#  - traceroute vm01.ct.infn.it
-#  - traceroute vm03.ct.infn.it
+  - git clone https://github.com/ansible/ansible --recursive
+  - source ansible/hacking/env-setup
 install:
   - cd $TRAVIS_BUILD_DIR/Ansible
   - chmod 400 $PWD/roles/bootstrap/files/public_keys/*
 #  - ansible-playbook -vvvv -i inventories/inventory.identity.dev -C idp-ldap.yml --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio
 #  - ansible all -vvvvv -i inventories/inventory.identity.dev --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio -m ping -c paramiko
-  - ansible all -vvvvv -i inventories/inventory.local -m ping 
+  - ansible all -c local -vvvvv -i inventories/inventory.local -m ping
