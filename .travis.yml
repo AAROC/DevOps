@@ -10,3 +10,8 @@ install:
 #  - ansible-playbook -vvvv -i inventories/inventory.identity.dev -C idp-ldap.yml --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio
 #  - ansible all -vvvvv -i inventories/inventory.identity.dev --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio -m ping -c paramiko
   - ansible all -c local -vvvvv -i inventories/inventory.local -m ping
+notifications:
+  slack:
+    rooms:
+      - africa-arabia-roc:8bySc6HbbEvvxPYqg0Z56Xdk#general
+      - africa-arabia-roc:8bySc6HbbEvvxPYqg0Z56Xdk#random
