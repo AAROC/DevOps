@@ -1,0 +1,100 @@
+[local-machines]
+localhost
+# user interfaces
+[UIs]
+localhost
+
+[top-bdiis]
+localhost
+
+# workload management
+[wms-servers]
+localhost
+
+[site-bdiis]
+localhost
+
+# CREAM CE's
+[cream-ces]
+localhost needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n creamCE -n TORQUE_server -n TORQUE_utils -n MPI_CE '
+
+[apel-publishers:children]
+cream-ces
+
+
+# Worker Nodes
+[worker-nodes]
+localhost
+
+[cluster-head-nodes]
+localhost
+
+##########
+# Groups  #
+#########
+
+
+############ grouping and children ############
+# first, group by production and development
+[core-services:children]
+top-bdiis
+wms-servers
+ngi-nagios
+fts-servers
+argus-servers
+
+[site-services:children]
+site-bdiis
+cream-ces
+worker-nodes
+
+############## Middleware oriented grouping ##############
+[CRL]
+# the group of machines that needs to keep CRLs up to date
+[CRL:children]
+wms-servers
+lfc-servers
+ngi-nagios
+cream-ces
+argus-servers
+UIs
+worker-nodes
+
+
+# groups belonging to a site
+[local:children]
+cream-ces
+site-bdiis
+worker-nodes
+top-bdiis
+wms-servers
+ngi-nagios
+fts-servers
+UIs
+argus-servers
+
+[nagios-servers:children]
+ngi-nagios
+
+# OS-oriented grouping
+[Debian-servers]
+
+[CentOS5-servers:children]
+ngi-nagios
+
+[CentOS6-servers:children]
+CA
+argus-servers
+worker-nodes
+site-bdiis
+cream-ces
+UIs
+wms-servers
+fts-servers
+top-bdiis
+voms-servers
+
+[CentOS-servers:children]
+CentOS5-servers
+CentOS6-servers
+############################ END #########################

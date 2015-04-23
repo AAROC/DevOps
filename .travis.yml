@@ -1,5 +1,5 @@
 language: bash
-   
+
 before_install:
   - echo .known_hosts.travis >> ~/.ssh/known_hosts
   - sudo apt-get install software-properties-common
@@ -13,4 +13,4 @@ install:
   - chmod 400 $PWD/roles/bootstrap/files/public_keys/*
 #  - ansible-playbook -vvvv -i inventories/inventory.identity.dev -C idp-ldap.yml --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio
 #  - ansible all -vvvvv -i inventories/inventory.identity.dev --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio -m ping -c paramiko
-  - ansible all -vvvvv -i inventories/inventory.identity.dev -m ping 
+  - ansible all -vvvvv -i inventories/inventory.local -m ping 
