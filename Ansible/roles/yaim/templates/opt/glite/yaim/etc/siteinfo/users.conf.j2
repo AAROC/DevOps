@@ -12,17 +12,17 @@
 
 {% if "ops" in vos -%}
 {% for number in range(50) -%}
-{% if number > 9 -%}
-{{ 19001 + number }}:ops0{{ number + 1 }}:1900:ops:ops::
+{% if number >= 9 -%}
+{{ 45001 + number }}:ops0{{ number + 1 }}:45000:ops:ops::
 {% else -%}
-{{ 19001 + number }}:ops00{{ number + 1 }}:1900:ops:ops::
+{{ 45001 + number }}:ops00{{ number + 1 }}:45000:ops:ops::
 {% endif -%}
 {% endfor -%}
 {% for number in range(50) -%}
-{% if number > 9 -%}
-{{ 19101 + number }}:sgmops0{{  number + 1 }}:1910,1900:sgmops,ops:ops:sgm
+{% if number >= 9 -%}
+{{ 60701 + number }}:sgmops0{{  number + 1 }}:46001,45000:sgmops,ops:ops:sgm
 {% else -%}
-{{ 19101 + number }}:sgmops00{{  number + 1 }}:1910,1900:sgmops,ops:ops:sgm
+{{ 60701 + number }}:sgmops00{{  number + 1 }}:46001,45000:sgmops,ops:ops:sgm
 {% endif -%}
 {% endfor -%}
 {% endif -%}
@@ -39,16 +39,16 @@
 {% if "sagrid" in vos -%}
 {% for number in range(20) -%}
 {% if number > 9 -%}
-{{ 50001 + number }}:sagrid0{{ number + 1 }}:5000:sagrid:sagrid::
+{{ 2701 + number }}:sagrid0{{ number + 1 }}:2700:sagrid:sagrid::
 {% else -%}
-{{ 50001 + number }}:sagrid00{{ number + 1 }}:5000:sagrid:sagrid::
+{{ 2701 + number }}:sagrid00{{ number + 1 }}:2700:sagrid:sagrid::
 {% endif -%}
 {% endfor -%}
 {% for number in range(20) -%}
 {% if number > 9 -%}
-{{ 51001 + number }}:sgmsagrid0{{ number + 1 }}:5100,5000:sgmsagrid,sagrid:sagrid:sgm
+{{ 27101 + number }}:sgmsagrid0{{ number + 1 }}:27100,2700:sgmsagrid,sagrid:sagrid:sgm
 {% else -%}
-{{ 51001 + number }}:sgmsagrid00{{ number + 1 }}:5100,5000:sgmsagrid,sagrid:sagrid:sgm
+{{ 27101 + number }}:sgmsagrid00{{ number + 1 }}:27100,2700:sgmsagrid,sagrid:sagrid:sgm
 {% endif -%}
 {% endfor -%}
 {% endif -%}
