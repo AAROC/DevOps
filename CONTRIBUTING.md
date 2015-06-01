@@ -17,11 +17,27 @@ If you use this code (and we want you to :smile:), we consider it a moral respon
     2. Be sure to mention relevant variables that you may have used
   3. It always helps to have your inventory and group_vars along with the issue.
 
-# Closing issues
+## Use Markdown as it was intended.
+
+Understanding submitted issues is not just a matter of reading some console output or log file - some context is needed. Also, plain text is not a great way to communicate emphasis or context. Github issues provides a good syntax for reporting the issues, with highlighting for many different languages. 
+
+***Please use [Github flavoured markdown](https://help.github.com/articles/github-flavored-markdown/) to submit issues***. In particular, use the syntax highlighter to highlight code, or output on the terminal, logs, etc. 
+
+*I.E* : 
+```bash
+[shell](user)~ echo hi
+hi
+```
+
+
+## Closing issues
 
 It's very important for us to know when to close issues, as well as _how_ issues were closed.
 
   1. If you find a fix, please report it and close the issue
+  2. Try to flag the issue as SOLVED (either by writing it in the text, or setting the issue flag)
+
+
 
 # Continuous Integration
 
