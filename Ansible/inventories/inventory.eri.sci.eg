@@ -1,0 +1,22 @@
+# Inventory of ERI
+[science-gateways]
+sgw.eri.sci.eg min_jvm_size=1024m max_jvm_size=1024m
+
+[db-servers]
+db.eri.sci.eg
+
+[ldap-server]
+ldap.eri.sci.eg
+[shibboleth-idp]
+idp.eri.sci.eg
+
+[CentOS-servers:children]
+science-gateways
+
+[Debian-servers]
+ldap-server
+shibboleth-idp
+
+[identity-eri:children]
+ldap-server
+shibboleth-idp
