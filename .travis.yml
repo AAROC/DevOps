@@ -13,6 +13,9 @@ install:
 #  - ansible-playbook -vvvv -i inventories/inventory.identity.dev -C idp-ldap.yml --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio
 #  - ansible all -vvvvv -i inventories/inventory.identity.dev --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio -m ping -c paramiko
   - ansible all -c local -vvvvv -i inventories/inventory.local -m ping
+after_install:
+# Add any other stuff you want to test here - only for local single services
+  - ansible-playbook -c local -i ineventories/inventory.local discourse-saml.yml --check
 notifications:
   slack:
     rooms:

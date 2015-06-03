@@ -1,2 +1,8 @@
 ---
 # defaults file for discourse-sso
+db_shared_buffer_size: 256 # MB
+unicorn_workers: 2
+developer_emails: nobody@nowhere.com # change this - it makes no sense
+smtp_address: smtp.gmail.com
+smtp_port: 587
+smtp_username: admin@example.com

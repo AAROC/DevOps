@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Bruce Becker
-  description: This is a role to deploy the [Discourse](http://www.discourse.org) discussion forum, **with SAML authentication**. 
+  description: This is a role to deploy the [Discourse](http://www.discourse.org) discussion forum, **with SAML authentication**.
   company: CSIR Meraka Institute
   license: Apache 2.0
   min_ansible_version: 1.9
@@ -30,4 +30,4 @@ galaxy_info:
     - cloud
     - cloud:ec2
     - web
-dependencies: []
+#dependencies: [dochang.ansible-role-docker]
