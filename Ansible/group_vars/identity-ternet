@@ -1,4 +1,11 @@
 ---
+# institute metadata
+site_name: DIT
+host_institute:
+  name: Dar-es Salaam Institute of Technology
+  url: http://www.dit.ac.tz
+
+# LDAP variables
 server_country: TZ
 server_state:
 server_location: Dar es Salaam
@@ -6,3 +13,23 @@ server_organization: TERNET
 server_organization_unit: DIT
 ldap_server: ldap.ternet.or.tz
 root_password_clear: Qw3rty4T3r
+sgw_admin: damas@ternet.or.tz
+
+# institute metadata
+host_institute:
+  name: Dar es Salaam Institute of Technology
+  url: http://www.dit.ac.za
+
+organisation:
+  name: DIT
+  logo: dit.jpg
+
+mail_contact: damas@ternet.or.tz
+# IDP variables. these are specifically related to the IdPOpen Web front end.
+idp:
+  name: TERNET IdP
+  admin_user: Damas Makweba
+  admin_email: damas@ternet.or.tz
+  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth
+  mail_server: 
+  header_logo: Logo.jpg

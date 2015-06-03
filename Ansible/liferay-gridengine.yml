@@ -1,0 +1,8 @@
+---
+- name: Install GridEngine
+  hosts: science-gateways
+  remote_user: ansible
+  sudo: yes
+  roles:
+    - liferay-gridengine
+    

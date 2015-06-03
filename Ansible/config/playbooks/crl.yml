@@ -1,6 +1,0 @@
-- hosts: CRL
-  user: ansible
-  sudo: True
-  tasks:
-  - name: update CRLs
-    command: /usr/sbin/fetch-crl

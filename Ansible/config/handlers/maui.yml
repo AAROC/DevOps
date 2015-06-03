@@ -1,2 +1,0 @@
-- name: restart maui
-  action: service name=maui state=restarted

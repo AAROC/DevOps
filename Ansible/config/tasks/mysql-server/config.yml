@@ -1,7 +1,0 @@
-- name: MySQL Server - Ensure is running
-  action: service name=mysqld state=started
-
-- name: MySQL Server - Allow incoming connections
-  action: shell /usr/sbin/lokkit ${lokkit_flags} -p 3306:tcp
-  notify:
-    - restart iptables

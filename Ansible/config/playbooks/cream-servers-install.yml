@@ -1,6 +1,0 @@
-- hosts: cream-servers-stage
-  user: ansible
-  sudo: True
-  tasks:
-    - include: tasks/nfs/server.yml
-    - include: tasks/emi-cream/install.yml

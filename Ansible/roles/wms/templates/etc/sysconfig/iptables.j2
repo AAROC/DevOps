@@ -1,4 +1,4 @@
-# This files defines iptable netfilter rules, 
+# This files defines iptable netfilter rules,
 # to be loaded with `iptables-restore < $this_file`
 
 *filter
@@ -14,7 +14,7 @@
 # ports added here from the WMS service reference card
 # https://wiki.italiangrid.it/twiki/bin/view/WMS/EMIWMSServiceRefCard
 {% for port in wms_ports %}
--A INPUT -s -i eth0 -p tcp --dport {{ wms_ports.rule }} -j ACCEPT
+-A INPUT -s -i eth0 -p tcp --dport {{ port }} -j ACCEPT
 {% endfor %}
 
 ## OUTPUT queue -- outbound traffic

@@ -1,3 +1,33 @@
+---
 administrator_keys:
-  - id_rsa.pub.becker.serbaggio  
+  - id_rsa.pub.becker.serbaggio
   - id_rsa.pub.marco
+site_name: identity-dev
+sgw_admin: test@test.com
+# institute metadata
+host_institute:
+  name: INFN Catania Dev Site
+  url: http://grid.ct.infn.it
+
+# LDAP variables
+server_country: IT
+server_state: Sicily
+server_location: Catania
+server_organization: INFN
+server_organization_unit: Grid
+
+# Identity provider variables
+organisation:
+  name: INFN
+  logo: infn
+ldap_server: vm03.ct.infn.it
+sgw_admin: test@test.com
+mail_contact: test@test.com
+# IDP variables. these are specifically related to the IdPOpen Web front end.
+idp:
+  name: Catch-All Identity Provider Dev Instance
+  admin_user: Administrator
+  admin_email: test@test.com
+  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth
+  mail_server: smtp.google.com
+  header_logo: Logo.jpg

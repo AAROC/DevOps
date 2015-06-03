@@ -1,0 +1,12 @@
+---
+- name: Push the templates
+  template: src=var/lib/tomcat6/webapps/ROOT/{{ item }}.j2 dest={{ tomcat6_webapps }}/ROOT/{{ item }}
+  with_items:
+    - about.jsp
+    - documentation.jsp
+    - generalError.jsp
+    - home.jsp
+    - login.jsp
+    - registrationError.jsp
+    - userAdmin.jsp
+    - userReject.jsp

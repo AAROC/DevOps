@@ -8,15 +8,16 @@
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: "{{ slack_token }}"
         msg: "Running WMS play on {{ inventory_hostname }} at {{ site_name }}"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
         #icon_url: "http://www.example.com/some-image-file.png"
-        link_names: 0
-        parse: 'none'
+        link_names: 1
+        parse: 'full'
   roles:
     - bootstrap
+    - ansible-executor
     - common
     - certificates
     - umd
@@ -25,26 +26,42 @@
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
+    - "group_vars/passwords-{{ site_name }}.yml"
   handlers:
     - include: roles/common/handlers/main.yml
   post_tasks:
     - name: Announce the play outcome
-      local_action:
+      action:
           module: slack
           domain: africa-arabia-roc.slack.com
-          token: 6EJfIMngdMiwrmnScAA4znB5
-          msg: "Running WMS play on {{ inventory_hostname }} at {{ site_name }}"
+          token: "{{ slack_token }}"
+          msg: "WMS play on {{ inventory_hostname }} at {{ site_name }} finished O/ ... running tweaks..."
           channel: "#devopssite"
           username: "Ansible on {{ inventory_hostname }}"
           #icon_url: "http://www.example.com/some-image-file.png"
-          link_names: 0
-          parse: 'none'
+          link_names: 1
+          parse: 'full'
 
 - hosts: wms-servers
   tasks:
     - name: tweak WMS
-      template: src=etc/glite-wms/glite_wms.conf.j2 dest=/etc/glite-wms/glite_wms.conf owner=root group=root
+      sudo: true
+      template: src=roles/wms/templates/etc/glite-wms/glite_wms.conf.j2 dest=/etc/glite-wms/glite_wms.conf owner=root group=root
       notify: restart-wms-wm
   handlers:
     - name: restart-wms-wm
-      command: name='/opt/glite/etc/init.d/glite-wms-wm restart'
+      command: '/etc/init.d/glite-wms-wm restart'
+
+- hosts: wms-servers
+  tasks:
+    - name: announce play outcome via Slack
+      action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "WMS play on {{ inventory_hostname }} at {{ site_name }} finished O/"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 1
+        parse: 'full'

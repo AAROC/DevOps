@@ -1,4 +1,4 @@
-#- name: Ensure that tomcat can write to 
+#- name: Ensure that tomcat can write to
 
 - name: Create Attribute Filters
   copy: src=attribute-filter.xml dest={{ shibboleth_install_path }}/conf/attribute-filter.xml owner={{ tomcat6_user }} group=root
@@ -7,19 +7,19 @@
 - name: Create Attribute Resolver
   template: src=attribute-resolver.xml.j2 dest={{ shibboleth_install_path }}/conf/attribute-resolver.xml owner={{ tomcat6_user }} group=root
   notify: restart tomcat
-  
+
 - name: Create Logger
   template: src=logging.xml.j2 dest={{ shibboleth_install_path }}/conf/logging.xml owner={{ tomcat6_user }} group=root
   notify: restart tomcat
-  
+
 - name: Create Handler
   template: src=handler.xml.j2 dest={{ shibboleth_install_path }}/conf/handler.xml owner={{ tomcat6_user }} group=root
   notify: restart tomcat
-  
+
 - name: Create Relying Parties
   template: src=relying-party.xml.j2 dest={{ shibboleth_install_path }}/conf/relying-party.xml owner={{ tomcat6_user }} group=root
   notify: restart tomcat
-  
+
 - name: Configure the Login module
-  template: src=login.conf.j2 dest={{ shibboleth_install_path }}/conf/login.conf owner={{ tomcat6_user }} group=root
+  template: src=login.config.j2 dest={{ shibboleth_install_path }}/conf/login.config owner={{ tomcat6_user }} group=root
   notify: restart tomcat
