@@ -2,7 +2,7 @@
 # install tasks for Debian
 - name: Install the package
   sudo: true
-  apt: name={{ package_name }}
+  apt: name={{ package_name }} state=present
 
 - name: Ensure that the service is running
   service: name={{ package_name }} state=restarted

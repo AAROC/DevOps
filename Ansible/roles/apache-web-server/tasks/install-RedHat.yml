@@ -4,8 +4,8 @@
   sudo: true
   yum: name={{ package_name }} state=present
 
-- name: Ensure that the service is started
-  service: name={{ package_name }} state=restart
+- name: Ensure that the service is running
+  service: name={{ package_name }} state=restarted
 
 - name: Configure virtualhosts
   debug: msg="TODO"
