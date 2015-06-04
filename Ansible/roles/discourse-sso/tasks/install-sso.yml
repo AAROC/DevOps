@@ -10,14 +10,16 @@
   pip:
     requirements: DiscourseSSO/requirements.txt
 
-- name: Update the SSO template
-  lineinfile:
-    line:
-    src: src/config.py.j2
-    dest: {{ discourse_sso_install_path }}/src/config.py
+- name: some output
+  debug: "var={{ hostvars[discourse-forum].hostname }}"
 
 - name: Update the SSO template
   lineinfile:
-    line:
-    src: src/config.py.j2
-    dest: {{ discourse_sso_install_path }}/src/config.py
+    line: "DISCOURSE_URL = {{ hostvars[discourse-forum].hostname }}"
+    regexp: '^DISCOURSE_URL'
+    dest: "{{ discourse_sso_install_path }}/src/config.py"
+
+- name: Update the SSO template
+  lineinfile:
+    line: "DISCOURSE_SECRET_KEY = {{ discourse_shared_key }}"
+    dest: "{{ discourse_sso_install_path }}/src/config.py"
