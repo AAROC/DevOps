@@ -1,0 +1,4 @@
+---
+# handlers for Debian http server role
+- name: restart service
+  service: name="{{ package_name }}" state=restarted
