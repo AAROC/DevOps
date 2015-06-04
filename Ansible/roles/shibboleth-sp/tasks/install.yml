@@ -9,7 +9,7 @@
 - name: force yum update
   sudo: true
   yum:
-    name: *
+    name: "*"
     state: latest
     changed: false
 
