@@ -1,10 +1,23 @@
 ---
 # install-sso
+# These tasks install the DiscourseSSO
 - name: get the Discourse SSO repo
   git:
     repo: git://github.com/AAROC/DiscourseSSO
-    dest: /var/www/samlsso
+    dest: {{ discourse_sso_install_path }}
 
 - name: Install the DiscourseSSO prerequisites
   pip:
     requirements: DiscourseSSO/requirements.txt
+
+- name: Update the SSO template
+  lineinfile:
+    line:
+    src: src/config.py.j2
+    dest: {{ discourse_sso_install_path }}/src/config.py
+
+- name: Update the SSO template
+  lineinfile:
+    line:
+    src: src/config.py.j2
+    dest: {{ discourse_sso_install_path }}/src/config.py

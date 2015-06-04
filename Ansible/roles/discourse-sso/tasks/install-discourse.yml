@@ -7,4 +7,4 @@
 - name: Update the Discourse container template
   template:
     src: containers/app.yml.j2
-    dest: discours-install/containers/app.yml
+    dest: discours/containers/app.yml
