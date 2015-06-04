@@ -16,4 +16,6 @@
 - hosts: discourse-forum
   name: Deploy Discourse with Apache and federated logon
   roles:
+    - apache-web-server
+    - shibboleth-sp
     - discourse-sso
