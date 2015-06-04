@@ -2,11 +2,13 @@
 # install-sso
 # These tasks install the DiscourseSSO
 - name: get the Discourse SSO repo
+  sudo: true
   git:
     repo: git://github.com/AAROC/DiscourseSSO
-    dest: {{ discourse_sso_install_path }}
+    dest: "{{ discourse_sso_install_path }}"
 
 - name: Install the DiscourseSSO prerequisites
+  sudo: true
   pip:
     requirements: DiscourseSSO/requirements.txt
 
@@ -14,12 +16,14 @@
   debug: "var={{ hostvars[discourse-forum].hostname }}"
 
 - name: Update the SSO template
+  sudo: true
   lineinfile:
     line: "DISCOURSE_URL = {{ hostvars[discourse-forum].hostname }}"
     regexp: '^DISCOURSE_URL'
     dest: "{{ discourse_sso_install_path }}/src/config.py"
 
 - name: Update the SSO template
+  sudo: true
   lineinfile:
     line: "DISCOURSE_SECRET_KEY = {{ discourse_shared_key }}"
     dest: "{{ discourse_sso_install_path }}/src/config.py"
