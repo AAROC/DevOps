@@ -18,4 +18,3 @@
   yum:
     name: shibboleth.x864_64
     state: present
-  creates: /etc/shibboleth
