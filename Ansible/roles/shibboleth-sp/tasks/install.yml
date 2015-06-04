@@ -16,5 +16,5 @@
 - name: install shibboleth package
   sudo: true
   yum:
-    name: shibboleth.x864_64
+    name: shibboleth.x86_64
     state: present
