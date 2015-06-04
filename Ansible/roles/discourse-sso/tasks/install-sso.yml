@@ -11,7 +11,7 @@
 - name: Install the DiscourseSSO prerequisites
   sudo: true
   pip:
-    requirements: DiscourseSSO/requirements.txt
+    requirements: "{{ discourse_sso_install_path }}/requirements.txt"
 
 - name: some output
   debug: "var={{ hostvars[discourse-forum].hostname }}"
