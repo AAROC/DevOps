@@ -27,6 +27,8 @@
     - discourse-sso
   pre_tasks:
     - name: ensure that docker is present
+      sudo: true
       yum: name=docker-io state=present
     - name: ensure that docker service is running
+      sudo: true
       service: name=docker state=running
