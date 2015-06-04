@@ -1,14 +1,14 @@
 ---
 - name: check whether the discourse repo is already there
-  stat: "{{ discourse_path }}"
+  stat:
+    path: "{{ discourse_path }}"
   register: discourse_present
 
 - name: Get the discourse repo
   git:
     repo: git://github.com/discourse/discourse.git
     dest: /home/discourse/discourse
-    when: discourse_present.stat != 'exists'
-
+  when: discourse_present.stat.exists == 'false'
 
 - name: Update the Discourse container template
   template:
