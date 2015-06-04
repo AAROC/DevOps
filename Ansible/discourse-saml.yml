@@ -2,10 +2,13 @@
 - hosts: discourse-forum
   name: Get the required roles
   tasks:
+  - name: check if the required roles are present
+    stat: $HOME/ansible/roles/dochang.docker
+    register: dochang_present
+
   - name: get the docker role from galaxy
-    command: ansible-galaxy install -p roles dochang.docker
-    args:
-      creates: roles/dochang.docker
+    raw: ansible-galaxy install -p roles dochang.docker
+    when: ! dochang_present.stat.isdir
 
 - hosts: discourse-forum
   name: Make the host dockable
