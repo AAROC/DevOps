@@ -1,0 +1,10 @@
+---
+- name: Get the discourse repo
+  git:
+    repo: git://github.com/discourse/discourse.git
+    dest: discourse
+
+- name: Update the Discourse container template
+  template:
+    src: containers/app.yml.j2
+    dest: discours-install/containers/app.yml
