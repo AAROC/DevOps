@@ -2,9 +2,9 @@
 - name: Get the discourse repo
   git:
     repo: git://github.com/discourse/discourse.git
-    dest: discourse
+    dest: /home/discourse/discourse
 
 - name: Update the Discourse container template
   template:
     src: containers/app.yml.j2
-    dest: discourse/containers/app.yml
+    dest: /home/discourse/discourse/containers/app.yml
