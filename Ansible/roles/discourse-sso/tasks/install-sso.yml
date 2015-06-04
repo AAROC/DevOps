@@ -6,6 +6,7 @@
   git:
     repo: git://github.com/AAROC/DiscourseSSO
     dest: "{{ discourse_sso_install_path }}"
+    accept_hostkey: true
 
 - name: Install the DiscourseSSO prerequisites
   sudo: true
