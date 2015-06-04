@@ -26,6 +26,9 @@
     - shibboleth-sp
     - discourse-sso
   pre_tasks:
+    - name: ensure that libselinux is present
+      sudo: true
+      yum: name=libselinux-python state=present
     - name: ensure that docker is present
       sudo: true
       yum: name=docker-io state=present
