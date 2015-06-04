@@ -16,14 +16,14 @@
 - name: some output
   debug: "var={{ hostvars['discourse-forum']['hostname'] }}"
 
-- name: Update the SSO template
+- name: Update the SSO template (hostname)
   sudo: true
   lineinfile:
     line: "DISCOURSE_URL = {{ hostvars['discourse-forum']['hostname'] }}"
     regexp: '^DISCOURSE_URL'
     dest: "{{ discourse_sso_install_path }}/src/config.py"
 
-- name: Update the SSO template
+- name: Update the SSO template (secret key)
   sudo: true
   lineinfile:
     line: "DISCOURSE_SECRET_KEY = {{ discourse_shared_key }}"
