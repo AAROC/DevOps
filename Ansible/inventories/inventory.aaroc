@@ -9,17 +9,21 @@ myproxy.c4.csir.co.za
 
 # information systems
 [top-bdiis]
-top-bdii.c4.csir.co.za 
+top-bdii.c4.csir.co.za
 
-# workload management 
+# workload management
 [wms-servers]
 wms.c4.csir.co.za
 
 # metadata catalogues
 [lfc-servers]
-lfc.c4.csir.co.za 
+lfc.c4.csir.co.za
 
-# file transfer 
+# CVMFS repos
+[cvmfs-servers]
+apprepo.sagrid.ac.za
+
+# file transfer
 [fts-servers]
 fts.c4.csir.co.za
 
@@ -39,7 +43,7 @@ argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_cer
 
 # monitoring
 [ngi-nagios]
-nagios.c4.csir.co.za  
+nagios.c4.csir.co.za
 
 # Grid Core Services
 
@@ -48,4 +52,9 @@ CREAM-CEs
 
 # Grid Site Services
 
-# 
+#Web Services
+[discourse-forum]
+discourse.sci-gaia.eu ansible_ssh_port=4422 ansible_ssh_user=discourse
+
+
+[CentOS:children]
