@@ -13,11 +13,11 @@
 #     raw: ansible-galaxy install -p roles dochang.docker
 #     when: ! dochang_present.stat
 
-- hosts: discourse-forum
-  name: Make the host dockable
-  sudo: true
-  roles:
-    - dochang.docker
+# - hosts: discourse-forum
+#   name: Make the host dockable
+#   sudo: true
+#   roles:
+#     - dochang.docker
 
 - hosts: discourse-forum
   name: Deploy Discourse with Apache and federated logon
@@ -25,3 +25,8 @@
     - apache-web-server
     - shibboleth-sp
     - discourse-sso
+  pre_tasks:
+    - name: ensure that docker is present
+      yum: name=docker-io state=present
+    - name: ensure that docker service is running
+      service: name=docker state=running
