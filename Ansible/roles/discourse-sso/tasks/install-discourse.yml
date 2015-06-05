@@ -16,7 +16,6 @@
     state: directory
     owner: discourse
     group: discourse
-    state: present
     mode: "u=rw,g=r,o=r"
 
 - name: Update the Discourse container template
