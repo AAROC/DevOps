@@ -5,5 +5,10 @@
   service: name=docker state=restarted
   changed_when: false
 
-- name: launch the app
-  command: "{{ discourse_path }}/launcher rebuild app"
+- name: bootstrap the app
+  sudo: true
+  raw: "{{ discourse_path }}/launcher bootstrap app"
+
+- name: rebuild the app
+  sudo: true
+  raw: "{{ discourse_path }}/launcher reubild app"
