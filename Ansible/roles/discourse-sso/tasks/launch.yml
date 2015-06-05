@@ -1,5 +1,9 @@
 ---
 # tasks for launching the discourse container
+- name: restart docker
+  sudo: true
+  service: name=docker state=restarted
+  changed_when: false
+
 - name: launch the app
   command: "{{ discourse_path }}/launcher rebuild app"
-  
