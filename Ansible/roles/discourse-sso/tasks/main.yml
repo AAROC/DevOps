@@ -2,4 +2,4 @@
 # tasks file for discourse-sso. This will ensure that the discourse SSO translation tool is properly configured
 - include: install-discourse.yml
 - include: install-sso.yml
-#- include: launch.yml # todo
+- include: launch.yml # todo
