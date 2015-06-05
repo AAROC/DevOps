@@ -1,12 +1,14 @@
 ---
 # install-sso
 # These tasks install the DiscourseSSO
+
 - name: get the Discourse SSO repo
   sudo: true
   git:
     repo: git://github.com/AAROC/DiscourseSSO
     dest: "{{ discourse_sso_install_path }}"
     accept_hostkey: true
+    force: yes
 
 - name: Install the DiscourseSSO prerequisites
   sudo: true
