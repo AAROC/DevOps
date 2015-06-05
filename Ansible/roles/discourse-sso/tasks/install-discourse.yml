@@ -8,7 +8,16 @@
   git:
     repo: git://github.com/discourse/discourse.git
     dest: /home/discourse/discourse
-  when: discourse_present.stat.exists == 'false'
+  when: discourse_present.stat.exists == false
+
+- name: Create the containers directory if it's not there yet.
+  file:
+    path: "{{ discourse_path }}/containers"
+    state: directory
+    owner: discourse
+    group: discourse
+    state: present
+    mode: "u=rw,g=r,o=r"
 
 - name: Update the Discourse container template
   template:
