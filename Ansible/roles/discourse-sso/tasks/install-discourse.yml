@@ -6,7 +6,7 @@
 
 - name: Get the discourse repo
   git:
-    repo: git://github.com/discourse/discourse.git
+    repo: git://github.com/discourse/discourse_docker.git
     dest: /home/discourse/discourse
   when: discourse_present.stat.exists == false
 
