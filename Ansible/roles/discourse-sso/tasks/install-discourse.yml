@@ -16,7 +16,7 @@
     state: directory
     owner: discourse
     group: discourse
-    mode: "u=rw,g=r,o=r"
+    mode: "u=rwx,g=rx,o=rx"
 
 - name: Update the Discourse container template
   template:
