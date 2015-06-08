@@ -4644,7 +4644,7 @@ dn: o=MUM,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: MUM
-description: Muslimu University of Morogoro
+description: Muslim University of Morogoro
 registeredAddress: http://www.mum.ac.tz/
 
 
