@@ -1,2 +1,6 @@
 ---
 # tasks file for discourse-sso
+- include: install-discourse.yml
+- include: install-sso.yml
+#- include: apache.yml # todo
+#- include: launch.yml # todo
