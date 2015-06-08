@@ -26,6 +26,8 @@
     - shibboleth-sp
     - discourse-sso
   pre_tasks:
+    - name: ensure that the prerequisites are present
+      include_vars: vars/prerequisites.yml
     - name: ensure that libselinux is present
       sudo: true
       yum: name=libselinux-python state=present
