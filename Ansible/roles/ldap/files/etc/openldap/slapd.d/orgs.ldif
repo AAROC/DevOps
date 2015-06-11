@@ -4628,7 +4628,7 @@ dn: o=SJUT,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: SJUT
-description: St. John's University of Tanzania
+description: St. John University of Tanzania
 registeredAddress: http://www.sjut.ac.tz/
 
 # CBE, TZ, Organisations, local
