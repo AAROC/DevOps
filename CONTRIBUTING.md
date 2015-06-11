@@ -4,7 +4,43 @@ This repository has been created to document and excute the configuration of e-S
 
 We chose github because the workflow of contibuting to repositories maintained within it is pretty standard; we don't want to re-invent the wheel of collaboraiton. So, if you have an idea, some code lying around, or you've noticed some error in the way we've done things, please ***send us a pull request***. Don't be shy, we're nice people :)
 
+# Reporting issues
+
+
+If you use this code (and we want you to :smile:), we consider it a moral responsibility to help improve it. The easiest way to do this is to report issues. While we can't guarantee support, we will do our best to respond to and close tickets that are assigned to the repo. You can do your bit by trying to stick to a few guidelines :
+
+## Opening issues
+
+  1. Are you reporting an issue, or commenting on the code ? Issues go here. Commenting and discussing the code can be done with us at [slack](https://africa-arabia-roc.slack.com) (ask for an invite if you're not on the team) or at the discussion forum (use the [Sci-GaIA discussion forum](http://discourse.sci-gaia.eu) for now, then we'll move on).
+  2. If you have an actual error from an Ansible playbook, send us the full output of the relevant role. 
+    1. Do not just send the last task, with the error - we will  need some context
+    2. Be sure to mention relevant variables that you may have used
+  3. It always helps to have your inventory and group_vars along with the issue.
+
+## Use Markdown as it was intended.
+
+Understanding submitted issues is not just a matter of reading some console output or log file - some context is needed. Also, plain text is not a great way to communicate emphasis or context. Github issues provides a good syntax for reporting the issues, with highlighting for many different languages. 
+
+***Please use [Github flavoured markdown](https://help.github.com/articles/github-flavored-markdown/) to submit issues***. In particular, use the syntax highlighter to highlight code, or output on the terminal, logs, etc. 
+
+*I.E* : 
+```bash
+[shell](user)~ echo hi
+hi
+```
+
+
+## Closing issues
+
+It's very important for us to know when to close issues, as well as _how_ issues were closed.
+
+  1. If you find a fix, please report it and close the issue
+  2. Try to flag the issue as SOLVED (either by writing it in the text, or setting the issue flag)
+
+
+
 # Continuous Integration
+
 We usually request that commits are tested before inclusion, but this can requirea fairly complicated staging environment or continuous integration service which you may not have access to. You are welcome to use the `.travis.yml` example in the top directory if  you're developing services which can be tested on [travis-CI](http://travis-ci.org)'s platform. For more sophisticated testing, you may need access to a dedicated environment. Contact us to see whether we can make a cloud testbed avaiable for your use case.
 
 
