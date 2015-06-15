@@ -16,6 +16,7 @@ If you use this code (and we want you to :smile:), we consider it a moral respon
     1. Do not just send the last task, with the error - we will  need some context
     2. Be sure to mention relevant variables that you may have used
   3. It always helps to have your inventory and group_vars along with the issue.
+  4. Be sure that you're using the right version of Ansible (currently v.9 or higher)
 
 ## Use Markdown as it was intended.
 
