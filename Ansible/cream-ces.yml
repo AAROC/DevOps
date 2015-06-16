@@ -78,21 +78,21 @@
       sudo: true
       service: name=trqauthd state=started
 
-    - name: fix qmgr queues 1
+    - name: Remove queue CPU time limits
       sudo: true
-      action: raw /usr/bin/qmgr -c "unset queue {{ item.name }} {{ resources_max.cput }}"
+      action: raw /usr/bin/qmgr -c "unset queue {{ item.name }} resources_max.cput"
       with_items: qmgr_queues
       notify:
         - restart pbs_server
 
-    - name: fix qmgr queues 2
+    - name: Set Max Walltime limits
       sudo: true
       action: raw /usr/bin/qmgr -c "set queue {{ item.name }} resources_max.walltime = {{ item.max_wall_time }}"
       with_items: qmgr_queues
       notify:
         - restart pbs_server
 
-    - name: fix qmgr queues 3
+    - name: Set Queue default walltime
       action: raw /usr/bin/qmgr -c "set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}"
       sudo: true
       with_items:
