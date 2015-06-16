@@ -37,7 +37,7 @@ qmgr_queues:
       name: eumed
       resources_max.cput: '72:00:00'
       max_wall_time: '72:00:00'
-  - atlas
+  - atlas:
       name: atlas
       resources_max.cput: '72:00:00'
       max_wall_time: '72:00:00'
