@@ -50,7 +50,6 @@
   roles:
    - munge
    - head-node
-  pre_tasks:
 
 # Head node has to be run after you've configured all of the worker nodes, else the facts are not available.
 
