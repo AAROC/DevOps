@@ -41,7 +41,7 @@
   name: look up the IP addresses of the hosts
   tasks:
     - name: look up worker-node facts
-      action: module: name=setup
+      action: setup
 
 - hosts: cream-ces
   name: Configure as head node
