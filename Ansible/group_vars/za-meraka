@@ -18,12 +18,30 @@ queues:
   - sagrid.ac.za
   - eumed
   - atlas
+
+# you can set VO-level queue tuning here
 qmgr_queues:
-  - dteam
-  - ops
-  - sagrid.ac.za
-  - eumed
+  - dteam:
+      name: dteam
+      resources_max.cput: '24:00:00'
+      max_wall_time: '30:00:00'
+  - ops:
+      name: ops
+      resources_max.cput: '0:15:00'
+      max_wall_time: '0:30:00'
+  - sagrid.ac.za:
+      name: sagrid.ac.za
+      resources_max.cput: '72:00:00'
+      max_wall_time: '72:00:00'
+  - eumed:
+      name: eumed
+      resources_max.cput: '72:00:00'
+      max_wall_time: '72:00:00'
   - atlas
+      name: atlas
+      resources_max.cput: '72:00:00'
+      max_wall_time: '72:00:00'
+
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
 # use the site name as registered in GOCDB (use the same case)
 site_name: ZA-MERAKA
