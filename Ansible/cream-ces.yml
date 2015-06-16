@@ -74,6 +74,10 @@
   vars_files:
     - group_vars/passwords-{{ site_name }}.yml
   post_tasks:
+    - name: Restart trqauthd
+      sudo: true
+      service: name=trqauthd state=started
+
     - name: fix qmgr queues 1
       sudo: true
       action: raw /usr/bin/qmgr -c "unset queue {{ item.name }} {{ resources_max.cput }}"
