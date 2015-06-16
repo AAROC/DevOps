@@ -6,10 +6,14 @@
 # 4.) Adds all worker nodes to the known-hosts file
 # 5.) Adds known hosts to the hosts file
 # not necessarily in that order
+- name: Debug host network
+  debug:
+    var: "hostvars['{{ item }}']['ansible_default_ipv4']['address']"
+  with_items: groups['worker-nodes'][0]
+
 - name: build local network
   template: src=etc/hosts.j2 dest=/etc/hosts
 
-# look up the IP addresses of the hosts
 
 # Add all the worker nodes to the list of hosts in /etc/hosts
 # Their host names and addresses are added to the /etc/hosts file
@@ -67,5 +71,3 @@
   tags:
   - network
   - firewall
-
-  

@@ -37,6 +37,12 @@
       link_names: 1
       parse: 'full'
 
+- hosts: worker-nodes
+  name: look up the IP addresses of the hosts
+  tasks:
+    - name: look up worker-node facts
+      action: module=setup
+
 - hosts: cream-ces
   name: Configure as head node
   user: ansible
@@ -44,6 +50,8 @@
   roles:
    - munge
    - head-node
+  pre_tasks:
+
 # Head node has to be run after you've configured all of the worker nodes, else the facts are not available.
 
 - hosts: cream-ces

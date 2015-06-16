@@ -13,12 +13,13 @@ ff02::2 ip6-allrouters
 
 # Create the entry for the head node - use the private address
 {% for host in groups['cream-ces'] %}
-{{ hostvars[host].ansible_default_ipv4.address }} {{ host }}
+{{ hostvars[host]['ansible_eth0']['ipv4']['address'] }} {{ host }}
 {% endfor %}
 
 # now, worker nodes
-# may have to speficy the IP address in the inventory or host vars file if they are static IPs and not obtained with facts
+# may have to specify the IP address in the inventory or host vars file if they are static IPs and not obtained with facts
 # This won't be picked up until we've configured the damn worker nodes though :-/
 {% for host in groups['worker-nodes'] %}
-  {{ hostvars[host].ansible_default_ipv4.address }} {{ host }} {{ host.ansible_hostname }}
+{{ hostvars[host]['ansible_eth0']['ipv4']['address'] }} {{ host }}
+{{ hostvars[host]['ansible_hostname']['ansible_domain'] }}
 {% endfor %}
