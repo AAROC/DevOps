@@ -413,6 +413,12 @@ QUEUES="{{ queues|join(' ') }}"
 #      MY_TEST_QUEUE_GROUP_ENABLE="ops atlas"
 # <queue-name>_GROUP_ENABLE="fqan1 [fqan2 [...]]"
 
+
+# We could probably do this with a nice for loop...
+{% if "atlas" in vos -%}
+ATLAS_GROUP_ENABLE="atlas /VO=atlas/GROUP=/atlas/ROLE=lcgadmin /VO=atlas/GROUP=/atlas/ROLE=production"
+{% endif -%}
+
 {% if "dteam" in vos -%}
 DTEAM_GROUP_ENABLE="dteam /dteam/ROLE=lcgadmin /dteam/ROLE=production"
 {% endif -%}
