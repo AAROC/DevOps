@@ -2,14 +2,18 @@
 emi_service: WN
 yaim_options: '-n MPI_WN -n WN -n TORQUE_client'
 needs_certificate: false
+base_dependencies:
+  - bind-utils
+  - rpcbind
+  - nfs-utils
 umd_metapackages:
- - emi-wn
- - emi-torque-client
- - emi-mpi
+  - emi-wn
+  - emi-torque-client
+  - emi-mpi
 
 openmpi_packages:
- - openmpi
- - openmpi-devel
+  - openmpi
+  - openmpi-devel
 mpich2_packages:
   - mpich2.x86_64
   - mpich2-devel.x86_64
