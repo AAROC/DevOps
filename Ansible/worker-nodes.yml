@@ -12,13 +12,6 @@
   gather_facts: true
 
 - hosts: cluster-head-nodes
-  name: run the head node role on the head node
-  connection: local
-  sudo: true
-  roles:
-  - head-node
-
-- hosts: cluster-head-nodes
   name: Look up local facts and create key vars file
   connection: local
   tasks:
@@ -38,6 +31,7 @@
   roles:
     - common
     - certificates
+    - worker-node
     - umd
     - emi-worker-node
   vars_files:
