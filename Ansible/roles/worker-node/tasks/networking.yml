@@ -1,7 +1,7 @@
 ---
 - name: what is the head node's ipv4 address ?
   debug:
-    var: "{{ hostvars['cluster-head-nodes'][0].ansible_ipv4 }}"
+    var: "{{ hostvars[groups['cluster-head-nodes'][0]].ansible_ipv4 }}"
 - name: Add head node IP to known hosts
   template: dest=/etc/ssh/shosts.equiv src=etc/ssh/shosts.equiv.j2 owner=root group=root
 #  debug: msg="created shosts.equiv file"
@@ -35,6 +35,11 @@
   #tags:
   #- networking
 
+- name: quick debug of wn network config
+  debug: "var={{ item }}"
+  with_items:
+    - site_domain
+    - ansible_hostname
 
 - name: Set worker node hostname
   hostname: name="{{ ansible_hostname }}"."{{ site_domain }}"

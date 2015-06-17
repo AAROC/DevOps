@@ -5,4 +5,4 @@
   sudo: true
   lineinfile:
     dest: /etc/fstab
-    line: "{{ cluster-head-nodes }}:/home /home nfs rw 0 0" 
+    line: "{{ groupvars['cluster-head-nodes'] }}:/home /home nfs rw 0 0" 
