@@ -1,8 +1,8 @@
 [ldap-servers]
-idp.se.ampr.org needs_certificate=false
+idp.se.ampr.org needs_certificate=true
 
 [shibboleth-idps]
-idp.se.ampr.org needs_certificate=false min_jvm_size=1024m
+idp.se.ampr.org needs_certificate=true min_jvm_size=1024m
 
 [identity-all:children]
 ldap-servers
