@@ -95,7 +95,7 @@ cream-ces
 # Worker Nodes
 [worker-nodes]
 ce01-node003.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node004.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+#ce01-node004.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node005.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node006.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node007.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
@@ -106,7 +106,7 @@ ce01-node011.internal.net needs_certificate='false' emi_service='WN' yaim_option
 ce01-node012.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node013.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node014.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node015.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+#ce01-node015.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 
 [cluster-head-nodes]
 ce01-node001.c4.csir.co.za
