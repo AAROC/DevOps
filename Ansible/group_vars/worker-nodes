@@ -9,6 +9,7 @@ base_dependencies:
 umd_metapackages:
   - emi-wn
   - emi-torque-client
+  - emi-torque-utils
   - emi-mpi
 
 openmpi_packages:

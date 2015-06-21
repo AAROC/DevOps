@@ -11,7 +11,7 @@
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: " {{ slack_token }}"
         msg: "Running CREAM-CEs play on {{ inventory_hostname }} at {{ site_name }}"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
@@ -30,7 +30,7 @@
     action:
       module: slack
       domain: africa-arabia-roc.slack.com
-      token: 6EJfIMngdMiwrmnScAA4znB5
+      token: " {{ slack_token }}"
       msg: "CREAM-CE play on {{ inventory_hostname }} at {{ site_name }} has completed until the CREAM-CE role"
       channel: "#devopssite"
       username: "Ansible on {{ inventory_hostname }}"
