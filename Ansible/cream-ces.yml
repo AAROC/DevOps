@@ -107,9 +107,9 @@
       notify:
         - restart pbs_server
 
-    - name: fix Proxy_to_sandbox_dir
-      sudo: true
-      action: copy src=config/files/usr/bin/glite-cream-copyProxyToSandboxDir.sh dest=/usr/bin/glite-cream-copyProxyToSandboxDir.sh owner=root  group=root mode=755
+#    - name: fix Proxy_to_sandbox_dir
+#      sudo: true
+#      action: copy src=config/files/usr/bin/glite-cream-copyProxyToSandboxDir.sh dest=/usr/bin/glite-cream-copyProxyToSandboxDir.sh owner=root  group=root mode=755
 
     - name: restart munge
       sudo: true
