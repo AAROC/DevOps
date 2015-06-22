@@ -18,6 +18,8 @@
         #icon_url: "http://www.example.com/some-image-file.png"
         link_names: 1
         parse: 'full'
+      tags:
+        - slack
   roles:
   - common
   - certificates
@@ -36,6 +38,8 @@
       username: "Ansible on {{ inventory_hostname }}"
       link_names: 1
       parse: 'full'
+    tags:
+      - slack
 
 - hosts: worker-nodes
   name: look up the IP addresses of the hosts
@@ -69,6 +73,9 @@
       #icon_url: "http://www.example.com/some-image-file.png"
       link_names: 1
       parse: 'full'
+    tags:
+      - slack
+
   roles:
   - yaim
   vars_files:
@@ -93,7 +100,7 @@
         - restart pbs_server
 
     - name: Set Queue default walltime
-      action: "raw /usr/bin/qmgr -c 'set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}'"
+      action: "raw /usr/bin/qmgr -c 'set queue {{ item.name }} resources.default_walltime = {{ item.max_wall_time }}'"
       sudo: true
       with_items:
         - qmgr_queues
