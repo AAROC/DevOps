@@ -100,7 +100,7 @@
         - restart pbs_server
 
     - name: Set Queue default walltime
-      action: "raw /usr/bin/qmgr -c 'set queue {{ item.name }} resources.default_walltime = {{ item.max_wall_time }}'"
+      action: "raw /usr/bin/qmgr -c 'set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}'"
       sudo: true
       with_items:
         - qmgr_queues
