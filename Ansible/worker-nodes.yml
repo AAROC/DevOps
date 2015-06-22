@@ -42,13 +42,19 @@
   name: create munge key
   sudo: true
   tasks:
-  - command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=munge group=munge
+  - name: Create munge key
+    command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=munge group=munge
 
 - hosts: worker-nodes
   name: Copy munge key to worker nodes
   sudo: true
   tasks:
-  - copy: src=/etc/munge/munge.key dest=/etc/munge/munge.key mode=0600 owner=root group=root
+  - copy:
+    src: /etc/munge/munge.key
+    dest: /etc/munge/munge.key
+    mode: 0600
+    owner: root
+    group: root
 
 - hosts: worker-nodes
   name: configure middleware with yaim
