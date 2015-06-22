@@ -52,12 +52,8 @@
   tasks:
   - name: Create munge key
     command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=munge group=munge
-
-- hosts: worker-nodes
-  name: Copy munge key to worker nodes
-  sudo: true
-  tasks:
-  - copy:
+  - name: Copy Munge key to the worker nodes
+    copy:
       src: /etc/munge/munge.key
       dest: /etc/munge/munge.key
       mode: 0600
