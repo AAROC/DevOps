@@ -31,7 +31,15 @@
   roles:
     - common
     - certificates
+
+- hosts: worker-nodes
+  name: Apply Vanilla WN role
+  user: root
+  roles:
     - worker-node
+
+- hosts: worker-nodes
+  name: Apply Grid WN role
     - umd
     - emi-worker-node
   vars_files:
