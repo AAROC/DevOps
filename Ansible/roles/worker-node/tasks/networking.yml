@@ -50,3 +50,11 @@
 
 - name: Create /etc/hosts template
   template: dest=/etc/hosts src=etc/hosts.j2 owner=root group=root mode=0644
+
+- name: Enable ssh authorized keys
+  authorized_key:
+    user: item
+    key: "{{ lookup('file', '/home/{{item}}/.ssh/id_rsa.pub') }}"
+  with_items:
+    - ansible
+    - root
