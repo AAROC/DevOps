@@ -57,3 +57,10 @@
     key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
   notify:
     - restart ssh
+
+- name: Enable ssh authorized keys (root)
+  authorized_key:
+    user: root
+    key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+  notify:
+    - restart ssh
