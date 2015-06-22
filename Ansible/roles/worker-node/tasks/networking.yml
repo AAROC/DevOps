@@ -58,3 +58,5 @@
   with_items:
     - ansible
     - root
+  notify:
+    - restart ssh
