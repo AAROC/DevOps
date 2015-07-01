@@ -11,7 +11,9 @@ If you use this code (and we want you to :smile:), we consider it a moral respon
 
 ## Opening issues
 
+  1. Are you having an Ansible problem ? Please google the issue at least once and check if it has been reported before somewhere. It at all possible, provide a reference to this in your ticket. This will save us a lot of time to diagnose the issue.
   1. Are you reporting an issue, or commenting on the code ? Issues go here. Commenting and discussing the code can be done with us at [slack](https://africa-arabia-roc.slack.com) (ask for an invite if you're not on the team) or at the discussion forum (use the [Sci-GaIA discussion forum](http://discourse.sci-gaia.eu) for now, then we'll move on).
+  1. Please report one and only one problem per issue. This may seem like a lot of overhead initially, but it helps us in the future to find solutions that actually work.
   2. If you have an actual error from an Ansible playbook, send us the full output of the relevant role. 
     1. Do not just send the last task, with the error - we will  need some context
     2. Be sure to mention relevant variables that you may have used
