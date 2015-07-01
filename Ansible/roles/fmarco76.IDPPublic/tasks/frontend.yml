@@ -1,4 +1,11 @@
 ---
+- name: ensure that the ROOT directory exists
+  file:
+    path: "{{ tomcat6_webapps}}/ROOT"
+    state: directory
+    owner: tomcat
+    group: tomcat
+    mode: 0644
 - name: Push the templates
   sudo: true
   template:
