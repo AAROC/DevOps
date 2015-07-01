@@ -1,6 +1,11 @@
 ---
 - name: Push the templates
-  template: src=var/lib/tomcat6/webapps/ROOT/{{ item }}.j2 dest={{ tomcat6_webapps }}/ROOT/{{ item }}
+  sudo: true
+  template:
+    src: "var/lib/tomcat6/webapps/ROOT/{{ item }}.j2"
+    dest: "{{ tomcat6_webapps }}/ROOT/{{ item }}"
+    owner: tomcat
+    group: tomcat
   with_items:
     - about.jsp
     - documentation.jsp
@@ -10,3 +15,5 @@
     - registrationError.jsp
     - userAdmin.jsp
     - userReject.jsp
+  notify:
+    - restart tomcat
