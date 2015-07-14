@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Bruce Becker
+  description: A role to prepare a container for grid services
+  company: CSIR Meraka Institute
+  license: Apache-2.0
+  min_ansible_version: 1.9
+  platforms:
+  - name: EL
+    versions:
+    - 6
+  - name: Ubuntu
+    versions:
+    - saucy
+    - trusty
+    - utopic
+
+dependencies: []

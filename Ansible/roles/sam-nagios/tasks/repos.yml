@@ -1,33 +1,29 @@
-- name: Get SAM-release RPM
-  action: get_url url=http://repository.egi.eu/sw/production/sam/1/x86_64/sam-release-1.22.0-1.el5.noarch.rpm dest=/tmp/sam-release-1-22.rpm
-  tags:
-    - repos
-  
-- name: Install SAM release RPM
-  action: yum name=/tmp/sam-release-1-22.rpm state=present
-  tags:
-    - repos
- 
-- name: Copy sl repos for nagios
-  action: copy src=etc/yum.repos.d/sl5-nagios22.repo dest=/etc/yum.repos.d/sl.repo owner=root group=root mode=0644
-  tags:
-    - repos
-
-- name: Copy sl-fastbugs repo for nagios
-  action: copy src=etc/yum.repos.d/sl5-fastbugs-nagios22.repo dest=/etc/yum.repos.d/sl-fastbugs.repo owner=root group=root mode=0644
-  tags:
-    - repos
-
-- name: Copy sl-security repo for nagios
-  action: copy src=etc/yum.repos.d/sl5-security-nagios22.repo dest=/etc/yum.repos.d/sl-security.repo owner=root group=root mode=0644
+- name: Exclude mysql from sl repos
+  lineinfile: dest=/etc/yum.repos.d/sl.repo line='exclude=mysql51*' state=present insertbefore='^priority='
   tags:
     - repos
 
 - name: Set priority for epel base only for nagios hosts
-  action: lineinfile destfile="/etc/yum.repos.d/epel.repo" regexp="^priority" value="priority=50" state=present insertafter="repo=epel-5"
+  lineinfile: destfile="/etc/yum.repos.d/epel.repo" regexp="^priority" value="priority=50" state=present insertafter="repo=epel-5"
   when: is_nagios == '1'
   tags:
     - repos
     - EPEL
- 
 
+- name: Download UMD3 Release repo
+  get_url: url=http://repository.egi.eu/sw/production/umd/3/sl5/x86_64/updates/umd-release-3.0.1-1.el5.noarch.rpm dest=/tmp/umd-release-3.0.1-1.el5.noarch.rpm
+  tags:
+    - repos
+    - UMD
+
+- name: Install UMD release
+  yum: name=/tmp/umd-release-3.0.1-1.el5.noarch.rpm state=present
+  tags:
+    - repos
+    - UMD
+
+- name: Add SAM repo
+  get_url: url=http://repository.egi.eu/sw/production/sam/1/repofiles/sam.repo dest=/etc/yum.repos.d
+  tags:
+    - repos
+    - SAM

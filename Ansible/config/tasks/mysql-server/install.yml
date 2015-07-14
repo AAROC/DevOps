@@ -1,8 +1,0 @@
-- name: MySQL server - Install mysql-server
-  action: yum name=mysql-server state=latest
-
-- name: MySQL server - Enable innodb_file_per_table variable
-  action: lineinfile destfile="/etc/my.cnf" regexp="innodb_file_per_table" value="innodb_file_per_table" state=present insertafter="\[mysqld\]"
-
-- name: MySQL server - Enable Service at boot
-  action: service name=mysqld enabled=on

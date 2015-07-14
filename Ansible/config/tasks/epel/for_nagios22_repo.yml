@@ -1,7 +1,0 @@
-- name: Download epel-release package
-  action: get_url url=${epel_release_url}/${epel_release_name} dest=/tmp/${epel_release_name} mode=0644
-- name: Install epel-release package
-  action: command yum install -y ${yum_flags} /tmp/${epel_release_name} creates=/etc/yum.repos.d/epel.repo
-- name: Set priority for epel base only for nagios hosts
-  action: lineinfile destfile="/etc/yum.repos.d/epel.repo" regexp="^priority" value="priority=50" state=present insertafter="repo=epel-5"
-  only_if: '${is_nagios}'

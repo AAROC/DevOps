@@ -1,0 +1,10 @@
+---
+# these variables should in included in the role vars
+- name: Org stanza
+  lineinfile:
+    dest: "{{ shibboleth_install_path }}/metadata/idp-metadata.xml"
+    line: "{{ item }}"
+    insertafter: "</AttributeAuthorityDescriptor>"
+    state: present
+  with_items: metadata_lines
+  tags: metadata

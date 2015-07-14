@@ -14,7 +14,11 @@
 - name: Check that Proxy AJP module is commented
   sudo: true
   sudo_user: root
-  lineinfile: dest=/etc/httpd/conf/httpd.conf regexp='^LoadModule proxy_ajp_module modules/mod_proxy_ajp.so' line='#LoadModule proxy_ajp_module modules/mod_proxy_ajp.so' backrefs=yes
+  lineinfile:
+    dest: /etc/httpd/conf/httpd.conf
+    regexp: '^LoadModule proxy_ajp_module modules/mod_proxy_ajp.so'
+    line: '#LoadModule proxy_ajp_module modules/mod_proxy_ajp.so'
+    backrefs: yes
   when: ansible_os_family == "RedHat"
   notify: restart httpd
 

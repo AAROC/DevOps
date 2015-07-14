@@ -3,7 +3,14 @@
 
 # since this is to manage the worker nodes, we are also assuming that they are on a local network
 # and that you can happily ssh to them as root
---- 
+---
+- hosts: worker-nodes
+  name: get facts
+  user: root
+  tasks:
+    - setup:
+  gather_facts: true
+
 - hosts: cluster-head-nodes
   name: run the head node role on the head node
   connection: local
@@ -14,7 +21,7 @@
 - hosts: cluster-head-nodes
   name: Look up local facts and create key vars file
   connection: local
-  tasks: 
+  tasks:
   - setup:
   - debug: msg="key is {{ ansible_ssh_host_key_rsa_public }} "
   - local_action: lineinfile dest=roles/worker-node/vars/public_keys.yml line="public_keys{{':'}} ssh-rsa {{ ansible_ssh_host_key_rsa_public }} ansible@{{ ansible_hostname }}" state=present create=yes
@@ -50,17 +57,8 @@
   tasks:
   - copy: src=/etc/munge/munge.key dest=/etc/munge/munge.key mode=0600 owner=root group=root
 
-#- hosts: worker-nodes 
-  #name: Install middleware
-  #user: root
-  #roles:
-    #- umd
-    #- emi-worker-node
-
 - hosts: worker-nodes
   name: configure middleware with yaim
   user: root
   roles:
     - yaim
-
-#- hosts: worker-nodes

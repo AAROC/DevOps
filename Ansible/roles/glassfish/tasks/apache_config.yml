@@ -22,11 +22,10 @@
 
 - name: Comment out mod_proxy_ajp
   lineinfile:
-    dest=/etc/httpd/conf/httpd.conf
-    regexp="^LoadModule proxy_ajp_module"
-    line="#LoadModule proxy_ajp_module"
-    backrefs=yes
-
+    dest: /etc/httpd/conf/httpd.conf
+    regexp: "^LoadModule proxy_ajp_module"
+    line: "#LoadModule proxy_ajp_module"
+    backrefs: yes
   notify: restart apache
   when: ansible_os_family == 'RedHat'
 
@@ -37,23 +36,19 @@
 
 - name: Include Valid-User for Shibboleth
   lineinfile:
-    dest=/etc/httpd/conf.d/shib.conf
-    line="require valid-user"
-    insertbefore="^</Location>"
-    state=present
+    dest: /etc/httpd/conf.d/shib.conf
+    line: "require valid-user"
+    insertbefore: "^</Location>"
+    state: present
 
 - name: Configure Shibboleth proxy access
   replace:
-    dest=/etc/httpd/conf.d/proxy_ajp.conf
-    regexp='^#ProxyPass /shibboleth/ !'
-    replace='ProxyPass /shibboleth !'
+    dest: /etc/httpd/conf.d/proxy_ajp.conf
+    regexp: '^#ProxyPass /shibboleth/ !'
+    replace: 'ProxyPass /shibboleth !'
 
 - name: Enable Shibboleth.sso
   replace:
-    dest=/etc/httpd/conf.d/proxy_ajp.conf
-    regexp='^#ProxyPass /Shibboleth.sso/ !'
-    replace='ProxyPass /Shibboleth.sso/ !'
-
-
-
-#ProxyPass /Shibboleth.sso/ !
+    dest: /etc/httpd/conf.d/proxy_ajp.conf
+    regexp: '^#ProxyPass /Shibboleth.sso/ !'
+    replace: 'ProxyPass /Shibboleth.sso/ !'
