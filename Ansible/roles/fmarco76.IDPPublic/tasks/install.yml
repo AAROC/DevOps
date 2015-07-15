@@ -1,4 +1,4 @@
---- 
+---
 #- name: correct java version selected
 # alternatives: name=java path=/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
 
@@ -16,25 +16,26 @@
     - tomcat6
     - install
 
-- name: Compile the code 
+- name: Compile the code
   command: ant dist creates={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war chdir={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}
   tags:
   -  install
 
-- name: Rename the old ROOT webapp 
+- name: Rename the old ROOT webapp
   sudo: yes
   command: creates="{{ tomcat6_webapps }}/ROOT.old/META-INF/context.xml" mv {{ tomcat6_webapps }}/ROOT {{ tomcat6_webapps }}/ROOT.old
   tags:
     - tomcat6
     - install
+  ignore_errors: True
 
-- name: Copy the application into the webapps 
+- name: Copy the application into the webapps
   sudo: yes
   command: creates="{{ tomcat6_webapps }}/ROOT.war" cp {{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war {{ tomcat6_webapps }}/ROOT.war
 
 - name: Configure the ROOT
   sudo: yes
-  template: src=ROOT.xml.j2 dest={{ tomcat6_config_path }}/Catalina/localhost/ROOT.xml 
+  template: src=ROOT.xml.j2 dest={{ tomcat6_config_path }}/Catalina/localhost/ROOT.xml
   register: tomcat_root_change
 
 - name: Restart tomcat

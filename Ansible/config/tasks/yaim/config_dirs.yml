@@ -1,7 +1,0 @@
-- name: Create siteinfo directory 
-  sudo: True
-  action: file path=/opt/glite/yaim/etc/{{site_name}}/siteinfo owner=root group=root mode=0750 state=directory
-- name: Create VOs subdirectory
-  action: file path=/opt/glite/yaim/etc/{{site_name}}/siteinfo/vo.d owner=root group=root mode=0770 state=directory
-- name: Create siteinfo/services directory and VOs subdirectory
-  action: file path=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services owner=root group=root mode=0770 state=directory

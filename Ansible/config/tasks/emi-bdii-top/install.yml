@@ -1,8 +1,0 @@
-- name: Install emi site BDII software
-  action: yum name=emi-bdii-top state=latest
-  sudo: True
-  sudo_user: root
-- name: Install ruby (we will need it)
-  action: yum name=ruby state=present
-  sudo: True
-  sudo_user: root

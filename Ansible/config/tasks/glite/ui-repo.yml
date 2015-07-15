@@ -1,2 +1,0 @@
-- name: Install glite-UI (3.2) repository definitions
-  action: copy src=files/etc/yum.repos.d/glite-UI.repo.${ansible_distribution}-${ansible_distribution_version} dest=/etc/yum.repos.d/glite-UI.repo owner=root group=root mode=0644

@@ -1,0 +1,19 @@
+---
+- hosts: discourse-forum
+  name: Get the required roles
+  tasks:
+  - name: get the docker role from galaxy
+    command: ansible-galaxy install -p roles dochang.docker
+    args:
+      creates: roles/dochang.docker
+
+- hosts: discourse-forum
+  name: Make the host dockable
+  sudo: true
+  roles:
+    - dochang.docker
+
+- hosts: discourse-forum
+  name: Deploy Discourse with Apache and federated logon
+  roles:
+    - discourse-sso

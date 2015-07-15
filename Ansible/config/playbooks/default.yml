@@ -1,6 +1,0 @@
-- hosts: site-services-prod
-  user: ansible
-  sudo: True
-  tasks:
-    - include: tasks/cas/install.yml
-    - include: tasks/yum-updatesd/config.yml

@@ -1,6 +1,0 @@
-- hosts: apel-servers
-  user: ansible
-  sudo: True
-  tasks:
-    - include: tasks/mysql-server/install.yml
-    - include: tasks/emi-apel/install.yml

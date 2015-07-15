@@ -7,17 +7,19 @@
     - download
 
 - name: Install epel-release package
-  action: command yum localinstall -y {{ yum_flags }} /tmp/{{ epel_release_name }} creates=/etc/yum.repos.d/epel.repo
+  sudo: true
+  command: yum localinstall -y {{ yum_flags }} /tmp/{{ epel_release_name }} creates=/etc/yum.repos.d/epel.repo
   tags:
     - repos
     - EPEL
     - install
 
-#- name: change the repos to use the local ones
-#  action: copy src=files/etc/yum.repos.d/epel.repo
+- name: change the repos to use the local ones
+  sudo: true
+  replace: dest=/etc/yum.repos.d/epel.repo regexp="^#baseurl=http://downloads.fedora" replace="baseurl=http://mirror.ufs.ac.za/fedora-epel/6/$basearch"
 
 - name: Download EGI trustanchors release package
-  action: get_url url={{ igtf_repo_url }}/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm dest=/tmp/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm force=no
+  get_url: url={{ igtf_repo_url }}/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm dest=/tmp/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm force=no
 # should have a when file state==abset here
   tags:
     - repos
@@ -31,7 +33,24 @@
     - IGTF
     - download
 
+- name: Install prerequisite packages (RedHat)
+  yum: name={{ item }} state=present
+  with_items:
+    - python-simplejson
+    - libselinux-python
+    - iptables
+    - mlocate
+    - initscripts
+    - chkconfig
+    - system-config-services
+    - openssh-clients
+    - which
+  tags:
+    - bootstrap
+  when: ansible_os_family=="RedHat"
+
 - name: Install EGI trustanchors release package
+  sudo: true
   yum: name=/tmp/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm state=present
   tags:
     - repos
@@ -39,11 +58,13 @@
     - install
 
 - name: Install yum-priorities package
+  sudo: true
   yum: name=yum-priorities state=present
   tags:
     - yumconfig
 
 - name: Install yum-protectbase package
-  action: yum name=yum-protectbase state=latest
+  sudo: true
+  yum: name=yum-protectbase state=latest
   tags:
     - yumconfig

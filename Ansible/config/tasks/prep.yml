@@ -1,9 +1,0 @@
-- name: Install Ansible prerequisite packages before getting started
-  action: yum name={{ item }} state=latest 
-  with_items:
-    - python-simplejson
-    - lokkit
-- name: Ensure that 5099 is open for accelerated mode
-  action: command /usr/sbin/lokkit {{ lokkit_flags }} -p {{ item }}:tcp
-  with_items: 
-    - 5099

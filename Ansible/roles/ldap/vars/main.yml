@@ -20,5 +20,5 @@ user_pass: choose_a_good_pass
 useradmin_password: choose_a_good_pass
 
 # Passwords
-# root_password_clear:
-# root_password: '{SSHA}YN4DR1KHnl7cSEFiG0ISc1oUOVxCYqzA'
+root_password_clear: password
+root_password: password

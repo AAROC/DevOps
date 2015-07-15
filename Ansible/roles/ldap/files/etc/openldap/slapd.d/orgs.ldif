@@ -4556,6 +4556,212 @@ o: UDSM
 description: University of Dar es Salaam
 registeredAddress: https://udsm.ac.tz/
 
+# DIT, TZ, Organisations, local
+dn: o=DIT,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: DIT
+description: Dar es Salaam Institute of Technology
+registeredAddress: http://www.dit.ac.tz/
+
+# MZU, TZ, Organisations, local
+dn: o=MZU,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MZU
+description: Mzumbe University
+registeredAddress: http://mzumbe.ac.tz/
+
+
+# OUT, TZ, Organisations, local
+dn: o=OUT,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: OUT
+description: Open University of Tanzania
+registeredAddress: http://out.ac.tz/
+
+
+# HKMU, TZ, Organisations, local
+dn: o=HKMU,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: HKMU
+description: Hubert Kairuki Memorial University
+registeredAddress: http://www.hkmu.ac.tz/
+
+# SUA, TZ, Organisations, local
+dn: o=SUA,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SUA
+description: Sokoine University of Agriculture
+registeredAddress: http://www.suanet.ac.tz/
+
+# IMTU, TZ, Organisations, local
+dn: o=IMTU,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: IMTU
+description: Int. Medical and Technological University
+registeredAddress: http://imtu.ac.tz/
+
+# TU, TZ, Organisations, local
+dn: o=TU,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: TU
+description: Tumaini University Makumira
+registeredAddress: http://www.makumira.ac.tz/
+
+# SUZA, TZ, Organisations, local
+dn: o=SUZA,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SUZA
+description: State University of Zanzibar
+registeredAddress: http://www.suza.ac.tz/
+
+
+# SJUT, TZ, Organisations, local
+dn: o=SJUT,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SJUT
+description: St. John University of Tanzania
+registeredAddress: http://www.sjut.ac.tz/
+
+# CBE, TZ, Organisations, local
+dn: o=CBE,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CBE
+description: College of Business Education
+registeredAddress: http://www.cbe.ac.tz/
+
+# MUM, TZ, Organisations, local
+dn: o=MUM,c=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MUM
+description: Muslim University of Morogoro
+registeredAddress: http://www.mum.ac.tz/
+
+
+# MNMA, TZ, Organisations, local
+dn: o=MNMAc=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MNMA
+description: Mwl. Nyerere Memorial Academy
+registeredAddress: http://www.mnma.ac.tz/
+
+# MUST, TZ, Organisations, local
+dn: o=MUST=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MUST
+description: Mbeya University of Science and Technology
+registeredAddress: http://www.mist.ac.tz/
+
+# NIT, TZ, Organisations, local
+dn: o=NIT=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: NIT
+description: National Institute of Transport
+registeredAddress: http://www.nit.ac.tz/
+
+
+# TUDARCO, TZ, Organisations, local
+dn: o=TUDARCO=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: TUDARCO
+description: Tumain University Dar es Salaam College
+registeredAddress: http://www.tudarco.ac.tz/
+
+
+# SAUT, TZ, Organisations, local
+dn: o=SAUT=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: SAUT
+description: St. Augustine University of Tanzania
+registeredAddress: http://www.saut.ac.tz/
+
+# MUHAS, TZ, Organisations, local
+dn: o=MUHAS=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: MUHAS
+description: Muhimbili University of Health and Allied Science
+registeredAddress: http://www.muhas.ac.tz/
+
+# ARU, TZ, Organisations, local
+dn: o=ARU=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ARU
+description: Ardhi University
+registeredAddress: http://www.aru.ac.tz/
+     
+# DUCE, TZ, Organisations, local
+dn: o=DUCE=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: DUCE
+description: Dar University College of Education
+registeredAddress: http://www.duce.ac.tz/
+
+# IHI, TZ, Organisations, local
+dn: o=IHI=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: IHI
+description: Ifakara Health Institute
+registeredAddress: http://www.ihi.or.tz/
+
+# IFM, TZ, Organisations, local
+dn: o=IFM=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: IFM
+description: Institute of Finance Management
+registeredAddress: http://www.ifm.ac.tz/
+
+# ZU, TZ, Organisations, local
+dn: o=ZU=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: ZU
+description: Zanzibar University
+registeredAddress: http://www.zanvarsity.ac.tz/
+
+# TCRA, TZ, Organisations, local
+dn: o=TCRA=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: TCRA
+description: Tanzania Communication Regulatory Authority
+registeredAddress: https://www.tcra.go.tz/
+
+# COSTECH, TZ, Organisations, local
+dn: o=COSTECH=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: COSTECH
+description: Tanzania Commission for Science and Technology
+registeredAddress: http://www.costech.or.tz/
+
+# CUHAS, TZ, Organisations, local
+dn: o=CUHAS=TZ,ou=Organisations,dc=local
+objectClass: organization
+objectClass: top
+o: CUHAS
+description: Catholic University of Health and Allied Science 
+registeredAddress: http://www.bugando.ac.tz/
+
 # UNICT, IT, Organisations, local
 dn: o=UNICT,c=IT,ou=Organisations,dc=local
 registeredAddress: http://www.unict.it

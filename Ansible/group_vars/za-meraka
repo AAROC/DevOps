@@ -3,21 +3,21 @@ yaim_path: /opt/glite/yaim
 bdii_port: 2170
 vo_sw_dir: /opt/exp_soft
 cvmfs_repos:
-  - sagrid.
+  - apprepo.sagrid.ac.za
   - atlas
 vos:
   - dteam
   - ops
+  - sagrid
   - sagrid.ac.za
   - eumed
-#  - africacert
+  - atlas
 queues:
   - dteam
   - ops
   - sagrid.ac.za
   - eumed
-#  - cert
-#  - shared
+  - atlas
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
 # use the site name as registered in GOCDB (use the same case)
 site_name: ZA-MERAKA
@@ -41,7 +41,9 @@ apel_mysql_host: ce01-node001.c4.csir.co.za
 px_host: myproxy.cern.ch
 #wms_host: wms.hellasgrid.gr
 # check GOCDB for relevant services in the AfricaArabia https://goc.egi.eu/portal/index.php?Page_Type=Service_Group&id=926
-wms_host: wms.c4.csir.co.za
+wms_host: "wms.c4.csir.co.za"
+is_both_wms_and_lb: true
+lb_proxy_type: both
 argus_status: yes
 argus_host: argus.c4.csir.co.za
 pap_admin_dn: "'/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker'"
@@ -111,6 +113,8 @@ bdii_regions:
   endpoint: ldap://fts.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
 - name: ARGUS
   endpoint: ldap://argus.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: WMS
+  endpoint: ldap://wms.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
 
 se_list:
   - se01.localdomain

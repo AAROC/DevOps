@@ -1,0 +1,4 @@
+---
+# tasks file for roles/liferay-gridengine
+- include: prep.yml
+- include: install.yml
