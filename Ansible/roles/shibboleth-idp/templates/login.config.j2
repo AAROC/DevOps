@@ -29,6 +29,4 @@ edu.vt.middleware.ldap.jaas.LdapLoginModule required
       baseDn="{{ idp_base_dn }}"
       tls="true"
       userFilter="(&(cn={0})(memberOf=cn=Users,ou=Group,dc=idp,ou=Services,dc=local))";
-
-
 };

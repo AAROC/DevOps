@@ -1,15 +1,15 @@
 ---
 # if you don't have a host certificate, we use this command to generate a new self-signed one and include that into the keychanin
-
-- name: Copy JKS generator script
-  sudo: yes
-  template: src=jks.expect.j2 dest={{ tomcat6_config_path }}/jks.expect mode="u+x"
-  # when: have_cert == false
-
-- name: Create JKS for tomcat
-  sudo: yes
-  command: creates={{ tomcat6_config_path }}/keystore.jks chdir={{ tomcat6_config_path }} ./jks.expect
-  # when: have_cert == false
+#
+# - name: Copy JKS generator script
+#   sudo: yes
+#   template: src=jks.expect.j2 dest={{ tomcat6_config_path }}/jks.expect mode="u+x"
+#   # when: have_cert == false
+#
+# - name: Create JKS for tomcat
+#   sudo: yes
+#   command: creates={{ tomcat6_config_path }}/keystore.jks chdir={{ tomcat6_config_path }} ./jks.expect
+#   # when: have_cert == false
 
 - name: Create endorsed directory
   sudo: yes

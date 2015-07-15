@@ -1,4 +1,13 @@
 ---
+# Certificate information
+#  which CA issued the certificate
+cert_CA: comodo
+# this is the list of the root and intermediate certificates of the CA
+# should probably give these keys names...
+cert_CA_certificates:
+  - COMODORSADomainValidationSecureServerCA.crt
+  - AddTrustExternalCARoot.crt
+  - COMODORSAAddTrustCA.crt
 # institute metadata
 site_name: Catch-All
 host_institute:
@@ -7,7 +16,7 @@ host_institute:
 
 # LDAP variables
 server_country: ZA
-server_state:
+server_state: Free State
 server_location: Bloemfontein
 server_organization: CSIR
 server_organization_unit: SAGrid
@@ -23,5 +32,5 @@ idp:
   admin_user: Bruce Becker
   admin_email: bbecker@csir.co.za
   metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth
-  mail_server: smtp.google.com
+  mail_server: smtp.mailgun.org
   header_logo: Logo.jpg

@@ -1,3 +1,2 @@
 ---
-needs_certificate: 'true' # it's too late to add this variable here, the "certificates" role gets applied before this.
 is_cluster: 'no'

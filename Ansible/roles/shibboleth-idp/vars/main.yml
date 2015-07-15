@@ -7,7 +7,7 @@ apache:
 # vars file for shibboleth-idp
 idp_version: 2.4.1
 shibboleth_install_path: /opt/shibboleth-idp
-shibboleth_install_cert_pass: thisismystupidpassphrase
+shibboleth_install_cert_pass: thisismystupidpassphrase # password
 shibboleth_idp_log_level: INFO
 shibboleth_ldap_log_level: INFO
 idp_url: http://shibboleth.net/downloads/identity-provider/
