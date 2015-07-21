@@ -17,7 +17,6 @@
         parse: 'full'
   roles:
     - bootstrap
-    - ansible-executor
     - common
     - certificates
     - umd
