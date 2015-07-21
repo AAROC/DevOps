@@ -1,0 +1,9 @@
+[ci]
+ci.sagrid.ac.za
+[build-slaves]
+sl6slave.sagrid.ac.za
+u1404slave.sagrid.ac.za
+[CentOS-servers]
+sl6slave.sagrid.ac.za
+[Debian-servers]
+u1404slave.sagrid.ac.za
