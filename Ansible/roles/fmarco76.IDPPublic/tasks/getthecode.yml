@@ -1,17 +1,16 @@
---- 
+---
 #- name: correct java version selected
 # alternatives: name=java path=/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
 
-- name: Create the installation directory
+- name: Create the IDPOpen installation directory
   file: path={{ ansible_env.HOME }}/idpFrontEnd state=directory owner=ansible
 
-- name: Download the IDPPublic application 
+- name: Download the IDPPublic application
   get_url: url=https://github.com/AAROC/IDPPublic/archive/{{ IDPPublic_release }}.tar.gz  dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic.tar.gz
 
 - name: Unpack IDPPublic
-  unarchive: copy=no src={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic.tar.gz dest={{ ansible_env.HOME }}/idpFrontEnd/ creates={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/README.md 
+  unarchive: copy=no src={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic.tar.gz dest={{ ansible_env.HOME }}/idpFrontEnd/ creates={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/README.md
 
 - name: Copy mail.jar in tomcat
   sudo: yes
   copy: src=mail.jar dest=/usr/share/tomcat6/lib/mail.jar
-

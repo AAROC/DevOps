@@ -11,13 +11,15 @@
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: " {{ slack_token }}"
         msg: "Running CREAM-CEs play on {{ inventory_hostname }} at {{ site_name }}"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
         #icon_url: "http://www.example.com/some-image-file.png"
         link_names: 1
         parse: 'full'
+      tags:
+        - slack
   roles:
   - common
   - certificates
@@ -30,12 +32,20 @@
     action:
       module: slack
       domain: africa-arabia-roc.slack.com
-      token: 6EJfIMngdMiwrmnScAA4znB5
+      token: " {{ slack_token }}"
       msg: "CREAM-CE play on {{ inventory_hostname }} at {{ site_name }} has completed until the CREAM-CE role"
       channel: "#devopssite"
       username: "Ansible on {{ inventory_hostname }}"
       link_names: 1
       parse: 'full'
+    tags:
+      - slack
+
+- hosts: worker-nodes
+  name: look up the IP addresses of the hosts
+  tasks:
+    - name: look up worker-node facts
+      action: setup
 
 - hosts: cream-ces
   name: Configure as head node
@@ -44,6 +54,7 @@
   roles:
    - munge
    - head-node
+
 # Head node has to be run after you've configured all of the worker nodes, else the facts are not available.
 
 - hosts: cream-ces
@@ -62,36 +73,43 @@
       #icon_url: "http://www.example.com/some-image-file.png"
       link_names: 1
       parse: 'full'
+    tags:
+      - slack
+
   roles:
   - yaim
   vars_files:
     - group_vars/passwords-{{ site_name }}.yml
   post_tasks:
-    - name: fix qmgr queues 1
+    - name: Restart trqauthd
       sudo: true
-      action: raw /usr/bin/qmgr -c "unset queue {{ item.name }} {{ resources_max.cput }}"
+      service: name=trqauthd state=started
+
+    - name: Remove queue CPU time limits
+      sudo: true
+      action: "raw /usr/bin/qmgr -c 'unset queue {{ item.name }} resources_max.cput'"
       with_items: qmgr_queues
       notify:
         - restart pbs_server
 
-    - name: fix qmgr queues 2
+    - name: Set Max Walltime limits
       sudo: true
-      action: raw /usr/bin/qmgr -c "set queue {{ item.name }} resources_max.walltime = {{ item.max_wall_time }}"
+      action: "raw /usr/bin/qmgr -c 'set queue {{ item.name }} resources_max.walltime = {{ item.max_wall_time }}'"
       with_items: qmgr_queues
       notify:
         - restart pbs_server
 
-    - name: fix qmgr queues 3
-      action: raw /usr/bin/qmgr -c "set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}"
+    - name: Set Queue default walltime
+      action: "raw /usr/bin/qmgr -c 'set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}'"
       sudo: true
       with_items:
         - qmgr_queues
       notify:
         - restart pbs_server
 
-    - name: fix Proxy_to_sandbox_dir
-      sudo: true
-      action: copy src=config/files/usr/bin/glite-cream-copyProxyToSandboxDir.sh dest=/usr/bin/glite-cream-copyProxyToSandboxDir.sh owner=root  group=root mode=755
+#    - name: fix Proxy_to_sandbox_dir
+#      sudo: true
+#      action: copy src=config/files/usr/bin/glite-cream-copyProxyToSandboxDir.sh dest=/usr/bin/glite-cream-copyProxyToSandboxDir.sh owner=root  group=root mode=755
 
     - name: restart munge
       sudo: true

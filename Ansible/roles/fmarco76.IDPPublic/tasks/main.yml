@@ -1,5 +1,5 @@
 ---
 - include: getthecode.yml
 - include: customise.yml
-- include: install.yml
 - include: frontend.yml
+- include: install.yml

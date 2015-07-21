@@ -1,0 +1,14 @@
+---
+# tasks for launching the discourse container
+- name: restart docker
+  sudo: true
+  service: name=docker state=restarted
+  changed_when: false
+
+- name: bootstrap the app
+  sudo: true
+  raw: "{{ discourse_path }}/launcher bootstrap app"
+
+- name: rebuild the app
+  sudo: true
+  raw: "{{ discourse_path }}/launcher reubild app"

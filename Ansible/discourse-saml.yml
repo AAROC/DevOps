@@ -1,19 +1,39 @@
 ---
-- hosts: discourse-forum
-  name: Get the required roles
-  tasks:
-  - name: get the docker role from galaxy
-    command: ansible-galaxy install -p roles dochang.docker
-    args:
-      creates: roles/dochang.docker
+# You have to have the role first, else the playbook will fail. So, either comment out the
+# "make the host dockable" role and only run the first role
+# Or vice-versa.
+# - hosts: discourse-forum
+#   name: Get the required roles
+#   tasks:
+#   - name: check if the required roles are present
+#     stat: $HOME/ansible/roles/dochang.docker
+#     register: dochang_present
+#
+#   - name: get the docker role from galaxy
+#     raw: ansible-galaxy install -p roles dochang.docker
+#     when: ! dochang_present.stat
 
-- hosts: discourse-forum
-  name: Make the host dockable
-  sudo: true
-  roles:
-    - dochang.docker
+# - hosts: discourse-forum
+#   name: Make the host dockable
+#   sudo: true
+#   roles:
+#     - dochang.docker
 
 - hosts: discourse-forum
   name: Deploy Discourse with Apache and federated logon
   roles:
+    - apache-web-server
+    - shibboleth-sp
     - discourse-sso
+  pre_tasks:
+    - name: ensure that the prerequisites are present
+      include_vars: vars/prerequisites.yml
+    - name: ensure that libselinux is present
+      sudo: true
+      yum: name=libselinux-python state=present
+    - name: ensure that docker is present
+      sudo: true
+      yum: name=docker-io state=present
+    - name: ensure that docker service is running
+      sudo: true
+      service: name=docker state=running

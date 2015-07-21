@@ -94,22 +94,19 @@ cream-ces
 
 # Worker Nodes
 [worker-nodes]
-#192.168.11.3 alias='ce01-node003'
-#192.168.11.4 alias='ce01-node004'
-ce01-node002
-ce01-node003
-ce01-node004
-ce01-node005
-ce01-node006
-ce01-node007
-ce01-node008
-ce01-node009
-ce01-node010
-ce01-node011
-ce01-node012
-ce01-node013 # 192.168.11.13 alias='ce01-node013.internal.net'
-ce01-node014
-ce01-node015
+ce01-node003.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+#ce01-node004.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node005.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node006.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node007.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node008.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node009.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node010.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node011.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node012.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node013.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node014.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+#ce01-node015.internal.net needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 
 [cluster-head-nodes]
 ce01-node001.c4.csir.co.za

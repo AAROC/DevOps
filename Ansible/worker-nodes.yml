@@ -12,20 +12,12 @@
   gather_facts: true
 
 - hosts: cluster-head-nodes
-  name: run the head node role on the head node
-  connection: local
-  sudo: true
-  roles:
-  - head-node
-
-- hosts: cluster-head-nodes
   name: Look up local facts and create key vars file
   connection: local
   tasks:
   - setup:
   - debug: msg="key is {{ ansible_ssh_host_key_rsa_public }} "
   - local_action: lineinfile dest=roles/worker-node/vars/public_keys.yml line="public_keys{{':'}} ssh-rsa {{ ansible_ssh_host_key_rsa_public }} ansible@{{ ansible_hostname }}" state=present create=yes
-
 - hosts: worker-nodes
   name: Create .shosts file for host-based authentication later
   user: root
@@ -38,6 +30,15 @@
   roles:
     - common
     - certificates
+
+- hosts: worker-nodes
+  name: Apply Vanilla WN role
+  user: root
+  roles:
+    - worker-node
+
+- hosts: worker-nodes
+  name: Apply Grid WN role
     - umd
     - emi-worker-node
   vars_files:
@@ -46,19 +47,24 @@
 
 - hosts: cluster-head-nodes
   name: create munge key
-  user: root
-  connection: local
+  sudo: true
   tasks:
-  - command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=munge group=munge
+  - name: Create munge key
+    command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=munge group=munge
 
 - hosts: worker-nodes
-  name: Copy munge key to worker nodes
-  user: root
+  name: Copy Munge key to the worker nodes
   tasks:
-  - copy: src=/etc/munge/munge.key dest=/etc/munge/munge.key mode=0600 owner=root group=root
+  - name: Copy Munge key to the worker nodes
+    copy:
+      src: /etc/munge/munge.key
+      dest: /etc/munge/munge.key
+      mode: 0600
+      owner: root
+      group: root
 
 - hosts: worker-nodes
   name: configure middleware with yaim
-  user: root
+  sudo: true
   roles:
     - yaim

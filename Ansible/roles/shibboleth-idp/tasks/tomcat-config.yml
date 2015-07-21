@@ -1,12 +1,15 @@
 ---
+# if you don't have a host certificate, we use this command to generate a new self-signed one and include that into the keychanin
 
 - name: Copy JKS generator script
   sudo: yes
-  template: src=jks.expect.j2 dest={{ tomcat6_config_path }}/jks.expect mode="u+x"  
+  template: src=jks.expect.j2 dest={{ tomcat6_config_path }}/jks.expect mode="u+x"
+  # when: have_cert == false
 
 - name: Create JKS for tomcat
   sudo: yes
   command: creates={{ tomcat6_config_path }}/keystore.jks chdir={{ tomcat6_config_path }} ./jks.expect
+  # when: have_cert == false
 
 - name: Create endorsed directory
   sudo: yes
@@ -29,12 +32,12 @@
 
 - name: UnSet current java memory size
   sudo: yes
-  register: memory_size 
+  register: memory_size
   replace: 'dest="{{ tomcat6_config_start }}"  regexp="-Xmx\d*m" replace=""'
 
 - name: UnSet java perm gen memory size
   sudo: yes
-  register: perm_gen_memory_size 
+  register: perm_gen_memory_size
   replace: 'dest="{{ tomcat6_config_start }}"  regexp="-XX:MaxPermSize=\d*m" replace=""'
 
 - name: Add java memory size
@@ -45,11 +48,11 @@
   notify: restart tomcat
 
 - name: Add jar for SSL Implementation supporting SOAP
-  sudo: yes 
+  sudo: yes
   get_url: url=https://build.shibboleth.net/nexus/content/repositories/releases/edu/internet2/middleware/security/tomcat6/tomcat6-dta-ssl/1.0.0/tomcat6-dta-ssl-1.0.0.jar dest={{ tomcat6_lib_path }}
 
-- name: Enable the ssl 
-  sudo: yes 
+- name: Enable the ssl
+  sudo: yes
   template: src=server-{{ ansible_os_family }}.xml.j2 dest={{ tomcat6_config_path }}/server.xml
   notify: restart tomcat
 
@@ -57,4 +60,3 @@
   sudo: yes
   template: src=idp.xml.j2 dest={{ tomcat6_config_path }}/Catalina/localhost/idp.xml
   notify: restart tomcat
-

@@ -1,4 +1,5 @@
 ---
 # tasks file for head-node
 - include: networking.yml
+- include: nfs-server.yml #this could be substituted later for autofs
 #- include: cluster.yml
