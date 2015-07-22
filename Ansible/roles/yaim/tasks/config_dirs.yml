@@ -23,6 +23,14 @@
   tags:
     - yaim
 
+- name: Ensure that the worker home directories are there
+  sudo: true
+  file:
+    path: "{{ user_home_prefix }}"
+    state: directory
+    mode: 777
+  when: user_home_prefix != null
+
 - name: Discover what node types we have
   command: /bin/ls chdir=/opt/glite/yaim/node-info.d/
   register: node_types
