@@ -1,7 +1,7 @@
 ---
 - name: Update exports
-  file:
-    src: etc/exports
+  template:
+    src: etc/exports.j2
     dest: /etc/exports
     owner: root
     group: root

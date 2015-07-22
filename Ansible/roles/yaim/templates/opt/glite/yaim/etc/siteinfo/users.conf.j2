@@ -20,13 +20,13 @@
 #----------------ops--------------------------------#
 #      45001:ops001:45000:ops:ops::
 # e.g. 60701:sgmops01:46001,45000:opssgm,ops:ops:sgm
-
 {% if "ops" in vos -%}
-{% for number in range(2) -%}
-{{ 19001 + number }}:ops{{ number }}:1900:ops:ops::
+{% for number in range(1,2,1) -%}
+{{ 45001 + number }}:ops{{ number }}:45000:ops:ops::
 {% endfor -%}
-{% for number in range(2) -%}
-{{ 19101 + number }}:sgmops{{  number }}:1910,1900:sgmops,ops:ops:sgm
+{% for number in range(1,2,1) -%}
+#60701:sgmops01:46001,45000:opssgm,ops:ops:sgm
+{{ 60701 + number }}:sgmops{{  number }}:1910,1900:sgmops,ops:ops:sgm
 {% endfor -%}
 {% endif -%}
 
