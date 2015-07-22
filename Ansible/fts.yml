@@ -1,5 +1,5 @@
 ---
-- hosts: fts
+- hosts: fts-servers
   sudo: true
   sudo_user: root
   roles:
