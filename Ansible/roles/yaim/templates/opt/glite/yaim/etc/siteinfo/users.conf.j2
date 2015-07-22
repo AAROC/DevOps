@@ -30,12 +30,13 @@
 {% endfor -%}
 {% endif -%}
 
+# uid:login:gid:group:VO:sgm_flag
 {% if "sagrid.ac.za" in vos -%}
 {% for number in range(2) -%}
-{{ 40001 + number }}:sa{{ number }}:4000:sa:'sagrid.ac.za'::
+{{ 40001 + number }}:sa{{ number }}:4000:sa:sagrid.ac.za::
 {% endfor -%}
 {% for number in range(2) -%}
-{{ 40101 + number }}:sgmsa{{ number }}:4100,4000:sgmsa,sa:'sagrid.ac.za':sgm
+{{ 40101 + number }}:sgmsa{{ number }}:4100,4000:sgmsa,sa:sagrid.ac.za:sgm
 {% endfor -%}
 {% endif -%}
 
