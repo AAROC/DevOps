@@ -1,5 +1,6 @@
 ---
 yaim_path: /opt/glite/yaim
+yum_args: '--exclude="voms-clients-cpp"'
 bdii_port: 2170
 vo_sw_dir: /opt/exp_soft
 cvmfs_repos:
@@ -66,7 +67,7 @@ lb_proxy_type: both
 argus_status: yes
 argus_host: argus.c4.csir.co.za
 pap_admin_dn: "'/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker'"
-
+user_home_prefix: /gridhome
 # TODO - new LFC has to be deployed here at Meraka | BB 10/13
 #lfc_host: devslngrd002.uct.ac.za
 lfc_host:
