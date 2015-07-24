@@ -18,7 +18,8 @@
     dest: munge.key
     owner: ansible
     group: ansible
-    
+  tags:
+    - munge
 #  notify:
 #    - restart munge
 - name: Start munge
