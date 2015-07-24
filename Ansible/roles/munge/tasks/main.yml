@@ -13,14 +13,12 @@
 
 - name: Pull in munge key
   sudo: true
-  copy:
-    src: /etc/munge/munge.key
-    dest: munge.key
-    owner: ansible
-    group: ansible
+# we have to use a command here instead of file because the ansible user cannot gain access to the file (permissions)
+  command: 'cp /etc/munge/munge.key munge.key'
   tags:
     - munge
 #  notify:
 #    - restart munge
+
 - name: Start munge
   action: service name=munge enabled=on
