@@ -6,13 +6,12 @@
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
-    - group_vars/passwords-{{ site_name }}.yml
   pre_tasks:
     - name: Announce the play via Slack
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: "{{ slack_token }}"
         msg: "Running CREAM-CEs play on {{ inventory_hostname }} at {{ site_name }}"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
@@ -33,7 +32,7 @@
     action:
       module: slack
       domain: africa-arabia-roc.slack.com
-      token: 6EJfIMngdMiwrmnScAA4znB5
+      token: "{{ slack_token }}"
       msg: "CREAM-CE play on {{ inventory_hostname }} at {{ site_name }} has completed until the CREAM-CE role"
       channel: "#devopssite"
       username: "Ansible on {{ inventory_hostname }}"
@@ -133,7 +132,7 @@
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: "{{ slack_token }}"
         msg: "Finished CREAM-CE playbook on  {{ inventory_hostname }} at {{ site_name }} sucessfully :ok_hand:"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
