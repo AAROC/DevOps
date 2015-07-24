@@ -116,6 +116,15 @@
       sudo: true
       service: name=munge state=restarted
 
+    - name: Pull in munge key
+      sudo: true
+      copy:
+        src: /etc/munge/munge.key
+        dest: munge.key
+        owner: ansible
+        group: ansible
+        mode: 0600
+
     - name: restart pbs_server
       sudo: true
       action: service name=pbs_server state=restarted enabled=yes
