@@ -30,12 +30,20 @@
   roles:
     - common
     - certificates
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
 
 - hosts: worker-nodes
   name: Apply Vanilla WN role
   user: root
   roles:
     - worker-node
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
 
 - hosts: worker-nodes
   name: Apply Grid WN role
@@ -43,7 +51,8 @@
     - emi-worker-node
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-    - roles/common/vars/middleware/igtf.yml
+    - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
 
 - hosts: cluster-head-nodes
   name: create munge key
@@ -68,3 +77,7 @@
   sudo: true
   roles:
     - yaim
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
