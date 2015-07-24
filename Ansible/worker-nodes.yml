@@ -11,19 +11,22 @@
     - setup:
   gather_facts: true
   post_tasks:
-    - name: Announce the play via Slack
-      action:
-        module: slack
-        domain: africa-arabia-roc.slack.com
-        token: "{{ slack_token }}"
-        msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
-        channel: "#devopssite"
-        username: "Ansible on {{ inventory_hostname }}"
-        #icon_url: "http://www.example.com/some-image-file.png"
-        link_names: 1
-        parse: 'full'
-      tags:
-        - slack
+  - name: Announce the play via Slack
+    action:
+      module: slack
+      domain: africa-arabia-roc.slack.com
+      token: "{{ slack_token }}"
+      msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
+      channel: "#devopssite"
+      username: "Ansible on {{ inventory_hostname }}"
+      #icon_url: "http://www.example.com/some-image-file.png"
+      link_names: 1
+      parse: 'full'
+    tags:
+      - slack
+  vars_files:
+    - group_vars/passwords-{{ site_name }}.yml
+
 
 - hosts: cluster-head-nodes
   name: Look up local facts and create key vars file
