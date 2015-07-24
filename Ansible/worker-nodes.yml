@@ -30,12 +30,20 @@
   roles:
     - common
     - certificates
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
 
 - hosts: worker-nodes
   name: Apply Vanilla WN role
   user: root
   roles:
     - worker-node
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
 
 - hosts: worker-nodes
   name: Apply Grid WN role
@@ -43,7 +51,8 @@
     - emi-worker-node
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-    - roles/common/vars/middleware/igtf.yml
+    - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
 
 - hosts: cluster-head-nodes
   name: create munge key
@@ -53,18 +62,23 @@
     command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=munge group=munge
 
 - hosts: worker-nodes
-  name: Copy Munge key to the worker nodes
+  name: Munge to WN
   tasks:
   - name: Copy Munge key to the worker nodes
+    sudo: true
     copy:
       src: /etc/munge/munge.key
       dest: /etc/munge/munge.key
       mode: 0600
-      owner: root
-      group: root
+      owner: munge
+      group: munge
 
 - hosts: worker-nodes
   name: configure middleware with yaim
   sudo: true
   roles:
     - yaim
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml

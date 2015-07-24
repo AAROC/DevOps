@@ -1,39 +1,38 @@
 {% if "dteam" in vos -%}
-{% for number in range(2) -%}
-{{ 18001 + number }}:dteam{{ number }}:1800:dteam:dteam::
+{% for number in range(1,2) -%}
+{{ 18117 + number }}:dteam{{ number }}:2688:dteam:dteam::
 {% endfor -%}
-{% for number in range(2) -%}
-{{ 18101 + number }}:prddteam{{ number }}:1810,1800:prddteam,dteam:dteam:prd
+{% for number in range(1,2) -%}
+{{ 50500 + number }}:prddteam{{ number }}:2689,2688:prddteam,dteam:dteam:prd
 {% endfor -%}
-{% for number in range(2) -%}
-{{ 18201 + number }}:sgmdteam{{ number }}:{{ 1820 + number }},1800:sgmdteam,dteam:dteam:sgm
+{% for number in range(1,2) -%}
+{{ 60500 + number }}:sgmdteam{{ number }}:2690,2688:sgmdteam,dteam:dteam:sgm
 {% endfor -%}
-{% endif -%}
 
+{% endif -%}
 {% if "ops" in vos -%}
-{% for number in range(2) -%}
-{{ 19001 + number }}:ops{{ number }}:1900:ops:ops::
+{% for number in range(1,2) -%}
+{{ 45000 + number }}:ops{{ number }}:45000:ops:ops::
 {% endfor -%}
-{% for number in range(2) -%}
-{{ 19101 + number }}:sgmops{{  number }}:1910,1900:sgmops,ops:ops:sgm
+{% for number in range(1,2,1) -%}
+{{ 60700 + number }}:sgmops{{  number }}:46001,45000:sgmops,ops:ops:sgm
 {% endfor -%}
 {% endif -%}
 
 {% if "sagrid.ac.za" in vos -%}
-{% for number in range(2) -%}
-{{ 40001 + number }}:sa{{ number }}:4000:sa:'sagrid.ac.za'::
+{% for number in range(1,2) -%}
+{{ 40000 + number }}:sa{{ number }}:4000:sa:sagrid.ac.za::
 {% endfor -%}
-{% for number in range(2) -%}
-{{ 40101 + number }}:sgmsa{{ number }}:4100,4000:sgmsa,sa:'sagrid.ac.za':sgm
+{% for number in range(1,2) -%}
+{{ 40100 + number }}:sgmsa{{ number }}:4100,4000:sg,sgmsa:sagrid.ac.za:sgm
 {% endfor -%}
 {% endif -%}
 
 {% if "sagrid" in vos -%}
-{% for number in range(20) -%}
+{% for number in range(1,2) -%}
 {{ 50001 + number }}:sagrid{{ number }}:5000:sagrid:sagrid::
 {% endfor -%}
-
-{% for number in range(20) -%}
+{% for number in range(1,2) -%}
 {{ 51001 + number }}:sgmsagrid{{ number }}:5100,5000:sgmsagrid,sagrid:sagrid:sgm
 {% endfor -%}
 {% endif -%}

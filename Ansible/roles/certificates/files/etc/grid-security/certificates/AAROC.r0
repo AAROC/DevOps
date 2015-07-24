@@ -1,0 +1,33 @@
+Certificate Revocation List (CRL):
+        Version 1 (0x0)
+    Signature Algorithm: sha1WithRSAEncryption
+        Issuer: /C=ZA/O=AAROC/CN=AAROC CA
+        Last Update: Jul 21 14:50:02 2015 GMT
+        Next Update: Aug 20 14:50:02 2015 GMT
+No Revoked Certificates.
+    Signature Algorithm: sha1WithRSAEncryption
+         94:ff:a6:d6:6a:4c:d2:09:1f:eb:02:c3:45:d2:76:1c:e5:da:
+         95:36:5f:46:eb:7a:85:42:d7:56:28:66:43:9b:0f:5b:3b:8c:
+         fd:86:7c:66:01:9a:93:ef:2b:9f:44:bb:1f:45:38:a0:cc:1a:
+         e5:01:ed:31:c8:b5:f4:7d:c3:ec:ec:d9:c7:33:35:7b:87:32:
+         08:cb:5c:a1:52:ce:c0:ea:66:e2:b8:53:9c:72:41:7c:20:a5:
+         3c:5d:f0:37:bb:83:7e:92:ba:24:3d:ce:38:ca:b8:71:bb:a0:
+         2d:18:90:07:8a:d8:27:68:60:58:d4:87:c0:aa:04:62:3c:e5:
+         db:26:5a:c8:4b:19:d9:2f:8b:fb:38:69:2f:ac:2b:76:53:aa:
+         d7:16:b6:5d:84:ba:2d:ea:1e:19:c8:82:7c:c7:b6:2e:4f:2b:
+         de:dc:62:45:d5:f4:cf:60:c5:3e:e4:2a:a3:91:0e:90:71:2f:
+         4e:9d:4d:d2:22:6e:49:a5:e1:1d:73:2b:8d:2d:00:ef:c0:f5:
+         87:47:b7:a8:c4:5e:41:15:d1:1e:6d:76:a2:27:fe:c8:60:3d:
+         38:69:14:a2:13:87:29:cf:02:9e:c3:99:cc:2d:c4:2a:7c:b4:
+         98:56:d8:66:34:9f:20:0e:3d:28:82:2f:70:84:ab:b4:1c:68:
+         dd:2d:e0:2c
+-----BEGIN X509 CRL-----
+MIIBdTBfMA0GCSqGSIb3DQEBBQUAMDAxCzAJBgNVBAYTAlpBMQ4wDAYDVQQKEwVB
+QVJPQzERMA8GA1UEAxMIQUFST0MgQ0EXDTE1MDcyMTE0NTAwMloXDTE1MDgyMDE0
+NTAwMlowDQYJKoZIhvcNAQEFBQADggEBAJT/ptZqTNIJH+sCw0XSdhzl2pU2X0br
+eoVC11YoZkObD1s7jP2GfGYBmpPvK59Eux9FOKDMGuUB7THItfR9w+zs2cczNXuH
+MgjLXKFSzsDqZuK4U5xyQXwgpTxd8De7g36SuiQ9zjjKuHG7oC0YkAeK2CdoYFjU
+h8CqBGI85dsmWshLGdkvi/s4aS+sK3ZTqtcWtl2Eui3qHhnIgnzHti5PK97cYkXV
+9M9gxT7kKqORDpBxL06dTdIibkml4R1zK40tAO/A9YdHt6jEXkEV0R5tdqIn/shg
+PThpFKIThynPAp7DmcwtxCp8tJhW2GY0nyAOPSiCL3CEq7QcaN0t4Cw=
+-----END X509 CRL-----
