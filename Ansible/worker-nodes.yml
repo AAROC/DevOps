@@ -60,7 +60,7 @@
   - name: Copy Munge key to the worker nodes
     sudo: true
     copy:
-      src: munge.key
+      src: "{{ lookup('env','PWD')}}/munge.key"
       dest: /etc/munge/munge.key
       mode: 0600
       owner: munge
