@@ -18,8 +18,6 @@ queues:
   - ops
   - sagrid.ac.za
   - eumed
-  - atlas
-
 # you can set VO-level queue tuning here
 qmgr_queues:
   - name: dteam
