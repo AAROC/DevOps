@@ -4649,7 +4649,7 @@ registeredAddress: http://www.mum.ac.tz/
 
 
 # MNMA, TZ, Organisations, local
-dn: o=MNMAc=TZ,ou=Organisations,dc=local
+dn: o=MNMA,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: MNMA
@@ -4657,7 +4657,7 @@ description: Mwl. Nyerere Memorial Academy
 registeredAddress: http://www.mnma.ac.tz/
 
 # MUST, TZ, Organisations, local
-dn: o=MUST=TZ,ou=Organisations,dc=local
+dn: o=MUST,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: MUST
@@ -4665,7 +4665,7 @@ description: Mbeya University of Science and Technology
 registeredAddress: http://www.mist.ac.tz/
 
 # NIT, TZ, Organisations, local
-dn: o=NIT=TZ,ou=Organisations,dc=local
+dn: o=NIT,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: NIT
@@ -4674,7 +4674,7 @@ registeredAddress: http://www.nit.ac.tz/
 
 
 # TUDARCO, TZ, Organisations, local
-dn: o=TUDARCO=TZ,ou=Organisations,dc=local
+dn: o=TUDARCO,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: TUDARCO
@@ -4683,7 +4683,7 @@ registeredAddress: http://www.tudarco.ac.tz/
 
 
 # SAUT, TZ, Organisations, local
-dn: o=SAUT=TZ,ou=Organisations,dc=local
+dn: o=SAUT,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: SAUT
@@ -4691,7 +4691,7 @@ description: St. Augustine University of Tanzania
 registeredAddress: http://www.saut.ac.tz/
 
 # MUHAS, TZ, Organisations, local
-dn: o=MUHAS=TZ,ou=Organisations,dc=local
+dn: o=MUHAS,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: MUHAS
@@ -4699,7 +4699,7 @@ description: Muhimbili University of Health and Allied Science
 registeredAddress: http://www.muhas.ac.tz/
 
 # ARU, TZ, Organisations, local
-dn: o=ARU=TZ,ou=Organisations,dc=local
+dn: o=ARU,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: ARU
@@ -4707,7 +4707,7 @@ description: Ardhi University
 registeredAddress: http://www.aru.ac.tz/
      
 # DUCE, TZ, Organisations, local
-dn: o=DUCE=TZ,ou=Organisations,dc=local
+dn: o=DUCE,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: DUCE
@@ -4715,7 +4715,7 @@ description: Dar University College of Education
 registeredAddress: http://www.duce.ac.tz/
 
 # IHI, TZ, Organisations, local
-dn: o=IHI=TZ,ou=Organisations,dc=local
+dn: o=IHI,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: IHI
@@ -4723,7 +4723,7 @@ description: Ifakara Health Institute
 registeredAddress: http://www.ihi.or.tz/
 
 # IFM, TZ, Organisations, local
-dn: o=IFM=TZ,ou=Organisations,dc=local
+dn: o=IFM,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: IFM
@@ -4731,7 +4731,7 @@ description: Institute of Finance Management
 registeredAddress: http://www.ifm.ac.tz/
 
 # ZU, TZ, Organisations, local
-dn: o=ZU=TZ,ou=Organisations,dc=local
+dn: o=ZU,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: ZU
@@ -4739,7 +4739,7 @@ description: Zanzibar University
 registeredAddress: http://www.zanvarsity.ac.tz/
 
 # TCRA, TZ, Organisations, local
-dn: o=TCRA=TZ,ou=Organisations,dc=local
+dn: o=TCRA,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: TCRA
@@ -4747,7 +4747,7 @@ description: Tanzania Communication Regulatory Authority
 registeredAddress: https://www.tcra.go.tz/
 
 # COSTECH, TZ, Organisations, local
-dn: o=COSTECH=TZ,ou=Organisations,dc=local
+dn: o=COSTECH,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: COSTECH
@@ -4755,7 +4755,7 @@ description: Tanzania Commission for Science and Technology
 registeredAddress: http://www.costech.or.tz/
 
 # CUHAS, TZ, Organisations, local
-dn: o=CUHAS=TZ,ou=Organisations,dc=local
+dn: o=CUHAS,c=TZ,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 o: CUHAS
@@ -4794,12 +4794,12 @@ o: UCM
 description: La Universidad Complutense de Madrid (UCM)
 
 # CYFRONET AGH, PL, Organisations, local
-dn: o=CYFRONET AGH,c=PL,ou=Organisations,dc=local
+dn: o=CYFRONETAGH,c=PL,ou=Organisations,dc=local
 objectClass: organization
 objectClass: top
 registeredAddress: http://www.cyfronet.krakow.pl/en/4421,main.html
 description: Akadamickie Centrum Komputerowe CYFRONET AGH
-o: CYFRONET AGH
+o: CYFRONETAGH
 
 # UIEDU, NG, Organisations, local
 dn: o=UIEDU,c=NG,ou=Organisations,dc=local
