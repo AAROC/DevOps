@@ -17,8 +17,6 @@
   command: 'cp /etc/munge/munge.key munge.key'
   tags:
     - munge
-#  notify:
-#    - restart munge
 
 - name: Start munge
-  action: service name=munge enabled=on
+  service: name=munge enabled=on
