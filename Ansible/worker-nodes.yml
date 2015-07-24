@@ -54,20 +54,13 @@
     - roles/common/vars/middleware/IGTF.yml
     - group_vars/passwords-{{ site_name }}.yml
 
-- hosts: cluster-head-nodes
-  name: create munge key
-  sudo: true
-  tasks:
-  - name: Create munge key
-    command: /usr/sbin/create-munge-key creates=/etc/munge/munge.key mode=0644 owner=munge group=munge
-
 - hosts: worker-nodes
   name: Munge to WN
   tasks:
   - name: Copy Munge key to the worker nodes
     sudo: true
     copy:
-      src: /etc/munge/munge.key
+      src: munge.key
       dest: /etc/munge/munge.key
       mode: 0600
       owner: munge
