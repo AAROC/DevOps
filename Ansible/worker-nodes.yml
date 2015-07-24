@@ -10,6 +10,20 @@
   tasks:
     - setup:
   gather_facts: true
+  post_tasks:
+    - name: Announce the play via Slack
+      action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
 
 - hosts: cluster-head-nodes
   name: Look up local facts and create key vars file
@@ -34,6 +48,20 @@
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
     - group_vars/passwords-{{ site_name }}.yml
+  post_tasks:
+    - name: Announce the play via Slack
+      action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "WN play : Applied common and certs role to  {{ inventory_hostname }} at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
 
 - hosts: worker-nodes
   name: Apply Vanilla WN role
@@ -60,7 +88,7 @@
   - name: Copy Munge key to the worker nodes
     sudo: true
     copy:
-      src: "{{ lookup('env','PWD')}}/munge.key"
+      src: "{{ lookup('env','HOME')}}/munge.key"
       dest: /etc/munge/munge.key
       mode: 0600
       owner: munge
