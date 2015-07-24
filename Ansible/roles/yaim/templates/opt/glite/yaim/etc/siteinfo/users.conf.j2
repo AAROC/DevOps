@@ -1,11 +1,3 @@
-# Ansible managed
-#
-# Template to generate  users
-#
-# uid:login:gid:group:VO:sgm_flag
-
-#----------------------dteam-----------------------#
-# 18118:dteam001:2688:dteam:dteam::
 {% if "dteam" in vos -%}
 {% for number in range(1,2) -%}
 {{ 18117 + number }}:dteam{{ number }}:2688:dteam:dteam::
@@ -18,10 +10,8 @@
 {% for number in range(1,2) -%}
 {{ 60500 + number }}:sgmdteam{{ number }}:2690,2688:sgmdteam,dteam:dteam:sgm
 {% endfor -%}
-{% endif -%}
 
-#----------------ops--------------------------------#
-#      45001:ops001:45000:ops:ops::
+{% endif -%}
 {% if "ops" in vos -%}
 {% for number in range(1,2) -%}
 {{ 45000 + number }}:ops{{ number }}:45000:ops:ops::
@@ -32,7 +22,6 @@
 {% endfor -%}
 {% endif -%}
 
-# uid:login:gid:group:VO:sgm_flag
 {% if "sagrid.ac.za" in vos -%}
 {% for number in range(1,2) -%}
 {{ 40000 + number }}:sa{{ number }}:4000:sa:sagrid.ac.za::
