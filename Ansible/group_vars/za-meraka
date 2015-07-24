@@ -13,7 +13,6 @@ vos:
   - sagrid.ac.za
   - eumed
   - atlas
-queues:
   - dteam
   - ops
   - sagrid.ac.za
