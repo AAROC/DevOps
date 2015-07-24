@@ -6,6 +6,7 @@
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
+    - group_vars/password-"{{ site_name }}".yml
   pre_tasks:
     - name: Announce the play via Slack
       action:
@@ -54,6 +55,9 @@
   roles:
    - munge
    - head-node
+  vars_files: 
+      - group_vars/password-"{{ site_name }}".yml
+
 
 # Head node has to be run after you've configured all of the worker nodes, else the facts are not available.
 
