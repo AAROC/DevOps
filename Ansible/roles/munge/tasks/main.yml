@@ -4,11 +4,21 @@
   action: command /usr/sbin/create-munge-key creates=/etc/munge/munge.key
   tags:
     - munge
+
 - name: Fix munge permissions if necessary
   sudo: true
   file: path=/etc/munge/munge.key owner=munge group=munge
   tags:
     - munge
+
+- name: Pull in munge key
+  sudo: true
+  copy:
+    src: /etc/munge/munge.key
+    dest: munge.key
+    owner: ansible
+    group: ansible
+    
 #  notify:
 #    - restart munge
 - name: Start munge

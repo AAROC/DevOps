@@ -70,7 +70,7 @@
     action:
       module: slack
       domain: africa-arabia-roc.slack.com
-      token: 6EJfIMngdMiwrmnScAA4znB5
+      token: "{{ slack_token }}"
       msg: "Running YAIM play on {{ inventory_hostname }} at {{ site_name }}"
       channel: "#devopssite"
       username: "Ansible on {{ inventory_hostname }}"
@@ -88,6 +88,19 @@
     - name: Restart trqauthd
       sudo: true
       service: name=trqauthd state=started
+    - name:
+      action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "CREAM CE has been configured by YAIM in the play on {{ inventory_hostname }} at {{ site_name }}. Moving on to post-configuration of the queues and scheduling server"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
 
     - name: Remove queue CPU time limits
       sudo: true
