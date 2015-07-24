@@ -12,6 +12,7 @@ vos:
   - sagrid
   - sagrid.ac.za
   - eumed
+  - atlas
 queues:
   - atlas
   - dteam
