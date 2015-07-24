@@ -38,19 +38,32 @@
 {% endif -%}
 
 {% if "magrid" in vos -%}
-{% for number in range(2) -%}
+{% for number in range(1,2) -%}
 {{ 70001 + number }}:magrid{{ number }}:7000:magrid:magrid::
 {% endfor -%}
-{% for number in range(2) -%}
+{% for number in range(1,2) -%}
 {{ 71001 + number }}:sgmmagrid{{ number }}:7100,7000:sgmmagrid,magrid:magrid:sgm
 {% endfor -%}
 {% endif -%}
 
 {% if "eumed" in vos -%}
-{% for number in range(2) -%}
+{% for number in range(1,2) -%}
 {{ 60001 + number }}:eumed{{ number }}:6000:eumed:eumed::
 {% endfor -%}
-{% for number in range(2) -%}
+{% for number in range(1,2) -%}
 {{ 61001 + number }}:sgmeumed{{ number }}:6100,6000:sgmeumed,eumed:eumed:sgm
 {% endfor -%}
 {% endif -%}
+
+{% if "atlas" in vos -%}
+{% for number in range(1,2)}
+{{ 10760 + number }}:atlas{{ number }}:1307:atlas:atlas::
+{% endfor -%}
+{% for number in range(1,2) }
+{{ 50200 + number }}:prdatl{{ number }}:1308,1307:atlasprd,atlas:atlas:prd
+{% endfor -%}
+{% for number in range(1,2)}
+{{ 55200 + number }}:pilatl{{ number }}:1310,1307:atlaspil,atlas:atlas:pilot
+{% endfor -%}
+{% for number in range(1,2)}
+{{ 60200 + number }}:sgmatl{{ number }}:1309,1307:atlassgm,atlas:atlas:sgm
