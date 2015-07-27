@@ -6,6 +6,7 @@ vo_sw_dir: /opt/exp_soft
 cvmfs_repos:
   - apprepo.sagrid.ac.za
   - atlas
+  - devrepo.sagrid.ac.za
 vos:
   - dteam
   - ops

@@ -27,6 +27,8 @@
     - default.local
     - keys/apprepo.sagrid.ac.za.pub
     - config.d/apprepo.sagrid.ac.za.conf
+    - keys/devrepo.sagrid.ac.za.pub
+    - config.d/devrepo.sagrid.ac.za.conf
   tags:
     - cvmfs
     - config
@@ -39,7 +41,7 @@
     - cvmfs
 
 - name: check that the repo is mounted
-  stat: path=/cvmfs/apprepo.sagrid.ac.za
+  stat: path=/cvmfs/devrepo.sagrid.ac.za
   register: p
 
 - debug: msg="Path exists and is a directory"
