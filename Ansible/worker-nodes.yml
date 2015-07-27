@@ -100,6 +100,7 @@
       mode: 0600
       owner: munge
       group: munge
+      delegate_to: localhost
 
 - hosts: worker-nodes
   name: configure middleware with yaim
