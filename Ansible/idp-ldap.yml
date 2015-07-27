@@ -3,7 +3,6 @@
   hosts: ldap-servers
   remote_user: ansible
   sudo: true
-  gather_facts: no
   roles:
   - ldap
   tags:
