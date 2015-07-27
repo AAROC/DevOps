@@ -94,13 +94,13 @@
   tasks:
   - name: Copy Munge key to the worker nodes
     sudo: true
+    remote_user: root
     copy:
-      src: "{{ lookup('env','HOME')}}/munge.key"
+      src: /etc/munge/munge.key
       dest: /etc/munge/munge.key
       mode: 0600
       owner: munge
       group: munge
-      delegate_to: localhost
 
 - hosts: worker-nodes
   name: configure middleware with yaim
