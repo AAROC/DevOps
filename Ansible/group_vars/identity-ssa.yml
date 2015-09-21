@@ -7,7 +7,7 @@ host_institute:
 
 # LDAP variables
 server_country: SE
-server_state:
+server_state: none
 server_location: Stockholm
 server_organization: TTA
 server_organization_unit: SSA
