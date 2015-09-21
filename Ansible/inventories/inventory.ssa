@@ -9,6 +9,6 @@ vm03.ct.infn.it needs_certificate=true min_jvm_size=1024m ansible_ssh_port=4422
 ldap-servers
 shibboleth-idps
 
-[CentOS-servers:children]
+[Debian-servers:children]
 identity-ssa
 ############################ END #########################
