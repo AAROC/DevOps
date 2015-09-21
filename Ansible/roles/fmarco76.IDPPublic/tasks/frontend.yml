@@ -1,5 +1,6 @@
 ---
 - name: ensure that the ROOT directory exists
+  sudo: true
   file:
     path: "{{ tomcat6_webapps}}/ROOT"
     state: directory
