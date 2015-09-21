@@ -44,21 +44,21 @@
   shell: "openssl genrsa -des3 -passout pass:{{ cert_password }} -out idp.key 1024"
   args:
     creates: idp.key
-  when: cert == false
+  when: cert == False
 
 - name: Strip the passphrase from the key
   sudo: yes
   shell: "openssl rsa -in my1.key -passin pass:{{ cert_password }} -out my.key"
   args:
     creates: my.key
-  when: cert == false
+  when: cert  == False
 
 - name: Create and sign the the new certificate
   sudo: yes
   shell: "openssl req -new -x509 -subj '/C={{ server_country }}/ST={{ server_state }}/L={{ server_location }}/O={{ server_organization }}/CN={{ ansible_hostname }}/' -days 3650 -key my.key -out cert.crt -extensions v3_ca"
   args:
     creates: cert.crt
-  when: cert == false
+  when: cert == False
 ################## </Self-signed>#############################
 
 - name: extract the subject
