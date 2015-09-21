@@ -48,7 +48,7 @@
 
 - name: Strip the passphrase from the key
   sudo: yes
-  shell: "openssl rsa -in my1.key -passin pass:{{ cert_password }} -out my.key"
+  shell: "openssl rsa -in my.key -passin pass:{{ cert_password }} -out my.key"
   args:
     creates: my.key
   when: have_cert.stat.exists  == False
