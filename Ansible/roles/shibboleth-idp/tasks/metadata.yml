@@ -1,6 +1,7 @@
 ---
 # these variables should in included in the role vars
 - name: Org stanza
+  sudo: true
   lineinfile:
     dest: "{{ shibboleth_install_path }}/metadata/idp-metadata.xml"
     line: "{{ item }}"
