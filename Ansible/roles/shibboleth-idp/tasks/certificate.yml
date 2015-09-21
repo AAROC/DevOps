@@ -78,6 +78,8 @@
 - name: generate the p12
   local_action:
     module: "command openssl pkcs12 -export -in {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}_cert.cer -inkey {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.key  -out test.p12 -passout pass:password"
+  when: "{{ have_key.stat.exists }} == 'True'"
+
 
 
 - name: Push the p12
