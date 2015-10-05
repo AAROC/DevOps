@@ -1,0 +1,4 @@
+---
+# tasks file for roles/jenkins-slave
+- include: "prerequisites-RedHat.yml"
+- include: network.yml
