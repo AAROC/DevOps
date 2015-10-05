@@ -32,18 +32,18 @@
   sudo_user: root
   copy: src=etc/grid-security/certificates/{{ item }} dest=/etc/grid-security/certificates/{{ item }}
   with_items:
-    - SAGrid-eScience.0
-    - 0759aedc.crl_url
-    - 0759aedc.signing_policy
-    - 760fd687.crl_url
-    - 760fd687.signing_policy
-    - SAGrid-eScience.r0
-    - 0759aedc.0
-    - 0759aedc.r0
-    - 760fd687.0
-    - 760fd687.r0
-    - SAGrid-eScience.crl_url
-    - SAGrid-eScience.signing_policy
+    - 16b5ebeb.0
+    - 16b5ebeb.crl_url
+    - 16b5ebeb.r0
+    - 16b5ebeb.signing_policy
+    - 8c65b6c6.0
+    - 8c65b6c6.crl_url
+    - 8c65b6c6.r0
+    - 8c65b6c6.signing_policy
+    - AAROC.0
+    - AAROC.crl_url
+    - AAROC.r0
+    - AAROC.signing_policy
   tags:
     - certificates
 

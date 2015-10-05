@@ -1,13 +1,14 @@
 [ldap-servers]
 idp.se.ampr.org needs_certificate=true
+#vm03.ct.infn.it needs_certificate=true ansible_ssh_port=4422
 
 [shibboleth-idps]
 idp.se.ampr.org needs_certificate=true min_jvm_size=1024m
-
-[identity-all:children]
+#vm03.ct.infn.it needs_certificate=true min_jvm_size=1024m ansible_ssh_port=4422
+[identity-ssa:children]
 ldap-servers
 shibboleth-idps
 
 [Debian-servers:children]
-identity-all
+identity-ssa
 ############################ END #########################

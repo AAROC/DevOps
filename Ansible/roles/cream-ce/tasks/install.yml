@@ -9,6 +9,8 @@
 - name: ensure that the repos are up to date
   sudo: true
   action: yum name=* state=latest # in 2.0 you can do exclude={{ exclude_packages }}    , for now we're just going to have to work around it.
+  tags:
+    - yum
 
 - name: Install batch system specific software
   sudo: true

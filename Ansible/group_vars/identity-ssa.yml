@@ -1,0 +1,39 @@
+---
+# institute metadata
+site_name: SSA
+host_institute:
+  name: SSA
+  url: http://www.ssa.se
+
+# LDAP variables
+server_country: SE
+server_state: none
+server_location: Stockholm
+server_organization: TTA
+server_organization_unit: SSA
+#ldap_server: ldap.se.ampr.org
+ldap_server: vm03.ct.infn.it
+sgw_admin: qasim.sarfraz@gmail.com
+
+# institute metadata
+host_institute:
+  name: SSA
+  url: http://www.ssa.se
+
+organisation:
+  name: SSA
+  logo: dit.jpg
+
+mail_contact: qasim.sarfraz@gmail.com
+# IDP variables. these are specifically related to the IdPOpen Web front end.
+idp:
+  name: SSA IdP
+  admin_user: qasim
+  admin_email: qasim.sarfraz@gmail.com
+  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth
+  mail_server: smtp.mailgun.org
+  header_logo: Logo.jpg
+cert_CA_certificates:
+  - COMODORSADomainValidationSecureServerCA.crt
+  - AddTrustExternalCARoot.crt
+  - COMODORSAAddTrustCA.crt

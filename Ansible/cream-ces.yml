@@ -6,12 +6,13 @@
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
   pre_tasks:
     - name: Announce the play via Slack
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-        token: " {{ slack_token }}"
+        token: "{{ slack_token }}"
         msg: "Running CREAM-CEs play on {{ inventory_hostname }} at {{ site_name }}"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
@@ -32,7 +33,7 @@
     action:
       module: slack
       domain: africa-arabia-roc.slack.com
-      token: " {{ slack_token }}"
+      token: "{{ slack_token }}"
       msg: "CREAM-CE play on {{ inventory_hostname }} at {{ site_name }} has completed until the CREAM-CE role"
       channel: "#devopssite"
       username: "Ansible on {{ inventory_hostname }}"
@@ -54,6 +55,9 @@
   roles:
    - munge
    - head-node
+  vars_files:
+      - group_vars/passwords-{{ site_name }}.yml
+
 
 # Head node has to be run after you've configured all of the worker nodes, else the facts are not available.
 
@@ -66,7 +70,7 @@
     action:
       module: slack
       domain: africa-arabia-roc.slack.com
-      token: 6EJfIMngdMiwrmnScAA4znB5
+      token: "{{ slack_token }}"
       msg: "Running YAIM play on {{ inventory_hostname }} at {{ site_name }}"
       channel: "#devopssite"
       username: "Ansible on {{ inventory_hostname }}"
@@ -84,6 +88,19 @@
     - name: Restart trqauthd
       sudo: true
       service: name=trqauthd state=started
+    - name:
+      action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "CREAM CE has been configured by YAIM in the play on {{ inventory_hostname }} at {{ site_name }}. Moving on to post-configuration of the queues and scheduling server"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
 
     - name: Remove queue CPU time limits
       sudo: true
@@ -99,11 +116,14 @@
       notify:
         - restart pbs_server
 
+    - name: Debug the qmgr queues
+      debug: vars={{ item.name }}
+      with_items: qmgr_queues
+
     - name: Set Queue default walltime
-      action: "raw /usr/bin/qmgr -c 'set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}'"
+      action: "raw /usr/bin/qmgr -c 'set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}' "
       sudo: true
-      with_items:
-        - qmgr_queues
+      with_items: qmgr_queues
       notify:
         - restart pbs_server
 
@@ -123,7 +143,7 @@
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: "{{ slack_token }}"
         msg: "Finished CREAM-CE playbook on  {{ inventory_hostname }} at {{ site_name }} sucessfully :ok_hand:"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"

@@ -7,5 +7,5 @@
 
 - name: restart rpcbind
   service:
-    name: rpcbin
+    name: rpcbind
     state: restarted

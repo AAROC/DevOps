@@ -34,6 +34,7 @@
       yum: name='http://mirror.ufs.ac.za/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm' state=present
       sudo: yes
       sudo_user: root
+      when: ansible_os_family == 'RedHat'
     - name: Ensure that system is up to date (EL)
       yum: name=* state=latest
       when: ansible_os_family == 'RedHat'

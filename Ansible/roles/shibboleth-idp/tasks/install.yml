@@ -1,11 +1,12 @@
---- 
+---
 #- name: correct java version selected
 # alternatives: name=java path=/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
 
 - name: Download the shibboleth package
   get_url: url={{ idp_url }}/{{ idp_version }}/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz dest=/tmp/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz
 
-- name: Create the installation directory
+- name: Create the shibboleth installation directory
+  sudo: True
   file: path={{ ansible_env.HOME }}/idp state=directory owner=ansible
 
 - name: Unpack the tarball
