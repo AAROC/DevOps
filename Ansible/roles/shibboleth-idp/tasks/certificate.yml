@@ -37,6 +37,30 @@
     - cert
     - key
 
+############ <self-signed cert> ##################################
+# these tasks were taken from the LDAP role security tasks
+- name: Generate the private key for certificate request
+  sudo: yes
+  shell: "openssl genrsa -des3 -passout pass:{{ cert_password }} -out idp.key 1024"
+  args:
+    creates: idp.key
+  when:  have_cert.stat.exists == False
+
+- name: Strip the passphrase from the key
+  sudo: yes
+  shell: "openssl rsa -in my.key -passin pass:{{ cert_password }} -out my.key"
+  args:
+    creates: my.key
+  when: have_cert.stat.exists  == False
+
+- name: Create and sign the the new certificate
+  sudo: yes
+  shell: "openssl req -new -x509 -subj '/C={{ server_country }}/ST={{ server_state }}/L={{ server_location }}/O={{ server_organization }}/CN={{ ansible_hostname }}/' -days 3650 -key my.key -out cert.crt -extensions v3_ca"
+  args:
+    creates: cert.crt
+  when: have_cert.stat.exists == False
+################## </Self-signed>#############################
+
 - name: extract the subject
   local_action:
     module: command /usr/bin/openssl x509 -noout -subject -in "{{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_') }}_cert.cer"
@@ -78,6 +102,8 @@
 - name: generate the p12
   local_action:
     module: "command openssl pkcs12 -export -in {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}_cert.cer -inkey {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.key  -out test.p12 -passout pass:password"
+  when: "{{ have_key.stat.exists }} == 'True'"
+
 
 
 - name: Push the p12
@@ -99,7 +125,8 @@
 
 - name: Copy JKS generator script
   template: src=jks.expect.j2 dest={{ tomcat6_config_path }}/jks.expect mode="u+x"
-  when: have_cert.stat.exists == false and have_key.stat.exists == false
+  sudo: true
+  when: "{{ have_cert.stat.exists }} == false and {{ have_key.stat.exists }} == false"
 
 - name: Create JKS for tomcat
   sudo: yes
