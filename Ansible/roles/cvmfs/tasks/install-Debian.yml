@@ -45,7 +45,7 @@
 - name: build CVMFS
   command: nice -n20 make -j8
   args:
-    chdir: /tmp/cvmfs/cvmfs-2.1.20/
+    chdir: /tmp/cvmfs/cvmfs-2.1.20/build
   tags:
     - cvmfs
     - install
@@ -54,7 +54,7 @@
   sudo: true
   command: make install
   args:
-    chdir: /tmp/cvmfs/cvmfs-2.1.20
+    chdir: /tmp/cvmfs/cvmfs-2.1.20/build
   tags:
     - cvmfs
     - install
