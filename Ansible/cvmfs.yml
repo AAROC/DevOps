@@ -1,8 +1,6 @@
 ---
-- hosts: uis
+- hosts: all
   name: Enable CVMFS
-  user: ansible
-  sudo: true
   roles:
     - cvmfs
   vars_files:

@@ -1,14 +1,17 @@
 ---
-- name: download the CVMFS package (Debian)
+- name: download the CVMFS repo (RedHat)
   sudo: True
   sudo_user: root
-  get_url: url=https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs_2.1.20_amd64.deb
+  get_url:
+    url: http://cvmrepo.web.cern.ch/cvmrepo/yum/cernvm.repo
+    dest: /etc/yum.repos.d/cernvm.repo
+    mode: 0644
   tags:
     - cvmfs
     - repos
-  when: { ansible_os_family == 'Debian'} 
+  when: { ansible_os_family == 'RedHat'}
 
-- name: Install CVMFS client
+- name: Install CVMFS client 
   sudo: true
   sudo_user: root
   yum: name={{ item }} state=present disable_gpg_check=yes
