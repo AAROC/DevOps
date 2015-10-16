@@ -1,0 +1,7 @@
+---
+# webfts bit
+- name: ensure that php is on board
+  yum:
+    name: php
+    state: present
+    sudo: true
