@@ -1,0 +1,91 @@
+---
+# Works in 2.0
+# - name: download the CVMFS package (src)
+#   unarchive:
+#     src: https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs-2.1.20.tar.gz
+#     dest: /tmp/cvmfs-2.1.20
+#     copy: no
+#   tags:
+#     - cvmfs
+#     - repos
+#   when: { ansible_os_family == 'Debian'}
+
+- name: dowload tarball
+  get_url:
+    url: https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs-2.1.20.tar.gz
+    dest: /tmp/cvmfs-2.1.20.tar.gz
+  tags:
+    - cvmfs
+  when: { ansible_os_family == 'Debian'}
+
+- name: check that the untar dir is there
+  file:
+    path: /tmp/cvmfs/cvmfs-2.1.20/build
+    state: directory
+
+- name: unpack the CVMFS package (src)
+  unarchive:
+   src: /tmp/cvmfs-2.1.20.tar.gz
+   dest: /tmp/cvmfs/
+   copy: no
+   creates: /tmp/cvmfs/cvmfs-2.1.20
+  tags:
+   - cvmfs
+  when: { ansible_os_family == 'Debian'}
+
+- name: Generate buldfiles
+  command: cmake ../ -G"Unix Makefiles"
+  args:
+    chdir: /tmp/cvmfs/cvmfs-2.1.20/build
+    creates: /tmp/cvmfs/cvmfs-2.1.20/build/Makefile
+  tags:
+    - cvmfs
+    - install
+  when:
+
+- name: build CVMFS
+  command: nice -n20 make -j2
+  args:
+    chdir: /tmp/cvmfs/cvmfs-2.1.20/build
+    creates: /tmp/cvmfs/cvmfs-2.1.20/build/cvmfs/cvmfs2
+  tags:
+    - cvmfs
+    - install
+  register: makeoutput
+
+- name: install CVMFS
+  sudo: true
+  command: make install
+  args:
+    chdir: /tmp/cvmfs/cvmfs-2.1.20/build
+    creates: /usr/bin/cvmfs2
+  tags:
+    - cvmfs
+    - install
+
+- name: copy over the local config files
+  sudo: true
+  copy: src=etc/cvmfs/{{ item }} dest=/etc/cvmfs/{{ item }}
+  with_items:
+    - default.local
+    - keys/apprepo.sagrid.ac.za.pub
+    - config.d/apprepo.sagrid.ac.za.conf
+    - keys/devrepo.sagrid.ac.za.pub
+    - config.d/devrepo.sagrid.ac.za.conf
+  tags:
+    - cvmfs
+    - config
+
+
+- name: ensure that autofs is running
+  sudo: true
+  service: name=autofs state=started
+  tags:
+    - cvmfs
+
+- name: check that the repo is mounted
+  stat: path=/cvmfs/devrepo.sagrid.ac.za
+  register: p
+
+- debug: msg="Path exists and is a directory"
+  when: p.stat.isdir is defined and p.stat.isdir
