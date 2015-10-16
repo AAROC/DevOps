@@ -1,13 +1,24 @@
 ---
+# - hosts: site-bdiis
+#   name: Bootstrap the machine
+#   user: root
+#   vars_files:
+#     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+#     - roles/common/vars/middleware/IGTF.yml
+#     - "group_vars/passwords-{{ site_name }}.yml"
+#   roles:
+#     - bootstrap
+
 - hosts: site-bdiis
-  name: Prepare the machine for yaim configuration
-  sudo: true
-  sudo_user: root
+  name: Configure the machine
+  user: ansible
+  remote_user: ansible
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
+    - "group_vars/passwords-{{ site_name }}.yml"
   roles:
-    - common
+    - { role: common, sudo: true }
     - umd
     - site-bdii
     - yaim
