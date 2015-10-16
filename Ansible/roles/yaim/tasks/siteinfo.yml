@@ -2,6 +2,7 @@
   debug: msg="emi_service is {{ emi_service }}"
 
 - name: Create users.conf file
+  sudo: true
   template: src=opt/glite/yaim/etc/siteinfo/users.conf.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/users.conf owner=root group=root mode=0644
   tags:
     - yaim
@@ -10,6 +11,7 @@
     - run yaim
 
 - name: Create groups.conf file
+  sudo: true
   template: src=opt/glite/yaim/etc/siteinfo//groups.conf.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/groups.conf owner=root group=root mode=0644
   notify:
     - run yaim
@@ -18,6 +20,7 @@
     - yaimfiles
 
 - name: Create wn-list.conf file
+  sudo: true
 #  action: copy src=opt/glite/yaim/etc/siteinfo/wn-list.conf.{{ site_name }} dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/wn-list.conf owner=root group=root mode=0644
   template: src=opt/glite/yaim/etc/siteinfo/wn-list.conf.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/wn-list.conf owner=root group=root mode=0644
   sudo: true
@@ -32,6 +35,7 @@
     - WN
 
 - name: Copy services files needed for wms service
+  sudo: true
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-wms.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-wms owner=root group=root mode=0644
   when: emi_service == 'WMS'
   notify:
@@ -42,6 +46,7 @@
     - WMS
 
 - name: Copy services files needed for cream service
+  sudo: true
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-creamce.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-creamce owner=root group=root mode=0644
   when: emi_service == 'CREAM_CE'
   notify:
@@ -52,6 +57,7 @@
     - CE
 
 - name: Copy mpi files needed for cream mpi service
+  sudo: true
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-mpi.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/glite-mpi owner=root group=root mode=0644
   when: emi_service == 'CREAM_CE' or emi_service == 'WN'
   notify:
@@ -62,6 +68,7 @@
     - CE
 
 - name: Copy mpi files needed for wn mpi service
+  sudo: true
   copy: src=opt/glite/yaim/etc/siteinfo/services/glite-mpi_wn dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-mpi_wn owner=root group=root mode=0644
   when: emi_service == 'WN'
   notify:
@@ -72,6 +79,7 @@
     - WN
 
 - name: Copy mpi_ce files needed for cream mpi service
+  sudo: true
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-mpi_ce.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-mpi_ce owner=root group=root mode=0644
   when: emi_service == 'CREAM_CE'
   notify:
@@ -82,6 +90,7 @@
     - CE
 
 - name: Copy yaim siteinfo services
+  sudo: true
   template: src=opt/glite/yaim/etc/siteinfo/services/{{ item }}.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/{{ item }} owner=root group=root mode=0644
   with_items:
     - emi_dpm_mysql
@@ -95,6 +104,7 @@
     - DPM
 
 - name: Copy services files needed for bdii_site service
+  sudo: true
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-bdii_site.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-bdii_site owner=root group=root mode=0644
   when: emi_service == 'BDII_site'
   notify:
@@ -105,6 +115,7 @@
     - bdii
 
 - name: Copy services files needed for myproxy service
+  sudo: true
   action: template src=opt/glite/yaim/etc/siteinfo/services/glite-px.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/glite-px owner=root group=root mode=0644
   when: emi_service == 'myproxy'
   notify:
@@ -114,6 +125,7 @@
     - px
 
 - name: Copy services files needed for lfc service
+  sudo: true
   template: src=opt/glite/yaim/etc/siteinfo/services/glite-lfc_mysql.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/services/lfc_mysql owner=root group=root mode=0644
   when: emi_service == 'emi_lfc'
   notify:
@@ -124,6 +136,7 @@
     - lfc
 
 - name: Create site-info.def file
+  sudo: true
   template: src=opt/glite/yaim/etc/siteinfo/site-info.def.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/site-info.def owner=root group=root mode=0600
   notify:
     - run yaim
