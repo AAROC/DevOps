@@ -8,3 +8,13 @@
   pre_tasks:
     - name: debug output
       debug: msg="Needs certificate ? {{ needs_certificate }}"
+
+- hosts: all
+  vars:
+    devrepo: "{{ lookup('file', '/cvmfs/devrepo.sagrid.ac.za/test')}}"
+    apprepo: "{{ lookup('file', '/cvmfs/apprepo.sagrid.ac.za/v1')}}"
+  tasks:
+    - debug:
+        msg: "DevRepo is : {{ devrepo }}"
+    - debug:
+        msg: "AppRepo is : {{ apprepo }}"

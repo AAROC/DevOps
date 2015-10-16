@@ -23,13 +23,12 @@
     path: /tmp/cvmfs/cvmfs-2.1.20/build
     state: directory
 
-
-
 - name: unpack the CVMFS package (src)
   unarchive:
    src: /tmp/cvmfs-2.1.20.tar.gz
    dest: /tmp/cvmfs/
    copy: no
+   creates: /tmp/cvmfs/cvmfs-2.1.20
   tags:
    - cvmfs
   when: { ansible_os_family == 'Debian'}
@@ -38,23 +37,28 @@
   command: cmake ../ -G"Unix Makefiles"
   args:
     chdir: /tmp/cvmfs/cvmfs-2.1.20/build
+    creates: /tmp/cvmfs/cvmfs-2.1.20/build/Makefile
   tags:
     - cvmfs
     - install
+  when:
 
 - name: build CVMFS
-  command: nice -n20 make -j8
+  command: nice -n20 make -j2
   args:
     chdir: /tmp/cvmfs/cvmfs-2.1.20/build
+    creates: /tmp/cvmfs/cvmfs-2.1.20/build/cvmfs/cvmfs2
   tags:
     - cvmfs
     - install
+  register: makeoutput
 
 - name: install CVMFS
   sudo: true
   command: make install
   args:
     chdir: /tmp/cvmfs/cvmfs-2.1.20/build
+    creates: /usr/bin/cvmfs2
   tags:
     - cvmfs
     - install
