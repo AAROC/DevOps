@@ -1,0 +1,14 @@
+---
+# prerequisite packages for the slack-nagios role
+- name: Prerequiste packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - "{{ prerequisites }}"
+
+- name: Ensure that the nagios script is present
+  get_url:
+    url: https://raw.github.com/tinyspeck/services-examples/master/nagios.pl
+    dest: "{{ script_path }}/slack_nagios.pl"
+    mode: 755

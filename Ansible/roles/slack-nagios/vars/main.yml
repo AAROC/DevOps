@@ -1,0 +1,24 @@
+---
+# vars file for roles/slack-nagios
+
+# Where will you install the slack perl script ?
+script_path: /usr/local/bin
+
+# There is no default team domain, since you need to put this in the playbook or a group_vars file for your site.
+# team_domain:
+
+# If you don't have a slack token in the group_vars or passwords, you can add it here
+# slack_token:
+
+# This is the channel to which the messages will be sent. Be sure that the channel actually exists.
+channel: monitoring
+
+# these are the prerequisite packages for the role that are described at
+# https://<team-name>.slack.com/services/<integration number>#service_setup
+# note : your url will likely be different.
+
+# Since we only support RHEL clones, we put these packages here, NOT what is written on the integration page
+prerequisites:
+  - perl-libwww-perl
+  - perl-Net-SSLeay.x86_64
+  - perl-Crypt-SSLeay.x86_64
