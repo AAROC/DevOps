@@ -15,7 +15,8 @@ install:
   - ansible all -c local -vvvvv -i inventories/inventory.local -m ping
 after_install:
 # Add any other stuff you want to test here - only for local single services
-  - ansible-playbook -c local -i ineventories/inventory.local discourse-saml.yml --check
+  - ansible-playbook -c local -i inventories/inventory.local discourse-saml.yml --check
+  - ansible-playbook -c local -i inventories/inventory.local cvmfs.yml
 notifications:
   slack:
     rooms:
