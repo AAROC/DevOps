@@ -65,6 +65,10 @@ voms
 ngi-nagios
 uis
 
+[bdiis:children]
+site-bdiis
+top-bdiis
+
 [site-services:children]
 site-bdiis
 cream-ces
