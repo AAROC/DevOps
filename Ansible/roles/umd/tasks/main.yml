@@ -1,18 +1,22 @@
 ---
 # EPEL yum repository.
 - name: Download UMD 3 repo.
-  get_url: url=http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm dest=/tmp/umd-release.rpm
+  yum:
+    name: "http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm"
+    state: present
   when: ansible_hostname.find("nagios") == -1
   tags:
     - repos
     - UMD3
 
-# - name: Download UMD 2 repo
-#   get_url: url=http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm dest=/tmp/umd-release.rpm
-#   when: ansible_hostname.find("nagios") != -1
-#   tags:
-#     - repos
-#     - UMD2
+- name: Download UMD 2 repo
+  yum:
+    name: "http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm"
+    state: present
+  when: ansible_hostname.find("nagios") != -1
+  tags:
+   - repos
+   - UMD2
 
 - name: add EGI GPG key to RPM
   sudo: True
@@ -22,23 +26,21 @@
     - repos
     - UMD
 
-- name: Install UMD repo.
-  sudo: True
-  sudo_user: root
-  command: yum localinstall -y /tmp/umd-release.rpm
-#  when: yum name=umd-release state==absent
-  tags:
-    - repos
-    - UMD
-
 - name: Ensure prorities plugin is configured
   sudo: true
   sudo_user: root
-  copy: src=etc/yum/pluginconf.d/priorities.conf dest=/etc/yum/pluginconf.d/prorities.conf
+  copy:
+    src: etc/yum/pluginconf.d/priorities.conf
+    dest: /etc/yum/pluginconf.d/prorities.conf
 
 - name: Set priorities of UMD repos
   sudo: True
   sudo_user: root
-  lineinfile: dest=/etc/yum.repos.d/UMD-3-base.repo regexp='^priority=' line='priority=1' insertafter='enabled=1'
+  lineinfile:
+    dest: /etc/yum.repos.d/UMD-3-base.repo
+    regexp: '^priority='
+    line: 'priority=1'
+    insertafter: 'enabled=1'
   tags:
     - UMD_priority
+  # when umd3...
