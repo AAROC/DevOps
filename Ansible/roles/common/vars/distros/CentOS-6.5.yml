@@ -4,3 +4,13 @@ iptables: /sbin/iptables
 # we should use a template here
 epel_release_url: http://fedora.mirror.ac.za/epel/6/x86_64/
 epel_release_name: epel-release-6-8.noarch.rpm
+base_packages:
+  - python-simplejson
+  - libselinux-python
+  - iptables
+  - mlocate
+  - initscripts
+  - chkconfig
+  - system-config-services
+  - openssh-clients
+  - which

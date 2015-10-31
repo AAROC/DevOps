@@ -13,3 +13,13 @@ ldap_packages:
   - openldap-servers
   - openldap-clients
 ldap_service: slapd
+base_packages:
+  - python-simplejson
+  - libselinux-python
+  - iptables
+  - mlocate
+  - initscripts
+  - chkconfig
+  - system-config-services
+  - openssh-clients
+  - which

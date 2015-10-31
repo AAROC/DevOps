@@ -7,7 +7,6 @@
 #     - download
 
 - name: Ensure that epel-release is present
-  become: true
   yum:
     name: "{{ epel_release_url }}/{{ epel_release_name }}"
     state: present
@@ -18,14 +17,12 @@
     - install
 
 - name: change the repos to use the local ones
-  become: true
   replace:
     dest: /etc/yum.repos.d/epel.repo
     regexp: "^#baseurl.*$"
     replace: "baseurl=http://mirror.ufs.ac.za/fedora-epel/6/x86_64"
 
 - name: remove the mirrors
-  become: true
   replace:
     dest: /etc/yum.repos.d/epel.repo
     regexp: "^mirrorlist="
@@ -55,16 +52,7 @@
 
 - name: Install prerequisite packages (RedHat)
   yum: name={{ item }} state=present
-  with_items:
-    - python-simplejson
-    - libselinux-python
-    - iptables
-    - mlocate
-    - initscripts
-    - chkconfig
-    - system-config-services
-    - openssh-clients
-    - which
+  with_items: base_packages
   tags:
     - bootstrap
   when: ansible_os_family=="RedHat"
