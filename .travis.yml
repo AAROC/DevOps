@@ -1,22 +1,13 @@
 language: bash
-
+sudo: required
+services: docker
 before_install:
-  - sudo apt-get install python-setuptools
-  - sudo easy_install pip six
-  - sudo pip install paramiko PyYAML Jinja2 httplib2
-  - echo .known_hosts.travis >> ~/.ssh/known_hosts
-  - git clone https://github.com/ansible/ansible --recursive
-  - source ansible/hacking/env-setup
+  - docker pull aaroc/site-bdii:centos6.8
 install:
   - cd $TRAVIS_BUILD_DIR/Ansible
   - chmod 400 $PWD/roles/bootstrap/files/public_keys/*
-#  - ansible-playbook -vvvv -i inventories/inventory.identity.dev -C idp-ldap.yml --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio
-#  - ansible all -vvvvv -i inventories/inventory.identity.dev --private-key=$PWD/roles/bootstrap/files/public_keys/id_rsa.pub.becker.serbaggio -m ping -c paramiko
   - ansible all -c local -vvvvv -i inventories/inventory.local -m ping
-after_install:
-# Add any other stuff you want to test here - only for local single services
-  - ansible-playbook -c local -i inventories/inventory.local discourse-saml.yml --check
-  - ansible-playbook -c local -i inventories/inventory.local cvmfs.yml
+  - ansible-playbook -c local -i inentories/inventory.local -e "emi_service=BDII_site yaim_options='-n BDII_site'" site-bdiis.yml
 notifications:
   slack:
     rooms:
