@@ -19,23 +19,17 @@
    - UMD2
 
 - name: add EGI GPG key to RPM
-  sudo: True
-  sudo_user: root
   rpm_key: key=http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY state=present
   tags:
     - repos
     - UMD
 
 - name: Ensure prorities plugin is configured
-  sudo: true
-  sudo_user: root
   copy:
     src: etc/yum/pluginconf.d/priorities.conf
     dest: /etc/yum/pluginconf.d/prorities.conf
 
 - name: Set priorities of UMD repos
-  sudo: True
-  sudo_user: root
   lineinfile:
     dest: /etc/yum.repos.d/UMD-3-base.repo
     regexp: '^priority='
