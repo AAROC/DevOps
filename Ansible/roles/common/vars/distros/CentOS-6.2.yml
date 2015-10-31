@@ -17,3 +17,6 @@ base_packages:
   - system-config-services
   - openssh-clients
   - which
+  - yum-priorities
+  - yum-protectbase
+  - vim
