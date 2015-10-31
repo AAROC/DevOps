@@ -18,5 +18,5 @@
   roles:
     - { role: common, become: true }
     - { role: umd, become: true }
-    - site-bdii
-    - yaim
+    - { role: site-bdii, become: true }
+    - { role: yaim, become: true }
