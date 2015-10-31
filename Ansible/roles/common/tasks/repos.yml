@@ -7,7 +7,7 @@
 #     - download
 
 - name: Ensure that epel-release is present
-  sudo: true
+  become: true
   yum:
     name: "{{ epel_release_url }}/{{ epel_release_name }}"
     state: present
@@ -18,14 +18,14 @@
     - install
 
 - name: change the repos to use the local ones
-  sudo: true
+  become: true
   replace:
     dest: /etc/yum.repos.d/epel.repo
     regexp: "^#baseurl.*$"
     replace: "baseurl=http://mirror.ufs.ac.za/fedora-epel/6/x86_64"
 
 - name: remove the mirrors
-  sudo: true
+  become: true
   replace:
     dest: /etc/yum.repos.d/epel.repo
     regexp: "^mirrorlist="
@@ -70,7 +70,7 @@
   when: ansible_os_family=="RedHat"
 
 - name: Install EGI trustanchors release package
-  sudo: true
+  become: true
   yum: name=/tmp/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm state=present
   tags:
     - repos
@@ -78,13 +78,13 @@
     - install
 
 - name: Install yum-priorities package
-  sudo: true
+  become: true
   yum: name=yum-priorities state=present
   tags:
     - yumconfig
 
 - name: Install yum-protectbase package
-  sudo: true
+  become: true
   yum: name=yum-protectbase state=latest
   tags:
     - yumconfig
