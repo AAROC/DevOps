@@ -4,6 +4,7 @@
   yum:
     name: "http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm"
     state: present
+  retries: 2
   when: ansible_hostname.find("nagios") == -1
   tags:
     - repos
@@ -14,12 +15,16 @@
     name: "http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm"
     state: present
   when: ansible_hostname.find("nagios") != -1
+  retries: 2
   tags:
    - repos
    - UMD2
 
 - name: add EGI GPG key to RPM
-  rpm_key: key=http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY state=present
+  rpm_key:
+    key: http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY
+    state: present
+  retries: 2
   tags:
     - repos
     - UMD
