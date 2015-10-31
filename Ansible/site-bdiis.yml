@@ -1,18 +1,17 @@
 ---
-# - hosts: site-bdiis
-#   name: Bootstrap the machine
-#   user: root
-#   vars_files:
-#     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-#     - roles/common/vars/middleware/IGTF.yml
-#     - "group_vars/passwords-{{ site_name }}.yml"
-#   roles:
-#     - bootstrap
+#- hosts: site-bdiis
+#  name: Bootstrap the machine
+#  vars_files:
+#    - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+#    - roles/common/vars/middleware/IGTF.yml
+#    - "group_vars/passwords-{{ site_name }}.yml"
+#  roles:
+#   - { role: bootstrap, become: true }
 
 - hosts: site-bdiis
   name: Configure the machine
   vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
     - roles/common/vars/middleware/IGTF.yml
 #    - "group_vars/passwords-{{ site_name }}.yml"
   roles:
