@@ -7,16 +7,21 @@
 
 - hosts: top-bdiis
   name: BDII_TOP plays
-  user: ansible
-  sudo: true
+  pre_tasks:
+    - name: Tell the team
+      slack:
+        token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
+        msg: "{{ inventory_hostname }} is alive!"
+        color: good
+        username: "Ansible on {{ ansible_hostname }} at {{ site_name }} running Top-BDII play"
   roles:
-    - common
-    - certificates
-    - umd
-    - top-bdii
-    - yaim
+    - { role: common, become: true }
+    - { role: certificates, become: true }
+    - { role: umd, become: true }
+    - { role: top-bdii, become: true }
+    - { role: yaim, become: true }
   vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
     - roles/common/vars/middleware/IGTF.yml
   handlers:
     - include: roles/common/handlers/main.yml
