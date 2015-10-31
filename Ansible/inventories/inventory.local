@@ -78,4 +78,8 @@ top-bdiis
 
 [CentOS-servers:children]
 CentOS6-servers
+
+[za-meraka-dev:children]
+site-services
+core-services
 ############################ END #########################
