@@ -1,11 +1,14 @@
 - name: quick debug
-  debug: msg="emi_service is {{ emi_service }}"
+  debug:
+    msg: "emi_service is {{ emi_service }}"
 
 - name: Create users.conf file
   template:
     src: opt/glite/yaim/etc/siteinfo/users.conf.j2
     dest: "/opt/glite/yaim/etc/{{ site_name }}/siteinfo/users.conf"
-    owner=root group=root mode=0644
+    owner: root
+    group: root
+    mode: 0644
   tags:
     - yaim
     - yaimfiles
@@ -13,7 +16,12 @@
     - run yaim
 
 - name: Create groups.conf file
-  template: src=opt/glite/yaim/etc/siteinfo//groups.conf.j2 dest=/opt/glite/yaim/etc/{{site_name}}/siteinfo/groups.conf owner=root group=root mode=0644
+  template:
+    src: opt/glite/yaim/etc/siteinfo/groups.conf.j2
+    dest: "/opt/glite/yaim/etc/{{ site_name }}/siteinfo/groups.conf"
+    owner: root
+    group: root
+    mode: 0644
   notify:
     - run yaim
   tags:
@@ -187,9 +195,12 @@
     - yaimfiles
     - site-info
 
+- name: debug yaim command
+  debug:
+    msg:
+      - "About to run {{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{  yaim_options }}"
+      - "{{ yaim_options }}"
 - name: run yaim
-  shell: "{{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{ yaim_options }}"
-  sudo: true
-  sudo_user: root
+  command: "{{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{ yaim_options }}"
   tags:
     - runyaim

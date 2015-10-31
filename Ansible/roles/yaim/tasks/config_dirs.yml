@@ -1,10 +1,9 @@
 ---
 - name: Which site are we on ?
-  debug: msg="{{ site_name }}"
+  debug: msg="We are on {{ site_name }}"
   changed_when: false
 
 - name: Create siteinfo directory
-  become: True
   file:
     path: "/opt/glite/yaim/etc/{{ site_name }}/siteinfo"
     owner: root
@@ -14,7 +13,6 @@
   tags:
     - yaim
 - name: Create VOs subdirectory
-  become: true
   file:
     path: "/opt/glite/yaim/etc/{{ site_name }}/siteinfo/vo.d"
     owner: root
@@ -25,7 +23,6 @@
     - yaim
 
 - name: Create siteinfo/services directory and VOs subdirectory
-  become: true
   file:
     path: "/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services"
     owner: root
@@ -35,22 +32,7 @@
   tags:
     - yaim
 
-- name: debug 1
-  debug:
-    var: groups
-
-- name: debug 2
-  debug:
-    var:
-      groups['worker-nodes']
-
-- name: debug 3
-  debug:
-    var: ansible_hostname
-
-
 - name: Ensure that the worker home directories are there
-  become: true
   file:
     path: "{{ user_home_prefix }}"
     state: directory
@@ -60,12 +42,6 @@
 - name: Discover what node types we have
   command: /bin/ls chdir=/opt/glite/yaim/node-info.d/
   register: node_types
-  changed_when: false
-
-- name: what was there ?
-  debug: msg="{{ item }}"
-  with_items:
-    - "{{ node_types.stdout_lines }}"
   changed_when: false
 
 

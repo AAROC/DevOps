@@ -655,7 +655,7 @@ VO_OPS_DEFAULT_SE=$SE_HOST
  '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
  "
 
-{% if is_cream -%}
+{% if is_cream  -%}
 # CREAM specific section
 CREAMCE_CLUSTER_MODE={{ creamce_cluster_mode }}
 {% if is_both_cream_and_torque -%}
