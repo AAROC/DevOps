@@ -24,9 +24,8 @@
 
 - name: YUM repo for TrustAnchors
   get_url:
-    url: "http://repository.egi.eu/sw/production/cas/1/current/repo-files/egi-trustanchors.repo"
+    url: "http://repository.egi.eu/sw/production/cas/1/current/repo-files/EGI-trustanchors.repo"
     dest: /etc/yum.repos.d/egi-trustanchors.repo
-    force: no
   retries: 2
   tags:
     - repos
