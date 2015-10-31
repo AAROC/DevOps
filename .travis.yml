@@ -6,8 +6,8 @@ before_install:
 install:
   - cd $TRAVIS_BUILD_DIR/Ansible
   - chmod 400 $PWD/roles/bootstrap/files/public_keys/*
-  - docker run -v $PWD:$PWD -w $PWD aaroc/site-bdii:centos6.8 ansible all -c local -vvvvv -i inventories/inventory.local -m ping
-  - docker run -v $PWD:$PWD -w $PWD aaroc/site-bdii:centos6.8 ansible-playbook -c local -i inventories/inventory.local -e "emi_service=BDII_site yaim_options='-n BDII_site'" site-bdiis.yml
+  - docker run -h localhost.dev -v $PWD:$PWD -w $PWD aaroc/site-bdii:centos6.8 ansible all -c local -vvvvv -i inventories/inventory.local -m ping
+  - docker run -h localhost.dev -v $PWD:$PWD -w $PWD aaroc/site-bdii:centos6.8 ansible-playbook -c local -i inventories/inventory.local -e "emi_service=BDII_site yaim_options='-n BDII_site'" site-bdiis.yml
 notifications:
   slack:
     rooms:
