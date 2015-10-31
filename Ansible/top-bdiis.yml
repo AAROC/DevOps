@@ -10,10 +10,11 @@
   pre_tasks:
     - name: Tell the team
       slack:
-        token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
-        msg: "{{ inventory_hostname }} is alive!"
-        color: good
-        username: "Ansible on {{ ansible_hostname }} at {{ site_name }} running Top-BDII play"
+        domain: africa-arabia-roc.slack.com
+        token: V4qyCjHMRUb9ZmNdcf2hVEmI
+        msg: "Running top-bdii play at on {{ ansible_hostname }} at {{ site_name }}"
+        username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+        validate_certs: False
   roles:
     - { role: common, become: true }
     - { role: certificates, become: true }
