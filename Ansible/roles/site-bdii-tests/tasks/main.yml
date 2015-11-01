@@ -4,6 +4,9 @@
   wait_for:
     host: "{{ inventory_hostname }}"
     port: 2170
+    connect_timeout: 15
+    state: present
+    delay: 10
 
 #
 #- name:
