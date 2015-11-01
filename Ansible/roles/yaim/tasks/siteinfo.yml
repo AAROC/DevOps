@@ -195,12 +195,23 @@
     - yaimfiles
     - site-info
 
-- name: debug yaim command
-  debug:
-    msg:
-      - "About to run {{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{  yaim_options }}"
-      - "{{ yaim_options }}"
+- name: Tell the team
+  slack:
+    token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
+    msg: "running yaim on {{ inventory_hostname }} with {{ yaim_options }}"
+    username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+
+
 - name: run yaim
   command: "{{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{ yaim_options }}"
   tags:
     - runyaim
+  failed_when: false
+  register: yaimout
+
+- name: Tell the team the yaim output
+  slack:
+    token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
+    msg: "running yaim on {{ inventory_hostname }} with {{ yaim_options }}"
+    username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+    
