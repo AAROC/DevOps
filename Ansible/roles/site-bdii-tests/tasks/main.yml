@@ -1,0 +1,10 @@
+---
+# tasks file for roles/site-bdii-tests
+- name: check that port 2170 is open
+  local_action:
+    wait_for:
+      host: {{ inventory_hostname }}
+      port: 2170
+
+#
+- name:
