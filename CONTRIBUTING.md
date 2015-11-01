@@ -6,7 +6,6 @@ We chose github because the workflow of contibuting to repositories maintained w
 
 # Reporting issues
 
-
 If you use this code (and we want you to :smile:), we consider it a moral responsibility to help improve it. The easiest way to do this is to report issues. While we can't guarantee support, we will do our best to respond to and close tickets that are assigned to the repo. You can do your bit by trying to stick to a few guidelines :
 
 ## Opening issues
@@ -14,7 +13,7 @@ If you use this code (and we want you to :smile:), we consider it a moral respon
   1. Are you having an Ansible problem ? Please google the issue at least once and check if it has been reported before somewhere. It at all possible, provide a reference to this in your ticket. This will save us a lot of time to diagnose the issue.
   1. Are you reporting an issue, or commenting on the code ? Issues go here. Commenting and discussing the code can be done with us at [slack](https://africa-arabia-roc.slack.com) (ask for an invite if you're not on the team) or at the discussion forum (use the [Sci-GaIA discussion forum](http://discourse.sci-gaia.eu) for now, then we'll move on).
   1. Please report one and only one problem per issue. This may seem like a lot of overhead initially, but it helps us in the future to find solutions that actually work.
-  2. If you have an actual error from an Ansible playbook, send us the full output of the relevant role. 
+  2. If you have an actual error from an Ansible playbook, send us the full output of the relevant role.
     1. Do not just send the last task, with the error - we will  need some context
     2. Be sure to mention relevant variables that you may have used
   3. It always helps to have your inventory and group_vars along with the issue.
@@ -22,11 +21,11 @@ If you use this code (and we want you to :smile:), we consider it a moral respon
 
 ## Use Markdown as it was intended.
 
-Understanding submitted issues is not just a matter of reading some console output or log file - some context is needed. Also, plain text is not a great way to communicate emphasis or context. Github issues provides a good syntax for reporting the issues, with highlighting for many different languages. 
+Understanding submitted issues is not just a matter of reading some console output or log file - some context is needed. Also, plain text is not a great way to communicate emphasis or context. Github issues provides a good syntax for reporting the issues, with highlighting for many different languages.
 
-***Please use [Github flavoured markdown](https://help.github.com/articles/github-flavored-markdown/) to submit issues***. In particular, use the syntax highlighter to highlight code, or output on the terminal, logs, etc. 
+***Please use [Github flavoured markdown](https://help.github.com/articles/github-flavored-markdown/) to submit issues***. In particular, use the syntax highlighter to highlight code, or output on the terminal, logs, etc.
 
-*I.E* : 
+*I.E* :
 ```bash
 [shell](user)~ echo hi
 hi
@@ -46,6 +45,12 @@ It's very important for us to know when to close issues, as well as _how_ issues
 
 We usually request that commits are tested before inclusion, but this can requirea fairly complicated staging environment or continuous integration service which you may not have access to. You are welcome to use the `.travis.yml` example in the top directory if  you're developing services which can be tested on [travis-CI](http://travis-ci.org)'s platform. For more sophisticated testing, you may need access to a dedicated environment. Contact us to see whether we can make a cloud testbed avaiable for your use case.
 
+## Testing Playbooks
+
+It is good practice to run a simple sanity tests on Ansible playbooks before committing:
+
+  1. Use `--syntax-check` to check the syntax of the playbook without executing it
+  1. Also, using the "dry-run" `--check` to predict changes that may take place
 
 # How to send a pull request
 
@@ -53,7 +58,7 @@ First of all, fork the repo to your own account and give it a meaningful name li
 
 ## Bug fixes and production code.
 
-This repository contains Puppet and Ansible code for instantiating production services. The master branch is where all the development happens. If you have a contribution which fixes or improves code in the master branch, by all means, send a pull request. 
+This repository contains Puppet and Ansible code for instantiating production services. The master branch is where all the development happens. If you have a contribution which fixes or improves code in the master branch, by all means, send a pull request.
 
 ## Experimental or unfinished code
 
