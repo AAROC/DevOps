@@ -25,12 +25,12 @@
     - { role: umd, become: true }
     - { role: site-bdii, become: true }
     - { role: yaim, become: true }
-  post_tasks
-      - name: Tell the team
-        slack:
-          token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
-          msg: "Starting the site-bdii play for {{ inventory_hostname }} !"
-          username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+  post_tasks:
+    - name: Tell the team
+      slack:
+        token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
+        msg: "Starting the site-bdii play for {{ inventory_hostname }} !"
+        username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
 
 - name: Tests
   hosts: site-bdiis
