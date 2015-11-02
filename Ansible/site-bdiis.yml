@@ -29,7 +29,7 @@
     - name: Tell the team
       slack:
         token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
-        msg: "Starting the site-bdii play for {{ inventory_hostname }} !"
+        msg: "The site-bdii play for {{ inventory_hostname }} !"
         username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
 
 - name: Tests
