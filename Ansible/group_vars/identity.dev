@@ -21,7 +21,6 @@ organisation:
   name: INFN
   logo: infn
 ldap_server: vm03.ct.infn.it
-sgw_admin: test@test.com
 mail_contact: test@test.com
 # IDP variables. these are specifically related to the IdPOpen Web front end.
 idp:

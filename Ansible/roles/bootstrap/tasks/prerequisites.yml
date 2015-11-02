@@ -10,20 +10,27 @@
     state: installed
 
 - name: use Google public DNS if necessary
-  lineinfile: dest=/etc/resolv.conf regexp=^nameserver line='nameserver 8.8.8.8'
+  lineinfile:
+    dest: /etc/resolv.conf
+    regexp: '^nameserver'
+    line: 'nameserver 8.8.8.8'
 #  when: "'ping: unknown host www.google.com' in hosttest.stderr"
   tags:
     - DNS
 
 - name: Install prerequisite packages (RedHat)
-  yum: name={{ item }} state=present
+  yum:
+    name: "{{ item }}"
+    state: present
   with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
   tags:
     - bootstrap
   when: ansible_os_family=="RedHat"
 
 - name: Install prerequisite packages (Debian)
-  apt: name={{ item }} state=present
+  apt:
+    name: "{{ item }}"
+    state: present
   with_items: "{{ bootstrap_prerequisites[ansible_os_family]}}"
   tags:
     - bootstrap
