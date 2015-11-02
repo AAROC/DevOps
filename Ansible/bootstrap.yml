@@ -9,8 +9,8 @@
   - name: Send Slack Message
     slack:
      domain: africa-arabia-roc.slack.com
-     token: T02BJKQR4/B04DR8QEW/sBWZXBHgua6QqSnj6QDw9bFE
-     msg: "Starting bootstrap on {{ inventory_hostname }}"
+     token: sBWZXBHgua6QqSnj6QDw9bFE
+     msg: "Starting bootstrap on {{ inventory_hostname }} at {{ site_name }}"
      channel: "#devops-bootstrap"
      username: "Ansible on {{ inventory_hostname }}"
      #icon_url: "http://www.example.com/some-image-file.png"
@@ -20,8 +20,8 @@
   - name: Send notification message via Slack
     slack:
       domain: africa-arabia-roc.slack.com
-      token: T02BJKQR4/B04DR8QEW/sBWZXBHgua6QqSnj6QDw9bFE
-      msg: "bootstrap on {{ inventory_hostname }} has run"
+      token: sBWZXBHgua6QqSnj6QDw9bFE
+      msg: "bootstrap on {{ inventory_hostname }} has run at {{ site_name }}"
       channel: "#devops-bootstrap"
       username: "Ansible on {{ inventory_hostname }}"
       #icon_url: "http://www.example.com/some-image-file.png"
