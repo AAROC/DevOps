@@ -4,11 +4,10 @@ services: docker
 env:
   - INVENTORY=inventory.travis
 # The bootstrap role will always be tested
-  - BOOSTRAP_CONTAINER=aaroc/code-rade-sl6-ansible
-  - BOOSTRAP_CONTAINER=aaroc/code-rade-u1404-ansible
+  - BOOTSTRAP_CONTAINER="aaroc/code-rade-sl6-ansible"
+  - BOOTSTRAP_CONTAINER="aaroc/code-rade-u1404-ansible"
 # Add the containers you need for the services you want to test here
   - SITE_BDII_CONTAINER="aaroc/site-bdii:centos6.8"
-
 before_install:
 # Pull the containers you need for the tests
   - docker pull $BOOTSTRAP_CONTAINER
