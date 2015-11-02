@@ -1,13 +1,38 @@
 ---
+#- hosts: site-bdiis
+#  name: Bootstrap the machine
+#  vars_files:
+#    - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+#    - roles/common/vars/middleware/IGTF.yml
+#    - "group_vars/passwords-{{ site_name }}.yml"
+#  roles:
+#   - { role: bootstrap, become: true }
+
 - hosts: site-bdiis
-  name: Prepare the machine for yaim configuration
-  sudo: true
-  sudo_user: root
+  name: Configure the machine
+  pre_tasks:
+    - name: Tell the team
+      slack:
+        token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
+        msg: "Starting the site-bdii play for {{ inventory_hostname }} !"
+        username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
   vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
     - roles/common/vars/middleware/IGTF.yml
+#    - "group_vars/passwords-{{ site_name }}.yml"
   roles:
-    - common
-    - umd
-    - site-bdii
-    - yaim
+    - { role: common, become: true }
+    - { role: umd, become: true }
+    - { role: site-bdii, become: true }
+    - { role: yaim, become: true }
+  post_tasks:
+    - name: Tell the team
+      slack:
+        token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
+        msg: "Starting the site-bdii play for {{ inventory_hostname }} !"
+        username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+
+- name: Tests
+  hosts: site-bdiis
+  roles:
+    - site-bdii-tests

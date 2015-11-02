@@ -2,6 +2,8 @@
 # We will need some admin passwords for the glassfish server. We store them
 # this file. This may become a template later, taking variables from the
 # role_vars
+
+# make sure that this is vaulted
 - name: Copy the Glassfish server password file
   copy:
     src=passwordfile dest=/home/liferayadmin/passwordfile

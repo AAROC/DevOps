@@ -3,7 +3,7 @@
   sudo: true
   sudo_user: root
   copy:
-    src: etc/yum.repos.d/CentOS-Shibboleth.repo
+    src: etc/yum.repos.d/{{ item }}
     dest: /etc/yum.repos.d/{{ item }}
     owner: root
     group: root

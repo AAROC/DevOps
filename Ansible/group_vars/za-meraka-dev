@@ -70,7 +70,7 @@ openmpi_version: 1.5.4
 # are the home directories shared over nfs ?
 mpi_shared_home: no
 mpi_host_based_auth: yes
-
+user_home_prefix: 
 vo_sw_dir: /opt/exp_soft/
 
 batch_server: ce01-node001.c4.csir.co.za

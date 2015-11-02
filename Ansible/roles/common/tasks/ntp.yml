@@ -1,6 +1,13 @@
 - name: ensure that NTP is installed
   yum: name=ntp state=installed
   tags: ntp
+  when: ansible_os_family == 'RedHat'
+
+- name: Ensure that NTP  is installed  (Debian)
+  apt:
+    name: ntp
+    state: present
+  when: ansible_os_family == 'Debian'
 
 - name: ensure that NTP is configured
   template: src=etc/ntp.conf.j2 dest=/etc/ntp.conf
@@ -17,4 +24,3 @@
   tags: ntp
   async: 45
   poll: 0
-

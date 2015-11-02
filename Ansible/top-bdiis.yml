@@ -7,16 +7,22 @@
 
 - hosts: top-bdiis
   name: BDII_TOP plays
-  user: ansible
-  sudo: true
+  pre_tasks:
+    - name: Tell the team
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: V4qyCjHMRUb9ZmNdcf2hVEmI
+        msg: "Running top-bdii play at on {{ ansible_hostname }} at {{ site_name }}"
+        username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+        validate_certs: False
   roles:
-    - common
-    - certificates
-    - umd
-    - top-bdii
-    - yaim
+    - { role: common, become: true }
+    - { role: certificates, become: true }
+    - { role: umd, become: true }
+    - { role: top-bdii, become: true }
+    - { role: yaim, become: true }
   vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-    - roles/common/vars/middleware/IGTF
+    - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+    - roles/common/vars/middleware/IGTF.yml
   handlers:
     - include: roles/common/handlers/main.yml
