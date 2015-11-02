@@ -8,7 +8,8 @@ emi_service: none
 glite_local_customization_dir: ""
 yaim_users_home_path: /home
 user_home_prefix: ""
-
+# this needs to be set, but will be set to empty - each site should set this in their group_vars
+mysql_pass: ""
 
 # service-specific variables
 # there is no default, so we set everything off
