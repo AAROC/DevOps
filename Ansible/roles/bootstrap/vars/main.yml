@@ -10,6 +10,7 @@ bootstrap_prerequisites:
     - system-config-services
     - openssh-clients
     - vim
+    - bind
   'Debian':
     - python-simplejson
     - iptables

@@ -4,16 +4,14 @@
 #   register: hosttest
 #   changed_when: false
 #   failed_when: false
-
-- name: debug
-  debug: "{{ item }}"
-  with_url:
-    - http://www.google.com
-  
+- name: ensure that SELinux python bindings are installed
+  yum:
+    name: libselinux-python
+    state: installed
 
 - name: use Google public DNS if necessary
   lineinfile: dest=/etc/resolv.conf regexp=^nameserver line='nameserver 8.8.8.8'
-  when: "'ping: unknown host www.google.com' in hosttest.stderr"
+#  when: "'ping: unknown host www.google.com' in hosttest.stderr"
   tags:
     - DNS
 
