@@ -4,10 +4,8 @@ services: docker
 # The bootstrap role will always be tested
 # Add the containers you need for the services you want to test here
 env:
-  - INVENTORY=inventory.travis
-  - BOOTSTRAP_CONTAINER="aaroc/code-rade-sl6-ansible"
-  - BOOTSTRAP_CONTAINER="aaroc/code-rade-u1404-ansible"
-  - SITE_BDII_CONTAINER="aaroc/site-bdii:centos6.8"
+  - INVENTORY=inventory.travis BOOTSTRAP_CONTAINER="aaroc/code-rade-sl6-ansible" SITE_BDII_CONTAINER="aaroc/site-bdii:centos6.8"
+  - INVENTORY=inventory.travis BOOTSTRAP_CONTAINER="aaroc/code-rade-u1404-ansible" SITE_BDII_CONTAINER="aaroc/site-bdii:centos6.8"
 before_install:
 # Pull the containers you need for the tests
   - docker pull ${BOOTSTRAP_CONTAINER}
@@ -23,6 +21,7 @@ install:
   - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $BOOTSTRAP_CONTAINER ansible all -c local -vvvvv -i inventories/$INVENTORY -m ping
   - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $SITE_BDII_CONTAINER ansible-playbook -c local -i inventories/$INVENTORY -e "emi_service=BDII_site yaim_options='-n BDII_site'" site-bdiis.yml
 notifications:
+  email: false
   slack:
     rooms:
       - africa-arabia-roc:8bySc6HbbEvvxPYqg0Z56Xdk#code
