@@ -1,5 +1,10 @@
 - name: Add configuration for VOs
-  action: template src=opt/glite/yaim/etc/siteinfo/vo.d/{{ item }}.j2 dest=/opt/glite/yaim/etc/{{ site_name }}/siteinfo/vo.d/{{ item  }} owner=root group=root mode=0644
+  template:
+    src: "opt/glite/yaim/etc/siteinfo/vo.d/{{ item }}.j2"
+    dest: "/opt/glite/yaim/etc/{{ site_name }}/siteinfo/vo.d/{{ item  }}"
+    owner: root
+    group: root
+    mode: 0644
   with_items: vos
   tags:
     - yaim
