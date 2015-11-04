@@ -2,6 +2,7 @@
 # This is the boostrap play for AAROC machines.
 - name: bootstrap the machines
   hosts: all
+  become: true
   roles:
 # we don't need become here, because bootstrap is designed to run as root.
     - bootstrap
