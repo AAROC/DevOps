@@ -14,8 +14,8 @@ vm04.ct.infn.it ansible_ssh_port=4422 min_jvm_size=1024m max_jvm_size=1024m db-s
 vm03.ct.infn.it ansible_ssh_port=4422  needs_certificate="false"
 
 [CentOS-servers]
-vm03.ct.infn.it
-vm04.ct.infn.it
+vm03.ct.infn.it ansible_ssh_port=4422
+vm04.ct.infn.it ansible_ssh_port=4422
 
 [Debian-servers]
 #vm01.ct.infn.it
