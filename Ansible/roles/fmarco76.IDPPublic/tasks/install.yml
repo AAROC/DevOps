@@ -42,7 +42,9 @@
 
 - name: Copy the application into the webapps
   become: true
-  command: "cp {{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war {{ tomcat6_webapps }}/ROOT.war" creates="{{ tomcat6_webapps }}/ROOT.war"
+  command: "cp {{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war {{ tomcat6_webapps }}/ROOT.war"
+  args:
+    creates: "{{ tomcat6_webapps }}/ROOT.war"
 
 - name: Configure the ROOT
   become: yes
