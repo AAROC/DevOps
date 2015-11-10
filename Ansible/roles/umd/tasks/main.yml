@@ -1,5 +1,15 @@
 ---
-# EPEL yum repository.
+- name: add EGI GPG key to RPM
+  rpm_key:
+    key: http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY
+    state: present
+  retries: 2
+  tags:
+    - repos
+    - UMD
+
+
+# UMD yum repository.
 - name: Download UMD 3 repo.
   yum:
     name: "http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm"
@@ -20,26 +30,33 @@
    - repos
    - UMD2
 
-- name: add EGI GPG key to RPM
-  rpm_key:
-    key: http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY
-    state: present
-  retries: 2
-  tags:
-    - repos
-    - UMD
-
 - name: Ensure prorities plugin is configured
   copy:
     src: etc/yum/pluginconf.d/priorities.conf
     dest: /etc/yum/pluginconf.d/prorities.conf
 
+- name: Ensure UMD repos are enabled
+  lineinfile:
+    dest: "/etc/yum.repos.d/{{ item }}"
+    regexp: ^enabled=
+    line: enabled=1
+  with_items:
+    - UMD-3-base.repo
+    - UMD-3-updates.repo
+  tags:
+    - UMD
+
+
 - name: Set priorities of UMD repos
   lineinfile:
-    dest: /etc/yum.repos.d/UMD-3-base.repo
+    dest: /etc/yum.repos.d/{{ item }}
     regexp: '^priority='
     line: 'priority=1'
     insertafter: 'enabled=1'
+  with_items:
+    - UMD-3-base.repo
+    - UMD-3-updates.repo
   tags:
     - UMD_priority
+    - UMD
   # when umd3...
