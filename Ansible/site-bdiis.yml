@@ -11,11 +11,18 @@
 - hosts: site-bdiis
   name: Configure the machine
   pre_tasks:
+    - debug:
+        msg: "site is {{ site_name }}"
+      tags:
+        - debug
     - name: Tell the team
       slack:
-        token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
+        domain: africa-arabia-roc.slack.com
+        token: V4qyCjHMRUb9ZmNdcf2hVEmI
         msg: "Starting the site-bdii play for {{ inventory_hostname }} !"
         username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+      tags:
+        - slack
   vars_files:
     - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
     - roles/common/vars/middleware/IGTF.yml
@@ -28,9 +35,12 @@
   post_tasks:
     - name: Tell the team
       slack:
-        token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
+        domain: africa-arabia-roc.slack.com
+        token: V4qyCjHMRUb9ZmNdcf2hVEmI
         msg: "The site-bdii play for {{ inventory_hostname }} !"
         username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+      tags:
+        - slack
 
 - name: Tests
   hosts: site-bdiis
