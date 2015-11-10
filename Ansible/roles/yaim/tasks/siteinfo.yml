@@ -197,20 +197,26 @@
 
 - name: Tell the team
   slack:
-    token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
+    domain: africa-arabia-roc.slack.com
+    token: V4qyCjHMRUb9ZmNdcf2hVEmI
     msg: "running yaim on {{ inventory_hostname }} with {{ yaim_options }}"
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
-
+  tags:
+    - yaim
 
 - name: run yaim
   command: "{{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{ yaim_options }}"
-  tags: 
-    - runyaim
   failed_when: false
   register: yaimout
+  tags:
+    - yaim
+    - runyaim
 
 - name: Tell the team the yaim output
   slack:
-    token: T02BJKQR4/B0DJG4SRG/V4qyCjHMRUb9ZmNdcf2hVEmI
+    domain: africa-arabia-roc.slack.com
+    token: V4qyCjHMRUb9ZmNdcf2hVEmI
     msg: "yaim on {{ inventory_hostname }} with {{ yaim_options }} has finished "
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+  tags:
+    - yaim
