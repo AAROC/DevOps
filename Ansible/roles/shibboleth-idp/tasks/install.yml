@@ -1,25 +1,82 @@
 ---
 #- name: correct java version selected
 # alternatives: name=java path=/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+- name: Is shibboleth already installed ?
+  stat:
+    path: "{{ shibboleth_install_path }}"
+  register: metadata_stat
+
 
 - name: Download the shibboleth package
-  get_url: url={{ idp_url }}/{{ idp_version }}/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz dest=/tmp/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz
+  get_url:
+    url: "{{ idp_url }}/{{ idp_version }}/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz"
+    dest: "/tmp/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz"
+  when: metadata_stat.stat.exists != true
 
-- name: Create the shibboleth installation directory
-  sudo: True
-  file: path={{ ansible_env.HOME }}/idp state=directory owner=ansible
+- name: Ensure shibboleth installation directory is present
+  become: True
+  file:
+    path: "{{ ansible_env.HOME }}/idp"
+    state: directory
+    owner: ansible
+
 
 - name: Unpack the tarball
-  unarchive: src=/tmp/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz dest={{ ansible_env.HOME }}/idp creates={{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install.sh copy=no
+  unarchive:
+    src: "/tmp/{{ idp_package_name }}-{{ idp_version }}-bin.tar.gz"
+    dest: "{{ ansible_env.HOME }}/idp"
+    creates: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install.sh"
+    copy: no
+  when: metadata_stat.stat.exists != true
 
-- name: Copy the installer
-  template: src=install-shib.expect.j2 dest="{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install-shib.expect" mode="u+x"
 
+- name: Generate Install script
+  template:
+    src: install-shib.expect.j2
+    dest: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install-shib.expect"
+    mode: "u+x"
+  when: metadata_stat.stat.exists != true
+
+- name: Generate Update script
+  template:
+    src: update-shib.expect.j2
+    dest: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/update-shib.expect"
+    mode: "u+x"
+  when: metadata_stat.stat.exists == true
+
+
+# Ansible v2 has an expect module which could be used probably to do this better.
+# BB 11/15
+
+# this may fail - see #246
 - name: Install the package
-  sudo: yes
-  shell: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install-shib.expect chdir={{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }} creates={{ shibboleth_install_path }}/war/idp.war"
+  become: yes
+  shell: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/install-shib.expect"
+  args:
+    chdir: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}"
+    creates: "{{ item }}"
   environment: java_env
+  with_items:
+    - "{{ shibboleth_install_path }}/war/idp.war"
+    - "{{ shibboleth_install_path }}/metadata/metadata.xml"
+  when: metadata_stat.stat.exists != true
+
+- name: Update the package
+  become: yes
+  shell: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/update-shib.expect"
+  args:
+    chdir: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}"
+    creates: "{{ item }}"
+  environment: java_env
+  with_items:
+    - "{{ shibboleth_install_path }}/war/idp.war"
+    - "{{ shibboleth_install_path }}/metadata/metadata.xml"
+  when: metadata_stat.stat.exists == true
 
 - name: Associate the correct owner
-  sudo: yes
-  file: path=/opt/shibboleth-idp owner={{ tomcat6_user }} state=directory recurse=yes
+  become: yes
+  file:
+    path: /opt/shibboleth-idp
+    owner: "{{ tomcat6_user }}"
+    state: directory
+    recurse: yes
