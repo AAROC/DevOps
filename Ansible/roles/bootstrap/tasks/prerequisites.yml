@@ -18,11 +18,15 @@
   tags:
     - DNS
 
+- name: debug packages
+  debug:
+    var: "bootstrap_prerequisites.{{ ansible_os_family }}"
+
 - name: Install prerequisite packages (RedHat)
   yum:
     name: "{{ item }}"
     state: present
-  with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
+  with_items: "bootstrap_prerequisites.{{ ansible_os_family }}"
   tags:
     - bootstrap
   when: ansible_os_family=="RedHat"

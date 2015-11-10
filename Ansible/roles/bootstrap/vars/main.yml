@@ -1,6 +1,6 @@
 ---
 bootstrap_prerequisites:
-  'RedHat':
+  RedHat:
     - python-simplejson
     - libselinux-python
     - iptables
