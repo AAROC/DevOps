@@ -2,7 +2,7 @@
 - hosts: cream-ces
   name: Deploy CREAM CE and dependencies
   user: ansible
-  sudo: true
+  become: true
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
@@ -22,10 +22,10 @@
       tags:
         - slack
   roles:
-  - common
-  - certificates
-  - umd
-  - cream-ce
+  - { role: common, become: true }
+  - { role: certificates, become: true }
+  - { role: umd, become: true }
+  - { role: cream-ce, become: true }
   handlers:
   - include: roles/common/handlers/main.yml
   post_tasks:
@@ -46,15 +46,14 @@
   name: look up the IP addresses of the hosts
   tasks:
     - name: look up worker-node facts
-      action: setup
+      setup:
 
 - hosts: cream-ces
   name: Configure as head node
   user: ansible
-  sudo: true
   roles:
-   - munge
-   - head-node
+   - { role: munge, become: true }
+   - { role: head-node, become: true }
   vars_files:
       - group_vars/passwords-{{ site_name }}.yml
 
@@ -64,11 +63,10 @@
 - hosts: cream-ces
   name: run YAIM for CREAM-CE on head node
   user: ansible
-  sudo: true
+  become: true
   pre_tasks:
   - name: Announce the play via Slack
-    action:
-      module: slack
+    slack:
       domain: africa-arabia-roc.slack.com
       token: "{{ slack_token }}"
       msg: "Running YAIM play on {{ inventory_hostname }} at {{ site_name }}"
@@ -79,18 +77,18 @@
       parse: 'full'
     tags:
       - slack
-
   roles:
-  - yaim
+  - { role: yaim, become: true }
   vars_files:
     - group_vars/passwords-{{ site_name }}.yml
   post_tasks:
     - name: Restart trqauthd
-      sudo: true
-      service: name=trqauthd state=started
+      become: true
+      service:
+        name: trqauthd
+        state: started
     - name:
-      action:
-        module: slack
+      slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "CREAM CE has been configured by YAIM in the play on {{ inventory_hostname }} at {{ site_name }}. Moving on to post-configuration of the queues and scheduling server"
@@ -103,15 +101,15 @@
         - slack
 
     - name: Remove queue CPU time limits
-      sudo: true
-      action: "raw /usr/bin/qmgr -c 'unset queue {{ item.name }} resources_max.cput'"
+      become: true
+      raw: "/usr/bin/qmgr -c 'unset queue {{ item.name }} resources_max.cput'"
       with_items: qmgr_queues
       notify:
         - restart pbs_server
 
     - name: Set Max Walltime limits
-      sudo: true
-      action: "raw /usr/bin/qmgr -c 'set queue {{ item.name }} resources_max.walltime = {{ item.max_wall_time }}'"
+      become: true
+      raw: "/usr/bin/qmgr -c 'set queue {{ item.name }} resources_max.walltime = {{ item.max_wall_time }}'"
       with_items: qmgr_queues
       notify:
         - restart pbs_server
@@ -121,8 +119,8 @@
       with_items: qmgr_queues
 
     - name: Set Queue default walltime
-      action: "raw /usr/bin/qmgr -c 'set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}' "
-      sudo: true
+      raw: "/usr/bin/qmgr -c 'set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}' "
+      become: true
       with_items: qmgr_queues
       notify:
         - restart pbs_server
@@ -132,16 +130,20 @@
 #      action: copy src=config/files/usr/bin/glite-cream-copyProxyToSandboxDir.sh dest=/usr/bin/glite-cream-copyProxyToSandboxDir.sh owner=root  group=root mode=755
 
     - name: restart munge
-      sudo: true
-      service: name=munge state=restarted
+      become: true
+      service:
+        name: munge
+        state: restarted
 
     - name: restart pbs_server
-      sudo: true
-      action: service name=pbs_server state=restarted enabled=yes
+      become: true
+      service:
+        name: pbs_server
+        state: restarted
+        enabled: yes
 
     - name: Announce the play via Slack
-      action:
-        module: slack
+      slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Finished CREAM-CE playbook on  {{ inventory_hostname }} at {{ site_name }} sucessfully :ok_hand:"
