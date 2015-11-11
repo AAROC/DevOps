@@ -1,22 +1,27 @@
 - name: Create munge key
-  sudo: true
-  sudo_user: munge
-  action: command /usr/sbin/create-munge-key creates=/etc/munge/munge.key
+  become_user: munge
+  command: /usr/sbin/create-munge-key
+    args:
+  creates: /etc/munge/munge.key
   tags:
     - munge
 
 - name: Fix munge permissions if necessary
-  sudo: true
-  file: path=/etc/munge/munge.key owner=munge group=munge
+  file:
+    path: /etc/munge/munge.key
+    owner: munge
+    group: munge
   tags:
     - munge
 
 - name: Pull in munge key
-  sudo: true
 # we have to use a command here instead of file because the ansible user cannot gain access to the file (permissions)
   command: 'cp /etc/munge/munge.key munge.key'
   tags:
     - munge
 
 - name: Start munge
-  service: name=munge enabled=on
+  service:
+    name: munge
+    enabled: on
+    state: started
