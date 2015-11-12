@@ -4,10 +4,6 @@
 #   register: hosttest
 #   changed_when: false
 #   failed_when: false
-- name: ensure that SELinux python bindings are installed
-  yum:
-    name: libselinux-python
-    state: installed
 
 - name: use Google public DNS if necessary
   lineinfile:
@@ -18,6 +14,11 @@
   tags:
     - DNS
 
+- name: ensure that SELinux python bindings are installed
+  yum:
+    name: libselinux-python
+    state: installed
+    
 - name: debug packages
   debug:
     var: "bootstrap_prerequisites.{{ ansible_os_family }}"
