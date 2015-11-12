@@ -10,8 +10,7 @@
   tasks:
     - setup:
     - name: Announce the play via Slack
-      action:
-        module: slack
+      module: slack
           domain: africa-arabia-roc.slack.com
           token: "{{ slack_token }}"
           msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
@@ -22,11 +21,14 @@
       tags:
       - slack
   vars_files:
-    - group_vars/passwords-{{ site_name }}.ym
+    - group_vars/passwords-{{ site_name }}.yml
 
 - hosts: cluster-head-nodes
   name: Look up local facts and create key vars file
   tasks:
+  - name: get facts
+    setup:
+    delegate_to: localhost
   - name: Debug host key
     debug:
       msg: "key is {{ ansible_ssh_host_key_rsa_public }} "
@@ -39,9 +41,10 @@
     delegate_to: locahost
 #  - file: path={{ lookup('env','HOME')}} owner=ansible group=ansible mode=0600"
   - name: Ensure that the munge directory is available in the local clone
-    local_action: file
+    file:
       path: roles/worker-node/files/etc/munge
       state: directory
+    delegate_to: localhost
   - name: get the munge key
     become: true
     local_action: copy
