@@ -24,6 +24,7 @@
     delegate_to: localhost
   - name: get the munge key
     become: true
+    become_user: root
     copy:
       src: /etc/munge/munge.key
       dest: roles/worker-node/files/etc/munge/munge.key
