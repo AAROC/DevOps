@@ -7,14 +7,14 @@
     - CE
     - install
 
-- name: ensure that the repos are up to date
-  yum:
-    name: "*"
-    state: latest
-    exclude: "{{ item }}"
-  with_items: exclude_packages
-  tags:
-    - yum
+# - name: ensure that the repos are up to date
+#   yum:
+#     name: "*"
+#     state: latest
+#     exclude: "{{ item }}"
+#   with_items: exclude_packages
+#   tags:
+#     - yum
 
 - name: Install batch system specific software
   yum:
