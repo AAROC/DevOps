@@ -7,6 +7,8 @@
 # we don't need become here, because bootstrap is designed to run as root.
     - bootstrap
   pre_tasks:
+  - name: debug
+    debug: var=site_name
   - name: Send Slack Message
     slack:
      domain: africa-arabia-roc.slack.com

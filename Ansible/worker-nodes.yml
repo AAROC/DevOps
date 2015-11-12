@@ -9,19 +9,11 @@
   user: root
   tasks:
     - setup:
-    - name: Announce the play via Slack
-      module: slack
-          domain: africa-arabia-roc.slack.com
-          token: "{{ slack_token }}"
-          msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
-          channel: "#devopssite"
-          username: "Ansible on {{ inventory_hostname }}"
-          link_names: 1
-          parse: 'full'
-      tags:
-      - slack
-  vars_files:
-    - group_vars/passwords-{{ site_name }}.yml
+- hosts: cluster-head-nodes
+  name: get facts
+  user: root
+  tasks:
+    - setup:
 
 - hosts: cluster-head-nodes
   name: Look up local facts and create key vars file
@@ -82,6 +74,18 @@
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
     - group_vars/passwords-{{ site_name }}.yml
+    - name: Announce the play via Slack
+  pre_tasks:
+    slack:
+      domain: africa-arabia-roc.slack.com
+      token: "{{ slack_token }}"
+      msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
+      channel: "#devopssite"
+      username: "Ansible on {{ inventory_hostname }}"
+      link_names: 1
+      parse: 'full'
+    tags:
+      - slack
   post_tasks:
     - name: Announce the play via Slack
       action:
