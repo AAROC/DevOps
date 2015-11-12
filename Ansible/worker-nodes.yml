@@ -56,8 +56,17 @@
   name: Create .shosts file for host-based authentication later
   user: root
   tasks:
-  - template: src=roles/worker-node/templates/shosts.j2 dest=/root/.shosts mode=0444
-  - file: "path={{ lookup('env',HOME) }}/munge.key owner=ansible group=ansible mode=0600"
+    - name: Buld Shosts template
+      template:
+        src: roles/worker-node/templates/shosts.j2
+        dest: /root/.shosts
+        mode: 0444
+    - name: Ensure that munge key is owned by Ansible
+      file:
+        path: "{{ lookup('env',HOME) }}/munge.key"
+        owner: ansible
+        group: ansible
+        mode: 0600
 
 
 - hosts: worker-nodes
