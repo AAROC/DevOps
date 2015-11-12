@@ -53,7 +53,7 @@
   hostname:
     name: "{{ ansible_hostname }}"."{{ site_domain }}"
   tags:
-  - networking
+    - networking
 
 - debug:
     msg: "set host to  is {{ ansible_hostname }}.{{ site_domain }}"
@@ -65,6 +65,8 @@
     owner: root
     group: root
     mode: 0644
+  tags:
+    - networking
 
 - name: Enable ssh authorized keys (ansible)
   authorized_key:
@@ -72,6 +74,7 @@
     key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
   notify:
     - restart ssh
+
 
 - name: Enable ssh authorized keys (root)
   authorized_key:

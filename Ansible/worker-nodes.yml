@@ -50,6 +50,7 @@
       with_items:
         - roles/common/vars/middleware/IGTF.yml
         - "group_vars/passwords-{{ site_name }}.yml"
+
     - name: Tell the team
       slack:
         domain: africa-arabia-roc.slack.com
