@@ -25,16 +25,6 @@
       path: roles/worker-node/files/etc/munge
       state: directory
     delegate_to: localhost
-  - name: get the munge key
-    become: true
-    become_user: root
-    copy:
-      src: /etc/munge/munge.key
-      dest: roles/worker-node/files/etc/munge/munge.key
-      owner: ansible
-      group: ansible
-      mode: 0666
-    delegate_to: localhost
 
 - hosts: worker-nodes
   name: Prepare worker nodes for installation
