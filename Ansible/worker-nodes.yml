@@ -50,19 +50,18 @@
         - "group_vars/passwords-{{ site_name }}.yml"
     - name: Tell the team
       slack:
-      domain: africa-arabia-roc.slack.com
-      token: "{{ slack_token }}"
-      msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
-      channel: "#devopssite"
-      username: "Ansible on {{ inventory_hostname }}"
-      link_names: 1
-      parse: 'full'
-    tags:
-      - slack
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
   post_tasks:
     - name: Announce the play via Slack
-      action:
-        module: slack
+      slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "WN deployed at  {{ inventory_hostname }} at {{ site_name }}"
