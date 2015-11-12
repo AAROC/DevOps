@@ -30,12 +30,12 @@
   name: Prepare worker nodes for installation
   user: root
   roles:
-    - common
-    - certificates
-    - worker-node
-    - umd
-    - emi-worker-node
-    - yaim
+    - { role: common, become: true, tags: "common" }
+    - { role: certificates, become: true, tags: "certificates" }
+    - { role: worker-node, become: true, tags: "wn" }
+    - { role: umd, become: true, tags: "umd" }
+    - { role: emi-worker-node, become: true, tags: "emi" }
+    - { role: yaim, become: true, tags: "yaim" }
   pre_tasks:
     - name: Pull in the relevant variables
       include_vars: "{{ item }}"
@@ -54,6 +54,7 @@
         parse: 'full'
       tags:
         - slack
+
   post_tasks:
     - name: Announce the play via Slack
       slack:
