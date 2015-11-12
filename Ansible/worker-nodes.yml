@@ -9,7 +9,8 @@
   tasks:
   - name: Debug host key
     debug:
-      msg: "key is {{ ansible_ssh_host_key_rsa_public }} "
+      msg: "key is {{ ansible_ssh_host_key_rsa_public }}"
+
   - name: Put the host key in the worker node public keys
     lineinfile:
       dest: roles/worker-node/vars/public_keys.yml

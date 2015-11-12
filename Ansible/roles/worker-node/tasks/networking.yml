@@ -1,20 +1,28 @@
 ---
 - name: what is the head node's ipv4 address ?
   debug:
-    var: "{{ hostvars[groups['cluster-head-nodes'][0]].ansible_eth1.ipv4.address }}"
+    var: "hostvars[groups['cluster-head-nodes'][0]].ansible_eth1.ipv4.address"
 - name: Add head node IP to known hosts
-  template: dest=/etc/ssh/shosts.equiv src=etc/ssh/shosts.equiv.j2 owner=root group=root
-#  debug: msg="created shosts.equiv file"
+  template:
+    src: etc/ssh/shosts.equiv.j2
+    dest: /etc/ssh/shosts.equiv
+    owner: root
+    group: root
   tags:
   - networking
 
 - name: Setup known hosts for host-based authentication
   template: src=etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/ssh_known_hosts owner=root group=root mode=0644
   tags:
-  - networking
+    - networking
 
 - name: Enable host-based authentication
-  template: src=etc/ssh/sshd_config.j2 dest=/etc/ssh/sshd_config owner=root group=root mode=0644
+  template:
+    src: etc/ssh/sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
   notify:
   - restart ssh
   tags:
@@ -42,14 +50,21 @@
     - ansible_hostname
 
 - name: Set worker node hostname
-  hostname: name="{{ ansible_hostname }}"."{{ site_domain }}"
+  hostname:
+    name: "{{ ansible_hostname }}"."{{ site_domain }}"
   tags:
   - networking
 
-- debug: msg="set host to  is {{ ansible_hostname }}.{{ site_domain }}"
+- debug:
+    msg: "set host to  is {{ ansible_hostname }}.{{ site_domain }}"
 
 - name: Create /etc/hosts template
-  template: dest=/etc/hosts src=etc/hosts.j2 owner=root group=root mode=0644
+  template:
+    dest: /etc/hosts
+    src: etc/hosts.j2
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Enable ssh authorized keys (ansible)
   authorized_key:
