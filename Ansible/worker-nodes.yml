@@ -10,6 +10,8 @@
   - name: Debug host key
     debug:
       msg: "key is {{ ansible_ssh_host_key_rsa_public }}"
+    tags:
+      - debug
 
   - name: Put the host key in the worker node public keys
     lineinfile:
