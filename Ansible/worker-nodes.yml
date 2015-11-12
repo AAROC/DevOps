@@ -39,12 +39,13 @@
     delegate_to: localhost
   - name: get the munge key
     become: true
-    local_action: copy
+    copy:
       src: /etc/munge/munge.key
       dest: roles/worker-node/files/etc/munge/munge.key
       owner: ansible
       group: ansible
       mode: 0666
+    delegate_to: localhost
 
 
 - hosts: worker-nodes
