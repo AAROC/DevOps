@@ -1,7 +1,9 @@
 ---
 - name: what is the head node's ipv4 address ?
   debug:
-    var: "hostvars[groups['cluster-head-nodes'][0]].ansible_eth1.ipv4.address"
+    var: hostvars[groups['cluster-head-nodes'][0]].ansible_eth1.ipv4.address
+  tags:
+    - debug
 - name: Add head node IP to known hosts
   template:
     src: etc/ssh/shosts.equiv.j2
@@ -48,6 +50,8 @@
   with_items:
     - site_domain
     - ansible_hostname
+  tags:
+    - debug
 
 - name: Set worker node hostname
   hostname:
@@ -57,6 +61,8 @@
 
 - debug:
     msg: "set host to  is {{ ansible_hostname }}.{{ site_domain }}"
+  tags:
+    - debug
 
 - name: Create /etc/hosts template
   template:
