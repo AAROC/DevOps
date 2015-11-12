@@ -1,8 +1,8 @@
 - name: Create munge key
   become_user: munge
   command: /usr/sbin/create-munge-key
-    args:
-  creates: /etc/munge/munge.key
+  args:
+    creates: /etc/munge/munge.key
   tags:
     - munge
 
