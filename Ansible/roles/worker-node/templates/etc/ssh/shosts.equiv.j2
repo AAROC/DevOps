@@ -1,12 +1,12 @@
 # all worker nodes can talk to all worker nodes
 {% for host in groups['worker-nodes'] %}
-{{  hostvars[host].ansible_default_ipv4.address }}
+{{  hostvars[host]['ansible_default_ipv4']['address'] }}
 {% endfor %}
 
 {% if hosts %}
 {% for host in hosts %}
 {{ host }}
-{{ hostvars[host].ansible_default_ipv4.address | default('') }}
+{{ hostvars[host]['ansible_default_ipv4']['address'] | default('') }}
 {% endfor %}
 {% endif %}
 
