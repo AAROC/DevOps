@@ -6,7 +6,7 @@
 {% if hosts %}
 {% for host in hosts %}
 {{ host }}
-{{ hostvars[host]['ansible_default_ipv4']['address'] | default('') }}
+{{ hostvars[host]['ansible_eth0']['address'] | default('') }}
 {% endfor %}
 {% endif %}
 
