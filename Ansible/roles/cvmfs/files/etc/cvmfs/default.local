@@ -1,4 +1,5 @@
 CVMFS_REPOSITORIES=apprepo.sagrid.ac.za
+# You can add fastrepo.sagrid.ac.za and devrepo.sagrid.ac.za too
 #CVMFS_CACHE_BASE=/cvmfs
 #CVMFS_RELOAD_SOCKETS = /cvmfs
 CVMFS_SERVER_URL=http://apprepo.sagrid.ac.za
