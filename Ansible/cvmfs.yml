@@ -3,8 +3,6 @@
   name: Enable CVMFS
   roles:
     - cvmfs
-  vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
   pre_tasks:
     - name: Inform the team
       local_action:
@@ -22,11 +20,15 @@
   vars:
     devrepo: "{{ lookup('file', '/cvmfs/devrepo.sagrid.ac.za/test')}}"
     apprepo: "{{ lookup('file', '/cvmfs/apprepo.sagrid.ac.za/v1')}}"
+    fastrepo: "{{ lookup('file', '/cvmfs/fastrepo.sagrid.ac.za/version')}}"
   tasks:
     - debug:
         msg: "DevRepo is : {{ devrepo }}"
     - debug:
         msg: "AppRepo is : {{ apprepo }}"
+    - debug:
+        msg: "FastRepo is : {{ fastrepo }}"
+
     - name: Inform the team
       slack:
         domain: africa-arabia-roc.slack.com
@@ -36,11 +38,3 @@
         username: "Ansible on {{ inventory_hostname }}"
         icon_url: ""
         validate_certs: False
-        # attachments:
-        #    fields:
-        #      - title: "AppRepo"
-        #        value: "{{ apprepo }}"
-        #        short: "true"
-        #      - title: "DevRepo"
-        #        value: "{{ devrepo }}"
-        #        short: "true"

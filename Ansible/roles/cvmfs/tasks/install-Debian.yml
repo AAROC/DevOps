@@ -10,17 +10,17 @@
 #     - repos
 #   when: { ansible_os_family == 'Debian'}
 
-- name: dowload tarball
+- name: download tarball
   get_url:
     url: https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs-2.1.20.tar.gz
     dest: /tmp/cvmfs-2.1.20.tar.gz
   tags:
     - cvmfs
-  when: { ansible_os_family == 'Debian'}
+
 
 - name: check that the untar dir is there
   file:
-    path: /tmp/cvmfs/cvmfs-2.1.20/build
+    path: /tmp/cvmfs/
     state: directory
 
 - name: unpack the CVMFS package (src)
@@ -31,7 +31,11 @@
    creates: /tmp/cvmfs/cvmfs-2.1.20
   tags:
    - cvmfs
-  when: { ansible_os_family == 'Debian'}
+
+- name: check that build dir is there
+  file:
+    path: /tmp/cvmfs/cvmfs-2.1.20/build
+    state: directory
 
 - name: Generate buldfiles
   command: cmake ../ -G"Unix Makefiles"
@@ -54,7 +58,7 @@
   register: makeoutput
 
 - name: install CVMFS
-  sudo: true
+  become: true
   command: make install
   args:
     chdir: /tmp/cvmfs/cvmfs-2.1.20/build
@@ -64,7 +68,7 @@
     - install
 
 - name: copy over the local config files
-  sudo: true
+  become: true
   copy: src=etc/cvmfs/{{ item }} dest=/etc/cvmfs/{{ item }}
   with_items:
     - default.local
@@ -72,19 +76,23 @@
     - config.d/apprepo.sagrid.ac.za.conf
     - keys/devrepo.sagrid.ac.za.pub
     - config.d/devrepo.sagrid.ac.za.conf
+    - keys/fastrepo.sagrid.ac.za
+    - config.d/fastrepo.sagrid.ac.za.conf
   tags:
     - cvmfs
     - config
 
 
 - name: ensure that autofs is running
-  sudo: true
-  service: name=autofs state=started
+  become: true
+  service:
+    name: autofs
+    state: started
   tags:
     - cvmfs
 
 - name: check that the repo is mounted
-  stat: path=/cvmfs/devrepo.sagrid.ac.za
+  stat: path=/cvmfs/fastrepo.sagrid.ac.za
   register: p
 
 - debug: msg="Path exists and is a directory"
