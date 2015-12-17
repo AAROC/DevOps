@@ -7,3 +7,4 @@ prerequisites:
   - "linux-headers-{{ ansible_kernel }}"
   - build-essential
   - libattr1-dev
+  - libssl-dev
