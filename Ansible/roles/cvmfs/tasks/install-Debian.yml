@@ -9,69 +9,81 @@
 #     - cvmfs
 #     - repos
 #   when: { ansible_os_family == 'Debian'}
-- name: Install prerequisites
-  apt:
-    name: "{{ item }}"
-    state: present
-  with_items: prerequisites
-  sudo: true
+# - name: Install prerequisites
+#   apt:
+#     name: "{{ item }}"
+#     state: present
+#   with_items: prerequisites
+#   sudo: true
+#
+# - name: download tarball
+#   get_url:
+#     url: https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs-2.1.20.tar.gz
+#     dest: /tmp/cvmfs-2.1.20.tar.gz
+#   tags:
+#     - cvmfs
+#
+#
+# - name: check that the untar dir is there
+#   file:
+#     path: /tmp/cvmfs/
+#     state: directory
+#
+# - name: unpack the CVMFS package (src)
+#   unarchive:
+#    src: /tmp/cvmfs-2.1.20.tar.gz
+#    dest: /tmp/cvmfs/
+#    copy: no
+#    creates: /tmp/cvmfs/cvmfs-2.1.20
+#   tags:
+#    - cvmfs
+#
+# - name: check that build dir is there
+#   file:
+#     path: /tmp/cvmfs/cvmfs-2.1.20/build
+#     state: directory
+#
+# - name: Generate buldfiles
+#   command: cmake ../ -G"Unix Makefiles"
+#   args:
+#     chdir: /tmp/cvmfs/cvmfs-2.1.20/build
+#     creates: /tmp/cvmfs/cvmfs-2.1.20/build/Makefile
+#   tags:
+#     - cvmfs
+#     - install
+#   when:
+#
+# - name: build CVMFS
+#   command: nice -n20 make -j2
+#   args:
+#     chdir: /tmp/cvmfs/cvmfs-2.1.20/build
+#     creates: /tmp/cvmfs/cvmfs-2.1.20/build/cvmfs/cvmfs2
+#   tags:
+#     - cvmfs
+#     - install
+#   register: makeoutput
+#
+# - name: install CVMFS
+#   become: true
+#   command: make install
+#   args:
+#     chdir: /tmp/cvmfs/cvmfs-2.1.20/build
+#     creates: /usr/bin/cvmfs2
+#   tags:
+#     - cvmfs
+#     - install
 
-- name: download tarball
+- name: get the deb
   get_url:
-    url: https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs-2.1.20.tar.gz
-    dest: /tmp/cvmfs-2.1.20.tar.gz
-  tags:
-    - cvmfs
+    url: https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs_2.1.20_amd64.deb
+    dest: /tmp/cvmfs.deb
 
-
-- name: check that the untar dir is there
-  file:
-    path: /tmp/cvmfs/
-    state: directory
-
-- name: unpack the CVMFS package (src)
-  unarchive:
-   src: /tmp/cvmfs-2.1.20.tar.gz
-   dest: /tmp/cvmfs/
-   copy: no
-   creates: /tmp/cvmfs/cvmfs-2.1.20
-  tags:
-   - cvmfs
-
-- name: check that build dir is there
-  file:
-    path: /tmp/cvmfs/cvmfs-2.1.20/build
-    state: directory
-
-- name: Generate buldfiles
-  command: cmake ../ -G"Unix Makefiles"
-  args:
-    chdir: /tmp/cvmfs/cvmfs-2.1.20/build
-    creates: /tmp/cvmfs/cvmfs-2.1.20/build/Makefile
-  tags:
-    - cvmfs
-    - install
-  when:
-
-- name: build CVMFS
-  command: nice -n20 make -j2
-  args:
-    chdir: /tmp/cvmfs/cvmfs-2.1.20/build
-    creates: /tmp/cvmfs/cvmfs-2.1.20/build/cvmfs/cvmfs2
-  tags:
-    - cvmfs
-    - install
-  register: makeoutput
-
-- name: install CVMFS
-  become: true
-  command: make install
-  args:
-    chdir: /tmp/cvmfs/cvmfs-2.1.20/build
-    creates: /usr/bin/cvmfs2
-  tags:
-    - cvmfs
-    - install
+- name: install the deb
+  apt:
+    deb: /tmp/cvmfs.deb
+    state: present
+    install_recommends: true
+  sudo: true
 
 - name: copy over the local config files
   become: true
