@@ -13,3 +13,4 @@ prerequisites:
   - libfuse-dev
   - python-dev
   - unzip
+  - autofs
