@@ -15,6 +15,15 @@
     state: present
   become: true
 
+- name: Do we even need CVMFS ?
+  stat:
+    path: /usr/bin/cvmfs2
+  register: cvmfs_present
+
+- name: cvmfs stat
+  debug:
+    msg: cvmfs_present.stat.xgrp
+
 - name: Install prerequisites
   apt:
     name: "{{ item }}"
@@ -28,12 +37,15 @@
     dest: /tmp/cvmfs-2.1.20.tar.gz
   tags:
     - cvmfs
+  when: cvmfs_present.stat.xgrp != 'True'
 
 
 - name: check that the untar dir is there
   file:
     path: /tmp/cvmfs/
     state: directory
+  when: cvmfs_present.stat.xgrp != 'True'
+
 
 - name: unpack the CVMFS package (src)
   unarchive:
@@ -43,11 +55,14 @@
    creates: /tmp/cvmfs/cvmfs-2.1.20
   tags:
    - cvmfs
+  when: cvmfs_present.stat.xgrp != 'True'
+
 
 - name: check that build dir is there
   file:
     path: /tmp/cvmfs/cvmfs-2.1.20/build
     state: directory
+  when: cvmfs_present.stat.xgrp != 'True'
 
 - name: Generate buldfiles
   command: cmake ../ -G"Unix Makefiles"
@@ -57,7 +72,7 @@
   tags:
     - cvmfs
     - install
-  when:
+  when: cvmfs_present.stat.xgrp != 'True'
 
 - name: build CVMFS
   command: nice -n20 make -j2
@@ -68,6 +83,7 @@
     - cvmfs
     - install
   register: makeoutput
+  when: cvmfs_present.stat.xgrp != 'True'
 
 - name: install CVMFS
   become: true
@@ -77,6 +93,7 @@
   tags:
     - cvmfs
     - install
+  when: cvmfs_present.stat.xgrp != 'True'
 
 - name: copy over the local config files
   become: true
@@ -92,6 +109,7 @@
   tags:
     - cvmfs
     - config
+  when: cvmfs_present.stat.xgrp != 'True'
 
 - name: add the CVMFS master
   copy:
@@ -99,6 +117,7 @@
     dest: /etc/auto.master
     mode: u=rw,g=r,o=r
   become: true
+  
 
 - name: ensure that autofs is running
   become: true
