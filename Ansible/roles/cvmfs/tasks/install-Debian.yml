@@ -22,7 +22,7 @@
 
 - name: cvmfs stat
   debug:
-    msg: {{ cvmfs_present.stat.xgrp }}
+    msg: "{{ cvmfs_present.stat.xgrp }}"
 
 - name: Install prerequisites
   apt:
