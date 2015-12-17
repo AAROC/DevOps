@@ -16,3 +16,7 @@ prerequisites:
   - autofs
   - attr
   - vim
+repos:
+  - fastrepo.sagrid.ac.za
+  - devrepo.sagrid.ac.za
+  - apprepo.sagrid.ac.za

@@ -13,14 +13,14 @@
   user:
     name: cvmfs
     state: present
-  sudo: true
+  become: true
 
 - name: Install prerequisites
   apt:
     name: "{{ item }}"
     state: present
   with_items: prerequisites
-  sudo: true
+  become: true
 
 - name: download tarball
   get_url:
@@ -73,9 +73,7 @@
   become: true
   command: make install
   args:
-    chdir: /tmp/cvmfs/cvmfs-2.1.20/build
-    creates: /usr/bin/cvmfs2
-  tags:
+    chdir: /tmp/cvmfs/cvmfs-2.1.20
     - cvmfs
     - install
 
@@ -99,7 +97,7 @@
     src: etc/auto.master
     dest: /etc/auto.master
     mode: u=rw,g=r,o=r
-  sudo: true
+  become: true
 
 - name: ensure that autofs is running
   become: true
@@ -110,7 +108,8 @@
     - cvmfs
 
 - name: check that the repo is mounted
-  stat: path=/cvmfs/fastrepo.sagrid.ac.za
+  stat: "path=/cvmfs/{{ item }}"
+  with_items: repos
   register: p
 
 - debug: msg="Path exists and is a directory"
