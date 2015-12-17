@@ -4,3 +4,4 @@ prerequisites:
   - patch
   - cmake
   - zlib1g-dev
+  - linux-headers
