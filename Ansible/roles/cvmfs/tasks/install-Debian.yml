@@ -9,6 +9,11 @@
 #     - cvmfs
 #     - repos
 #   when: { ansible_os_family == 'Debian'}
+- name: ensure that cvmfs user is present
+  user:
+    name: cvmfs
+    state: present
+
 - name: Install prerequisites
   apt:
     name: "{{ item }}"
@@ -95,13 +100,6 @@
     mode: u=rw,g=r,o=r
   sudo: true
 
-- name: Ensure that CVMFS mount point is present
-  file:
-    dest: /cvmfs
-    state: directory
-    mode: u=rwx,g=rx,o=rx
-  sudo: True
-  
 - name: ensure that autofs is running
   become: true
   service:
