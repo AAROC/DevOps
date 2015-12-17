@@ -74,6 +74,7 @@
   command: make install
   args:
     chdir: /tmp/cvmfs/cvmfs-2.1.20
+  tags:
     - cvmfs
     - install
 
@@ -109,7 +110,7 @@
 
 - name: check that the repo is mounted
   stat: "path=/cvmfs/{{ item }}"
-  with_items: repos
+  with_items: "{{ repos }}"
   register: p
 
 - debug: msg="Path exists and is a directory"
