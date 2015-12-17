@@ -3,3 +3,4 @@
 prerequisites:
   - patch
   - cmake
+  - zlib1g-dev
