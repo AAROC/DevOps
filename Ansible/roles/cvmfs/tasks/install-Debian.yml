@@ -1,5 +1,5 @@
 ---
-Works in 2.0
+#Works in 2.0
 - name: download the CVMFS package (src)
   unarchive:
     src: https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs-2.1.20.tar.gz
@@ -73,17 +73,17 @@ Works in 2.0
     - cvmfs
     - install
 
-- name: get the deb
-  get_url:
-    url: https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs_2.1.20_amd64.deb
-    dest: /tmp/cvmfs.deb
-
-- name: install the deb
-  apt:
-    deb: /tmp/cvmfs.deb
-    state: present
-    install_recommends: true
-  sudo: true
+# - name: get the deb
+#   get_url:
+#     url: https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs_2.1.20_amd64.deb
+#     dest: /tmp/cvmfs.deb
+#
+# - name: install the deb
+#   apt:
+#     deb: /tmp/cvmfs.deb
+#     state: present
+#     install_recommends: true
+#   sudo: true
 
 - name: copy over the local config files
   become: true
