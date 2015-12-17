@@ -22,13 +22,16 @@
     apprepo: "{{ lookup('file', '/cvmfs/apprepo.sagrid.ac.za/v1')}}"
     fastrepo: "{{ lookup('file', '/cvmfs/fastrepo.sagrid.ac.za/version')}}"
   tasks:
+    - stat:
+        path: "{{ apprepo }}"
+        path: "{{ devrepo }}"
+        path: "{{ fastrepo }}"
     - debug:
         msg: "DevRepo is : {{ devrepo }}"
     - debug:
         msg: "AppRepo is : {{ apprepo }}"
     - debug:
         msg: "FastRepo is : {{ fastrepo }}"
-
     - name: Inform the team
       slack:
         domain: africa-arabia-roc.slack.com
