@@ -88,7 +88,20 @@
     - cvmfs
     - config
 
+- name: add the CVMFS master
+  copy:
+    src: etc/auto.master
+    dest: /etc/auto.master
+    mode: u=rw,g=r,o=r
+  sudo: true
 
+- name: Ensure that CVMFS mount point is present
+  file:
+    dest: /cvmfs
+    state: directory
+    mode: u=rwx,g=rx,o=rx
+  sudo: True
+  
 - name: ensure that autofs is running
   become: true
   service:
