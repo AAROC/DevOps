@@ -1,4 +1,4 @@
-CVMFS_REPOSITORIES=apprepo.sagrid.ac.za
+CVMFS_REPOSITORIES="fastrepo.sagrid.ac.za devrepo.sagrid.ac.za apprepo.sagrid.ac.za"
 # You can add fastrepo.sagrid.ac.za and devrepo.sagrid.ac.za too
 #CVMFS_CACHE_BASE=/cvmfs
 #CVMFS_RELOAD_SOCKETS = /cvmfs
