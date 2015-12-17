@@ -82,7 +82,7 @@
     - config.d/apprepo.sagrid.ac.za.conf
     - keys/devrepo.sagrid.ac.za.pub
     - config.d/devrepo.sagrid.ac.za.conf
-    - keys/fastrepo.sagrid.ac.za
+    - keys/fastrepo.sagrid.ac.za.pub
     - config.d/fastrepo.sagrid.ac.za.conf
   tags:
     - cvmfs
