@@ -8,3 +8,8 @@ prerequisites:
   - build-essential
   - libattr1-dev
   - libssl-dev
+  - uuid
+  - uuid-dev
+  - libfuse-dev
+  - python-dev
+  - unzip
