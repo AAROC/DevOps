@@ -13,6 +13,7 @@
   user:
     name: cvmfs
     state: present
+  sudo: true
 
 - name: Install prerequisites
   apt:
