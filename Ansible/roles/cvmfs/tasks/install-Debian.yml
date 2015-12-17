@@ -9,6 +9,11 @@
 #     - cvmfs
 #     - repos
 #   when: { ansible_os_family == 'Debian'}
+- name: Install cmake
+  apt:
+    name: cmake
+    state: present
+  sudo: true
 
 - name: download tarball
   get_url:
