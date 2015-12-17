@@ -22,7 +22,7 @@
 
 - name: cvmfs stat
   debug:
-    msg: cvmfs_present.stat.xgrp
+    msg: "{{ cvmfs_present.stat.xgrp }} "
 
 - name: Install prerequisites
   apt:
@@ -117,7 +117,7 @@
     dest: /etc/auto.master
     mode: u=rw,g=r,o=r
   become: true
-  
+
 
 - name: ensure that autofs is running
   become: true
