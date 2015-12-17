@@ -6,3 +6,4 @@ prerequisites:
   - zlib1g-dev
   - "linux-headers-{{ ansible_kernel }}"
   - build-essential
+  - libattr1-dev
