@@ -9,10 +9,11 @@
 #     - cvmfs
 #     - repos
 #   when: { ansible_os_family == 'Debian'}
-- name: Install cmake
+- name: Install prerequisites
   apt:
-    name: cmake
+    name: {{ item }}
     state: present
+  with_items: prerequisites
   sudo: true
 
 - name: download tarball
