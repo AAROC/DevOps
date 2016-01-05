@@ -27,11 +27,11 @@
     chdir: "{{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}"
     #creates: "{{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war"
   tags:
-  -  install
+    -  install
 
 # we need to check that the date of the webapp is not older than a certain number of seconds than now
 - name: Rename the old ROOT webapp
-  sudo: yes
+  become: yes
   command: "mv {{ tomcat6_webapps }}/ROOT {{ tomcat6_webapps }}/ROOT.old"
   args:
     creates: "{{ tomcat6_webapps }}/ROOT.old/META-INF/context.xml"
@@ -41,17 +41,23 @@
   ignore_errors: True
 
 - name: Copy the application into the webapps
-  sudo: yes
-  command: creates="{{ tomcat6_webapps }}/ROOT.war" cp {{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war {{ tomcat6_webapps }}/ROOT.war
+  become: true
+  command: "cp {{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war {{ tomcat6_webapps }}/ROOT.war"
+  args:
+    creates: "{{ tomcat6_webapps }}/ROOT.war"
 
 - name: Configure the ROOT
-  sudo: yes
-  template: src=ROOT.xml.j2 dest={{ tomcat6_config_path }}/Catalina/localhost/ROOT.xml
+  become: yes
+  template:
+    src: ROOT.xml.j2
+    dest: "{{ tomcat6_config_path }}/Catalina/localhost/ROOT.xml"
   register: tomcat_root_change
 
 - name: Restart tomcat
-  sudo: yes
-  service: name={{ tomcat6_service }}  state=restarted
+  become: yes
+  service:
+    name: "{{ tomcat6_service }}"
+    state: restarted
   #when: tomcat_root_change.changed
 
 - name: wait for tomcat to come up

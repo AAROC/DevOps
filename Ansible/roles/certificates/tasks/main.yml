@@ -1,36 +1,41 @@
 - name: Create /etc/grid-security directory
-  file: path=/etc/grid-security/certificates owner=root group=root mode=775 state=directory force=true
-  sudo: true
-  sudo_user: root
+  file:
+    path: /etc/grid-security/certificates
+    owner: root
+    group: root
+    mode: 775
+    state: directory
+    force: true
   tags:
     - certificates
 
 - name: Copy host x509 certificate into /etc/grid-security
-  sudo: true
-  sudo_user: root
-  action: copy src=etc/grid-security/hostcert.pem-{{ ansible_fqdn }} dest=/etc/grid-security/hostcert.pem owner=root group=root mode=0644 force=true
+  copy:
+    src: "etc/grid-security/hostcert.pem-{{ ansible_fqdn }}"
+    dest: /etc/grid-security/hostcert.pem
+    owner: root
+    group: root
+    mode: 0644
+    force: true
   when: hostvars['{{ inventory_hostname }}'].needs_certificate == 'true'
   tags:
     - certificates
 
 - name: Copy host x509 private key into /etc/grid-security
-  sudo: true
-  sudo_user: root
-  action: copy src=etc/grid-security/hostkey.pem-{{ ansible_fqdn }} dest=/etc/grid-security/hostkey.pem owner=root group=root mode=0400
-  when: needs_certificate == 'true'
+  copy:
+    src: "etc/grid-security/hostkey.pem-{{ ansible_fqdn }}"
+    dest: /etc/grid-security/hostkey.pem
+    owner: root
+    group: root
+    mode: 0400
+  when: hostvars['{{ inventory_hostname }}'].needs_certificate == 'true'
   tags:
     - certificates
 
-#- name: Copy SA e-Science CA cert
-#  action: copy src=ca_SAGRID-1.0-1.noarch.rpm dest=/tmp/sa-escience.rpm
-
-#- name: Install SA e-Science CA cert
-#  yum: name=/tmp/sa-escience.rpm state=present
-
 - name: Copy over CA certs by hand
-  sudo: true
-  sudo_user: root
-  copy: src=etc/grid-security/certificates/{{ item }} dest=/etc/grid-security/certificates/{{ item }}
+  copy:
+    src: "etc/grid-security/certificates/{{ item }}"
+    dest: "/etc/grid-security/certificates/{{ item }}"
   with_items:
     - 16b5ebeb.0
     - 16b5ebeb.crl_url
@@ -48,6 +53,8 @@
     - certificates
 
 - name: Add SAGrid VO certs and LSC files
-  sudo: true
-  sudo_user: root
-  copy: src=etc/grid-security/vomsdir dest=/etc/grid-security/ owner=root group=root directory_mode
+  copy:
+    src: etc/grid-security/vomsdir
+    dest: /etc/grid-security/
+    owner: root
+    group: root

@@ -135,7 +135,7 @@ SITE_LONG={{ site_longitude }}
 #########################################
 
 # Set USE_ARGUS to yes to enable the configuration of ARGUS
-USE_ARGUS={{ argus_status }}
+USE_ARGUS={{ argus_status | default(true) }}
 PAP_ADMIN_DN={{ pap_admin_dn }}
 # In case ARGUS is to be used the following should be set
 # The ARGUS service PEPD endpoints as a space separated list:
@@ -383,7 +383,8 @@ SE_GRIDFTP_LOGFILE={{ se_gridftp_logfile }}
 
 # Hostname of the top level BDII
 BDII_HOST={{ bdii_host }}
-
+# should have this only if the host is the top-bdii... - TODO
+BDII_DELETE_DELAY={{ bdii_delete_delay | default(43200)}}
 # Hostname of the site BDII
 SITE_BDII_HOST={{ site_bdii_host }}
 
@@ -655,7 +656,7 @@ VO_OPS_DEFAULT_SE=$SE_HOST
  '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
  "
 
-{% if is_cream -%}
+{% if is_cream  -%}
 # CREAM specific section
 CREAMCE_CLUSTER_MODE={{ creamce_cluster_mode }}
 {% if is_both_cream_and_torque -%}

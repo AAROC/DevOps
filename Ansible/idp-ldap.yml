@@ -1,10 +1,8 @@
 ---
 - name: Configure the LDAP machine
   hosts: ldap-servers
-  remote_user: ansible
-  sudo: true
   roles:
-  - ldap
+  - { role: ldap, become: true }
   tags:
   - LDAP
   vars_files:
@@ -12,21 +10,32 @@
 
 - name: Deploy Shibboleth IdP and Web Interface
   hosts: shibboleth-idps
-  remote_user: ansible
   roles:
-  - fmarco76.tomcat
+#  - fmarco76.tomcat
   - shibboleth-idp
   - fmarco76.IDPPublic
   vars_files:
   - "group_vars/passwords-{{ site_name }}.yml"
   tags:
   - idp
+  pre_tasks:
+    - name: set hostname to inventory host name
+      become: true
+      hostname:
+        name: "{{ groups['shibboleth-idps'][0] }}"
+    - name: refill facts
+      setup:
+    - name: set the fqdn
+      set_fact:
+        ansible_fqdn: "{{ groups['shibboleth-idps'][0]}}"
+    - name: what is the new hostname ?
+      debug:
+        var: ansible_fqdn
   post_tasks:
     - name: Announce new IdP to the federation manager
       action:
         module: slack
         domain: africa-arabia-roc.slack.com
-#        token: T02BJKQR4/B06S9PWMR/8lZBc9s71KL8yM3CJQuy84DC
         token: 8lZBc9s71KL8yM3CJQuy84DC
         msg: "A new Shib-IdP has been deployed. Metadata is at {{ idp.metadata_url }}. Ask @fmarco76 to check it and add it to the test federation."
         channel: "#webops"

@@ -4,73 +4,63 @@
 # since this is to manage the worker nodes, we are also assuming that they are on a local network
 # and that you can happily ssh to them as root
 ---
-- hosts: worker-nodes
-  name: get facts
-  user: root
-  tasks:
-    - setup:
-    - name: Announce the play via Slack
-      action:
-        module: slack
-          domain: africa-arabia-roc.slack.com
-          token: "{{ slack_token }}"
-          msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
-          channel: "#devopssite"
-          username: "Ansible on {{ inventory_hostname }}"
-          link_names: 1
-          parse: 'full'
-      tags:
-      - slack
-  vars_files:
-    - group_vars/passwords-{{ site_name }}.ym
-
 - hosts: cluster-head-nodes
-  name: Look up local facts and create key vars file
   connection: local
   tasks:
-  - setup:
-  - debug: msg="key is {{ ansible_ssh_host_key_rsa_public }} "
-  - local_action: lineinfile dest=roles/worker-node/vars/public_keys.yml line="public_keys{{':'}} ssh-rsa {{ ansible_ssh_host_key_rsa_public }} ansible@{{ ansible_hostname }}" state=present create=yes
-  - local_action: "file path={{ lookup('env','HOME')}} owner=ansible group=ansible mode=0600"
+  - name: Debug host key
+    debug:
+      msg: "key is {{ ansible_ssh_host_key_rsa_public }}"
+    tags:
+      - debug
+
+  - name: Put the host key in the worker node public keys
+    lineinfile:
+      dest: roles/worker-node/vars/public_keys.yml
+      line: "public_keys{{':'}} ssh-rsa {{ ansible_ssh_host_key_rsa_public }} ansible@{{ ansible_hostname }}"
+      state: present
+      create: yes
+    delegate_to: localhost
   - name: Ensure that the munge directory is available in the local clone
-    local_action: file
+    file:
       path: roles/worker-node/files/etc/munge
       state: directory
-  - name: get the munge key
-    sudo: true
-    local_action: copy
-      src: /etc/munge/munge.key
-      dest: roles/worker-node/files/etc/munge/munge.key
-      owner: ansible
-      group: ansible
-      mode: 666
-
-
-- hosts: worker-nodes
-  name: Create .shosts file for host-based authentication later
-  user: root
-  tasks:
-  - template: src=roles/worker-node/templates/shosts.j2 dest=/root/.shosts mode=0444
-  - file: "path={{ lookup('env',HOME) }}/munge.key owner=ansible group=ansible mode=0600"
-
+    delegate_to: localhost
 
 - hosts: worker-nodes
   name: Prepare worker nodes for installation
   user: root
   roles:
-    - common
-    - certificates
-  vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-    - roles/common/vars/middleware/IGTF.yml
-    - group_vars/passwords-{{ site_name }}.yml
-  post_tasks:
-    - name: Announce the play via Slack
-      action:
-        module: slack
+    - { role: common, become: true, tags: "common" }
+    - { role: certificates, become: true, tags: "certificates" }
+    - { role: worker-node, become: true, tags: "wn" }
+    - { role: umd, become: true, tags: "umd" }
+    - { role: emi-worker-node, become: true, tags: "emi" }
+    - { role: yaim, become: true, tags: "yaim" }
+  pre_tasks:
+    - name: Pull in the relevant variables
+      include_vars: "{{ item }}"
+      with_items:
+        - roles/common/vars/middleware/IGTF.yml
+        - "group_vars/passwords-{{ site_name }}.yml"
+
+    - name: Tell the team
+      slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
-        msg: "WN play : Applied common and certs role to  {{ inventory_hostname }} at {{ site_name }}"
+        msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
+
+  post_tasks:
+    - name: Announce the play via Slack
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "WN deployed at  {{ inventory_hostname }} at {{ site_name }}"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
         #icon_url: "http://www.example.com/some-image-file.png"
@@ -78,33 +68,3 @@
         parse: 'full'
       tags:
         - slack
-
-- hosts: worker-nodes
-  name: Apply Vanilla WN role
-  user: root
-  roles:
-    - worker-node
-  vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-    - roles/common/vars/middleware/IGTF.yml
-    - group_vars/passwords-{{ site_name }}.yml
-
-- hosts: worker-nodes
-  name: Apply Grid WN role
-    - umd
-    - emi-worker-node
-  vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-    - roles/common/vars/middleware/IGTF.yml
-    - group_vars/passwords-{{ site_name }}.yml
-
-
-- hosts: worker-nodes
-  name: configure middleware with yaim
-  sudo: true
-  roles:
-    - yaim
-  vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-    - roles/common/vars/middleware/IGTF.yml
-    - group_vars/passwords-{{ site_name }}.yml

@@ -1,0 +1,12 @@
+---
+# vars file for roles/jenkins-slave
+prerequisites:
+  RedHat:
+    6:
+      - java-1.8.0-openjdk.x86_64
+      -  openssh-server
+      - wget
+    7:
+      - java-1.8.0-openjdk.x86_64
+      - openssh-server
+      - wget

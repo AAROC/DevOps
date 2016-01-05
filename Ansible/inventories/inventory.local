@@ -5,7 +5,7 @@ localhost
 localhost
 
 [top-bdiis]
-localhost
+localhost needs_certificate='false' emi_service='BDII_top' yaim_options="-n BDII_top"
 
 # workload management
 [wms-servers]
@@ -78,4 +78,8 @@ top-bdiis
 
 [CentOS-servers:children]
 CentOS6-servers
+
+[za-meraka-dev:children]
+site-services
+core-services
 ############################ END #########################
