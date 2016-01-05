@@ -12,7 +12,7 @@ server_location: Stockholm
 server_organization: TTA
 server_organization_unit: SSA
 #ldap_server: ldap.se.ampr.org
-ldap_server: vm03.ct.infn.it
+ldap_server: idp.sa0bxi.se
 sgw_admin: qasim.sarfraz@gmail.com
 
 # institute metadata
@@ -30,7 +30,7 @@ idp:
   name: SSA IdP
   admin_user: qasim
   admin_email: qasim.sarfraz@gmail.com
-  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth
+  metadata_url: "https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth"
   mail_server: smtp.mailgun.org
   header_logo: Logo.jpg
 cert_CA_certificates:
