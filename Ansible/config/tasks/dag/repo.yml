@@ -1,4 +1,0 @@
-- name: Download rpmforge-release package
-  action: get_url url=${dag_release_url}/${dag_release_name} dest=/tmp/${dag_release_name} mode=0644
-- name: Install rpmforge-release package
-  action: command yum install -y ${yum_flags} /tmp/${dag_release_name} creates=/etc/yum.repos.d/dag.repo

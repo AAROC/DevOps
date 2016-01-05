@@ -19,7 +19,7 @@
 
 - name: update mysql root password for main root accounts
   mysql_user: name=root host=localhost password={{ mysql_root_db_pass }}
-
+# this should probably be removed
 - name: copy .my.cnf file with root password credentials
   template: src=.my.cnf.j2 dest=/root/.my.cnf mode=0600
 

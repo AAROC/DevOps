@@ -1,0 +1,13 @@
+---
+- name: What OS we got ?
+  debug:
+    var: "prerequisites.{{ ansible_os_family }}.{{ ansible_os_version }}"
+
+
+- name: "Prerequisites for RedHat"
+  sudo: true
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    "prerequisites.{{ ansible_os_family }}.{{ ansible_distribution_major_version }}"

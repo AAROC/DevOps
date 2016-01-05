@@ -1,0 +1,64 @@
+# These are variables needed to configure the identity and service providers in a federation.
+# the default identity provider is a shibboleth idp with ldap backend.
+# the default service provider is a liferay-based science gateway.
+#
+# For these variables to be picked up by the playbooks, you need a section in your inventory called
+# "identity.example"... Of course you should create your own group and your own identity and give it whatever name you like.
+# The important thing is that the group in the inventory and the name of the file you use are the same and unique.
+#
+# the file is separated into variables related to
+# 1. Access
+# 2. Institute
+# 3. LDAP
+# 4. Shibboleth IdP
+# 5. Science Gateway
+#
+# Although there may seem to be some overlap with the variable content, this is because they are called under different roles.
+# (this may be fixed in future releases)
+---
+# 1. ACCESS
+############################
+# If you want to add administrator keys to the list of allowed users that can ssh in, do so here.
+administrator_keys:
+  - id_rsa.pub.user1
+  - id_rsa.pub.user2
+
+# 2. Institute variables
+############################
+# Your site should have a name, usually according to the convention
+# <2-letter country code>-<site short name>
+# e.g. ZA-MERAKA or TZ-DIT
+site_name: 00-EXAMPLE
+# Institute metadata
+host_institute:
+  name: Example Institute
+  url: http://www.example.com
+
+# 3. LDAP variables
+###########################
+# These are variables used to configure the backend LDAP server that will contain the identities used by the IdP and Science Gateway
+server_country: 00
+server_state: State
+server_location: Town Name
+server_organization: Example Institute
+server_organization_unit: Grid
+
+# 4. Identity provider variables
+###########################
+# organisation:
+#   name: Example Institute
+#   logo: infn
+
+mail_contact: test@test.com
+# IDP variables. these are specifically related to the IdPOpen Web front end.
+idp:
+  name: Example Identity Provider
+  admin_user: Administrator
+  admin_email: example@example.com
+  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth
+  mail_server: smtp.example.com
+  header_logo: example_Logo.jpg
+
+# 5. Science Gateway variables
+##################################
+sgw_admin: test@test.com

@@ -1,7 +1,8 @@
---- 
+---
 #- name: correct java version selected
 # alternatives: name=java path=/usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
 
+# this task could be done with a lookup probably
 - name: Get tomcat libs
   shell: "ls /usr/share/tomcat6/lib |awk '{ print \"${j2ee.server.home}/lib/\"$0 }' |xargs | sed -e 's/ /:/g'"
   register: tomcat_libs_classpath
@@ -11,33 +12,54 @@
     - install
 
 - name: Fix the classpath
-  replace: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/nbproject/project.properties regexp='^j2ee.platform.classpath=\${j2ee.server.home}/lib/annotations-api.jar:\${j2ee.server.home}/lib/catalina-ant.jar:\${j2ee.server.home}/lib/catalina-ha.jar:\${j2ee.server.home}/lib/catalina-tribes.jar:\${j2ee.server.home}/lib/catalina.jar:\${j2ee.server.home}/lib/ecj-3.7.jar:\${j2ee.server.home}/lib/el-api.jar:\${j2ee.server.home}/lib/jasper-el.jar:\${j2ee.server.home}/lib/jasper.jar:\${j2ee.server.home}/lib/jsp-api.jar:\${j2ee.server.home}/lib/mail.jar:\${j2ee.server.home}/lib/servlet-api.jar:\${j2ee.server.home}/lib/tomcat-coyote.jar:\${j2ee.server.home}/lib/tomcat-dbcp.jar:\${j2ee.server.home}/lib/tomcat-i18n-es.jar:\${j2ee.server.home}/lib/tomcat-i18n-fr.jar:\${j2ee.server.home}/lib/tomcat-i18n-ja.jar:\${j2ee.server.home}/bin/tomcat-juli.jar$' replace=j2ee.platform.classpath={{ tomcat_libs_classpath.stdout }}
+  replace:
+    dest: "{{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/nbproject/project.properties"
+    regexp: "j2ee.platform.classpath.*$"
+    replace: "j2ee.platform.classpath={{ tomcat_libs_classpath.stdout }}"
   tags:
     - tomcat6
     - install
 
-- name: Compile the code 
-  command: ant dist creates={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war chdir={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}
+# this seems not to be triggered if IDPPublic.war is not changed
+- name: Compile the code
+  command: ant dist
+  args:
+    chdir: "{{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}"
+    #creates: "{{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war"
   tags:
-  -  install
+    -  install
 
-- name: Rename the old ROOT webapp 
-  sudo: yes
-  command: creates="{{ tomcat6_webapps }}/ROOT.old/META-INF/context.xml" mv {{ tomcat6_webapps }}/ROOT {{ tomcat6_webapps }}/ROOT.old
+# we need to check that the date of the webapp is not older than a certain number of seconds than now
+- name: Rename the old ROOT webapp
+  become: yes
+  command: "mv {{ tomcat6_webapps }}/ROOT {{ tomcat6_webapps }}/ROOT.old"
+  args:
+    creates: "{{ tomcat6_webapps }}/ROOT.old/META-INF/context.xml"
   tags:
     - tomcat6
     - install
+  ignore_errors: True
 
-- name: Copy the application into the webapps 
-  sudo: yes
-  command: creates="{{ tomcat6_webapps }}/ROOT.war" cp {{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war {{ tomcat6_webapps }}/ROOT.war
+- name: Copy the application into the webapps
+  become: true
+  command: "cp {{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/dist/IDPPublic.war {{ tomcat6_webapps }}/ROOT.war"
+  args:
+    creates: "{{ tomcat6_webapps }}/ROOT.war"
 
 - name: Configure the ROOT
-  sudo: yes
-  template: src=ROOT.xml.j2 dest={{ tomcat6_config_path }}/Catalina/localhost/ROOT.xml 
+  become: yes
+  template:
+    src: ROOT.xml.j2
+    dest: "{{ tomcat6_config_path }}/Catalina/localhost/ROOT.xml"
   register: tomcat_root_change
 
 - name: Restart tomcat
-  sudo: yes
-  service: name={{ tomcat6_service }}  state=restarted
+  become: yes
+  service:
+    name: "{{ tomcat6_service }}"
+    state: restarted
   #when: tomcat_root_change.changed
+
+- name: wait for tomcat to come up
+  wait_for:
+    port: 8443

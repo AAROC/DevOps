@@ -1,9 +1,11 @@
 # Group variables for WMS servers
+# General config as well as service-specific variables go here.
+# However, be sure to keep site-specific configs to the site name file
 ---
-needs_certificate: 'true' 
+needs_certificate: 'true'
 prerequisites: []
-emi_service: 'WMS' 
+emi_service: 'WMS'
 yaim_options: '-n WMS -n LB'
-ports: 
-  - inbound: []
+ports:
+  - inbound: [22, 2170, 2811, 7443, 9003, 9618,  20000-25000 ]
   - outbound: []

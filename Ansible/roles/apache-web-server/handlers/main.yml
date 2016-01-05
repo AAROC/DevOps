@@ -1,0 +1,7 @@
+---
+# handlers file for apache-web-server
+- include: RedHat.yml
+  when: ansible_os_family == "RedHat"
+
+- include: Debian.yml
+  when: ansible_os_family == "Debian"

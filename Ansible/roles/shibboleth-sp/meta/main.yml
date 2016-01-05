@@ -1,0 +1,25 @@
+---
+galaxy_info:
+  author: Bruce Becker
+  description: A generic role for delpoying a [Shibboleth Service provider](https://wiki.shibboleth.net/confluence/display/SHIB2/Home)
+  company:
+  license: Apache 2.0
+  min_ansible_version: 1.9
+  platforms:
+  - name: EL
+    versions:
+    - 6
+  # According to https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPLinuxInstall only RedHat and Suse are supported.
+  # - name: Ubuntu
+  #   versions:
+  #   - saucy
+  #   - trusty
+  #   - utopic
+  # - name: Debian
+  #   versions:
+  #   - lenny
+  #   - squeeze
+  #   - wheezy
+  categories:
+    - web
+dependencies: []

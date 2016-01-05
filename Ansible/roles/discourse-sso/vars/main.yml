@@ -1,0 +1,14 @@
+---
+# where will discourse be cloned to
+discourse_path: /home/discourse/discourse
+# These are the varibles needed by the discourse container
+# Should be protected with ansible_vault
+db_shared_buffer_size: 512 # MB
+unicorn_workers: 4
+developer_emails: 'brucellino@gmail.com'
+smtp_address: smtp.mailgun.org
+smtp_port: 587
+smtp_username: postmaster@sandbox6c9929c31d284bdba0a154af210f7130.mailgun.org
+# this is the path to the installation of DiscourseSSO app
+discourse_sso_install_path: /var/www/DiscourseSSO
+discourse_secret_key: test_key

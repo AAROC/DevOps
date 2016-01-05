@@ -1,0 +1,68 @@
+---
+# vars file for shibboleth-sp
+# basic variables
+apache:
+  - 'Debian': 'apache2'
+  - 'Redhat': 'httpd'
+
+# vars file for shibboleth-sp
+sp_version: 2.5.4
+shibboleth_install_path: /opt/shibboleth-sp
+shibboleth_install_cert_pass: thisismystupidpassphrase
+shibboleth_idp_log_level: INFO
+shibboleth_ldap_log_level: INFO
+idp_url: http://shibboleth.net/downloads/service-provider/
+idp_package_name: shibboleth-servicesprovider
+idp_package_endorsed_jars:
+  - serializer-2.10.0.jar
+  - xalan-2.7.1.jar
+  - xercesImpl-2.10.0.jar
+  - xml-apis-2.10.0.jar
+  - xml-resolver-1.2.jar
+shibboleth_port: 8080
+shibboleth_secure_port: 8443
+## This should not be necessary for the sp ##
+idp_base_dn: "ou=People,dc=local"
+idp_principal: "cn=useradmin,dc=local"
+idp_principal_credential: choose_a_good_pass
+##
+
+# Federation variables
+# You can have more than one metadata provider.
+# here we define a test federation and a production federation
+federations:
+  - prod_federation:
+    provider: CatchAllFederation
+    metadata_URL: https://gridp.garr.it/metadata/gridp.xml
+    backing_file: CatchAllFederation
+  - test_federation:
+    provider: TestCatchAllFederation
+    metadata_URL: https://gridp.garr.it/metadata/gridp-test.xml
+    backing_file: TestCatchAllFederation
+
+other_service_providers: []
+#  - science_gateway_1:
+#    provider: url.of.service.provider
+#    metadata_URL: https://url.of.service.provider/Shibboleth.sso/Metadata
+#    backing_file: url.of.service.provider.xml
+
+ # security and certs - just the file name without the path
+
+sp_private_key_file: "sp.key"
+sp_cert_file: "sp.crt"
+ # this can be set to either something under /etc/grid-security/certificates (for EUGridPMA-issued certs) or something in /etc/pki/CA/certs
+ca_cert_file: "/etc/grid-security/INFN-CA-2006.pem"
+
+# These are the sections that have to be added to the metadata once the IdP has been created.
+# There are two stanzas, one for Organisation, one for contact people.
+# They are kept in a flat dictionary because we have to a single lineinfile for each of them.
+metadata_lines: ["</ContactPerson>",
+                 "<EmailAddress>mailto:{{ sp.admin_email }}</EmailAddress>",
+                 "<SurName>Support</SurName>",
+                 "<GivenName>System</GivenName>",
+                 "<ContactPerson contactType=\"technical\">",
+                 "</Organization>",
+                 "<OrganizationURL xml:lang=\"en\">{{ host_institute.url }}</OrganizationURL>",
+                 "<OrganizationDisplayName xml:lang=\"en\">{{ sp.name }}</OrganizationDisplayName>",
+                 "<OrganizationName xml:lang=\"en\">{{ host_institute.name }}</OrganizationName>",
+                 "<Organization>"]

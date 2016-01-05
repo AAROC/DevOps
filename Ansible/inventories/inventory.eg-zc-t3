@@ -14,7 +14,7 @@ tbd-cfp.zewailcity.edu.eg needs_certificate=false emi_service='BDII_top' yaim_op
 # site services #
 #################
 [site-bdiis]
-sbd-cfp.zewailcity.edu.eg needs_certificate=false emi_service='BDII_site' yaim_options='-n BDII_site' hosts={{groups.all}}
+sbd-cfp.zewailcity.edu.eg needs_certificate=false emi_service='BDII_site' yaim_options='-n BDII_site' 
 
 [cream-ces]
 ce-cfp.zewailcity.edu.eg needs_certificate=true emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'

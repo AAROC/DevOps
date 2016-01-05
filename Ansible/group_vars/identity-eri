@@ -1,0 +1,29 @@
+---
+# institute metadata
+site_name: EG-SCI-ERI
+host_institute:
+  name: Electronics Research Institute
+  url: http://www.eri.sci.eg
+
+# LDAP variables
+server_country: EG
+server_state:
+server_location: Cairo
+server_organization: SCI
+server_organization_unit: ERI
+ldap_server: ldap.eri.sci.eg
+sgw_admin: sgw-admin@eri.sci.eg
+
+
+# IDP variables. these are specifically related to the IdPOpen Web front end.
+organisation:
+  name: SCI
+  logo:
+mail_contact: idp-admin@eri.sci.eg
+idp:
+  name: ERI Catch-All identity provider
+  admin_user: Mohammed Radi
+  admin_email: idp-admin@eri.sci.eg
+  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth
+  mail_server:
+  header_logo:

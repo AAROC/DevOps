@@ -1,6 +1,11 @@
 ---
 # tasks file for liferay-csgf
-#- include: prep.yml
-#- include: repos.yml
-#- include: apache.yml
+- include: prep.yml
+- include: repos.yml
+- include: install.yml
+# check that this is not previously done in the apache config of the server bit before.
+- include: apache.yml
 - include: domain.yml
+- include: shibSP.yml
+- include: shibAuth.yml
+- include: portlets.yml
