@@ -40,9 +40,12 @@
   when: ("worker-nodes" in groups and ansible_hostname in groups['worker-nodes']) and ( user_home_prefix  != "")
 
 - name: Discover what node types we have
-  command: /bin/ls chdir=/opt/glite/yaim/node-info.d/
+  debug:
+    msg: "{{ item }}"
+  with_fileglob: /opt/glite/yaim/node-info.d/*
   register: node_types
   changed_when: false
+  ignore_errors: true
 
 
 - name: Disable update_crl

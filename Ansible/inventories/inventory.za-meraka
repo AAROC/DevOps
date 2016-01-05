@@ -95,18 +95,18 @@ cream-ces
 # Worker Nodes
 [worker-nodes]
 ce01-node003.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-#ce01-node004.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node004.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node005.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node006.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node007.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node008.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node009.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node010.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-#ce01-node011.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node011.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node012.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node013.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node014.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-#ce01-node015.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node015.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 
 [cluster-head-nodes]
 ce01-node001.c4.csir.co.za
@@ -154,6 +154,7 @@ ngi-nagios
 fts-servers
 UIs
 argus-servers
+apel-servers
 
 [nagios-servers:children]
 ngi-nagios
