@@ -1,5 +1,21 @@
 - name: create the authorized_keys file for the site
-  assemble: src=public_keys dest=/home/ansible/.ssh/authorized_keys owner=ansible group=ansible mode=400 remote_src=False
+  assemble:
+    src: public_keys
+    dest: /home/ansible/.ssh/authorized_keys
+    owner: ansible
+    group: ansible
+    remote_src: False
+  retries: 3
+  tags:
+    - bootstrap
+    - keys
+
+- name: ensure that the authorized_keys has correct mode
+  file:
+    path: /home/ansible/.ssh/authorized_keys
+    mode: 0400
+    owner: ansible
+    group: ansible
   tags:
     - bootstrap
     - keys

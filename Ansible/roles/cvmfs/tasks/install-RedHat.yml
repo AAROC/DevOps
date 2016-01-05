@@ -1,7 +1,7 @@
 ---
 - name: download the CVMFS repo (RedHat)
-  sudo: True
-  sudo_user: root
+  become: True
+  become_user: root
   get_url:
     url: http://cvmrepo.web.cern.ch/cvmrepo/yum/cernvm.repo
     dest: /etc/yum.repos.d/cernvm.repo
@@ -11,9 +11,9 @@
     - repos
   when: { ansible_os_family == 'RedHat'}
 
-- name: Install CVMFS client 
-  sudo: true
-  sudo_user: root
+- name: Install CVMFS client
+  become: true
+  become_user: root
   yum: name={{ item }} state=present disable_gpg_check=yes
   with_items:
     - cvmfs-release
@@ -26,7 +26,7 @@
     - install
 
 - name: copy over the local config files
-  sudo: true
+  become: true
   copy: src=etc/cvmfs/{{ item }} dest=/etc/cvmfs/{{ item }}
   with_items:
     - default.local
@@ -40,7 +40,7 @@
 
 
 - name: ensure that autofs is running
-  sudo: true
+  become: true
   service: name=autofs state=started
   tags:
     - cvmfs

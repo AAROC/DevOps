@@ -1,17 +1,21 @@
 ---
 - name: download the CVMFS package (Debian)
-  sudo: True
-  sudo_user: root
-  get_url: url=https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs_2.1.20_amd64.deb
+  become: True
+  become_user: root
+  get_url:
+    url: https://ecsft.cern.ch/dist/cvmfs/cvmfs-2.1.20/cvmfs_2.1.20_amd64.deb
   tags:
     - cvmfs
     - repos
-  when: { ansible_os_family == 'Debian'} 
+  when:  ansible_os_family == 'Debian'
 
 - name: Install CVMFS client
-  sudo: true
-  sudo_user: root
-  yum: name={{ item }} state=present disable_gpg_check=yes
+  become: true
+  become_user: root
+  yum:
+    name: {{ item }}
+    state: present
+    disable_gpg_check: yes
   with_items:
     - cvmfs-release
     - cvmfs-keys
@@ -23,8 +27,10 @@
     - install
 
 - name: copy over the local config files
-  sudo: true
-  copy: src=etc/cvmfs/{{ item }} dest=/etc/cvmfs/{{ item }}
+  become: true
+  copy:
+    src: etc/cvmfs/{{ item }}
+    dest: /etc/cvmfs/{{ item }}
   with_items:
     - default.local
     - keys/apprepo.sagrid.ac.za.pub
@@ -37,13 +43,16 @@
 
 
 - name: ensure that autofs is running
-  sudo: true
-  service: name=autofs state=started
+  become: true
+  service:
+    name: autofs
+    state: started
   tags:
     - cvmfs
 
 - name: check that the repo is mounted
-  stat: path=/cvmfs/devrepo.sagrid.ac.za
+  stat:
+    path: /cvmfs/devrepo.sagrid.ac.za
   register: p
 
 - debug: msg="Path exists and is a directory"

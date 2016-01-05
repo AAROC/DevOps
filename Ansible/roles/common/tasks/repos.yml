@@ -14,12 +14,20 @@
     dest: /etc/yum.repos.d/epel.repo
     regexp: "^#baseurl.*$"
     replace: "baseurl=http://mirror.ufs.ac.za/fedora-epel/6/x86_64"
+  tags:
+    - repos
+    - EPEL
+    - install
 
 - name: No mirrorlist
   replace:
     dest: /etc/yum.repos.d/epel.repo
     regexp: "^mirrorlist="
     replace: "#mirrorlist="
+  tags:
+    - repos
+    - EPEL
+    - install
 
 
 - name: YUM repo for TrustAnchors
@@ -42,8 +50,6 @@
     - repos
     - IGTF
     - download
-
-
 
 - name: Install prerequisite packages (RedHat)
   yum:
