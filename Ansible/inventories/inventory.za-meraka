@@ -104,9 +104,9 @@ ce01-node009.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_optio
 ce01-node010.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node011.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 ce01-node012.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node013.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node014.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node015.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+#ce01-node013.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+#ce01-node014.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+#ce01-node015.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 
 [cluster-head-nodes]
 ce01-node001.c4.csir.co.za
