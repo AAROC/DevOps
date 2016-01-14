@@ -94,20 +94,16 @@ cream-ces
 
 # Worker Nodes
 [worker-nodes]
-ce01-node003.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node004.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node005.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node006.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node007.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node008.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node009.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node010.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node011.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node012.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-#ce01-node013.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-#ce01-node014.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-#ce01-node015.c4.csir.co.za needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-
+ce01-node003 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node004 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node005 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node006 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node007 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node008 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node009 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node010 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node011 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node012 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 [cluster-head-nodes]
 ce01-node001.c4.csir.co.za
 
