@@ -19,6 +19,8 @@
      #icon_url: "http://www.example.com/some-image-file.png"
      link_names: 1
      parse: 'full'
+    tags:
+      - slack
   post_tasks:
   - name: Send notification message via Slack
     slack:
@@ -30,3 +32,5 @@
       #icon_url: "http://www.example.com/some-image-file.png"
       link_names: 1
       parse: 'full'
+    tags:
+      - slack
