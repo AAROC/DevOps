@@ -4,6 +4,7 @@
     var: hostvars[groups['cluster-head-nodes'][0]].ansible_eth1.ipv4.address
   tags:
     - debug
+
 - name: Add head node IP to known hosts
   template:
     src: etc/ssh/shosts.equiv.j2
@@ -14,7 +15,12 @@
   - networking
 
 - name: Setup known hosts for host-based authentication
-  template: src=etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/ssh_known_hosts owner=root group=root mode=0644
+  template:
+    src: etc/ssh/ssh_known_hosts.j2
+    dest: /etc/ssh/ssh_known_hosts
+    owner: root
+    group: root
+    mode: 0644
   tags:
     - networking
 
