@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/AAROC/DevOps.svg?branch=dev)](https://travis-ci.org/AAROC/DevOps)
-# AAROC DevOps
+#  DevOps
 
 This is the repository for the DevOps code which executes AAROC infrastructure. We support Ansible and Puppet.
 
