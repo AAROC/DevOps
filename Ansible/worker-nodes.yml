@@ -26,6 +26,7 @@
       state: directory
     delegate_to: localhost
 
+
 - hosts: worker-nodes
   name: Prepare worker nodes for installation
   user: root
