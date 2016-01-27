@@ -46,7 +46,7 @@
     - cvmfs
 
 - name: check that the repo is mounted
-  stat: path=/cvmfs/devrepo.sagrid.ac.za
+  stat: path=/cvmfs/fastrepo.sagrid.ac.za
   register: p
 
 - debug: msg="Path exists and is a directory"
