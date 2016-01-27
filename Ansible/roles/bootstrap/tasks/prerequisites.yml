@@ -13,12 +13,17 @@
 #  when: "'ping: unknown host www.google.com' in hosttest.stderr"
   tags:
     - DNS
+- name: update the repo configuration
+  copy:
+    src: etc/yum.repos.d/sl6x.repo
+    dest: /etc/yum.repos.d/sl6x.repo
+  #        validate: 'yum update'
 
 - name: ensure that SELinux python bindings are installed
   yum:
     name: libselinux-python
     state: installed
-    
+
 - name: debug packages
   debug:
     var: "bootstrap_prerequisites.{{ ansible_os_family }}"
