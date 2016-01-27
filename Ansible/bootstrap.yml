@@ -1,6 +1,6 @@
 ---
 - name: Bootstrap the machines
-  hosts: myproxy-servers
+  hosts: all
   remote_user: root
   roles:
   - bootstrap
