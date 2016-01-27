@@ -11,6 +11,7 @@ bootstrap_prerequisites:
     - openssh-clients
     - vim
     - bind
+    - htop
   'Debian':
     - python-simplejson
     - iptables
