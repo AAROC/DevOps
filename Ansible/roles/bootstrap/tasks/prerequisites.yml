@@ -31,7 +31,7 @@
 #     - DNS
 
 - name: Do raw replace of nameserver
-  raw: 'sed -i "s#^nameserver .*\$#nameserver 8.8.8.8#g'
+  raw: 'sed -i "s#^nameserver .*\$#nameserver 8.8.8.8#g" /etc/resolv.conf'
 
 # SE linux is probably still enabled, so we need to do a raw install of libselinux
 # - name: ensure that SELinux python bindings are installed
@@ -52,18 +52,9 @@
   yum:
     name: "{{ item }}"
     state: present
-  with_items: "{{ bootstrap_prerequisites.ansible_os_family }}"
+  with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
   tags:
     - bootstrap
-  when: ansible_os_family=="RedHat"
-
-- name: Install some useful packages (RedHat)
-  yum: name={{ item }} state=present
-  with_items:
-    - vim-minimal
-  tags:
-    - bootstrap
-  ignore_errors: yes
   when: ansible_os_family=="RedHat"
 
 - name: Install prerequisite packages (Debian)
@@ -73,14 +64,4 @@
   with_items: "{{ bootstrap_prerequisites[ansible_os_family]}}"
   tags:
     - bootstrap
-  when: ansible_os_family=="Debian"
-
-- name: Install some useful packages (Debian)
-  apt: name={{ item }} state=present
-  with_items:
-    - htop
-    - vim
-  tags:
-    - bootstrap
-  ignore_errors: yes
   when: ansible_os_family=="Debian"
