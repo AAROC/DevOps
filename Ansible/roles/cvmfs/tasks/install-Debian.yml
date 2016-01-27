@@ -22,7 +22,7 @@
 
 - name: cvmfs stat
   debug:
-    msg: "{{ cvmfs_present.stat.xgrp }}"
+    msg: "{{ cvmfs_present.stat }}"
 
 - name: Install prerequisites
   apt:
@@ -30,6 +30,7 @@
     state: present
   with_items: prerequisites
   become: true
+  when: cvmfs_present.stat.exists == false
 
 - name: download tarball
   get_url:
@@ -37,14 +38,14 @@
     dest: /tmp/cvmfs-2.1.20.tar.gz
   tags:
     - cvmfs
-  when: cvmfs_present.stat.xgrp != True
+  when: cvmfs_present.stat.exists != True
 
 
 - name: check that the untar dir is there
   file:
     path: /tmp/cvmfs/
     state: directory
-  when: cvmfs_present.stat.xgrp != True
+  when: cvmfs_present.stat.exists != True
 
 
 - name: unpack the CVMFS package (src)
@@ -55,14 +56,14 @@
    creates: /tmp/cvmfs/cvmfs-2.1.20
   tags:
    - cvmfs
-  when: cvmfs_present.stat.xgrp != True
+  when: cvmfs_present.stat.exists != True
 
 
 - name: check that build dir is there
   file:
     path: /tmp/cvmfs/cvmfs-2.1.20/build
     state: directory
-  when: cvmfs_present.stat.xgrp != True
+  when: cvmfs_present.stat.exists != True
 
 - name: Generate buldfiles
   command: cmake ../ -G"Unix Makefiles"
@@ -72,7 +73,7 @@
   tags:
     - cvmfs
     - install
-  when: cvmfs_present.stat.xgrp != True
+  when: cvmfs_present.stat.exists != True
 
 - name: build CVMFS
   command: nice -n20 make -j2
@@ -83,7 +84,7 @@
     - cvmfs
     - install
   register: makeoutput
-  when: cvmfs_present.stat.xgrp != True
+  when: cvmfs_present.stat.exists != True
 
 - name: install CVMFS
   become: true
@@ -93,7 +94,7 @@
   tags:
     - cvmfs
     - install
-  when: cvmfs_present.stat.xgrp != True
+  when: cvmfs_present.stat.exists != True
 
 - name: copy over the local config files
   become: true
@@ -109,7 +110,7 @@
   tags:
     - cvmfs
     - config
-  when: cvmfs_present.stat.xgrp != True
+  when: cvmfs_present.stat.exists != True
 
 - name: add the CVMFS master
   copy:
