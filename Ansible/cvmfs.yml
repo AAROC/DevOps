@@ -15,22 +15,24 @@
         username: "Ansible on {{ inventory_hostname }}"
         icon_url: ""
         validate_certs: False
+      tags:
+        - slack
 
 - hosts: all
   vars:
-    devrepo: "{{ lookup('file', '/cvmfs/devrepo.sagrid.ac.za/test')}}"
-    apprepo: "{{ lookup('file', '/cvmfs/apprepo.sagrid.ac.za/v1')}}"
+#    devrepo: "{{ lookup('file', '/cvmfs/devrepo.sagrid.ac.za/test')}}"
+#    apprepo: "{{ lookup('file', '/cvmfs/apprepo.sagrid.ac.za/v1')}}"
     fastrepo: "{{ lookup('file', '/cvmfs/fastrepo.sagrid.ac.za/version')}}"
   tasks:
     - stat:
-        path: "{{ apprepo }}"
-        path: "{{ devrepo }}"
+#        path: "{{ apprepo }}"
+#        path: "{{ devrepo }}"
         path: "{{ fastrepo }}"
-    - debug:
-        msg: "DevRepo is : {{ devrepo }}"
-    - debug:
-        msg: "AppRepo is : {{ apprepo }}"
-    - debug:
+    # - debug:
+    #     msg: "DevRepo is : {{ devrepo }}"
+    # - debug:
+    #     msg: "AppRepo is : {{ apprepo }}"
+    # - debug:
         msg: "FastRepo is : {{ fastrepo }}"
     - name: Inform the team
       slack:
@@ -41,3 +43,5 @@
         username: "Ansible on {{ inventory_hostname }}"
         icon_url: ""
         validate_certs: False
+      tags:
+        - slack
