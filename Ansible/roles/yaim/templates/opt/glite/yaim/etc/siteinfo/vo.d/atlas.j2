@@ -1,0 +1,22 @@
+SW_DIR=$VO_SW_DIR/atlas
+DEFAULT_SE=$DPM_HOST
+QUEUES="atlas"
+VOMSES="\
+'atlas lcg-voms2.cern.ch 15001 \
+/DC=ch/DC=cern/OU=computers/CN=lcg-voms2.cern.ch atlas 24' \
+'atlas voms2.cern.ch 15001 \
+/DC=ch/DC=cern/OU=computers/CN=voms2.cern.ch atlas 24' \
+"
+VOMS_CA_DN="\
+'/DC=ch/DC=cern/CN=CERN Grid Certification Authority' \
+'/DC=ch/DC=cern/CN=CERN Grid Certification Authority' \
+"
+
+#
+# both of them should be used for making grid-mapfiles
+#
+
+VOMS_SERVERS="\
+'vomss://voms2.cern.ch:8443/voms/atlas?/atlas/' \
+'vomss://lcg-voms2.cern.ch:8443/voms/atlas?/atlas/' \
+"

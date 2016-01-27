@@ -1,0 +1,22 @@
+---
+- name: Install Perun GPG key
+  sudo: true
+  rpm_key: key=ftp://homeproj.cesnet.cz/rpm/perunv3/RPM-GPG-KEY-perunv3 state=present
+
+- name: Instasll Perun Slave RPM
+  sudo: true
+  yum: name=ftp://homeproj.cesnet.cz/rpm/perunv3/stable/noarch/perun-slave-3.0.0-0.0.83.noarch.rpm state=present
+
+- name: Push the SAGrid Perun instance key
+  sudo: true
+  authorized_key:
+    user: root
+    key: "{{ lookup('file','roles/perun-slave/files/perun_SAGrid')}}"
+    state: present
+    key_options: 'from="perun.c4.csir.co.za",command="/opt/perun/bin/perun"'
+
+- name: Configure Kerberos
+  copy: src=etc/krb.conf dest=/etc/krb.conf owner=root group=root mode=644
+
+- name: Tell Sysadmin to get in touch with Perun admin
+  debug: msg="You need to run remctl perun.c4.csir.co.za perun propagate, but AFTER the facility has been registered in SAGrid's Perun instance."

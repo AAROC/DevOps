@@ -1,6 +1,7 @@
 ---
 # handlers file for liferay-csgf
 - name: reboot
+  sudo: true
   command: /sbin/reboot
   async: 600
   poll: 5

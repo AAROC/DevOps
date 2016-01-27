@@ -1,3 +1,4 @@
+# Ansible-managed
 {% for host in groups['worker-nodes'] %}
-{{ host }}.{{ site_domain }}
+{{ hostvars[host]['ansible_hostname'] }}.{{ site_domain }} {# {{ hostvars[host]['ansible_eth0']['ipv4']['address'] }} #}
 {% endfor %}

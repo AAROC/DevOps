@@ -4,7 +4,7 @@
 #
 ############## Cluster oriented grouping ##############
 ##########################################################################################
-# we define overall two clusters : production and development/staging/testing 
+# we define overall two clusters : production and development/staging/testing
 # it is possible that we could separate the development and staging/testing clusters later
 # Typically each production service has a corresponding dev version.
 # BB 10/13
@@ -13,9 +13,6 @@
 # BB 11/13
 
 # non-grid services
-[CA]
-security.sanren.ac.za
-
 [dns-servers]
 # we should put the dns servers in here when we need to move
 # hosts in and out of DNS
@@ -23,7 +20,6 @@ security.sanren.ac.za
 # user interfaces
 [UIs]
 ui-dev.c4.csir.co.za
-ui-stage.sagrid.ac.za
 
 ##############
 # core services #
@@ -31,23 +27,27 @@ ui-stage.sagrid.ac.za
 
 # credential stores
 [myproxy-servers]
-myproxy.c4.csir.co.za
+#myproxy.c4.csir.co.za
 
 # information systems
 [top-bdiis]
-top-bdii.c4.csir.co.za 
+top-bdii.c4.csir.co.za
 
-# workload management 
+# workload management
 [wms-servers]
-wms.c4.csir.co.za 
+wms.c4.csir.co.za
 
 # metadata catalogues
 [lfc-servers]
-lfc.c4.csir.co.za 
+#lfc.c4.csir.co.za
 
-# file transfer 
+# file transfer
 [fts-servers]
 fts.c4.csir.co.za
+
+# Repositories
+[cvmfs-stratum-0]
+apprepo.sagrid.ac.za needs_certificate='false'
 
 # web user interface
 [dirac]
@@ -57,15 +57,20 @@ dirac.c4.csir.co.za needs_certificate='true'
 [apel-servers]
 apel-server.c4.csir.co.za needs_certificate='true'
 
-# authorisation
+# AAI
 [voms-servers]
 voms-stage.c4.csir.co.za needs_certificate='true'
 [argus-servers]
 argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_certificate='true'
+[perun]
+perun.c4.csir.co.za
+[CA]
+security.sanren.ac.za
+
 
 # monitoring
 [ngi-nagios]
-nagios.c4.csir.co.za  
+nagios.c4.csir.co.za
 #[vo-sagrid-nagios]
 #sagrid-monitoring.c4.csir.co.za
 
@@ -89,11 +94,16 @@ cream-ces
 
 # Worker Nodes
 [worker-nodes]
-#192.168.11.3 alias='ce01-node003' 
-#192.168.11.4 alias='ce01-node004'
-ce01-node003 
-ce01-node004
-
+ce01-node003 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node004 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node005 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node006 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node007 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node008 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node009 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node010 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node011 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+ce01-node012 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 [cluster-head-nodes]
 ce01-node001.c4.csir.co.za
 
@@ -103,7 +113,7 @@ ce01-node001.c4.csir.co.za
 
 
 ############ grouping and children ############
-# first, group by production and development 
+# first, group by production and development
 [core-services:children]
 top-bdiis
 wms-servers
@@ -140,6 +150,7 @@ ngi-nagios
 fts-servers
 UIs
 argus-servers
+apel-servers
 
 [nagios-servers:children]
 ngi-nagios
@@ -166,4 +177,3 @@ voms-servers
 CentOS5-servers
 CentOS6-servers
 ############################ END #########################
-

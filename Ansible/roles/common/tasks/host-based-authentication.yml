@@ -1,21 +1,35 @@
 ---
+# these tasks in the role should be run using become parametrically in the playbook.
 - name: Setup SSH host based authentication (server configuration file; enable `HostbasedAuthentication` option)
-  action: lineinfile dest=/etc/ssh/sshd_config regexp='HostbasedAuthentication.*' line="HostbasedAuthentication yes"
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: 'HostbasedAuthentication.*'
+    line: "HostbasedAuthentication yes"
   notify: restart sshd
-  sudo: true
   tags:
     - ssh
-    
+
 - name: Setup SSH host based authentication (server configuration file; disable `IgnoreRhosts` option)
-  action: lineinfile dest=/etc/ssh/sshd_config regexp='IgnoreRhosts.*' line="IgnoreRhosts no"
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: IgnoreRhosts.*'
+    line: "IgnoreRhosts no"
   notify: restart sshd
-  sudo: true
   tags:
     - ssh
+
 - name: Setup SSH host based authentication (client configuration file; enable `HostbasedAuthentication` option)
-  action: lineinfile dest=/etc/ssh/ssh_config regexp='HostbasedAuthentication.*' line="HostbasedAuthentication yes"
-  sudo: true
+  lineinfile:
+    dest: /etc/ssh/ssh_config
+    regexp: 'HostbasedAuthentication.*'
+    line: "HostbasedAuthentication yes"
+  tags:
+    - ssh
 
 - name: Setup SSH host based authentication (client configuration file; enable `EnableSSHKeysign` option)
-  action: lineinfile dest=/etc/ssh/ssh_config regexp='EnableSSHKeysign.*' line="EnableSSHKeysign yes"
-  sudo: true
+  lineinfile:
+    dest: /etc/ssh/ssh_config
+    regexp: 'EnableSSHKeysign.*'
+    line: "EnableSSHKeysign yes"
+  tags:
+    - ssh

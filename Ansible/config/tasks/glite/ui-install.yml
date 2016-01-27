@@ -1,4 +1,0 @@
-#- name: Install java openjdk package
-#  action: yum pkg=java-1.6.0-openjdk state=latest
-- name: Install glite-UI metapackage
-  action: yum name=glite-UI state=latest

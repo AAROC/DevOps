@@ -21,8 +21,6 @@ nagios_admin_dns:
   - /C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker
 ncg_nagios_admin: bbecker@csir.co.za
 
-ncg_vo: ops
-
 vos:
   - ops
   - dteam

@@ -9,24 +9,35 @@
 
 - name: debug
   debug: var=hosttest.stderr
-
+  
 - name: use Google public DNS if necessary
-  lineinfile: dest=/etc/resolv.conf regexp=^nameserver line='nameserver 8.8.8.8'
-  when: "'ping: unknown host www.google.com' in hosttest.stderr"
+  lineinfile:
+    dest: /etc/resolv.conf
+    regexp: '^nameserver'
+    line: 'nameserver 8.8.8.8'
+#  when: "'ping: unknown host www.google.com' in hosttest.stderr"
   tags:
     - DNS
+- name: update the repo configuration
+  copy:
+    src: etc/yum.repos.d/sl6x.repo
+    dest: /etc/yum.repos.d/sl6x.repo
+  #        validate: 'yum update'
+
+- name: ensure that SELinux python bindings are installed
+  yum:
+    name: libselinux-python
+    state: installed
+
+- name: debug packages
+  debug:
+    var: "bootstrap_prerequisites.{{ ansible_os_family }}"
 
 - name: Install prerequisite packages (RedHat)
-  yum: name={{ item }} state=present
-  with_items:
-    - python-simplejson
-    - libselinux-python
-    - iptables
-    - mlocate
-    - initscripts
-    - chkconfig
-    - system-config-services
-    - openssh-clients
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "bootstrap_prerequisites.{{ ansible_os_family }}"
   tags:
     - bootstrap
   when: ansible_os_family=="RedHat"
@@ -40,18 +51,14 @@
   when: ansible_os_family=="RedHat"
 
 - name: Install prerequisite packages (Debian)
-  apt: name={{ item }} state=present
-  with_items:
-    - python-simplejson
-    - iptables
-    - iptables-persistent
-    - mlocate
-    - initscripts
-    - openssh-client
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ bootstrap_prerequisites[ansible_os_family]}}"
   tags:
     - bootstrap
   when: ansible_os_family=="Debian"
-
+  
 - name: Install some useful packages (Debian)
   apt: name={{ item }} state=present
   with_items:

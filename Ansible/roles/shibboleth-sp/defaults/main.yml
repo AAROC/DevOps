@@ -1,0 +1,5 @@
+---
+# defaults file for shibboleth-sp
+sp-dependencies:
+  redhat:
+    - 

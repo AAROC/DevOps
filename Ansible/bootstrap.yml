@@ -1,6 +1,36 @@
 ---
-- name: Bootstrap the machines
+# This is the boostrap play for AAROC machines.
+- name: bootstrap the machines
   hosts: all
-  remote_user: root
+  become: true
   roles:
-  - bootstrap
+# we don't need become here, because bootstrap is designed to run as root.
+    - bootstrap
+  pre_tasks:
+  - name: debug
+    debug: var=site_name
+  - name: Send Slack Message
+    slack:
+     domain: africa-arabia-roc.slack.com
+     token: sBWZXBHgua6QqSnj6QDw9bFE
+     msg: "Starting bootstrap on {{ inventory_hostname }} at {{ site_name }}"
+     channel: "#devops-bootstrap"
+     username: "Ansible on {{ inventory_hostname }}"
+     #icon_url: "http://www.example.com/some-image-file.png"
+     link_names: 1
+     parse: 'full'
+    tags:
+      - slack
+  post_tasks:
+  - name: Send notification message via Slack
+    slack:
+      domain: africa-arabia-roc.slack.com
+      token: sBWZXBHgua6QqSnj6QDw9bFE
+      msg: "bootstrap on {{ inventory_hostname }} has run at {{ site_name }}"
+      channel: "#devops-bootstrap"
+      username: "Ansible on {{ inventory_hostname }}"
+      #icon_url: "http://www.example.com/some-image-file.png"
+      link_names: 1
+      parse: 'full'
+    tags:
+      - slack

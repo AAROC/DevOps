@@ -1,8 +1,0 @@
-- hosts: storage-elements
-  user: ansible
-  sudo: True
-  vars_files:
-    - vars/distros/${ansible_distribution}-${ansible_lsb.major_release}.yml
-  tasks:
-    - include: tasks/emi-dpm_mysql/install.yml
-    - include: tasks/mysql-server/install.yml

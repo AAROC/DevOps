@@ -12,4 +12,8 @@ send "{{ ansible_fqdn }}\r"
 
 expect "A keystore is about to be generated for you. Please enter a password that will be used to protect it"
 send "{{ shibboleth_install_cert_pass }}\r"
+
+expect "The directory '/opt/shibboleth-idp' already exists.  Would you like to overwrite this Shibboleth configuration? (yes, [no])"
+send "yes\r"
+
 expect eof

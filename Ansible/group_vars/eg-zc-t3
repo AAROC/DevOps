@@ -18,9 +18,9 @@ site_support_email: akassem@zewailcity.edu.eg
 # location
 site_latitude: 30.012254
 site_longitude: 30.986166
-site_description: "Meraka Institute - core grid services"
-site_other_grid: "AfricaArabia"
-site_bdii_host: "sbd-cfp.zewailcity.edu.eg"
+site_description: "Zewail City T3"
+site_other_grid: AfricaArabia
+site_bdii_host: sbd-cfp.zewailcity.edu.eg
 site_location: "Sheikh Zayed District , 6th of October City Egypt"
 site_website: "http://www.zewailcity.edu.eg/"
 site_domain: zewailcity.edu.eg
@@ -42,7 +42,7 @@ lfc_host: lfc-dev.c4.csir.co.za
 
 # This site is maintained is only for core services
 # - the rest of the variables are kept in here for historical reasons
-ce_host: ce01-node001.c4.csir.co.za
+ce_host: ce-cfp.zewailcity.edu.eg
 # Replace the following specs with your own
 ce_cpu_model: Opteron
 ce_cpu_vendor: AMD
@@ -64,7 +64,7 @@ ce_runtimeenv:
   - TAG1
   - TAG2
 ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
-batch_server: ce01-node001.c4.csir.co.za
+batch_server: ce-cfp.zewailcity.edu.eg
 job_manager: lcgpbs
 ce_batch_sys: torque
 batch_log_dir: /var/torque
@@ -74,20 +74,18 @@ batch_version: torque-2.5.7
 dpm_host: se01.localdomain
 dpmmgr: { uid: 400, gid: 4000 }
 dpm_filesystems: "sitename_dpm:$DPM_HOST:/storage"
+# DB passwords need to be moved to a vault fil
 dpm_db:   { user: dpmmgr,  pass: one_more_password }
 dpm_info: { user: dpminfo, pass: yet_another_password }
 
 # vars for service: BDII_site
 bdii_regions:
 - name: CREAM
-  endpoint: ldap://ce01-node001.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+  endpoint: ldap://ce-cfp.zewailcity.edu.eg:2170/mds-vo-name=resource,o=grid
 - name: SE
-  endpoint: ldap://se-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
-- name: LFC
-  endpoint: ldap://lfc-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
-- name: PX
-  endpoint: ldap://myproxy-dev.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
-
+  endpoint: ldap://dpm-cfp.zewailcity.edu.eg:2170/mds-vo-name=resource,o=grid
+- name: BDII_SITE
+  endpoint: ldap://sbd-cfp.zewailcity.edu.eg:2170/mds-vo-name=resource,o=grid
 se_list:
   - dpm-cfp.zewailcity.edu.eg
 
