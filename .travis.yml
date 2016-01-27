@@ -20,7 +20,7 @@ install:
   - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $BOOTSTRAP_CONTAINER ansible all -c local -vvvvv -i inventories/$INVENTORY -m ping
 #  - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $BOOTSTRAP_CONTAINER ansible-playbook -c local -i inventories/$INVENTORY bootstrap.yml
 #  - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $SITE_BDII_CONTAINER ansible-playbook -c local -i inventories/$INVENTORY -e "emi_service=BDII_site yaim_options='-n BDII_site'" site-bdiis.yml
-  - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $BOOTSTRAP_CONTAINER ansible-playbook -c local -i inventories/$INVENTORY cvmfs.yml
+  - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $BOOTSTRAP_CONTAINER ansible-playbook -c local -i inventories/$INVENTORY cvmfs.yml -e slack_token=T02BJKQR4/B03ACH9CV/aSrsbdte1kY4B7taogRVxkWf
 notifications:
   email: false
   slack:
