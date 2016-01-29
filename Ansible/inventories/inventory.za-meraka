@@ -31,7 +31,7 @@ ui-dev.c4.csir.co.za
 
 # information systems
 [top-bdiis]
-top-bdii.c4.csir.co.za
+top-bdii.c4.csir.co.za  emi_service='BDII_top' yaim_options='-n BDII_top' needs_certificate='false'
 
 # workload management
 [wms-servers]
@@ -80,7 +80,7 @@ nagios.c4.csir.co.za
 
 # Site BDII
 [site-bdiis]
-site-bdii.c4.csir.co.za
+site-bdii.c4.csir.co.za emi_service='BDII_site' yaim_options='-n BDII_site' needs_certificate='false'
 
 # CREAM CE's
 [cream-ces]
