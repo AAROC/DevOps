@@ -6,7 +6,7 @@
     - debug
 - name: what is the head node's ipv4 address ?
   debug:
-    var: hostvars[groups['cluster-head-nodes'][0]] ['ansible_eth1']['ipv4']['address']
+    var: hostvars[groups['cluster-head-nodes'][0]].ansible_eth1.ipv4.address
   tags:
     - debug
 
