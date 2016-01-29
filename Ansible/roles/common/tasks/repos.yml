@@ -10,7 +10,7 @@
 #     - install
 - name: download the epel release
   get_url:
-    src: "{{ epel_release_url }}/{{ epel_release_name }}"
+    url: "{{ epel_release_url }}/{{ epel_release_name }}"
     dest: "/tmp/{{ epel_release_name }}"
 
 - name: Ensure that epel-release is present
