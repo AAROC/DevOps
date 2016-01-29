@@ -1,17 +1,21 @@
 ---
-- name: Use local mirrors
-  replace:
-    dest: /etc/yum.repos.d/epel.repo
-    regexp: "^#baseurl.*$"
-    replace: "baseurl=http://mirror.ufs.ac.za/fedora-epel/6/x86_64"
-  tags:
-    - repos
-    - EPEL
-    - install
+# - name: Use local mirrors
+#   replace:
+#     dest: /etc/yum.repos.d/epel.repo
+#     regexp: "^#baseurl.*$"
+#     replace: "baseurl=http://mirror.ufs.ac.za/fedora-epel/6/x86_64"
+#   tags:
+#     - repos
+#     - EPEL
+#     - install
+- name: download the epel release
+  get_url:
+    src: "{{ epel_release_url }}/{{ epel_release_name }}"
+    dest: "/tmp/{{ epel_release_name }}"
 
 - name: Ensure that epel-release is present
   yum:
-    name: "{{ epel_release_url }}/{{ epel_release_name }}"
+    name: "/tmp/{{ epel_release_name }}"
     state: present
   retries: 2
   tags:
