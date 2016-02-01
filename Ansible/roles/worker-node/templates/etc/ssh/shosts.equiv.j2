@@ -1,5 +1,7 @@
 {% for host in groups['worker-nodes'] %}
+{% if hostvars[host].ansible_eth0 %}
 {{  hostvars[host].ansible_eth0.ipv4.address }}
+{% endif %}
 {% endfor %}
 
 

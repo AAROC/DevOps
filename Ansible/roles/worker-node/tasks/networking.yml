@@ -1,14 +1,14 @@
 ---
-- name: what is the name of the cluster head node ?
-  debug:
-    var: groups['cluster-head-nodes'][0]
-  tags:
-    - debug
-- name: what is the head node's ipv4 address ?
-  debug:
-    var: hostvars[groups['cluster-head-nodes'][0]].ansible_eth1.ipv4.address
-  tags:
-    - debug
+# - name: what is the name of the cluster head node ?
+#   debug:
+#     var: groups['cluster-head-nodes'][0]
+#   tags:
+#     - debug
+# - name: what is the head node's ipv4 address ?
+#   debug:
+#     var: hostvars[groups['cluster-head-nodes'][0]].ansible_eth1.ipv4.address
+#   tags:
+#     - debug
 
 - name: Add head node IP to known hosts
   template:
