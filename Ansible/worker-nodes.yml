@@ -12,12 +12,13 @@
       dest: /etc/ssh/ssh_config
 
 - hosts: cluster-head-nodes
-  connection: local
-  command:
-    'ssh-keyscan -t rsa {{ item }} >> /etc/ssh/ssh_known_hosts'
-  with_items:
-    groups['worker-nodes']
-
+  tasks:
+  - name: add ssh host keys
+    connection: local
+    command:
+      'ssh-keyscan -t rsa {{ item }} >> /etc/ssh/ssh_known_hosts'
+    with_items:
+      - groups['worker-nodes']
 
 
   - name: Put the host key in the worker node public keys
@@ -32,11 +33,6 @@
       path: roles/worker-node/files/etc/munge
       state: directory
     delegate_to: localhost
-
-- hosts: worker-nodes
-  name: Enable HostBased ssh for WN
-
-
 
 - hosts: worker-nodes
   name: Prepare worker nodes for installation
