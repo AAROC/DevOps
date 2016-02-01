@@ -7,5 +7,5 @@
 {% endfor %}
 
 {% for host in groups['worker-nodes']|sort %}
-{{ hostvars[host].ansible_eth1.ipv4.address }} {{ hostvars[host].ansible_hostname }}.{{ site_domain }} {{ hostvars[host].ansible_hostname }}
+{{ hostvars[host].ansible_eth0.ipv4.address }} {{ hostvars[host].ansible_hostname }}.{{ site_domain }} {{ hostvars[host].ansible_hostname }}
 {% endfor %}

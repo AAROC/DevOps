@@ -7,11 +7,10 @@
 - hosts: cluster-head-nodes
   connection: local
   tasks:
-  - name: Debug host key
-    debug:
-      msg: "key is {{ ansible_ssh_host_key_rsa_public }}"
-    tags:
-      - debug
+  - name: Enable HostbasedAuthentication in ssh client
+    copy:
+      src: etc/ssh/ssh_config
+      dest: /etc/ssh/ssh_config 
 
   - name: Put the host key in the worker node public keys
     lineinfile:
@@ -25,6 +24,7 @@
       path: roles/worker-node/files/etc/munge
       state: directory
     delegate_to: localhost
+
 
 
 - hosts: worker-nodes
