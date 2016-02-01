@@ -1,8 +1,6 @@
 {% for host in groups['worker-nodes'] %}
 {{  hostvars[host].ansible_eth0.ipv4.address }}
 {% endfor %}
-
-
 {% for host in groups['cluster-head-nodes'] %}
 {{ hostvars[host].ansible_eth1.ipv4.address }}
 {% endfor %}

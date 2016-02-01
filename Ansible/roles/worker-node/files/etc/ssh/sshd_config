@@ -39,7 +39,7 @@ PermitRootLogin without-password
 #AuthorizedKeysCommandRunAs nobody
 
 # For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
-#RhostsRSAAuthentication yes
+RhostsRSAAuthentication yes
 # similar for protocol version 2
 HostbasedAuthentication yes
 # Change to yes if you don't trust ~/.ssh/known_hosts for
