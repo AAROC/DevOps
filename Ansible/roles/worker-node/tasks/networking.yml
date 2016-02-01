@@ -9,6 +9,8 @@
 #     var: hostvars[groups['cluster-head-nodes'][0]].ansible_eth1.ipv4.address
 #   tags:
 #     - debug
+- name: gather facts
+  setup:
 
 - name: Add head node IP to known hosts
   template:
