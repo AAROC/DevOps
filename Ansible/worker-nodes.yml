@@ -5,6 +5,7 @@
 # and that you can happily ssh to them as root
 ---
 - hosts: worker-nodes
+  tasks:
   - name: Add Ansible pub key to wn authorized_keys
     authorized_key:
       user: ansible
