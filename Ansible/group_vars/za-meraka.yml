@@ -71,7 +71,7 @@ user_home_prefix: /gridhome
 # TODO - new LFC has to be deployed here at Meraka | BB 10/13
 #lfc_host: devslngrd002.uct.ac.za
 lfc_host:
-
+is_both_cream_and_torque: true
 ce_host: ce01-node001.c4.csir.co.za
 #  MPI capabilities
 mpich_enabled: false
