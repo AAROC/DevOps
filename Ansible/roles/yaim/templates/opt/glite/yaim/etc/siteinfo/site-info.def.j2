@@ -663,7 +663,7 @@ CREAM_DB_USER=cream
 CREAM_DB_PASSWORD=creampw
 {% endif -%}
 {% if is_both_cream_and_torque -%}
-CONFIG_TORQUE_NODES={{ config_torque_nodes }}
+CONFIG_TORQUE_NODES={{ config_torque_nodes | default("yes") }}
 CONFIG_MAUI={{ config_maui }}
 {% endif -%}
 
