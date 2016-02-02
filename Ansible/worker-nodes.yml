@@ -4,39 +4,28 @@
 # since this is to manage the worker nodes, we are also assuming that they are on a local network
 # and that you can happily ssh to them as root
 ---
-- hosts: cluster-head-nodes
-  connection: local
+- hosts: worker-nodes
   tasks:
-  - name: Debug host key
-    debug:
-      msg: "key is {{ ansible_ssh_host_key_rsa_public }}"
-    tags:
-      - debug
+  - name: Add Ansible pub key to wn authorized_keys
+    authorized_key:
+      user: ansible
+      key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
 
-  - name: Put the host key in the worker node public keys
-    lineinfile:
-      dest: roles/worker-node/vars/public_keys.yml
-      line: "public_keys{{':'}} ssh-rsa {{ ansible_ssh_host_key_rsa_public }} ansible@{{ ansible_hostname }}"
-      state: present
-      create: yes
-    delegate_to: localhost
   - name: Ensure that the munge directory is available in the local clone
     file:
       path: roles/worker-node/files/etc/munge
       state: directory
     delegate_to: localhost
 
-
 - hosts: worker-nodes
   name: Prepare worker nodes for installation
-  user: root
   roles:
     - { role: common, become: true, tags: "common" }
     - { role: certificates, become: true, tags: "certificates" }
     - { role: worker-node, become: true, tags: "wn" }
     - { role: umd, become: true, tags: "umd" }
     - { role: emi-worker-node, become: true, tags: "emi" }
-    - { role: yaim, become: true, tags: "yaim" }
+    - { role: yaim, become: true, tags: "yaim", emi_service: "WN"}
   pre_tasks:
     - name: Pull in the relevant variables
       include_vars: "{{ item }}"

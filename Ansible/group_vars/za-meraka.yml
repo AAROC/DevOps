@@ -74,6 +74,7 @@ lfc_host:
 
 ce_host: ce01-node001.c4.csir.co.za
 #  MPI capabilities
+mpich_enabled: false
 mpich2_enabled: true
 openmpi_enabled: true
 mpich2_version: 1.2.1

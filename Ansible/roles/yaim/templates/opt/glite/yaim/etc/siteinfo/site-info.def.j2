@@ -93,7 +93,6 @@ GROUPS_CONF={{ yaim_conf_dir }}/groups.conf
 
 # Uncomment this variable if you are installing a mysql server
 # It is the MySQL admin password.
-MYSQL_PASSWORD={{ mysql_pass }}
 {% if needs_mysql %}
 MYSQL_PASSWORD="{{ mysql_pass }}"
 {% endif %}

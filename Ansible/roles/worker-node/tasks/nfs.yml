@@ -5,4 +5,4 @@
   become: true
   lineinfile:
     dest: /etc/fstab
-    line: "{{ groupvars['cluster-head-nodes'] }}:/home /home nfs rw 0 0"
+    line: "{{ groups['cluster-head-nodes'][0] }}:/home /home nfs rw 0 0"

@@ -21,6 +21,14 @@
         parse: 'full'
       tags:
         - slack
+    - name: debug some variables
+      debug:
+       var: "{{ item }}"
+      with_items:
+       - needs_mysql
+       - mysql_pass
+       - needs_certificate
+       - emi_service
   roles:
   - { role: common, become: true }
   - { role: certificates, become: true }

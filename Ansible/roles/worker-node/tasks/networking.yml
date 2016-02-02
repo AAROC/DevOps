@@ -1,19 +1,4 @@
 ---
-- name: what is the head node's ipv4 address ?
-  debug:
-    var: hostvars[groups['cluster-head-nodes'][0]].ansible_eth1.ipv4.address
-  tags:
-    - debug
-
-- name: Add head node IP to known hosts
-  template:
-    src: etc/ssh/shosts.equiv.j2
-    dest: /etc/ssh/shosts.equiv
-    owner: root
-    group: root
-  tags:
-  - networking
-
 - name: Setup known hosts for host-based authentication
   template:
     src: etc/ssh/ssh_known_hosts.j2
