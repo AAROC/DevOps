@@ -94,16 +94,16 @@ cream-ces
 
 # Worker Nodes
 [worker-nodes]
-ce01-node003 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node004 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node005 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node006 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node007 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node008 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node009 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node010 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node011 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
-ce01-node012 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+192.168.11.3 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+192.168.11.4 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+192.168.11.5 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+192.168.11.6 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+192.168.11.7 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+192.168.11.8 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+192.168.11.9 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+#192.168.11.10 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+192.168.11.11 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+192.168.11.12 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
 [cluster-head-nodes]
 ce01-node001.c4.csir.co.za
 
