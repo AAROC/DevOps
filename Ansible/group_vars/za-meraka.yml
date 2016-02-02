@@ -93,7 +93,7 @@ ce_os_arch: x86_64
 ce_minphysmem: 2048
 ce_minvirtmem: 6144
 ce_physcpu: 1
-ce_logcpu:
+ce_logcpu: 12
 ce_smpsize: 1
 ce_si00: 2105
 ce_sf00: 2601
@@ -109,7 +109,7 @@ batch_server: ce01-node001.c4.csir.co.za
 job_manager: lcgpbs
 ce_batch_sys: torque
 batch_log_dir: /var/torque
-batch_version: torque-2.5.7
+batch_version: torque-4.2.10
 
 # vars for service: emi_dpm_mysql
 dpm_host: se.c4.csir.co.za
