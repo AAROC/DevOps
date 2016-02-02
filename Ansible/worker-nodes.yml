@@ -19,7 +19,6 @@
 
 - hosts: worker-nodes
   name: Prepare worker nodes for installation
-  user: root
   roles:
     - { role: common, become: true, tags: "common" }
     - { role: certificates, become: true, tags: "certificates" }
