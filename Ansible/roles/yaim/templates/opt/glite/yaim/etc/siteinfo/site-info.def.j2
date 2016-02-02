@@ -657,7 +657,7 @@ VO_OPS_DEFAULT_SE=$SE_HOST
 
 {% if emi_service == "CREAM_CE"  -%}
 # CREAM specific section
-CREAMCE_CLUSTER_MODE={{ creamce_cluster_mode }}
+CREAMCE_CLUSTER_MODE={{ creamce_cluster_mode | default("no")}}
 APEL_MYSQL_HOST={{ apel_mysql_host }}
 CREAM_DB_USER=cream
 CREAM_DB_PASSWORD=creampw
