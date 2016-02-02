@@ -110,7 +110,7 @@ job_manager: lcgpbs
 ce_batch_sys: torque
 batch_log_dir: /var/torque
 batch_version: torque-4.2.10
-
+glite_local_customization_dir: ""
 # vars for service: emi_dpm_mysql
 dpm_host: se.c4.csir.co.za
 dpmmgr: { uid: 400, gid: 4000 }
