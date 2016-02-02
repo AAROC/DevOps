@@ -203,6 +203,7 @@
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
   tags:
     - yaim
+    - slack
 
 - name: run yaim
   command: "{{ yaim_path }}/bin/yaim -c -s {{ yaim_conf_dir }}/site-info.def {{ yaim_options }}"
@@ -220,3 +221,4 @@
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
   tags:
     - yaim
+    - slack
