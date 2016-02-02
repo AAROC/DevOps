@@ -1,28 +1,10 @@
 ---
 yaim_path: /opt/glite/yaim
 yaim_conf_dir: /opt/glite/yaim/etc/{{ site_name }}/siteinfo
-SkipCRLs: false
-# site_name has to be set in the group vars
-# site_name:
-needs_mysql: no
-emi_service: none
-glite_local_customization_dir: ""
 yaim_users_home_path: /home
 user_home_prefix: ""
 # this needs to be set, but will be set to empty - each site should set this in their group_vars
-mysql_pass: ""
+#mysql_pass: ""
 bdii_delete_delay: 43200
 # service-specific variables
 # there is no default, so we set everything off
-
-# CREAM CE
-is_cream: false
-is_both_cream_and_torque: false
-
-# WMS
-is_wms: false
-
-# NAGIOS
-is_nagios: false
-# ARGUS
-pap_admin_dn: ""

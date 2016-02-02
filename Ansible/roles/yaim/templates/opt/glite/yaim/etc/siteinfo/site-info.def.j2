@@ -93,8 +93,7 @@ GROUPS_CONF={{ yaim_conf_dir }}/groups.conf
 
 # Uncomment this variable if you are installing a mysql server
 # It is the MySQL admin password.
-MYSQL_PASSWORD={{ mysql_pass }}
-{% if needs_mysql %}
+{% if needs_mysql == true %}
 MYSQL_PASSWORD="{{ mysql_pass }}"
 {% endif %}
 
@@ -656,25 +655,26 @@ VO_OPS_DEFAULT_SE=$SE_HOST
  '/DC=ch/DC=cern/CN=CERN Trusted Certification Authority' \
  "
 
-{% if is_cream  -%}
+{% if emi_service == "CREAM_CE"  -%}
 # CREAM specific section
 CREAMCE_CLUSTER_MODE={{ creamce_cluster_mode }}
-{% if is_both_cream_and_torque -%}
-CONFIG_TORQUE_NODES={{ config_torque_nodes }}
-CONFIG_MAUI={{ config_maui }}
-{% endif -%}
+{% endif %}
 APEL_MYSQL_HOST={{ apel_mysql_host }}
 CREAM_DB_USER=cream
 CREAM_DB_PASSWORD=creampw
 {% endif -%}
+{% if is_both_cream_and_torque -%}
+CONFIG_TORQUE_NODES={{ config_torque_nodes }}
+CONFIG_MAUI={{ config_maui }}
+{% endif -%}
 
-{% if is_wms -%}
+{% if emi_service == "WMS" -%}
 # WMS specific section
 GLITE_LB_AUTHZ_REGISTER_JOBS=".*"
 GLITE_LB_WMS_DN="/C=IT/O=INFN/OU=Host/L={{ site_name }}/CN={{ wms_host }}"
 {% endif -%}
 
-{% if is_nagios %}
+{% if emi_service == "SAM_NAGIOS" %}
 # Nagios
 NAGIOS_HOST={{ nagios_host }}
 NAGIOS_ADMIN_DNS="{{ nagios_admin_dns|join(',') }}"

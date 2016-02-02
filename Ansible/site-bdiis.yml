@@ -31,7 +31,7 @@
     - { role: common, become: true }
     - { role: umd, become: true }
     - { role: site-bdii, become: true }
-    - { role: yaim, become: true }
+    - { role: yaim, become: true, emi_service: BDII_site}
   post_tasks:
     - name: Tell the team
       slack:

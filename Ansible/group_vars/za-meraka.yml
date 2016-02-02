@@ -71,9 +71,10 @@ user_home_prefix: /gridhome
 # TODO - new LFC has to be deployed here at Meraka | BB 10/13
 #lfc_host: devslngrd002.uct.ac.za
 lfc_host:
-
+is_both_cream_and_torque: true
 ce_host: ce01-node001.c4.csir.co.za
 #  MPI capabilities
+mpich_enabled: false
 mpich2_enabled: true
 openmpi_enabled: true
 mpich2_version: 1.2.1
@@ -92,7 +93,7 @@ ce_os_arch: x86_64
 ce_minphysmem: 2048
 ce_minvirtmem: 6144
 ce_physcpu: 1
-ce_logcpu:
+ce_logcpu: 12
 ce_smpsize: 1
 ce_si00: 2105
 ce_sf00: 2601
@@ -108,8 +109,8 @@ batch_server: ce01-node001.c4.csir.co.za
 job_manager: lcgpbs
 ce_batch_sys: torque
 batch_log_dir: /var/torque
-batch_version: torque-2.5.7
-
+batch_version: torque-4.2.10
+glite_local_customization_dir: ""
 # vars for service: emi_dpm_mysql
 dpm_host: se.c4.csir.co.za
 dpmmgr: { uid: 400, gid: 4000 }
