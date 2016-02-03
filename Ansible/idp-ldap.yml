@@ -2,7 +2,7 @@
 - name: Configure the LDAP machine
   hosts: ldap-servers
   roles:
-  - { role: ldap, become: true }
+  - { role: ldap, become: true, tags: "ldap" }
   tags:
   - LDAP
   vars_files:
@@ -12,10 +12,8 @@
   hosts: shibboleth-idps
   roles:
 #  - fmarco76.tomcat
-  - shibboleth-idp
-  - fmarco76.IDPPublic
-  tags:
-  - idp
+  - { role: shibboleth-idp, tags: "shibboleth-idp" }
+  - { role: fmarco76.IDPPublic, tags: "idppublic" }
   pre_tasks:
     - name: Ensure that CA certs are present
       become: true

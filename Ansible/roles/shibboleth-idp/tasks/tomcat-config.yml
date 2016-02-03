@@ -36,7 +36,7 @@
   become: yes
   lineinfile:
     dest: "{{ tomcat6_config_start }}"
-    line: "JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"
+    line: 'JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"'
     state: absent
   register: remove_old_opts
 
@@ -44,7 +44,7 @@
   become: yes
   replace:
     dest: "{{ tomcat6_config_start }}"
-    regexp: "-Xmx\d*m"
+    regexp: '-Xmx\d*m'
     replace: ""
   register: memory_size
 
@@ -52,7 +52,7 @@
   become: yes
   replace:
     dest: "{{ tomcat6_config_start }}"
-    regexp: "-XX:MaxPermSize=\d*m"
+    regexp: '-XX:MaxPermSize=\d*m'
     replace: ""
   register: perm_gen_memory_size
 
@@ -60,8 +60,8 @@
   become: yes
   lineinfile:
     dest: "{{ tomcat6_config_start }}"
-    line: "JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"
-#     state:  ?
+    line: 'JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"'
+    state: present
   changed_when: new_opts.changed and remove_old_opts.found==0
   register: new_opts
   notify: restart tomcat
