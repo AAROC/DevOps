@@ -12,7 +12,7 @@ cert_CA_certificates:
 site_name: Catch-All
 host_institute:
   name: Africa-Arabia Regional Operations Centre
-  url: http://aaroc.github.io
+  url: http://www.africa-grid.org
 
 # LDAP variables
 server_country: ZA
