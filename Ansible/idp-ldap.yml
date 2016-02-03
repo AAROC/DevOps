@@ -14,8 +14,6 @@
 #  - fmarco76.tomcat
   - shibboleth-idp
   - fmarco76.IDPPublic
-  vars_files:
-  - "group_vars/passwords-{{ site_name }}.yml"
   tags:
   - idp
   pre_tasks:
@@ -40,6 +38,11 @@
     - name: what is the new hostname ?
       debug:
         var: ansible_fqdn
+    - name: Pull in the relevant variables
+      include_vars: "{{ item }}"
+      with_items:
+        - roles/common/vars/middleware/IGTF.yml
+        - "group_vars/passwords-{{ site_name }}.yml"
   post_tasks:
     - name: Announce new IdP to the federation manager
       slack:

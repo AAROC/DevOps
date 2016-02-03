@@ -1,24 +1,23 @@
 ---
 # tasks file for fmarco76.tomcat
 - name: Install Java platform and server on the machine (Debian)
-  sudo: yes
+  become: yes
   apt: name={{ item }} state=present
   with_items:
-    - default-jdk 
-    - tomcat6 
-    - ant 
+    - default-jdk
+    - tomcat6
+    - ant
     - expect
   when: ansible_os_family == "Debian"
 
 - name: Install Java platform and server on the machine (RedHat)
-  sudo: yes
+  become: yes
   yum: name={{ item }} state=present
   with_items:
-    - java-1.7.0-openjdk 
+    - java-1.7.0-openjdk
     - java-1.7.0-openjdk-devel
-    - tomcat6 
-    - ant 
+    - tomcat6
+    - ant
     - ant-apache-regexp
     - expect
   when: ansible_os_family == "RedHat"
-
