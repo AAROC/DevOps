@@ -1,11 +1,14 @@
 |Build Status|
 ==============
 
-DevOps
-======
+AAROC is DevOps
+===============
 
-This is the repository for the DevOps code which executes AAROC
-infrastructure. We support Ansible and Puppet.
+| The `Africa-Arabia Regional Operations
+  Centre <http://www.africa-grid.org>`__\ (AAROC) is an e-Infrastructure
+  collaboration with members across Africa and the Middle East. AAROC
+| This is the repository for the DevOps code which executes AAROC
+  infrastructure. We support Ansible and Puppet.
 
 Communicating and Collaborating.
 ================================
@@ -35,27 +38,22 @@ snapshot of the current state is below.
 | |Issues Ready|
 
 Contributing
-============
+------------
 
 See `CONTRIBUTING.md <CONTRIBUTING.md>`__
 
-Citing
-======
+Quickstart guide for site administrators
+========================================
 
-|DOI|
-
-We like our code so much, we put a DOI on it ! If you like it, please
-use it, but also cite us, so that our funders will be happy.
-
-Getting started.
-================
+Service configuration
 
 Ansible
 -------
 
-Contribute inventory spec to ``Ansible/inventories/inventory.site``. If
-your playbooks are very site-specific, create a subdirectory in
-Ansible/sites for your site as declared in the GOCDB and work there.
+| If you are using
+| Contribute inventory spec to ``Ansible/inventories/inventory.site``.
+  If your playbooks are very site-specific, create a subdirectory in
+  Ansible/sites for your site as declared in the GOCDB and work there.
 
 Puppet
 ------
@@ -69,6 +67,28 @@ Issues
 
 If you have questions, comments or suggestions, please open an issue and
 assign it the right tag.
+
+Using Ansible
+=============
+
+Playbook Documentation
+----------------------
+
+Ansible
+
+Role documentation
+------------------
+
+How to cite this work
+=====================
+
+|DOI|
+
+We like our code so much, we put a DOI on it ! If you like it, please
+use it, but also cite us, so that our funders will be happy.
+
+`F.A.Q <docs/FAQ.md>`__
+=======================
 
 .. |Build Status| image:: https://travis-ci.org/AAROC/DevOps.svg?branch=dev
    :target: https://travis-ci.org/AAROC/DevOps
