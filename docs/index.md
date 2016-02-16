@@ -17,7 +17,15 @@
 
 > The mission of the Africa-Arabia Regional Operations Centre is to promote and support collective, coherent and sustainable interoperability of e-Infrastructures within the region and beyond, to peer infrastructures in the rest of the world; and to act as a point of coordination and support to computational resource providers in the region, in order to promote and develop regional scientific and technical collaboration.
 
-The [Africa-Arabia Regional Operations Centre](http://www.africa-grid.org) (AAROC) is an e-Infrastructure collaboration with members across Africa and the Middle East. AAROC is an resource infrastructure provider to [EGI.eu], and has signed an [Operating Level Agreement]() with EGI in
+The [Africa-Arabia Regional Operations Centre](http://www.africa-grid.org) (AAROC) is an e-Infrastructure collaboration with members across Africa and the Middle East. AAROC is an resource infrastructure provider to [EGI.eu], and has signed an [Operating Level Agreement]() with EGI.
+
+## Interoperability
+
+EGI provides several infrastructure services which enable interoperability :
+
+  * [GOCDB](http://goc.egi.eu) : The operations database, where all sites and services are defined. GOCDB provides a topology which is used by various other services, and is used to declare service states and downtimes.
+  * [Operations Portal](https://operations-portal.egi.eu) : The dashboard for the [Regional Operator on Duty](https://wiki.egi.eu/wiki/Regional_Operator_on_Duty)
+  * [Accounting Portal](http://accounting.egi.eu) : The accounting portal where usage by various communities is reported.
 
 ## Software-Defined Infrastructure
 
@@ -50,9 +58,18 @@ Site administrators have freedom of choice in managing the services at their sit
 
 ## Ansible
 
-If you would like to use Ansible to
+If you would like to use Ansible to deploy your site :
 
-Contribute inventory spec to `Ansible/inventories/inventory.site`. If your playbooks are very site-specific, create a subdirectory in Ansible/sites for your site as declared in the GOCDB and work there.
+  1. Clone the repository's `master` branch  : `git clone https://github.com/AAROC/DevOps`
+  2. Create create a new branch with your site name as defined in GOCDB : `git branch <site-name>`
+  3. Propose the local site configuration :
+		4. *Inventory*. Contribute your inventory to  to `Ansible/inventories/inventory.<site-name>`. If your playbooks are very site-specific, create a subdirectory in Ansible/sites for your site as declared in the GOCDB and work there.
+	  4. *Variables*. Create two variables files for your site in `Ansible/group_vars` :
+		  5. `<site-name>`, where `<site-name>` is the name of your site in the GOCDB (_e.g._ za-meraka). This will contain the site-specific variables, but not sensitive information.
+		  6. `<site-name>-passwords` (_e.g._ `za-meraka-passwords`) : This is the site-specific variables file containing sensitive information. It should be encrypted with `ansible-vault` before being committed : `ansible-vault encrypt Ansible/group_vars/passwords-<site-name>`.
+	  7. Send a pull request to the repository so that the configuration can be checked and verified.
+  8. Create your `<site-name>.yml`  playbook to deploy the services which you need at your site - use as many of the provided roles as you need.
+  9. Run ansible : `ansible-playbook -i inventories/inventory-<site-name> --ask-vault-pass <site-name>.yml`
 
 ## Puppet
 

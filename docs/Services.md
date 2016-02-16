@@ -11,7 +11,9 @@ In Ansible, service descriptions take the form of [_roles_](https://docs.ansible
 
 This chapter contains the documentation of the roles (services) which have been developed in the project. For how to apply them in playbooks, see [the playbooks chapter](Playbooks.md)
 
-# Ansible
+# Ansible roles for service orchestration
+
+## Roles
 
 Some Ansible roles have been developed to apply generic configurations independent of any middleware or service. These are :
 
