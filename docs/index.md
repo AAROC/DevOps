@@ -1,5 +1,19 @@
 # [![Build Status](https://travis-ci.org/AAROC/DevOps.svg?branch=dev)](https://travis-ci.org/AAROC/DevOps)
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
+- [[![Build Status](https://travis-ci.org/AAROC/DevOps.svg?branch=dev)](https://travis-ci.org/AAROC/DevOps)](#build-statushttpstravis-ciorgaarocdevopssvgbranchdevhttpstravis-ciorgaarocdevops)
+- [AAROC is DevOps](#aaroc-is-devops)
+	- [Software-Defined Infrastructure](#software-defined-infrastructure)
+- [Communicating and Collaborating.](#communicating-and-collaborating)
+	- [Development Status and Roadmap](#development-status-and-roadmap)
+	- [Contributing](#contributing)
+- [Quickstart guide for site administrators](#quickstart-guide-for-site-administrators)
+	- [Ansible](#ansible)
+	- [Puppet](#puppet)
+- [Issues](#issues)
+- [How to cite this work](#how-to-cite-this-work)
+
+<!-- /TOC -->
 # AAROC is DevOps
 
 > The mission of the Africa-Arabia Regional Operations Centre is to promote and support collective, coherent and sustainable interoperability of e-Infrastructures within the region and beyond, to peer infrastructures in the rest of the world; and to act as a point of coordination and support to computational resource providers in the region, in order to promote and develop regional scientific and technical collaboration.
