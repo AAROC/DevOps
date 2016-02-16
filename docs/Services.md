@@ -25,6 +25,6 @@ Roles have been developed for the following services:
 
 ### Grid Services
 
-  1. [top-BDII](Ansible/roles/top-bdii/index.md)
+  1. [top-BDII](Ansible/roles/top-bdii/)
 
 # Site Services

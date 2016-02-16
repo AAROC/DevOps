@@ -5,3 +5,6 @@ source_parsers = {
 }
 
 source_suffix = ['.rst', '.md']
+html_theme_options = {
+  'collapse_navigation': True
+}
