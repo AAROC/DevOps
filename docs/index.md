@@ -59,4 +59,4 @@ Ansible
 
 We like our code so much, we put a DOI on it ! If you like it, please use it, but also cite us, so that our funders will be happy.
 
-# [F.A.Q](docs/FAQ.rst)
+# [F.A.Q](FAQ.md)
