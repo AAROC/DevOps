@@ -52,16 +52,13 @@ If you have questions, comments or suggestions, please open an issue and assign 
 
 
 
-## [Playbook Documentation]()
+## [Playbook Documentation](Ansible/playbooks/index.md)
 
+## [Role Documentation](Ansible/roles/index.md)
 
-
-## Role documentation
 
 
 # How to cite this work
 [![DOI](https://zenodo.org/badge/1514/AAROC/DevOps.png)](http://dx.doi.org/10.5281/zenodo.11914)
 
 We like our code so much, we put a DOI on it ! If you like it, please use it, but also cite us, so that our funders will be happy.
-
-# [F.A.Q](FAQ.md)
