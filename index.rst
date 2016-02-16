@@ -87,8 +87,8 @@ How to cite this work
 We like our code so much, we put a DOI on it ! If you like it, please
 use it, but also cite us, so that our funders will be happy.
 
-`F.A.Q <docs/FAQ.md>`__
-=======================
+`F.A.Q <docs/FAQ.rst>`__
+========================
 
 .. |Build Status| image:: https://travis-ci.org/AAROC/DevOps.svg?branch=dev
    :target: https://travis-ci.org/AAROC/DevOps
