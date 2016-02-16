@@ -4,9 +4,11 @@
 
 > The mission of the Africa-Arabia Regional Operations Centre is to promote and support collective, coherent and sustainable interoperability of e-Infrastructures within the region and beyond, to peer infrastructures in the rest of the world; and to act as a point of coordination and support to computational resource providers in the region, in order to promote and develop regional scientific and technical collaboration.
 
-The [Africa-Arabia Regional Operations Centre](http://www.africa-grid.org) (AAROC) is an e-Infrastructure collaboration with members across Africa and the Middle East. AAROC is an resource infrastructure provider to [EGI.eu], and has signed an [Operating Level Agreement]()
+The [Africa-Arabia Regional Operations Centre](http://www.africa-grid.org) (AAROC) is an e-Infrastructure collaboration with members across Africa and the Middle East. AAROC is an resource infrastructure provider to [EGI.eu], and has signed an [Operating Level Agreement]() with EGI in
 
-This is the repository for the DevOps code which executes AAROC infrastructure. We support Ansible and Puppet.
+## Software-Defined Infrastructure
+
+<! --- todo: why software-defined infrastructure is a good idea -->
 
 # Communicating and Collaborating.
 
@@ -30,13 +32,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 # Quickstart guide for site administrators
 
+This is the repository for the DevOps code which executes AAROC infrastructure. We support Ansible and Puppet.
 Site administrators have freedom of choice in managing the services at their site, as long as they
-
 
 ## Ansible
 
-![](images/ansible_circleA_black_small.png)
-If you are using Ansible to configure your site
+If you would like to use Ansible to
+
 Contribute inventory spec to `Ansible/inventories/inventory.site`. If your playbooks are very site-specific, create a subdirectory in Ansible/sites for your site as declared in the GOCDB and work there.
 
 ## Puppet
@@ -46,17 +48,6 @@ Contribute your code to `Puppet/` If your Puppet modules are site-specific, crea
 # Issues
 
 If you have questions, comments or suggestions, please open an issue and assign it the right tag.
-
-
-# Using Ansible
-
-
-
-## [Playbook Documentation](Ansible/playbooks/index.md)
-
-## [Role Documentation](Ansible/roles/index.md)
-
-
 
 # How to cite this work
 [![DOI](https://zenodo.org/badge/1514/AAROC/DevOps.png)](http://dx.doi.org/10.5281/zenodo.11914)

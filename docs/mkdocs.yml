@@ -1,4 +1,4 @@
 pages:
 - Home: index.md
-- About: about.md
+- Ansible:
 theme: readthedocs
