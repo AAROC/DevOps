@@ -1,39 +1,42 @@
 Top-BDII
 =========
 
-This role installs an EMI top-bdii.
+This role installs an EMI top-bdii. The top-bdii is a core service and required only at the infrastructure level, not at the site level.
 
-Requirements
+## Middleware information
+
+For more information on the middleware itself, see :
+
+  * [EMI BDII Core product page](http://www.eu-emi.eu/products/-/asset_publisher/1gkD/content/bdii-core-2)
+  * [EMI Top-BDII product page]()
+
+Role Requirements
 ------------
 
-The role requires the application of _at least_ the `certificates`  and `umd` roles
+The role requires the application of _at least_ the `certificates`  and `umd` roles.
 
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+This role has no variables
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+No explicit dependencies, however it should be used with the `certificates` and `umd` roles
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+See [../../playbooks/top-bdii/]
 
 License
 -------
 
-BSD
+Apache-2.0
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Bruce Becker (CSIR Meraka Institute)
