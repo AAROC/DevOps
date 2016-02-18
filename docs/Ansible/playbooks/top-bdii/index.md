@@ -60,6 +60,10 @@ Post tasks are applied once yaim has completed :
     - roles/common/vars/middleware/IGTF.yml
 ```
 Variables necessary for this playbook, which are not provided by the role itself are pulled in from the common role. See the [`common` role](../../roles/common/index.md) role for more information.
+
+```
   handlers:
     - include: roles/common/handlers/main.yml
 ```
+
+The handler from the common role is pulled in, in order to 
