@@ -1,0 +1,3 @@
+[submodule "Ansible/roles/osct.tomcat-8"]
+	path = Ansible/roles/osct.tomcat-8
+	url = git@github.com:osct/tomcat-8.git
