@@ -124,7 +124,10 @@
   when: cert == false
 
 - name: Copy JKS generator script
-  template: src=jks.expect.j2 dest={{ tomcat6_config_path }}/jks.expect mode="u+x"
+  template:
+    src: jks.expect.j2
+    dest: "{{ tomcat6_config_path }}/jks.expect"
+    mode: "u+x"
   become: true
   when: "{{ have_cert.stat.exists }} == false and {{ have_key.stat.exists }} == false"
 
