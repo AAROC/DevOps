@@ -4,7 +4,7 @@
   command: iptables -t {{ table }} -L -n
   register: iptables_rules
   changed_when: "False"
-  sudo: yes
+  become: yes
   tags:
     - security
 
@@ -12,14 +12,14 @@
   raw: 'iptables -t {{ table }} -S {{ chain }} | grep -v "\-P" | wc -l | tr -d "\n"'
   register: iptables_count
   changed_when: "False"
-  sudo: yes
+  become: yes
   tags:
     - security
 
 - name: Apply rules for the local network
   command: 'bash -c "x={{ iptables_count.stdout }} ; iptables -t {{ table }} -I {{ chain }} ${x/0/1} -p tcp -m state --state NEW -s {{ ansible_default_ipv4.address }}/{{ ansible_default_ipv4.netmask }}  --dport {{ item }} -j ACCEPT"'
   register: applied_rules_local
-  sudo: yes
+  become: yes
   when: 'iptables_rules.stdout.find("dpt:{{ item }}")==-1 and source_host_net is not defined and table=="filter"'
   with_items: ports
   tags:
@@ -28,7 +28,7 @@
 - name: Apply rules for the defined network
   command: 'bash -c "x={{ iptables_count.stdout }} ; iptables -t {{ table }} -I {{ chain }} ${x/0/1} -p tcp -m state --state NEW -s {{ source_host_net }} --dport {{ item }} -j ACCEPT"'
   register: applied_rules_defined
-  sudo: yes
+  become: yes
   when: 'iptables_rules.stdout.find("dpt:{{ item }}")==-1 and source_host_net is defined and table=="filter"'
   with_items: ports
   tags:
@@ -36,22 +36,25 @@
 
 
 - name: Apply nat rules
-  command: 'bash -c "x={{ iptables_count.stdout }} ; iptables -t {{ table }} -I {{ chain }} ${x/0/1} -p tcp -m tcp --dport {{ item.port }} -j DNAT --to-destination {{ ansible_default_ipv4.address }}:{{ item.dport }}"'
-  sudo: yes
+  raw: 'bash -c "x={{ iptables_count.stdout }} ; iptables -t {{ table }} -I {{ chain }} ${x/0/1} -p tcp -m tcp --dport {{ item.port }} -j DNAT --to-destination {{ ansible_default_ipv4.address }}:{{ item.dport }}"'
+  become: yes
   register: applied_rules_nat
   when: 'iptables_rules.stdout.find("dpt:{{ item.port }}")==-1 and source_host_net is not defined and table=="nat"'
   with_items: ports
+  failed_when: false
+  tags:
+    - security
 
 - name: Save iptable rules
   shell: /sbin/iptables-save > /etc/iptables/rules
-  sudo: yes
+  become: yes
   when: ansible_os_family=="Debian" and ( applied_rules_local.changed or applied_rules_defined.changed or applied_rules_nat.changed )
   tags:
     - security
 
 - name: Save iptable rules
   command: service iptables save
-  sudo: yes
+  become: yes
   when: ansible_os_family=="RedHat" and ( applied_rules_local.changed or applied_rules_defined.changed )
   tags:
     - security

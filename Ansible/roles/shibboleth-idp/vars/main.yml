@@ -7,7 +7,8 @@ apache:
 # vars file for shibboleth-idp
 idp_version: 2.4.1
 shibboleth_install_path: /opt/shibboleth-idp
-shibboleth_install_cert_pass: thisismystupidpassphrase # password
+# shibboleth_install_cert_pass: 
+# This has been moved to password-{{ site_name }}
 shibboleth_idp_log_level: INFO
 shibboleth_ldap_log_level: INFO
 idp_url: http://shibboleth.net/downloads/identity-provider/
@@ -23,7 +24,8 @@ shibboleth_secure_port: 8443
 # this should be
 idp_base_dn: "ou=People,dc=local"
 idp_principal: "cn=useradmin,dc=local"
-idp_principal_credential: choose_a_good_pass
+# idp_principal_credential:
+# Moved to passwords-{{ site_name }}
 
 # Federation variables
 # You can have more than one metadata provider.

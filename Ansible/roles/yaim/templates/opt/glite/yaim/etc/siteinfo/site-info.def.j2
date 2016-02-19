@@ -657,15 +657,14 @@ VO_OPS_DEFAULT_SE=$SE_HOST
 
 {% if emi_service == "CREAM_CE"  -%}
 # CREAM specific section
-CREAMCE_CLUSTER_MODE={{ creamce_cluster_mode }}
-{% endif %}
+CREAMCE_CLUSTER_MODE={{ creamce_cluster_mode | default("no")}}
 APEL_MYSQL_HOST={{ apel_mysql_host }}
 CREAM_DB_USER=cream
 CREAM_DB_PASSWORD=creampw
 {% endif -%}
 {% if is_both_cream_and_torque -%}
-CONFIG_TORQUE_NODES={{ config_torque_nodes }}
-CONFIG_MAUI={{ config_maui }}
+CONFIG_TORQUE_NODES={{ config_torque_nodes | default("yes") }}
+CONFIG_MAUI={{ config_maui | default("YES")}}
 {% endif -%}
 
 {% if emi_service == "WMS" -%}

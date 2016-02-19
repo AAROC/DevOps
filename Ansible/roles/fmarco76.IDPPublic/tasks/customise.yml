@@ -49,7 +49,7 @@
   - customise
 
 - name: Create DB directory
-  sudo: yes
+  become: yes
   file: path=/var/run/db/hsqldb state=directory owner={{ tomcat6_user }} group={{ tomcat6_group }}
   tags:
   - customise
