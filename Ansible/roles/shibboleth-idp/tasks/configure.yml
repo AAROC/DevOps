@@ -7,6 +7,8 @@
     owner: "{{ tomcat6_user }}"
     group: root
     mode: "u=rwx,g=rwx,o=rx"
+  tags:
+    - configure
 
 - name: Create Attribute Filters
   become: true
@@ -15,6 +17,8 @@
     dest: "{{ shibboleth_install_path }}/conf/attribute-filter.xml"
     owner: "{{ tomcat6_user }}"
     group: root
+  tags:
+    - configure
   notify: restart tomcat
 
 - name: Create Attribute Resolver
@@ -24,6 +28,8 @@
     dest: "{{ shibboleth_install_path }}/conf/attribute-resolver.xml"
     owner: "{{ tomcat6_user }}"
     group: root
+  tags:
+    - configure
   notify: restart tomcat
 
 - name: Create Logger
@@ -33,11 +39,19 @@
     dest: "{{ shibboleth_install_path }}/conf/logging.xml"
     owner: "{{ tomcat6_user }}"
     group: root
+  tags:
+    - configure
   notify: restart tomcat
 
 - name: Create Handler
   become: true
-  template: src=handler.xml.j2 dest={{ shibboleth_install_path }}/conf/handler.xml owner={{ tomcat6_user }} group=root
+  template:
+    src: handler.xml.j2
+    dest: "{{ shibboleth_install_path }}/conf/handler.xml"
+    owner: "{{ tomcat6_user }}"
+    group: root
+  tags:
+    - configure
   notify: restart tomcat
 
 - name: Create Relying Parties
@@ -47,6 +61,8 @@
     dest: "{{ shibboleth_install_path }}/conf/relying-party.xml"
     owner: "{{ tomcat6_user }}"
     group: root
+  tags:
+    - configure
   notify: restart tomcat
 
 - name: Configure the Login module
@@ -56,4 +72,6 @@
     dest: "{{ shibboleth_install_path }}/conf/login.config"
     owner: "{{ tomcat6_user }}"
     group: root
+  tags:
+    - configure
   notify: restart tomcat
