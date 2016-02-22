@@ -52,3 +52,5 @@
         link_names: 1
         parse: 'full'
         validate_certs: no
+      tags:
+        - slack

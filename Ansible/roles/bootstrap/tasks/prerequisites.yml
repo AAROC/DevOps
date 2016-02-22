@@ -9,6 +9,7 @@
   #        validate: 'yum update'
   tags:
     - yum
+  when: ansible_os_family == 'RedHat'
 
 - name: check connectivity
   command: /bin/ping -c 1 www.google.com
@@ -42,6 +43,7 @@
 
 - name: Install libselinux
   raw: 'yum install -y libselinux-python'
+  when: ansible_os_family == 'RedHat'
 
 # at this point we might want to turn off selinux
 

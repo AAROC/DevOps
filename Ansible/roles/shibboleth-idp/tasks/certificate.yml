@@ -14,21 +14,28 @@
   local_action:
     module: stat
     path: "roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_') }}_cert.cer"
+  tags:
+    - certificates
   register: have_cert
 
 - name: Check if there is a key locally
   local_action:
     module: stat
     path: "roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_') }}.key"
+  tags:
+    - certificates
   register: have_key
 
 - name: Define certificate status
-  local_action:
-    module: set_fact
-    cert: "{{ have_cert.stat.exists and have_key.stat.exists }}"
+  set_fact:
+    cert: "{{ have_cert.stat.exists and have_key.stat.exists }} "
+  tags:
+    - certificates
 
 - name: What is cert status ?
   debug: var=cert
+  tags:
+    - certificates
 
 - name: Debug have cert
   debug:
@@ -36,6 +43,8 @@
   with_items:
     - cert
     - key
+  tags:
+    - certificates
 
 ############ <self-signed cert> ##################################
 # these tasks were taken from the LDAP role security tasks
@@ -45,6 +54,8 @@
   args:
     creates: idp.key
   when:  have_cert.stat.exists == False
+  tags:
+    - certificates
 
 - name: Strip the passphrase from the key
   become: yes
@@ -52,6 +63,8 @@
   args:
     creates: my.key
   when: have_cert.stat.exists  == False
+  tags:
+    - certificates
 
 - name: Create and sign the the new certificate
   become: yes
@@ -59,24 +72,39 @@
   args:
     creates: cert.crt
   when: have_cert.stat.exists == False
+  tags:
+    - certificates
+
 ################## </Self-signed>#############################
 
-- name: extract the subject
+################## <Cert in repo>############################
+# These tasks get run when the cert actually exists locally.
+
+- name: Extract the subject of the certificate
   local_action:
-    module: command /usr/bin/openssl x509 -noout -subject -in "{{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_') }}_cert.cer"
-  register: subject
+    module: command
+    args: "/usr/bin/openssl x509 -noout -subject -in {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_') }}_cert.cer"
+  register: cert_subject
   when: cert
-  ignore_errors: true
+#  ignore_errors: true
+  changed_when: false
+  tags:
+    - certificates
 
 - name: Debug subject
   debug:
-    var: "{{ subject.stdout | regex_replace('^.*N(.*)$' ) }}"
+    var: "{{ item | regex_replace('^.*N(.*)$' ) }}"
+  with_items: "cert_subject.stdout_lines"
   tags:
     - debug
+  tags:
+    - certificates
 
-- name: debug CA certs
+- name: debug CA certs variable
   debug:
     var: cert_CA_certificates
+  tags:
+    - certificates
 
 
 - name: Push the intermediate and root cert
@@ -85,6 +113,8 @@
     dest: "{{ ansible_env.HOME }}/{{ item }}"
   with_items:
     - "{{ cert_CA_certificates }}"
+  tags:
+    - certificates
 
 # Does the p12 exist ?
 - name: Does the p12 exist ?
@@ -92,29 +122,37 @@
     module: stat
     path: "{{ lookup('env','PWD') }}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.p12"
   register: p12
+  tags:
+    - certificates
 
 - name: What's in p12?
   debug:
     var: p12
   tags:
     - debug
+  tags:
+    - certificates
 
 - name: generate the p12
   local_action:
-    module: "command openssl pkcs12 -export -in {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}_cert.cer -inkey {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.key  -out test.p12 -passout pass:password"
-  when: "{{ have_key.stat.exists }} == 'True'"
-
-
+    module: command
+    args: "openssl pkcs12 -export -in {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}_cert.cer -inkey {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.key  -out test.p12 -passout pass:password"
+  when: "{{ p12.stat.exists }} == false "
+  tags:
+    - certificates
 
 - name: Push the p12
   copy:
     src: "test.p12"
     dest: "{{ ansible_env.HOME }}/idp.p12"
+  tags:
+    - certificates
 
 - name: Add the cert to the keystore
-  command:  keytool -noprompt  -importkeystore -srckeystore idp.p12 -destkeystore test.jks -srcstoretype pkcs12 -srcstorepass password -deststorepass password
+  command: "/usr/bin/keytool -noprompt  -importkeystore -srckeystore idp.p12 -destkeystore test.jks -srcstoretype pkcs12 -srcstorepass password -deststorepass password"
 
-
+  tags:
+    - certificates
 
 # If the certificate is not available, we need to generate a self-signed and add it to the keystore
 - name: Tell the admin that we're using self-signed
@@ -122,13 +160,26 @@
     module: set-fact
     idp_status: test
   when: cert == false
+  tags:
+    - certificates
+
 
 - name: Copy JKS generator script
-  template: src=jks.expect.j2 dest={{ tomcat6_config_path }}/jks.expect mode="u+x"
+  template:
+    src: jks.expect.j2
+    dest: "{{ tomcat6_config_path }}/jks.expect"
+    mode: "u+x"
   become: true
   when: "{{ have_cert.stat.exists }} == false and {{ have_key.stat.exists }} == false"
+  tags:
+    - certificates
 
 - name: Create JKS for tomcat
   become: yes
-  command: creates={{ tomcat6_config_path }}/keystore.jks chdir={{ tomcat6_config_path }} ./jks.expect
+  command: ./jks.expect
+  args:
+    creates: "{{ tomcat6_config_path }}/keystore.jks"
+    chdir: "{{ tomcat6_config_path }}"
   when: have_cert.stat.exists == false and have_key.stat.exists == false
+  tags:
+    - certificates
