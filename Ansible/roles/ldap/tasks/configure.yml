@@ -1,8 +1,8 @@
 ---   
 - name: Start ldap server
   service: name={{ ldap_service }} state=started enabled=yes
-  sudo: yes 
-  tags: 
+  become: yes
+  tags:
     - LDAP
     - config
 
@@ -10,54 +10,54 @@
   command: ldapsearch -Y EXTERNAL -H ldapi:/// -b cn=config
   register: ldap_config
   changed_when: "False"
-  sudo: yes 
-  tags: 
+  become: yes
+  tags:
     - LDAP
     - config
 
 - name: Copy modules file LDIF
   copy: src=etc/openldap/slapd.d/{{ ldap_module_file }} dest=/tmp/{{ ldap_module_file }}
-  sudo: yes
+  become: yes
   when: '"memberof" not in ldap_config.stdout'
-  tags: 
+  tags:
     - LDAP
     - config
 
 - name: Add modules (Debian)
   command: ldapmodify -Y EXTERNAL -H ldapi:/// -f /tmp/{{ ldap_module_file }}
-  sudo: yes 
+  become: yes
   when: ansible_os_family == 'Debian' and ldap_config.stdout.find('}memberof')==-1
-  tags: 
+  tags:
     - LDAP
     - config
 
 - name: Add modules (RedHat)
   command: ldapadd -Y EXTERNAL -H ldapi:/// -f /tmp/{{ ldap_module_file }}
-  sudo: yes 
+  become: yes
   when: ansible_os_family == 'RedHat' and ldap_config.stdout.find('}memberof')==-1
-  tags: 
+  tags:
     - LDAP
     - config
- 
+
 - name: Restart ldap server
   service: name={{ ldap_service }} state=restarted
-  sudo: yes 
+  become: yes
   when: ldap_config.stdout.find('}memberof')==-1
-  tags: 
+  tags:
     - LDAP
     - config
 
-- name:  Create db LDIF 
+- name:  Create db LDIF
   template: src=db.ldif.j2 dest=/tmp/db.ldif
-  tags: 
+  tags:
     - LDAP
     - config
 
-- name: Customise DB 
+- name: Customise DB
   command: ldapmodify -Y EXTERNAL -H ldapi:/// -f /tmp/db.ldif
-  sudo: yes 
+  become: yes
   when: 'ldap_config.stdout.find("olcSuffix: dc=local")==-1'
-  tags: 
+  tags:
     - LDAP
     - config
 
@@ -65,31 +65,29 @@
 - name: Copy Password Policy Schema ldap server (Debian)
   copy: src=etc/openldap/slapd.d/ppolicySchema.ldif dest=/tmp/ppolicySchema.ldif
   when: ldap_config.stdout.find('ppolicy,cn=schema,cn=config')==-1
-  tags: 
+  tags:
     - LDAP
     - config
 
-- name: Apply ppolicy schema 
+- name: Apply ppolicy schema
   command: ldapadd -Y EXTERNAL -H ldapi:/// -f /tmp/ppolicySchema.ldif
-  sudo: yes 
+  become: yes
   when: ldap_config.stdout.find('ppolicy,cn=schema,cn=config')==-1
-  tags: 
+  tags:
     - LDAP
     - config
 
 - name: Copy Overlay LDIF
   template: src=overlays.ldif.j2 dest=/tmp/overlays.ldif
   when: 'ldap_config.stdout.find("objectClass: olcMemberOf")==-1'
-  tags: 
+  tags:
     - LDAP
     - config
 
-- name: Apply overlays 
+- name: Apply overlays
   command: ldapadd -Y EXTERNAL -H ldapi:/// -f /tmp/overlays.ldif
-  sudo: yes 
+  become: yes
   when: 'ldap_config.stdout.find("objectClass: olcMemberOf")==-1'
-  tags: 
+  tags:
     - LDAP
     - config
-
-

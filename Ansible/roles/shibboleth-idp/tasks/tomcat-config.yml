@@ -2,61 +2,86 @@
 # if you don't have a host certificate, we use this command to generate a new self-signed one and include that into the keychanin
 #
 # - name: Copy JKS generator script
-#   sudo: yes
+#   become: yes
 #   template: src=jks.expect.j2 dest={{ tomcat6_config_path }}/jks.expect mode="u+x"
 #   # when: have_cert == false
 #
 # - name: Create JKS for tomcat
-#   sudo: yes
+#   become: yes
 #   command: creates={{ tomcat6_config_path }}/keystore.jks chdir={{ tomcat6_config_path }} ./jks.expect
 #   # when: have_cert == false
 
 - name: Create endorsed directory
-  sudo: yes
-  file: dest={{ tomcat6_endorsed_path }} mode=755 state=directory
+  become: yes
+  file:
+    dest: "{{ tomcat6_endorsed_path }}"
+    mode: 755
+    state: directory
 
 - name: Copy endorsed libraries
-  sudo: yes
-  command: creates={{ tomcat6_endorsed_path }}/{{ item }} cp {{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/endorsed/{{ item }} {{ tomcat6_endorsed_path }}/
+  become: yes
+  command: "cp {{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/endorsed/{{ item }} {{ tomcat6_endorsed_path }}/"
+  args:
+    creates: "{{ tomcat6_endorsed_path }}/{{ item }}"
   with_items: idp_package_endorsed_jars
 
 - name: Set endorsed path
-  sudo: yes
-  lineinfile: 'dest="{{ tomcat6_config_start }}"  line="JAVA_ENDORSED_DIRS={{ tomcat6_endorsed_path }}"'
+  become: yes
+  lineinfile:
+    dest: "{{ tomcat6_config_start }}"
+    line: "JAVA_ENDORSED_DIRS={{ tomcat6_endorsed_path }}"
+    state: present
 
 - name: Remove Custom java memory size
-  sudo: yes
+  become: yes
+  lineinfile:
+    dest: "{{ tomcat6_config_start }}"
+    line: 'JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"'
+    state: absent
   register: remove_old_opts
-  lineinfile: dest={{ tomcat6_config_start }}  line='JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"' state=absent
-  changed_when: False
 
 - name: UnSet current java memory size
-  sudo: yes
+  become: yes
+  replace:
+    dest: "{{ tomcat6_config_start }}"
+    regexp: '-Xmx\d*m'
+    replace: ""
   register: memory_size
-  replace: 'dest="{{ tomcat6_config_start }}"  regexp="-Xmx\d*m" replace=""'
 
 - name: UnSet java perm gen memory size
-  sudo: yes
+  become: yes
+  replace:
+    dest: "{{ tomcat6_config_start }}"
+    regexp: '-XX:MaxPermSize=\d*m'
+    replace: ""
   register: perm_gen_memory_size
-  replace: 'dest="{{ tomcat6_config_start }}"  regexp="-XX:MaxPermSize=\d*m" replace=""'
 
 - name: Add java memory size
-  sudo: yes
-  register: new_opts
-  lineinfile: dest={{ tomcat6_config_start }}  line='JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"'
+  become: yes
+  lineinfile:
+    dest: "{{ tomcat6_config_start }}"
+    line: 'JAVA_OPTS="${JAVA_OPTS} -Xmx512m -XX:MaxPermSize=128m"'
+    state: present
   changed_when: new_opts.changed and remove_old_opts.found==0
+  register: new_opts
   notify: restart tomcat
 
 - name: Add jar for SSL Implementation supporting SOAP
-  sudo: yes
-  get_url: url=https://build.shibboleth.net/nexus/content/repositories/releases/edu/internet2/middleware/security/tomcat6/tomcat6-dta-ssl/1.0.0/tomcat6-dta-ssl-1.0.0.jar dest={{ tomcat6_lib_path }}
+  become: yes
+  get_url:
+    url: https://build.shibboleth.net/nexus/content/repositories/releases/edu/internet2/middleware/security/tomcat6/tomcat6-dta-ssl/1.0.0/tomcat6-dta-ssl-1.0.0.jar
+    dest: "{{ tomcat6_lib_path }}"
 
 - name: Enable the ssl
-  sudo: yes
-  template: src=server-{{ ansible_os_family }}.xml.j2 dest={{ tomcat6_config_path }}/server.xml
+  become: yes
+  template:
+    src: "server-{{ ansible_os_family }}.xml.j2"
+    dest: "{{ tomcat6_config_path }}/server.xml"
   notify: restart tomcat
 
 - name: Enble the shibboleth idp application
-  sudo: yes
-  template: src=idp.xml.j2 dest={{ tomcat6_config_path }}/Catalina/localhost/idp.xml
+  become: yes
+  template:
+    src: idp.xml.j2
+    dest: "{{ tomcat6_config_path }}/Catalina/localhost/idp.xml"
   notify: restart tomcat

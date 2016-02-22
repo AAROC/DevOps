@@ -1,0 +1,14 @@
+---
+# check grid services
+- hosts: all,!worker-nodes
+  tasks:
+    - name: ensure ntp is correct
+      become: true
+      service:
+        name: ntpd
+        state: started
+    - name: Ensure that certificates are up to date
+      become: true
+      yum:
+        name: ca-policy-egi-core
+        state: latest
