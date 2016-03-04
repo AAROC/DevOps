@@ -1,6 +1,6 @@
 [submodule "Ansible/roles/osct.tomcat-8"]
 	path = Ansible/roles/osct.tomcat-8
-	url = git@github.com:osct/tomcat-8.git
+	url = https://github.com/osct/tomcat-8.git 
 [submodule "Ansible/roles/osct.shibboleth-idp-v3"]
 	path = Ansible/roles/osct.shibboleth-idp-v3
 	url = https://github.com/osct/shibboleth-idp-v3.git
