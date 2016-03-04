@@ -1,0 +1,73 @@
+---
+
+# LDAP URL
+idp_authn_LDAP_ldapURL: 'ldap://directory.ct.infn.it'
+
+# LDAP base DN
+idp_authn_LDAP_baseDN: 'ou=People,dc=local'
+
+# LDAP user filter
+idp_authn_LDAP_userFilter: '(cn={user})'
+
+# LDAP bind DN
+idp_authn_LDAP_bindDN: 'cn=fmarco76,ou=People,dc=local'
+
+# LDAP bind DN credentials
+idp_authn_LDAP_bindDNCredential: 'XXXXXXXXX'
+
+# LDAP DN format
+idp_authn_LDAP_dnFormat: 'cn=%s,ou=People,dc=local'
+
+# LDAP resolver search filter
+idp_attribute_resolver_LDAP_searchFilter: '(cn=$resolutionContext.principal)'
+
+# LDAP resolver attribute list
+idp_attribute_resolver_LDAP_returnAttributes: ''
+
+# Enable the release of a persistent identifier
+idp_attribute_persistent_id: True
+
+# Path to the default attribute filer releasing eppn, mail, surname, givenname and displayname to services requiring them
+idp_attribute_filter: 'shibboleth-idp/conf/attribute-filter.xml'
+
+
+## NOTE: if the startTLS is not used in LDAP the following 3 variables has to be removed 
+idp_authn_LDAP_attribute_resolver: 'shibboleth-idp/conf/attribute-resolver-ldap.xml'
+
+idp_authn_LDAP_useStartTLS: 'true'
+
+# Public certificate requested for LDAP
+LDAP_server_certificate=/home/marco/Documents/HOSTCerts/directory.ct.infn.it/cert.pem
+
+
+idp_attributes_scope: 'burns.ct.infn.it'
+
+# Keystore passphrase (as to be the same for the keystore and the private key)
+tomcat_keystore_passphrase: 'changeit'
+
+# Keystore alias for the certifiage
+tomcat_keystore_cert_alias: 'burns'
+
+idp_persistentId_salt: 'cicciobellodovesitrova'
+
+# Default connector port
+tomcat_default_port: 80
+# Default redirect port
+tomcat_default_port_ssl: 443
+# Tomcat memory size
+tomcat_memory_size: 1024m
+# Tomcat memory PermSize
+tomcat_memory_permsize: 128m
+
+# Keystore to use with tomcat
+keystore=/home/marco/Documents/HOSTCerts/burns.ct.infn.it/burns.ct.infn.it.jks
+
+
+metadataproviders:
+  - name: gridp-test
+    url: https://gridp.garr.it/metadata/gridp-test.xml
+  - name: gridp
+    url: https://gridp.garr.it/metadata/gridp.xml
+    requiredValidUntil: P1M
+    certificate:
+      url: https://gridp.garr.it/metadata/gridp.pem

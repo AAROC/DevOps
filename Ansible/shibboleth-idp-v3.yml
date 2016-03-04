@@ -1,0 +1,20 @@
+---
+- hosts: all
+  name: Configure Shibboleth Identity Provider
+  environment:
+    JAVA_HOME: /usr/lib/jvm/default-java
+  pre_tasks:
+    - name: Install pip
+      become: yes
+      apt: name='python-pip' update_cache=yes
+
+    - name: Update pip
+      become: yes
+      pip: name='pip' state=latest
+
+    - name: Install pexpect
+      become: yes
+      pip: name='pexpect' state=latest
+
+  roles:
+    - osct.shibboleth-idp-v3
