@@ -4,7 +4,7 @@
   environment:
     JAVA_HOME: /usr/lib/jvm/default-java
   pre_tasks:
-    - name: Install pip
+    - name: Ensure pip
       become: yes
       apt: name='python-pip' update_cache=yes
 
