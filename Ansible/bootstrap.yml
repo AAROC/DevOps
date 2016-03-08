@@ -5,6 +5,8 @@
   become: true
   roles:
 # we don't need become here, because bootstrap is designed to run as root.
+# However, we keep it explicit in order to make it clear to the user what
+# will happen
     - bootstrap
   pre_tasks:
   - name: debug
