@@ -17,8 +17,9 @@
   ignore_errors: true
   changed_when: false
 
-- name: debug
-  debug: var=hosttest.stderr
+# - name: debug
+#   debug: var=hosttest.stderr
+#   when: hosttest
 
 # This task can only work if the selinux python bindings are installed.
 # this can only be installed if there is network connectivity...
@@ -55,16 +56,18 @@
   yum:
     name: "{{ item }}"
     state: present
-  with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
+  with_items: "{{ bootstrap_prerequisites.ansible_os_family }}"
   tags:
     - bootstrap
+    - prerequisites
   when: ansible_os_family=="RedHat"
 
 - name: Install prerequisite packages (Debian)
   apt:
     name: "{{ item }}"
     state: present
-  with_items: "{{ bootstrap_prerequisites[ansible_os_family]}}"
+  with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
   tags:
     - bootstrap
+    - prerequisites
   when: ansible_os_family=="Debian"
