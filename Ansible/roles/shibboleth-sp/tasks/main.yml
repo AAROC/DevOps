@@ -1,6 +1,4 @@
 ---
 # tasks file for shibboleth-sp
-#- include: prerequisites.yml
 - include: install.yml
-#- include: configure.yml
-#- include: metadata.yml
+- include: configure.yml

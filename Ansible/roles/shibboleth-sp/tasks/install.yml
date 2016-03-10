@@ -1,20 +1,7 @@
 ---
-- name: get the repo configuraiton
-  sudo: true
-  get_url:
-    url: 'http://download.opensuse.org/repositories/security://shibboleth/RHEL_6/security:shibboleth.repo'
-    dest: /etc/yum.repos.d/shibboleth-sp.repo
-    owner: root
-
-- name: force yum update
-  sudo: true
-  yum:
-    name: "*"
-    state: latest
-  changed_when: false
-
-- name: install shibboleth package
-  sudo: true
-  yum:
-    name: shibboleth.x86_64
+- name: Install Debian depdencies
+  become: true
+  package:
+    name: "{{ item }}"
     state: present
+  with_items: dependencies

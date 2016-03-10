@@ -1,8 +1,0 @@
----
-- name: install prerequisite packages
-  yum:
-    name: "{{ sp-dependencies.ansible_os_family }}"
-
-
-
-- name: Install the
