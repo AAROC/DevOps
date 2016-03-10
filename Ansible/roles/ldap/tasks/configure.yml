@@ -1,13 +1,16 @@
----   
+---
 - name: Start ldap server
-  service: name={{ ldap_service }} state=started enabled=yes
+  service:
+    name: "{{ ldap_service }}"
+    state: started
+    enabled: yes
   become: yes
   tags:
     - LDAP
     - config
 
 - name: Retrieve ldap server configuration
-  command: ldapsearch -Y EXTERNAL -H ldapi:/// -b cn=config
+  command: "ldapsearch -Y EXTERNAL -H ldapi:/// -b cn=config"
   register: ldap_config
   changed_when: "False"
   become: yes
