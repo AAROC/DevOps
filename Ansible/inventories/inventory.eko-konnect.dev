@@ -37,15 +37,15 @@
 lagos-all
 
 [ldap-servers]
-#ldap.sagrid.ac.za needs_certificate=false
+196.216.191.11 needs_certificate=false
 
 [shibboleth-idps]
-#idp.sagrid.ac.za needs_certificate=false min_jvm_size=1024m
+196.216.191.12 min_jvm_size=1024m
 
-[identity-all:children]
+[identity-eko-konnect-all:children]
 ldap-servers
 shibboleth-idps
 
 [CentOS-servers:children]
-identity-all
+identity-eko-konnect-all
 ############################ END #########################

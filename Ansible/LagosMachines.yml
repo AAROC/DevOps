@@ -1,0 +1,28 @@
+---
+# This is the first play
+# the name of the play is "Copy a file"
+# This play only has one task so far.
+- hosts: lagos-all
+  tasks:
+  - name: Ensure participant user name is present
+    become: true
+    user:
+      name: ansible
+      state: present
+      createhome: yes
+      comment: 'Ansible connection user created during eko-Konnect SciGaIA training'
+      group: sudo
+      groups: sudo
+      password: $6$GWzhGQqIh4O$MF3VmVOCmc8FHBXUSoPOkp9ot2.UBjFCNqPuHxkMCcv8wS6ZYRzyNmghc5eYVq0uvZIYGzb.ixXIh9eKqiR2t0
+    when: ansible_os_family=='Debian'
+  - name: Ensure participant user name is present
+    become: true
+    user:
+      name: ansible
+      state: present
+      createhome: yes
+      comment: 'Ansible connection user created during eko-Konnect SciGaIA training'
+      group: wheel
+      groups: wheel
+      password: $6$GWzhGQqIh4O$MF3VmVOCmc8FHBXUSoPOkp9ot2.UBjFCNqPuHxkMCcv8wS6ZYRzyNmghc5eYVq0uvZIYGzb.ixXIh9eKqiR2t0
+    when: ansible_os_family=='RedHat'
