@@ -15,6 +15,7 @@ host_institute:
   url: http://www.eko-konnect.org.ng
 
 # LDAP variables
+domain: ng
 server_country: NG
 server_state: Lagos
 server_location: Lagos
