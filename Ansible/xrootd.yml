@@ -8,4 +8,6 @@
     - { role: certificates, become: true }
     - { role: umd, become: true }
     - { role: xrootd, become: true }
-    
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/IGTF.yml

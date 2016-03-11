@@ -1,0 +1,14 @@
+galaxy_info:
+  author: Bruce  Bcker
+  description: a role to install xrootd server
+  company: Meraka Institute, CSIR.
+  license: Apache
+  min_ansible_version: 2.0
+  platforms:
+    - name: EL
+      versions:
+        - 6
+  galaxy_tags: [UMD,data,xrootd,AAROC]
+
+dependencies: []
+  
