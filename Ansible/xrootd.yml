@@ -1,0 +1,11 @@
+---
+# Xrootd base playbook.
+# Puppet should take over after installation
+- name: Prepare xrootd machines
+  hosts: xrootd-servers
+  roles:
+    - { role: common, become: true }
+    - { role: certificates, become: true }
+    - { role: umd, become: true }
+    - { role: xrootd, become: true }
+    
