@@ -1,0 +1,6 @@
+---
+- name: Replace IdP name
+  lineinfile:
+    dest: /etc/shibboleth/shibboleth2.xml
+    regexp: "^<SSO entityID=.$"
+    line: '<SSO entityID="https://idp-corso.irccs.garr.it/idp/shibboleth" discoveryProtocol="SAMLDS" discoveryURL="https://ds.example.org/DS/WAYF"> SAML2 SAML1 </SSO>'
