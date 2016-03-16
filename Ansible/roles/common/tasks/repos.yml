@@ -69,5 +69,5 @@
   yum:
     name: "{{ item }}"
     state: present
-  with_items: base_packages
+  with_items: "{{ base_packages }}"
   when: ansible_os_family=="RedHat"

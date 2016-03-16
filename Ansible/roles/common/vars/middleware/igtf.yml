@@ -1,4 +1,4 @@
 ---
 igtf_repo_url: "http://repository.egi.eu/sw/production/cas/1/current/RPMS"
 igtf_release_name: "ca-policy-egi-core"
-igtf_release_version: 1.65-1.noarch
+igtf_release_version: 1.72-1.noarch
