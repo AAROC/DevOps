@@ -8,11 +8,14 @@
       with_items:
         - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
         - roles/common/vars/middleware/IGTF.yml
+      tags:
+        - pre-tasks
     - name: Get Site name
       debug:
         msg: "site is {{ site_name }}"
       tags:
         - debug
+        - pre-tasks
     - name: Tell the team
       slack:
         domain: africa-arabia-roc.slack.com
@@ -21,6 +24,7 @@
         username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
       tags:
         - slack
+        - pre-tasks
   roles:
     - { role: common, become: true }
     - { role: umd, become: true }
@@ -28,13 +32,15 @@
     - { role: yaim, become: true, emi_service: BDII_site}
   post_tasks:
     - name: Restart firewall
+      become: true
       service:
         name: "{{ item }}"
         state: restarted
-        with_items:
-          - ntpd
-          - iptables
-
+      with_items:
+        - ntpd
+        - iptables
+      tags:
+        - post-tasks
     - name: Tell the team
       slack:
         domain: africa-arabia-roc.slack.com
@@ -43,6 +49,7 @@
         username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
       tags:
         - slack
+        - post-tasks
 
 # - name: Tests
 #   hosts: site-bdiis
