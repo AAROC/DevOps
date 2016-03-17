@@ -1,17 +1,15 @@
 ---
-#- hosts: site-bdiis
-#  name: Bootstrap the machine
-#  vars_files:
-#    - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-#    - roles/common/vars/middleware/IGTF.yml
-#    - "group_vars/passwords-{{ site_name }}.yml"
-#  roles:
-#   - { role: bootstrap, become: true }
-
 - hosts: site-bdiis
   name: Configure the machine
+  remote_user: ansible
   pre_tasks:
-    - debug:
+    - name: Include vars
+      include_vars: "{{ item }}"
+      with_items:
+        - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+        - roles/common/vars/middleware/IGTF.yml
+    - name: Get Site name
+      debug:
         msg: "site is {{ site_name }}"
       tags:
         - debug
@@ -23,10 +21,6 @@
         username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
       tags:
         - slack
-  vars_files:
-    - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-    - roles/common/vars/middleware/IGTF.yml
-#    - "group_vars/passwords-{{ site_name }}.yml"
   roles:
     - { role: common, become: true }
     - { role: umd, become: true }
@@ -42,7 +36,7 @@
       tags:
         - slack
 
-- name: Tests
-  hosts: site-bdiis
-  roles:
-    - site-bdii-tests
+# - name: Tests
+#   hosts: site-bdiis
+#   roles:
+#     - site-bdii-tests
