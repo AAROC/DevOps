@@ -15,7 +15,7 @@
 
 # - hosts: discourse-forum
 #   name: Make the host dockable
-#   sudo: true
+#   become: true
 #   roles:
 #     - dochang.docker
 
@@ -29,11 +29,17 @@
     - name: ensure that the prerequisites are present
       include_vars: vars/prerequisites.yml
     - name: ensure that libselinux is present
-      sudo: true
-      yum: name=libselinux-python state=present
+      become: true
+      yum:
+        name: libselinux-python
+        state: present
     - name: ensure that docker is present
-      sudo: true
-      yum: name=docker-io state=present
+      become: true
+      yum:
+        name: docker-io
+        state: present
     - name: ensure that docker service is running
-      sudo: true
-      service: name=docker state=running
+      become: true
+      service:
+        name: docker
+        state: running

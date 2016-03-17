@@ -1,20 +1,19 @@
 ---
-# need to include OS differentiation here, having two different files
-# Something like :
-# include:
-# - CentOS.yml when ansible_os_family == 'RedHat'
-# include:
-# - Ubuntu.yml when ansible_os_family == 'Ubuntu'
-
 - name: restart ntpd
-  service: name=ntpd state=restarted
+  service:
+    name: ntpd
+    state: restarted
 
 # - name: restart iptables
 #   service: name=iptables state=restarted
 #   when: ansible_os_family == 'RedHat'
-  
+
 - name: update yum
-  yum: name=* state=latest
+  yum:
+    name: *
+    state: latest
 
 - name: restart sshd
-  action: service name=sshd state=restarted
+  service:
+    name: sshd
+    state: restarted

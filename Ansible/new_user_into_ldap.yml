@@ -2,7 +2,7 @@
 - name: Add new user to ldap
   hosts: ldap-server
   remote_user: ansible
-  sudo: true
+  become: true
   tasks:
     - name: copy ldif over
       copy: src=files/new_user.ldif dest=/tmp/new_user.ldif

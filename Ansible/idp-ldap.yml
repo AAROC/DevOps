@@ -5,8 +5,8 @@
   - { role: ldap, become: true, tags: "ldap" }
   tags:
   - LDAP
-  vars_files:
-    - "group_vars/passwords-{{ site_name }}.yml"
+#  vars_files:
+#    - "group_vars/passwords-{{ site_name }}.yml"
 
 - name: Deploy Shibboleth IdP and Web Interface
   hosts: shibboleth-idps

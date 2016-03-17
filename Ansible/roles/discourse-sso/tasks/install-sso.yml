@@ -3,7 +3,7 @@
 # These tasks install the DiscourseSSO
 
 - name: get the Discourse SSO repo
-  sudo: true
+  become: true
   git:
     repo: git://github.com/AAROC/DiscourseSSO
     dest: "{{ discourse_sso_install_path }}"
@@ -11,7 +11,7 @@
     force: yes
 
 - name: Install the DiscourseSSO prerequisites
-  sudo: true
+  become: true
   pip:
     requirements: "{{ discourse_sso_install_path }}/requirements.txt"
 
@@ -19,7 +19,7 @@
   debug: "var={{ hostvars[groups['discourse-forum'][0]] ['ansible_fqdn'] }}"
 
 - name: Update the SSO template (hostname)
-  sudo: true
+  become: true
   lineinfile:
     line: "DISCOURSE_URL = {{ hostvars[groups['discourse-forum'][0]] ['ansible_fqdn'] }}"
     regexp: '^DISCOURSE_URL'
@@ -28,7 +28,7 @@
 - name: output the secret key
   debug: "var={{discourse_secret_key}}"
 - name: Update the SSO template (secret key)
-  sudo: true
+  become: true
   lineinfile:
     line: "DISCOURSE_SECRET_KEY = '{{ discourse_secret_key }}'"
     regexp: '^DISCOURSE_SECRET_KEY'

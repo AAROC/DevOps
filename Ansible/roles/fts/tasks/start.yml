@@ -1,6 +1,8 @@
 - name: start services
-  action: service name={{ item }} state=started
-  sudo: True
+  service:
+    name: "{{ item }}"
+    state: started
+  become: True
   with_items:
     - fts-server
     - fts-msg-bulk
@@ -10,5 +12,5 @@
     - fts-records-cleaner
     - fts-info-publisher
     - bdii
-  tags: 
+  tags:
     - start

@@ -6,9 +6,10 @@
 # make sure that this is vaulted
 - name: Copy the Glassfish server password file
   copy:
-    src=passwordfile dest=/home/liferayadmin/passwordfile
-    owner=liferayadmin
-    group=liferayadmin
+    src: passwordfile
+    dest: /home/liferayadmin/passwordfile
+    owner: liferayadmin
+    group: liferayadmin
 
 ################################################################################
 # start domain
@@ -20,9 +21,10 @@
 # influence the state of the service, so we ignore changes
 
 - name: check the domains
-  sudo: true
-  sudo_user: liferayadmin
-  shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
+  become: true
+  become_user: liferayadmin
+  shell: ./asadmin list-domains
+    chdir: /opt/glassfish/glassfish3/bin/
   register: domain_status
   changed_when: false
 
@@ -40,11 +42,11 @@
 # We only need to create the domain if the previous list of domains has shown
 # that the liferay domain was not created.
 - name: create liferay domain
-  sudo: true
-  sudo_user: liferayadmin
+  become: true
+  become_user: liferayadmin
   shell:
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin create-domain liferay
-    chdir=/opt/glassfish/glassfish3/bin/
+    chdir: /opt/glassfish/glassfish3/bin/
   register: domain_create
   when: domain_status.stdout.find('liferay') == -1
 
@@ -58,13 +60,17 @@
   debug: var="{{ hostvars[groups['db-servers'][0]]['ansible_fqdn'] }}"
 
 - name: Ensure that liferay directory exists
-  file: name=/opt/glassfish/glassfish3/glassfish/domains/liferay/config state=directory owner=liferayadmin group=liferayadmin
+  file:
+    name: /opt/glassfish/glassfish3/glassfish/domains/liferay/config
+    state: directory
+    owner: liferayadmin
+    group: liferayadmin
 
 - name: Create the domain.xml
   template:
-    src=opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml.j2
-    dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml
-    owner=liferayadmin group=liferayadmin
+    src: opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml.j2
+    dest: /opt/glassfish/glassfish3/glassfish/domains/liferay/config/domain.xml
+    owner: liferayadmin group=liferayadmin
 
 # We have now ensured that the liferay domain has been created and that the conf
 # is customised according to our liking.
@@ -73,9 +79,9 @@
 - name: Start the Liferay Domain
   shell:
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin start-domain liferay
-    chdir=/opt/glassfish/glassfish3/bin/
-  sudo: true
-  sudo_user: liferayadmin
+    chdir: /opt/glassfish/glassfish3/bin/
+  become: true
+  become_user: liferayadmin
   async: 45
   poll: 5
   when: "'liferay not running' in domain_status.stdout"
@@ -86,7 +92,7 @@
 - name: Enable secure admin
   shell:
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin  enable-secure-admin
-    chdir=/opt/glassfish/glassfish3/bin/
+    chdir: /opt/glassfish/glassfish3/bin/
   register: secure_admin_status
   notify:
     - stop-domain
@@ -99,17 +105,28 @@
 # We need to download them from the web.
 # Of course, we need the liferay application itself
 - name: download the mysql driver for glassfish
-  get_url: url=http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.34.tar.gz dest=/tmp/mysql-connector-java.tar.gz
+  get_url:
+    url: http://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.34.tar.gz
+    dest: /tmp/mysql-connector-java.tar.gz
+
 - name: download the liferay dependencies
-  get_url: url='http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/6.1.1%20GA2/liferay-portal-dependencies-6.1.1-ce-ga2-20120731132656558.zip'
-    dest=/tmp/liferay-dependencies.zip
+  get_url:
+    url: 'http://downloads.sourceforge.net/project/lportal/Liferay%20Portal/6.1.1%20GA2/liferay-portal-dependencies-6.1.1-ce-ga2-20120731132656558.zip'
+    dest: /tmp/liferay-dependencies.zip
+
 - name: download the Liferay application
-  get_url: url='http://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.1.1%20GA2/liferay-portal-6.1.1-ce-ga2-20120731132656558.war/download' dest=/tmp/liferay.war
+  get_url:
+    url: 'http://sourceforge.net/projects/lportal/files/Liferay%20Portal/6.1.1%20GA2/liferay-portal-6.1.1-ce-ga2-20120731132656558.war/download'
+    dest: /tmp/liferay.war
 
 # Before we unpack the dependencies and liferay itself, let's ensure that the
 # target directory exists
 - name: Ensure that the liferay lib directory is present
-  file: name=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/ state=directory owner=liferayadmin group=liferayadmin
+  file:
+    name: /opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
+    state: directory
+    owner: liferayadmin
+    group: liferayadmin
 # Now, we can pull in the required jars.
 # We can't use unarchive, because the tarballs have the jars in a directory
 # structure, and we need them in the top-level dir for the liferay jars.
@@ -117,12 +134,12 @@
 - name: unpack the glassfish connector
   command:
     /bin/tar xvfz /tmp/mysql-connector-java.tar.gz  --show-transformed-names --wildcards --no-anchored '*connector*.jar'  --strip-components=1 --exclude '*wrapp*' --exclude '*api*' --exclude '*lib*'
-    chdir=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
-    creates=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/mysql-connector-java-5.1.34-bin.jar
+    chdir: /opt/glassfish/glassfish3/glassfish/domains/liferay/lib/
+    creates: /opt/glassfish/glassfish3/glassfish/domains/liferay/lib/mysql-connector-java-5.1.34-bin.jar
   register: connector
 - name: unpack the liferay dependencies
   command: /usr/bin/unzip -j -d /opt/glassfish/glassfish3/glassfish/domains/liferay/lib/ /tmp/liferay-dependencies.zip
-    creates=/opt/glassfish/glassfish3/glassfish/domains/liferay/lib/hsql.jar
+    creates: /opt/glassfish/glassfish3/glassfish/domains/liferay/lib/hsql.jar
   register: dependencies
 
 ################################################################################
@@ -139,16 +156,17 @@
   register: stop_domain
 
 - name: check the domains (again)
-  sudo: true
-  sudo_user: liferayadmin
-  shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
+  become: true
+  become_user: liferayadmin
+  shell: ./asadmin list-domains
+    chdir: /opt/glassfish/glassfish3/bin/
   when: stop_domain.changed
   register: domain_status
 
 - name: start-domain
   command:
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile --user liferayadmin start-domain liferay
-    chdir=/opt/glassfish/glassfish3/bin/
+    chdir: /opt/glassfish/glassfish3/bin/
   when: stop_domain.changed
   async: 600
   poll: 5
@@ -162,7 +180,7 @@
 - name: Check liferay application is installed
   command:
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile  -u liferayadmin list-applications
-    chdir=/opt/glassfish/glassfish3/glassfish/bin
+    chdir: /opt/glassfish/glassfish3/glassfish/bin
   register: domain_applications
   changed_when: "False"
 
@@ -170,15 +188,15 @@
 - name: Deploy liferay application
   command:
     ./asadmin --interactive false --passwordfile /home/liferayadmin/passwordfile  -u liferayadmin deploy --contextroot / --verify=true --name liferay611cega2 /tmp/liferay.war
-    chdir=/opt/glassfish/glassfish3/glassfish/bin
+    chdir: /opt/glassfish/glassfish3/glassfish/bin
   async: 600
   poll: 20
   when: domain_applications.stdout.find('liferay') == -1
 
 - name: Configure Liferay Portal properties
   template:
-     src=opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes/portal-ext.properties.j2
-     dest=/opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes/portal-ext.properties
-     owner=liferayadmin
-     group=liferayadmin
+     src: opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes/portal-ext.properties.j2
+     dest: /opt/glassfish/glassfish3/glassfish/domains/liferay/applications/liferay611cega2/WEB-INF/classes/portal-ext.properties
+     owner: liferayadmin
+     group: liferayadmin
   notify: start-domain

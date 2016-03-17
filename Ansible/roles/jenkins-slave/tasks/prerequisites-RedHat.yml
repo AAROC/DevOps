@@ -5,7 +5,7 @@
 
 
 - name: "Prerequisites for RedHat"
-  sudo: true
+  become: true
   yum:
     name: "{{ item }}"
     state: present

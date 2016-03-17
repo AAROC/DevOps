@@ -1,7 +1,7 @@
 ---
 - hosts: uis
   user: root
-  sudo: true
+  become: true
   roles:
     - container-bootstrap
     - common
@@ -17,8 +17,7 @@
     - roles/yaim/vars/main.yml
   pre_tasks:
     - name: Send Slack Message
-      action:
-        module: slack
+      slack:
         domain: africa-arabia-roc.slack.com
         token: 6EJfIMngdMiwrmnScAA4znB5
         msg: "Starting UI deployment on {{ inventory_hostname }}"
@@ -28,8 +27,7 @@
         parse: 'full'
   post_tasks:
     - name: Send notification message via Slack
-      action:
-        module: slack
+      slack:
         domain: africa-arabia-roc.slack.com
         token: 6EJfIMngdMiwrmnScAA4znB5
         msg: "UI deployment on  on {{ inventory_hostname }} has run go check it out dude."
