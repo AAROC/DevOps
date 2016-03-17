@@ -3,6 +3,7 @@
 # However, be sure to keep site-specific configs to the site name file
 ---
 needs_certificate: 'true'
+needs_mysql: true
 prerequisites: []
 emi_service: 'WMS'
 yaim_options: '-n WMS -n LB'
