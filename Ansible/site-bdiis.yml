@@ -27,6 +27,14 @@
     - { role: site-bdii, become: true }
     - { role: yaim, become: true, emi_service: BDII_site}
   post_tasks:
+    - name: Restart firewall
+      service:
+        name: "{{ item }}"
+        state: restarted
+        with_items:
+          - ntpd
+          - iptables
+
     - name: Tell the team
       slack:
         domain: africa-arabia-roc.slack.com
