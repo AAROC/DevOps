@@ -3,10 +3,9 @@
 - name: Apply the common role to all hosts
   hosts: core-services
   user: ansible
-  sudo: true
+  become: true
   pre_tasks:
-    - action:
-        module: slack
+    - slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Starting Core Services Deployment at  {{ site_name }}"
@@ -15,8 +14,7 @@
         link_names: 1
         parse: 'full'
   post_tasks:
-    - action:
-        module: slack
+    - slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Ready for Core Services Configuration at {{ site_name }}"
@@ -34,7 +32,7 @@
 - name: Deploy top-bdiis
   hosts: top-bdiis
   user: ansible
-  sudo: true
+  become: true
   roles:
     - umd
     - top-bdii
@@ -42,8 +40,7 @@
   vars_files:
     - group_vars/passwords-{{ site_name }}.yml
   pre_tasks:
-    - action:
-        module: slack
+    - slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Starting Top-BDII deploys at {{ site_name }}"
@@ -52,8 +49,7 @@
         link_names: 1
         parse: 'full'
   post_tasks:
-    - action:
-        module: slack
+    - slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Just finished Yaim at {{ site_name }} on {{ ansible_fqdn }}"
@@ -65,7 +61,7 @@
 - name: Deploy WMS
   hosts: wms-servers
   user: ansible
-  sudo: true
+  become: true
   roles:
     - certificates
     - umd
@@ -74,8 +70,7 @@
   vars_files:
     - group_vars/passwords-{{ site_name }}.yml
   pre_tasks:
-    - action:
-        module: slack
+    - slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Starting WMS deploys at {{ site_name }}"
@@ -84,8 +79,7 @@
         link_names: 1
         parse: 'full'
   post_tasks:
-    - action:
-        module: slack
+    - slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Just finished Yaim at {{ site_name }} on {{ ansible_fqdn }}"
@@ -97,7 +91,7 @@
 - name: Deploy SAM-NAGIOS
   hosts: ngi-nagios
   user: ansible
-  sudo: true
+  become: true
   roles:
     - certificates
     - umd
@@ -106,8 +100,7 @@
   vars_files:
     - group_vars/passwords-{{ site_name }}.yml
   pre_tasks:
-    - action:
-        module: slack
+    - slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Starting SAM-NAGIOS deploys at {{ site_name }}"
@@ -116,8 +109,7 @@
         link_names: 1
         parse: 'full'
   post_tasks:
-    - action:
-        module: slack
+    - slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Just finished Yaim at {{ site_name }} on {{ ansible_fqdn }}"

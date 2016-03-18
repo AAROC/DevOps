@@ -1,65 +1,92 @@
 - name: certs in userspace
-  action: file src=/etc/grid-security/hostcert.pem dest=/etc/grid-security/fts3hostcert.pem owner=fts3 group=fts mode=0644
-  sudo: True
+  become: true
+  file:
+    src: /etc/grid-security/hostcert.pem
+    dest: /etc/grid-security/fts3hostcert.pem
+    owner: fts3
+    group: fts
+    mode: 0644
   tags:
     - configure
 
 - name: keys in userspace
-  action: file src=/etc/grid-security/hostkey.pem dest=/etc/grid-security/fts3hostkey.pem owner=fts3 group=fts mode=0400
-  sudo: True
+  file:
+    src: etc/grid-security/hostkey.pem
+    dest: /etc/grid-security/fts3hostkey.pem
+    owner: fts3
+    group: fts
+    mode: 0400
+  become: True
   tags:
     - configure
 
 - name: configuration - set IP
-  lineinfile: dest=/etc/fts3/fts3config regexp=^IP= line=IP={{ IP }}
-  sudo: True
+  lineinfile:
+    dest: /etc/fts3/fts3config
+    regexp: "^IP= line=IP={{ IP }}"
+  become: True
   tags:
     - configure
 
 - name: configuration - DbUserName
-  lineinfile: dest=/etc/fts3/fts3config regexp=^DbUserName= line=DbUserName={{ DbUserName }}
-  sudo: True
+  lineinfile:
+    dest: /etc/fts3/fts3config
+    regexp: "^DbUserName="
+    line: "DbUserName={{ DbUserName }}"
+  become: True
   tags:
     - configure
 
 - name: configuration - DbPassword
-  lineinfile: dest=/etc/fts3/fts3config regexp=^DbPassword= line=DbPassword={{ DbPassword }}
-  sudo: True
+  lineinfile:
+    dest: "/etc/fts3/fts3config"
+    regexp: "^DbPassword="
+    line: "DbPassword={{ DbPassword }}"
+  become: True
   tags:
     - configure
 
 - name: configuration - Alias
-  lineinfile: dest=/etc/fts3/fts3config regexp=^Alias= line=Alias={{ Alias }}
-  sudo: True
+  lineinfile:
+    dest: /etc/fts3/fts3config
+    regexp: "^Alias="
+    line: "Alias={{ Alias }}"
+  become: True
   tags:
     - configure
 
 - name: configuration - Infosys
-  lineinfile: dest=/etc/fts3/fts3config regexp=^Infosys= line=Infosys={{ Infosys }}
-  sudo: True
+  lineinfile:
+    dest: /etc/fts3/fts3config
+    regexp: "^Infosys="
+    line: "Infosys={{ Infosys }}"
+  become: True
   tags:
     - configure
 
 - name: configuration - Site Name
-  lineinfile: dest=/etc/fts3/fts3config regexp=^SiteName= line=SiteName={{ SiteName }}
-  sudo: True
+  lineinfile:
+    dest: /etc/fts3/fts3config
+    regexp: "^SiteName="
+    line: "SiteName={{ SiteName }}"
+  become: True
   tags:
     - configure
 
 - name: configuration - MonitoringMessaging
   lineinfile: dest=/etc/fts3/fts3config regexp=^MonitoringMessaging= line=MonitoringMessaging={{ MonitoringMessaging }}
-  sudo: True
+  become: True
   tags:
     - configure
 - name: configuration - Connect String
   lineinfile: dest=/etc/fts3/fts3config regexp=^DbConnectString= line=DbConnectString={{ DbConnectString }}
-  sudo: True
+  become: True
   tags:
     - configure
 
 - name: configuration - Profiling
   lineinfile: dest=/etc/fts3/fts3config regexp=^Profiling= line=Profiling={{ Profiling }}
-  sudo: True
+  become: True
   tags:
     - configure
 
@@ -68,7 +95,7 @@
 
 - name: Log dir
   copy: src=etc/httpd/conf.d/fts3logs.conf dest=/etc/httpd/conf.d/fts3logs.conf
-  sudo: True
+  become: True
   tags:
     - configure
 
@@ -77,7 +104,7 @@
     dest: /etc/httpd/conf.d/ssl.conf
     regexp: '^SSLCertificateFile'
     line: 'SSLCertificateFile /etc/grid-security/hostcert.pem'
-  sudo: True
+  become: True
   tags:
     - configure
 
@@ -86,7 +113,7 @@
     dest: /etc/httpd/conf.d/ssl.conf
     regexp: '^SSLCertificateKeyFile'
     line: 'SSLCertificateKeyFile /etc/grid-security/hostkey.pem'
-  sudo: True
+  become: True
   tags:
     - configure
 
@@ -95,6 +122,6 @@
     dest: /etc/httpd/conf.d/ssl.conf
     regexp: '^SSLCACertificatePath'
     line: 'SSLCACertificatePath /etc/grid-security/certificates'
-  sudo: True
+  become: True
   tags:
     - configure

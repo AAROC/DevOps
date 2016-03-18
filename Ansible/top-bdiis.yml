@@ -7,7 +7,7 @@
 
 - hosts: top-bdiis
   name: BDII_TOP plays
-
+  remote_user: ansible
   pre_tasks:
     - debug:
         msg: "Site is  {{ site_name }}"

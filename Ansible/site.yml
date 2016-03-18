@@ -4,7 +4,7 @@
 # - name: Run Bootstrap play on all hosts
 #   hosts: all
 #   user: ansible
-#   sudo: true
+#   become: true
 #   roles:
 #     - bootstrap
 #   vars_files:
@@ -12,12 +12,11 @@
 
 - hosts: site-services
   user: ansible
-  sudo: true
-  sudo_user: root
+  become: true
+  become_user: root
   tasks:
     - name: Send slack message
-      action:
-        module: slack
+      slack:
         domain: africa-arabia-roc.slack.com
         token: 6EJfIMngdMiwrmnScAA4znB5
         msg: "Starting site playbook on {{ site_name }} ( including {{ inventory_hostname }})"
@@ -30,7 +29,7 @@
 - name: Apply the common role to all hosts
   hosts: site-services
   user: ansible
-  sudo: true
+  become: true
   roles:
     - common
     - boundary-monitor
@@ -42,7 +41,7 @@
 - name: Deploy site-bdiis
   hosts: site-bdiis
   user: ansible
-  sudo: true
+  become: true
   roles:
     - umd
     - site-bdii
@@ -51,7 +50,7 @@
 - name: Deploy CREAM-CEs
   hosts: cream-ces
   user: ansible
-  sudo: true
+  become: true
   roles:
     - certificates
     - umd
@@ -62,7 +61,7 @@
 - hosts: cluster-head-nodes
   name: Configure as head node
   user: ansible
-  sudo: true
+  become: true
   roles:
     - head-node
     - munge
@@ -70,6 +69,6 @@
 - hosts: cream-ces
   name: run YAIM for CREAM-CE on head node
   user: ansible
-  sudo: true
+  become: true
   roles:
     - yaim

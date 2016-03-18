@@ -5,7 +5,7 @@
   stat:
     path: "{{ shibboleth_install_path }}"
   register: metadata_stat
-
+# This check gives a false negative when an updated version is requested
 
 - name: Download the shibboleth package
   get_url:
@@ -44,6 +44,13 @@
     mode: "u+x"
   when: metadata_stat.stat.exists == true
 
+- name: Ensure Install directory
+  become: true
+  file:
+    dest: "{{ shibboleth_install_path }}"
+    state: directory
+    owner: "{{ tomcat6_user }}"
+    group: "{{ tomcat6_group }}"
 
 # Ansible v2 has an expect module which could be used probably to do this better.
 # BB 11/15

@@ -5,9 +5,9 @@ apache:
   - 'Redhat': 'httpd'
 
 # vars file for shibboleth-idp
-idp_version: 2.4.1
+idp_version: 2.4.5
 shibboleth_install_path: /opt/shibboleth-idp
-# shibboleth_install_cert_pass: 
+# shibboleth_install_cert_pass:
 # This has been moved to password-{{ site_name }}
 shibboleth_idp_log_level: INFO
 shibboleth_ldap_log_level: INFO

@@ -1,21 +1,25 @@
 ---
 - name: Install UMD WMS software
-  action: yum name={{ item }} state=latest
+  yum:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - emi-wms
     - argus-gsi-pep-callout
     - emir-serp
     - condor-emi
-  sudo: True
-  sudo_user: root
+  become: True
+  become_user: root
   tags:
     - WMS
     - install
 - name: Open the firewall for WMS
-  template: src=templates/etc/sysconfig/iptables.j2 dest=/etc/sysconfig/iptables
+  template:
+    src: templates/etc/sysconfig/iptables.j2
+    dest: /etc/sysconfig/iptables
   when: ansible_distribution == 'CentOS'
-  sudo: true
-  sudo_user: root
+  become: true
+  become_user: root
   notify:
     - restart iptables
   tags:

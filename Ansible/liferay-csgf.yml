@@ -2,14 +2,14 @@
 - name: Configure Liferay database (MySQL)
   hosts: db-servers
   remote_user: ansible
-  sudo: yes
+  become: yes
   roles:
   - liferay-mysql
 
 - name: Prepare the Application and Web Server (Glassfish)
   hosts: science-gateways
   remote_user: ansible
-  sudo: yes
+  become: yes
   vars_files:
     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
   roles:
@@ -19,36 +19,42 @@
 - name: Deploy and Configure Liferay Application
   hosts: science-gateways
   remote_user: ansible
-  sudo: yes
-  sudo_user: liferayadmin
+  become: yes
+  become_user: liferayadmin
   vars_files:
     - "roles/glassfish/vars/{{ ansible_os_family }}.yml"
     - roles/liferay-mysql/vars/main.yml
   pre_tasks:
     - name: Ensure that the system is up to date (Deb)
-      apt: name=* state=latest
+      apt:
+        name: *
+        state: latest
       when: ansible_os_family == 'Debian'
-      sudo: yes
-      sudo_user: root
+      become: yes
+      become_user: root
     - name: Install EPEL repo
-      yum: name='http://mirror.ufs.ac.za/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm' state=present
-      sudo: yes
-      sudo_user: root
+      yum:
+        name: 'http://mirror.ufs.ac.za/fedora-epel/6/x86_64/epel-release-6-8.noarch.rpm'
+        state: present
+      become: yes
+      become_user: root
       when: ansible_os_family == 'RedHat'
     - name: Ensure that system is up to date (EL)
-      yum: name=* state=latest
+      yum:
+        name: *
+        state: latest
       when: ansible_os_family == 'RedHat'
-      sudo: yes
-      sudo_user: root
+      become: yes
+      become_user: root
   roles:
     - liferay-csgf
   post_tasks:
     - name: Inform the user to complete liferay setup
-      debug: msg="after the playbook completes, you have to access the liferay web page and confirm the configuration. Then you have to manually restart the liferay domain in order to complete the installation. Please see https://github.com/AAROC/DevOps/wiki/liferay-csgf-playbook"
+      debug:
+        msg: "after the playbook completes, you have to access the liferay web page and confirm the configuration. Then you have to manually restart the liferay domain in order to complete the installation. Please see https://github.com/AAROC/DevOps/wiki/liferay-csgf-playbook"
     - name: Announce via Slack
-      sudo: false
-      action:
-        module: slack
+      become: false
+      slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Science Gateway playook has been run on {{ ansible_fqdn }} at {{ site_name }} ; please check that the web interface https://{{ ansible_fqdn }} and perform post-configuration (please see https://github.com/AAROC/DevOps/wiki/liferay-csgf-playbook)"

@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   name: Make all the hosts jenkins slaves with CVMFS
-  sudo: true
+  become: true
   roles:
     - jenkins-slave
     - cvmfs
@@ -9,8 +9,7 @@
   #   - group_vars/passwords-{{ site_name }}.yml
   pre_tasks:
     - name: Announce the play via Slack
-      action:
-        module: slack
+      slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Running code-rade build slave :worried: "
@@ -20,8 +19,7 @@
         parse: 'full'
   post_tasks:
     - name: Announce via Slack
-      action:
-        module: slack
+      slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/"

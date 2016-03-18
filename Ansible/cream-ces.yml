@@ -9,8 +9,7 @@
     - group_vars/passwords-{{ site_name }}.yml
   pre_tasks:
     - name: Announce the play via Slack
-      action:
-        module: slack
+      slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Running CREAM-CEs play on {{ inventory_hostname }} at {{ site_name }}"
@@ -38,8 +37,7 @@
   - include: roles/common/handlers/main.yml
   post_tasks:
   - name: Announce the play outcome
-    action:
-      module: slack
+    slack:
       domain: africa-arabia-roc.slack.com
       token: "{{ slack_token }}"
       msg: "CREAM-CE play on {{ inventory_hostname }} at {{ site_name }} has completed until the CREAM-CE role"
@@ -134,7 +132,7 @@
         - restart pbs_server
 
 #    - name: fix Proxy_to_sandbox_dir
-#      sudo: true
+#      become: true
 #      action: copy src=config/files/usr/bin/glite-cream-copyProxyToSandboxDir.sh dest=/usr/bin/glite-cream-copyProxyToSandboxDir.sh owner=root  group=root mode=755
 
     - name: restart munge

@@ -2,7 +2,7 @@
 - hosts: wms-servers
   name: Deploy and configure WMS
   user: ansible
-  sudo: true
+  become: true
   pre_tasks:
     - name: Announce the play via Slack
       action:
@@ -44,7 +44,7 @@
 - hosts: wms-servers
   tasks:
     - name: tweak WMS
-      sudo: true
+      become: true
       template: src=roles/wms/templates/etc/glite-wms/glite_wms.conf.j2 dest=/etc/glite-wms/glite_wms.conf owner=root group=root
       notify: restart-wms-wm
   handlers:

@@ -1,7 +1,7 @@
 ---
 - name: Add Shibboleth repo
-  sudo: true
-  sudo_user: root
+  become: true
+  become_user: root
   copy:
     src: etc/yum.repos.d/{{ item }}
     dest: /etc/yum.repos.d/{{ item }}

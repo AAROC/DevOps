@@ -1,8 +1,8 @@
 ---
 - hosts: voms-servers
   name: VOMS plays
-  sudo: true
-  sudo_user: root
+  become: true
+  become_user: root
   roles:
     - bootstrap
     - common

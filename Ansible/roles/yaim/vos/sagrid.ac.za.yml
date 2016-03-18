@@ -1,3 +1,8 @@
 - name: Add configuration for sagrid.ac.za VO
-  action: template src=templates/opt/glite/yaim/etc/siteinfo/vo.d/sagrid.ac.za.j2 dest=/opt/glite/yaim/etc/siteinfo/vo.d/sagrid.ac.za owner=root group=root mode=0644
+  template:
+    src: templates/opt/glite/yaim/etc/siteinfo/vo.d/sagrid.ac.za.j2
+    dest: /opt/glite/yaim/etc/siteinfo/vo.d/sagrid.ac.za
+    owner: root
+    group: root
+    mode: 0644
   when: "'sagrid.ac.za' in ${vos}"

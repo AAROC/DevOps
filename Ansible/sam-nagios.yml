@@ -2,8 +2,8 @@
 - hosts: ngi-nagios
   name: Configure NGI-NAGIOS
   user: ansible
-  sudo: true
-  sudo_user: root
+  become: true
+  become_user: root
   roles:
     - bootstrap
     - common
