@@ -23,11 +23,11 @@
       tags:
         - slack
   roles:
-    - { role: common, become: true }
-    - { role: certificates, become: true }
+    - { role: common, become: true, tags: "common"}
+    - { role: certificates, become: true, tags: "certificates"}
     - { role: umd, become: true, tags: "umd" }
-    - { role: top-bdii, become: true }
-    - { role: yaim, become: true }
+    - { role: top-bdii, become: true, tags: "top-bdii" }
+    - { role: yaim, become: true, tags: "yaim" }
   post_tasks:
     # - name: Check BDII
     #   shell : /etc/init.d/bdii status
