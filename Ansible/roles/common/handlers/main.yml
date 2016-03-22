@@ -10,7 +10,7 @@
 
 - name: update yum
   yum:
-    name: *
+    name: "*"
     state: latest
 
 - name: restart sshd
