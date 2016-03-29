@@ -29,7 +29,7 @@ cream-ces
 [storage-elements]
 # Xrootd machine
 grid-se.chpc.ac.za needs_certificate='true'
-grid-xrootd.chpc.ac.za need_certificate='true'
+grid-se2.chpc.ac.za needs_certificate='true'
 
 # Worker Nodes
 [worker-nodes]
