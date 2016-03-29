@@ -50,13 +50,13 @@
 
 - name: debug packages
   debug:
-    var: "bootstrap_prerequisites.{{ ansible_os_family }}"
+    var: "{{ bootstrap_prerequisites. ansible_os_family }}"
 
 - name: Install prerequisite packages (RedHat)
   yum:
     name: "{{ item }}"
     state: present
-  with_items: "{{ bootstrap_prerequisites.ansible_os_family }}"
+  with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
   tags:
     - bootstrap
     - prerequisites

@@ -1,6 +1,6 @@
 ---
 bootstrap_prerequisites:
-  RedHat:
+  'RedHat':
     - python-simplejson
     - libselinux-python
     - iptables
@@ -11,7 +11,7 @@ bootstrap_prerequisites:
     - openssh-clients
     - vim
     - bind
-  Debian:
+  'Debian':
     - python-simplejson
     - iptables
     - iptables-persistent
