@@ -1,0 +1,6 @@
+---
+# first play installs jenkins
+- name: Install Jenkins 2.0
+  hosts: ci
+  roles:
+    - { name: jenkins-2.0, become: true }
