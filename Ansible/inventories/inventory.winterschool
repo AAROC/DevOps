@@ -1,0 +1,13 @@
+[ci]
+151.97.41.76 ansible_port=4422 ansible_user=jenkins
+#[cvmfs-servers]
+#apprepo.sagrid.ac.za
+#[build-slaves]
+#sl6slave.sagrid.ac.za
+#u1404slave.sagrid.ac.za
+#[CentOS-servers]
+#sl6slave.sagrid.ac.za
+#ci.sagrid.ac.za
+#apprepo.sagrid.ac.za
+[Debian-servers:children]
+ci
