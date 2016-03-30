@@ -3,4 +3,5 @@
 - name: Install Jenkins 2.0
   hosts: ci
   roles:
+    - { name: common, become: true }
     - { name: jenkins-2.0, become: true }
