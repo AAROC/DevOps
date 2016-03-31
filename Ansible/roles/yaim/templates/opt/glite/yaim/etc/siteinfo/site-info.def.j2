@@ -345,12 +345,14 @@ DPM_HOST="{{ dpm_host }}"
 # Hostname of the LFC head node
 LFC_HOST="{{ lfc_host }}"
 
+
+{% if emi_service == 'DPM_SE' %}
 ########################
 # SE general variables #
 ########################
 
 # Space separated list of SEs hostnames
-SE_LIST="{{ se_list|join(' ') }}"
+SE_LIST="{{ se_list|join(' ') | default('') }}"
 
 # Space separated list of SE hosts from SE_LIST containing
 # the export directory from the Storage Element and the
@@ -374,7 +376,7 @@ SE_MOUNT_INFO_LIST="{{ se_mount_info_list }}"
 # Default locations for DPM: /var/log/dpm-gsiftp/dpm-gsiftp.log
 #            and SE_classic: /var/log/globus-gridftp.log
 SE_GRIDFTP_LOGFILE={{ se_gridftp_logfile }}
-
+{% endif %}
 
 ################################
 # BDII configuration variables #

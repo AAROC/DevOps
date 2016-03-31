@@ -20,3 +20,7 @@ bootstrap_prerequisites:
     - openssh-client
     - htop
     - vim
+
+
+packages:
+  - debian[1, 2, 3]
