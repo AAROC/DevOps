@@ -29,16 +29,16 @@
 - name: Build the CI machine
   hosts: ci
   pre_tasks:
-  - include_vars: group_vars/passwords-scigaia.yml
-  - name: tell the team
-    slack:
-      token: "{{ slack_token }}"
-      msg: "Winterschool playbook building CI servier on {{ inventory_hostname }}"
-      channel: "#winterschool"
-      username: "Ansible on {{ inventory_hostname }}"
-      link_names: 1
-      parse: 'full'
-    tags: slack
+    - include_vars: group_vars/passwords-scigaia.yml
+    - name: tell the team
+      slack:
+        token: "{{ slack_token }}"
+        msg: "Winterschool playbook building CI servier on {{ inventory_hostname }}"
+        channel: "#winterschool"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+      tags: slack
   roles:
     - { name: jenkins-2.0, become: true }
   post_tasks:
@@ -55,16 +55,16 @@
 - name: Prepare the Application and Web Server (Glassfish)
   hosts: science-gateways:&dev
   pre_tasks:
-  - include_vars: group_vars/passwords-scigaia.yml
-  - name: tell the team
-    slack:
-      token: "{{ slack_token }}"
-      msg: "Winterschool Playbook - building integration grid engine on {{ inventory_hostname }}"
-      channel: "#winterschool"
-      username: "Ansible on {{ inventory_hostname }}"
-      link_names: 1
-      parse: 'full'
-    tags: slack
+    - include_vars: group_vars/passwords-scigaia.yml
+    - name: tell the team
+      slack:
+        token: "{{ slack_token }}"
+        msg: "Winterschool Playbook - building integration grid engine on {{ inventory_hostname }}"
+        channel: "#winterschool"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+      tags: slack
   roles:
     - { name: certificates, become: true }
     - { name: glassfish, become: true }
