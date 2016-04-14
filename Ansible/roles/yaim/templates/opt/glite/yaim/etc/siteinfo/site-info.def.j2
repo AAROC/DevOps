@@ -675,7 +675,7 @@ GLITE_LB_AUTHZ_REGISTER_JOBS=".*"
 GLITE_LB_WMS_DN="/C=IT/O=INFN/OU=Host/L={{ site_name }}/CN={{ wms_host }}"
 {% endif -%}
 
-{% if emi_service == "SAM_NAGIOS" %}
+{% if emi_service == "SAM-NAGIOS" %}
 # Nagios
 NAGIOS_HOST={{ nagios_host }}
 NAGIOS_ADMIN_DNS="{{ nagios_admin_dns|join(',') }}"
