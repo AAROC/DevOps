@@ -14,7 +14,7 @@ nagios_host: nagios.c4.csir.co.za
 is_nagios: 1
 
 #bdii_host: bdii.core.hellasgrid.gr
-bdii_host: bdii.c4.csir.co.za
+#bdii_host: bdii.c4.csir.co.za
 px_host: myproxy.cern.ch
 wms_host: wms.c4.csir.co.za
 jobsubmit_wn_se_rep: fs01.grid.uj.ac.za
