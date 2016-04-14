@@ -1,6 +1,9 @@
-- name: do a raw install of libselinux-python
-  raw: yum -y install libselinux-python
+- name: raw install of libselinux-python and lsb-core
+  raw: yum -y install libselinux-python redhat-lsb-core
   when: ansible_os_family == 'RedHat'
+
+- name: Update facts
+  setup:
 
 - name: update the repo configuration
   copy:
@@ -8,29 +11,13 @@
     dest: /etc/yum.repos.d/sl6x.repo
   tags:
     - yum
-  when: (ansible_os_family == 'RedHat') and (ansible_lsb.major_release == '6')
+  when: (ansible_os_family == 'RedHat') and (ansible_lsb != 'null' ) and (ansible_lsb.major_release == '6')
 
 - name: check connectivity
   command: /bin/ping -c 1 www.google.com
   register: hosttest
   ignore_errors: true
   changed_when: false
-
-# - name: debug
-#   debug: var=hosttest.stderr
-#   when: hosttest
-
-# This task can only work if the selinux python bindings are installed.
-# this can only be installed if there is network connectivity...
-# so, we need to do a raw replace of the dns server first
-# - name: use Google public DNS if necessary
-#   lineinfile:
-#     dest: /etc/resolv.conf
-#     regexp: '^nameserver'
-#     line: 'nameserver 8.8.8.8'
-# #  when: "'ping: unknown host www.google.com' in hosttest.stderr"
-#   tags:
-#     - DNS
 
 - name: Do raw replace of nameserver
   raw: 'sed -i "s#^nameserver .*\$#nameserver 8.8.8.8#g" /etc/resolv.conf'
