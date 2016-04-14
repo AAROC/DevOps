@@ -1,18 +1,20 @@
+# Group variables for NGI Nagios machines
 ---
+needs_certificate: 'true'
+prerequisites: []
+emi_service: 'SAM-NAGIOS'
+yaim_options: '-n NAGIOS -n SAM_NAGIOS'
+ports:
+  - inbound: []
+  - outbound: []
+needs_mysql: true
 #Nagios related
 nagios_host: nagios.c4.csir.co.za
-nagios_nsca_pass: redacted
-ncg_backup_instance: "false"
-
-#MySQL related
-mysql_pass: redacted
-db_pass_r: redacted
-db_pass_w: redacted
 
 is_nagios: 1
 
 #bdii_host: bdii.core.hellasgrid.gr
-bdii_host: bdii.c4.csir.co.za
+#bdii_host: bdii.c4.csir.co.za
 px_host: myproxy.cern.ch
 wms_host: wms.c4.csir.co.za
 jobsubmit_wn_se_rep: fs01.grid.uj.ac.za
@@ -29,7 +31,8 @@ queues:
   - dteam
 
 nagios_role: ngi
-
+# WN probes
+storage_elements_to_use: se.core.wits.ac.za
 ncg_probes_type: local
 ncg_vo: ops
 nagios_httpd_enable_config: "true"
@@ -50,6 +53,7 @@ ncg_gocdb_roc_name: AfricaArabia
 
 #ATP variable in order to support transparent migration of SAM to CNRS
 atp_root_url: http://mon.egi.eu/atp
+ncg_topology_atp_root_url: http://mon.egi.eu/atp
 
 #POEM variable in order to support transparent migration of SAM to CNRS
 poem_sync_urls: http://mon.egi.eu/poem/api/0.1/json/

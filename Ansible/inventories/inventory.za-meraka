@@ -70,7 +70,7 @@ security.sanren.ac.za
 
 # monitoring
 [ngi-nagios]
-nagios.c4.csir.co.za
+nagios.c4.csir.co.za emi_service='SAM-NAGIOS' yaim_option='-n NAGIOS -n SAM_NAGIOS'
 #[vo-sagrid-nagios]
 #sagrid-monitoring.c4.csir.co.za
 
