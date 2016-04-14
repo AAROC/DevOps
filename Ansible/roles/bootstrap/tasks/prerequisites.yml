@@ -6,10 +6,9 @@
   copy:
     src: etc/yum.repos.d/sl6x.repo
     dest: /etc/yum.repos.d/sl6x.repo
-  #        validate: 'yum update'
   tags:
     - yum
-  when: ansible_os_family == 'RedHat'
+  when: (ansible_os_family == 'RedHat') and (ansible_lsb.major_release == '6')
 
 - name: check connectivity
   command: /bin/ping -c 1 www.google.com
@@ -37,10 +36,10 @@
   raw: 'sed -i "s#^nameserver .*\$#nameserver 8.8.8.8#g" /etc/resolv.conf'
 
 # SE linux is probably still enabled, so we need to do a raw install of libselinux
-# - name: ensure that SELinux python bindings are installed
-#   yum:
-#     name: libselinux-python
-#     state: installed
+- name: ensure that SELinux python bindings are installed
+  yum:
+     name: libselinux-python
+     state: installed
 
 - name: Install libselinux
   raw: 'yum install -y libselinux-python'
