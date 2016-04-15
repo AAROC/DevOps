@@ -4,6 +4,11 @@
   user: ansible
   become: true
   pre_tasks:
+    - include_vars: "{{ item }}"
+      with_items:
+        - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+        - roles/common/vars/middleware/IGTF.yml
+        - "group_vars/passwords-{{ site_name }}.yml"
     - name: Announce the play via Slack
       action:
         module: slack
@@ -16,16 +21,13 @@
         link_names: 1
         parse: 'full'
   roles:
-    - bootstrap
+#    - bootstrap
     - common
     - certificates
     - umd
     - wms
     - yaim
-  vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-    - roles/common/vars/middleware/IGTF.yml
-    - "group_vars/passwords-{{ site_name }}.yml"
+
   handlers:
     - include: roles/common/handlers/main.yml
   post_tasks:
@@ -37,15 +39,20 @@
           msg: "WMS play on {{ inventory_hostname }} at {{ site_name }} finished O/ ... running tweaks..."
           channel: "#devopssite"
           username: "Ansible on {{ inventory_hostname }}"
-          #icon_url: "http://www.example.com/some-image-file.png"
           link_names: 1
           parse: 'full'
 
 - hosts: wms-servers
+  user: ansible
+  become: true
   tasks:
     - name: tweak WMS
       become: true
-      template: src=roles/wms/templates/etc/glite-wms/glite_wms.conf.j2 dest=/etc/glite-wms/glite_wms.conf owner=root group=root
+      template:
+        src: roles/wms/templates/etc/glite-wms/glite_wms.conf.j2
+        dest: /etc/glite-wms/glite_wms.conf
+        owner: root
+        group: root
       notify: restart-wms-wm
   handlers:
     - name: restart-wms-wm
@@ -61,6 +68,5 @@
         msg: "WMS play on {{ inventory_hostname }} at {{ site_name }} finished O/"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
-        #icon_url: "http://www.example.com/some-image-file.png"
         link_names: 1
         parse: 'full'
