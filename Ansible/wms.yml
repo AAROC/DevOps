@@ -44,8 +44,10 @@
 
 - hosts: wms-servers
   user: ansible
-  become: true
   tasks:
+    - name: wms host name
+      debug:
+        msg: "WMS host name is {{ hostvars[groups['wms-servers'][0]].ansible_fqdn }}"
     - name: tweak WMS
       become: true
       template:
@@ -56,13 +58,15 @@
       notify: restart-wms-wm
   handlers:
     - name: restart-wms-wm
+      become: true
       command: '/etc/init.d/glite-wms-wm restart'
 
 - hosts: wms-servers
+  user: ansible
   tasks:
+    - include_vars: "group_vars/passwords-{{ site_name }}.yml"
     - name: announce play outcome via Slack
-      action:
-        module: slack
+      slack:
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "WMS play on {{ inventory_hostname }} at {{ site_name }} finished O/"

@@ -14,9 +14,9 @@
 # ports added here from the WMS service reference card
 # https://wiki.italiangrid.it/twiki/bin/view/WMS/EMIWMSServiceRefCard
 {% for port in wms_ports %}
--A INPUT -s -i eth0 -p tcp --dport {{ port }} -j ACCEPT
+-A INPUT -s 0.0.0.0/0 -i eth0 -p tcp --dport {{ port }} -j ACCEPT
 {% endfor %}
-
+-A INPUT -p tcp --match multiport --dports 20000:25000 -j ACCEPT
 ## OUTPUT queue -- outbound traffic
 # allow all outbound traffic
 -A OUTPUT -j ACCEPT
