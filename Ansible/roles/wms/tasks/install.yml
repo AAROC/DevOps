@@ -17,7 +17,7 @@
   template:
     src: templates/etc/sysconfig/iptables.j2
     dest: /etc/sysconfig/iptables
-  when: ansible_distribution == 'CentOS'
+  when: ansible_os_family == 'RedHat'
   become: true
   become_user: root
   notify:
