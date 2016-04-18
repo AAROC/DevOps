@@ -2,7 +2,6 @@
   yum:
     name: emi-argus
     state: present
-  sudo: true
   tags:
     - ARGUS
     - install
