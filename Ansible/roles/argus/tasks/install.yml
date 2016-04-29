@@ -1,6 +1,7 @@
 - name: Install ARGUS metapackage
-  action: yum name=emi-argus state=installed
-  sudo: true
-  tags: 
+  yum:
+    name: emi-argus
+    state: present
+  tags:
     - ARGUS
     - install

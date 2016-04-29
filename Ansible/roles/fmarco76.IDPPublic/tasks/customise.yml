@@ -1,14 +1,19 @@
---- 
+---
 - name: Replace mail in struts
-  replace: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/struts.xml regexp='test@idp-domain.org' replace={{ mail_contact }}
+  replace:
+    dest: "{{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/struts.xml"
+    regexp: test@idp-domain.org+
+    replace: "{{ mail_contact }}"
   ignore_errors: True
   tags:
   - customise
-  
 
 - name: Replace mail in cleaner config
-  replace: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/cleaner.properties regexp='test@idp-domain.org' replace={{ mail_contact }}
-  ignore_errors: True
+  replace:
+    dest: "{{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/cleaner.properties"
+    regexp: 'test@idp-domain.org'
+    replace: "{{ mail_contact }}"
+  ignore_errors: true
   tags:
   - customise
 
@@ -17,26 +22,34 @@
   ignore_errors: True
   tags:
   - customise
+  - debug
 
 - name: Fix ldap server
-  replace: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties regexp='^url=ldaps://ldap.sagrid.ac.za:636$' replace='url=ldap://{{ ldap_server }}:389'
+  replace:
+    dest: "{{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties"
+    regexp: '^url=ldaps://ldap.sagrid.ac.za:636$'
+    replace: 'url=ldap://{{ ldap_server }}:389'
   tags:
   - customise
 
 - name: Set bind DN
-  replace: dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties regexp='^bindDN=cn=idp,dc=local$' replace='bindDN=cn=useradmin,dc=local'
+  replace:
+    dest: "{{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties"
+    regexp: '^bindDN=cn=idp,dc=local$'
+    replace: 'bindDN=cn=useradmin,dc=local'
   tags:
   - customise
 
-- name: Set bind Password 
-  replace: "dest={{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties regexp='^bindPass=xxxxxxxxxxxxxxxxxxxx' replace='bindPass={{ useradmin_password }}'"
+- name: Set bind Password
+  replace:
+    dest: "{{ ansible_env.HOME }}/idpFrontEnd/IDPPublic-{{ IDPPublic_release }}/src/java/ldap.properties"
+    regexp: '^bindPass=xxxxxxxxxxxxxxxxxxxx'
+    replace: 'bindPass={{ useradmin_password }}'
   tags:
   - customise
 
 - name: Create DB directory
-  sudo: yes
+  become: yes
   file: path=/var/run/db/hsqldb state=directory owner={{ tomcat6_user }} group={{ tomcat6_group }}
   tags:
   - customise
-
-

@@ -1,0 +1,47 @@
+---
+- hosts: all
+  name: Enable CVMFS
+  roles:
+    - cvmfs
+  pre_tasks:
+    - name: Inform the team
+      local_action:
+        module: slack
+        domain: africa-arabia-roc.slack.com
+        channel: "#devopssite"
+        token: "{{ slack_token }}"
+        msg: "{{ inventory_hostname }} is about to have CVMFS configured !"
+        #color: danger
+        username: "Ansible on {{ inventory_hostname }}"
+        icon_url: ""
+        validate_certs: False
+      tags:
+        - slack
+
+- hosts: all
+  vars:
+#    devrepo: "{{ lookup('file', '/cvmfs/devrepo.sagrid.ac.za/test')}}"
+#    apprepo: "{{ lookup('file', '/cvmfs/apprepo.sagrid.ac.za/v1')}}"
+    fastrepo: "{{ lookup('file', '/cvmfs/fastrepo.sagrid.ac.za/version')}}"
+  tasks:
+    - stat:
+#        path: "{{ apprepo }}"
+#        path: "{{ devrepo }}"
+        path: "{{ fastrepo }}"
+    # - debug:
+    #     msg: "DevRepo is : {{ devrepo }}"
+    # - debug:
+    #     msg: "AppRepo is : {{ apprepo }}"
+    # - debug:
+        msg: "FastRepo is : {{ fastrepo }}"
+    - name: Inform the team
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "{{ inventory_hostname }} is has CVMFS configured ! Apprepo is {{ apprepo }}, devrepo is {{ devrepo }}"
+        #color: good
+        username: "Ansible on {{ inventory_hostname }}"
+        icon_url: ""
+        validate_certs: False
+      tags:
+        - slack

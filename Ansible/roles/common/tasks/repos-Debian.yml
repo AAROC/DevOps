@@ -1,0 +1,35 @@
+---
+# Just install the repos for grid stuff
+
+- name: Add EUGridPMA key
+  apt_key:
+    url: https://dist.eugridpma.info/distribution/igtf/current/GPG-KEY-EUGridPMA-RPM-3
+    state: present
+  tags:
+    - repos
+    - IGTF
+    - download
+
+- name: Ensure  that the EUGridPMA repo is in source.list
+  blockinfile:
+    dest: /etc/apt/sources.list
+    block: >
+        #### EGI Trust Anchor Distribution ####
+        
+        deb http://repository.egi.eu/sw/production/cas/1/current egi-igtf core
+    state: present
+  tags:
+    - repos
+    - IGTF
+
+- name: EGI trustanchors present
+  apt:
+    update_cache: true
+    name: ca-policy-egi-core
+    state: present
+  retries: 2
+# should have a when file state==abset here
+  tags:
+    - repos
+    - IGTF
+    - download

@@ -1,0 +1,5 @@
+---
+- name: start sshd
+  service:
+    name: sshd
+    state: started

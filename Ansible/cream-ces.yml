@@ -1,65 +1,159 @@
 ---
 - hosts: cream-ces
-  name: Install all the packages
+  name: Deploy CREAM CE and dependencies
   user: ansible
-  sudo: true
+  become: true
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-    # need to have every bloody combination of the vars files because facter doesn't report
-    # facts consistently.
     - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
+  pre_tasks:
+    - name: Announce the play via Slack
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Running CREAM-CEs play on {{ inventory_hostname }} at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
+    - name: debug some variables
+      debug:
+       var: "{{ item }}"
+      with_items:
+       - needs_mysql
+       - mysql_pass
+       - needs_certificate
+       - emi_service
   roles:
-  - common
-  - certificates
-  - umd
-  - cream-ce
+  - { role: common, become: true }
+  - { role: certificates, become: true }
+  - { role: umd, become: true }
+  - { role: cream-ce, become: true }
   handlers:
   - include: roles/common/handlers/main.yml
+  post_tasks:
+  - name: Announce the play outcome
+    slack:
+      domain: africa-arabia-roc.slack.com
+      token: "{{ slack_token }}"
+      msg: "CREAM-CE play on {{ inventory_hostname }} at {{ site_name }} has completed until the CREAM-CE role"
+      channel: "#devopssite"
+      username: "Ansible on {{ inventory_hostname }}"
+      link_names: 1
+      parse: 'full'
+    tags:
+      - slack
 
-- hosts: cluster-head-nodes
+- hosts: worker-nodes
+  name: look up the IP addresses of the hosts
+  tasks:
+    - name: look up worker-node facts
+      setup:
+
+- hosts: cream-ces
   name: Configure as head node
   user: ansible
-  sudo: true
   roles:
-  - head-node
+   - { role: munge, become: true }
+   - { role: head-node, become: true }
+  vars_files:
+      - group_vars/passwords-{{ site_name }}.yml
+
+
+# Head node has to be run after you've configured all of the worker nodes, else the facts are not available.
 
 - hosts: cream-ces
   name: run YAIM for CREAM-CE on head node
   user: ansible
-  sudo: true
+  become: true
+  pre_tasks:
+  - name: Announce the play via Slack
+    slack:
+      domain: africa-arabia-roc.slack.com
+      token: "{{ slack_token }}"
+      msg: "Running YAIM play on {{ inventory_hostname }} at {{ site_name }}"
+      channel: "#devopssite"
+      username: "Ansible on {{ inventory_hostname }}"
+      #icon_url: "http://www.example.com/some-image-file.png"
+      link_names: 1
+      parse: 'full'
+    tags:
+      - slack
   roles:
-  - yaim
+  - { role: yaim, become: true }
+  vars_files:
+    - group_vars/passwords-{{ site_name }}.yml
   post_tasks:
-    - name: fix qmgr queues 1
-      sudo: true
-      action: raw /usr/bin/qmgr -c "unset queue {{ item.name }} {{ resources_max.cput }}"
-      with_items: qmgr_queues
-      notify:
-      - restart pbs_server
+    - name: Restart trqauthd
+      become: true
+      service:
+        name: trqauthd
+        state: started
+    - name:
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "CREAM CE has been configured by YAIM in the play on {{ inventory_hostname }} at {{ site_name }}. Moving on to post-configuration of the queues and scheduling server"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
 
-    - name: fix qmgr queues 2
-      sudo: true
-      action: raw /usr/bin/qmgr -c "set queue {{ item.name }} resources_max.walltime = {{ item.max_wall_time }}"
+    - name: Remove queue CPU time limits
+      become: true
+      raw: "/usr/bin/qmgr -c 'unset queue {{ item.name }} resources_max.cput'"
       with_items: qmgr_queues
       notify:
         - restart pbs_server
 
-    - name: fix qmgr queues 3
-      action: raw /usr/bin/qmgr -c "set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}"
-      sudo: true
-      with_items:
-        - qmgr_queues
+    - name: Set Max Walltime limits
+      become: true
+      raw: "/usr/bin/qmgr -c 'set queue {{ item.name }} resources_max.walltime = {{ item.max_wall_time }}'"
+      with_items: qmgr_queues
       notify:
         - restart pbs_server
 
-    - name: fix Proxy_to_sandbox_dir
-      sudo: true
-      action: copy src=config/files/usr/bin/glite-cream-copyProxyToSandboxDir.sh dest=/usr/bin/glite-cream-copyProxyToSandboxDir.sh owner=root  group=root mode=755
+    - name: Debug the qmgr queues
+      debug: vars={{ item.name }}
+      with_items: qmgr_queues
+
+    - name: Set Queue default walltime
+      raw: "/usr/bin/qmgr -c 'set queue {{ item.name }} resources_default.walltime = {{ item.max_wall_time }}' "
+      become: true
+      with_items: qmgr_queues
+      notify:
+        - restart pbs_server
+
+#    - name: fix Proxy_to_sandbox_dir
+#      become: true
+#      action: copy src=config/files/usr/bin/glite-cream-copyProxyToSandboxDir.sh dest=/usr/bin/glite-cream-copyProxyToSandboxDir.sh owner=root  group=root mode=755
 
     - name: restart munge
-      sudo: true
-      service: name=munge state=restarted
+      become: true
+      service:
+        name: munge
+        state: restarted
 
     - name: restart pbs_server
-      sudo: true
-      action: service name=pbs_server state=restarted enabled=yes
+      become: true
+      service:
+        name: pbs_server
+        state: restarted
+        enabled: yes
+
+    - name: Announce the play via Slack
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Finished CREAM-CE playbook on  {{ inventory_hostname }} at {{ site_name }} sucessfully :ok_hand:"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'

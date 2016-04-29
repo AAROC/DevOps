@@ -1,0 +1,12 @@
+---
+- name: "Download the Idem federation certificate"
+  get_url:
+    url: https://sp.lab.unimo.it/metadata-signer.crt
+    dest: /etc/shibboleth/metadata-signer.crt
+
+
+- name: Create Shibboleth certificate
+  command: "/usr/sbin/shib-keygen"
+    creates:
+      - /etc/shibboleth/sp-cert.pem
+      - /etc/shibboleth/sp-key.pem

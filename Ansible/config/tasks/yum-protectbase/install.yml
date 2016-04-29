@@ -1,2 +1,0 @@
-- name: Install yum-protectbase package
-  action: yum name=yum-protectbase state=latest

@@ -1,0 +1,53 @@
+---
+- name: download the CVMFS repo (RedHat)
+  become: True
+  become_user: root
+  get_url:
+    url: http://cvmrepo.web.cern.ch/cvmrepo/yum/cernvm.repo
+    dest: /etc/yum.repos.d/cernvm.repo
+    mode: 0644
+  tags:
+    - cvmfs
+    - repos
+  when: ansible_os_family == 'RedHat'
+
+- name: Install CVMFS client
+  become: true
+  become_user: root
+  yum: name={{ item }} state=present disable_gpg_check=yes
+  with_items:
+    - cvmfs-release
+    - cvmfs-keys
+    - cvmfs
+    - cvmfs-init-scripts
+    - cvmfs-auto-setup
+  tags:
+    - cvmfs
+    - install
+
+- name: copy over the local config files
+  become: true
+  copy: src=etc/cvmfs/{{ item }} dest=/etc/cvmfs/{{ item }}
+  with_items:
+    - default.local
+    - keys/apprepo.sagrid.ac.za.pub
+    - config.d/apprepo.sagrid.ac.za.conf
+    - keys/devrepo.sagrid.ac.za.pub
+    - config.d/devrepo.sagrid.ac.za.conf
+  tags:
+    - cvmfs
+    - config
+
+
+- name: ensure that autofs is running
+  become: true
+  service: name=autofs state=started
+  tags:
+    - cvmfs
+
+- name: check that the repo is mounted
+  stat: path=/cvmfs/fastrepo.sagrid.ac.za
+  register: p
+
+- debug: msg="Path exists and is a directory"
+  when: p.stat.isdir is defined and p.stat.isdir

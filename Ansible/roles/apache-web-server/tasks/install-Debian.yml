@@ -1,0 +1,17 @@
+---
+# install tasks for Debian
+- name: Install the package
+  sudo: true
+  apt: name={{ package_name }} state=present
+
+- name: Ensure that the service is running
+  sudo: true
+  service: name={{ package_name }} state=restarted
+
+- name: Configure virtualhosts
+  debug: msg="TODO"
+
+
+- name: Configure SSL
+  debug: msg="TODO"
+  when: ssl_enabled

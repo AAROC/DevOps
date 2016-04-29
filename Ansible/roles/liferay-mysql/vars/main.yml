@@ -10,7 +10,7 @@ mysql_db:
 # Set the mysql users you want to create here
 mysql_users:
      - name: tracking_user
-       pass: userstracking
+       pass: usertracking
        priv: "userstracking.*:ALL"
      - name: liferayadmin
        pass: liferayadmindbpass

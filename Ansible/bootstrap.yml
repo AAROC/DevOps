@@ -1,36 +1,38 @@
 ---
-- hosts: all
-  user: ansible
-  sudo: true
-  sudo_user: root
-  tasks:
-    - name: Send slack message
-      action:
-        module: slack
-        domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
-        msg: "Starting bootstrap on {{ inventory_hostname }}"
-        channel: "#devops-bootstrap"
-        username: "Ansible on {{ inventory_hostname }}"
-     #icon_url: "http://www.example.com/some-image-file.png"
-        link_names: 0
-        parse: 'none'
-
+# This is the boostrap play for AAROC machines.
 - name: bootstrap the machines
   hosts: all
-  user: ansible
-  sudo: true
+  become: true
   roles:
-  - bootstrap
+# we don't need become here, because bootstrap is designed to run as root.
+# However, we keep it explicit in order to make it clear to the user what
+# will happen
+    - bootstrap
+  pre_tasks:
+  - name: debug
+    debug: var=site_name
+  - name: Send Slack Message
+    slack:
+     domain: africa-arabia-roc.slack.com
+     token: sBWZXBHgua6QqSnj6QDw9bFE
+     msg: "Starting bootstrap on {{ inventory_hostname }} at {{ site_name }}"
+     channel: "#devops-bootstrap"
+     username: "Ansible on {{ inventory_hostname }}"
+     #icon_url: "http://www.example.com/some-image-file.png"
+     link_names: 1
+     parse: 'full'
+    tags:
+      - slack
   post_tasks:
-    - name: Send notification message via Slack
-      action:
-        module: slack
-        domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
-        msg: "bootstrap on {{ inventory_hostname }} has run"
-        channel: "#devops-bootstrap"
-        username: "Ansible on {{ inventory_hostname }}"
-       #icon_url: "http://www.example.com/some-image-file.png"
-        link_names: 0
-        parse: 'none'
+  - name: Send notification message via Slack
+    slack:
+      domain: africa-arabia-roc.slack.com
+      token: sBWZXBHgua6QqSnj6QDw9bFE
+      msg: "bootstrap on {{ inventory_hostname }} has run at {{ site_name }}"
+      channel: "#devops-bootstrap"
+      username: "Ansible on {{ inventory_hostname }}"
+      #icon_url: "http://www.example.com/some-image-file.png"
+      link_names: 1
+      parse: 'full'
+    tags:
+      - slack

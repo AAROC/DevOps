@@ -1,0 +1,7 @@
+---
+# Variables for CREAM-CES
+needs_certificate: true
+emi_service: CREAM_CE
+yaim_options: '-n creamCE -n TORQUE_server -n TORQUE_utils -n MPI_CE '
+needs_mysql: true
+cream_db_user: cream

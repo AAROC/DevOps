@@ -1,0 +1,39 @@
+---
+- hosts: all
+  name: Make all the hosts ansible executors
+  become: true
+  roles:
+    - bootstrap
+    - ansible-executor
+  vars_files:
+    - group_vars/passwords-{{ site_name }}.yml
+  pre_tasks:
+    - name: set some facts
+      set_fact: playbook=ansible-executor
+    - name: Announce the play via Slack
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Running {{ playbook }} on {{ inventory_hostname }} at {{ site_name }} :worried: "
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+  post_tasks:
+    - name: Announce via Slack
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+    - name: Test Ansible
+      command: /opt/ansible/hacking/env-setup
+      args:
+        executable: /bin/bash
+        chdir: /opt/ansible/hacking
+      register: setup
+    - name: Tell the user
+      debug: msg=setup.stdout.lines

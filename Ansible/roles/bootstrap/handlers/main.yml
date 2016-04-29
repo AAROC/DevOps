@@ -1,6 +1,8 @@
 - name: reboot
   command: /sbin/reboot
 - name: updatedb
-  action: command updatedb
+  command: updatedb
 - name: restart ssh
-  service: name=sshd state=restarted
+  service:
+    name: sshd
+    state: restarted

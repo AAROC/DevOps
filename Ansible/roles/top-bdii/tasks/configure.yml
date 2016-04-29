@@ -1,0 +1,41 @@
+---
+
+#  top-bdii configuration tweaks
+# These tasks are to tweak the top-bdii configuration to avoid segfaults.
+# See https://www.jiscmail.ac.uk/cgi-bin/webadmin?A2=LCG-ROLLOUT;b17ebbe2.1510
+# It is apparently only applicable when the OS version is CentOS 6.7 - we will apply it when the
+# OS is CentOS-6.x
+# - name: Ensure relay database is disabled
+#   become: true
+#   lineinefile:
+#     dest: /etc/bdii/bdii-top-slapd.conf
+#     regexp: "^database\s*relay"
+#     line: "#database relay"
+#   when: ansible_os_family == 'RedHat' && ansible_distribution_major_version == '6'
+#
+# - name: Ensure that relay database suffix is disabled
+#   become: true
+#   lineinefile:
+#     dest: /etc/bdii/bdii-top-slapd.conf
+#     regexp: "^suffix\s*\"o\=grid\""
+#     line: "#suffix \"o=grid\""
+#   when: ansible_os_family == 'RedHat' && ansible_distribution_major_version == '6'
+
+- name: Tweak relay db
+  become: true
+  replace:
+    dest: /etc/bdii/bdii-top-slapd.conf
+    regexp: "{{ relay_db_lines }}"
+    replace: "{{ relay_db_fix }}"
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'
+  tags:
+    - tweak
+
+- name: Tweak Glue 1.3 database definitions
+  replace:
+    dest: /etc/bdii/bdii-top-slapd.conf
+    regexp: "{{ glue_1_3_lines }}"
+    replace: "{{ glue_1_3_fix }}"
+  when: ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'
+  tags:
+    - tweak

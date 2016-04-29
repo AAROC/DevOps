@@ -1,32 +1,62 @@
 ---
-# EPEL yum repository.
+- name: add EGI GPG key to RPM
+  rpm_key:
+    key: http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY
+    state: present
+  retries: 2
+  tags:
+    - repos
+    - UMD
+
+
+# UMD yum repository.
 - name: Download UMD 3 repo.
-  get_url: url=http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm dest=/tmp/umd-release.rpm
+  yum:
+    name: "http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm"
+    state: present
+  retries: 2
   when: ansible_hostname.find("nagios") == -1
   tags:
     - repos
     - UMD3
 
-# - name: Download UMD 2 repo
-#   get_url: url=http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm dest=/tmp/umd-release.rpm
-#   when: ansible_hostname.find("nagios") != -1
-#   tags:
-#     - repos
-#     - UMD2
-
-- name: add EGI GPG key to RPM
-  sudo: True
-  sudo_user: root
-  rpm_key: key=http://repository.egi.eu/sw/production/umd/UMD-RPM-PGP-KEY state=present
+- name: Download UMD 2 repo
+  yum:
+    name: "http://repository.egi.eu/sw/production/umd/2/sl5/x86_64/base/umd-release-2.0.0-1.el5.noarch.rpm"
+    state: present
+  when: ansible_hostname.find("nagios") != -1
+  retries: 2
   tags:
-    - repos
+   - repos
+   - UMD2
+
+- name: Ensure prorities plugin is configured
+  copy:
+    src: etc/yum/pluginconf.d/priorities.conf
+    dest: /etc/yum/pluginconf.d/prorities.conf
+
+- name: Ensure UMD repos are enabled
+  lineinfile:
+    dest: "/etc/yum.repos.d/{{ item }}"
+    regexp: ^enabled=
+    line: enabled=1
+  with_items:
+    - UMD-3-base.repo
+    - UMD-3-updates.repo
+  tags:
     - UMD
 
-- name: Install UMD repo.
-  sudo: True
-  sudo_user: root
-  command: yum localinstall -y /tmp/umd-release.rpm
-#  when: yum name=umd-release state==absent
+
+- name: Set priorities of UMD repos
+  lineinfile:
+    dest: /etc/yum.repos.d/{{ item }}
+    regexp: '^priority='
+    line: 'priority=1'
+    insertafter: 'enabled=1'
+  with_items:
+    - UMD-3-base.repo
+    - UMD-3-updates.repo
   tags:
-    - repos
+    - UMD_priority
     - UMD
+  # when umd3...

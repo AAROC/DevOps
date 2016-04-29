@@ -1,45 +1,81 @@
 ---
-- name: Add head node IP to known hosts
-  template: dest=/etc/ssh/shosts.equiv src=etc/ssh/shosts.equiv.j2 owner=root group=root
-#  debug: msg="created shosts.equiv file"
-  tags: 
-  - networking
-
 - name: Setup known hosts for host-based authentication
-  template: src=etc/ssh/ssh_known_hosts.j2  dest=/etc/ssh/ssh_known_hosts owner=root group=root mode=0644
-  tags: 
-  - networking
-  
+  template:
+    src: etc/ssh/ssh_known_hosts.j2
+    dest: /etc/ssh/ssh_known_hosts
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - networking
+
 - name: Enable host-based authentication
-  template: src=etc/ssh/sshd_config.j2 dest=/etc/ssh/sshd_config owner=root group=root mode=0644
-  notify: 
+  template:
+    src: etc/ssh/sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+  notify:
   - restart ssh
-  tags: 
+  tags:
   - ssh
   - networking
-    
+
 #- name: Enable host-based authentication
   #lineinfile: dest=/etc/ssh/sshd_config regexp="^#HostbasedAuthentication no" line="HostbasedAuthentication yes" backrefs=yes
-  #notify: 
+  #notify:
   #- restart ssh
   #tags:
   #- networking
 
 #- name: Enable rhosts for root
   #lineinfile: dest=/etc/ssh/sshd_config regexp="^#IgnoreRhosts yes" line="IgnoreRhosts no" backrefs=yes
-  #notify: 
+  #notify:
   #- restart ssh
   #tags:
   #- networking
 
+- name: quick debug of wn network config
+  debug: "var={{ item }}"
+  with_items:
+    - site_domain
+    - ansible_hostname
+  tags:
+    - debug
 
 - name: Set worker node hostname
-  hostname: name="{{ ansible_hostname }}"."{{ site_domain }}"
+  hostname:
+    name: "{{ ansible_hostname }}.{{ site_domain }}"
   tags:
-  - networking
+    - networking
 
-- debug: msg="set host to  is {{ ansible_hostname }}.{{ site_domain }}"
+- debug:
+    msg: "set host to  is {{ ansible_hostname }}.{{ site_domain }}"
+  tags:
+    - debug
 
 - name: Create /etc/hosts template
-  template: dest=/etc/hosts src=etc/hosts.j2 owner=root group=root mode=0644
+  template:
+    dest: /etc/hosts
+    src: etc/hosts.j2
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - networking
 
+- name: Enable ssh authorized keys (ansible)
+  authorized_key:
+    user: ansible
+    key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+  notify:
+    - restart ssh
+
+
+- name: Enable ssh authorized keys (root)
+  authorized_key:
+    user: root
+    key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+  notify:
+    - restart ssh

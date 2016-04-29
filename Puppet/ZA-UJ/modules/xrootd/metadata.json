@@ -1,0 +1,37 @@
+{
+  "name": "lcgdm-xrootd",
+  "version": "0.1.2",
+  "source": "UNKNOWN",
+  "author": "puppet",
+  "license": "Apache License, Version 2.0",
+  "summary": "UNKNOWN",
+  "description": "This module installs and configure an XrootD server",
+  "project_page": "UNKNOWN",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib"
+    },
+    {
+      "name": "CERNOps/fetchcrl"
+    }
+  ],
+  "types": [
+
+  ],
+  "checksums": {
+    "Modulefile": "3acc8f2003c257923b826ba71b1905aa",
+    "README": "6d262c8f21d4a3f2a26eeca6ca00e354",
+    "manifests/config.pp": "a39b150bf80397855a709f921cff97e7",
+    "manifests/create_authfile.pp": "a21b3dc3d83d41de64fe3f29bb863440",
+    "manifests/create_config.pp": "a5667572cbf0553381ee305a42eff7c9",
+    "manifests/create_sysconfig.pp": "3f52104a93406292ae881e39724e2cc1",
+    "manifests/init.pp": "e6750bc514583a4dec956ab0abfc461d",
+    "manifests/install.pp": "9c684f66d2ba9a2d8888e773370d63ed",
+    "manifests/params.pp": "1d6c0cca12b2c41fe11f1dddf1624529",
+    "manifests/service.pp": "10a13832ec00ace6bc17b4ef5800e8e0",
+    "templates/authfile_generic.erb": "9878dbf34a4606d5ad613511a527d956",
+    "templates/sysconfig.erb": "8c7444627e994900ebfff154c3066894",
+    "templates/xrootd.cfg.erb": "8c5b50dfad20d7d3bcad8e0cbd4cd1d8",
+    "tests/init.pp": "e0116d21621323efbffb16dfb2880428"
+  }
+}

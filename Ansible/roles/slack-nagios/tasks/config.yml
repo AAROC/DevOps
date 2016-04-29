@@ -1,0 +1,49 @@
+---
+# Configuration of the slack nagios script for your slack instance
+- name: Team domain
+  lineinfile:
+    dest: "{{ script_path }}/slack_nagios.pl"
+    regexp: "my \\$opt_domain ="
+    line: "my $opt_domain = \"{{ team_domain }}.slack.com\";"
+    backrefs: "yes"
+
+- name: Team token
+  lineinfile:
+    dest: "{{ script_path }}/slack_nagios.pl"
+    regexp: "my \\$opt_token ="
+    line: "my $opt_token = \"{{ nagios_slack_token }}\";"
+    backrefs: "yes"
+
+- name: Add the Slack config dir to Nagios
+  lineinfile:
+    dest: /etc/nagios/nagios.cfg
+    line: cfg_dir=/etc/nagios/slack/
+    insertafter: 'cfg_dir=/etc/nagios/gstat/'
+
+- name: Ensure that the slack config dir is present
+  file:
+    path: /etc/nagios/slack
+    state: directory
+    owner: nagios
+    group: nagios
+    mode: u=rwx,g=rx,o=rx
+
+- name: Configure Nagios to use the plugin
+  template:
+    src: etc/nagios/slack/slack_nagios.cfg.j2
+    dest: /etc/nagios/slack/slack_nagios.cfg
+    owner: nagios
+    group: nagios
+    mode: u=rw,g=r,o=r
+
+- name: Make all services notify slack
+  replace:
+    dest: /etc/nagios/wlcg.d/ZA-MERAKA/contacts.cfg
+    regexp: 'ncg-notify-by-email$'
+    replace: ncg-notify-by-email,notify-service-by-slack
+
+- name: Make all Hosts notify slack
+  replace:
+    dest: /etc/nagios/wlcg.d/ZA-MERAKA/contacts.cfg
+    regexp: 'ncg-host-notify-by-email$'
+    replace: 'ncg-host-notify-by-email,notify-host-by-slack'

@@ -1,0 +1,12 @@
+---
+# tasks file for roles/site-bdii-tests
+- name: check that port 2170 is open
+  wait_for:
+    host: "{{ inventory_hostname }}"
+    port: 2170
+    connect_timeout: 15
+    state: present
+    delay: 10
+
+#
+#- name:

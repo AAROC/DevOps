@@ -1,0 +1,14 @@
+[ldap-servers]
+#idp.se.ampr.org needs_certificate=true ansible_user=bruce
+idp.sa0bxi.se needs_certificate=true ansible_user=bruce
+
+[shibboleth-idps]
+#idp.se.ampr.org needs_certificate=true min_jvm_size=1024m ansible_user=bruce
+idp.sa0bxi.se needs_certificate=true min_jvm_size=1024m ansible_user=bruce
+[identity-ssa:children]
+ldap-servers
+shibboleth-idps
+
+[Debian-servers:children]
+identity-ssa
+############################ END #########################

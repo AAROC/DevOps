@@ -1,0 +1,49 @@
+---
+needs_certificate: false
+
+# These are the lines that we have by default in the slapd config - this leads to a segfault.
+# We use the "literal" style here : see http://stackoverflow.com/questions/3790454/in-yaml-how-do-i-break-a-string-over-multiple-lines
+relay_db_lines: |
+  #######################################################################
+  # Relay DB to address performance issues
+  #######################################################################
+
+  database        relay
+  suffix          "o=grid"
+  overlay         rwm
+  suffixmassage   "o=grid,o=shadow"
+
+# replace with this commented out section
+relay_db_fix: |
+  #######################################################################
+  # Relay DB to address performance issues
+  #######################################################################
+
+  #database        relay
+  #suffix          "o=grid"
+  #overlay         rwm
+  #suffixmassage   "o=grid,o=shadow"
+
+glue_1_3_lines: |
+  #######################################################################
+  # GLUE 1.3 database definitions
+  #######################################################################
+
+  database        hdb
+  cachesize       300000
+  dbnosync
+  suffix          "o=shadow"
+  checkpoint      1024 0
+  rootdn          "o=shadow"
+
+glue_1_3_fix: |
+  #######################################################################
+  # GLUE 1.3 database definitions
+  #######################################################################
+
+  database        hdb
+  cachesize       300000
+  dbnosync
+  suffix          "o=grid"
+  checkpoint      1024 0
+  rootdn          "o=grid"

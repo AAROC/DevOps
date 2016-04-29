@@ -1,0 +1,7 @@
+---
+- name: Install Debian depdencies
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: dependencies

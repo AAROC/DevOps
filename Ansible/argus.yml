@@ -1,19 +1,24 @@
 ---
-#- hosts: argus-servers
-#  name: Bootstrap the Argus Server
-#  user: root
-#  roles:
-#    - bootstrap
 - hosts: argus-servers
   name: Complete installation and configuration
   user: ansible
-  sudo: true
+  become: true
   roles:
-    - common
-    - certificates
-    - umd
-    - argus
-    - yaim
+    - { role: common, become: true }
+    - { role: certificates, become: true }
+    - { role: umd, become: true }
+    - { role: argus, become: true }
+    - { role: yaim, become: true }
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
+  post_tasks:
+    - name: check that the services are running
+      become: true
+      service:
+        name: "{{ item }}"
+        state: started
+      with_items:
+        - argus-pepd
+        - argus-pap
+        - argus-pdp

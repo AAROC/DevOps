@@ -1,0 +1,35 @@
+---
+# install-sso
+# These tasks install the DiscourseSSO
+
+- name: get the Discourse SSO repo
+  become: true
+  git:
+    repo: git://github.com/AAROC/DiscourseSSO
+    dest: "{{ discourse_sso_install_path }}"
+    accept_hostkey: true
+    force: yes
+
+- name: Install the DiscourseSSO prerequisites
+  become: true
+  pip:
+    requirements: "{{ discourse_sso_install_path }}/requirements.txt"
+
+- name: some output
+  debug: "var={{ hostvars[groups['discourse-forum'][0]] ['ansible_fqdn'] }}"
+
+- name: Update the SSO template (hostname)
+  become: true
+  lineinfile:
+    line: "DISCOURSE_URL = {{ hostvars[groups['discourse-forum'][0]] ['ansible_fqdn'] }}"
+    regexp: '^DISCOURSE_URL'
+    dest: "{{ discourse_sso_install_path }}/src/config.py"
+
+- name: output the secret key
+  debug: "var={{discourse_secret_key}}"
+- name: Update the SSO template (secret key)
+  become: true
+  lineinfile:
+    line: "DISCOURSE_SECRET_KEY = '{{ discourse_secret_key }}'"
+    regexp: '^DISCOURSE_SECRET_KEY'
+    dest: "{{ discourse_sso_install_path }}/src/config.py"

@@ -1,18 +1,20 @@
 #
-# $Id: auto.master,v 1.4 2005/01/04 14:36:54 raven Exp $
-#
 # Sample auto.master file
 # This is an automounter map and it has the following format
 # key [ -mount-options-separated-by-comma ] location
 # For details of the format look at autofs(5).
 #
-/misc	/etc/auto.misc
+#/misc	/etc/auto.misc
 #
 # NOTE: mounts done from a hosts map will be mounted with the
 #	"nosuid" and "nodev" options unless the "suid" and "dev"
 #	options are explicitly given.
 #
-/net	-hosts
+#/net	-hosts
+#
+# Include /etc/auto.master.d/*.autofs
+#
++dir:/etc/auto.master.d
 #
 # Include central master map if it can be found using
 # nsswitch sources.
@@ -23,4 +25,5 @@
 # precedence.
 #
 +auto.master
+#/cvmfs /etc/auto.cvmfs/cvmfs /etc/auto.cvmfs
 /cvmfs /etc/auto.cvmfs

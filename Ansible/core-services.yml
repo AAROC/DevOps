@@ -1,49 +1,97 @@
-# playbooks for a normal site
-
+# playbooks for a normal site core services
 ---
-- name: Run Bootstrap play on all hosts
-  hosts: all
-  user: root
-  sudo: true
-  roles:
-    - bootstrap
-  vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-
 - name: Apply the common role to all hosts
   hosts: core-services
   user: ansible
-  sudo: true
+  become: true
+  pre_tasks:
+    - slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Starting Core Services Deployment at  {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+  post_tasks:
+    - slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Ready for Core Services Configuration at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
   roles:
     - common
-    - boundary-monitor
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
+    - group_vars/passwords-{{ site_name }}.yml
 
 - name: Deploy top-bdiis
   hosts: top-bdiis
   user: ansible
-  sudo: true
+  become: true
   roles:
     - umd
     - top-bdii
     - yaim
+  vars_files:
+    - group_vars/passwords-{{ site_name }}.yml
+  pre_tasks:
+    - slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Starting Top-BDII deploys at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+  post_tasks:
+    - slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Just finished Yaim at {{ site_name }} on {{ ansible_fqdn }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
 
 - name: Deploy WMS
   hosts: wms-servers
   user: ansible
-  sudo: true
+  become: true
   roles:
     - certificates
     - umd
     - wms
     - yaim
+  vars_files:
+    - group_vars/passwords-{{ site_name }}.yml
+  pre_tasks:
+    - slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Starting WMS deploys at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+  post_tasks:
+    - slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Just finished Yaim at {{ site_name }} on {{ ansible_fqdn }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
 
 - name: Deploy SAM-NAGIOS
   hosts: ngi-nagios
   user: ansible
-  sudo: true
+  become: true
   roles:
     - certificates
     - umd
@@ -51,4 +99,21 @@
     - yaim
   vars_files:
     - group_vars/passwords-{{ site_name }}.yml
-
+  pre_tasks:
+    - slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Starting SAM-NAGIOS deploys at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+  post_tasks:
+    - slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Just finished Yaim at {{ site_name }} on {{ ansible_fqdn }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
