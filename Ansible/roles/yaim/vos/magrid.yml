@@ -1,0 +1,8 @@
+- name: Add configuration for magrid VO
+  template:
+    src: files/opt/glite/yaim/etc/siteinfo/vo.d/magrid.j2
+    dest: /opt/glite/yaim/etc/siteinfo/vo.d/magrid
+    owner: root
+    group: root
+    mode: 0644
+  when: "'magrid' in ${vos}"
