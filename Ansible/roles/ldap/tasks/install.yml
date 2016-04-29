@@ -1,15 +1,24 @@
 ---
 #- name: Add the OS specific varibles
 #  include_vars: "{{ ansible_os_family }}.yml"
-#  tags: 
+#  tags:
 #    - LDAP
 #    - install
+- name: what are we installing?
+  debug: msg="{{ldap_pkgs}} will be installed in {{ ldap_config_path }}"
+
+# There is an ansible module called "pacakge" which uses the underlying package manager.
+# This playbook could probably be rewritten to use that instead.
 
 - name: Install the openldap and required Packages for RedHat
-  yum: name={{ item }} state=installed
-  with_items: ldap_pkgs
+  yum:
+    name: "{{ item }}"
+    state: latest
+    disable_gpg_check: true
+  with_items: "{{ ldap_pkgs }}"
   when: ansible_os_family == 'RedHat'
-  tags: 
+  become: true
+  tags:
     - LDAP
     - install
 
@@ -17,6 +26,6 @@
   apt: name={{ item }} state=installed update_cache=yes
   with_items: ldap_pkgs
   when: ansible_os_family == 'Debian'
-  tags: 
+  tags:
     - LDAP
     - install

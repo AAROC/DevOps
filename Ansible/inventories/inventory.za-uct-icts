@@ -1,0 +1,175 @@
+######################################################
+#
+# Inventory for the ZA-UCT-ICTS
+#
+############## Cluster oriented grouping ##############
+
+# Note that we use host vars to specify the grid roles. This is used by the yaim role. If the host needs a host certificate
+# you can set needs_certificate=true. Tasks for installing certs will fail if they are not present.
+
+# non-grid services
+[dns-servers]
+# we should put the dns servers in here when we need to move
+# hosts in and out of DNS
+
+# user interfaces
+[UIs]
+# Put your user interface host name here
+
+##############
+# core services #
+##############
+# If you have core services, update them here.
+
+# credential stores
+[myproxy-servers]
+#myproxy.c4.csir.co.za
+
+# information systems
+[top-bdiis]
+# top-bdii.c4.csir.co.za  emi_service='BDII_top' yaim_options='-n BDII_top' needs_certificate='false'
+
+# workload management
+[wms-servers]
+# wms.c4.csir.co.za
+
+# metadata catalogues
+[lfc-servers]
+#lfc.c4.csir.co.za
+
+# file transfer
+[fts-servers]
+# fts.c4.csir.co.za
+
+# Repositories
+[cvmfs-stratum-0]
+# apprepo.sagrid.ac.za needs_certificate='false'
+
+# web user interface
+[dirac]
+# dirac.c4.csir.co.za needs_certificate='true'
+
+# accounting
+[apel-servers]
+# apel-server.c4.csir.co.za needs_certificate='true'
+
+# AAI
+[voms-servers]
+# voms-stage.c4.csir.co.za needs_certificate='true'
+[argus-servers]
+# argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_certificate='true'
+[perun]
+# perun.c4.csir.co.za
+[CA]
+# security.sanren.ac.za
+
+
+# monitoring
+[ngi-nagios]
+# nagios.c4.csir.co.za
+#[vo-sagrid-nagios]
+#sagrid-monitoring.c4.csir.co.za
+
+#############
+# site services #
+#############
+
+# Site BDII
+[site-bdiis]
+# site-bdii.c4.csir.co.za emi_service='BDII_site' yaim_options='-n BDII_site' needs_certificate='false'
+
+# CREAM CE's
+[cream-ces]
+# ce01-node001.c4.csir.co.za
+
+[apel-publishers:children]
+# cream-ces
+
+
+# Storage
+[storage-elements]
+#se01.localdomain
+[xrootd-servers]
+# add your xrootd here.
+
+
+# Worker Nodes
+[worker-nodes]
+# Add your WN - be sure to use the right EMI service and yaim options - you may want MPI.
+# 192.168.11.3 needs_certificate='false' emi_service='WN' yaim_options='-n WN'
+
+[cluster-head-nodes]
+# no grid stuff - just head node.
+
+# ce01-node001.c4.csir.co.za
+
+##########
+# Groups  #
+#########
+
+
+############ grouping and children ############
+# first, group by production and development
+[core-services:children]
+top-bdiis
+wms-servers
+ngi-nagios
+fts-servers
+argus-servers
+
+[site-services:children]
+site-bdiis
+cream-ces
+worker-nodes
+
+############## Middleware oriented grouping ##############
+[CRL]
+# the group of machines that needs to keep CRLs up to date
+[CRL:children]
+wms-servers
+lfc-servers
+ngi-nagios
+cream-ces
+argus-servers
+UIs
+worker-nodes
+
+
+# groups belonging to a site
+[za-uct-icts:children]
+cream-ces
+site-bdiis
+worker-nodes
+top-bdiis
+wms-servers
+ngi-nagios
+fts-servers
+UIs
+argus-servers
+apel-servers
+
+[nagios-servers:children]
+ngi-nagios
+
+# OS-oriented grouping
+[Debian-servers]
+
+[CentOS5-servers:children]
+ngi-nagios
+
+[CentOS6-servers:children]
+CA
+argus-servers
+worker-nodes
+site-bdiis
+cream-ces
+UIs
+wms-servers
+fts-servers
+top-bdiis
+voms-servers
+
+[CentOS-servers:children]
+CentOS5-servers
+CentOS6-servers
+############################ END #########################

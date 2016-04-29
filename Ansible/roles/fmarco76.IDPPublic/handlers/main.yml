@@ -1,2 +1,6 @@
 ---
 # handlers file for fmarco76.IDPPublic
+- name: restart tomcat
+  service:
+    name: "{{ tomcat6_service }}"
+    state: restarted

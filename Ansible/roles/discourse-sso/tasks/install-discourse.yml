@@ -1,0 +1,24 @@
+---
+- name: check whether the discourse repo is already there
+  stat:
+    path: "{{ discourse_path }}"
+  register: discourse_present
+
+- name: Get the discourse repo
+  git:
+    repo: git://github.com/discourse/discourse_docker.git
+    dest: /home/discourse/discourse
+  when: discourse_present.stat.exists == false
+
+- name: Create the containers directory if it's not there yet.
+  file:
+    path: "{{ discourse_path }}/containers"
+    state: directory
+    owner: discourse
+    group: discourse
+    mode: "u=rwx,g=rx,o=rx"
+
+- name: Update the Discourse container template
+  template:
+    src: containers/app.yml.j2
+    dest: /home/discourse/discourse/containers/app.yml

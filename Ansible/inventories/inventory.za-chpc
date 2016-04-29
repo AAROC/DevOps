@@ -5,7 +5,7 @@
 ############## Cluster oriented grouping ###################
 ######################################################
 
-[user-interfaces]
+[uis]
 grid-ui.chpc.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n UI'
 
 #############
@@ -14,11 +14,14 @@ grid-ui.chpc.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n U
 
 # Site BDII
 [site-bdiis]
-grid-bdii.c4.csir.co.za needs_certificate='false' emi_service='BDII_site' yaim_options='-n BDII_site'
+grid-bdii.chpc.co.za needs_certificate='false' emi_service='BDII_site' yaim_options='-n BDII_site'
 
 # CREAM CE's
 [cream-ces]
 grid-ce.chpc.ac.za needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n MPI_CE -n creamCE -n TORQUE_server -n TORQUE_utils'
+
+[cluster-head-nodes]
+grid-ce.chpc.ac.za
 
 [apel-publishers:children]
 cream-ces
@@ -26,7 +29,7 @@ cream-ces
 [storage-elements]
 # Xrootd machine
 grid-se.chpc.ac.za needs_certificate='true'
-grid-xrootd.chpc.ac.za need_certificate='true'
+grid-se2.chpc.ac.za needs_certificate='true'
 
 # Worker Nodes
 [worker-nodes]
@@ -131,13 +134,13 @@ worker-nodes
 [CRL]
 [CRL:children]
 cream-ces
-user-interfaces
+uis
 storage-elements
 
 [za-chpc:children]
 cream-ces
 site-bdiis
 worker-nodes
-user-interfaces
+uis
 
 ############################ END #########################

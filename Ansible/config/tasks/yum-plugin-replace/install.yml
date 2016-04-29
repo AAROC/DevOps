@@ -1,2 +1,0 @@
-- name: Install yum-plugin-replace package
-  action: yum name=yum-plugin-replace state=latest

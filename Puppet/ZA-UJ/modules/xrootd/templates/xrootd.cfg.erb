@@ -1,0 +1,126 @@
+<% if @setenv -%>
+<% @setenv.sort.each do |key,val| -%>
+setenv <%= key %>=<%= val %>
+<% end -%>
+<% end -%>
+
+<% if @xrd_debug -%>
+ofs.trace all
+xrd.trace all
+cms.trace all
+oss.trace all
+<% else -%>
+#ofs.trace all
+#xrd.trace all
+#cms.trace all
+#oss.trace all
+<% end -%>
+
+all.adminpath <%= @all_adminpath %>
+all.pidpath <%= @all_pidpath %>
+<% if @all_sitename -%>
+all.sitename <%= @all_sitename %>
+<% end -%>
+<% if @oss_localroot -%>
+oss.localroot <%= @oss_localroot %>
+<% end -%>
+<% if @all_export -%>
+<% @all_export.sort.each do |export| -%>
+all.export <%= File.join(export,"") %>
+<% end -%>
+<% end -%>
+<% if @xrd_network -%>
+xrd.network <%= @xrd_network %>
+<% end -%>
+
+<% if @oss_localroot -%>
+oss.localroot <%= @oss_localroot %>
+<% end -%>
+
+<% if @xrootd_chksum -%>
+xrootd.chksum <%= @xrootd_chksum %>
+<% end -%>
+<% if @xrootd_monitor -%>
+xrootd.monitor <%= @xrootd_monitor %>
+<% end -%>
+<% if @xrootd_async -%>
+xrootd.async <%= @xrootd_async %>
+<% end -%>
+
+if exec xrootd
+xrootd.seclib <%= @xrootd_seclib %>
+<% if @sec_protocol -%>
+<% @sec_protocol.sort.each do |secprot| -%>
+sec.protocol <%= secprot %>
+<% end -%>
+<% end -%>
+<% if @xrootd_redirect -%>
+xrootd.redirect <%= @xrootd_redirect %>
+<% end -%>
+<% if @xrootd_export -%>
+<% @xrootd_export.sort.each do |export| -%>
+xrootd.export <%= File.join(export,"") %>
+<% end -%>
+<% end -%>
+<% if @xrd_port -%>
+xrd.port <%= @xrd_port %>
+<% end -%>
+<% if @xrd_report -%>
+xrd.report <%= @xrd_report %>
+<% end -%>
+<% if @ofs_cmslib -%>
+ofs.cmslib <%= @ofs_cmslib %>
+<% end -%>
+<% if @xrd_ofsosslib -%>
+ofs.osslib <%= @xrd_ofsosslib %>
+<% end -%>
+<% if @ofs_authlib -%>
+ofs.authlib <%= @ofs_authlib %>
+<% end -%>
+<% if @ofs_authorize -%>
+ofs.authorize
+<% end -%>
+<% if @ofs_forward -%>
+ofs.forward <%= @ofs_forward %>
+<% end -%>
+<% if @ofs_persist -%>
+ofs.persist <%= @ofs_persist %>
+<% end -%>
+<% if @ofs_tpc -%>
+ofs.tpc <%= @ofs_tpc %>
+<% end -%>
+<% if @acc_authdb -%>
+acc.authdb <%= @acc_authdb %>
+<% end -%>
+all.role <%= @xrd_allrole %>
+fi
+
+if exec cmsd
+<% if @cmsd_ofsosslib -%>
+ofs.osslib <%= @cmsd_ofsosslib %>
+<% end -%>
+<% if @pss_origin -%>
+pss.origin <%= @pss_origin %>
+<% end -%>
+<% if @pss_setopt -%>
+<% @pss_setopt.sort.each do |option| -%>
+pss.setopt <%= option %>
+<% end -%>
+<% end -%>
+all.role <%= @cmsd_allrole %>
+fi
+
+<% if @all_manager -%>
+all.manager <%= @all_manager %>
+<% end -%>
+
+<% if @specifics -%>
+<%= @specifics %>
+<% end -%>
+
+<% if @acc_authlib -%>
+acc.authlib <%= @acc_authlib %>
+<% end -%>
+<% if @frm_xfr_copycmd -%>
+frm.xfr.copycmd <%= @frm_xfr_copycmd %>
+<% end -%>

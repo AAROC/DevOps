@@ -1,5 +1,6 @@
 # Group vars for site-bdii
 ---
-needs_certificate: 'false' 
-emi_service: 'BDII_site' 
+needs_certificate: 'false'
+emi_service: 'BDII_site'
 yaim_options: '-n BDII_site'
+needs_mysql: false

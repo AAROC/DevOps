@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  name: Make all the hosts jenkins slaves with CVMFS
+  become: true
+  roles:
+    - jenkins-slave
+    - cvmfs
+  # vars_files:
+  #   - group_vars/passwords-{{ site_name }}.yml
+  pre_tasks:
+    - name: Announce the play via Slack
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "Running code-rade build slave :worried: "
+        channel: "#coderade"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+  post_tasks:
+    - name: Announce via Slack
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "{{ playbook }} on {{ inventory_hostname }} at {{ site_name }} has finished :smile: O/"
+        channel: "#coderade"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'

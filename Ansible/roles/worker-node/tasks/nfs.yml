@@ -1,0 +1,8 @@
+---
+# nfs mount configuration for worker nodes
+# First, change the mount
+- name: Put the home mount in /fstab
+  become: true
+  lineinfile:
+    dest: /etc/fstab
+    line: "{{ groups['cluster-head-nodes'][0] }}:/home /home nfs rw 0 0"

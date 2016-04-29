@@ -1,0 +1,19 @@
+[sl6x]
+name=Scientific Linux 6x - $basearch
+baseurl=http://scientificlinux.mirror.ac.za/6x/x86_64/os/
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl6 file:///etc/pki/rpm-gpg/RPM-GPG-KEY-cern
+
+[sl6x-security]
+name=Scientific Linux 6x - $basearch - security updates
+baseurl=http://scientificlinux.mirror.ac.za/6x/x86_64/updates/security/
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl6 file:///etc/pki/rpm-gpg/RPM-GPG-KEY-cern
+
+[sl-fastbugs]
+name=Scientific Linux $releasever - $basearch - fastbug updates
+baseurl=http://scientificlinux.mirror.ac.za/6x/x86_64/updates/fastbugs/
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl file:///etc/pki/rpm-gpg/RPM-GPG-KEY-sl6 file:///etc/pki/rpm-gpg/RPM-GPG-KEY-cern

@@ -1,32 +1,35 @@
 ---
 # handlers file for liferay-csgf
 - name: reboot
+  become: true
   command: /sbin/reboot
   async: 600
   poll: 5
 
 - name: Update Yum
-  sudo: true
-  sudo_user: root
+  become: true
+  become_user: root
   yum: name=* state=latest
   tags:
     - yum
 
 - name: restart httpd
-  service: name=httpd state=restarted
+  service:
+    name: httpd
+    state: restarted
 
 - name: stop-domain
   command: /opt/glassfish/glassfish3/glassfish/bin/asadmin stop-domain liferay
-  sudo: true
-  sudo_user: liferayadmin
+  become: true
+  become_user: liferayadmin
   async: 45
   poll: 5
   register: stop_domain
 
 - name: start-domain
   command: /opt/glassfish/glassfish3/glassfish/bin/asadmin start-domain liferay
-  sudo: true
-  sudo_user: liferayadmin
+  become: true
+  become_user: liferayadmin
   async: 600
   poll: 5
   register: start_domain

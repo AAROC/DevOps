@@ -1,0 +1,37 @@
+---
+- hosts: uis
+  user: root
+  become: true
+  roles:
+    - container-bootstrap
+    - common
+    - certificates
+    - umd
+    - ui
+    - yaim
+    - cvmfs
+    - perun-slave
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/igtf.yml
+    - roles/yaim/vars/main.yml
+  pre_tasks:
+    - name: Send Slack Message
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: 6EJfIMngdMiwrmnScAA4znB5
+        msg: "Starting UI deployment on {{ inventory_hostname }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+  post_tasks:
+    - name: Send notification message via Slack
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: 6EJfIMngdMiwrmnScAA4znB5
+        msg: "UI deployment on  on {{ inventory_hostname }} has run go check it out dude."
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'

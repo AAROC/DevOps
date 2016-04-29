@@ -1,0 +1,7 @@
+---
+# webfts bit
+- name: ensure that php is on board
+  become: true
+  yum:
+    name: php
+    state: present

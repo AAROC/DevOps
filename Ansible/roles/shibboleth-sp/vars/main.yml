@@ -1,0 +1,8 @@
+---
+# vars file for shibboleth-sp
+dependencies:
+  - apache2
+  - libapache2-mod-shib2
+  - openssl
+  - php5
+  - ntp

@@ -1,60 +1,62 @@
----
+- name: raw install of libselinux-python and lsb-core
+  raw: yum -y install libselinux-python redhat-lsb-core
+  when: ansible_os_family == 'RedHat'
+
+- name: Update facts
+  setup:
+
+- name: update the repo configuration
+  copy:
+    src: etc/yum.repos.d/sl6x.repo
+    dest: /etc/yum.repos.d/sl6x.repo
+  tags:
+    - yum
+  when: (ansible_os_family == 'RedHat') and (ansible_lsb != 'null' ) and (ansible_lsb.major_release == '6')
+
 - name: check connectivity
   command: /bin/ping -c 1 www.google.com
   register: hosttest
   ignore_errors: true
+  changed_when: false
 
-- name: debug
-  debug: var=hosttest.stderr
+- name: Do raw replace of nameserver
+  raw: 'sed -i "s#^nameserver .*\$#nameserver 8.8.8.8#g" /etc/resolv.conf'
 
-- name: use Google public DNS if necessary
-  lineinfile: dest=/etc/resolv.conf regexp=^nameserver line='nameserver 8.8.8.8'
-  when: "'ping: unknown host www.google.com' in hosttest.stderr"
+# SE linux is probably still enabled, so we need to do a raw install of libselinux
+- name: ensure that SELinux python bindings are installed
+  yum:
+     name: libselinux-python
+     state: installed
+
+- name: Install libselinux
+  raw: 'yum install -y libselinux-python'
+  when: ansible_os_family == 'RedHat'
+
+# at this point we might want to turn off selinux
+
+- name: debug packages
+  debug:
+    var: "{{ item }}"
+  with_items: "{{ bootstrap_prerequisites }}"
   tags:
-    - DNS
+    - debug
 
 - name: Install prerequisite packages (RedHat)
-  yum: name={{ item }} state=present
-  with_items:
-    - python-simplejson
-    - libselinux-python
-    - iptables
-    - mlocate
-    - initscripts
-    - chkconfig
-    - system-config-services
-    - openssh-clients
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
   tags:
     - bootstrap
-  when: ansible_os_family=="RedHat"
-- name: Install some useful packages (RedHat)
-  yum: name={{ item }} state=present
-  with_items:
-    - vim-minimal
-  tags:
-    - bootstrap
-  ignore_errors: yes
+    - prerequisites
   when: ansible_os_family=="RedHat"
 
 - name: Install prerequisite packages (Debian)
-  apt: name={{ item }} state=present
-  with_items:
-    - python-simplejson
-    - iptables
-    - iptables-persistent
-    - mlocate
-    - initscripts
-    - openssh-client
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
   tags:
     - bootstrap
-  when: ansible_os_family=="Debian"
-
-- name: Install some useful packages (Debian)
-  apt: name={{ item }} state=present
-  with_items:
-    - htop
-    - vim
-  tags:
-    - bootstrap
-  ignore_errors: yes
+    - prerequisites
   when: ansible_os_family=="Debian"

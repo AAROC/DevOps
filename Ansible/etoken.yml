@@ -1,0 +1,7 @@
+---
+- name: Prepare the Common environment and certificates
+  hosts: etoken-servers
+  roles:
+  - common
+  - certificates
+  become: true

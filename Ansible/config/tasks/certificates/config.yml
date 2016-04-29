@@ -1,4 +1,0 @@
-- name: Copy host x509 certificate into /etc/grid-security
-  action: copy src=files/etc/grid-security/hostcert.pem.{{ ansible_fqdn }} dest=/etc/grid-security/hostcert.pem owner=root group=root mode=0644
-- name: Copy host x509 private key into /etc/grid-security
-  action: copy src=files/etc/grid-security/hostkey.pem.{{ ansible_fqdn }} dest=/etc/grid-security/hostkey.pem owner=root group=root mode=0400

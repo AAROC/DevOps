@@ -1,2 +1,0 @@
-- name: Install emi-apel
-  action: yum name=emi-apel state=latest

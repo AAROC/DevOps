@@ -1,13 +1,57 @@
 ---
 - hosts: site-bdiis
-  name: Prepare the machine for yaim configuration
-  sudo: true
-  sudo_user: root
-  vars_files:
-    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
-    - roles/common/vars/middleware/IGTF.yml
+  name: Configure the machine
+  remote_user: ansible
+  pre_tasks:
+    - name: Include vars
+      include_vars: "{{ item }}"
+      with_items:
+        - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+        - roles/common/vars/middleware/IGTF.yml
+      tags:
+        - pre-tasks
+    - name: Get Site name
+      debug:
+        msg: "site is {{ site_name }}"
+      tags:
+        - debug
+        - pre-tasks
+    - name: Tell the team
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: V4qyCjHMRUb9ZmNdcf2hVEmI
+        msg: "Starting the site-bdii play for {{ inventory_hostname }} !"
+        username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+      tags:
+        - slack
+        - pre-tasks
   roles:
-    - common
-    - umd
-    - site-bdii
-    - yaim
+    - { role: common, become: true }
+    - { role: umd, become: true }
+    - { role: site-bdii, become: true }
+    - { role: yaim, become: true, emi_service: BDII_site}
+  post_tasks:
+    - name: Restart firewall
+      become: true
+      service:
+        name: "{{ item }}"
+        state: restarted
+      with_items:
+        - ntpd
+        - iptables
+      tags:
+        - post-tasks
+    - name: Tell the team
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: V4qyCjHMRUb9ZmNdcf2hVEmI
+        msg: "The site-bdii play for {{ inventory_hostname }} !"
+        username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+      tags:
+        - slack
+        - post-tasks
+
+# - name: Tests
+#   hosts: site-bdiis
+#   roles:
+#     - site-bdii-tests

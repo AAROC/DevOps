@@ -1,0 +1,3 @@
+---
+# vars file for apache-web-server
+  ssl_enabled: false

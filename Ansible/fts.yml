@@ -1,7 +1,7 @@
 ---
-- hosts: fts
-  sudo: true
-  sudo_user: root
+- hosts: fts-servers
+  become: true
+  become_user: root
   roles:
     - bootstrap
     - common

@@ -1,78 +1,95 @@
 ---
 - name: ensure that mysql is started
-  action: service name=mysqld state=started
-#  action: command /etc/init.d/mysqld start
-  sudo: true
-  sudo_user: root
-  tags: 
+  service:
+    name: mysqld
+    state: started
+  become: true
+  become_user: root
+  tags:
     - VOMS
     - mysql
 
 - name: ensure that python bindings for interacting with mysql are present
-  action: yum name=MySQL-python state=present
-  tags: 
+  yum:
+    name: MySQL-python
+    state: present
+  tags:
     - VOMS
     - mysql
 
 - name: create the .my.cnf file for root
-  template: src=.my.cnf dest=/root/.my.cnf owner=root mode=0600
-  tags: 
+  template:
+    src: .my.cnf
+    dest: /root/.my.cnf
+    owner: root
+    mode: 0600
+  tags:
     - VOMS
     - mysql
 
 - name: change the root password
-  action: mysql_user name=root host=localhost password={{ dbapwd }}
-  tags: 
+  mysql_user:
+    name: root
+    host: localhost
+    password: "{{ dbapwd }}"
+  tags:
     - VOMS
     - mysql
 
 - name: ensure anonymous users are not in the database
-  action: mysql_user name='' host={{ item }} state=absent
+  mysql_user:
+    name: ''
+    host: "{{ item }}"
+    state: absent
   with_items:
     - localhost
-  tags: 
+  tags:
     - VOMS
     - mysql
 
 - name: remove the test database
-  action: mysql_db name=test state=absent
-  tags: 
+  mysql_db:
+    name: test
+    state: absent
+  tags:
     - VOMS
     - mysql
 
 #- name: copy voms config file
-#  sudo: true
-#  sudo_user: root
+#  become: true
+#  become_user: root
 #  template: src=vomsadmin.sh.j2 dest=/root/vomsadmin.sh owner=root mode=0700
-#  tags: 
+#  tags:
 #    - VOMS
 #    - mysql
 
 #- name: configure voms admin
-#  sudo: true
-#  sudo_user: root
+#  become: true
+#  become_user: root
 #  shell: chdir=/root vomsadmin.sh
-#  tags: 
+#  tags:
 #    - VOMS
 #    - mysql
 
 - name: add a test vo
-  sudo: true
-  sudo_user: root
-  command: voms-configure install --vo vo.test --dbtype mysql --createdb --deploy-database --dbauser {{ dbauser }} --dbapwd {{ dbapwd }} --dbusername {{ dbusername }} --dbpassword {{ dbpassword }} --core-port {{ coreport }} --smtp-host {{ smtphost }} --mail-from {{ mailfrom }}
-  tags: 
+  become: true
+  become_user: root
+  command: "voms-configure install --vo vo.test --dbtype mysql --createdb --deploy-database --dbauser {{ dbauser }} --dbapwd {{ dbapwd }} --dbusername {{ dbusername }} --dbpassword {{ dbpassword }} --core-port {{ coreport }} --smtp-host {{ smtphost }} --mail-from {{ mailfrom }}"
+  tags:
     - VOMSadmin
 
 - name: start the voms container
-  action: service name={{ item }} state=started
+  service:
+    name: "{{ item }}"
+    state: started
   with_items:
     - voms
     - voms-admin
-  tags: 
+  tags:
     - VOMS
     - mysql
 
 - name: add the admin for the test vo
-  command: voms-db-util add-admin --vo vo.test --dn "{{ voadmindn }}" --ca "{{ voadminca }}" --email {{ voadminemail }}
+  command: "voms-db-util add-admin --vo vo.test --dn {{ voadmindn }} --ca {{ voadminca }} --email {{ voadminemail }}"
   tags:
     - VOMSadmin

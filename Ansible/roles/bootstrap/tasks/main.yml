@@ -14,7 +14,8 @@
 - include: prerequisites.yml
 - include: user.yml
 - include: keys.yml
-- include: firewall.yml
+# - include: firewall.yml
+# firewall should be done later
 # other things to include in here
 # 1. ensure that dns servers are inserted properly
 # 2. include own host name and ip in /etc/hosts

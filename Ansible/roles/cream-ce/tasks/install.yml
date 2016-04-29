@@ -1,18 +1,25 @@
 ---
 - name: Install emi-cream software in no cluster mode
-  sudo: true
-  action: yum name=emi-cream-ce state=latest
+  yum:
+    name: emi-cream-ce
+    state: latest
   tags:
     - CE
     - install
-    
-- name: ensure that the repos are up to date
-  sudo: true
-  action: yum name=* state=latest    
+
+# - name: ensure that the repos are up to date
+#   yum:
+#     name: "*"
+#     state: latest
+#     exclude: "{{ item }}"
+#   with_items: exclude_packages
+#   tags:
+#     - yum
 
 - name: Install batch system specific software
-  sudo: true
-  action: yum name={{ item }} state=latest
+  yum:
+    name: "{{ item }}"
+    state: latest
   with_items:
     - emi-torque-server
     - emi-torque-utils
@@ -20,4 +27,4 @@
   retries: 2
   tags:
     - CE
-    - install  
+    - install

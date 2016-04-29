@@ -1,0 +1,11 @@
+---
+# Download the wars and put them in the glassfish deploy directory
+# this will autodeploy them hopefull
+
+
+- name: Download the wars
+  get_url: url=http://sourceforge.net/projects/ctsciencegtwys/files/catania-science-gateway/wars/1311/{{ item }} dest={{ glassfish_install_dir }}/glassfish3/deploy
+  with_items:
+    - hostname-portlet-6.1.1.1.war
+    - MyJobs.war
+    - MyJobsMap.war

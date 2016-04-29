@@ -1,10 +1,12 @@
 - name: Install emi site UI software
-  yum: name={{ item }} state=latest
-  sudo: True
+  yum:
+    name: "{{ item }}"
+    state: latest
+  become: True
   with_items:
-    - emi-ui 
+    - emi-ui
     - glite-ce-monitor-cli
     - fts-client
-  tags: 
+  tags:
     - UI
     - install

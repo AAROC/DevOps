@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+This is the role for installing the web frontend to a shibboleth idp.
 
 Requirements
 ------------
@@ -11,12 +11,16 @@ Any pre-requisites that may not be covered by Ansible itself or the role should 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+The role takes two variables :
+
+  * `IDPPublic_release`: The number of the release of the IDPPublic package. The default is 1.1.5
+  * `useradmin_password`: the password of the administrator user which is used by the web application to connect to the identity store backend.
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+none
 
 Example Playbook
 ----------------
@@ -25,7 +29,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: fmarco76.IDPPublic}
 
 License
 -------
@@ -35,4 +39,4 @@ BSD
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Written by @fmarco76 and contributed to by @brucellino and other members of @AAROC

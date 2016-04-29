@@ -1,0 +1,5 @@
+---
+# handlers for RedHat http server role
+- name: restart service
+  sudo: true
+  service: name={{ package_name }} state=restarted

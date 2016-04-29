@@ -1,7 +1,7 @@
 ansible-role-umd3
 =================
 
-# Ansible Galaxy role for installing Unified Middleware Distribution (version 3)
+# Ansible Galaxy role for installing Unified Middleware Distribution
 
 Installs the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS 6.x.
 
@@ -29,4 +29,4 @@ None.
 
 ## Author Information
 
-This role was created in 2014 by Bruce Becker (@brucellino). 
+This role was created in 2014 by Bruce Becker (@brucellino).

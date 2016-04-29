@@ -1,0 +1,24 @@
+---
+- name: Update exports
+  template:
+    src: etc/exports.j2
+    dest: /etc/exports
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart rpcbind
+  tags:
+    - network
+    - nfs
+
+- name: restart exportfs
+  command: /usr/sbin/exportfs -a
+  tags:
+  - network
+  - nfs
+
+- name: start nfs
+  service: name=nfs state=restarted
+  tags:
+  - network
+  - nfs

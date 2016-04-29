@@ -1,7 +1,7 @@
 - name: Install FTS packages
-  sudo: True
+  become: True
   yum: name={{ item }} state=present
-  with_items: 
+  with_items:
     - fts-server
     - fts-client
     - fts-monitoring
@@ -10,30 +10,42 @@
     - MySQL-python
     - httpd
     - fetch-crl
-  tags: 
+  tags:
     - packages
     - install
-      
+
 - name: start mysql
-  sudo: True
-  action: service name=mysqld state=started
+  become: True
+  service:
+    name: mysqld
+    state: started
   tags:
     - start
 
 - name: add mysql user and add priveliges
-  sudo: True
-  mysql_user: name={{ DbUserName }} password={{ DbPassword }} priv=*.*:ALL state=present
+  become: True
+  mysql_user:
+    name: "{{ DbUserName }}"
+    password: "{{ DbPassword }}"
+    priv: "*.*:ALL"
+    state: present
   tags:
     - configure
 
 - name: create the FTS database
-  mysql_db: name=fts3 state=present
-  sudo: True
+  mysql_db:
+    name: fts3
+    state: present
+  become: True
   tags:
     - configure
 
 - name: import db
-  sudo: True
-  raw:  'mysql -u root fts3 < /usr/share/fts-mysql/mysql-schema.sql'
-  tags: 
+  become: True
+  mysql_db:
+    name: fts3
+    state: present
+    target: /usr/share/fts-mysql/mysql-schema.sql
+  #raw:  'mysql -u root fts3 < /usr/share/fts-mysql/mysql-schema.sql'
+  tags:
     - configure

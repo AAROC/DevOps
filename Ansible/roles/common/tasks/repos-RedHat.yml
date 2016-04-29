@@ -1,0 +1,61 @@
+---
+- name: download the epel release
+  get_url:
+    url: "{{ epel_release_url }}/{{ epel_release_name }}"
+    dest: "/tmp/{{ epel_release_name }}"
+
+- name: Ensure that epel-release is present
+  yum:
+    name: "/tmp/{{ epel_release_name }}"
+    state: present
+  retries: 2
+  tags:
+    - repos
+    - EPEL
+    - install
+
+- name: Use local mirrors
+  replace:
+    dest: /etc/yum.repos.d/epel.repo
+    regexp: "^#baseurl.*$"
+    replace: "baseurl=http://mirror.ufs.ac.za/fedora-epel/{{ ansible_lsb.major_release }}/x86_64"
+  tags:
+    - repos
+    - EPEL
+    - install
+
+- name: No mirrorlist
+  replace:
+    dest: /etc/yum.repos.d/epel.repo
+    regexp: "^mirrorlist="
+    replace: "#mirrorlist="
+  tags:
+    - repos
+    - EPEL
+    - install
+
+
+- name: YUM repo for TrustAnchors
+  get_url:
+    url: "http://repository.egi.eu/sw/production/cas/1/current/repo-files/EGI-trustanchors.repo"
+    dest: /etc/yum.repos.d/egi-trustanchors.repo
+  tags:
+    - repos
+    - IGTF
+    - download
+
+- name: EGI trustanchors present
+  yum:
+    name: "{{ igtf_repo_url }}/{{ igtf_release_name }}-{{ igtf_release_version }}.rpm"
+    state: present
+  tags:
+    - repos
+    - IGTF
+    - download
+
+- name: Install prerequisite packages (RedHat)
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ base_packages }}"
+  when: ansible_os_family=="RedHat"
