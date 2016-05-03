@@ -61,7 +61,7 @@ apel-server.c4.csir.co.za needs_certificate='true'
 [voms-servers]
 voms-stage.c4.csir.co.za needs_certificate='true'
 [argus-servers]
-argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_certificate='true'
+argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_certificate='true' needs_mysql="true"
 [perun]
 perun.c4.csir.co.za
 [CA]
