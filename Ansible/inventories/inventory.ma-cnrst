@@ -1,3 +1,19 @@
 # information systems
 [top-bdiis]
-top-bdii.magrid.ma needs_certificate=false emi_service='BDII_top' yaim_options='-n BDII_top'
+#top-bdii.magrid.ma needs_certificate=false emi_service='BDII_top' yaim_options='-n BDII_top'
+
+# monitoring
+[ngi-nagios]
+nagios.magrid.ma
+
+[umd3:children]
+top-bdiis
+ngi-nagios
+#wms-servers
+#site-bdiis
+#cream-ces
+#worker-nodes
+#voms
+
+[ma-cnrst:children]
+umd3
