@@ -1,19 +1,25 @@
 ---
 - name: restart ntpd
+  become: true
   service:
     name: ntpd
     state: restarted
 
-# - name: restart iptables
-#   service: name=iptables state=restarted
-#   when: ansible_os_family == 'RedHat'
+- name: restart iptables
+  become: true
+  service:
+    name: iptables
+    state: restarted
+  when: ansible_os_family == 'RedHat'
 
 - name: update yum
+  become: true
   yum:
     name: "*"
     state: latest
 
 - name: restart sshd
+  become: true
   service:
     name: sshd
     state: restarted
