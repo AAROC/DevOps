@@ -1,3 +1,16 @@
+- name: install fetch-crl
+  yum:
+    name: fetch-crl
+    state: present
+  tags:
+    - fetch-crl
+    - install
+
+- name: Update CRLs
+  commmand: fetch-crl -v
+  tags:
+    - fetch-crl
+
 - name: Install ARGUS metapackage
   yum:
     name: emi-argus

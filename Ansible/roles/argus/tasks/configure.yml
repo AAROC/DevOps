@@ -1,0 +1,12 @@
+---
+# ARGUS NGI configuration
+- name: put the central banning config file in place
+  become: true
+  copy:
+    src: etc/argus/pap/pap_configuration.ini
+    dest: /etc/argus/pap/pap_configuration.ini
+
+- name: restart pap
+  become: true
+  command: pap-admin refresh-cache
+  #when:
