@@ -1,15 +1,20 @@
-- name: install fetch-crl
+- name: install prerequisites
   yum:
-    name: fetch-crl
+    name: "{{ item }}"
     state: present
+  with_items:
+    - fetch-crl
+    - perl-Crypt-SSLeay
   tags:
     - fetch-crl
     - install
 
-- name: Update CRLs
-  commmand: fetch-crl -v
+- name: Update CRL
+  command: fetch-crl
   tags:
     - fetch-crl
+  ignore_errors: true
+# fetch-crl will complain about some CRLs and report "ERROR", which Ansible recognises as a failure, so we just never fail this task
 
 - name: Install ARGUS metapackage
   yum:
