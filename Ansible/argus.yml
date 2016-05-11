@@ -22,3 +22,6 @@
         - argus-pepd
         - argus-pap
         - argus-pdp
+    - name: Add Central Banning
+      become: true
+      command: pap-admin add-pap --public centralbanning lcg-argus.cern.ch "/DC=ch/DC=cern/OU=computers/CN=argus.cern.ch"
