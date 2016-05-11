@@ -28,6 +28,21 @@
     - yaim
     - yaimfiles
 
+- name: Copy services files needed for ARGUS
+  template:
+    src: opt/glite/yaim/etc/siteinfo/services/glite-argus_server.j2
+    dest: "/opt/glite/yaim/etc/{{ site_name }}/siteinfo/services/glite-argus_server"
+    owner: root
+    group: root
+    mode: 0644
+  when: emi_service == "ARGUS_server"
+  notify:
+    - run yaim
+  tags:
+    - yaim
+    - yaimfiles
+    - CE
+
 - name: Create wn-list.conf file
   template:
     src: opt/glite/yaim/etc/siteinfo/wn-list.conf.j2

@@ -1,6 +1,5 @@
-argus_host:
 use_argus: TRUE
-pap_admin_dn: /DC=org/DC=acme/CN=John Doe
+pap_admin_dn: /C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker
 # CONFIG_PAP
 # CONFIG_PDP
 # CONFIG_PEP

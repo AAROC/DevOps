@@ -6,7 +6,7 @@
     src: etc/argus/pap/pap_configuration.ini
     dest: /etc/argus/pap/pap_configuration.ini
 
-- name: restart pap
-  become: true
-  command: pap-admin refresh-cache
-  #when:
+# - name: restart pap
+#   become: true
+#   command: pap-admin refresh-cache
+#   #when:
