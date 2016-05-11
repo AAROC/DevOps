@@ -22,10 +22,12 @@
         - argus-pepd
         - argus-pap
         - argus-pdp
+
+#  These final tasks are not idempotent - one should use lineinfile
     - name: Add Central Banning
       become: true
-      command: pap-admin add-pap --public centralbanning lcg-argus.cern.ch "/DC=ch/DC=cern/OU=computers/CN=argus.cern.ch"
+      command: pap-admin add-pap --public centralbanning lcg-argus.cern.ch '/DC=ch/DC=cern/OU=computers/CN=argus.cern.ch'
+
     - name: add EGI ACE
       become: true
-      command: pap-admin add-ace 'CN=srv-111.afroditi.hellasgrid.gr, OU=afroditi.hellasgrid.gr,O=HellasGrid, C=GR' 'POLICY_READ_LOCAL|POLICY_READ_REMOTE|CONFIGURATION_READ
-      
+      command: pap-admin add-ace 'CN=srv-111.afroditi.hellasgrid.gr, OU=afroditi.hellasgrid.gr,O=HellasGrid, C=GR' 'POLICY_READ_LOCAL|POLICY_READ_REMOTE|CONFIGURATION_READ'
