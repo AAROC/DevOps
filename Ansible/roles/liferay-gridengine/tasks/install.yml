@@ -1,4 +1,6 @@
 ---
+
+# get the dependencies from
 - name: Download the GridEngine dependencies
   get_url: url=sourceforge.net/p/ctsciencegtwys/liferay/HEAD/tree/trunk/core/GridEngine/JSAGA_Package/GridEngine_dependencies.tar.gz?format=raw dest=/tmp/GridEngine_dependencies.tar.gz creates=/tmp/GridEngine_dependencies.tar.gz
 
@@ -7,4 +9,9 @@
     args:
       chdir: /opt/GridEngine
       creates: /opt/GridEngine/jsaga-adaptor-linux-1.1.0.jar
-      
+
+
+# the grid engine  code is at https://github.com/csgf/grid-and-cloud-engine
+# See https://github.com/csgf/grid-and-cloud-engine/blob/master/.travis.yml for how to build it
+- name: get grid engine
+  url:
