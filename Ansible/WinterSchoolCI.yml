@@ -29,11 +29,11 @@
 - name: Build the CI machine
   hosts: ci
   pre_tasks:
-    - include_vars: group_vars/passwords-scigaia.yml
+#    - include_vars: group_vars/passwords-scigaia.yml
     - name: tell the team
       slack:
         token: "{{ slack_token }}"
-        msg: "Winterschool playbook building CI servier on {{ inventory_hostname }}"
+        msg: "Winterschool playbook building CI server on {{ inventory_hostname }}"
         channel: "#winterschool"
         username: "Ansible on {{ inventory_hostname }}"
         link_names: 1
@@ -55,7 +55,7 @@
 - name: Prepare the Application and Web Server (Glassfish)
   hosts: science-gateways:&dev
   pre_tasks:
-    - include_vars: group_vars/passwords-scigaia.yml
+#    - include_vars: group_vars/passwords-scigaia.yml
     - name: tell the team
       slack:
         token: "{{ slack_token }}"
