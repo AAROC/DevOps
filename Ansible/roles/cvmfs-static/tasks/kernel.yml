@@ -1,0 +1,21 @@
+---
+- name: get the AUFS kernel
+  get_url: https://ecsft.cern.ch/dist/cvmfs/kernel/{{ item }} dest=/tmp/{{ item }}
+  with_items:
+    - kernel-2.6.32-504.3.3.el6.aufs21.x86_64.rpm
+    - kernel-firmware-2.6.32-504.3.3.el6.aufs21.x86_64.rpm
+    - kernel-devel-2.6.32-504.3.3.el6.aufs21.x86_64.rpm
+    - kernel-headers-2.6.32-504.3.3.el6.aufs21.x86_64.rpm
+
+- name: Install the kernel
+  yum: name={{ item }} state=present
+  with_items:
+    - kernel-2.6.32-504.3.3.el6.aufs21.x86_64.rpm
+    - kernel-firmware-2.6.32-504.3.3.el6.aufs21.x86_64.rpm
+    - kernel-devel-2.6.32-504.3.3.el6.aufs21.x86_64.rpm
+    - kernel-headers-2.6.32-504.3.3.el6.aufs21.x86_64.rpm
+  notify:
+    - reboot
+
+- name: Inform that reboot will happen
+  debug: msg="new kernel is installed - we have to reboot"

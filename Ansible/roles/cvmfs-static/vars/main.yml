@@ -1,0 +1,23 @@
+---
+# vars file for roles/cvmfs
+cvmfs_version: 2.2.1
+prerequisites:
+  - patch
+  - cmake
+  - zlib1g-dev
+  - "linux-headers-{{ ansible_kernel }}"
+  - build-essential
+  - libattr1-dev
+  - libssl-dev
+  - uuid
+  - uuid-dev
+  - libfuse-dev
+  - python-dev
+  - unzip
+  - attr
+  - vim
+  - environment-modules
+repos:
+  - fastrepo.sagrid.ac.za
+  - devrepo.sagrid.ac.za
+  - apprepo.sagrid.ac.za
