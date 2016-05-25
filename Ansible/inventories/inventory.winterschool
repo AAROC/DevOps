@@ -1,5 +1,21 @@
 [ci]
-151.97.41.76 ansible_port=4422 ansible_user=jenkins
+ci.sci-gaia.eu ansible_port=4422 ansible_user=jenkins
+
+[science-gateways]
+sgw-dev.sci-gaia.eu ansible_port=4422 ansible_user=liferayadmin ansible_become_pass=9ndg3tIVajyClM2D
+
+[continuous-integration]
+sgw-dev.sci-gaia.eu
+
+[Debian-servers:children]
+ci
+science-gateways
+[scigaia:children]
+ci
+science-gateways
+
+
+
 #[cvmfs-servers]
 #apprepo.sagrid.ac.za
 #[build-slaves]
@@ -9,5 +25,3 @@
 #sl6slave.sagrid.ac.za
 #ci.sagrid.ac.za
 #apprepo.sagrid.ac.za
-[Debian-servers:children]
-ci
