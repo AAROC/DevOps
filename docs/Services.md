@@ -17,9 +17,9 @@ This chapter contains the documentation of the roles (services) which have been 
 
 Some Ansible roles have been developed to apply generic configurations independent of any middleware or service. These are :
 
-  * [`boostrap`](Ansible/roles/bootstrap/README.md) : Brings a machine to a working state which can execute Ansible playbooks.
-  * [`common`](Ansible/roles/common/README.md) : Applies a common environment and installs commonly-used packages
-  * [`ansible-executor`](Ansible/roles/ansible-executor/README.md) : Ensures that a host can execute Ansible, to allow autoconfiguration
+  * [`boostrap`](../Ansible/roles/bootstrap/README.md) : Brings a machine to a working state which can execute Ansible playbooks.
+  * [`common`](../Ansible/roles/common/README.md) : Applies a common environment and installs commonly-used packages
+  * [`ansible-executor`](../Ansible/roles/ansible-executor/README.md) : Ensures that a host can execute Ansible, to allow autoconfiguration
 
 ## Core Services
 
