@@ -1,14 +1,52 @@
-|Build Status|
-==============
+| |Build Status|
+| 
+
+-  `AAROC is DevOps <#aaroc-is-devops>`__
+
+   -  `Software-Defined
+      Infrastructure <#software-defined-infrastructure>`__
+
+-  `Communicating and
+   Collaborating. <#communicating-and-collaborating>`__
+
+   -  `Development Status and
+      Roadmap <#development-status-and-roadmap>`__
+   -  `Contributing <#contributing>`__
+
+-  `Quickstart guide for site
+   administrators <#quickstart-guide-for-site-administrators>`__
+
+   -  `Ansible <#ansible>`__
+   -  `Puppet <#puppet>`__
+
+-  `Issues <#issues>`__
+-  `How to cite this work <#how-to-cite-this-work>`__
+
+.. raw:: html
+
+   <!-- /TOC -->
 
 AAROC is DevOps
 ===============
 
-| The `Africa-Arabia Regional Operations
-  Centre <http://www.africa-grid.org>`__\ (AAROC) is an e-Infrastructure
-  collaboration with members across Africa and the Middle East. AAROC
-| This is the repository for the DevOps code which executes AAROC
-  infrastructure. We support Ansible and Puppet.
+    The mission of the Africa-Arabia Regional Operations Centre is to
+    promote and support collective, coherent and sustainable
+    interoperability of e-Infrastructures within the region and beyond,
+    to peer infrastructures in the rest of the world; and to act as a
+    point of coordination and support to computational resource
+    providers in the region, in order to promote and develop regional
+    scientific and technical collaboration.
+
+The `Africa-Arabia Regional Operations
+Centre <http://www.africa-grid.org>`__ (AAROC) is an e-Infrastructure
+collaboration with members across Africa and the Middle East. AAROC is
+an resource infrastructure provider to [EGI.eu], and has signed an
+`Operating Level Agreement <>`__ with EGI in
+
+Software-Defined Infrastructure
+-------------------------------
+
+<! --- todo: why software-defined infrastructure is a good idea -->
 
 Communicating and Collaborating.
 ================================
@@ -45,15 +83,19 @@ See `CONTRIBUTING.md <CONTRIBUTING.md>`__
 Quickstart guide for site administrators
 ========================================
 
-Service configuration
+| This is the repository for the DevOps code which executes AAROC
+  infrastructure. We support Ansible and Puppet.
+| Site administrators have freedom of choice in managing the services at
+  their site, as long as they
 
 Ansible
 -------
 
-| If you are using
-| Contribute inventory spec to ``Ansible/inventories/inventory.site``.
-  If your playbooks are very site-specific, create a subdirectory in
-  Ansible/sites for your site as declared in the GOCDB and work there.
+If you would like to use Ansible to
+
+Contribute inventory spec to ``Ansible/inventories/inventory.site``. If
+your playbooks are very site-specific, create a subdirectory in
+Ansible/sites for your site as declared in the GOCDB and work there.
 
 Puppet
 ------
@@ -68,17 +110,6 @@ Issues
 If you have questions, comments or suggestions, please open an issue and
 assign it the right tag.
 
-Using Ansible
-=============
-
-Playbook Documentation
-----------------------
-
-Ansible
-
-Role documentation
-------------------
-
 How to cite this work
 =====================
 
@@ -86,9 +117,6 @@ How to cite this work
 
 We like our code so much, we put a DOI on it ! If you like it, please
 use it, but also cite us, so that our funders will be happy.
-
-`F.A.Q <docs/FAQ.md>`__
-=======================
 
 .. |Build Status| image:: https://travis-ci.org/AAROC/DevOps.svg?branch=dev
    :target: https://travis-ci.org/AAROC/DevOps
