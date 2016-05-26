@@ -1,7 +1,7 @@
 Role Name
 =========
 
-A role  to mount cvmfs repositories using automount
+A role  to mount cvmfs repositories using static mount points
 
 Requirements
 ------------
@@ -20,6 +20,7 @@ The role has two dependencies  :
 Dependencies
 ------------
 
+None
 
 Example Playbook
 ----------------
@@ -27,7 +28,7 @@ Example Playbook
 
     - hosts: cvmfs-clients
       roles:
-         - { role: cvmfs, become: true }
+         - { role: cvmfs-static, become: true }
 
 License
 -------
@@ -36,6 +37,5 @@ Apache-2.0
 
 Author Information
 ------------------
-
 
 Bruce Becker, CSIR Meraka Institute

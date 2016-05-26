@@ -1,0 +1,4 @@
+---
+# handlers file for roles/cvmfs
+- name: reboot
+  command: /sbin/shutdown -t now

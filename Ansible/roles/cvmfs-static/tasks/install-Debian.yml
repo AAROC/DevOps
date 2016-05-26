@@ -1,0 +1,64 @@
+---
+- name: Add the repo key
+  apt_key:
+    url: http://cvmrepo.web.cern.ch/cvmrepo/apt/cernvm.gpg
+    state: present
+
+- name: ensure that the repos are present
+  apt_repository:
+    repo: 'deb http://cvmrepo.web.cern.ch/cvmrepo/apt/ stable main'
+    state: present
+    update_cache: yes
+
+- name: ensure that cvmfs user is present
+  user:
+    name: cvmfs
+    state: present
+
+- name: Install prerequisites
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ prerequisites }}"
+
+- name: install CVMFS
+  apt:
+    name: cvmfs
+    state: present
+    force: true
+
+
+- name: copy over the local config files
+  copy:
+    src: "etc/cvmfs/{{ item }}"
+    dest: "/etc/cvmfs/{{ item }}"
+  with_items:
+    - default.local
+    - keys/apprepo.sagrid.ac.za.pub
+    - config.d/apprepo.sagrid.ac.za.conf
+    - keys/devrepo.sagrid.ac.za.pub
+    - config.d/devrepo.sagrid.ac.za.conf
+    - keys/fastrepo.sagrid.ac.za.pub
+    - config.d/fastrepo.sagrid.ac.za.conf
+  tags:
+    - cvmfs
+    - config
+
+- name: Create the mountpoint
+  file:
+    path: /cvmfs/fastrepo.sagrid.ac.za
+    state: directory
+    mode: 0755
+
+- name: mount cvmfs
+  mount:
+    name:  /cvmfs/fastrepo.sagrid.ac.za
+    src: fastrepo.sagrid.ac.za
+    fstype: cvmfs
+    state: mounted
+
+
+- name: check that the repo is mounted
+  stat: "path=/cvmfs/{{ item }}"
+  with_items: "{{ repos }}"
+  register: p
