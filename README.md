@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/AAROC/DevOps.svg?branch=dev)](https://travis-ci.org/AAROC/DevOps)
+[![Build Status](https://travis-ci.org/AAROC/DevOps.svg?branch=master)](https://travis-ci.org/AAROC/DevOps)
 
-[![Documentation Status](https://readthedocs.org/projects/aaroc-devops/badge/?version=docs-dev)](http://aaroc-devops.readthedocs.org/en/docs-dev/?badge=docs-dev)
+[![Documentation Status](https://readthedocs.org/projects/aaroc-devops/badge/?version=docs-dev)](http://aaroc-devops.readthedocs.org/en/docs-dev/?badge=docs-dev) [![Documentation Status](https://readthedocs.org/projects/aaroc-devops/badge/?version=latest)](http://aaroc-devops.readthedocs.io/en/latest/?badge=latest)
 
 #  DevOps
 
