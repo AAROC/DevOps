@@ -1,8 +1,8 @@
 pages:
 - Home: index.md
 - Services: Services.md
-  - top-bdii: Ansible/roles/top-bdii/index.md
-- Roles:
+- Playbooks: Playbooks.md
+- Roles: Roles.md
   - Ansible Executor: Ansible/roles/ansible-executor/index.md
   - Common: Ansible/roles/common/index.md
   - Discourse SSO: Ansible/roles/discourse-sso/index.md
