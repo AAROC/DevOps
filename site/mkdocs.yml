@@ -2,7 +2,7 @@ repo_url: https://github.com/AAROC/DevOps
 site_name: AAROC DevOps
 docs_dir: .
 repo_name: Github
-theme: readable
+theme: readthedocs
 
 # pages:
 #   - 'Home.md': 'index.md'
