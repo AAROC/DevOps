@@ -21,6 +21,57 @@ Some Ansible roles have been developed to apply generic configurations independe
   * [`common`](../Ansible/roles/common/README.md) : Applies a common environment and installs commonly-used packages
   * [`ansible-executor`](../Ansible/roles/ansible-executor/README.md) : Ensures that a host can execute Ansible, to allow autoconfiguration
 
+  ../Ansible/roles/ansible-executor
+  ../Ansible/roles/common
+  ../Ansible/roles/discourse-sso
+  ../Ansible/roles/fmarco76.IDPPublic
+  ../Ansible/roles/jenkins-2.0
+  ../Ansible/roles/liferay-mysql
+  ../Ansible/roles/shibboleth-sp
+  ../Ansible/roles/ui
+  ../Ansible/roles/worker-nodes
+  ../Ansible/roles/apache-web-server
+  ../Ansible/roles/container-bootstrap
+  ../Ansible/roles/fmarco76.tomcat
+  ../Ansible/roles/jenkins-server
+  ../Ansible/roles/munge
+  ../Ansible/roles/site-bdii
+  ../Ansible/roles/umd
+  ../Ansible/roles/xrootd
+  ../Ansible/roles/argus
+  ../Ansible/roles/cream-ce
+  ../Ansible/roles/dpm
+  ../Ansible/roles/fts
+  ../Ansible/roles/jenkins-slave
+  ../Ansible/roles/mysql
+  ../Ansible/roles/site-bdii-tests
+  ../Ansible/roles/umd3
+  ../Ansible/roles/yaim
+  ../Ansible/roles/boundary-monitor
+  ../Ansible/roles/cvmfs-static
+  ../Ansible/roles/emi-worker-node
+  ../Ansible/roles/glassfish
+  ../Ansible/roles/liferay-csgf
+  ../Ansible/roles/sam-nagios
+  ../Ansible/roles/top-bdii
+  ../Ansible/roles/wms
+  ../Ansible/roles/cvmfs
+  ../Ansible/roles/emi-ui
+  ../Ansible/roles/ldap
+  ../Ansible/roles/perun-slave
+  ../Ansible/roles/slack-nagios
+  ../Ansible/roles/voms
+  ../Ansible/roles/certificates
+  ../Ansible/roles/dirac
+  ../Ansible/roles/fmarco76.firewall
+  ../Ansible/roles/head-node
+  ../Ansible/roles/liferay-gridengine
+  ../Ansible/roles/shibboleth-idp
+  ../Ansible/roles/torque
+  ../Ansible/roles/worker-node
+
+
+
 ## Core Services
 
 Roles have been developed for the following services:
