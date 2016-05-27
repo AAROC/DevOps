@@ -49,4 +49,5 @@ pages:
   - Shibboleth-IDP: Ansible/roles/shibboleth-idp/index.md
   - TORQUE server: Ansible/roles/torque/index.md
   - Generic Worker Node: Ansible/roles/worker-node/index.md
+Contributing: ../CONTRIBUTING.md
 theme: readthedocs
