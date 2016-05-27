@@ -1,1 +1,0 @@
-../../../../Ansible/roles/emi-worker-node/README.md

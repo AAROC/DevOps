@@ -1,1 +1,0 @@
-../../../../Ansible/roles/liferay-csgf/README.md
