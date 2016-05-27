@@ -3,50 +3,50 @@ pages:
 - Services: Services.md
   - top-bdii: Ansible/roles/top-bdii/README.md
 - Roles:
-  - Ansible Executor: Ansible/roles/ansible-executor/README
-  - Common: Ansible/roles/common/README
-  - Discourse SSO: Ansible/roles/discourse-sso/README
-  - IDP Web Interface: Ansible/roles/fmarco76.IDPPublic/README
-  - Jenkins server: Ansible/roles/jenkins-2.0/README
-  - Science Gateway Tracking Database: Ansible/roles/liferay-mysql/README
-  - shibboleth Service Provider: Ansible/roles/shibboleth-sp/README
-  - User Interface: Ansible/roles/ui/README
-  - Worker Node: Ansible/roles/worker-nodes/README
-  - Apache Web Server: Ansible/roles/apache-web-server/README
-  - Container Bootstrap: Ansible/roles/container-bootstrap/README
-  - Tomcat Server: Ansible/roles/fmarco76.tomcat/README
-  - Munge: Ansible/roles/munge/README
-  - Site BDII: Ansible/roles/site-bdii/README
-  - Generic Unified Middleware Distribution: Ansible/roles/umd/README
-  - XROOTD server: Ansible/roles/xrootd/README
-  - ARGUS serer: Ansible/roles/argus/README
-  - CREAM-CE: Ansible/roles/cream-ce/README
-  - Disk Pool Manager: Ansible/roles/dpm/README
-  - File Transfer Service: Ansible/roles/fts/README
-  - Jenkins Build Slave: Ansible/roles/jenkins-slave/README
-  - MySQL database server: Ansible/roles/mysql/README
-  - Site-BDII tests: Ansible/roles/site-bdii-tests/README
-  - UMD-3: Ansible/roles/umd3/README
-  - YAIM configuration: Ansible/roles/yaim/README
-  - CVMFS Static Mounts: Ansible/roles/cvmfs-static/README
-  - EMI Worker Node: Ansible/roles/emi-worker-node/README
-  - Glassfish Server: Ansible/roles/glassfish/README
-  - Liferay for Catania Science Gateways: Ansible/roles/liferay-csgf/README
-  - SAM-NAGIOS Monitor: Ansible/roles/sam-nagios/README
-  - Workload Management System: Ansible/roles/wms/README
-  - Top-BDII: Ansible/roles/top-bdii/README
-  - CVMFS client: Ansible/roles/cvmfs/README
-  - EMI User Interface: Ansible/roles/emi-ui/README
-  - LDAP Identity Store: Ansible/roles/ldap/README
-  - Perun Slave: Ansible/roles/perun-slave/README
-  - Slack-Nagios: Ansible/roles/slack-nagios/README
-  - VOMS Server: Ansible/roles/voms/README
-  - Host Certificates: Ansible/roles/certificates/README
-  - DIRAC: Ansible/roles/dirac/README
-  - Firewall: Ansible/roles/fmarco76.firewall/README
-  - Cluster Head Node: Ansible/roles/head-node/README
-  - Catania Science Gateway Gridengine: Ansible/roles/liferay-gridengine/README
-  - Shibboleth-IDP: Ansible/roles/shibboleth-idp/README
-  - TORQUE server: Ansible/roles/torque/README
-  - Generic Worker Node: Ansible/roles/worker-node/README
+  - Ansible Executor: Ansible/roles/ansible-executor/README.md
+  - Common: Ansible/roles/common/README.md
+  - Discourse SSO: Ansible/roles/discourse-sso/README.md
+  - IDP Web Interface: Ansible/roles/fmarco76.IDPPublic/README.md
+  - Jenkins server: Ansible/roles/jenkins-2.0/README.md
+  - Science Gateway Tracking Database: Ansible/roles/liferay-mysql/README.md
+  - shibboleth Service Provider: Ansible/roles/shibboleth-sp/README.md
+  - User Interface: Ansible/roles/ui/README.md
+  - Worker Node: Ansible/roles/worker-nodes/README.md
+  - Apache Web Server: Ansible/roles/apache-web-server/README.md
+  - Container Bootstrap: Ansible/roles/container-bootstrap/README.md
+  - Tomcat Server: Ansible/roles/fmarco76.tomcat/README.md
+  - Munge: Ansible/roles/munge/README.md
+  - Site BDII: Ansible/roles/site-bdii/README.md
+  - Generic Unified Middleware Distribution: Ansible/roles/umd/README.md
+  - XROOTD server: Ansible/roles/xrootd/README.md
+  - ARGUS serer: Ansible/roles/argus/README.md
+  - CREAM-CE: Ansible/roles/cream-ce/README.md
+  - Disk Pool Manager: Ansible/roles/dpm/README.md
+  - File Transfer Service: Ansible/roles/fts/README.md
+  - Jenkins Build Slave: Ansible/roles/jenkins-slave/README.md
+  - MySQL database server: Ansible/roles/mysql/README.md
+  - Site-BDII tests: Ansible/roles/site-bdii-tests/README.md
+  - UMD-3: Ansible/roles/umd3/README.md
+  - YAIM configuration: Ansible/roles/yaim/README.md
+  - CVMFS Static Mounts: Ansible/roles/cvmfs-static/README.md
+  - EMI Worker Node: Ansible/roles/emi-worker-node/README.md
+  - Glassfish Server: Ansible/roles/glassfish/README.md
+  - Liferay for Catania Science Gateways: Ansible/roles/liferay-csgf/README.md
+  - SAM-NAGIOS Monitor: Ansible/roles/sam-nagios/README.md
+  - Workload Management System: Ansible/roles/wms/README.md
+  - Top-BDII: Ansible/roles/top-bdii/README.md
+  - CVMFS client: Ansible/roles/cvmfs/README.md
+  - EMI User Interface: Ansible/roles/emi-ui/README.md
+  - LDAP Identity Store: Ansible/roles/ldap/README.md
+  - Perun Slave: Ansible/roles/perun-slave/README.md
+  - Slack-Nagios: Ansible/roles/slack-nagios/README.md
+  - VOMS Server: Ansible/roles/voms/README.md
+  - Host Certificates: Ansible/roles/certificates/README.md
+  - DIRAC: Ansible/roles/dirac/README.md
+  - Firewall: Ansible/roles/fmarco76.firewall/README.md
+  - Cluster Head Node: Ansible/roles/head-node/README.md
+  - Catania Science Gateway Gridengine: Ansible/roles/liferay-gridengine/README.md
+  - Shibboleth-IDP: Ansible/roles/shibboleth-idp/README.md
+  - TORQUE server: Ansible/roles/torque/README.md
+  - Generic Worker Node: Ansible/roles/worker-node/README.md.md
 theme: readthedocs

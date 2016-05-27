@@ -21,57 +21,6 @@ Some Ansible roles have been developed to apply generic configurations independe
   * [`common`](../Ansible/roles/common/README) : Applies a common environment and installs commonly-used packages
   * [`ansible-executor`](../Ansible/roles/ansible-executor/README) : Ensures that a host can execute Ansible, to allow autoconfiguration
 
-  ../Ansible/roles/ansible-executor/README
-  ../Ansible/roles/common/README
-  ../Ansible/roles/discourse-sso/README
-  ../Ansible/roles/fmarco76.IDPPublic/README
-  ../Ansible/roles/jenkins-2.0/README
-  ../Ansible/roles/liferay-mysql/README
-  ../Ansible/roles/shibboleth-sp/README
-  ../Ansible/roles/ui/README
-  ../Ansible/roles/worker-nodes/README
-  ../Ansible/roles/apache-web-server/README
-  ../Ansible/roles/container-bootstrap/README
-  ../Ansible/roles/fmarco76.tomcat/README
-  ../Ansible/roles/jenkins-server/README
-  ../Ansible/roles/munge/README
-  ../Ansible/roles/site-bdii/README
-  ../Ansible/roles/umd/README
-  ../Ansible/roles/xrootd/README
-  ../Ansible/roles/argus/README
-  ../Ansible/roles/cream-ce/README
-  ../Ansible/roles/dpm/README
-  ../Ansible/roles/fts/README
-  ../Ansible/roles/jenkins-slave/README
-  ../Ansible/roles/mysql/README
-  ../Ansible/roles/site-bdii-tests/README
-  ../Ansible/roles/umd3/README
-  ../Ansible/roles/yaim/README
-  ../Ansible/roles/boundary-monitor/README
-  ../Ansible/roles/cvmfs-static/README
-  ../Ansible/roles/emi-worker-node/README
-  ../Ansible/roles/glassfish/README
-  ../Ansible/roles/liferay-csgf/README
-  ../Ansible/roles/sam-nagios/README
-  ../Ansible/roles/wms/README
-  ../Ansible/roles/top-bdii/README
-  ../Ansible/roles/cvmfs/README
-  ../Ansible/roles/emi-ui/README
-  ../Ansible/roles/ldap/README
-  ../Ansible/roles/perun-slave/README
-  ../Ansible/roles/slack-nagios/README
-  ../Ansible/roles/voms/README
-  ../Ansible/roles/certificates/README
-  ../Ansible/roles/dirac/README
-  ../Ansible/roles/fmarco76.firewall/README
-  ../Ansible/roles/head-node/README
-  ../Ansible/roles/liferay-gridengine/README
-  ../Ansible/roles/shibboleth-idp/README
-  ../Ansible/roles/torque/README
-  ../Ansible/roles/worker-node/README
-
-
-
 ## Core Services
 
 Roles have been developed for the following services:
