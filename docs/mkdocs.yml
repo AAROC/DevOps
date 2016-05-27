@@ -51,4 +51,4 @@ pages:
 #   - TORQUE server: Ansible/roles/torque/index.md
 #   - Generic Worker Node: Ansible/roles/worker-node/index.md
 
-theme: readthedocs
+theme: spacelab
