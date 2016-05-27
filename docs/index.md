@@ -33,7 +33,7 @@ EGI provides several infrastructure services which enable interoperability :
 
 # Communicating and Collaborating.
 
-We're on [Slack](https://africa-arabia-roc.slack.com). Come on over if you want to hang out and work with us. If you have something you want to help on, see [Contributing.md](CONTRIBUTING.md). The usual [workflow](https://guides.github.com/introduction/flow/index.html) for collaboration on Github is recommended. If you want to request documentation or guides, or would like to contrbute to the more 'meta' aspects, discuss these things with on [the forum](http://discourse.sci-gaia.eu/c/devops/).
+We're on [Slack](https://africa-arabia-roc.slack.com). Come on over if you want to hang out and work with us. If you have something you want to help on, see [Contributing.md](../CONTRIBUTING.md). The usual [workflow](https://guides.github.com/introduction/flow/index.html) for collaboration on Github is recommended. If you want to request documentation or guides, or would like to contrbute to the more 'meta' aspects, discuss these things with on [the forum](http://discourse.sci-gaia.eu/c/devops/).
 
 ## Development Status and Roadmap
 
