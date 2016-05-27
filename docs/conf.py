@@ -1,7 +1,7 @@
 from recommonmark.parser import CommonMarkParser
 
 source_parsers = {
-    'README.md': CommonMarkParser,
+    '.md': CommonMarkParser,
 }
 
 source_suffix = ['.md']
