@@ -1,706 +1,677 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  
-  
-  <title>AAROC DevOps</title>
-  
-
-  <link rel="shortcut icon" href="./img/favicon.ico">
-
-  
-  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
-
-  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="./css/highlight.css">
-  <link href="./site/css/base.css" rel="stylesheet">
-  <link href="./site/css/bootstrap-custom.min.css" rel="stylesheet">
-  <link href="./site/css/font-awesome-4.0.3.css" rel="stylesheet">
-  <link href="./site/css/highlight.css" rel="stylesheet">
-  <link href="./site/site/css/base.css" rel="stylesheet">
-  <link href="./site/site/css/bootstrap-custom.min.css" rel="stylesheet">
-  <link href="./site/site/css/font-awesome-4.0.3.css" rel="stylesheet">
-  <link href="./site/site/css/highlight.css" rel="stylesheet">
-
-  
-  <script>
-    // Current page data
-    var mkdocs_page_name = "None";
-    var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = "/";
-  </script>
-  
-  <script src="./js/jquery-2.1.1.min.js"></script>
-  <script src="./js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="./js/highlight.pack.js"></script>
-  <script src="./js/theme.js"></script> 
-  <script src="./site/js/base.js"></script>
-  <script src="./site/js/bootstrap-3.0.3.min.js"></script>
-  <script src="./site/js/highlight.pack.js"></script>
-  <script src="./site/js/jquery-1.10.2.min.js"></script>
-  <script src="./site/mkdocs/js/lunr-0.5.7.min.js"></script>
-  <script src="./site/mkdocs/js/mustache.min.js"></script>
-  <script src="./site/mkdocs/js/require.js"></script>
-  <script src="./site/mkdocs/js/search.js"></script>
-  <script src="./site/mkdocs/js/text.js"></script>
-  <script src="./site/site/js/base.js"></script>
-  <script src="./site/site/js/bootstrap-3.0.3.min.js"></script>
-  <script src="./site/site/js/highlight.pack.js"></script>
-  <script src="./site/site/js/jquery-1.10.2.min.js"></script>
-  <script src="./site/site/mkdocs/js/lunr-0.5.7.min.js"></script>
-  <script src="./site/site/mkdocs/js/mustache.min.js"></script>
-  <script src="./site/site/mkdocs/js/require.js"></script>
-  <script src="./site/site/mkdocs/js/search.js"></script>
-  <script src="./site/site/mkdocs/js/text.js"></script>
-
-  
-</head>
-
-<body class="wy-body-for-nav" role="document">
-
-  <div class="wy-grid-for-nav">
-
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-      <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> AAROC DevOps</a>
-        <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-  </form>
-</div>
-      </div>
-
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-        <ul class="current">
-          
-            <li>
-    <li class="toctree-l1 current">
-        <a class="current" href=".">Home</a>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-            <ul>
+        
+        
+        <link rel="shortcut icon" href="./img/favicon.ico">
+
+	<title>AAROC DevOps</title>
+
+        <link href="./css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="./css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/highlight.css">
+        <link href="./css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+            <a class="navbar-brand" href=".">AAROC DevOps</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
             
-                <li class="toctree-l3"><a href="#aaroc-is-devops">AAROC is DevOps</a></li>
-                
-                    <li><a class="toctree-l4" href="#interoperability">Interoperability</a></li>
-                
-                    <li><a class="toctree-l4" href="#software-defined-infrastructure">Software-Defined Infrastructure</a></li>
-                
             
-                <li class="toctree-l3"><a href="#communicating-and-collaborating">Communicating and Collaborating.</a></li>
-                
-                    <li><a class="toctree-l4" href="#development-status-and-roadmap">Development Status and Roadmap</a></li>
-                
-                    <li><a class="toctree-l4" href="#contributing">Contributing</a></li>
-                
+                <li class="active">
+                    <a href=".">Home</a>
+                </li>
             
-                <li class="toctree-l3"><a href="#quickstart-guide-for-site-administrators">Quickstart guide for site administrators</a></li>
-                
-                    <li><a class="toctree-l4" href="#ansible">Ansible</a></li>
-                
-                    <li><a class="toctree-l4" href="#puppet">Puppet</a></li>
-                
             
-                <li class="toctree-l3"><a href="#issues">Issues</a></li>
-                
             
-                <li class="toctree-l3"><a href="#how-to-cite-this-work">How to cite this work</a></li>
-                
+                <li >
+                    <a href="CONTRIBUTING/">CONTRIBUTING</a>
+                </li>
+            
+            
+            
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Ansible <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    
+                        
+<li >
+    <a href="Ansible/">Home</a>
+</li>
+
+                    
+                        
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Playbooks</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/playbooks/">Home</a>
+</li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Top bdii</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/playbooks/top-bdii/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                    
+                        
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Roles</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/">Home</a>
+</li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ansible executor</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/ansible-executor/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Apache web server</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/apache-web-server/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Bootstrap</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/bootstrap/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Boundary monitor</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/boundary-monitor/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Container bootstrap</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/container-bootstrap/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cvmfs</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/cvmfs/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Cvmfs static</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/cvmfs-static/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Discourse sso</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/discourse-sso/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Emi ui</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/emi-ui/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Emi worker node</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/emi-worker-node/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Fmarco76</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/fmarco76.IDPPublic/">Home</a>
+</li>
+
+        
+            
+<li >
+    <a href="Ansible/roles/fmarco76.firewall/">Home</a>
+</li>
+
+        
+            
+<li >
+    <a href="Ansible/roles/fmarco76.tomcat/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Geerlingguy</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/geerlingguy.repo-epel/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Glassfish</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/glassfish/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Head node</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/head-node/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Jenkins 2</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/jenkins-2.0/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Jenkins slave</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/jenkins-slave/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ldap</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/ldap/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Liferay csgf</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/liferay-csgf/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Liferay gridengine</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/liferay-gridengine/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Liferay mysql</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/liferay-mysql/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Mysql</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/mysql/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Perun slave</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/perun-slave/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Shibboleth idp</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/shibboleth-idp/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Shibboleth sp</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/shibboleth-sp/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Site bdii tests</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/site-bdii-tests/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Slack nagios</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/slack-nagios/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Top bdii</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/top-bdii/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Umd</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/umd/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Umd3</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/umd3/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Worker node</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/worker-node/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Xrootd</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="Ansible/roles/xrootd/">Home</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                    
+                    </ul>
+                </li>
+            
             
             </ul>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="Playbooks/">Playbooks</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <li class="toctree-l1 ">
-        <a class="" href="Services/">Services</a>
-        
-    </li>
-<li>
-          
-            <li>
-    <ul class="subnav">
-    <li><span>Roles</span></li>
 
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/">Home</a>
-        
-    </li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Ansible</span></li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Playbooks</span></li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Top bdii</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/playbooks/top-bdii/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Roles</span></li>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Ansible executor</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/ansible-executor/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Apache web server</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/apache-web-server/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Bootstrap</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/bootstrap/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Boundary monitor</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/boundary-monitor/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Container bootstrap</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/container-bootstrap/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Cvmfs</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/cvmfs/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Cvmfs static</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/cvmfs-static/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Discourse sso</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/discourse-sso/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Emi ui</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/emi-ui/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Emi worker node</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/emi-worker-node/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Fmarco76</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/fmarco76.IDPPublic/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/fmarco76.firewall/">Home</a>
-        
-    </li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/fmarco76.tomcat/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Geerlingguy</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/geerlingguy.repo-epel/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Glassfish</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/glassfish/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Head node</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/head-node/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Jenkins 2</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/jenkins-2.0/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Jenkins slave</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/jenkins-slave/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Ldap</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/ldap/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Liferay csgf</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/liferay-csgf/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Liferay gridengine</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/liferay-gridengine/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Liferay mysql</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/liferay-mysql/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Mysql</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/mysql/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Perun slave</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/perun-slave/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Shibboleth idp</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/shibboleth-idp/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Shibboleth sp</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/shibboleth-sp/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Site bdii tests</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/site-bdii-tests/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Slack nagios</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/slack-nagios/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Top bdii</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/top-bdii/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Umd</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/umd/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Umd3</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/umd3/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Worker node</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/worker-node/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-            
-    <ul class="subnav">
-    <li><span>Xrootd</span></li>
-
-        
-            
-    <li class="toctree-l1 ">
-        <a class="" href="Roles/Ansible/roles/xrootd/">Home</a>
-        
-    </li>
-
-        
-    </ul>
-
-        
-    </ul>
-
-        
-    </ul>
-
-        
-    </ul>
-<li>
-          
-        </ul>
-      </div>
-      &nbsp;
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">AAROC DevOps</a>
-      </nav>
-
-      
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="breadcrumbs navigation">
-  <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
-    
-      
-    
-    <li>Home</li>
-    <li class="wy-breadcrumbs-aside">
-      
-        
-      
-    </li>
-  </ul>
-  <hr/>
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a rel="next" >
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="CONTRIBUTING/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/AAROC/DevOps">
+                        
+                        Edit on Github
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
 </div>
-          <div role="main">
-            <div class="section">
-              
-                <p><a href="https://travis-ci.org/AAROC/DevOps"><img alt="Build Status" src="https://travis-ci.org/AAROC/DevOps.svg?branch=dev" /></a>
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 --></p>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#table-of-contents">Table of Contents</a></li>
+        
+    
+        <li class="main "><a href="#aaroc-is-devops">AAROC is DevOps</a></li>
+        
+            <li><a href="#interoperability">Interoperability</a></li>
+        
+            <li><a href="#software-defined-infrastructure">Software-Defined Infrastructure</a></li>
+        
+    
+        <li class="main "><a href="#communicating-and-collaborating">Communicating and Collaborating.</a></li>
+        
+            <li><a href="#development-status-and-roadmap">Development Status and Roadmap</a></li>
+        
+            <li><a href="#contributing">Contributing</a></li>
+        
+    
+        <li class="main "><a href="#quickstart-guide-for-site-administrators">Quickstart guide for site administrators</a></li>
+        
+            <li><a href="#ansible">Ansible</a></li>
+        
+            <li><a href="#puppet">Puppet</a></li>
+        
+    
+        <li class="main "><a href="#issues">Issues</a></li>
+        
+    
+        <li class="main "><a href="#how-to-cite-this-work">How to cite this work</a></li>
+        
+    
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<p><a href="https://travis-ci.org/AAROC/DevOps"><img alt="Build Status" src="https://travis-ci.org/AAROC/DevOps.svg?branch=master" /></a> <a href="https://circleci.com/gh/AAROC/DevOps/tree/gh-pages"><img alt="CircleCI" src="https://circleci.com/gh/AAROC/DevOps/tree/gh-pages.svg?style=svg" /></a> <a href="http://dx.doi.org/10.5281/zenodo.51317"><img alt="DOI" src="https://zenodo.org/badge/doi/10.5281/zenodo.51317.svg" /></a></p>
+<h1 id="table-of-contents">Table of Contents</h1>
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
 <ul>
 <li><a href="#aaroc-is-devops">AAROC is DevOps</a><ul>
 <li><a href="#software-defined-infrastructure">Software-Defined Infrastructure</a></li>
@@ -734,10 +705,9 @@
 <li><a href="http://accounting.egi.eu">Accounting Portal</a> : The accounting portal where usage by various communities is reported.</li>
 </ul>
 <h2 id="software-defined-infrastructure">Software-Defined Infrastructure</h2>
-<! --- todo: why software-defined infrastructure is a good idea -->
-
+<p>We develop abstract descriptions of services which can be <em>executed</em> on relevant hardware configurations. These can then be instantiated</p>
 <h1 id="communicating-and-collaborating">Communicating and Collaborating.</h1>
-<p>We're on <a href="https://africa-arabia-roc.slack.com">Slack</a>. Come on over if you want to hang out and work with us. If you have something you want to help on, see <a href="../CONTRIBUTING.md">Contributing.md</a>. The usual <a href="https://guides.github.com/introduction/flow/index.html">workflow</a> for collaboration on Github is recommended. If you want to request documentation or guides, or would like to contrbute to the more 'meta' aspects, discuss these things with on <a href="http://discourse.sci-gaia.eu/c/devops/">the forum</a>.</p>
+<p>We're on <a href="https://africa-arabia-roc.slack.com">Slack</a>. Come on over if you want to hang out and work with us. If you have something you want to help on, see <a href="CONTRIBUTING/">Contributing.md</a>. The usual <a href="https://guides.github.com/introduction/flow/index.html">workflow</a> for collaboration on Github is recommended. If you want to request documentation or guides, or would like to contrbute to the more 'meta' aspects, discuss these things with on <a href="http://discourse.sci-gaia.eu/c/devops/">the forum</a>.</p>
 <h2 id="development-status-and-roadmap">Development Status and Roadmap</h2>
 <p>You can see the development roadmap on the <a href="./../../milestones">project milestones</a>. Feel free to propose new milestones based on features you would like to see.</p>
 <p>There is a development status board at https://waffle.io/aaroc/devops, a snapshot of the current state is below.</p>
@@ -746,7 +716,7 @@
 <a href="http://waffle.io/aaroc/devops"><img alt="Issues in Progress" src="https://badge.waffle.io/aaroc/devops.svg?&amp;label=In%20Progress&amp;title=In%20Progress" /></a>
 <a href="http://waffle.io/aaroc/devops"><img alt="Issues Ready" src="https://badge.waffle.io/aaroc/devops.svg?label=ready&amp;title=Ready" /></a></p>
 <h2 id="contributing">Contributing</h2>
-<p>See <a href="CONTRIBUTING.md">CONTRIBUTING.md</a></p>
+<p>See <a href="CONTRIBUTING/">CONTRIBUTING.md</a></p>
 <h1 id="quickstart-guide-for-site-administrators">Quickstart guide for site administrators</h1>
 <p>This is the repository for the DevOps code which executes AAROC infrastructure. We support Ansible and Puppet.
 Site administrators have freedom of choice in managing the services at their site, as long as they</p>
@@ -774,51 +744,45 @@ Site administrators have freedom of choice in managing the services at their sit
 <p>If you have questions, comments or suggestions, please open an issue and assign it the right tag.</p>
 <h1 id="how-to-cite-this-work">How to cite this work</h1>
 <p><a href="http://dx.doi.org/10.5281/zenodo.11914"><img alt="DOI" src="https://zenodo.org/badge/1514/AAROC/DevOps.png" /></a></p>
-<p>We like our code so much, we put a DOI on it ! If you like it, please use it, but also cite us, so that our funders will be happy.</p>
-              
-            </div>
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="Playbooks/" class="btn btn-neutral float-right" title="Playbooks">Next <span class="icon icon-circle-arrow-right"></span></a>
-      
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <!-- Copyright etc -->
-    
-  </div>
-
-  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
-</footer>
-	  
+<p>We like our code so much, we put a DOI on it ! If you like it, please use it, but also cite us, so that our funders will be happy.</p></div>
         </div>
-      </div>
 
-    </section>
+        <footer class="col-md-12">
+            <hr>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
 
-  </div>
+        <script src="./js/jquery-1.10.2.min.js"></script>
+        <script src="./js/bootstrap-3.0.3.min.js"></script>
+        <script src="./js/highlight.pack.js"></script>
+        <script>var base_url = '.';</script>
+        <script data-main="./mkdocs/js/search.js" src="./mkdocs/js/require.js"></script>
+        <script src="./js/base.js"></script>
 
-<div class="rst-versions" role="note" style="cursor: pointer">
-    <span class="rst-current-version" data-toggle="rst-current-version">
-      
-      
-      
-        <span style="margin-left: 15px"><a href="Playbooks/" style="color: #fcfcfc">Next &raquo;</a></span>
-      
-    </span>
-</div>
-
-</body>
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
-
-<!--
-MkDocs version : 0.15.3
-Build Date UTC : 2016-05-27 13:15:03.714229
--->

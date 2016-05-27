@@ -1,14 +1,16 @@
 repo_url: https://github.com/AAROC/DevOps
 site_name: AAROC DevOps
 docs_dir: .
-repo_name: Github
-theme: readthedocs
+repo_name: Edit on Github
+theme: readable
 
-# pages:
-#   - 'Home.md': 'index.md'
-#   - 'Services.md': './Services.md'
-#   - 'Playbooks.md': './Playbooks.md'
-#   - Roles.md: Roles.md
+pages:
+# - Home: index.md
+# - Contributing: CONTRIBUTING.md
+# - Ansible: Ansible/index.md
+#   - 'Playbooks': 'Ansible/playbooks/index.md'
+# - Top-BDII: Ansible/playbooks/top-bdii/index.md
+# - Roles: Ansible/roles/index.md
 #     - Ansible Executor: 'Ansible/roles/ansible-executor/index.md'
 #     - 'Common': 'Ansible/roles/common/index.md'
 #     - Discourse SSO: Ansible/roles/discourse-sso/index.md
