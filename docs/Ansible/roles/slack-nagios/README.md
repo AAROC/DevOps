@@ -1,1 +1,0 @@
-../../../../Ansible/roles/slack-nagios/README.md

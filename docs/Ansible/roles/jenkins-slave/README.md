@@ -1,1 +1,0 @@
-../../../../Ansible/roles/jenkins-slave/README.md

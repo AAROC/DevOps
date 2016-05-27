@@ -1,1 +1,0 @@
-../../../../Ansible/roles/cvmfs/README.md

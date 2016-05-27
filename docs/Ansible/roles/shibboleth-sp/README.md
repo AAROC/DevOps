@@ -1,1 +1,0 @@
-../../../../Ansible/roles/shibboleth-sp/README.md
