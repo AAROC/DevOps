@@ -3,51 +3,52 @@ pages:
 - Services: Services.md
 - Playbooks: Playbooks.md
 - Roles: Roles.md
-  - Ansible Executor: Ansible/roles/ansible-executor/index.md
-  - Common: Ansible/roles/common/index.md
-  - Discourse SSO: Ansible/roles/discourse-sso/index.md
-  - IDP Web Interface: Ansible/roles/fmarco76.IDPPublic/index.md
-  - Jenkins server: Ansible/roles/jenkins-2.0/index.md
-  - Science Gateway Tracking Database: Ansible/roles/liferay-mysql/index.md
-  - shibboleth Service Provider: Ansible/roles/shibboleth-sp/index.md
-  - User Interface: Ansible/roles/ui/index.md
-  - Worker Node: Ansible/roles/worker-nodes/index.md
-  - Apache Web Server: Ansible/roles/apache-web-server/index.md
-  - Container Bootstrap: Ansible/roles/container-bootstrap/index.md
-  - Tomcat Server: Ansible/roles/fmarco76.tomcat/index.md
-  - Munge: Ansible/roles/munge/index.md
-  - Site BDII: Ansible/roles/site-bdii/index.md
-  - Generic Unified Middleware Distribution: Ansible/roles/umd/index.md
-  - XROOTD server: Ansible/roles/xrootd/index.md
-  - ARGUS serer: Ansible/roles/argus/index.md
-  - CREAM-CE: Ansible/roles/cream-ce/index.md
-  - Disk Pool Manager: Ansible/roles/dpm/index.md
-  - File Transfer Service: Ansible/roles/fts/index.md
-  - Jenkins Build Slave: Ansible/roles/jenkins-slave/index.md
-  - MySQL database server: Ansible/roles/mysql/index.md
-  - Site-BDII tests: Ansible/roles/site-bdii-tests/index.md
-  - UMD-3: Ansible/roles/umd3/index.md
-  - YAIM configuration: Ansible/roles/yaim/index.md
-  - CVMFS Static Mounts: Ansible/roles/cvmfs-static/index.md
-  - EMI Worker Node: Ansible/roles/emi-worker-node/index.md
-  - Glassfish Server: Ansible/roles/glassfish/index.md
-  - Liferay for Catania Science Gateways: Ansible/roles/liferay-csgf/index.md
-  - SAM-NAGIOS Monitor: Ansible/roles/sam-nagios/index.md
-  - Workload Management System: Ansible/roles/wms/index.md
-  - Top-BDII: Ansible/roles/top-bdii/index.md
-  - CVMFS client: Ansible/roles/cvmfs/index.md
-  - EMI User Interface: Ansible/roles/emi-ui/index.md
-  - LDAP Identity Store: Ansible/roles/ldap/index.md
-  - Perun Slave: Ansible/roles/perun-slave/index.md
-  - Slack-Nagios: Ansible/roles/slack-nagios/index.md
-  - VOMS Server: Ansible/roles/voms/index.md
-  - Host Certificates: Ansible/roles/certificates/index.md
-  - DIRAC: Ansible/roles/dirac/index.md
-  - Firewall: Ansible/roles/fmarco76.firewall/index.md
-  - Cluster Head Node: Ansible/roles/head-node/index.md
-  - Catania Science Gateway Gridengine: Ansible/roles/liferay-gridengine/index.md
-  - Shibboleth-IDP: Ansible/roles/shibboleth-idp/index.md
-  - TORQUE server: Ansible/roles/torque/index.md
-  - Generic Worker Node: Ansible/roles/worker-node/index.md
-Contributing: ../CONTRIBUTING.md
+- Contributing: ../CONTRIBUTING.md
+    # - 'Ansible Executor': 'Ansible/roles/ansible-executor/index.md'
+    # - 'Common': 'Ansible/roles/common/index.md'
+#   - Discourse SSO: Ansible/roles/discourse-sso/index.md
+#   - IDP Web Interface: Ansible/roles/fmarco76.IDPPublic/index.md
+#   - Jenkins server: Ansible/roles/jenkins-2.0/index.md
+#   - Science Gateway Tracking Database: Ansible/roles/liferay-mysql/index.md
+#   - shibboleth Service Provider: Ansible/roles/shibboleth-sp/index.md
+#   - User Interface: Ansible/roles/ui/index.md
+#   - Worker Node: Ansible/roles/worker-nodes/index.md
+#   - Apache Web Server: Ansible/roles/apache-web-server/index.md
+#   - Container Bootstrap: Ansible/roles/container-bootstrap/index.md
+#   - Tomcat Server: Ansible/roles/fmarco76.tomcat/index.md
+#   - Munge: Ansible/roles/munge/index.md
+#   - Site BDII: Ansible/roles/site-bdii/index.md
+#   - Generic Unified Middleware Distribution: Ansible/roles/umd/index.md
+#   - XROOTD server: Ansible/roles/xrootd/index.md
+#   - ARGUS serer: Ansible/roles/argus/index.md
+#   - CREAM-CE: Ansible/roles/cream-ce/index.md
+#   - Disk Pool Manager: Ansible/roles/dpm/index.md
+#   - File Transfer Service: Ansible/roles/fts/index.md
+#   - Jenkins Build Slave: Ansible/roles/jenkins-slave/index.md
+#   - MySQL database server: Ansible/roles/mysql/index.md
+#   - Site-BDII tests: Ansible/roles/site-bdii-tests/index.md
+#   - UMD-3: Ansible/roles/umd3/index.md
+#   - YAIM configuration: Ansible/roles/yaim/index.md
+#   - CVMFS Static Mounts: Ansible/roles/cvmfs-static/index.md
+#   - EMI Worker Node: Ansible/roles/emi-worker-node/index.md
+#   - Glassfish Server: Ansible/roles/glassfish/index.md
+#   - Liferay for Catania Science Gateways: Ansible/roles/liferay-csgf/index.md
+#   - SAM-NAGIOS Monitor: Ansible/roles/sam-nagios/index.md
+#   - Workload Management System: Ansible/roles/wms/index.md
+#   - Top-BDII: Ansible/roles/top-bdii/index.md
+#   - CVMFS client: Ansible/roles/cvmfs/index.md
+#   - EMI User Interface: Ansible/roles/emi-ui/index.md
+#   - LDAP Identity Store: Ansible/roles/ldap/index.md
+#   - Perun Slave: Ansible/roles/perun-slave/index.md
+#   - Slack-Nagios: Ansible/roles/slack-nagios/index.md
+#   - VOMS Server: Ansible/roles/voms/index.md
+#   - Host Certificates: Ansible/roles/certificates/index.md
+#   - DIRAC: Ansible/roles/dirac/index.md
+#   - Firewall: Ansible/roles/fmarco76.firewall/index.md
+#   - Cluster Head Node: Ansible/roles/head-node/index.md
+#   - Catania Science Gateway Gridengine: Ansible/roles/liferay-gridengine/index.md
+#   - Shibboleth-IDP: Ansible/roles/shibboleth-idp/index.md
+#   - TORQUE server: Ansible/roles/torque/index.md
+#   - Generic Worker Node: Ansible/roles/worker-node/index.md
+
 theme: readthedocs
