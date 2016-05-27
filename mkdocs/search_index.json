@@ -1,0 +1,1429 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "AAROC is DevOps\n\n\nSoftware-Defined Infrastructure\n\n\n\n\n\n\nCommunicating and Collaborating.\n\n\nDevelopment Status and Roadmap\n\n\nContributing\n\n\n\n\n\n\nQuickstart guide for site administrators\n\n\nAnsible\n\n\nPuppet\n\n\n\n\n\n\nIssues\n\n\nHow to cite this work\n\n\n\n\n\n\n\nAAROC is DevOps\n\n\n\n\nThe mission of the Africa-Arabia Regional Operations Centre is to promote and support collective, coherent and sustainable interoperability of e-Infrastructures within the region and beyond, to peer infrastructures in the rest of the world; and to act as a point of coordination and support to computational resource providers in the region, in order to promote and develop regional scientific and technical collaboration.\n\n\n\n\nThe \nAfrica-Arabia Regional Operations Centre\n (AAROC) is an e-Infrastructure collaboration with members across Africa and the Middle East. AAROC is an resource infrastructure provider to [EGI.eu], and has signed an \nOperating Level Agreement\n with EGI.\n\n\nInteroperability\n\n\nEGI provides several infrastructure services which enable interoperability :\n\n\n\n\nGOCDB\n : The operations database, where all sites and services are defined. GOCDB provides a topology which is used by various other services, and is used to declare service states and downtimes.\n\n\nOperations Portal\n : The dashboard for the \nRegional Operator on Duty\n\n\nAccounting Portal\n : The accounting portal where usage by various communities is reported.\n\n\n\n\nSoftware-Defined Infrastructure\n\n\n\n\n\nCommunicating and Collaborating.\n\n\nWe're on \nSlack\n. Come on over if you want to hang out and work with us. If you have something you want to help on, see \nContributing.md\n. The usual \nworkflow\n for collaboration on Github is recommended. If you want to request documentation or guides, or would like to contrbute to the more 'meta' aspects, discuss these things with on \nthe forum\n.\n\n\nDevelopment Status and Roadmap\n\n\nYou can see the development roadmap on the \nproject milestones\n. Feel free to propose new milestones based on features you would like to see.\n\n\nThere is a development status board at https://waffle.io/aaroc/devops, a snapshot of the current state is below.\n\n\n\n\n\n\n\n\n\n\nContributing\n\n\nSee \nCONTRIBUTING.md\n\n\nQuickstart guide for site administrators\n\n\nThis is the repository for the DevOps code which executes AAROC infrastructure. We support Ansible and Puppet.\nSite administrators have freedom of choice in managing the services at their site, as long as they\n\n\nAnsible\n\n\nIf you would like to use Ansible to deploy your site :\n\n\n\n\nClone the repository's \nmaster\n branch  : \ngit clone https://github.com/AAROC/DevOps\n\n\nCreate create a new branch with your site name as defined in GOCDB : \ngit branch \nsite-name\n\n\nPropose the local site configuration :\n        4. \nInventory\n. Contribute your inventory to  to \nAnsible/inventories/inventory.\nsite-name\n. If your playbooks are very site-specific, create a subdirectory in Ansible/sites for your site as declared in the GOCDB and work there.\n\n\nVariables\n. Create two variables files for your site in \nAnsible/group_vars\n :\n\n\nsite-name\n, where \nsite-name\n is the name of your site in the GOCDB (\ne.g.\n za-meraka). This will contain the site-specific variables, but not sensitive information.\n\n\nsite-name\n-passwords\n (\ne.g.\n \nza-meraka-passwords\n) : This is the site-specific variables file containing sensitive information. It should be encrypted with \nansible-vault\n before being committed : \nansible-vault encrypt Ansible/group_vars/passwords-\nsite-name\n.\n\n\n\n\n\n\nSend a pull request to the repository so that the configuration can be checked and verified.\n\n\n\n\n\n\nCreate your \nsite-name\n.yml\n  playbook to deploy the services which you need at your site - use as many of the provided roles as you need.\n\n\nRun ansible : \nansible-playbook -i inventories/inventory-\nsite-name\n --ask-vault-pass \nsite-name\n.yml\n\n\n\n\nPuppet\n\n\nContribute your code to \nPuppet/\n If your Puppet modules are site-specific, create a subdirectory in Puppet/sites for your site as declared in GOCDB and work there.\n\n\nIssues\n\n\nIf you have questions, comments or suggestions, please open an issue and assign it the right tag.\n\n\nHow to cite this work\n\n\n\n\nWe like our code so much, we put a DOI on it ! If you like it, please use it, but also cite us, so that our funders will be happy.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#aaroc-is-devops", 
+            "text": "The mission of the Africa-Arabia Regional Operations Centre is to promote and support collective, coherent and sustainable interoperability of e-Infrastructures within the region and beyond, to peer infrastructures in the rest of the world; and to act as a point of coordination and support to computational resource providers in the region, in order to promote and develop regional scientific and technical collaboration.   The  Africa-Arabia Regional Operations Centre  (AAROC) is an e-Infrastructure collaboration with members across Africa and the Middle East. AAROC is an resource infrastructure provider to [EGI.eu], and has signed an  Operating Level Agreement  with EGI.", 
+            "title": "AAROC is DevOps"
+        }, 
+        {
+            "location": "/#interoperability", 
+            "text": "EGI provides several infrastructure services which enable interoperability :   GOCDB  : The operations database, where all sites and services are defined. GOCDB provides a topology which is used by various other services, and is used to declare service states and downtimes.  Operations Portal  : The dashboard for the  Regional Operator on Duty  Accounting Portal  : The accounting portal where usage by various communities is reported.", 
+            "title": "Interoperability"
+        }, 
+        {
+            "location": "/#software-defined-infrastructure", 
+            "text": "", 
+            "title": "Software-Defined Infrastructure"
+        }, 
+        {
+            "location": "/#communicating-and-collaborating", 
+            "text": "We're on  Slack . Come on over if you want to hang out and work with us. If you have something you want to help on, see  Contributing.md . The usual  workflow  for collaboration on Github is recommended. If you want to request documentation or guides, or would like to contrbute to the more 'meta' aspects, discuss these things with on  the forum .", 
+            "title": "Communicating and Collaborating."
+        }, 
+        {
+            "location": "/#development-status-and-roadmap", 
+            "text": "You can see the development roadmap on the  project milestones . Feel free to propose new milestones based on features you would like to see.  There is a development status board at https://waffle.io/aaroc/devops, a snapshot of the current state is below.", 
+            "title": "Development Status and Roadmap"
+        }, 
+        {
+            "location": "/#contributing", 
+            "text": "See  CONTRIBUTING.md", 
+            "title": "Contributing"
+        }, 
+        {
+            "location": "/#quickstart-guide-for-site-administrators", 
+            "text": "This is the repository for the DevOps code which executes AAROC infrastructure. We support Ansible and Puppet.\nSite administrators have freedom of choice in managing the services at their site, as long as they", 
+            "title": "Quickstart guide for site administrators"
+        }, 
+        {
+            "location": "/#ansible", 
+            "text": "If you would like to use Ansible to deploy your site :   Clone the repository's  master  branch  :  git clone https://github.com/AAROC/DevOps  Create create a new branch with your site name as defined in GOCDB :  git branch  site-name  Propose the local site configuration :\n        4.  Inventory . Contribute your inventory to  to  Ansible/inventories/inventory. site-name . If your playbooks are very site-specific, create a subdirectory in Ansible/sites for your site as declared in the GOCDB and work there.  Variables . Create two variables files for your site in  Ansible/group_vars  :  site-name , where  site-name  is the name of your site in the GOCDB ( e.g.  za-meraka). This will contain the site-specific variables, but not sensitive information.  site-name -passwords  ( e.g.   za-meraka-passwords ) : This is the site-specific variables file containing sensitive information. It should be encrypted with  ansible-vault  before being committed :  ansible-vault encrypt Ansible/group_vars/passwords- site-name .    Send a pull request to the repository so that the configuration can be checked and verified.    Create your  site-name .yml   playbook to deploy the services which you need at your site - use as many of the provided roles as you need.  Run ansible :  ansible-playbook -i inventories/inventory- site-name  --ask-vault-pass  site-name .yml", 
+            "title": "Ansible"
+        }, 
+        {
+            "location": "/#puppet", 
+            "text": "Contribute your code to  Puppet/  If your Puppet modules are site-specific, create a subdirectory in Puppet/sites for your site as declared in GOCDB and work there.", 
+            "title": "Puppet"
+        }, 
+        {
+            "location": "/#issues", 
+            "text": "If you have questions, comments or suggestions, please open an issue and assign it the right tag.", 
+            "title": "Issues"
+        }, 
+        {
+            "location": "/#how-to-cite-this-work", 
+            "text": "We like our code so much, we put a DOI on it ! If you like it, please use it, but also cite us, so that our funders will be happy.", 
+            "title": "How to cite this work"
+        }, 
+        {
+            "location": "/Playbooks/", 
+            "text": "Playbooks\n\n\nhello these are playbooks", 
+            "title": "Playbooks"
+        }, 
+        {
+            "location": "/Playbooks/#playbooks", 
+            "text": "hello these are playbooks", 
+            "title": "Playbooks"
+        }, 
+        {
+            "location": "/Services/", 
+            "text": "Services offered by the ROC\n\n\nInfrastructure services offered by the ROC fall into two broad categories :\n\n\n\n\nCore services\n : Services operated by the ROC itself to enable interoperability with other resource infrastructure providers such as EGI.\n\n\nSite services\n : Services operated by the sites which offer resourcs such as compute and data endpoints to users and applications\n\n\n\n\nIn the software-defined infrastruture model, each of these services has an abstract description written in the language of the DevOps tool of choice, as well as some local contextualisation. Contextualisation may take the form of local variables such as passwords or host names in an inventory. In order to maintain the desired state of the infrastructure, another component is needed : the orchestration layer, which ensures  that the abstract description is \napplied\n with the local contextualisation, resulting in a well-configured site.\n\n\nIn Ansible, service descriptions take the form of \nroles\n, whilst orchestration is done with \nplaybooks\n. Puppet has similar concepts of \nmodules\n, while having an internal execution engine, with a master-slave architecture.\n\n\nThis chapter contains the documentation of the roles (services) which have been developed in the project. For how to apply them in playbooks, see \nthe playbooks chapter\n\n\nAnsible roles for service orchestration\n\n\nRoles\n\n\nSome Ansible roles have been developed to apply generic configurations independent of any middleware or service. These are :\n\n\n\n\nboostrap\n : Brings a machine to a working state which can execute Ansible playbooks.\n\n\ncommon\n : Applies a common environment and installs commonly-used packages\n\n\nansible-executor\n : Ensures that a host can execute Ansible, to allow autoconfiguration\n\n\n\n\nCore Services\n\n\nRoles have been developed for the following services:\n\n\nGrid Services\n\n\n\n\ntop-BDII\n\n\n\n\nSite Services", 
+            "title": "Services"
+        }, 
+        {
+            "location": "/Services/#services-offered-by-the-roc", 
+            "text": "Infrastructure services offered by the ROC fall into two broad categories :   Core services  : Services operated by the ROC itself to enable interoperability with other resource infrastructure providers such as EGI.  Site services  : Services operated by the sites which offer resourcs such as compute and data endpoints to users and applications   In the software-defined infrastruture model, each of these services has an abstract description written in the language of the DevOps tool of choice, as well as some local contextualisation. Contextualisation may take the form of local variables such as passwords or host names in an inventory. In order to maintain the desired state of the infrastructure, another component is needed : the orchestration layer, which ensures  that the abstract description is  applied  with the local contextualisation, resulting in a well-configured site.  In Ansible, service descriptions take the form of  roles , whilst orchestration is done with  playbooks . Puppet has similar concepts of  modules , while having an internal execution engine, with a master-slave architecture.  This chapter contains the documentation of the roles (services) which have been developed in the project. For how to apply them in playbooks, see  the playbooks chapter", 
+            "title": "Services offered by the ROC"
+        }, 
+        {
+            "location": "/Services/#ansible-roles-for-service-orchestration", 
+            "text": "", 
+            "title": "Ansible roles for service orchestration"
+        }, 
+        {
+            "location": "/Services/#roles", 
+            "text": "Some Ansible roles have been developed to apply generic configurations independent of any middleware or service. These are :   boostrap  : Brings a machine to a working state which can execute Ansible playbooks.  common  : Applies a common environment and installs commonly-used packages  ansible-executor  : Ensures that a host can execute Ansible, to allow autoconfiguration", 
+            "title": "Roles"
+        }, 
+        {
+            "location": "/Services/#core-services", 
+            "text": "Roles have been developed for the following services:", 
+            "title": "Core Services"
+        }, 
+        {
+            "location": "/Services/#grid-services", 
+            "text": "top-BDII", 
+            "title": "Grid Services"
+        }, 
+        {
+            "location": "/Services/#site-services", 
+            "text": "", 
+            "title": "Site Services"
+        }, 
+        {
+            "location": "/Roles/", 
+            "text": "Roles\n\n\nHello These are roles", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/#roles", 
+            "text": "Hello These are roles", 
+            "title": "Roles"
+        }, 
+        {
+            "location": "/Roles/Ansible/playbooks/top-bdii/", 
+            "text": "The Top-BDII playbook.\n\n\nThe \ntop-bdii.yml\n playbook is used to deploy the \nTop-BDII\n.\n\n\nPlays\n\n\n- hosts: top-bdiis\n  name: BDII_TOP plays\n  pre_tasks:\n    - debug:\n        msg: \nSite is  {{ site_name }}\n\n      tags:\n        - debug\n\n\n\n\nThis is a helper task to see if the \n{{ site_name }}\n variable has been picked up correctly. This is usually stored in \n{{ group_vars/\nsite-name\n }}\n where \nsite_name\n is the name of the site as registered in the GOCDB.\n\n\n    - name: Tell the team\n      slack:\n        domain: africa-arabia-roc.slack.com\n        token: {{ slack_token }}\n        msg: \nRunning top-bdii play at on {{ ansible_hostname }} at {{ site_name }}\n\n        username: \nAnsible on {{ ansible_hostname }} at {{ site_name }}\n\n        validate_certs: False\n      tags:\n        - slack\n\n\n\n\nAnsible will tell the team in a channel on Slack what is happening. The variables are provided via files in \ngroup_vars\n\n\n  roles:\n    - { role: common, become: true }\n    - { role: certificates, become: true }\n    - { role: umd, become: true, tags: \numd\n }\n    - { role: top-bdii, become: true }\n    - { role: yaim, become: true }\n\n\n\n\nThe playbook applies - in order - the 5 necessary roles. The \ntop-bdii\n role ensures that the correct packages are installed and tha the firewall on the target machine has been properly configured to allow communication via port 2170. The \nyaim\n role is applied in order to ensure that the right configuration is generated via templates and the execution of the configuration via yaim is performed. See the \nyaim\n role\n for more information.\n\n\n  post_tasks:\n    - name: Start BDII if PID but Process dead.\n      become: true\n      service:\n        name: bdii\n        state: restarted\n      tags:\n        - testing\n\n\n\n\nPost tasks are applied once yaim has completed :\n\n\n\n\nEnsure that the bdii service is restarted.\n\n\n\n\n  vars_files:\n    - \nroles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml\n\n    - roles/common/vars/middleware/IGTF.yml\n\n\n\n\nVariables necessary for this playbook, which are not provided by the role itself are pulled in from the common role. See the \ncommon\n role\n role for more information.\n\n\n  handlers:\n    - include: roles/common/handlers/main.yml\n\n\n\n\nThe handler from the common role is pulled in, in order to", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/playbooks/top-bdii/#the-top-bdii-playbook", 
+            "text": "The  top-bdii.yml  playbook is used to deploy the  Top-BDII .", 
+            "title": "The Top-BDII playbook."
+        }, 
+        {
+            "location": "/Roles/Ansible/playbooks/top-bdii/#plays", 
+            "text": "- hosts: top-bdiis\n  name: BDII_TOP plays\n  pre_tasks:\n    - debug:\n        msg:  Site is  {{ site_name }} \n      tags:\n        - debug  This is a helper task to see if the  {{ site_name }}  variable has been picked up correctly. This is usually stored in  {{ group_vars/ site-name  }}  where  site_name  is the name of the site as registered in the GOCDB.      - name: Tell the team\n      slack:\n        domain: africa-arabia-roc.slack.com\n        token: {{ slack_token }}\n        msg:  Running top-bdii play at on {{ ansible_hostname }} at {{ site_name }} \n        username:  Ansible on {{ ansible_hostname }} at {{ site_name }} \n        validate_certs: False\n      tags:\n        - slack  Ansible will tell the team in a channel on Slack what is happening. The variables are provided via files in  group_vars    roles:\n    - { role: common, become: true }\n    - { role: certificates, become: true }\n    - { role: umd, become: true, tags:  umd  }\n    - { role: top-bdii, become: true }\n    - { role: yaim, become: true }  The playbook applies - in order - the 5 necessary roles. The  top-bdii  role ensures that the correct packages are installed and tha the firewall on the target machine has been properly configured to allow communication via port 2170. The  yaim  role is applied in order to ensure that the right configuration is generated via templates and the execution of the configuration via yaim is performed. See the  yaim  role  for more information.    post_tasks:\n    - name: Start BDII if PID but Process dead.\n      become: true\n      service:\n        name: bdii\n        state: restarted\n      tags:\n        - testing  Post tasks are applied once yaim has completed :   Ensure that the bdii service is restarted.     vars_files:\n    -  roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml \n    - roles/common/vars/middleware/IGTF.yml  Variables necessary for this playbook, which are not provided by the role itself are pulled in from the common role. See the  common  role  role for more information.    handlers:\n    - include: roles/common/handlers/main.yml  The handler from the common role is pulled in, in order to", 
+            "title": "Plays"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ansible-executor/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ansible-executor/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ansible-executor/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ansible-executor/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ansible-executor/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ansible-executor/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ansible-executor/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ansible-executor/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/apache-web-server/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/apache-web-server/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/apache-web-server/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/apache-web-server/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/apache-web-server/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/apache-web-server/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/apache-web-server/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/apache-web-server/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/bootstrap/", 
+            "text": "AAROC  Bootstrap\n\n\nThis is the bootstrap role for the \nAfrica-Arabia Regional Operations Centre\n.\nThe role is intended to be used on first-time deployed machines or as a disaster recovery mechanism in order to bring managed nodes to a state wherein they can be configured with Ansible.\n\n\nThe role sets up the user \nansible\n on all hosts and configures ssh keys for specific ROC staff - please be sure to change this variable if you so desire.\n\n\nRequirements\n\n\nOnly \nAnsible managed nodes requirements\n are needed in principle.\nA few extra packages which are deemed useful to perform manual tasks are also added. These are in the role's \nvars/main.yml\n file.\n\n\nRole Variables\n\n\nA \nbootstrap_prerequisites\n variable is created on a per-OS basis and used by the \nprerequisites.yml\n task to install prerequisite packages.\n\n\nDependencies\n\n\nNone.\n\n\nExample Playbook\n\n\n- hosts: newservers\n  roles:\n     - bootstrap\n\n\n\nLicense\n\n\nApache-2.0\n\n\nAuthor Information\n\n\n@brucellino\nCopyright CSIR Meraka Institute 2015.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/bootstrap/#aaroc-bootstrap", 
+            "text": "This is the bootstrap role for the  Africa-Arabia Regional Operations Centre .\nThe role is intended to be used on first-time deployed machines or as a disaster recovery mechanism in order to bring managed nodes to a state wherein they can be configured with Ansible.  The role sets up the user  ansible  on all hosts and configures ssh keys for specific ROC staff - please be sure to change this variable if you so desire.", 
+            "title": "AAROC  Bootstrap"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/bootstrap/#requirements", 
+            "text": "Only  Ansible managed nodes requirements  are needed in principle.\nA few extra packages which are deemed useful to perform manual tasks are also added. These are in the role's  vars/main.yml  file.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/bootstrap/#role-variables", 
+            "text": "A  bootstrap_prerequisites  variable is created on a per-OS basis and used by the  prerequisites.yml  task to install prerequisite packages.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/bootstrap/#dependencies", 
+            "text": "None.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/bootstrap/#example-playbook", 
+            "text": "- hosts: newservers\n  roles:\n     - bootstrap", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/bootstrap/#license", 
+            "text": "Apache-2.0", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/bootstrap/#author-information", 
+            "text": "@brucellino\nCopyright CSIR Meraka Institute 2015.", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/boundary-monitor/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/boundary-monitor/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/boundary-monitor/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/boundary-monitor/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/boundary-monitor/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/boundary-monitor/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/boundary-monitor/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/boundary-monitor/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/container-bootstrap/", 
+            "text": "A role for bootstrapping containers, which are a bit different from \"normal machines\"", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs/", 
+            "text": "Role Name\n\n\nA role  to mount cvmfs repositories using automount\n\n\nRequirements\n\n\nnone\n\n\nRole Variables\n\n\nThe role has two dependencies  :\n\n\n\n\nprerequisites (the packages needed to install CVMFS)\n\n\nrepos (the repositories that need to be mounted - fqdn)\n\n\n\n\nDependencies\n\n\nExample Playbook\n\n\n- hosts: cvmfs-clients\n  roles:\n     - { role: cvmfs, become: true }\n\n\n\nLicense\n\n\nApache-2.0\n\n\nAuthor Information\n\n\nBruce Becker, CSIR Meraka Institute", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs/#role-name", 
+            "text": "A role  to mount cvmfs repositories using automount", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs/#requirements", 
+            "text": "none", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs/#role-variables", 
+            "text": "The role has two dependencies  :   prerequisites (the packages needed to install CVMFS)  repos (the repositories that need to be mounted - fqdn)", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs/#dependencies", 
+            "text": "", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs/#example-playbook", 
+            "text": "- hosts: cvmfs-clients\n  roles:\n     - { role: cvmfs, become: true }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs/#license", 
+            "text": "Apache-2.0", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs/#author-information", 
+            "text": "Bruce Becker, CSIR Meraka Institute", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs-static/", 
+            "text": "Role Name\n\n\nA role  to mount cvmfs repositories using static mount points\n\n\nRequirements\n\n\nnone\n\n\nRole Variables\n\n\nThe role has two dependencies  :\n\n\n\n\nprerequisites (the packages needed to install CVMFS)\n\n\nrepos (the repositories that need to be mounted - fqdn)\n\n\n\n\nDependencies\n\n\nNone\n\n\nExample Playbook\n\n\n- hosts: cvmfs-clients\n  roles:\n     - { role: cvmfs-static, become: true }\n\n\n\nLicense\n\n\nApache-2.0\n\n\nAuthor Information\n\n\nBruce Becker, CSIR Meraka Institute", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs-static/#role-name", 
+            "text": "A role  to mount cvmfs repositories using static mount points", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs-static/#requirements", 
+            "text": "none", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs-static/#role-variables", 
+            "text": "The role has two dependencies  :   prerequisites (the packages needed to install CVMFS)  repos (the repositories that need to be mounted - fqdn)", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs-static/#dependencies", 
+            "text": "None", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs-static/#example-playbook", 
+            "text": "- hosts: cvmfs-clients\n  roles:\n     - { role: cvmfs-static, become: true }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs-static/#license", 
+            "text": "Apache-2.0", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/cvmfs-static/#author-information", 
+            "text": "Bruce Becker, CSIR Meraka Institute", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/discourse-sso/", 
+            "text": "Role Name\n\n\nThis is a role for deploying \nDiscourse\n with federated login. Discourse uses docker to run the application in a container, and has a custom script for delpoying the database and supporting services on the host machine. This script \nlauncher\n is used by the role.\n\n\nThe SAML configuration uses \nDiscourseSSO\n, which in turn uses the \nFlask\n microservice framework.\n\n\nRequirements\n\n\n\n\nApache web server with proxy to nginx inside the Discourse container\n\n\nFlask python microserver framework\n\n\n\n\nRole Variables\n\n\nVariables are used to tune the Rails application that runs Discourse. These are in a template, and set in the \ndefaults/main.yml\n and \nvars/main.yml\n file. Please read them and set them accordingly in \nvars/main.yml\n\n\n\n\ndb_shared_buffer_size\n\n\nunicorn_workers\n\n\nsmtp_address\n\n\nsmtp_port\n\n\nsmtp_username\n\n\n\n\nDependencies\n\n\n\n\ndochang.ansible-role-docker\n\n\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: discourse-servers\n  roles:\n     - { role: dochang.ansible-role-docker }\n\n\n\nLicense\n\n\nApache 2.0\n\n\nAuthor Information\n\n\nBruce Becker (CSIR Meraka Institute)", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/discourse-sso/#role-name", 
+            "text": "This is a role for deploying  Discourse  with federated login. Discourse uses docker to run the application in a container, and has a custom script for delpoying the database and supporting services on the host machine. This script  launcher  is used by the role.  The SAML configuration uses  DiscourseSSO , which in turn uses the  Flask  microservice framework.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/discourse-sso/#requirements", 
+            "text": "Apache web server with proxy to nginx inside the Discourse container  Flask python microserver framework", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/discourse-sso/#role-variables", 
+            "text": "Variables are used to tune the Rails application that runs Discourse. These are in a template, and set in the  defaults/main.yml  and  vars/main.yml  file. Please read them and set them accordingly in  vars/main.yml   db_shared_buffer_size  unicorn_workers  smtp_address  smtp_port  smtp_username", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/discourse-sso/#dependencies", 
+            "text": "dochang.ansible-role-docker", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/discourse-sso/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: discourse-servers\n  roles:\n     - { role: dochang.ansible-role-docker }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/discourse-sso/#license", 
+            "text": "Apache 2.0", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/discourse-sso/#author-information", 
+            "text": "Bruce Becker (CSIR Meraka Institute)", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-ui/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-ui/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-ui/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-ui/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-ui/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-ui/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-ui/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-ui/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-worker-node/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-worker-node/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-worker-node/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-worker-node/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-worker-node/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-worker-node/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-worker-node/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/emi-worker-node/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.IDPPublic/", 
+            "text": "Role Name\n\n\nThis is the role for installing the web frontend to a shibboleth idp.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nThe role takes two variables :\n\n\n\n\nIDPPublic_release\n: The number of the release of the IDPPublic package. The default is 1.1.5\n\n\nuseradmin_password\n: the password of the administrator user which is used by the web application to connect to the identity store backend.\n\n\n\n\nDependencies\n\n\nnone\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: fmarco76.IDPPublic}\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nWritten by @fmarco76 and contributed to by @brucellino and other members of @AAROC", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.IDPPublic/#role-name", 
+            "text": "This is the role for installing the web frontend to a shibboleth idp.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.IDPPublic/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.IDPPublic/#role-variables", 
+            "text": "The role takes two variables :   IDPPublic_release : The number of the release of the IDPPublic package. The default is 1.1.5  useradmin_password : the password of the administrator user which is used by the web application to connect to the identity store backend.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.IDPPublic/#dependencies", 
+            "text": "none", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.IDPPublic/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: fmarco76.IDPPublic}", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.IDPPublic/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.IDPPublic/#author-information", 
+            "text": "Written by @fmarco76 and contributed to by @brucellino and other members of @AAROC", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.firewall/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.firewall/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.firewall/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.firewall/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.firewall/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.firewall/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.firewall/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.firewall/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.tomcat/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.tomcat/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.tomcat/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.tomcat/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.tomcat/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.tomcat/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.tomcat/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/fmarco76.tomcat/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/geerlingguy.repo-epel/", 
+            "text": "Ansible Role: EPEL Repository\n\n\nInstalls the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS 6.x.\n\n\nRequirements\n\n\nNone.\n\n\nRole Variables\n\n\nNone.\n\n\nDependencies\n\n\nNone.\n\n\nExample Playbook\n\n\n- hosts: servers\n  roles:\n    - { role: geerlingguy.repo-epel }\n\n\n\nLicense\n\n\nMIT / BSD\n\n\nAuthor Information\n\n\nThis role was created in 2014 by Jeff Geerling (@geerlingguy), author of Ansible for DevOps. You can find out more about the book at http://ansiblefordevops.com/, and learn about the author at http://jeffgeerling.com/.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/geerlingguy.repo-epel/#ansible-role-epel-repository", 
+            "text": "Installs the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS 6.x.", 
+            "title": "Ansible Role: EPEL Repository"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/geerlingguy.repo-epel/#requirements", 
+            "text": "None.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/geerlingguy.repo-epel/#role-variables", 
+            "text": "None.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/geerlingguy.repo-epel/#dependencies", 
+            "text": "None.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/geerlingguy.repo-epel/#example-playbook", 
+            "text": "- hosts: servers\n  roles:\n    - { role: geerlingguy.repo-epel }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/geerlingguy.repo-epel/#license", 
+            "text": "MIT / BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/geerlingguy.repo-epel/#author-information", 
+            "text": "This role was created in 2014 by Jeff Geerling (@geerlingguy), author of Ansible for DevOps. You can find out more about the book at http://ansiblefordevops.com/, and learn about the author at http://jeffgeerling.com/.", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/glassfish/", 
+            "text": "Role Name\n\n\nA role to install glassfish application server on a machine\n\n\nRequirements\n\n\nnone\n\n\nRole Variables\n\n\nDependencies\n\n\nnone\n\n\nExample Playbook\n\n\n- hosts: servers\n  roles:\n     - { role: brucellino.glassfish }\n\n\n\nLicense\n\n\nApache-2\n\n\nAuthor Information", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/glassfish/#role-name", 
+            "text": "A role to install glassfish application server on a machine", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/glassfish/#requirements", 
+            "text": "none", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/glassfish/#role-variables", 
+            "text": "", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/glassfish/#dependencies", 
+            "text": "none", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/glassfish/#example-playbook", 
+            "text": "- hosts: servers\n  roles:\n     - { role: brucellino.glassfish }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/glassfish/#license", 
+            "text": "Apache-2", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/glassfish/#author-information", 
+            "text": "", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/head-node/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/head-node/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/head-node/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/head-node/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/head-node/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/head-node/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/head-node/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/head-node/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-2.0/", 
+            "text": "Role Name\n\n\nAn Ansible role to install the CI server  (Jenkins-2.0) for the \nSci-GaIA\n winter school\nThis role installs a few specific Jenkins plugins, which are needed in the context of the school - see \ndefaults/main.yml\n\n\nThe Jenkins server is configured to work with Docker.\n\n\nRequirements\n\n\nJava 7\n\n\nRole Variables\n\n\nDependencies\n\n\nnone\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: ci\n  roles:\n     - { role: jenkins-2.0, become: true }\n\n\n\nLicense\n\n\nApache-2.0\n\n\nAuthor Information\n\n\nBruce Becker, CSIR Meraka Institute\n@brucellino", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-2.0/#role-name", 
+            "text": "An Ansible role to install the CI server  (Jenkins-2.0) for the  Sci-GaIA  winter school\nThis role installs a few specific Jenkins plugins, which are needed in the context of the school - see  defaults/main.yml  The Jenkins server is configured to work with Docker.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-2.0/#requirements", 
+            "text": "Java 7", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-2.0/#role-variables", 
+            "text": "", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-2.0/#dependencies", 
+            "text": "none", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-2.0/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: ci\n  roles:\n     - { role: jenkins-2.0, become: true }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-2.0/#license", 
+            "text": "Apache-2.0", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-2.0/#author-information", 
+            "text": "Bruce Becker, CSIR Meraka Institute\n@brucellino", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-slave/", 
+            "text": "Role Name\n\n\nA role to deliver a minimal jenkins slave for the CODE-RADE project\n\n\nRequirements\n\n\nNone\n\n\nRole Variables\n\n\nNone\n\n\nDependencies\n\n\nNone\n\n\nExample Playbook\n\n\n- hosts: servers\n  roles:\n     - brucellino.jenkins-slave\n\n\n\nLicense\n\n\nApache 2.0\n\n\nAuthor Information\n\n\nSee https://github.com/AAROC/DevOps", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-slave/#role-name", 
+            "text": "A role to deliver a minimal jenkins slave for the CODE-RADE project", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-slave/#requirements", 
+            "text": "None", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-slave/#role-variables", 
+            "text": "None", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-slave/#dependencies", 
+            "text": "None", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-slave/#example-playbook", 
+            "text": "- hosts: servers\n  roles:\n     - brucellino.jenkins-slave", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-slave/#license", 
+            "text": "Apache 2.0", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/jenkins-slave/#author-information", 
+            "text": "See https://github.com/AAROC/DevOps", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ldap/", 
+            "text": "Role Name\n\n\nThis role will configure an LDAP database intended for use with a \nShibboleth Identity Provider\n\n\nRequirements\n\n\nNone, but is used together with shibboleth-idp role.\n\n\nRole Variables\n\n\n\n\ntls_cacert_dir - directory containing CA certificate files \n\n\ndomain: the host domain name of the Identity provider that is being served by this LDAP backend\n\n\norganisation: the Org name of the IdP\n\n\nadmin: the administrator user name\n\n\nAdministrator: the Administrator group name\n\n\nidp_group: the gorup into which users who belong to the IdP are added\n\n\nuser_cn: normal user common name\n\n\nuser_sn: normal user surname\n\n\nuser_given: normal user given name (ie, the user's actual name)\n\n\nuser_initials: initials of the user (given and surnames)\n\n\nuser_email: primary email address of the user\n\n\nuser_secondary_email: secondary email of the user\n\n\nuser_org: Organisation to which the user belongs\n\n\nuser_country: ISO code of the country from which the user comes. \n\n\nuser_registered_address: the address with which the user has registered (usually the same as the primary email address). This is used as the identification token.\n\n\n\n\nOther variables are OS specific (for Redhat/CentOS and Debian only at the moment).\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: identity-servers\n  roles:\n     -  brucellino.ldap\n\n\n\nLicense\n\n\nApache\n\n\nAuthor Information\n\n\nPart of the @AAROC organisation, developed for ei4Africa with @fmarco76", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ldap/#role-name", 
+            "text": "This role will configure an LDAP database intended for use with a  Shibboleth Identity Provider", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ldap/#requirements", 
+            "text": "None, but is used together with shibboleth-idp role.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ldap/#role-variables", 
+            "text": "tls_cacert_dir - directory containing CA certificate files   domain: the host domain name of the Identity provider that is being served by this LDAP backend  organisation: the Org name of the IdP  admin: the administrator user name  Administrator: the Administrator group name  idp_group: the gorup into which users who belong to the IdP are added  user_cn: normal user common name  user_sn: normal user surname  user_given: normal user given name (ie, the user's actual name)  user_initials: initials of the user (given and surnames)  user_email: primary email address of the user  user_secondary_email: secondary email of the user  user_org: Organisation to which the user belongs  user_country: ISO code of the country from which the user comes.   user_registered_address: the address with which the user has registered (usually the same as the primary email address). This is used as the identification token.   Other variables are OS specific (for Redhat/CentOS and Debian only at the moment).", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ldap/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ldap/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: identity-servers\n  roles:\n     -  brucellino.ldap", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ldap/#license", 
+            "text": "Apache", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/ldap/#author-information", 
+            "text": "Part of the @AAROC organisation, developed for ei4Africa with @fmarco76", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-csgf/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-csgf/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-csgf/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-csgf/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-csgf/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-csgf/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-csgf/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-csgf/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-gridengine/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-gridengine/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-gridengine/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-gridengine/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-gridengine/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-gridengine/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-gridengine/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-gridengine/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-mysql/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-mysql/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-mysql/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-mysql/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-mysql/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-mysql/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-mysql/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/liferay-mysql/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/mysql/", 
+            "text": "MySQL Server\n\n\nThis roles helps to install MySQL Server across RHEL and Ubuntu variants.\nApart from installing the MySQL Server, it applies basic hardening, like\nsecuring the root account with password, and removing test databases. The role\ncan also be used to add databases to the MySQL server and create users in the\ndatabase. It also supports configuring the databases for replication--both\nmaster and slave can be configured via this role.\n\n\nRequirements\n\n\nThis role requires Ansible 1.4 or higher, and platform requirements are listed\nin the metadata file.\n\n\nRole Variables\n\n\nThe variables that can be passed to this role and a brief description about\nthem are as follows:\n\n\n  mysql_port: 3306                 # The port for mysql server to listen\n  mysql_bind_address: \"0.0.0.0\"    # The bind address for mysql server\n  mysql_root_db_pass: foobar       # The root DB password\n\n  # A list that has all the databases to be\n  # created and their replication status:\n  mysql_db:                                 \n       - name: foo\n         replicate: yes\n       - name: bar\n         replicate: no\n\n  # A list of the mysql users to be created\n  # and their password and privileges:\n  mysql_users:                              \n       - name: benz\n         pass: foobar\n         priv: \"*.*:ALL\"\n\n  # If the database is replicated the users\n  # to be used for replication:\n  mysql_repl_user:                          \n    - name: repl\n      pass: foobar\n\n  # The role of this server in replication:\n  mysql_repl_role: master\n\n  # A unique id for the mysql server (used in replication):\n  mysql_db_id: 7\n\n\n\nExamples\n\n\n1) Install MySQL Server and set the root password, but don't create any\ndatabase or users.\n\n\n  - hosts: all\n    roles:\n    - {role: mysql, mysql_root_db_pass: foobar, mysql_db: none, mysql_users: none }\n\n\n\n2) Install MySQL Server and create 2 databases and 2 users.\n\n\n  - hosts: all\n    roles:\n     - {role: mysql, mysql_db: [{name: benz},\n                                {name: benz2}],\n        mysql_users: [{name: ben3, pass: foobar, priv: \"*.*:ALL\"},\n                      {name: ben2, pass: foo}] }\n\n\n\nNote: If users are specified and password/privileges are not specified, then\ndefault values are set.\n\n\n3) Install MySQL Server and create 2 databases and 2 users and configure the\ndatabase as replication master with one database configured for replication.\n\n\n  - hosts: all\n    roles:\n     - {role: mysql, mysql_db: [{name: benz, replicate: yes },\n                                { name: benz2, replicate: no}], \n                     mysql_users: [{name: ben3, pass: foobar, priv: \"*.*:ALL\"},\n                                   {name: ben2, pass: foo}],\n                     mysql_repl_user: [{name: repl, pass: foobar}] }\n\n\n\n4) A fully installed/configured MySQL Server with master and slave\nreplication.\n\n\n  - hosts: master\n    roles:\n     - {role: mysql, mysql_db: [{name: benz}, {name: benz2}],\n                     mysql_users: [{name: ben3, pass: foobar, priv: \"*.*:ALL\"},\n                                   {name: ben2, pass: foo}],\n                     mysql_db_id: 8 }\n\n  - hosts: slave\n    roles:\n     - {role: mysql, mysql_db: none, mysql_users: none,\n              mysql_repl_role: slave, mysql_repl_master: vm2,\n              mysql_db_id: 9, mysql_repl_user: [{name: repl, pass: foobar}] }\n\n\n\nNote: When configuring the full replication please make sure the master is\nconfigured via this role and the master is available in inventory and facts\nhave been gathered for master. The replication tasks assume the database is\nnew and has no data.\n\n\nDependencies\n\n\nNone\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nBenno Joy", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/mysql/#mysql-server", 
+            "text": "This roles helps to install MySQL Server across RHEL and Ubuntu variants.\nApart from installing the MySQL Server, it applies basic hardening, like\nsecuring the root account with password, and removing test databases. The role\ncan also be used to add databases to the MySQL server and create users in the\ndatabase. It also supports configuring the databases for replication--both\nmaster and slave can be configured via this role.", 
+            "title": "MySQL Server"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/mysql/#requirements", 
+            "text": "This role requires Ansible 1.4 or higher, and platform requirements are listed\nin the metadata file.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/mysql/#role-variables", 
+            "text": "The variables that can be passed to this role and a brief description about\nthem are as follows:    mysql_port: 3306                 # The port for mysql server to listen\n  mysql_bind_address: \"0.0.0.0\"    # The bind address for mysql server\n  mysql_root_db_pass: foobar       # The root DB password\n\n  # A list that has all the databases to be\n  # created and their replication status:\n  mysql_db:                                 \n       - name: foo\n         replicate: yes\n       - name: bar\n         replicate: no\n\n  # A list of the mysql users to be created\n  # and their password and privileges:\n  mysql_users:                              \n       - name: benz\n         pass: foobar\n         priv: \"*.*:ALL\"\n\n  # If the database is replicated the users\n  # to be used for replication:\n  mysql_repl_user:                          \n    - name: repl\n      pass: foobar\n\n  # The role of this server in replication:\n  mysql_repl_role: master\n\n  # A unique id for the mysql server (used in replication):\n  mysql_db_id: 7", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/mysql/#examples", 
+            "text": "1) Install MySQL Server and set the root password, but don't create any\ndatabase or users.    - hosts: all\n    roles:\n    - {role: mysql, mysql_root_db_pass: foobar, mysql_db: none, mysql_users: none }  2) Install MySQL Server and create 2 databases and 2 users.    - hosts: all\n    roles:\n     - {role: mysql, mysql_db: [{name: benz},\n                                {name: benz2}],\n        mysql_users: [{name: ben3, pass: foobar, priv: \"*.*:ALL\"},\n                      {name: ben2, pass: foo}] }  Note: If users are specified and password/privileges are not specified, then\ndefault values are set.  3) Install MySQL Server and create 2 databases and 2 users and configure the\ndatabase as replication master with one database configured for replication.    - hosts: all\n    roles:\n     - {role: mysql, mysql_db: [{name: benz, replicate: yes },\n                                { name: benz2, replicate: no}], \n                     mysql_users: [{name: ben3, pass: foobar, priv: \"*.*:ALL\"},\n                                   {name: ben2, pass: foo}],\n                     mysql_repl_user: [{name: repl, pass: foobar}] }  4) A fully installed/configured MySQL Server with master and slave\nreplication.    - hosts: master\n    roles:\n     - {role: mysql, mysql_db: [{name: benz}, {name: benz2}],\n                     mysql_users: [{name: ben3, pass: foobar, priv: \"*.*:ALL\"},\n                                   {name: ben2, pass: foo}],\n                     mysql_db_id: 8 }\n\n  - hosts: slave\n    roles:\n     - {role: mysql, mysql_db: none, mysql_users: none,\n              mysql_repl_role: slave, mysql_repl_master: vm2,\n              mysql_db_id: 9, mysql_repl_user: [{name: repl, pass: foobar}] }  Note: When configuring the full replication please make sure the master is\nconfigured via this role and the master is available in inventory and facts\nhave been gathered for master. The replication tasks assume the database is\nnew and has no data.", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/mysql/#dependencies", 
+            "text": "None", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/mysql/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/mysql/#author-information", 
+            "text": "Benno Joy", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/perun-slave/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/perun-slave/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/perun-slave/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/perun-slave/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/perun-slave/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/perun-slave/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/perun-slave/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/perun-slave/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-idp/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-idp/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-idp/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-idp/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-idp/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-idp/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-idp/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-idp/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-sp/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-sp/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-sp/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-sp/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-sp/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-sp/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-sp/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/shibboleth-sp/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/site-bdii-tests/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/site-bdii-tests/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/site-bdii-tests/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/site-bdii-tests/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/site-bdii-tests/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/site-bdii-tests/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/site-bdii-tests/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/site-bdii-tests/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/slack-nagios/", 
+            "text": "Role Name\n\n\nThis role applies the nagios integration with slack to a nagios instance.\n\n\nRequirements\n\n\nThis should be applied to an existing Nagios server - no prerequisite role is specified.\n\n\nRole Variables\n\n\n\n\nteam_domain - your team's slack domain (no default)\n\n\nscript_path - the path that will be used to save the perl script\n\n\nslack_token - the token used to communicate with the slack instance (no default)\n\n\nchannel - the channel in which alerts will be posted.\n\n\nprerequisites - a list of prerequisite packages (CentOS only)\n\n\n\n\nDependencies\n\n\nNo Dependencies.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: slack-nagios, channel: monitoring }\n\n\n\nLicense\n\n\nApache-2.0\n\n\nAuthor Information\n\n\nBruce Becker\n, for \nAAROC", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/slack-nagios/#role-name", 
+            "text": "This role applies the nagios integration with slack to a nagios instance.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/slack-nagios/#requirements", 
+            "text": "This should be applied to an existing Nagios server - no prerequisite role is specified.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/slack-nagios/#role-variables", 
+            "text": "team_domain - your team's slack domain (no default)  script_path - the path that will be used to save the perl script  slack_token - the token used to communicate with the slack instance (no default)  channel - the channel in which alerts will be posted.  prerequisites - a list of prerequisite packages (CentOS only)", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/slack-nagios/#dependencies", 
+            "text": "No Dependencies.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/slack-nagios/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: slack-nagios, channel: monitoring }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/slack-nagios/#license", 
+            "text": "Apache-2.0", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/slack-nagios/#author-information", 
+            "text": "Bruce Becker , for  AAROC", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/top-bdii/", 
+            "text": "Top-BDII\n\n\nThis role installs an EMI top-bdii.\n\n\nRequirements\n\n\nThe role requires the application of \nat least\n the \ncertificates\n  and \numd\n roles\n\n\nRole Variables\n\n\nNone\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/top-bdii/#top-bdii", 
+            "text": "This role installs an EMI top-bdii.", 
+            "title": "Top-BDII"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/top-bdii/#requirements", 
+            "text": "The role requires the application of  at least  the  certificates   and  umd  roles", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/top-bdii/#role-variables", 
+            "text": "None", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/top-bdii/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/top-bdii/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/top-bdii/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/top-bdii/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd/", 
+            "text": "ansible-role-umd3\n\n\nAnsible Galaxy role for installing Unified Middleware Distribution\n\n\nInstalls the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS 6.x.\n\n\nRequirements\n\n\nNone.\n\n\nRole Variables\n\n\nNone.\n\n\nDependencies\n\n\nNone.\n\n\nExample Playbook\n\n\n- hosts: servers\n  roles:\n    - { role: brucellino.repo-umd }\n\n\n\nLicense\n\n\nAuthor Information\n\n\nThis role was created in 2014 by Bruce Becker (@brucellino).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd/#ansible-role-umd3", 
+            "text": "", 
+            "title": "ansible-role-umd3"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd/#ansible-galaxy-role-for-installing-unified-middleware-distribution", 
+            "text": "Installs the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS 6.x.", 
+            "title": "Ansible Galaxy role for installing Unified Middleware Distribution"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd/#requirements", 
+            "text": "None.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd/#role-variables", 
+            "text": "None.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd/#dependencies", 
+            "text": "None.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd/#example-playbook", 
+            "text": "- hosts: servers\n  roles:\n    - { role: brucellino.repo-umd }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd/#license", 
+            "text": "", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd/#author-information", 
+            "text": "This role was created in 2014 by Bruce Becker (@brucellino).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd3/", 
+            "text": "ansible-role-umd3\n\n\nAnsible Galaxy role for installing Unified Middleware Distribution (version 3)\n\n\nInstalls the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS 6.x.\n\n\nRequirements\n\n\nNone.\n\n\nRole Variables\n\n\nNone.\n\n\nDependencies\n\n\nNone.\n\n\nExample Playbook\n\n\n- hosts: servers\n  roles:\n    - { role: brucellino.repo-umd3 }\n\n\n\nLicense\n\n\nAuthor Information\n\n\nThis role was created in 2014 by Bruce Becker (@brucellino).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd3/#ansible-role-umd3", 
+            "text": "", 
+            "title": "ansible-role-umd3"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd3/#ansible-galaxy-role-for-installing-unified-middleware-distribution-version-3", 
+            "text": "Installs the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS 6.x.", 
+            "title": "Ansible Galaxy role for installing Unified Middleware Distribution (version 3)"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd3/#requirements", 
+            "text": "None.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd3/#role-variables", 
+            "text": "None.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd3/#dependencies", 
+            "text": "None.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd3/#example-playbook", 
+            "text": "- hosts: servers\n  roles:\n    - { role: brucellino.repo-umd3 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd3/#license", 
+            "text": "", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/umd3/#author-information", 
+            "text": "This role was created in 2014 by Bruce Becker (@brucellino).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/worker-node/", 
+            "text": "Role Name\n\n\nA brief description of the role goes here.\n\n\nRequirements\n\n\nAny pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.\n\n\nRole Variables\n\n\nA description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.\n\n\nDependencies\n\n\nA list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.\n\n\nExample Playbook\n\n\nIncluding an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:\n\n\n- hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }\n\n\n\nLicense\n\n\nBSD\n\n\nAuthor Information\n\n\nAn optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/worker-node/#role-name", 
+            "text": "A brief description of the role goes here.", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/worker-node/#requirements", 
+            "text": "Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/worker-node/#role-variables", 
+            "text": "A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/worker-node/#dependencies", 
+            "text": "A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/worker-node/#example-playbook", 
+            "text": "Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:  - hosts: servers\n  roles:\n     - { role: username.rolename, x: 42 }", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/worker-node/#license", 
+            "text": "BSD", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/worker-node/#author-information", 
+            "text": "An optional section for the role authors to include contact information, or a website (HTML is not allowed).", 
+            "title": "Author Information"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/xrootd/", 
+            "text": "Role Name\n\n\nA role to install the base packages for Xrootd\n\n\nRequirements\n\n\nrequires the common role - certificates role should also be applied\n\n\nRole Variables\n\n\nNone\n\n\nDependencies\n\n\nNone\n\n\nExample Playbook\n\n\nSee xrootd.yml playbook in the directory above.\n\n\nLicense\n\n\nApache-2.0, Owner, Meraka Institute, CSIR.\n\n\nAuthor Information\n\n\nBruce Becker bbecker@csir.co.za Meraka Institute.", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/xrootd/#role-name", 
+            "text": "A role to install the base packages for Xrootd", 
+            "title": "Role Name"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/xrootd/#requirements", 
+            "text": "requires the common role - certificates role should also be applied", 
+            "title": "Requirements"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/xrootd/#role-variables", 
+            "text": "None", 
+            "title": "Role Variables"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/xrootd/#dependencies", 
+            "text": "None", 
+            "title": "Dependencies"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/xrootd/#example-playbook", 
+            "text": "See xrootd.yml playbook in the directory above.", 
+            "title": "Example Playbook"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/xrootd/#license", 
+            "text": "Apache-2.0, Owner, Meraka Institute, CSIR.", 
+            "title": "License"
+        }, 
+        {
+            "location": "/Roles/Ansible/roles/xrootd/#author-information", 
+            "text": "Bruce Becker bbecker@csir.co.za Meraka Institute.", 
+            "title": "Author Information"
+        }
+    ]
+}
