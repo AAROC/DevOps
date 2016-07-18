@@ -13,26 +13,27 @@
     debug: var=site_name
   - name: Send Slack Message
     slack:
-     domain: africa-arabia-roc.slack.com
-     token: sBWZXBHgua6QqSnj6QDw9bFE
+     token: T02BJKQR4/B03ACH9CV/aSrsbdte1kY4B7taogRVxkWf
      msg: "Starting bootstrap on {{ inventory_hostname }} at {{ site_name }}"
      channel: "#devops-bootstrap"
      username: "Ansible on {{ inventory_hostname }}"
-     #icon_url: "http://www.example.com/some-image-file.png"
      link_names: 1
      parse: 'full'
+     validate_certs: False
+     icon_emoji: ansible
     tags:
       - slack
   post_tasks:
   - name: Send notification message via Slack
     slack:
-      domain: africa-arabia-roc.slack.com
-      token: sBWZXBHgua6QqSnj6QDw9bFE
+      token: T02BJKQR4/B03ACH9CV/aSrsbdte1kY4B7taogRVxkWf
       msg: "bootstrap on {{ inventory_hostname }} has run at {{ site_name }}"
       channel: "#devops-bootstrap"
       username: "Ansible on {{ inventory_hostname }}"
       #icon_url: "http://www.example.com/some-image-file.png"
       link_names: 1
       parse: 'full'
+      validate_certs: False
+      icon_emoji: ansible
     tags:
       - slack
