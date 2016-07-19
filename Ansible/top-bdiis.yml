@@ -15,11 +15,12 @@
         - debug
     - name: Tell the team
       slack:
-        domain: africa-arabia-roc.slack.com
-        token: V4qyCjHMRUb9ZmNdcf2hVEmI
+        token: "{{ slack_token }}"
         msg: "Running top-bdii play at on {{ ansible_hostname }} at {{ site_name }}"
         username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
         validate_certs: False
+        channel: "#{{ site_name | lower }}-ops"
+        icon_emoji: ansible
       tags:
         - slack
   roles:
