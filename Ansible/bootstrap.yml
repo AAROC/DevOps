@@ -11,24 +11,15 @@
   pre_tasks:
   - name: debug
     debug: var=site_name
-  - name: Send Slack Message
-    slack:
-     token: T02BJKQR4/B03ACH9CV/aSrsbdte1kY4B7taogRVxkWf
-     msg: "Starting bootstrap on {{ inventory_hostname }} at {{ site_name }}"
-     channel: "#devops-bootstrap"
-     username: "Ansible on {{ inventory_hostname }}"
-     link_names: 1
-     parse: 'full'
-     validate_certs: False
-     icon_emoji: ansible
-    tags:
-      - slack
+  - name: pull in site variables
+    include_vars: "group_vars/passwords-{{ site_name | lower }}.yml"
   post_tasks:
   - name: Send notification message via Slack
     slack:
-      token: T02BJKQR4/B03ACH9CV/aSrsbdte1kY4B7taogRVxkWf
+      token: "{{ slack_token }}"
       msg: "bootstrap on {{ inventory_hostname }} has run at {{ site_name }}"
-      channel: "#devops-bootstrap"
+      # this should be the site channel, not the bootstrap channel.
+      channel: "#{{ site_name | lower }}-ops"
       username: "Ansible on {{ inventory_hostname }}"
       #icon_url: "http://www.example.com/some-image-file.png"
       link_names: 1
