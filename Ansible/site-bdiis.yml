@@ -8,6 +8,7 @@
       with_items:
         - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
         - roles/common/vars/middleware/IGTF.yml
+        - "group_vars/passwords-{{ site_name | lower }}.yml"
       tags:
         - pre-tasks
     - name: Get Site name
@@ -46,7 +47,7 @@
     - name: Tell the team
       slack:
         token: "{{ slack_token }}"
-        msg: "The site-bdii play for {{ inventory_hostname }} !"
+        msg: "The site-bdii play for {{ inventory_hostname }} has finished !"
         username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
         icon_emoji: ansible
         validate_certs: false
@@ -55,7 +56,10 @@
         - slack
         - post-tasks
 
-# - name: Tests
-#   hosts: site-bdiis
-#   roles:
-#     - site-bdii-tests
+- name: Tests
+  hosts: site-bdiis
+  remote_user: ansible
+  roles:
+    - site-bdii-tests
+  tags:
+    - tests
