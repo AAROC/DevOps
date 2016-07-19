@@ -18,10 +18,12 @@
         - pre-tasks
     - name: Tell the team
       slack:
-        domain: africa-arabia-roc.slack.com
-        token: V4qyCjHMRUb9ZmNdcf2hVEmI
+        token: "{{ slack_token }}"
         msg: "Starting the site-bdii play for {{ inventory_hostname }} !"
         username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+        icon_emoji: ansible
+        validate_certs: false
+        channel: "#{{ site_name }}-ops"
       tags:
         - slack
         - pre-tasks
@@ -43,10 +45,12 @@
         - post-tasks
     - name: Tell the team
       slack:
-        domain: africa-arabia-roc.slack.com
-        token: V4qyCjHMRUb9ZmNdcf2hVEmI
+        token: "{{ slack_token }}"
         msg: "The site-bdii play for {{ inventory_hostname }} !"
         username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+        icon_emoji: ansible
+        validate_certs: false
+        channel: "#{{ site_name }}-ops"
       tags:
         - slack
         - post-tasks
