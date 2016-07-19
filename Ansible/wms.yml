@@ -1,7 +1,7 @@
 ---
 - hosts: wms-servers
   name: Deploy and configure WMS
-  user: ansible
+  remote_user: ansible
   become: true
   pre_tasks:
     - include_vars: "{{ item }}"
@@ -14,7 +14,7 @@
         module: slack
         token: "{{ slack_token }}"
         msg: "Running WMS play on {{ inventory_hostname }} at {{ site_name }}"
-        channel: "#devopssite"
+        channel: "#{{ site_name | lower }}-ops"
         username: "Ansible on {{ inventory_hostname }}"
         icon_emoji: ansible
         validate_certs: false
@@ -34,16 +34,17 @@
     - name: Announce the play outcome
       action:
           module: slack
-          domain: africa-arabia-roc.slack.com
           token: "{{ slack_token }}"
           msg: "WMS play on {{ inventory_hostname }} at {{ site_name }} finished O/ ... running tweaks..."
-          channel: "#devopssite"
+          channel: "#{{ site_name | lower }}-ops"
           username: "Ansible on {{ inventory_hostname }}"
           link_names: 1
+          icon_emoji: ansible
           parse: 'full'
+          validate_certs: false
 
 - hosts: wms-servers
-  user: ansible
+  remote_user: ansible
   tasks:
     - name: wms host name
       debug:
@@ -62,15 +63,16 @@
       command: '/etc/init.d/glite-wms-wm restart'
 
 - hosts: wms-servers
-  user: ansible
+  remote_user: ansible
   tasks:
     - include_vars: "group_vars/passwords-{{ site_name }}.yml"
     - name: announce play outcome via Slack
       slack:
-        domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "WMS play on {{ inventory_hostname }} at {{ site_name }} finished O/"
-        channel: "#devopssite"
+        channel: "#{{ site_name | lower }}-ops"
         username: "Ansible on {{ inventory_hostname }}"
+        icon_emoji: ansible
         link_names: 1
         parse: 'full'
+        validate_certs: false
