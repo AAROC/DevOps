@@ -7,6 +7,8 @@ ncg_backup_instance: "true"
 
 is_nagios: "true"
 
+px_host: myproxy.magrid.ma
+
 nagios_admin_dns:
   - /C=MA/O=MaGrid/OU=CNRST/CN=Bouchra Rahim
 ncg_nagios_admin: rahim@cnrst.ma
