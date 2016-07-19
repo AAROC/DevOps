@@ -212,10 +212,12 @@
 
 - name: Tell the team
   slack:
-    domain: africa-arabia-roc.slack.com
-    token: V4qyCjHMRUb9ZmNdcf2hVEmI
+    token: "{{ slack_token }}"
     msg: "running yaim on {{ inventory_hostname }} with {{ yaim_options }}"
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+    channel: "#{{ site_name | lower }}-ops"
+    validate_certs: false
+    icon_emoji: ansible
   tags:
     - yaim
     - slack
@@ -230,10 +232,12 @@
 
 - name: Tell the team the yaim output
   slack:
-    domain: africa-arabia-roc.slack.com
-    token: V4qyCjHMRUb9ZmNdcf2hVEmI
+    token: "{{ slack_token}}"
     msg: "yaim on {{ inventory_hostname }} with {{ yaim_options }} has finished "
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+    icon_emoji: ansible
+    validate_certs: false
+    channel: "{{ site_name | lower}}-ops"
   tags:
     - yaim
     - slack
