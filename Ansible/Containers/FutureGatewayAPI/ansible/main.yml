@@ -6,7 +6,7 @@
 #
 - hosts: fgAPI
   roles:
-    - fgapiserver-role
+    - /home/becker/Ops/AAROC/DevOps/Ansible/roles/fgapiserver-role
 
 - hosts: db
   roles:
