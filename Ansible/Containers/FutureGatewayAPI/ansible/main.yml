@@ -6,11 +6,11 @@
 #
 - hosts: fgAPI
   roles:
-    - brucellino.Future-Gateway-API-Server
+    - fgapiserver-role
 
 - hosts: db
   roles:
-    - riaf.mysql
+    - liferay-mysql
 
 - hosts: ge
   roles:

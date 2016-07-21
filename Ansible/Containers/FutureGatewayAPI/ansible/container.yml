@@ -8,7 +8,7 @@ services:
     ports:
        - "8888:8888"
 # either use the flask server directly, or mask it behind apache
-    command: ['python', 'fgapiserver.py']
+    command: ['python', '/tmp/apiserver/fgapiserver.py']
   db:
     image: brucellino/ansiblecontainer
     ports:
