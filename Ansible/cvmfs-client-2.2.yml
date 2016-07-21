@@ -1,0 +1,16 @@
+---
+# This playbook enables CODE-RADE access using CVMFS-2.2 clients on machines.
+- hosts: localhost
+  name: Enable CVMFS
+  become: true
+  roles:
+    - cvmfs-client-2.2
+
+- hosts: localhost
+  remote_user: cvmfs
+  vars:
+    CODE_RADE_VERSION: "{{ lookup('file', '/cvmfs/fastrepo.sagrid.ac.za/version') }}"
+  tasks:
+  - name: CODE-RADE version
+    debug:
+      msg: " CODE RADE version is {{ CODE_RADE_VERSION }}"
