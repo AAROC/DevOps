@@ -17,3 +17,6 @@
 [submodule "Containers/Dockerfiles/umd-ui"]
 	path = Containers/Dockerfiles/umd-ui
 	url = https://github.com/AAROC/umd-ui
+[submodule "Containers/Dockerfiles/AnsibleContainer"]
+	path = Containers/Dockerfiles/AnsibleContainer
+	url = https://github.com/AAROC/AnsibleContainer
