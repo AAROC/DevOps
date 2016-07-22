@@ -1,6 +1,6 @@
 # README for Ansible Container
 
-[Ansible Container](docs.ansible.com/ansible-container/) is an Ansible component which allows you to
+[Ansible Container](http://docs.ansible.com/ansible-container/) is an Ansible component which allows you to
 orchestrate containers using the same playbooks that you develop locally.
 
 This is the directory for the Ansible Container projects.
