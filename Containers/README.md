@@ -21,3 +21,12 @@ orchestration with other services. Docker Compose is one way of doing this, usin
 Docker files.
 
 # Ansible Compose
+
+Ansible compose can be used to manage container orchestration using the semantics
+of Docker Compose and the idempotence and re-usability of Ansible playbooks.
+
+# Contributing
+
+Please see [contributing](CONTRIBUTING.md) for general considerations of contributing
+to this repo. Furthermore, please provide some means for tesitng your containers
+if you send pull requests.
