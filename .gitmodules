@@ -8,9 +8,6 @@
 [submodule "Ansible/roles/tomcat-8"]
 	path = Ansible/roles/tomcat-8
 	url = https://github.com/osct/tomcat-8.git
-[submodule "Ansible/Containers/fgapiserver-role"]
-	path = Ansible/Containers/fgapiserver-role
-	url = https://github.com/brucellino/fgapiserver-role
 [submodule "Ansible/roles/fgapiserver-role"]
 	path = Ansible/roles/fgapiserver-role
 	url = https://github.com/brucellino/fgapiserver-role
