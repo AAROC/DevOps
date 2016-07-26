@@ -20,3 +20,6 @@
 [submodule "Containers/Dockerfiles/AnsibleContainer"]
 	path = Containers/Dockerfiles/AnsibleContainer
 	url = https://github.com/AAROC/AnsibleContainer
+[submodule "Containers/Dockerfiles/umd-wn"]
+	path = Containers/Dockerfiles/umd-wn
+	url = https://github.com/AAROC/umd-wn
