@@ -1,0 +1,17 @@
+---
+- name: add the EGI APT key
+  apt_key:
+    url: http://repository.egi.eu/sw/production/umd/UMD-DEB-PGP-KEY
+    state: present
+  tags:
+    - repos
+    - apt
+
+- name: add the release package
+  apt:
+    deb: http://repository.egi.eu/sw/production/umd/3/debian/dists/squeeze/main/binary-amd64/umd-release-3.0.0_all.deb
+    state: present
+    update_cache: true
+  tags:
+    - repos
+    - apt
