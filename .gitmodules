@@ -23,3 +23,6 @@
 [submodule "Containers/Dockerfiles/umd-wn"]
 	path = Containers/Dockerfiles/umd-wn
 	url = https://github.com/AAROC/umd-wn
+[submodule "Ansible/roles/africagrid-ca"]
+	path = Ansible/roles/africagrid-ca
+	url = https://github.com/AAROC/africagrid-ca
