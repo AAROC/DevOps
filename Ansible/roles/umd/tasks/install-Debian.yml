@@ -7,11 +7,16 @@
     - repos
     - apt
 
+- name: get the deb
+  get_url:
+    url: http://repository.egi.eu/sw/production/umd/3/debian/dists/squeeze/main/binary-amd64/umd-release-3.0.0_all.deb
+    dest: /tmp/umd-release-3.0.0_all.deb
+
 - name: add the release package
   apt:
-    deb: http://repository.egi.eu/sw/production/umd/3/debian/dists/squeeze/main/binary-amd64/umd-release-3.0.0_all.deb
+    deb: /tmp/umd-release-3.0.0_all.deb
     state: present
-    update_cache: true
+    # update_cache: true
   tags:
     - repos
     - apt
