@@ -9,7 +9,7 @@ bootstrap_prerequisites:
     - chkconfig
     - system-config-services
     - openssh-clients
-    - vim
+    - vim-minimal
     - bind
   'Debian':
     - python-simplejson
@@ -19,7 +19,7 @@ bootstrap_prerequisites:
     - initscripts
     - openssh-client
     - htop
-    - vim
+    - vim-minimal
 
 
 packages:
