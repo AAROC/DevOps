@@ -19,4 +19,10 @@ base_packages:
   - which
   - yum-priorities
   - yum-protectbase
-  - vim
+  - vim-minimal
+umd_release_url:
+  2: http://repository.egi.eu/sw/production/umd/2/sl6/x86_64/base/umd-release-2.0.0-1.el6.noarch.rpm
+  3: http://repository.egi.eu/sw/production/umd/3/sl6/x86_64/base/umd-release-3.0.0-1.el6.noarch.rpm
+# name of the java 6 and 7 packages
+java6_name: java-1.6.0-openjdk
+java7_name: java-1.7.0-openjdk
