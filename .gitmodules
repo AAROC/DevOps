@@ -26,3 +26,6 @@
 [submodule "Ansible/roles/africagrid-ca"]
 	path = Ansible/roles/africagrid-ca
 	url = https://github.com/AAROC/africagrid-ca
+[submodule "Ansible/roles/shibboleth-idp-v3"]
+	path = Ansible/roles/shibboleth-idp-v3
+	url = https://github.com/osct/shibboleth-idp-v3.git
