@@ -28,7 +28,7 @@
 
 - name: Generate the private key for certificate request
   become: yes
-  shell: openssl genrsa -des3 -passout pass:password -out my1.key 1024 chdir={{ ldap_config_path }}/certs/ creates={{ ldap_config_path }}/certs/my1.key
+  shell: openssl genrsa -des3 -passout pass:password -out my.key 1024 chdir={{ ldap_config_path }}/certs/ creates={{ ldap_config_path }}/certs/my.key
 
 - name: Strip the passphrase from the key
   become: yes
