@@ -18,6 +18,7 @@
     mode: 0644
     force: true
   when: hostvars['{{ inventory_hostname }}'].needs_certificate == 'true'
+
   tags:
     - certificates
 
