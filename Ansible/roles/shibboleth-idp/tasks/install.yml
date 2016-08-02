@@ -62,7 +62,7 @@
   args:
     chdir: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}"
     creates: "{{ item }}"
-  environment: java_env
+  environment: " {{ java_env }}"
   with_items:
     - "{{ shibboleth_install_path }}/war/idp.war"
     - "{{ shibboleth_install_path }}/metadata/metadata.xml"
@@ -74,7 +74,7 @@
   args:
     chdir: "{{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}"
     creates: "{{ item }}"
-  environment: java_env
+  environment: "{{ java_env }}"
   with_items:
     - "{{ shibboleth_install_path }}/war/idp.war"
     - "{{ shibboleth_install_path }}/metadata/metadata.xml"
