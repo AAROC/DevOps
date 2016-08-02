@@ -4,12 +4,6 @@
 # if you don't have a host certificate, we use this command to generate a new CSR which you can send to the CA and a
 # self-signed certificate will be added to the keychain in the meantime
 
-# Check if there is a certificate - this only works for v2.0 of Ansible
-# - name: Check if there is a certificate locally
-#   local_action:
-#     module: find paths='files' patterns=*cer
-#   register: local_cert
-
 - name: Check if there is a certificate locally
   local_action:
     module: stat
@@ -79,6 +73,8 @@
 
 ################## <Cert in repo>############################
 # These tasks get run when the cert actually exists locally.
+# from https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/638/37/certificate-installation-java-based-web-servers-tomcat-using-keytool
+#  keytool -import -trustcacerts -alias AddTrustExternalCARoot -file AddTrustExternalCARoot.crt -keystore domain.keystore
 
 - name: Extract the subject of the certificate
   local_action:
@@ -91,21 +87,20 @@
   tags:
     - certificates
 
-- name: Debug subject
-  debug:
-    var: "{{ item | regex_replace('^.*N(.*)$' ) }}"
-  with_items:
-    - "cert_subject.stdout_lines"
-  tags:
-    - debug
-  tags:
-    - certificates
-
-- name: debug CA certs variable
-  debug:
-    var: cert_CA_certificates
-  tags:
-    - certificates
+# - name: Debug subject
+#   debug:
+#     var: "{{ item | regex_replace('^.*N(.*)$' ) }}"
+#   with_items:
+#     - "cert_subject.stdout_lines"
+#   tags:
+#     - debug
+#     - certificates
+#
+# - name: debug CA certs variable
+#   debug:
+#     var: cert_CA_certificates
+#   tags:
+#     - certificates
 
 
 - name: Push the intermediate and root cert
@@ -117,17 +112,45 @@
   tags:
     - certificates
 
-# TODO - this should be in a block
 
-# # Does the p12 exist ?
-# - name: Does the p12 exist ?
-#   local_action:
-#     module: stat
-#     path: "{{ lookup('env','PWD') }}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.p12"
-#   register: p12
-#   when:  have_cert.stat.exists == False
+# Create p12 to avoid missing ciphers issue.
+# see http://stackoverflow.com/questions/906402/importing-an-existing-x509-certificate-and-private-key-in-java-keystore-to-use-i
+
+- name: Does the p12 exist ?
+  local_action:
+    module: stat
+    path: "{{ lookup('env','PWD') }}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.p12"
+  register: p12
+  when: have_cert.stat.exists == False
+  tags:
+    - certificates
+
+- name: generate the p12
+  local_action:
+    module: raw
+    args: "openssl pkcs12 -export -in {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}_cert.cer -inkey {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.key  -out {{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] }}.p12 -passout pass:{{ cert_password }}"
+  #when: "{{ p12.stat.exists | default(false) }} == false &&  'have_cert.stat.exists == False'"
+  tags:
+    - certificates
+
+- name: Push the p12
+  copy:
+    src: "{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] }}.p12"
+    dest: "{{ ansible_env.HOME }}/idp.p12"
+  tags:
+    - certificates
+
+
+# - name: Push the host cert
+#   copy:
+#     src: "{{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_') }}_cert.cer"
+#     dest: "{{ ansible_env.HOME }}/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_') }}_cert.cer"
 #   tags:
 #     - certificates
+
+
+# TODO - this should be in a block
+
 #
 # - name: What's in p12?
 #   debug:
@@ -137,27 +160,46 @@
 #     - debug
 #     - certificates
 #
-# - name: generate the p12
-#   local_action:
-#     module: command
-#     args: "openssl pkcs12 -export -in {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}_cert.cer -inkey {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.key  -out test.p12 -passout pass:password"
-#   when: "{{ p12.stat.exists }} == false &&  have_cert.stat.exists == False"
-#   tags:
-#     - certificates
 #
-# - name: Push the p12
-#   copy:
-#     src: "test.p12"
-#     dest: "{{ ansible_env.HOME }}/idp.p12"
-#   tags:
-#     - certificates
-#
-# - name: Add the cert to the keystore
-#   command: "/usr/bin/keytool -noprompt  -importkeystore -srckeystore idp.p12 -destkeystore test.jks -srcstoretype pkcs12 -srcstorepass password -deststorepass password"
-#
-#   tags:
-#     - certificates
-#
+# See https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/620/0/
+# and https://support.comodo.com/index.php?/Default/Knowledgebase/Article/View/979/108/domain-validation-sha-2
+# the order is :
+#    UserTrust / AddTrust External Root
+#    COMODO RSA Certification Authority
+#    COMODO RSA Domain Validation Secure Server CA
+#    End-Entity/Domain Certificate
+
+- name: Get CA Certs in keytool
+  become: true
+  raw: "/usr/bin/keytool -list -noprompt -keystore {{ tomcat6_config_path }}/domain.keystore -storepass {{ keystore_password }}"
+  when:
+
+
+- name: Add CA cert to the keystore
+  become: true
+  raw: "/usr/bin/keytool  -import -noprompt -trustcacerts -alias {{ item }} -file {{ ansible_env.HOME }}/{{ item }}.crt -keystore {{ tomcat6_config_path }}/domain.keystore -storepass {{ keystore_password }}"
+    #creates: "{{ tomcat6_config_path }}/domain.keystore.jks"
+  with_items:
+    - AddTrustExternalCARoot
+    - COMODORSAAddTrustCA
+    - COMODORSADomainValidationSecureServerCA
+  ignore_errors: true
+# for some reason, we get errors like  {"changed": false, "failed": true, "module_stderr": "", "module_stdout": "Traceback (most recent call last):\r\n  File \"/tmp/ansible_xSwWyR/ansible_module_command.py\", line 250, in <module>\r\n    main()\r\n  File \"/tmp/ansible_xSwWyR/ansible_module_command.py\", line 181, in main\r\n    if args.strip() == '':\r\nAttributeError: 'NoneType' object has no attribute 'strip'\r\n", "msg": "MODULE FAILURE", "parsed": false}
+
+- name: Add the cert to the keystore
+  become: true
+  command: "/usr/bin/keytool -noprompt  -importkeystore -srckeystore {{ ansible_env.HOME }}/idp.p12 -destkeystore {{ tomcat6_config_path }}/domain.keystore  -srcstoretype pkcs12 -srcstorepass {{ cert_password }} -deststorepass {{ keystore_password }}"
+  tags:
+    - certificates
+
+# - name: Add host cert
+#   become: true
+#   raw: "/usr/bin/keytool  -import -noprompt -trustcacerts -alias {{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] }} -file {{ ansible_env.HOME }}/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_') }}_cert.cer -keystore {{ tomcat6_config_path }}/domain.keystore -storepass {{ keystore_password }}"
+#   register: hostcert_result
+#   ignore_errors: true
+#   #failed_when: "'Certificate was added to keystore' !in hostcert_result.stdout"
+
+
 # # If the certificate is not available, we need to generate a self-signed and add it to the keystore
 # - name: Tell the admin that we're using self-signed
 #   local_action:
