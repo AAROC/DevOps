@@ -94,7 +94,8 @@
 - name: Debug subject
   debug:
     var: "{{ item | regex_replace('^.*N(.*)$' ) }}"
-  with_items: "cert_subject.stdout_lines"
+  with_items:
+    - "cert_subject.stdout_lines"
   tags:
     - debug
   tags:
@@ -116,70 +117,73 @@
   tags:
     - certificates
 
-# Does the p12 exist ?
-- name: Does the p12 exist ?
-  local_action:
-    module: stat
-    path: "{{ lookup('env','PWD') }}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.p12"
-  register: p12
-  tags:
-    - certificates
+# TODO - this should be in a block
 
-- name: What's in p12?
-  debug:
-    var: p12
-  tags:
-    - debug
-  tags:
-    - certificates
-
-- name: generate the p12
-  local_action:
-    module: command
-    args: "openssl pkcs12 -export -in {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}_cert.cer -inkey {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.key  -out test.p12 -passout pass:password"
-  when: "{{ p12.stat.exists }} == false "
-  tags:
-    - certificates
-
-- name: Push the p12
-  copy:
-    src: "test.p12"
-    dest: "{{ ansible_env.HOME }}/idp.p12"
-  tags:
-    - certificates
-
-- name: Add the cert to the keystore
-  command: "/usr/bin/keytool -noprompt  -importkeystore -srckeystore idp.p12 -destkeystore test.jks -srcstoretype pkcs12 -srcstorepass password -deststorepass password"
-
-  tags:
-    - certificates
-
-# If the certificate is not available, we need to generate a self-signed and add it to the keystore
-- name: Tell the admin that we're using self-signed
-  local_action:
-    module: set-fact
-    idp_status: test
-  when: cert == false
-  tags:
-    - certificates
-
-
-- name: Copy JKS generator script
-  template:
-    src: jks.expect.j2
-    dest: "{{ tomcat6_config_path }}/jks.expect"
-    mode: "u+x"
-  become: true
-  when: "{{ have_cert.stat.exists }} == false and {{ have_key.stat.exists }} == false"
-  tags:
-    - certificates
-
-- name: Create JKS for tomcat
-  become: yes
-  command: ./jks.expect
-  args:
-    creates: "{{ tomcat6_config_path }}/keystore.jks"
-    chdir: "{{ tomcat6_config_path }}"
-  when: have_cert.stat.exists == false and have_key.stat.exists == false
-  tags:
-    - certificates
+# # Does the p12 exist ?
+# - name: Does the p12 exist ?
+#   local_action:
+#     module: stat
+#     path: "{{ lookup('env','PWD') }}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.p12"
+#   register: p12
+#   when:  have_cert.stat.exists == False
+#   tags:
+#     - certificates
+#
+# - name: What's in p12?
+#   debug:
+#     var: p12
+#   when: "p12.exists &&   have_cert.stat.exists == False"
+#   tags:
+#     - debug
+#     - certificates
+#
+# - name: generate the p12
+#   local_action:
+#     module: command
+#     args: "openssl pkcs12 -export -in {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}_cert.cer -inkey {{ lookup('env','PWD')}}/roles/certificates/files/commercial/{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn'] | replace('.','_')}}.key  -out test.p12 -passout pass:password"
+#   when: "{{ p12.stat.exists }} == false &&  have_cert.stat.exists == False"
+#   tags:
+#     - certificates
+#
+# - name: Push the p12
+#   copy:
+#     src: "test.p12"
+#     dest: "{{ ansible_env.HOME }}/idp.p12"
+#   tags:
+#     - certificates
+#
+# - name: Add the cert to the keystore
+#   command: "/usr/bin/keytool -noprompt  -importkeystore -srckeystore idp.p12 -destkeystore test.jks -srcstoretype pkcs12 -srcstorepass password -deststorepass password"
+#
+#   tags:
+#     - certificates
+#
+# # If the certificate is not available, we need to generate a self-signed and add it to the keystore
+# - name: Tell the admin that we're using self-signed
+#   local_action:
+#     module: set-fact
+#     idp_status: test
+#   when: cert == false
+#   tags:
+#     - certificates
+#
+#
+# - name: Copy JKS generator script
+#   template:
+#     src: jks.expect.j2
+#     dest: "{{ tomcat6_config_path }}/jks.expect"
+#     mode: "u+x"
+#   become: true
+#   when: "{{ have_cert.stat.exists }} == false and {{ have_key.stat.exists }} == false"
+#   tags:
+#     - certificates
+#
+# - name: Create JKS for tomcat
+#   become: yes
+#   command: ./jks.expect
+#   args:
+#     creates: "{{ tomcat6_config_path }}/keystore.jks"
+#     chdir: "{{ tomcat6_config_path }}"
+#   when: have_cert.stat.exists == false and have_key.stat.exists == false
+#   tags:
+#     - certificates

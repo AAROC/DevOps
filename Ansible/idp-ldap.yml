@@ -1,18 +1,22 @@
 ---
-- name: Configure the LDAP machine
-  hosts: ldap-servers
-  roles:
-  - { role: ldap, become: true, tags: "ldap" }
-  tags:
-  - LDAP
-#  vars_files:
-#    - "group_vars/passwords-{{ site_name }}.yml"
+# - name: Configure the LDAP machine
+#   hosts: ldap-servers
+#   pre_tasks:
+#   - name: Pull in the relevant variables
+#     include_vars: "{{ item }}"
+#     with_items:
+#       - roles/common/vars/middleware/IGTF.yml
+#       - "group_vars/passwords-{{ site_name }}.yml"
+#   roles:
+#   - { role: ldap, become: true, tags: "ldap" }
+#   tags:
+#   - LDAP
 
 - name: Deploy Shibboleth IdP and Web Interface
   hosts: shibboleth-idps
   roles:
 #  - fmarco76.tomcat
-  - { role: shibboleth-idp, become: true, tags: "shibboleth-idp" }
+  - { role: shibboleth-idp, tags: "shibboleth-idp" }
   - { role: fmarco76.IDPPublic, become: true, tags: "idppublic" }
   pre_tasks:
     - name: Ensure that CA certs are present
