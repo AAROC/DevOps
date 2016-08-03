@@ -1,0 +1,53 @@
+---
+- name: Configure the LDAP machine
+  hosts: ldap-servers
+  roles:
+  - { role: ldap, become: true, tags: "ldap" }
+  tags:
+  - LDAP
+
+- name: Deploy Shibboleth IdP and Web Interface
+  hosts: shibboleth-idps
+  roles:
+  - { role: shibboleth-idp-v3, tags: "shibboleth-idp" }
+  - { role: fmarco76.IDPPublic, become: true, tags: "idppublic" }
+  pre_tasks:
+    - name: Ensure that CA certs are present
+      become: true
+      apt:
+        name: "{{ item }}"
+        state: present
+      when: ansible_os_family == 'Debian'
+      with_items:
+        - ca-certificates
+        - ca-certificates-java
+    - name: set hostname to inventory host name
+      become: true
+      hostname:
+        name: "{{ groups['shibboleth-idps'][0] }}"
+    - name: refill facts
+      setup:
+    - name: set the fqdn
+      set_fact:
+        ansible_fqdn: "{{ groups['shibboleth-idps'][0]}}"
+    - name: what is the new hostname ?
+      debug:
+        var: ansible_fqdn
+    - name: Pull in the relevant variables
+      include_vars: "{{ item }}"
+      with_items:
+        - roles/common/vars/middleware/IGTF.yml
+        - "group_vars/passwords-{{ site_name }}.yml"
+  post_tasks:
+    - name: Announce new IdP to the federation manager
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "A new Shib-IdP has been deployed. Metadata is at {{ idp.metadata_url }}. Ask @fmarco76 to check it and add it to the test federation."
+        channel: "#webops"
+        username: "Ansible on {{ ansible_fqdn }}"
+        link_names: 1
+        parse: 'full'
+        validate_certs: no
+      tags:
+        - slack
