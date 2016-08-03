@@ -6,7 +6,7 @@
 	path = Ansible/Containers/csgf-ide
 	url = https://github.com/brucellino/csgf-ide
 [submodule "Ansible/roles/tomcat-8"]
-	path = Ansible/roles/tomcat-8
+	path = Ansible/roles/osct.tomcat-8
 	url = https://github.com/osct/tomcat-8.git
 [submodule "Ansible/roles/fgapiserver-role"]
 	path = Ansible/roles/fgapiserver-role
