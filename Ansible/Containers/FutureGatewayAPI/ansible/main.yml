@@ -5,13 +5,23 @@
 # For many examples of roles, check out Ansible Galaxy: https://galaxy.ansible.com/
 #
 - hosts: fgAPI
+  # tasks:
+  # - name: get the source code
+  #   git:
+  #     repo: https://github.com/FutureGateway/fgAPIServer
+  #     dest: "{{ api_server_install_path }}"
   roles:
-    - /home/becker/Ops/AAROC/DevOps/Ansible/roles/fgapiserver-role
-
-- hosts: db
-  roles:
-    - liferay-mysql
-
-- hosts: ge
-  roles:
-    - osct.tomcat-8
+    - fgapiserver-role
+#   - name: set some variables
+#     msg: "setting some variables"
+#
+#   - name: start the server
+#     msg: "starting the server"
+#
+# - hosts: db
+#   roles:
+#     - liferay-mysql
+#
+# - hosts: ge
+#   roles:
+#     - osct.tomcat-8

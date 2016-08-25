@@ -9,16 +9,16 @@ services:
        - "8888:8888"
 # either use the flask server directly, or mask it behind apache
     command: ['python', '/tmp/apiserver/fgapiserver.py']
-  db:
-    image: brucellino/ansiblecontainer
-    ports:
-      - "3306:3306"
-    command: ['mysql']
-  ge:
-    image: brucellino/ansiblecontainer
-    ports:
-       - "8080:8080"
-    command: ['tomcat']
+  # db:
+  #   image: brucellino/ansiblecontainer
+  #   ports:
+  #     - "3306:3306"
+  #   command: ['mysql']
+  # ge:
+  #   image: brucellino/ansiblecontainer
+  #   ports:
+  #      - "8080:8080"
+  #   command: ['tomcat']
   #   dev_overrides:
   #     environment:
   #       - "DEBUG=1"
