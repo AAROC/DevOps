@@ -6,7 +6,7 @@
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
-    - group_vars/passwords-{{ site_name }}.yml
+    - group_vars/passwords-{{ site_name | lower}}.yml
   pre_tasks:
     - name: Announce the play via Slack
       slack:
