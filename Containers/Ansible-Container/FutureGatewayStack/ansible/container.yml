@@ -1,14 +1,28 @@
+# We have three containers for the Future Gateway :
+# 1. api-server - the container exposing the flask application which accepts job submission from the application
+#    executes python (flask)
+# 2. gridengine - SAGA-enabled web application running in tomcat, communicating with the computational backend.
+#    executes java (tomcat)
+# 3. db - persistent storage for the event engine.
+#    executes mysql server
+
 version: "1"
 services:
-  web:
+  api-server:
     image: ubuntu:trusty
     ports:
       - "8888:8888"
-      command: ['/usr/bin/dumb-init', '/usr/sbin/apache2ctl', '-D', 'FOREGROUND']
-  #   dev_overrides:
-  #     environment:
-  #       - "DEBUG=1"
-  #
+    command: ['python','app.yml']
+  gridengine:
+    image: ubuntu:trusty
+    ports:
+      - ""
+    command: ['java']
+  db:
+    image: ubuntu:trusty
+    ports:
+      - "3306:3306"
+    command: ['mysql']
 registries: {}
   # Add optional registries used for deployment. For example:
   #  google:
