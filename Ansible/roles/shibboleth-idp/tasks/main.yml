@@ -1,6 +1,6 @@
 ---
 # tasks file for shibboleth-idp
-#- include: install.yml
+- include: install.yml
 - include: certificate.yml
 - include: tomcat-config.yml
 - include: configure.yml
