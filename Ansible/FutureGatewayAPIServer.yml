@@ -1,0 +1,4 @@
+---
+hosts: api-servers
+roles:
+  - fgapiserver-role

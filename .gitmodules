@@ -29,3 +29,6 @@
 [submodule "Ansible/roles/shibboleth-idp-v3"]
 	path = Ansible/roles/shibboleth-idp-v3
 	url = https://github.com/osct/shibboleth-idp-v3.git
+[submodule "Containers/Dockerfiles/future-gateway-api-server"]
+	path = Containers/Dockerfiles/future-gateway-api-server
+	url = https://github.com/AAROC/future-gateway-api-server
