@@ -1,4 +1,5 @@
 ---
-hosts: api-servers
-roles:
-  - fgapiserver-role
+# first play : deploy api servers
+- hosts: api-servers
+  roles:
+    - fgapiserver-role
