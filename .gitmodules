@@ -32,3 +32,6 @@
 [submodule "Containers/Dockerfiles/future-gateway-api-server"]
 	path = Containers/Dockerfiles/future-gateway-api-server
 	url = https://github.com/AAROC/future-gateway-api-server
+[submodule "Ansible/roles/fgapi-db"]
+	path = Ansible/roles/fgapi-db
+	url = https://github.com/brucellino/fgapi-db
