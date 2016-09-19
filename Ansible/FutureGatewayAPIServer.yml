@@ -2,4 +2,4 @@
 # first play : deploy api servers
 - hosts: all
   roles:
-    - fgapiserver-role
+    - brucellino.Future-Gateway-API-Server
