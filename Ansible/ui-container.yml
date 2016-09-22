@@ -1,9 +1,9 @@
 ---
 - hosts: UIs
   user: root
+  strategy: debug
   become: true
   roles:
-#    - bootstrap
     - common
     - certificates
     - umd
@@ -11,23 +11,11 @@
     - yaim
     - cvmfs
     - perun-slave
-  vars_files:
-    - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-    - roles/common/vars/middleware/igtf.yml
-    - roles/yaim/vars/main.yml
   pre_tasks:
     - include_vars: "{{ item }}"
       with_items:
-#        - "group_vars/passwords-{{ site_name | lower }}.yml"
         - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
         - roles/common/vars/middleware/IGTF.yml
-    - name: debug some variables
-      debug:
-        var: "{{ item }}"
-      with_items:
-        - needs_certificate
-        - emi_service
-        - yaim_options
     - name: Send Slack Message
       slack:
         token: "{{ slack_token }}"
