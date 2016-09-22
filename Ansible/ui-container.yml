@@ -9,8 +9,8 @@
     - umd
     - ui
     - yaim
-    - cvmfs
-    - perun-slave
+    - cvmfs-client-2.2
+#    - perun-slave
   pre_tasks:
     - include_vars: "{{ item }}"
       with_items:
