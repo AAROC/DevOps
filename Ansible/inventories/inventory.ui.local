@@ -1,6 +1,4 @@
 # user interfaces
-[uis]
-localhost
 [UIs]
 localhost
 # OS-oriented grouping
@@ -8,8 +6,9 @@ localhost
 uis
 
 [CentOS6-servers]
-
+uis
 [CentOS-servers:children]
 CentOS6-servers
-
+[generic:children]
+UIs
 ############################ END #########################
