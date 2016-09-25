@@ -1,9 +1,4 @@
 ---
-- name: Test docker_inventory
-  hosts: all
-  connection: local
-  gather_facts: yes
-
 - name: Create the containers
   hosts: localhost
   tasks:
@@ -26,10 +21,14 @@
     add_host:
       name: fgapi-db
       groups: db-servers
+
+
   - name: API container
     docker_container:
       name: api-server
       image: aaroc/future-gateway-api-server:centos6
+      interactive: true
+      published_ports: all
   - name: add API Server container to group
     add_host:
       name: api-server
