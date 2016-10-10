@@ -1,7 +1,6 @@
 [submodule "Ansible/roles/jenkins-2.0"]
 	path = Ansible/roles/jenkins-2.0
 	url = https://github.com/Sci-GaIA/WinterSchoolCI
-
 [submodule "Ansible/Containers/csgf-ide"]
 	path = Ansible/Containers/csgf-ide
 	url = https://github.com/brucellino/csgf-ide
@@ -38,6 +37,6 @@
 [submodule "Containers/future-gateway-db"]
 	path = Containers/Dockerfiles/future-gateway-db
 	url = https://github.com/AAROC/future-gateway-db
-[submodule "harden-ssh"]
-	path = harden-ssh
-	url = /home/becker/Ops/AAROC/DevOps/Ansible/roles/harden-ssh
+[submodule "Ansible/roles/harden-ssh"]
+	path = Ansible/roles/harden-ssh
+	url = https://github.com/AAROC/harden-ssh
