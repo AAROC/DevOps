@@ -1,3 +1,7 @@
+emi_service: 'ARGUS_server'
+yaim_options: '-n ARGUS_server'
+needs_certificate: 'true'
+needs_mysql: 'true'
 use_argus: TRUE
 pap_admin_dn: /C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker
 # CONFIG_PAP
