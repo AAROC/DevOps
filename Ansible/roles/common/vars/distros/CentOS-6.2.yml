@@ -5,7 +5,7 @@ iptables: /sbin/iptables
 # we should use a template here
 iptables_vars: "-A INPUT -i eth0 -p tcp --dport 5099 -j ACCEPT"
 # change following line to point to an EPEL mirror closeby to your region
-epel_release_url: http://fedora.mirror.ac.za/epel/6/x86_64/
+epel_release_url: http://mirror.ufs.ac.za/fedora-epel/6/x86_64/
 epel_release_name: epel-release-6-8.noarch.rpm
 base_packages:
   - python-simplejson
