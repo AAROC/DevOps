@@ -40,3 +40,7 @@
 [submodule "Ansible/roles/harden-ssh"]
 	path = Ansible/roles/harden-ssh
 	url = https://github.com/AAROC/harden-ssh
+[submodule "Ansible/roles/CODE-RADE-jenkins-role"]
+	path = Ansible/roles/CODE-RADE-jenkins-role
+	url = https://github.com/AAROC/CODE-RADE-jenkins-role
+	branch = master
