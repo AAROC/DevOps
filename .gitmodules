@@ -44,3 +44,7 @@
 	path = Ansible/roles/CODE-RADE-jenkins-role
 	url = https://github.com/AAROC/CODE-RADE-jenkins-role
 	branch = master
+[submodule "Ansible/roles/AAROC.certificates"]
+	path = Ansible/roles/AAROC.certificates
+	url = https://github.com/AAROC/certificates
+	branch = master
