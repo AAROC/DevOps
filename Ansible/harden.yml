@@ -5,5 +5,6 @@
   name: Harden the machines
   become: true
   strategy: debug
+  ignore_errors: true
   roles:
     - harden-ssh
