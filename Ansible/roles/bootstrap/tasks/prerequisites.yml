@@ -32,31 +32,27 @@
   raw: 'yum install -y libselinux-python'
   when: ansible_os_family == 'RedHat'
 
+- name: ensure that epel is available
+  yum:
+    name: "{{ epel_release_url }}/{{ epel_release_name }}"
+    state: present
+    update_cache: true
+  when: ansible_os_family == 'RedHat'
+
 # at this point we might want to turn off selinux
 
 - name: debug packages
   debug:
     var: "{{ item }}"
-  with_items: "{{ bootstrap_prerequisites }}"
+  with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
   tags:
     - debug
 
 - name: Install prerequisite packages (RedHat)
-  yum:
+  package:
     name: "{{ item }}"
     state: present
   with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
   tags:
     - bootstrap
     - prerequisites
-  when: ansible_os_family=="RedHat"
-
-- name: Install prerequisite packages (Debian)
-  apt:
-    name: "{{ item }}"
-    state: present
-  with_items: "{{ bootstrap_prerequisites[ansible_os_family] }}"
-  tags:
-    - bootstrap
-    - prerequisites
-  when: ansible_os_family=="Debian"
