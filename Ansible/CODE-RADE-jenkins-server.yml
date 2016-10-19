@@ -1,0 +1,19 @@
+---
+# CODE-RADE Jenkins server
+- name: apply basic and common roles
+  hosts: ci
+  remote_user: root
+  pre_tasks:
+    - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+  roles:
+    - bootstrap
+    - certificates
+
+- name: Ensure Vanilla Jenkins server is installed
+  hosts: ci
+  remote_user: ansible
+  pre_tasks:
+    - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - include_vars: roles/common/vars/middleware/IGTF.yml
+  roles:
+    - CODE-RADE-jenkins-role
