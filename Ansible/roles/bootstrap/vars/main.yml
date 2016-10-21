@@ -4,8 +4,9 @@ bootstrap_prerequisites:
     - python-simplejson
     - libselinux-python
     - openssh-clients
-    - vim-minimal
-    - bind
+    - vim
+    - bind-utils
+    - mlocate
   'Debian':
     - python-simplejson
     - iptables
@@ -14,4 +15,4 @@ bootstrap_prerequisites:
     - initscripts
     - openssh-client
     - htop
-    - vim-minimal
+    - vim
