@@ -18,6 +18,7 @@
     - bootstrap
     - certificates
     - harden-ssh
+    - mongrelion.ansible-role-docker
   post_tasks:
     - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
     - name: Inform the team of successful base
@@ -34,14 +35,16 @@
             footer: "AAROC CODE-RADE Jenkins role"
             fields:
               - title: ":pray:  bootstrap"
-                value: ":ballot_box_with_check:"
+                value: ":item_done:"
                 short: true
               - title: ":cop: certificates"
-                value: ":ballot_box_with_check:"
+                value: ":item_done:"
                 short: true
               - title: ":triumph: harden-ssh"
-                value: ":ballot_box_with_check:"
+                value: ":item_done:"
                 short: true
+              - title: ":whale: docker"
+                value: ":item_done:"
 
 
 - name: Make CODE-RADE server
