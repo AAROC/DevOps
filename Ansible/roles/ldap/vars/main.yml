@@ -16,9 +16,3 @@ user_secondary_email: test1@test.com
 user_org: 'Test Institute'
 user_country: NA
 user_registered_address: test@test.com
-user_pass: choose_a_good_pass
-useradmin_password: choose_a_good_pass
-
-# Passwords
-root_password_clear: password
-root_password: password

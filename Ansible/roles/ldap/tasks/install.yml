@@ -5,7 +5,8 @@
 #    - LDAP
 #    - install
 - name: what are we installing?
-  debug: msg="{{ldap_pkgs}} will be installed in {{ ldap_config_path }}"
+  debug:
+    msg: "{{ ldap_pkgs }} will be installed in {{ ldap_config_path }}"
 
 # There is an ansible module called "pacakge" which uses the underlying package manager.
 # This playbook could probably be rewritten to use that instead.
@@ -23,8 +24,9 @@
     - install
 
 - name: Install the openldap and required Packages for Debian
-  apt: name={{ item }} state=installed update_cache=yes
-  with_items: ldap_pkgs
+  apt:
+    name: "{{ item }} state=installed update_cache=yes"
+  with_items: "{{ ldap_pkgs }}"
   when: ansible_os_family == 'Debian'
   tags:
     - LDAP

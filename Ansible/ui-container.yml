@@ -1,0 +1,39 @@
+---
+- hosts: UIs
+  user: root
+  strategy: debug
+  become: true
+  roles:
+    - common
+    - certificates
+    - umd
+    - ui
+    - yaim
+    - cvmfs-client-2.2
+#    - perun-slave
+  pre_tasks:
+    - include_vars: "{{ item }}"
+      with_items:
+        - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+        - roles/common/vars/middleware/IGTF.yml
+    - name: Send Slack Message
+      slack:
+        token: "{{ slack_token }}"
+        msg: "Starting UI deployment on {{ inventory_hostname }}"
+        channel: "#ops-{{ site_name }}"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
+  post_tasks:
+    - name: Send notification message via Slack
+      slack:
+        token: "{{ slack_token }}"
+        msg: "UI deployment on  on {{ inventory_hostname }} has run go check it out dude."
+        channel: "#ops-{{ site_name }}"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack

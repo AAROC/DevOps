@@ -23,7 +23,8 @@
   command: "cp {{ ansible_env.HOME }}/idp/{{ idp_package_name }}-{{ idp_version }}/endorsed/{{ item }} {{ tomcat6_endorsed_path }}/"
   args:
     creates: "{{ tomcat6_endorsed_path }}/{{ item }}"
-  with_items: idp_package_endorsed_jars
+  with_items:
+    - "{{ idp_package_endorsed_jars }}"
 
 - name: Set endorsed path
   become: yes

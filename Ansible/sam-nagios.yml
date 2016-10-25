@@ -5,7 +5,7 @@
   become: true
   become_user: root
   pre_tasks:
-    - include_vars: "group_vars/passwords-{{ site_name }}.yml"
+    - include_vars: "group_vars/passwords-{{ site_name |lower  }}.yml"
     - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
     - include_vars: roles/common/vars/middleware/IGTF.yml
   roles:

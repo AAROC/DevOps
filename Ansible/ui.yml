@@ -1,7 +1,7 @@
 ---
-- hosts: uis
+- hosts: UIs
   user: root
-  sudo: true
+  become: true
   roles:
     - bootstrap
     - common
@@ -16,22 +16,36 @@
     - roles/common/vars/middleware/igtf.yml
     - roles/yaim/vars/main.yml
   pre_tasks:
+    - include_vars: "{{ item }}"
+      with_items:
+#        - "group_vars/passwords-{{ site_name | lower }}.yml"
+        - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+        - roles/common/vars/middleware/IGTF.yml
+    - name: debug some variables
+      debug:
+        var: "{{ item }}"
+      with_items:
+        - needs_certificate
+        - emi_service
+        - yaim_options
     - name: Send Slack Message
       slack:
-        domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: "{{ slack_token }}"
         msg: "Starting UI deployment on {{ inventory_hostname }}"
-        channel: "#devopssite"
+        channel: "#ops-{{ site_name }}"
         username: "Ansible on {{ inventory_hostname }}"
         link_names: 1
         parse: 'full'
+      tags:
+        - slack
   post_tasks:
     - name: Send notification message via Slack
       slack:
-        domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: "{{ slack_token }}"
         msg: "UI deployment on  on {{ inventory_hostname }} has run go check it out dude."
-        channel: "#devopssite"
+        channel: "#ops-{{ site_name }}"
         username: "Ansible on {{ inventory_hostname }}"
         link_names: 1
         parse: 'full'
+      tags:
+        - slack

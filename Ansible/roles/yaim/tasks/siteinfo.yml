@@ -12,8 +12,6 @@
   tags:
     - yaim
     - yaimfiles
-  notify:
-    - run yaim
 
 - name: Create groups.conf file
   template:
@@ -22,8 +20,6 @@
     owner: root
     group: root
     mode: 0644
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -36,8 +32,6 @@
     group: root
     mode: 0644
   when: emi_service == "ARGUS_server"
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -51,8 +45,6 @@
     group: root
     mode: 0644
   when: emi_service == "CREAM_CE" or emi_service == "WN"
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -67,8 +59,6 @@
     group: root
     mode: 0644
   when: emi_service == "WMS"
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -82,8 +72,6 @@
     group: root
     mode: 0644
   when: emi_service == "CREAM_CE"
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -97,8 +85,6 @@
     group: root
     mode: 0644
   when: emi_service == "CREAM_CE" or emi_service == "WN"
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -112,8 +98,6 @@
     group: root
     mode: 0644
   when: emi_service == "WN"
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -127,8 +111,6 @@
     group: root
     mode: 0644
   when: emi_service == "CREAM_CE"
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -145,8 +127,6 @@
     - emi_dpm_mysql
     - emi_lfc_mysql
   when: emi_service == "lfc"
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -160,8 +140,6 @@
     group: root
     mode: 0644
   when: emi_service == "BDII_site"
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -175,8 +153,6 @@
      group: root
      mode: 0644
   when: emi_service == 'myproxy'
-  notify:
-    - run yaim
   tags:
     - yaim
     - px
@@ -189,8 +165,6 @@
     group: root
     mode: 0644
   when: emi_service == 'emi_lfc'
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -203,8 +177,6 @@
     owner: root
     group: root
     mode: 0600
-  notify:
-    - run yaim
   tags:
     - yaim
     - yaimfiles
@@ -212,10 +184,12 @@
 
 - name: Tell the team
   slack:
-    domain: africa-arabia-roc.slack.com
-    token: V4qyCjHMRUb9ZmNdcf2hVEmI
+    token: "{{ slack_token }}"
     msg: "running yaim on {{ inventory_hostname }} with {{ yaim_options }}"
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+    channel: "#{{ site_name | lower }}-ops"
+    validate_certs: false
+    icon_emoji: ansible
   tags:
     - yaim
     - slack
@@ -230,10 +204,12 @@
 
 - name: Tell the team the yaim output
   slack:
-    domain: africa-arabia-roc.slack.com
-    token: V4qyCjHMRUb9ZmNdcf2hVEmI
+    token: "{{ slack_token}}"
     msg: "yaim on {{ inventory_hostname }} with {{ yaim_options }} has finished "
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+    icon_emoji: ansible
+    validate_certs: false
+    channel: "{{ site_name | lower}}-ops"
   tags:
     - yaim
     - slack

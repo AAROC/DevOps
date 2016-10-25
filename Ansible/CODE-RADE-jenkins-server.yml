@@ -1,0 +1,65 @@
+---
+# CODE-RADE Jenkins server
+- name: apply basic and common roles
+  strategy: debug
+  hosts: ci
+  remote_user: root
+  pre_tasks:
+    - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - name: Inform the team of the start
+      slack:
+        msg: "Starting CODE-RADE CI deployment."
+        # channel: coderade # the channel is encoded in the token.
+        color: normal
+        link_names: 0
+        token: "{{ slack_token }}"
+        username: "Orchy McConfigface on {{ inventory_hostname }}"
+  roles:
+    - bootstrap
+    - certificates
+    - harden-ssh
+    - mongrelion.ansible-role-docker
+  post_tasks:
+    - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - name: Inform the team of successful base
+      slack:
+        channel: coderade # the channel is encoded in the token.
+        color: good
+        link_names: 0
+        token: "{{ slack_token }}"
+        username: "Orchy McConfigface on {{ inventory_hostname }}"
+        attachments:
+          - text: "CODE-RADE base has been applied"
+            fallback: "roles run : bootstrap, certificates, harden-ssh "
+            thumb_url: "https://github.com/AAROC/CODE-RADE/blob/gh-pages/images/coderade.png?raw=true"
+            footer: "AAROC CODE-RADE Jenkins role"
+            fields:
+              - title: ":pray:  bootstrap"
+                value: ":item_done:"
+                short: true
+              - title: ":cop: certificates"
+                value: ":item_done:"
+                short: true
+              - title: ":triumph: harden-ssh"
+                value: ":item_done:"
+                short: true
+              - title: ":whale: docker"
+                value: ":item_done:"
+
+
+- name: Make CODE-RADE server
+  strategy: debug
+  hosts: ci
+  remote_user: ansible
+  pre_tasks:
+    - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
+    - include_vars: roles/common/vars/middleware/IGTF.yml
+    - slack:
+        msg: "The machine is ready for you, Jenkins."
+        # channel: coderade # the channel is encoded in the token.
+        color: good
+        link_names: 0
+        token: "{{ slack_token }}"
+        username: "Orchy McConfigface on {{ inventory_hostname }}"
+  roles:
+    - CODE-RADE-jenkins-role

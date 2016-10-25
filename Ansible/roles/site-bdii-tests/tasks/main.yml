@@ -8,5 +8,11 @@
     state: present
     delay: 10
 
-#
-#- name:
+- name: check that the ldap tree is present
+  shell:
+    ldapsearch -x -LLL -H ldap://site-bdii.c4.csir.co.za:2170 -b mds-vo-name=ZA-MERAKA,o=grid
+  register: ldapoutput
+
+- name: check site name
+  debug:
+    var=ldapoutput.stdout_lines

@@ -7,4 +7,5 @@ hostkey.pem*
 \#*
 # ignore geany files
 *debuglog*
-
+# ignore docs dir - that's managed in the docs branch
+docs/

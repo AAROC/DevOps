@@ -174,8 +174,8 @@ PAP_ADMIN_DN="{{ pap_admin_dn }}"
 # CE_DATADIR=/mypath
 
 # Hostname of the CE
+{% if emi_service != "UI" -%}
 CE_HOST={{ ce_host }}
-
 ############################
 # SubCluster configuration #
 ############################
@@ -251,7 +251,9 @@ CE_INBOUNDIP={{ ce_inboundip }}
 
 # Space separated list of software tags supported by the site
 # e.g. CE_RUNTIMEENV="LCG-2 LCG-2_1_0 LCG-2_1_1 LCG-2_2_0 GLITE-3_0_0 GLITE-3_1_0 R-GMA"
+{% if emi_service == "CREAM_CE" %}
 CE_RUNTIMEENV="{{ ce_runtimeenv|join(' ') }}"
+{% endif %}
 
 # For the following variables, please check more detailed information in:
 # https://twiki.cern.ch/twiki/bin/view/LCG/Site-info_configuration_variables#site_info_def
@@ -346,7 +348,7 @@ DPM_HOST="{{ dpm_host }}"
 LFC_HOST="{{ lfc_host }}"
 
 
-{% if emi_service == 'DPM_SE' %}
+{% if emi_service == 'DPM_SE' -%}
 ########################
 # SE general variables #
 ########################
@@ -376,7 +378,7 @@ SE_MOUNT_INFO_LIST="{{ se_mount_info_list }}"
 # Default locations for DPM: /var/log/dpm-gsiftp/dpm-gsiftp.log
 #            and SE_classic: /var/log/globus-gridftp.log
 SE_GRIDFTP_LOGFILE={{ se_gridftp_logfile }}
-{% endif %}
+{% endif -%}
 
 ################################
 # BDII configuration variables #
@@ -485,7 +487,7 @@ EUMED_GROUP_ENABLE="eumed /eumed"
 # There is a one to one relationship in the elements of both lists,
 # so the order must be respected
 # VO_<vo_name>_VOMS_CA_DN="'voms_server_ca_dn' ['...']"
-
+{% endif -%}
 
 {% if emi_service == "CREAM_CE"  -%}
 # CREAM specific section
@@ -494,7 +496,7 @@ APEL_MYSQL_HOST={{ apel_mysql_host }}
 CREAM_DB_USER=cream
 CREAM_DB_PASSWORD=creampw
 {% endif -%}
-{% if is_both_cream_and_torque -%}
+{% if is_both_cream_and_torque | default('true')-%}
 CONFIG_TORQUE_NODES={{ config_torque_nodes | default("yes") }}
 CONFIG_MAUI={{ config_maui | default("YES")}}
 {% endif -%}

@@ -15,7 +15,7 @@
     - install
 - name: Open the firewall for WMS
   template:
-    src: templates/etc/sysconfig/iptables.j2
+    src: etc/sysconfig/iptables.j2
     dest: /etc/sysconfig/iptables
   when: ansible_os_family == 'RedHat'
   become: true

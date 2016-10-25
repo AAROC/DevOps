@@ -3,14 +3,10 @@ bootstrap_prerequisites:
   'RedHat':
     - python-simplejson
     - libselinux-python
-    - iptables
-    - mlocate
-    - initscripts
-    - chkconfig
-    - system-config-services
     - openssh-clients
     - vim
-    - bind
+    - bind-utils
+    - mlocate
   'Debian':
     - python-simplejson
     - iptables
@@ -20,7 +16,3 @@ bootstrap_prerequisites:
     - openssh-client
     - htop
     - vim
-
-
-packages:
-  - debian[1, 2, 3]

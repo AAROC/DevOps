@@ -9,10 +9,13 @@
   name: BDII_TOP plays
   remote_user: ansible
   pre_tasks:
-    - debug:
-        msg: "Site is  {{ site_name }}"
-      tags:
-        - debug
+    - action: setup
+    - name: Include vars
+      include_vars: "{{ item }}"
+      with_items:
+        - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+        - roles/common/vars/middleware/IGTF.yml
+        - "group_vars/passwords-{{ site_name | lower }}.yml"
     - name: Tell the team
       slack:
         token: "{{ slack_token }}"
@@ -30,17 +33,16 @@
     - { role: top-bdii, become: true, tags: "top-bdii" }
     - { role: yaim, become: true, tags: "yaim" }
   post_tasks:
-    # - name: Check BDII
-    #   shell : /etc/init.d/bdii status
-    #   register: bdiistatus
-    #   changed_when: False
-    #   tags:
-    #     - testing
-    # - name: debug
-    #   debug:
-    #     var: bdiistatus
-    #   tags:
-    #     - testing
+    - name: Tell the team
+      slack:
+        token: "{{ slack_token }}"
+        msg: "top-bdii play at on {{ ansible_hostname }} at {{ site_name }} has finished  :micdrop:"
+        username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
+        validate_certs: False
+        channel: "#{{ site_name | lower }}-ops"
+        icon_emoji: ansible
+      tags:
+        - slack
     - name: Fix /etc/bdii/DB_CONFIG
       debug: msg="TODO. comment set_flags DB_LOG_INMEMORY set_flags DB_TXN_NOSYNC"
       tags:
@@ -53,8 +55,5 @@
 #      when: '"BDII slapd PID file exists but the process died" in bdiistatus'
       tags:
         - testing
-  vars_files:
-    - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-    - roles/common/vars/middleware/IGTF.yml
   handlers:
     - include: roles/common/handlers/main.yml

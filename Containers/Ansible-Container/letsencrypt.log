@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/usr/bin/letsencrypt", line 9, in <module>
+    load_entry_point('letsencrypt==0.4.1', 'console_scripts', 'letsencrypt')()
+  File "/usr/lib/python2.7/dist-packages/letsencrypt/cli.py", line 1955, in main
+    "--strict-permissions" in cli_args)
+  File "/usr/lib/python2.7/dist-packages/letsencrypt/le_util.py", line 104, in make_or_verify_dir
+    os.makedirs(directory, mode)
+  File "/usr/lib/python2.7/os.py", line 157, in makedirs
+    mkdir(name, mode)
+OSError: [Errno 13] Permission denied: '/etc/letsencrypt'

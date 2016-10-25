@@ -1,0 +1,12 @@
+- name: Install emi site UI software
+  yum:
+    name: "{{ item }}"
+    state: latest
+  become: True
+  with_items:
+    - emi-ui
+    - glite-ce-monitor-cli
+    - fts-client
+  tags:
+    - UI
+    - install

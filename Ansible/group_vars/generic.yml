@@ -1,0 +1,61 @@
+# Group vars for a generic site
+---
+yaim_path: /opt/glite/yaim
+yum_args: '--exclude="voms-clients-cpp"'
+bdii_port: 2170
+vo_sw_dir: /opt/exp_soft
+cvmfs_repos:
+  - apprepo.sagrid.ac.za
+  - atlas
+  - devrepo.sagrid.ac.za
+vos:
+  - dteam
+  - ops
+  - sagrid
+# - sagrid.ac.za
+  - eumed
+  - atlas
+queues:
+  - atlas
+  - dteam
+  - ops
+#  - sagrid.ac.za
+  - eumed
+# you can set VO-level queue tuning here
+qmgr_queues:
+  - name: dteam
+    resources_max.cput: '24:00:00'
+    max_wall_time: '30:00:00'
+  - name: ops
+    resources_max.cput: '0:15:00'
+    max_wall_time: '0:30:00'
+  - name: sagrid.ac.za
+    resources_max.cput: '72:00:00'
+    max_wall_time: '72:00:00'
+  - name: eumed
+    resources_max.cput: '72:00:00'
+    max_wall_time: '72:00:00'
+  - name: atlas
+    resources_max.cput: '72:00:00'
+    max_wall_time: '72:00:00'
+
+# See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
+# use the site name as registered in GOCDB (use the same case)
+site_name: generic
+# contact details
+site_email: generic.contact@generic.site
+site_security_email: generic.contact@generic.site
+site_support_email:  generic.contact@generic.site
+# location
+site_latitude: -0.0
+site_longitude: 0.0
+site_description: "Generic institute of awesome"
+site_other_grid: "AAROC"
+site_bdii_host: "site-bdii.generic.site."
+site_location: "Place, Country"
+site_website: "http://www.generic.com/about"
+
+
+# services at the site
+bdii_host: top-bdii.c4.csir.co.za
+wms_host: "wms.c4.csir.co.za"

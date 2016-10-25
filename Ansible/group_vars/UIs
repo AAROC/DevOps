@@ -1,11 +1,12 @@
 # Group variables for user interfaces
 ---
 needs_certificate: 'false'
+needs_mysql: 'false'
 perun_slave: 'true' # this can be overridden in the playbook
 prerequisites: []
-emi_service: 'UI' 
+emi_service: 'UI'
 yaim_options: '-n UI'
-ports: 
+pap_admin_dn: /C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker
+ports:
   - inbound: []
   - outbound: []
-

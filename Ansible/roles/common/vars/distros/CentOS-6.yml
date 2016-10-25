@@ -25,4 +25,4 @@ base_packages:
   - which
   - yum-priorities
   - yum-protectbase
-  - vim
+  - vim-minimal

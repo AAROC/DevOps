@@ -1,0 +1,27 @@
+# This should be your Ansible playbooks to provision your containers.
+# An inventory will be automatically created using the names of the services
+# from your container.yml file.
+# Add any roles or other modules you'll need to this directory too.
+# For many examples of roles, check out Ansible Galaxy: https://galaxy.ansible.com/
+#
+- hosts: fgAPI
+  # tasks:
+  # - name: get the source code
+  #   git:
+  #     repo: https://github.com/FutureGateway/fgAPIServer
+  #     dest: "{{ api_server_install_path }}"
+  roles:
+    - fgapiserver-role
+#   - name: set some variables
+#     msg: "setting some variables"
+#
+#   - name: start the server
+#     msg: "starting the server"
+#
+# - hosts: db
+#   roles:
+#     - liferay-mysql
+#
+# - hosts: ge
+#   roles:
+#     - osct.tomcat-8

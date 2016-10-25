@@ -12,6 +12,10 @@
 # We also want to separate the site services from core services
 # BB 11/13
 
+# boss servers
+[boss]
+ansible.c4.csir.co.za
+
 # non-grid services
 [dns-servers]
 # we should put the dns servers in here when we need to move
@@ -80,11 +84,11 @@ nagios.c4.csir.co.za emi_service='SAM-NAGIOS' yaim_option='-n NAGIOS -n SAM_NAGI
 
 # Site BDII
 [site-bdiis]
-site-bdii.c4.csir.co.za emi_service='BDII_site' yaim_options='-n BDII_site' needs_certificate='false'
+site-bdii.c4.csir.co.za ansible_ssh_user=ansible
 
 # CREAM CE's
 [cream-ces]
-ce01-node001.c4.csir.co.za
+ce01-node001.c4.csir.co.za ansible_ssh_user=ansible emi_service='CREAM_CE' yaim_options='-n CREAM_CE' needs_certificate='true'
 
 [apel-publishers:children]
 cream-ces

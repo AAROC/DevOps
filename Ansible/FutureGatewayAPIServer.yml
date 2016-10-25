@@ -1,0 +1,5 @@
+---
+# first play : deploy api servers
+- hosts: all
+  roles:
+    - brucellino.Future-Gateway-API-Server

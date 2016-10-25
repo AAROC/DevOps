@@ -1,11 +1,15 @@
+# This is a template for an inventory which can be used to configure a
+# "localhost" - add localhost to one (and only one) of the groups below
+# If you want to add more roles than one, be careful to not add conflicting roles
+
 [local-machines]
 localhost
 # user interfaces
 [UIs]
-localhost
+
+[uis]
 
 [top-bdiis]
-localhost needs_certificate='false' emi_service='BDII_top' yaim_options="-n BDII_top"
 
 # workload management
 [wms-servers]
@@ -16,18 +20,18 @@ localhost
 
 # CREAM CE's
 [cream-ces]
-localhost needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n creamCE -n TORQUE_server -n TORQUE_utils -n MPI_CE '
+#localhost needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n creamCE -n TORQUE_server -n TORQUE_utils -n MPI_CE '
 
 [apel-publishers:children]
-cream-ces
+#cream-ces
 
 
 # Worker Nodes
 [worker-nodes]
-localhost
+#localhost
 
 [cluster-head-nodes]
-localhost
+#localhost
 
 ##########
 # Groups  #

@@ -1,0 +1,47 @@
+---
+- name: Create the containers
+  hosts: localhost
+  tasks:
+  - name: data container
+    docker_container:
+      name: fgapi-db-data
+      image: alpine
+      command: /bin/true
+      volumes:
+        - /data
+  - name: db container
+    docker_container:
+      name: fgapi-db
+      image: mysql
+      volumes:
+        - /data:/var/lib/mysql
+      volumes_from:
+        - fgapi-db-data
+  - name: add the db to the groups
+    add_host:
+      name: fgapi-db
+      groups: db-servers
+
+
+  - name: API container
+    docker_container:
+      name: api-server
+      image: aaroc/future-gateway-api-server:centos6
+      interactive: true
+      published_ports: all
+  - name: add API Server container to group
+    add_host:
+      name: api-server
+      groups: api-servers
+
+
+- hosts: db-servers
+  roles:
+    - fgapi-db
+
+
+# first play : deploy api servers
+- hosts: api-servers
+  become: true
+  roles:
+    - fgapiserver-role

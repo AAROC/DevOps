@@ -1,0 +1,44 @@
+# CODE-RADE build slave
+# this is similar to the worker-node playbook, but with less worrying about keys
+# and whatnot.
+---
+- hosts: worker-nodes
+  name: Prepare worker nodes for installation
+  roles:
+    - { role: common, become: true, tags: "common" }
+    - { role: certificates, become: true, tags: "certificates" }
+    - { role: code-rade-build-slave, become: true, tags: "wn" }
+    - { role: umd, become: true, tags: "umd" }
+    - { role: emi-worker-node, become: true, tags: "emi" }
+  pre_tasks:
+    - name: Pull in the relevant variables
+      include_vars: "{{ item }}"
+      with_items:
+        - roles/common/vars/middleware/IGTF.yml
+        - "group_vars/passwords-{{ site_name }}.yml"
+        - "group_vars/worker-nodes.yml"
+    - name: Tell the team
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "About to run the worker-nodes play on {{ inventory_hostname }} at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack
+
+  post_tasks:
+    - name: Announce the play via Slack
+      slack:
+        domain: africa-arabia-roc.slack.com
+        token: "{{ slack_token }}"
+        msg: "WN deployed at  {{ inventory_hostname }} at {{ site_name }}"
+        channel: "#devopssite"
+        username: "Ansible on {{ inventory_hostname }}"
+        #icon_url: "http://www.example.com/some-image-file.png"
+        link_names: 1
+        parse: 'full'
+      tags:
+        - slack

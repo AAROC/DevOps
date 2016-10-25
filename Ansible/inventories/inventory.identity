@@ -1,8 +1,8 @@
 [ldap-servers]
-ldap.sagrid.ac.za needs_certificate=false
+ldap.sagrid.ac.za needs_certificate=false ansible_user=ansible
 
 [shibboleth-idps]
-idp.sagrid.ac.za needs_certificate=false min_jvm_size=1024m
+idp.sagrid.ac.za needs_certificate=false min_jvm_size=1024m ansible_user=ansible
 
 [identity-all:children]
 ldap-servers

@@ -1,0 +1,10 @@
+---
+# Playbook to harden servers based on CSIR scans
+
+- hosts: all
+  name: Harden the machines
+  become: true
+  strategy: debug
+  ignore_errors: true
+  roles:
+    - harden-ssh

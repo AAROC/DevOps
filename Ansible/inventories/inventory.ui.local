@@ -1,0 +1,14 @@
+# user interfaces
+[UIs]
+localhost
+# OS-oriented grouping
+[Debian-servers]
+uis
+
+[CentOS6-servers]
+uis
+[CentOS-servers:children]
+CentOS6-servers
+[generic:children]
+UIs
+############################ END #########################
