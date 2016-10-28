@@ -68,6 +68,7 @@
         username: "Orchy McConfigface on {{ inventory_hostname }}"
       tags:
         - slack
+    post_tasks: 
     - name: inform the  team that Jenkins config is done.
       slack:
         msg: "CODE-RADE server CI server is up. Please go check it."
