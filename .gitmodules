@@ -48,3 +48,6 @@
 	path = Ansible/roles/AAROC.certificates
 	url = https://github.com/AAROC/certificates
 	branch = master
+[submodule "Ansible/roles/mongrelion.ansible-role-docker"]
+	path = Ansible/roles/mongrelion.ansible-role-docker
+	url = https://github.com/mongrelion/ansible-role-docker
