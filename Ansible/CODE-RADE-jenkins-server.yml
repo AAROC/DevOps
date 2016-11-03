@@ -14,11 +14,13 @@
         link_names: 0
         token: "{{ slack_token }}"
         username: "Orchy McConfigface on {{ inventory_hostname }}"
+      tags:
+        - slack
   roles:
-    - bootstrap
-    - certificates
-    - harden-ssh
-    - mongrelion.ansible-role-docker
+    - {role: bootstrap, become: true, tags: bootstrap}
+    - {role: certificates, become: true, tags: certificates}
+    - {role: harden-ssh, become: true, tags: harden-ssh}
+    - {role: mongrelion.ansible-role-docker, become: true, tags: docker}
   post_tasks:
     - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
     - name: Inform the team of successful base
@@ -45,21 +47,39 @@
                 short: true
               - title: ":whale: docker"
                 value: ":item_done:"
+      tags:
+        - slack
 
 
 - name: Make CODE-RADE server
   strategy: debug
   hosts: ci
   remote_user: ansible
+  vars:
+    - date: "{{ lookup('pipe','date +%Y%m%d-%H%M') }}"
   pre_tasks:
     - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
     - include_vars: roles/common/vars/middleware/IGTF.yml
-    - slack:
+    - name: inform the team that jenkins config will start
+      slack:
         msg: "The machine is ready for you, Jenkins."
         # channel: coderade # the channel is encoded in the token.
         color: good
         link_names: 0
         token: "{{ slack_token }}"
         username: "Orchy McConfigface on {{ inventory_hostname }}"
+      tags:
+        - slack
+  post_tasks:
+    - name: inform the  team that Jenkins config is done.
+      slack:
+        msg: "CODE-RADE server CI server is up. Please go check it."
+        # channel: coderade # the channel is encoded in the token.
+        color: good
+        link_names: 0
+        token: "{{ slack_token }}"
+        username: "Orchy McConfigface on {{ inventory_hostname }}"
+      tags:
+        - slack
   roles:
-    - CODE-RADE-jenkins-role
+    - {role: CODE-RADE-jenkins-role, become: true}
