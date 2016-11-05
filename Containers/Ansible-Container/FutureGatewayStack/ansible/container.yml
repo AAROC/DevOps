@@ -9,22 +9,23 @@
 version: "1"
 services:
   api-server:
-    image: ubuntu:trusty
+    image: "aaroc/future-gateway-api-server:centos6"
     ports:
       - "8888:8888"
-    command: ['python','app.yml']
-  gridengine:
-    image: ubuntu:trusty
-    ports:
-      - ""
-    command: ['java']
+    working_dir: /tmp/fgapiserver
+    command: ['python','fgapiserver.py']
   db:
-    image: ubuntu:trusty
+     image: "mysql"
+     ports:
+       - "3306:3306"
+     environment:
+       MYSQL_ROOT_PASSWORD: "{{ db_root_password }}"
+       MYSQL_USER: "{{ api_db_username }}"
+       MYSQL_PASSWORD: "{{ api_db_userpass}}"
+     volumes:
+       - "/tmp/fgapi-server-db-data/:/var/lib/mysql"
+  tomcat:
+    image: 'tomcat:7'
     ports:
-      - "3306:3306"
-    command: ['mysql']
+      - 8080:8080
 registries: {}
-  # Add optional registries used for deployment. For example:
-  #  google:
-  #    url: https://gcr.io
-  #    namespace: my-cool-project-xxxxxx
