@@ -9,18 +9,14 @@
 - hosts: db
   name: Ensure that python is available
   gather_facts: no
-  tasks:
-  - name: Is python present
-    raw: which python || apt-get update
-  - name: Raw ensure python present
-    raw: (which python && which aptitude) || apt-get install -y python python-apt aptitude
+  tasks
+  - name: Raw ensure prerequisites
+    raw: which python || yum install -y python python python-mysqldb
 
 - hosts: api-server
   name: Ensure that python is available
   gather_facts: no
   tasks:
-  - name: Is python present
-    raw: which python || yum update
   - name: Raw ensure python present
     raw: which python || yum install -y python
 
@@ -28,7 +24,6 @@
 - hosts: db
   gather_facts: true
   vars:
-    - docker_sql_image: 'mysql/mysql-server'
     # What name do you want to give the running container ?
     - db_container_name: "fg-db"
     # root password of the db - put this in your group_vars and then in a vault in production
@@ -46,12 +41,22 @@
         path: "{{ sql_data_dir }}"
         state: directory
 
+    - name: Ensure  that the db is present
+      mysql_db:
+        name: all
+        #login_host: "{{ db_config.ansible_facts.ansible_docker_container.NetworkSettings.IPAddress }}"
+        login_host: "{{ hostvars['db']['ansible_default_ipv4']['address'] }}"
+        login_user: root
+        login_password: "{{ db_root_password }}"
+        state: import
+        target: "{{ lookup('env','PWD')}}/roles/fgapi-db/files/fgapiserver_db.sql"
+
 
 
 # install FG API server
 - hosts: api-server
   roles:
-    - brucellino.Future-Gateway-API-Server
+    - fgapiserver-role
 
 
 # install FG BackEnd.
