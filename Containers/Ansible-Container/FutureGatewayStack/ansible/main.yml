@@ -6,23 +6,55 @@
 #
 
 # First play updates the containers
-- hosts: all
-  gather_facts: false
+- hosts: db
+  name: Ensure that python is available
+  gather_facts: no
   tasks:
-    - raw: which python || apt-get update
-    - raw: (which python && which aptitude) || apt-get install -y python python-apt aptitude
+  - name: Is python present
+    raw: which python || apt-get update
+  - name: Raw ensure python present
+    raw: (which python && which aptitude) || apt-get install -y python python-apt aptitude
 
-#  Create the database
+- hosts: api-server
+  name: Ensure that python is available
+  gather_facts: no
+  tasks:
+  - name: Is python present
+    raw: which python || yum update
+  - name: Raw ensure python present
+    raw: which python || yum install -y python
+
+# Create the database
 - hosts: db
   gather_facts: true
-  roles:
-    - future-gateway-db
+  vars:
+    - docker_sql_image: 'mysql/mysql-server'
+    # What name do you want to give the running container ?
+    - db_container_name: "fg-db"
+    # root password of the db - put this in your group_vars and then in a vault in production
+    - db_root_password: "changeme"
+    # API Server db config
+    # API Server user name and password - should be kept in group_vars
+    - api_db_username: "fgapiserver"
+    - api_db_userpass: "wo6YqaSCp-Ur-Nma4kPp2qJOMXhW_bUg"
+    - api_db_name: fgapiserver
+    # where will we store the SQL data ?
+    - sql_data_dir: /tmp/fgapi-server-db-data/
+  tasks:
+    - name: Ensure that the data storage is available locally
+      file:
+        path: "{{ sql_data_dir }}"
+        state: directory
+
+
+
 # install FG API server
 - hosts: api-server
   roles:
-    - future-gateweay-api-server
+    - brucellino.Future-Gateway-API-Server
+
 
 # install FG BackEnd.
-- hosts: gridengine
-  roles:
-    - gridengine
+# - hosts: gridengine
+#   roles:
+#     - gridengine
