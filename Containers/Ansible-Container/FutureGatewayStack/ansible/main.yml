@@ -6,57 +6,71 @@
 #
 
 # First play updates the containers
-- hosts: db
-  name: Ensure that python is available
-  gather_facts: no
-  tasks
-  - name: Raw ensure prerequisites
-    raw: which python || yum install -y python python python-mysqldb
-
-- hosts: api-server
-  name: Ensure that python is available
+- hosts: api-server,db
+  name: Basic setup
   gather_facts: no
   tasks:
+  - name: Update Cache
+    raw: apt-get update
   - name: Raw ensure python present
-    raw: which python || yum install -y python
+    raw: apt-get install -y python python-mysqldb
+
+# - hosts: db
+#   name: Basic setup
+#   gather_facts: no
+#   tasks:
+#   - name: Raw ensure python present
+#     raw: yum install -y python
+#   - name: ensure epel present
+#     yum_repository:
+#       name: epel
+#       description: EPEL repo
+#       baseurl: https://ftp.fau.de/epel//7Server/x86_64/
+#       state: present
+#   - name: ensure python sql bindings present
+#     yum:
+#       name: MySQL-python
+#       state: present
+#       update_cache: yes
+
+
 
 # Create the database
-- hosts: db
-  gather_facts: true
-  vars:
-    # What name do you want to give the running container ?
-    - db_container_name: "fg-db"
-    # root password of the db - put this in your group_vars and then in a vault in production
-    - db_root_password: "changeme"
-    # API Server db config
-    # API Server user name and password - should be kept in group_vars
-    - api_db_username: "fgapiserver"
-    - api_db_userpass: "wo6YqaSCp-Ur-Nma4kPp2qJOMXhW_bUg"
-    - api_db_name: fgapiserver
-    # where will we store the SQL data ?
-    - sql_data_dir: /tmp/fgapi-server-db-data/
-  tasks:
-    - name: Ensure that the data storage is available locally
-      file:
-        path: "{{ sql_data_dir }}"
-        state: directory
-
-    - name: Ensure  that the db is present
-      mysql_db:
-        name: all
-        #login_host: "{{ db_config.ansible_facts.ansible_docker_container.NetworkSettings.IPAddress }}"
-        login_host: "{{ hostvars['db']['ansible_default_ipv4']['address'] }}"
-        login_user: root
-        login_password: "{{ db_root_password }}"
-        state: import
-        target: "{{ lookup('env','PWD')}}/roles/fgapi-db/files/fgapiserver_db.sql"
+# - hosts: db
+#   name: install db
+#   gather_facts: true
+#   tasks:
+#     - name: include vars
+#       include_vars: devel-vars.yml
+#
+#     - name: Ensure that the data storage is available locally
+#       file:
+#         path: "{{ sql_data_dir }}"
+#         state: directory
+#     - name: wait...
+#       wait_for:
+#         host: "{{ hostvars['db']['ansible_default_ipv4']['address'] }}"
+#         port: 3306
+#         state: present
+#         timeout: 300
+#
+#     - name: Ensure  that the db is present
+#       mysql_db:
+#         name: fgapiserver
+#         #login_host: "{{ db_config.ansible_facts.ansible_docker_container.NetworkSettings.IPAddress }}"
+#         login_host: "{{ hostvars['db']['ansible_default_ipv4']['address'] }}"
+#         login_user: root
+#         login_password: "{{ db_root_password }}"
+#         state: import
+#         target: "{{ lookup('env','PWD')}}/roles/fgapi-db/files/fgapiserver_db.sql"
+#       retries: 3
 
 
 
 # install FG API server
-- hosts: api-server
-  roles:
-    - fgapiserver-role
+# - hosts: api-server
+#   roles:
+#     - fgapiserver-role
 
 
 # install FG BackEnd.
