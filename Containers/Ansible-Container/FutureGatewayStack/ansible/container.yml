@@ -9,23 +9,25 @@
 version: "1"
 services:
   api-server:
-    image: "aaroc/future-gateway-api-server:centos6"
+    image: "python:2.7-wheezy"
     ports:
       - "8888:8888"
     working_dir: /tmp/fgapiserver
     command: ['python','fgapiserver.py']
+
   db:
-     image: "mysql"
-     ports:
-       - "3306:3306"
-     environment:
-       MYSQL_ROOT_PASSWORD: "{{ db_root_password }}"
-       MYSQL_USER: "{{ api_db_username }}"
-       MYSQL_PASSWORD: "{{ api_db_userpass}}"
-     volumes:
-       - "/tmp/fgapi-server-db-data/:/var/lib/mysql"
+    image: "{{ docker_sql_image }}"
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=changeme
+
+  db-data-container:
+    image: alpine
+    
   tomcat:
     image: 'tomcat:7'
     ports:
       - 8080:8080
+
 registries: {}

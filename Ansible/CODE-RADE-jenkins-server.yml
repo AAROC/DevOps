@@ -2,13 +2,13 @@
 # CODE-RADE Jenkins server
 - name: apply basic and common roles
   strategy: debug
-  hosts: ci
+  hosts: dev-ci
   remote_user: root
   pre_tasks:
     - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
     - name: Inform the team of the start
       slack:
-        msg: "Starting CODE-RADE CI deployment."
+        msg: "Starting CODE-RADE CI deployment. on {{ inventory_hostname }}. This baby has {{ ansible_processor_count }} CPUs and {{ ansible_memory_mb.real.total // 1000 }} GB of RAM "
         # channel: coderade # the channel is encoded in the token.
         color: normal
         link_names: 0
@@ -20,7 +20,7 @@
     - {role: bootstrap, become: true, tags: bootstrap}
     - {role: certificates, become: true, tags: certificates}
     - {role: harden-ssh, become: true, tags: harden-ssh}
-    - {role: mongrelion.ansible-role-docker, become: true, tags: docker}
+    - {role: mongrelion.ansible-role-docker, become: true, vagrant: no, docker-py: yes, tags: docker}
   post_tasks:
     - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
     - name: Inform the team of successful base
@@ -82,4 +82,4 @@
       tags:
         - slack
   roles:
-    - {role: CODE-RADE-jenkins-role, become: true}
+    - {role: CODE-RADE-jenkins-role, become: true, tags: jenkins}
