@@ -11,66 +11,70 @@
   gather_facts: no
   tasks:
   - name: Update Cache
-    raw: apt-get update
+    raw: apt-get update -y
   - name: Raw ensure python present
     raw: apt-get install -y python python-mysqldb
 
-# - hosts: db
-#   name: Basic setup
-#   gather_facts: no
-#   tasks:
-#   - name: Raw ensure python present
-#     raw: yum install -y python
-#   - name: ensure epel present
-#     yum_repository:
-#       name: epel
-#       description: EPEL repo
-#       baseurl: https://ftp.fau.de/epel//7Server/x86_64/
-#       state: present
-#   - name: ensure python sql bindings present
-#     yum:
-#       name: MySQL-python
-#       state: present
-#       update_cache: yes
+#  Create the database
+- hosts: db
+  name: install db
+  gather_facts: true
+  tasks:
+    - include_vars: vars.yml
+    - name: Ensure that the data storage is available locally
+      file:
+        path: "{{ sql_data_dir }}"
+        state: directory
 
+    - name: Ensure  that the db is present
+      mysql_db:
+        name: fgapiserver
+        #login_host: "{{ db_config.ansible_facts.ansible_docker_container.NetworkSettings.IPAddress }}"
+        login_host: "{{ hostvars['db']['ansible_default_ipv4']['address'] }}"
+        login_user: root
+        login_password: "{{ db_root_password }}"
+        state: import
+        target: "{{ lookup('env','PWD')}}/roles/fgapi-db/files/fgapiserver_db.sql"
+      retries: 3
 
+#install FG API server
+- hosts: api-server
+  tasks:
+  - name: Ensure mysql client is present
+    become: true
+    package:
+      name: "{{ item }}"
+    with_items: "{{ prereq[ansible_os_family] }}"
 
-# Create the database
-# - hosts: db
-#   name: install db
-#   gather_facts: true
-#   tasks:
-#     - name: include vars
-#       include_vars: devel-vars.yml
-#
-#     - name: Ensure that the data storage is available locally
-#       file:
-#         path: "{{ sql_data_dir }}"
-#         state: directory
-#     - name: wait...
-#       wait_for:
-#         host: "{{ hostvars['db']['ansible_default_ipv4']['address'] }}"
-#         port: 3306
-#         state: present
-#         timeout: 300
-#
-#     - name: Ensure  that the db is present
-#       mysql_db:
-#         name: fgapiserver
-#         #login_host: "{{ db_config.ansible_facts.ansible_docker_container.NetworkSettings.IPAddress }}"
-#         login_host: "{{ hostvars['db']['ansible_default_ipv4']['address'] }}"
-#         login_user: root
-#         login_password: "{{ db_root_password }}"
-#         state: import
-#         target: "{{ lookup('env','PWD')}}/roles/fgapi-db/files/fgapiserver_db.sql"
-#       retries: 3
+  - name: get the source code
+    git:
+      repo: https://github.com/brucellino/fgAPIServer
+      dest: "{{ install_path }}"
+      force: yes
+      clone: yes
+      update: yes
 
+  - name: Install URLlib3 (CentOS6)
+    pip:
+      name: "{{ item }}"
+      state: present
+    with_items: "{{ extra_pips }}"
+    # when:
+    #   ansible_os_family == 'RedHat' and ansible_distribution_major_version == '6'
+  - name: install python requirements
+    become: true
+    pip:
+      requirements: "{{ install_path }}/requirements.txt"
 
+  - name: Apply configuration template.
+    template:
+      src: fgapiserver.conf.j2
+      dest: "{{ install_path }}/fgapiserver.conf"
 
-# install FG API server
-# - hosts: api-server
-#   roles:
-#     - fgapiserver-role
+  - name: start the server
+    command: python fgapiserver.py
+    args:
+      chdir: "{{ install_path }}"
 
 
 # install FG BackEnd.

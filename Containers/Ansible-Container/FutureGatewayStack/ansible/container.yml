@@ -13,7 +13,8 @@ services:
     ports:
       - "8888:8888"
     working_dir: /tmp/fgapiserver
-    command: ['python','fgapiserver.py']
+#    command: ['python','fgapiserver.py']
+    command: ['/bin/sleep/','infinity']
 
   db:
     image: "{{ docker_sql_image }}"
@@ -24,7 +25,8 @@ services:
 
   db-data-container:
     image: alpine
-    
+    command: ['/bin/sleep','1000']
+
   tomcat:
     image: 'tomcat:7'
     ports:
