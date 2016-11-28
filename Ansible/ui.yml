@@ -1,6 +1,6 @@
 ---
 - hosts: UIs
-  user: root
+  become_user: root
   become: true
   roles:
     - bootstrap
@@ -28,6 +28,8 @@
         - needs_certificate
         - emi_service
         - yaim_options
+        - site_name
+        - ronald
     - name: Send Slack Message
       slack:
         token: "{{ slack_token }}"

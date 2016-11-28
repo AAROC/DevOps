@@ -1,7 +1,7 @@
 ---
-- name: Install Perun GPG key
-  sudo: true
-  rpm_key: key=ftp://homeproj.cesnet.cz/rpm/perunv3/RPM-GPG-KEY-perunv3 state=present
+#- name: Install Perun GPG key
+#  sudo: true
+#  rpm_key: key=ftp://homeproj.cesnet.cz/rpm/perunv3/RPM-GPG-KEY-perunv3 state=present
 
 - name: Instasll Perun Slave RPM
   sudo: true
