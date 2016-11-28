@@ -59,7 +59,7 @@ worker-nodes
 [CRL:children]
 wms-servers
 cream-ces
-UIs
+#UIs
 worker-nodes
 
 

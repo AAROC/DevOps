@@ -10,7 +10,6 @@
     - ui
     - yaim
     - cvmfs
-    - perun-slave
   vars_files:
     - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
     - roles/common/vars/middleware/igtf.yml

@@ -16,9 +16,7 @@ yum_args: '--exclude="voms-clients-cpp"'
 bdii_port: 2170
 vo_sw_dir: /opt/exp_soft
 cvmfs_repos:
-  - apprepo.sagrid.ac.za
-  - atlas
-  - devrepo.sagrid.ac.za
+  - fastrepo.sagrid.ac.za
 vos:
   - dteam
   - ops
@@ -52,25 +50,25 @@ qmgr_queues:
 
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
 # use the site name as registered in GOCDB (use the same case)
-site_name: ZA-MERAKA
+site_name: KE-NAIROBI
 # contact details
-site_email: sagrid@csir.co.za
-site_security_email: csirt@sanren.ac.za
-site_support_email: za-meraka-ops@lists.sagrid.ac.za
+site_email: ca@kenet.or.ke
+site_security_email: noc@kenet.or.ke
+site_support_email: support@kenet.or.ke
 # location
-site_latitude: -25.75593
-site_longitude: 28.27921
-site_description: "Meraka Institute - core grid services"
+site_latitude: -1.280007
+site_longitude: 36.815507
+site_description: "Kenya Education Network - Grid Research Services"
 site_other_grid: "EGI"
 site_bdii_host: "site-bdii.c4.csir.co.za"
-site_location: "Pretoria, South Africa"
-site_website: "http://www.csir.co.za/meraka"
-site_domain: c4.csir.co.za
+site_location: "Nairobi, Kenya"
+site_website: "https://www.kenet.or.ke"
+site_domain: ui-grid.kenet.or.ke
 
 # services at the site
 bdii_host: top-bdii.c4.csir.co.za
 apel_mysql_host: ce01-node001.c4.csir.co.za
-px_host: myproxy.cern.ch
+px_host: myproxy.hellasgrid.gr
 #wms_host: wms.hellasgrid.gr
 # check GOCDB for relevant services in the AfricaArabia https://goc.egi.eu/portal/index.php?Page_Type=Service_Group&id=926
 wms_host: "wms.c4.csir.co.za"
