@@ -7,22 +7,17 @@
 - name: debug
   debug: var=hosttest.stderr
 
-- name: use Google public DNS if necessary
-  lineinfile: dest=/etc/resolv.conf regexp=^nameserver line='nameserver 8.8.8.8'
-  when: "'ping: unknown host www.google.com' in hosttest.stderr"
-  tags:
-    - DNS
+# - name: use Google public DNS if necessary
+#   lineinfile: dest=/etc/resolv.conf regexp=^nameserver line='nameserver 8.8.8.8'
+#   when: "'ping: unknown host www.google.com' in hosttest.stderr"
+#   tags:
+#     - DNS
 
 - name: Install prerequisite packages (RedHat)
   yum: name={{ item }} state=present
   with_items:
     - python-simplejson
-    - libselinux-python
-    - iptables
     - mlocate
-    - initscripts
-    - chkconfig
-    - system-config-services
     - openssh-clients
     - redhat-lsb-core
     - vim-minimal
@@ -34,12 +29,9 @@
   apt: name={{ item }} state=present
   with_items:
     - python-simplejson
-    - iptables
-    - iptables-persistent
     - mlocate
-    - initscripts
     - openssh-client
-    - vim-minimal
+    - vim
     - lsb-core
     - htop
   tags:
