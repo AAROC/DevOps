@@ -1,0 +1,93 @@
+# This is a template for an inventory which can be used to configure a
+# "localhost" - add localhost to one (and only one) of the groups below
+# If you want to add more roles than one, be careful to not add conflicting roles
+
+[local-machines]
+localhost
+# user interfaces
+
+[UIs]
+ui.kenet.or.ke
+[kenet]
+UIs
+
+[uis]
+
+[top-bdiis]
+
+# workload management
+[wms-servers]
+localhost
+
+[site-bdiis]
+localhost
+
+# CREAM CE's
+[cream-ces]
+#localhost needs_certificate='true' emi_service='CREAM_CE' yaim_options='-n creamCE -n TORQUE_server -n TORQUE_utils -n MPI_CE '
+
+[apel-publishers:children]
+#cream-ces
+
+
+# Worker Nodes
+[worker-nodes]
+#localhost
+
+[cluster-head-nodes]
+#localhost
+
+##########
+# Groups  #
+#########
+
+
+############ grouping and children ############
+# first, group by production and development
+[core-services:children]
+top-bdiis
+wms-servers
+
+[site-services:children]
+site-bdiis
+cream-ces
+worker-nodes
+
+############## Middleware oriented grouping ##############
+[CRL]
+# the group of machines that needs to keep CRLs up to date
+[CRL:children]
+wms-servers
+cream-ces
+#UIs
+worker-nodes
+
+
+# groups belonging to a site
+[local:children]
+cream-ces
+site-bdiis
+worker-nodes
+top-bdiis
+wms-servers
+UIs
+
+# OS-oriented grouping
+[Debian-servers]
+
+
+[CentOS6-servers:children]
+worker-nodes
+site-bdiis
+cream-ces
+UIs
+wms-servers
+top-bdiis
+
+[CentOS-servers:children]
+CentOS6-servers
+
+[za-meraka-dev:children]
+site-services
+core-services
+############################ END #########################

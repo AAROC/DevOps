@@ -1,0 +1,160 @@
+---
+#My var just to be sure ansible is calling this file
+ronald: 1970233
+
+#Initialize generic with a value causing undefined in Ansible/roles/yaim/tasks/config_dirs.yml
+generic: generic
+
+#SkipCRL
+SkipCRLs: 'true'
+
+emi_service: UI
+needs_mysql: false
+yaim_options: '-n UI'
+yaim_path: /opt/glite/yaim
+yum_args: '--exclude="voms-clients-cpp"'
+bdii_port: 2170
+vo_sw_dir: /opt/exp_soft
+cvmfs_repos:
+  - fastrepo.sagrid.ac.za
+vos:
+  - dteam
+  - ops
+  - sagrid
+# - sagrid.ac.za
+  - eumed
+  - atlas
+  - africagrid
+queues:
+  - atlas
+  - dteam
+  - ops
+#  - sagrid.ac.za
+  - eumed
+# you can set VO-level queue tuning here
+qmgr_queues:
+  - name: dteam
+    resources_max.cput: '24:00:00'
+    max_wall_time: '30:00:00'
+  - name: ops
+    resources_max.cput: '0:15:00'
+    max_wall_time: '0:30:00'
+  - name: sagrid.ac.za
+    resources_max.cput: '72:00:00'
+    max_wall_time: '72:00:00'
+  - name: eumed
+    resources_max.cput: '72:00:00'
+    max_wall_time: '72:00:00'
+  - name: atlas
+    resources_max.cput: '72:00:00'
+    max_wall_time: '72:00:00'
+
+# See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
+# use the site name as registered in GOCDB (use the same case)
+site_name: KE-NAIROBI
+# contact details
+site_email: ca@kenet.or.ke
+site_security_email: noc@kenet.or.ke
+site_support_email: support@kenet.or.ke
+# location
+site_latitude: -1.280007
+site_longitude: 36.815507
+site_description: "Kenya Education Network - Grid Research Services"
+site_other_grid: "EGI"
+site_bdii_host: "site-bdii.c4.csir.co.za"
+site_location: "Nairobi, Kenya"
+site_website: "https://www.kenet.or.ke"
+site_domain: ui-grid.kenet.or.ke
+
+# services at the site
+bdii_host: top-bdii.c4.csir.co.za
+apel_mysql_host: ce01-node001.c4.csir.co.za
+px_host: myproxy.hellasgrid.gr
+#wms_host: wms.hellasgrid.gr
+# check GOCDB for relevant services in the AfricaArabia https://goc.egi.eu/portal/index.php?Page_Type=Service_Group&id=926
+wms_host: "wms.c4.csir.co.za"
+is_both_wms_and_lb: true
+lb_proxy_type: both
+argus_status: yes
+argus_host: argus.c4.csir.co.za
+pap_admin_dn: "'/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker'"
+user_home_prefix: /gridhome
+# TODO - new LFC has to be deployed here at Meraka | BB 10/13
+#lfc_host: devslngrd002.uct.ac.za
+lfc_host:
+is_both_cream_and_torque: true
+ce_host: ce01-node001.c4.csir.co.za
+#  MPI capabilities
+mpich_enabled: false
+mpich2_enabled: true
+openmpi_enabled: true
+mpich2_version: 1.2.1
+openmpi_version: 1.5.4
+# are the home directories shared over nfs ?
+mpi_shared_home: no
+mpi_host_based_auth: yes
+# Replace the following specs with your own
+ce_cpu_model: Opteron
+ce_cpu_vendor: AMD
+ce_cpu_speed: 2600
+ce_os: ScientificSL
+ce_os_release: 6.4
+ce_os_version: Final
+ce_os_arch: x86_64
+ce_minphysmem: 2048
+ce_minvirtmem: 6144
+ce_physcpu: 1
+ce_logcpu: 12
+ce_smpsize: 1
+ce_si00: 2105
+ce_sf00: 2601
+ce_outboundip: "TRUE"
+ce_inboundip: "FALSE"
+ce_runtimeenv:
+  - AfricaArabia
+  - SAGrid
+  - C4 Production cluster
+  - ZA-MERAKA
+ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
+batch_server: ce01-node001.c4.csir.co.za
+job_manager: lcgpbs
+ce_batch_sys: torque
+batch_log_dir: /var/torque
+batch_version: torque-4.2.10
+glite_local_customization_dir: ""
+config_torque_nodes: yes
+config_maui: yes
+# vars for service: emi_dpm_mysql
+dpm_host: se.c4.csir.co.za
+dpmmgr: { uid: 400, gid: 4000 }
+dpm_filesystems: "sitename_dpm:$DPM_HOST:/storage"
+dpm_db:   { user: dpmmgr,  pass: redacted }
+dpm_info: { user: dpminfo, pass: redacted }
+
+# vars for service: BDII_site
+bdii_regions:
+- name: CREAM
+  endpoint: ldap://ce01-node001.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: SITEBDII
+  endpoint: ldap://site-bdii.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+#- name: SE
+#  endpoint: ldap://se01.localdomain:2170/mds-vo-name=resource,o=grid
+#- name: LFC
+#  endpoint: ldap://lfc01.localdomain:2170/mds-vo-name=resource,o=grid
+#- name: PX
+#  endpoint: ldap://myproxy01.localdomain:2170/mds-vo-name=resource,o=grid
+- name: FTS
+  endpoint: ldap://fts.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: ARGUS
+  endpoint: ldap://argus.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+- name: WMS
+  endpoint: ldap://wms.c4.csir.co.za:2170/mds-vo-name=resource,o=grid
+
+se_list:
+  - se01.localdomain
+
+se_mount_info_list: none
+se_gridftp_logfile: /var/log/dpm-gsiftp/dpm-gsiftp.log
+
+sandboxdir_on_ce: /var/cream_sandbox
+sandboxdir_on_wn: /cream_sandbox
