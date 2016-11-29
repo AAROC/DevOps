@@ -24,6 +24,7 @@ vos:
 # - sagrid.ac.za
   - eumed
   - atlas
+  - africagrid
 queues:
   - atlas
   - dteam
