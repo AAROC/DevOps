@@ -1,0 +1,8 @@
+- name: Add configuration for sagrid.ac.za VO
+  template:
+    src: templates/opt/glite/yaim/etc/siteinfo/vo.d/africagrid.j2
+    dest: /opt/glite/yaim/etc/siteinfo/vo.d/africagrid
+    owner: root
+    group: root
+    mode: 0644
+  when: "'africagrid' in ${vos}"
