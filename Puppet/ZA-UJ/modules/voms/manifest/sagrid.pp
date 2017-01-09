@@ -17,8 +17,8 @@ class voms::sagrid {
       servers  => [
                     {server => 'voms.sagrid.ac.za',
                     port   => '15001',
-                    dn    => '/C=IT/O=INFN/OU=Host/L=ZA-UFS/CN=voms.sagrid.ac.za',
-                    ca_dn => '/C=IT/O=INFN/CN=INFN CA'
+                    dn    => '/DC=EU/DC=EGI/C=ZA/O=Hosts/O=ZA-UFS/CN=voms.sagrid.ac.za',
+                    ca_dn => '/DC=ORG/DC=SEE-GRID/CN=SEE-GRID CA 2013'
                    },
                  ]
  }
@@ -26,8 +26,8 @@ class voms::sagrid {
       servers  => [
                     {server => 'voms.sagrid.ac.za',
                     port   => '15003',
-                    dn    => '/C=IT/O=INFN/OU=Host/L=ZA-UFS/CN=voms.sagrid.ac.za',
-                    ca_dn => '/C=IT/O=INFN/CN=INFN CA'
+                    dn    => '/DC=EU/DC=EGI/C=ZA/O=Hosts/O=ZA-UFS/CN=voms.sagrid.ac.za',
+                    ca_dn => 'DC=ORG/DC=SEE-GRID/CN=SEE-GRID CA 2013'
                    },
                   ]
  }
