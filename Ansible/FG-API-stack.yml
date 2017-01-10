@@ -1,47 +1,74 @@
 ---
-- name: Create the containers
-  hosts: localhost
+
+# The Future Gateway API server stack.
+# This playbook deploys
+- hosts: localhost
+  name: configure container inventory
+  strategy: debug
   tasks:
+  - include_vars:
+      file: roles/fgapi-db/vars/main.yml
+  - name: Ensure that the data storage is available locally
+    file:
+      path: "{{ sql_data_dir }}"
+      state: directory
+
   - name: data container
     docker_container:
       name: fgapi-db-data
+      hostname: db-data
       image: alpine
-      command: /bin/true
+      command: sleep infinity
       volumes:
         - /data
-  - name: db container
+      state: started
+
+  - name: Ensure that the MySQL docker image is present
+    docker_image:
+      name: "{{ docker_sql_image }}"
+      state: present
+
+  - name: Ensure that the container is started
     docker_container:
-      name: fgapi-db
-      image: mysql
+      name: "{{ db_container_name }}"
+      hostname: "{{ db_container_name }}"
+      image: "{{ docker_sql_image }}"
+      state: started
+      #detach: True
+      exposed_ports:
+        - 3306
       volumes:
-        - /data:/var/lib/mysql
-      volumes_from:
-        - fgapi-db-data
-  - name: add the db to the groups
+        - "{{ sql_data_dir }}:/var/lib/mysql"
+      keep_volumes: true
+      env:
+        MYSQL_ROOT_PASSWORD: "{{ db_root_password }}"
+  #  User should be kept in group_vars - it is set in the API Server config
+        MYSQL_USER: "{{ api_db_username }}"
+        MYSQL_PASSWORD: "{{ api_db_userpass}}"
+    register: ansible_docker_container
+
+  - name: debug db container
+    debug:
+      var: ansible_docker_container
+
+  - name:  Create db group
     add_host:
-      name: fgapi-db
-      groups: db-servers
+      name: "{{ db_container_name }}"
+      groups: db
+    with_items:
+      - "{{ db_container_name }}"
 
+  - name: Get the source for the db setup
+    git:
+      repo: https://github.com/indigo-dc/fgapiserver
+      dest: "{{ lookup('env','HOME') }}/fgapiserver"
 
-  - name: API container
-    docker_container:
-      name: api-server
-      image: aaroc/future-gateway-api-server:centos6
-      interactive: true
-      published_ports: all
-  - name: add API Server container to group
-    add_host:
-      name: api-server
-      groups: api-servers
-
-
-- hosts: db-servers
-  roles:
-    - fgapi-db
-
-
-# first play : deploy api servers
-- hosts: api-servers
-  become: true
-  roles:
-    - fgapiserver-role
+  - name: Add DB
+    connection: docker
+    mysql_db:
+      name: fgapiserver
+      login_host: 172.17.0.2 # how the hell do you get this IP address ??
+      login_user: root
+      login_password: "{{ db_root_password }}"
+      state: import
+      target: "{{ lookup('env','HOME')}}/fgapiserver/fgapiserver_db.sql"
