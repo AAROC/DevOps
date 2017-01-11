@@ -51,3 +51,12 @@
 [submodule "Ansible/roles/mongrelion.ansible-role-docker"]
 	path = Ansible/roles/mongrelion.ansible-role-docker
 	url = https://github.com/mongrelion/ansible-role-docker
+[submodule "Containers/Ansible-Container/CODE-RADE-build-containers"]
+	path = Containers/Ansible-Container/CODE-RADE-build-containers
+	url = https://github.com/AAROC/CODE-RADE-build-containers.git
+[submodule "Containers/Ansible-Container/FutureGatewayDB"]
+	path = Containers/Ansible-Container/FutureGatewayDB
+	url = https://github.com/AAROC/FutureGatewayDB.git
+[submodule "Containers/Ansible-Container/FutureGatewayStack-AC"]
+	path = Containers/Ansible-Container/FutureGatewayStack-AC
+	url = https://github.com/AAROC/FutureGatewayStack-AC.git
