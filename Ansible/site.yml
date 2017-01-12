@@ -19,10 +19,10 @@
       slack:
         domain: africa-arabia-roc.slack.com
         token: 6EJfIMngdMiwrmnScAA4znB5
-        msg: "Starting site playbook on {{ University of Nigeria}} ( including {{ Identity Provider }})"
+        msg: "Starting site playbook on {{ host_name}} ( including {{ inventory_hostname }})"
         channel: "#devopssite"
-        username: "Ansible on site {{ hipic-idp}}"
-     icon_url: "http://www.unn.edu.ng/wp-content/uploads/2015/10/logo_name.png"
+        username: "Ansible on site {{ site_name}}"
+     #icon_url: "http://www.example.com/some-image-file.png"
         link_names: 0
         parse: 'none'
 
@@ -36,7 +36,7 @@
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
-    - group_vars/passwords-{{ hipic2016 }}.yml
+    - group_vars/passwords-{{ site_name }}.yml
 
 - name: Deploy site-bdiis
   hosts: site-bdiis
