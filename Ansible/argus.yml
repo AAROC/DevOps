@@ -5,7 +5,7 @@
   become: true
   roles:
     - { role: common, become: true }
-    - { role: certificates, become: true }
+    - { role: AAROC.certificates, become: true }
     - { role: umd, become: true }
     - { role: argus, become: true }
     - { role: yaim, become: true }
