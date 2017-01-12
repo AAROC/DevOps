@@ -19,7 +19,7 @@
       slack:
         domain: africa-arabia-roc.slack.com
         token: 6EJfIMngdMiwrmnScAA4znB5
-        msg: "Starting site playbook on {{ host_name}} ( including {{ inventory_hostname }})"
+        msg: "Starting site playbook on {{ site_name}} ( including {{ inventory_hostname }})"
         channel: "#devopssite"
         username: "Ansible on site {{ site_name}}"
      #icon_url: "http://www.example.com/some-image-file.png"
