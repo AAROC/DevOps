@@ -11,6 +11,8 @@
 
 - name: Update CRL
   command: fetch-crl
+  async: 1000
+  poll: 0
   tags:
     - fetch-crl
   ignore_errors: true
