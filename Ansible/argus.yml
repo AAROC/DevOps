@@ -5,10 +5,10 @@
   become: true
   roles:
     - { role: common, become: true }
-    - { role: AAROC.certificates, become: true }
-    - { role: umd, become: true }
-    - { role: argus, become: true }
-    - { role: yaim, become: true }
+    - { role: AAROC.certificates, become: true , tags: certificates}
+    - { role: umd, become: true, tags: umd }
+    - { role: argus, become: true, tags: argus }
+    - { role: yaim, become: true, tags: yaim }
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/IGTF.yml
@@ -31,3 +31,7 @@
     - name: add EGI ACE
       become: true
       command: pap-admin add-ace 'CN=srv-111.afroditi.hellasgrid.gr, OU=afroditi.hellasgrid.gr,O=HellasGrid, C=GR' 'POLICY_READ_LOCAL|POLICY_READ_REMOTE|CONFIGURATION_READ'
+
+    - name: Add new Secmon
+      become: true
+      command: pap-admin add-ace 'CN=secmon.egi.eu, O=Greek Research and Technology Network, L=Athens, ST=Attica, C=GR, DC=tcs, DC=terena, DC=org' 'POLICY_READ_LOCAL|POLICY_READ_REMOTE|CONFIGURATION_READ' 
