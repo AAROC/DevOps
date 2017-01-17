@@ -48,6 +48,7 @@
 [submodule "Ansible/roles/mongrelion.ansible-role-docker"]
 	path = Ansible/roles/mongrelion.ansible-role-docker
 	url = https://github.com/mongrelion/ansible-role-docker
+	branch = master
 [submodule "Containers/Ansible-Container/CODE-RADE-build-containers"]
 	path = Containers/Ansible-Container/CODE-RADE-build-containers
 	url = https://github.com/AAROC/CODE-RADE-build-containers.git
