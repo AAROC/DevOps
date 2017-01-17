@@ -13,6 +13,7 @@
 [submodule "Ansible/roles/cvmfs-client-2.2"]
 	path = Ansible/roles/cvmfs-client-2.2
 	url = https://github.com/AAROC/cvmfs-client-2.2
+	branch = master
 [submodule "Containers/Dockerfiles/umd-ui"]
 	path = Containers/Dockerfiles/umd-ui
 	url = https://github.com/AAROC/umd-ui
