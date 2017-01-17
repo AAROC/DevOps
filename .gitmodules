@@ -71,3 +71,7 @@
 	path = Ansible/roles/osct.shibboleth-idp-v3
 	url = https://github.com/osct/shibboleth-idp-v3
 	branch = master
+[submodule "Ansible/roles/harden-ssh"]
+	path = Ansible/roles/harden-ssh
+	url = https://github.com/AAROC/harden-ssh
+	branch = master
