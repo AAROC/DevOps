@@ -60,6 +60,3 @@
 [submodule "Containers/Ansible-Container/FutureGatewayStack-AC"]
 	path = Containers/Ansible-Container/FutureGatewayStack-AC
 	url = https://github.com/AAROC/FutureGatewayStack-AC.git
-[submodule "Anisble/roles"]
-	path = Anisble/roles
-	url = https://github.com/AAROC/harden-ssh
