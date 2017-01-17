@@ -38,12 +38,6 @@
 	path = Containers/Dockerfiles/future-gateway-db
 	url = https://github.com/AAROC/future-gateway-db
 [submodule "Ansible/roles/harden-ssh"]
-	path = Ansible/roles/harden-ssh
-	url = https://github.com/AAROC/harden-ssh
-[submodule "Ansible/roles/CODE-RADE-jenkins-role"]
-	path = Ansible/roles/CODE-RADE-jenkins-role
-	url = https://github.com/AAROC/CODE-RADE-jenkins-role
-	branch = master
 [submodule "Ansible/roles/AAROC.certificates"]
 	path = Ansible/roles/AAROC.certificates
 	url = https://github.com/AAROC/certificates
