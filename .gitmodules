@@ -35,6 +35,7 @@
 [submodule "Ansible/roles/fgapi-db"]
 	path = Ansible/roles/fgapi-db
 	url = https://github.com/brucellino/fgapi-db
+	branch = master
 [submodule "Containers/future-gateway-db"]
 	path = Containers/Dockerfiles/future-gateway-db
 	url = https://github.com/AAROC/future-gateway-db
