@@ -1,7 +1,7 @@
 ---
 - name: Which site are we on ?
   debug:
-    var: "{{ site_name | default(generic) }}"
+    var: site_name
   changed_when: false
   tags:
     - debug
