@@ -54,3 +54,7 @@
 [submodule "Containers/Ansible-Container/FutureGatewayStack-AC"]
 	path = Containers/Ansible-Container/FutureGatewayStack-AC
 	url = https://github.com/AAROC/FutureGatewayStack-AC.git
+[submodule "Ansible/roles/CODE-RADE-jenkins-role"]
+	path = Ansible/roles/CODE-RADE-jenkins-role
+	url = https://github.com/AAROC/CODE-RADE-jenkins-role
+	branch = master
