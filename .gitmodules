@@ -10,6 +10,7 @@
 [submodule "Ansible/roles/fgapiserver-role"]
 	path = Ansible/roles/fgapiserver-role
 	url = https://github.com/brucellino/fgapiserver-role
+	branch = master
 [submodule "Ansible/roles/cvmfs-client-2.2"]
 	path = Ansible/roles/cvmfs-client-2.2
 	url = https://github.com/AAROC/cvmfs-client-2.2
