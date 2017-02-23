@@ -9,7 +9,7 @@ cert_CA_certificates:
   - AddTrustExternalCARoot.crt
   - COMODORSAAddTrustCA.crt
 # institute metadata
-site_name: Catch-All
+site_name: EthERNet
 host_institute:
   name: Ethiopian Research and Education Network
   url: http://www.ethernet.edu.et
