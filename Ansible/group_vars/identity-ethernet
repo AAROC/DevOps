@@ -1,0 +1,36 @@
+---
+# Certificate information
+#  which CA issued the certificate
+cert_CA: comodo
+# this is the list of the root and intermediate certificates of the CA
+# should probably give these keys names...
+cert_CA_certificates:
+  - COMODORSADomainValidationSecureServerCA.crt
+  - AddTrustExternalCARoot.crt
+  - COMODORSAAddTrustCA.crt
+# institute metadata
+site_name: EthERNet
+host_institute:
+  name: Ethiopian Research and Education Network
+  url: http://www.ethernet.edu.et
+
+# LDAP variables
+server_country: ET
+server_state: Free State
+server_location: Addis Ababa
+server_organization: EthERNet
+server_organization_unit: NOC
+organisation:
+  name: EthERNet
+  logo: ethernet_logo.png
+ldap_server: ldap.ethernet.edu.et
+sgw_admin: admin@ethernet.edu.et
+mail_contact: admin@ethernet.edu.et
+# IDP variables. these are specifically related to the IdPOpen Web front end.
+idp:
+  name: Catch-All Identity Provider
+  admin_user: Eyuel Mulatu
+  admin_email: admin@ethernet.edu.et
+  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth
+  mail_server: smtp.gmail.org
+  header_logo: ethernet_header_logo.jpg

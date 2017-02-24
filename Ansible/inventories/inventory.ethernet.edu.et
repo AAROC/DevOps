@@ -1,0 +1,13 @@
+[ldap-servers]
+ldap.ethernet.edu.et needs_certificate=false ansible_user=ansible
+
+[shibboleth-idps]
+idp.ethernet.edu.et needs_certificate=false min_jvm_size=1024m ansible_user=ansible
+
+[identity-ethernet:children]
+ldap-servers
+shibboleth-idps
+
+[Debian-servers:children]
+idp.ethernet.edu.et
+ldap.ethernet.edu.et
