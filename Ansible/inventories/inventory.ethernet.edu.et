@@ -9,5 +9,4 @@ ldap-servers
 shibboleth-idps
 
 [Debian-servers:children]
-idp.ethernet.edu.et
-ldap.ethernet.edu.et
+identity-ethernet
