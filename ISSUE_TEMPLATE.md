@@ -13,6 +13,7 @@ How would you best describe your issue  ?
 
 Please suggest a tag to the issue from the list provided, if relevant.
 
+**If you have a general question enhancement, or suggestion, please consider starting a thread on [the discussion forum](http://discourse.sci-gaia.eu)**
 # Repository information
 
 <!-- to make things easier for us, tell us which version of the code you are using:
