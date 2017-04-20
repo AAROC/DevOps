@@ -6,7 +6,7 @@ bdii_port: 2170
 
 igtf_repo_url: 'http://repository.egi.eu/sw/production/cas/1/current/RPMS'
 igtf_release_name: ca-policy-egi-core
-igtf_release_version: 1.55-1
+igtf_release_version: 1.82-1.noarch
 
 # YAIM variables
 vos:
@@ -21,7 +21,7 @@ queues:
   - cert
   - sagrid
   - enmr.eu
-  
+
 
 # use the site name as registered in GOCDB (use the same case)
 site_name: grid-cluster
