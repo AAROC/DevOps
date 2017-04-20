@@ -1,3 +1,7 @@
+- name: Ensure java 1.6 is absent
+  package:
+    name: java-1.6.0
+    state: absent
 - name: Install VOMS middleware
   yum:
     name: emi-voms-mysql

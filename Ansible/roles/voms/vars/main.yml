@@ -2,6 +2,7 @@
 voname: sagrid.ac.za
 dbtype: mysql
 dbauser: root
+mysql_old_root_password: 91101001adm4mysql
 dbapwd: aCxwcUjIizry2nMf-U9OIs8GdnDmqnKU
 dbusername: vomsadmin
 dbpassword: cpbYOaAA4hv4PKCwzGZCu_OFVLbMqccv

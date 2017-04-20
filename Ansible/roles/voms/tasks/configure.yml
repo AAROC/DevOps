@@ -27,11 +27,13 @@
     - VOMS
     - mysql
 
-- name: change the root password
+- name: Set root user password
   mysql_user:
     name: root
-    host: localhost
     password: "{{ dbapwd }}"
+    check_implicit_admin: yes
+    login_password: "{{ mysql_old_root_password }}"
+    state: present
   tags:
     - VOMS
     - mysql
