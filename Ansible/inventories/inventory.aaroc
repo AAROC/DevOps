@@ -5,19 +5,17 @@
 
 # credential stores
 [myproxy-servers]
-myproxy.c4.csir.co.za
 
 # information systems
 [top-bdiis]
-top-bdii.c4.csir.co.za
+top-bdii.africa-grid.org
 
 # workload management
 [wms-servers]
-wms.c4.csir.co.za
+
 
 # metadata catalogues
 [lfc-servers]
-lfc.c4.csir.co.za
 
 # CVMFS repos
 [cvmfs-servers]
@@ -25,11 +23,9 @@ apprepo.sagrid.ac.za
 
 # file transfer
 [fts-servers]
-fts.c4.csir.co.za
 
 # web user interface
 [dirac]
-dirac.c4.csir.co.za needs_certificate='true'
 
 # accounting
 [apel-servers]
@@ -37,18 +33,11 @@ apel-server.c4.csir.co.za needs_certificate='true'
 
 # authorisation
 [voms-servers]
-voms-stage.c4.csir.co.za needs_certificate='true'
+voms.sagrid.ac.za needs_certificate='true' ansible_user=root
 [argus-servers]
 argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_certificate='true'
 
 # monitoring
-[ngi-nagios]
-nagios.c4.csir.co.za
-
-# Grid Core Services
-
-CREAM-CEs
-
 
 # Grid Site Services
 
@@ -58,3 +47,10 @@ discourse.sci-gaia.eu ansible_ssh_port=4422 ansible_ssh_user=discourse
 
 
 [CentOS:children]
+voms-servers
+argus-servers
+
+[aaroc:children]
+voms-servers
+argus-servers
+cvmfs-servers
