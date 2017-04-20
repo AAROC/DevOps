@@ -1,8 +1,8 @@
 - name: Install VOMS middleware
   yum:
     name: emi-voms-mysql
-  state:  latest
-  become: True
+    state:  latest
+  become: true
   become_user: root
   tags:
     - VOMS
