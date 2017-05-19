@@ -9,9 +9,50 @@
     state: present
   with_items: "{{prerequisites[ansible_os_family]}}"
 
-# Get list of deploy keys
-    
-# ensure that the deploy key is present
+# TODO - looks like the lookup templateing is messing with shell/command/raw here.
+#             need to put  the path in hard-coded :-/
+- name: Create key
+  shell: >
+              ssh-keygen -b 2048 -t rsa -f roles/AAROC.community-shrink-bot/files/.ssh/id_rsa_github -q -N ''
+  delegate_to: localhost
+  connection: local
+  args:
+    executable: /bin/bash
+    creates: "{{role_path}}/files/.ssh/id_rsa_github"
+
+# Talk to the GitHub API with a token, to add the key if need be.
+- block:
+    - name: Add ssh new key
+      uri:
+        url: https://api.github.com/repos/AAROC/community-shrink/keys
+        method: POST
+        body:
+          title: 'Ansible Deploy key'
+          key: "{{ item }}"
+        body_format: json
+        headers:
+          Authorization: "token {{ github_token }}"
+          User-Agent: "Ansible"
+          Content-Type: "Application/json"
+        status_code: 201,422 # 201: new key | 422 - key already present
+                                               #  Accept that the key is already the as success
+      with_file: "{{ role_path }}/files/.ssh/id_rsa_github.pub"
+
+
+
+
+  # - name: Get list of deploy keys
+  #   uri:
+  #     headers:
+  #       Authorization: "token {{ github_token }}"
+  #       User-Agent: "Ansible"
+  #       Content-Type: "application/json"
+  #     url: https://api.github.com/repos/AAROC/community-shrink/keys
+  #     method: GET
+  #   failed_when: false
+  #   register: deploy_keys
+  #   tags:
+  #     - github
 
 # - name: Clone the bot repo
 #   git:
