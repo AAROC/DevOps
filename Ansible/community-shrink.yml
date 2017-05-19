@@ -1,0 +1,5 @@
+---
+- hosts: HQ
+  roles:
+    - { role: bootstrap, become: true }
+    - AAROC.community-shrink-bot
