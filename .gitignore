@@ -1,3 +1,5 @@
+# Ignore Ansible retry files
+*.retry
 # Ingore munge keys
 munge.key.*
 # Ignore public/private x509 credential pairs
