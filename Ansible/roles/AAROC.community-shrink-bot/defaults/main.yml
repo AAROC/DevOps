@@ -7,3 +7,5 @@ prerequisites:
     - golang-go
 
 # Where will the bot src be installed ?
+bot_repo: https://github.com/dgraph-io/wisemonk
+bot_dir: /home/ansible/wisemonk

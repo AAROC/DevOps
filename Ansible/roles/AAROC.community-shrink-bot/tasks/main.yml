@@ -21,41 +21,35 @@
     creates: "{{role_path}}/files/.ssh/id_rsa_github"
 
 # Talk to the GitHub API with a token, to add the key if need be.
+- name: Add ssh new key
+  uri:
+    url: https://api.github.com/repos/AAROC/community-shrink/keys
+    method: POST
+    body:
+      title: 'Ansible Deploy key'
+      key: "{{ item }}"
+    body_format: json
+    headers:
+      Authorization: "token {{ github_token }}"
+      User-Agent: "Ansible"
+      Content-Type: "Application/json"
+    status_code: 201,422 # 201: new key | 422 - key already present
+                                           #  Accept that the key is already the as success
+  with_file: "{{ role_path }}/files/.ssh/id_rsa_github.pub"
+
 - block:
-    - name: Add ssh new key
-      uri:
-        url: https://api.github.com/repos/AAROC/community-shrink/keys
-        method: POST
-        body:
-          title: 'Ansible Deploy key'
-          key: "{{ item }}"
-        body_format: json
-        headers:
-          Authorization: "token {{ github_token }}"
-          User-Agent: "Ansible"
-          Content-Type: "Application/json"
-        status_code: 201,422 # 201: new key | 422 - key already present
-                                               #  Accept that the key is already the as success
-      with_file: "{{ role_path }}/files/.ssh/id_rsa_github.pub"
+  - name: ensure gopath is available
+    file:
+        path: /home/ansible/community-shrink
+        state: directory
 
-
-
-
-  # - name: Get list of deploy keys
-  #   uri:
-  #     headers:
-  #       Authorization: "token {{ github_token }}"
-  #       User-Agent: "Ansible"
-  #       Content-Type: "application/json"
-  #     url: https://api.github.com/repos/AAROC/community-shrink/keys
-  #     method: GET
-  #   failed_when: false
-  #   register: deploy_keys
-  #   tags:
-  #     - github
-
-# - name: Clone the bot repo
-#   git:
-#     repo: "{{ bot_repo }}"
-#     key_file: "{{ key_file }}"
-#     dest: "{{ bot_dir }}"
+  - name: Get wisemonk
+    command: "go get github.com/dgraph-io/wisemonk"
+    args:
+      creates: /home/ansible/community-shrink/src/github.com/dgraph-io/wisemonk/
+  - name: Install the packages
+    command: "go install github.com/dgraph-io/wisemonk"
+    args:
+      creates: /home/ansible/community-shrink/pkg/linux_amd64/github.com/dgraph-io/wisemonk/vendor/
+  environment:
+    GOPATH:  /home/ansible/community-shrink
