@@ -1,0 +1,9 @@
+---
+# defaults file for AAROC.community-shrink-bot
+prerequisites:
+  RedHat:
+    - golang
+  Debian:
+    - golang-go
+
+# Where will the bot src be installed ?
