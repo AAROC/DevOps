@@ -1,5 +1,5 @@
 ---
 - hosts: HQ
   roles:
-    - { role: bootstrap, become: true }
-    - AAROC.community-shrink-bot
+    - { role: bootstrap, become: true, tags: "bootstrap" }
+    - { role: AAROC.community-shrink-bot, tags: "shrink"}
