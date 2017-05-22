@@ -47,10 +47,24 @@
     command: "go get github.com/dgraph-io/wisemonk"
     args:
       creates: "{{ gopath }}/src/github.com/dgraph-io/wisemonk/"
+
   - name: Install the packages
     command: "go install github.com/dgraph-io/wisemonk"
     args:
       creates: "{{ gopath }}/pkg/linux_amd64/github.com/dgraph-io/wisemonk/vendor/"
+
+  - name: Configure api_username
+    replace:
+      regexp: "api_username=wisemonk"
+      dest: "{{ gopath }}/src/github.com/dgraph-io/wisemonk/main.go"
+      replace: "api_username={{ api_username }}"
+
+  - name: build the bot
+    command: go build
+    args:
+      chdir: "{{ gopath }}/src/github.com/dgraph-io/wisemonk/"
+      creates: "{{ gopath }}/src/github.com/dgraph-io/wisemonk/wisemonk"
+
   environment:
     GOPATH:  "{{ gopath }}"
 
@@ -74,3 +88,17 @@
     dest: "{{ gopath}}/src/github.com/dgraph-io/wisemonk/config.json"
   tags:
     - slack
+
+- name: check that the bot isn't already running
+  shell: 'pidof wisemonk'
+  register: running
+  failed_when: false
+  ignore_errors: true
+
+- name: start the bot
+  command: "nohup {{ gopath }}/src/github.com/dgraph-io/wisemonk/wisemonk"
+  args:
+    chdir: "{{ gopath }}/src/github.com/dgraph-io/wisemonk"
+  async: 45
+  poll: 0
+  when: running.stdout == ''
