@@ -1,0 +1,64 @@
+---
+# tasks file for fg-db
+- name: Ensure FG user present
+  user:
+    name: "{{ fg_user }}"
+    password: "{{ fg_pass }}"
+    comment: "FutureGateway user"
+    generate_ssh_key: yes
+
+- name: ensure python db package
+  apt:
+    name: python-mysqldb
+    state: present
+    update_cache: true
+
+# Next statements have to be changed with lineinfile or replace
+- name: Template sql
+  template:
+    dest: "/home/{{ fg_user }}/fgapiserver_db.sql"
+    src: fgapiserver_db.sql.j2
+# FutureGateway database creation
+- name: DBinst0 | Database creation check
+  mysql_db:
+    name: fgapiserver
+    state: present
+    login_host: "{{ inventory_hostname }}"
+    login_port: "{{ mysql_port }}"
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+  register: db_present
+# - name: DBinst1 | Database creation and installation
+#   mysql_db: name=fgapiserver
+#             state=import
+#             login_host="{{ inventory_hostname }}"
+#             login_port="{{ mysql_port }}"
+#             login_user=root
+#             login_password="{{ mysql_root_password }}"
+#             target=/tmp/fgapiserver_db.sql
+#   when: db_present.changed
+# # Environment directory
+# - name: EnvDir | Environment settings
+#   file: path="/home/{{ fg_user }}/.fgprofile" state=directory owner="{{ fg_user }}" group="{{ fg_user }}" mode=0775 recurse=yes
+# # Commons environment
+# - name: EnvCommon | FutureGateway commons environment settings
+#   copy: src="/home/{{ fg_user }}/fgSetup/setup_commons.sh"
+#         dest="/home/{{ fg_user }}/.fgprofile/commons"
+#         owner="{{ fg_user }}"
+#         group="{{ fg_user }}"
+#         mode=0644
+# # Load main environment settings
+# - name: EnvFGDB | FGDB environment setting loader
+#   copy: content="{{ fg_fgdb }}"
+#         dest="/home/{{ fg_user }}/.fgprofile/fgdb"
+#         owner="{{ fg_user }}"
+#         group="{{ fg_user }}"
+#         mode=0644
+# # Load FutureGateway profile components in bash_profile file
+# - name: EnvProfile | Insert load profile line in .profile file
+#   blockinfile: block="for f in $(find $HOME/.fgprofile -type f); do source $f; done {{ '#' }} FGLOADENV"
+#                create=yes
+#                dest="/home/{{ fg_user }}/.profile"
+#                owner="{{ fg_user }}"
+#                group="{{ fg_user }}"
+#                mode=0644

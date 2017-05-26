@@ -1,0 +1,20 @@
+---
+# defaults file for fg-db
+fg_user: gw_user
+fg_pass: gw_password
+fg_db_host: "{{ inventory_hostname }}"
+fg_db_port: "{{ mysql_port }}"
+fg_db_name: rad_db
+fg_db_user: db_user
+fg_db_password: shitsticks
+fg_db_schemaver: 0.0.10
+mysql_port: 3306
+
+sql_template:
+  - "drop database if exists fgapiserver"
+  - "create database fgapiserver"
+  - "grant all on fgapiserver.* TO 'fgapiserver'@'%' IDENTIFIED BY \"fgapiserver_password\";"
+sql_template_replacements:
+  - "drop database if exists {{ fg_db_name }}"
+  - "create database {{ fg_db_name }}"
+  - "grant all on {{ fg_db_name }}.* TO '{{ fg_db_user }}'@'%' IDENTIFIED BY \"{{ fg_db_password }}\";"
