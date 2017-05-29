@@ -81,3 +81,6 @@
 [submodule "Ansible/roles/CODE-RADE-container"]
 	path = Ansible/roles/CODE-RADE-container
 	url = https://github.com/AAROC/CODE-RADE-container.git
+[submodule "Ansible/roles/AAROC.fg-db"]
+	path = Ansible/roles/AAROC.fg-db
+	url = https://github.com/AAROC/AAROC.fg-db
