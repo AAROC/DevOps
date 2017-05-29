@@ -1,0 +1,55 @@
+---
+# First play - create the containers
+# make sure deploy-hosts is set properly in your inventory
+# it should have everything necessary to use the Docker container module
+# http://docs.ansible.com/ansible/docker_container_module.html
+- hosts: localhost
+  name: Create containers
+  connection: local
+  # roles:
+  #   - docker
+  tasks:
+  - name: create the db container
+    docker_container:
+      name: fg_db
+      image: "mysql:5.7"
+      hostname: fg_db
+      exposed_ports: 3306
+      env:
+        MYSQL_ROOT_PASSWORD=password
+        MYSQL_USER=futuregateway
+        MYSQL_USER_PASSWORD=futuregateway
+      state: started
+    register: db_container
+  - name:
+    wait_for_connection:
+  # - name: wait for db to come up
+  #   wait_for:
+  #     host: db_container.ansible_facts.docker_container.NetworkSettings.IPAddress
+  #     port: 3306
+  #     timeout: 10
+  - name: Create the APIserver container
+    docker_container:
+      name: fg_api
+      image: "centos:7"
+      hostname: fg_api
+      exposed_ports: 8888
+      state: started
+      command: ['/bin/sleep', 'infinity']
+    register: api_container
+
+  - meta: refresh_inventory
+
+- name: Get them to the python !
+  hosts: fg_db
+  connection: docker
+  gather_facts: no
+  tasks:
+    - raw: which python || apt-get update &&  apt-get install -y python
+
+
+- name: template the db
+  hosts: fg_db
+  connection: docker
+  roles:
+    - AAROC.fg-db
