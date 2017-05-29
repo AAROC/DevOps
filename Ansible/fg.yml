@@ -3,6 +3,11 @@
 # make sure deploy-hosts is set properly in your inventory
 # it should have everything necessary to use the Docker container module
 # http://docs.ansible.com/ansible/docker_container_module.html
+
+# The db container requires some passwords to be passed at run creation time.
+# You should pass these as variables on the command line :
+# ansible-container -i <path-to-docker.py> site.yml -e mysql_root_password=<password>
+# The playbook will fail unless you pass that var.
 - hosts: localhost
   name: Create containers
   connection: local
@@ -16,9 +21,7 @@
       hostname: fg_db
       exposed_ports: 3306
       env:
-        MYSQL_ROOT_PASSWORD=password
-        MYSQL_USER=futuregateway
-        MYSQL_USER_PASSWORD=futuregateway
+        MYSQL_ROOT_PASSWORD="{{ mysql_root_password }}"
       state: started
     register: db_container
   - name:
@@ -48,8 +51,14 @@
     - raw: which python || apt-get update &&  apt-get install -y python
 
 
-- name: template the db
+- name: Create DB
   hosts: fg_db
   connection: docker
   roles:
     - AAROC.fg-db
+
+- name: Create API Server
+  hosts: fg_api
+  connection: docker
+  roles:
+    - AAROC.fgapi
