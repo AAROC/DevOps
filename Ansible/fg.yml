@@ -8,6 +8,7 @@
 # You should pass these as variables on the command line :
 # ansible-container -i <path-to-docker.py> site.yml -e mysql_root_password=<password>
 # The playbook will fail unless you pass that var.
+
 - hosts: localhost
   name: Create containers
   connection: local
@@ -34,31 +35,47 @@
   - name: Create the APIserver container
     docker_container:
       name: fg_api
-      image: "centos:7"
+      image: "httpd"
       hostname: fg_api
-      exposed_ports: 8888
+      exposed_ports:
+        - 8888:8888
+        - 80:80
       state: started
-      command: ['/bin/sleep', 'infinity']
+      # command: ['/bin/sleep', 'infinity']
     register: api_container
+  - name: Create Tomcat Container
+    docker_container:
+      name: fg_ge
+      image: tomcat:7-jre7
+      hostname: fg_ge
 
   - meta: refresh_inventory
 
-- name: Get them to the python !
-  hosts: fg_db
+- name: Get the db the python !
+  hosts: fg_db, fg_api, fg_ge
   connection: docker
   gather_facts: no
   tasks:
     - raw: which python || apt-get update &&  apt-get install -y python
-
+  tags:
+    - db
+    - ge
+    - api
 
 - name: Create DB
   hosts: fg_db
   connection: docker
   roles:
-    - AAROC.fg-db
+    - { role: AAROC.fg-db, tags: ["db"]}
 
 - name: Create API Server
   hosts: fg_api
   connection: docker
   roles:
-    - AAROC.fgapi
+    - { role: AAROC.fg-api, tags: ["api"]}
+
+- name: Deploy GridEngine
+  hosts: fg_ge
+  connection: docker
+  roles:
+    - { role: AAROC.fg-ge, tags: ["ge"]}
