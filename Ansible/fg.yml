@@ -50,6 +50,15 @@
       hostname: fg_ge
 
   - meta: refresh_inventory
+  - name: Add hosts to FutureGateway group
+    add_host:
+      name: "{{ item }}"
+      groups: futuregateway
+    with_items:
+      - fg_ge
+      - fg_db
+      - fg_api
+  - meta: refresh_inventory
 
 - name: Get the db the python !
   hosts: fg_db, fg_api, fg_ge
@@ -57,10 +66,13 @@
   gather_facts: no
   tasks:
     - raw: which python || apt-get update &&  apt-get install -y python
-  tags:
-    - db
-    - ge
-    - api
+      tags:
+        - db
+        - ge
+        - api
+
+    - debug:
+        var: hostvars['fg_db']['docker_networksettings']['IPAddress']
 
 - name: Create DB
   hosts: fg_db
@@ -78,4 +90,30 @@
   hosts: fg_ge
   connection: docker
   roles:
-    - { role: AAROC.fg-ge, tags: ["ge"]}
+    - { role: AAROC.fg-ge, host_ut_db_host: "{{hostvars['fg_db']['docker_networksettings']['IPAddress']}}", fg_db_host: "{{hostvars['fg_db']['docker_networksettings']['IPAddress']}}", tags: ["ge"]}
+
+
+# If you got this far, push those suckers
+- name: Push images
+  hosts: localhost
+  tags:
+    - ge
+    - api
+    - db
+  tasks:
+    - name: Commit the images
+      command: "docker commit -a 'Bruce Becker <brucellino@gmail.com>' {{ item }} quay.io/aaroc/{{ item }}"
+      with_items:
+        - fg_ge
+        - fg_db
+        - fg_api
+    - name: Push images
+      docker_image:
+        name: "{{ item }}"
+        push: yes
+        repository: "quay.io/{{ docker_repo_org }}/{{ item }}"
+        tag: dev
+      with_items:
+        - fg_ge
+        - fg_db
+        - fg_api
