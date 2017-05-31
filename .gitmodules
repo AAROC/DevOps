@@ -84,3 +84,9 @@
 [submodule "Ansible/roles/AAROC.fg-db"]
 	path = Ansible/roles/AAROC.fg-db
 	url = https://github.com/AAROC/AAROC.fg-db
+[submodule "Ansible/roles/AAROC.fg-api"]
+	path = Ansible/roles/AAROC.fg-api
+	url = https://github.com/AAROC/AAROC.fg-api
+[submodule "Ansible/roles/AAROC.fg-ge"]
+	path = Ansible/roles/AAROC.fg-ge
+	url = https://github.com/AAROC/AAROC.fg-ge
