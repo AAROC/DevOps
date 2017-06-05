@@ -1,5 +1,6 @@
 ---
 - hosts: HQ
+  strategy: debug
   roles:
     - { role: bootstrap, become: true, tags: "bootstrap" }
     - { role: AAROC.community-shrink-bot, tags: "shrink"}

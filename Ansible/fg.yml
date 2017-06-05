@@ -64,12 +64,15 @@
   hosts: fg_db, fg_api, fg_ge
   connection: docker
   gather_facts: no
+  tags:
+    - db
+    - ge
+    - api
   tasks:
+    - debug:
+        var: groups
     - raw: which python || apt-get update &&  apt-get install -y python
-      tags:
-        - db
-        - ge
-        - api
+
 
     - debug:
         var: hostvars['fg_db']['docker_networksettings']['IPAddress']
@@ -96,22 +99,31 @@
 # If you got this far, push those suckers
 - name: Push images
   hosts: localhost
+  vars:
+    - docker_repo_org: aaroc
   tags:
     - ge
     - api
     - db
   tasks:
-    - name: Commit the images
-      command: "docker commit -a 'Bruce Becker <brucellino@gmail.com>' {{ item }} quay.io/aaroc/{{ item }}"
-      with_items:
-        - fg_ge
-        - fg_db
-        - fg_api
+    # - name: Commit the images
+    #   command: "docker commit -a 'Bruce Becker <brucellino@gmail.com>' {{ item }} quay.io/aaroc/{{ item }}"
+    #   with_items:
+    #     - fg_ge
+    #     - fg_db
+    #     - fg_api
+    - name: Log in to Quay
+      docker_login:
+        registry: https://quay.io
+        username: brucellino
+        password: zqlwwEa4GYVpAqXVgQTCdHz6tpZjd7jK
+        email: brucellino@gmail.com
+
     - name: Push images
       docker_image:
         name: "{{ item }}"
         push: yes
-        repository: "quay.io/{{ docker_repo_org }}/{{ item }}"
+        repository: "quay.io/aaroc/{{ item }}"
         tag: dev
       with_items:
         - fg_ge

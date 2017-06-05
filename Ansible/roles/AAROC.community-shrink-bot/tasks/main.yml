@@ -59,6 +59,12 @@
       dest: "{{ gopath }}/src/github.com/dgraph-io/wisemonk/main.go"
       replace: "api_username={{ api_username }}"
 
+  - name: Configure the bot name
+    replace:
+      regexp: "wisemonk"
+      dest: "{{ gopath }}/src/github.com/dgraph-io/wisemonk/main.go"
+      replace: "{{ bot_name }}"
+
   - name: build the bot
     command: go build
     args:
@@ -96,7 +102,7 @@
   ignore_errors: true
 
 - name: start the bot
-  command: "nohup {{ gopath }}/src/github.com/dgraph-io/wisemonk/wisemonk"
+  shell: "cd {{ gopath }}/src/github.com/dgraph-io/wisemonk ; ./wisemonk > wisemonk.log"
   args:
     chdir: "{{ gopath }}/src/github.com/dgraph-io/wisemonk"
   async: 45

@@ -9,7 +9,9 @@
                               "{{ c.id }}": {
                                                 "interval": "{{channel.interval}}",
                                                 "maxmsg": {{ channel.maxmsg }},
-                                                "search_over":["{{ channel.search_categories | default('sandbox') }}"],
+                                                "search_over":[
+                                                {%- for category in channel.search_categories -%}"{{ category }}"{%if not loop.last%},{%endif%}{% endfor %}]
+                                                ,
                                                 "create_topic_in": "{{ channel.topic_category}}"
                                                 {% endif %}{% endfor %} } {% if not loop.last %}, {%endif%}{% endfor %}
 

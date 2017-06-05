@@ -8,8 +8,8 @@
 
 # information systems
 [top-bdiis]
-top-bdii.africa-grid.org
-
+# top-bdii.africa-grid.org
+151.97.41.58 ansible_ssh_user=brucellino
 # workload management
 [wms-servers]
 
@@ -40,17 +40,31 @@ argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_cer
 # monitoring
 
 # Grid Site Services
+[site-bdiis]
+151.97.41.85 ansible_ssh_user=ansible
 
 #Web Services
 [discourse-forum]
 discourse.sci-gaia.eu ansible_ssh_port=4422 ansible_ssh_user=discourse
 
+# Automation services
+[HQ]
+151.97.41.105 ansible_ssh_user=ansible
 
 [CentOS:children]
 voms-servers
 argus-servers
 
+[Debian:children]
+top-bdiis
+site-bdiis
+HQ
+
+
 [aaroc:children]
 voms-servers
 argus-servers
 cvmfs-servers
+discourse-forum
+top-bdiis
+site-bdiis

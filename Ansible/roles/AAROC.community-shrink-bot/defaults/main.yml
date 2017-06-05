@@ -8,6 +8,7 @@ prerequisites:
 
 # Where will the bot src be installed ?
 bot_repo: https://github.com/dgraph-io/wisemonk
+bot_name: nitpicker
 #  the path to the installation of the go- packages (wisemonk and dependencies)
 gopath: /home/ansible/wisemonk
 api_username: system
