@@ -1,1 +1,0 @@
-ldap-centos6.Dockerfile

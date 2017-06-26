@@ -1,9 +1,6 @@
 [submodule "Ansible/roles/jenkins-2.0"]
 	path = Ansible/roles/jenkins-2.0
 	url = https://github.com/Sci-GaIA/WinterSchoolCI
-[submodule "Ansible/Containers/csgf-ide"]
-	path = Ansible/Containers/csgf-ide
-	url = https://github.com/brucellino/csgf-ide
 [submodule "Ansible/roles/tomcat-8"]
 	path = Ansible/roles/osct.tomcat-8
 	url = https://github.com/osct/tomcat-8.git
