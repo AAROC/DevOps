@@ -32,7 +32,7 @@
     name: root
     password: "{{ dbapwd }}"
     check_implicit_admin: yes
-    login_password: "{{ mysql_old_root_password }}"
+    login_password: "{{ dbapwd }}"
     state: present
   tags:
     - VOMS
@@ -57,22 +57,6 @@
     - VOMS
     - mysql
 
-#- name: copy voms config file
-#  become: true
-#  become_user: root
-#  template: src=vomsadmin.sh.j2 dest=/root/vomsadmin.sh owner=root mode=0700
-#  tags:
-#    - VOMS
-#    - mysql
-
-#- name: configure voms admin
-#  become: true
-#  become_user: root
-#  shell: chdir=/root vomsadmin.sh
-#  tags:
-#    - VOMS
-#    - mysql
-
 - name: add a test vo
   become: true
   become_user: root
@@ -81,6 +65,7 @@
     - VOMSadmin
 
 - name: start the voms container
+  become: true
   service:
     name: "{{ item }}"
     state: started
@@ -92,6 +77,6 @@
     - mysql
 
 - name: add the admin for the test vo
-  command: "voms-db-util add-admin --vo vo.test --dn {{ voadmindn }} --ca {{ voadminca }} --email {{ voadminemail }}"
+  command: 'voms-db-util add-admin --vo vo.test --dn "{{ voadmindn }}" --ca "{{ voadminca }}" --email "{{ voadminemail }}"'
   tags:
     - VOMSadmin
