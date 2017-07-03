@@ -26,7 +26,7 @@
 - name: ensure that SELinux python bindings are installed
   yum:
      name: libselinux-python
-     state:
+     state: present
   when: ansible_os_family == 'RedHat'
 
 - name: Install libselinux
@@ -40,7 +40,7 @@
     update_cache: true
   when: ansible_os_family == 'RedHat'
 
-- name: Install prerequisite packages 
+- name: Install prerequisite packages
   package:
     name: "{{ item }}"
     state: present
