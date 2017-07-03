@@ -46,7 +46,7 @@
   - name: Create Tomcat Container
     docker_container:
       name: fg_ge
-      image: tomcat:7-jre7
+      image: "tomcat:7-jre7"
       hostname: fg_ge
 
   - meta: refresh_inventory
@@ -60,7 +60,7 @@
       - fg_api
   - meta: refresh_inventory
 
-- name: Get the db the python !
+- name: Get them the python !
   hosts: fg_db, fg_api, fg_ge
   connection: docker
   gather_facts: no
@@ -69,13 +69,7 @@
     - ge
     - api
   tasks:
-    - debug:
-        var: groups
     - raw: which python || apt-get update &&  apt-get install -y python
-
-
-    - debug:
-        var: hostvars['fg_db']['docker_networksettings']['IPAddress']
 
 - name: Create DB
   hosts: fg_db
@@ -106,25 +100,33 @@
     - api
     - db
   tasks:
-    # - name: Commit the images
-    #   command: "docker commit -a 'Bruce Becker <brucellino@gmail.com>' {{ item }} quay.io/aaroc/{{ item }}"
-    #   with_items:
-    #     - fg_ge
-    #     - fg_db
-    #     - fg_api
+    - name: Commit the images
+      command: "docker commit -a 'Bruce Becker <brucellino@gmail.com>' {{ item }} quay.io/aaroc/{{ item }}"
+      with_items:
+        - fg_ge
+        - fg_db
+        - fg_api
+      tags:
+        - dev
+        - images
     - name: Log in to Quay
       docker_login:
         registry: https://quay.io
-        username: brucellino
-        password: zqlwwEa4GYVpAqXVgQTCdHz6tpZjd7jK
-        email: brucellino@gmail.com
+        username: "{{ registry_user }}"
+        password: "{{ registry_pass }}"
+        email: "{{ registry_email }}"
+      tags:
+        - dev
+        - images
 
     - name: Push images
       docker_image:
         name: "{{ item }}"
         push: yes
-        repository: "quay.io/aaroc/{{ item }}"
-        tag: dev
+        repository: "https://quay.io/aaroc/{{ item }}"
+      tags:
+        - dev
+        - images
       with_items:
         - fg_ge
         - fg_db
