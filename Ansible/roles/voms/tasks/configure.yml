@@ -76,7 +76,10 @@
     - VOMS
     - mysql
 
-- name: add the admin for the test vo
-  command: 'voms-db-util add-admin --vo vo.test --dn "{{ voadmindn }}" --ca "{{ voadminca }}" --email "{{ voadminemail }}"'
+- name: add the admin for the VOs
+  command: 'voms-db-util add-admin --vo {{ item }} --dn "{{ voadmindn }}" --ca "{{ voadminca }}" --email "{{ voadminemail }}"'
   tags:
     - VOMSadmin
+  with_items:
+    - sagrid
+    - sagrid.ac.za
