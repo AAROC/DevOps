@@ -1,0 +1,13 @@
+---
+# WIP
+- hosts: CA
+  name: Certificate authority
+  become: true
+  roles:
+    - container-bootstrap
+    - common
+    - certificates
+    - apache-web-server
+  vars_files:
+    - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
+    - roles/common/vars/middleware/IGTF.yml
