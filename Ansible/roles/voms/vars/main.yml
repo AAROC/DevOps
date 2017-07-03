@@ -7,5 +7,5 @@ coreport: 15000
 smtphost: localhost
 mailfrom: voms-admin@voms-stage.sagrid.ac.za
 voadmindn: "/C=IT/O=INFN/OU=Personal Certificate/L=ZA-MERAKA/CN=Bruce Becker"
-voadminca: "/C=IT/O=INFN/CN=INFN CA"
+voadminca: "/C=IT/O=INFN/CN=INFN Certification Authority"
 voadminemail: bbecker@csir.co.za
