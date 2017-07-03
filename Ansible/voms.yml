@@ -4,11 +4,11 @@
   become: true
   become_user: root
   roles:
-    - bootstrap
-    - common
-    - certificates
-    - umd
-    - voms
+    - {role: bootstrap, tags: bootstrap}
+    - {role: common, tags: common}
+    - {role: certificates, tags: certificates}
+    - {role: umd, tags: certificates}
+    - {role: voms, tags: voms}
   vars_files:
     - "group_vars/passwords-{{ site_name }}.yml"
     - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
