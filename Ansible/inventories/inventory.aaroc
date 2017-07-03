@@ -33,7 +33,7 @@ apel-server.c4.csir.co.za needs_certificate='true'
 
 # authorisation
 [voms-servers]
-voms.sagrid.ac.za needs_certificate='true' ansible_user=root
+voms.sagrid.ac.za needs_certificate='true' ansible_user=ansible
 [argus-servers]
 argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_certificate='true'
 
