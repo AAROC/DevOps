@@ -1,0 +1,35 @@
+---
+# vars file for AAROC.glibrary
+
+# System prerequisites
+prerequisites:
+  RedHat:
+    - mongo
+    - nodejs
+  Debian:
+    - mongodb-org
+    - nodejs
+    - npm
+# Which fork of glibrary are  we using ?
+glibrary_repo: https://github.com/AAROC/glibrary
+# where will the code be run from ?
+exec_dir: /opt/glibrary
+
+# The list of setup scripts that need to be templated
+setup_scripts:
+  - createAdmin.js
+  - createRoles.js
+  - createACLRules.js
+
+admin:
+  username: admin
+  email: glibrary-admin@africa-grid.org
+
+repo:
+  host: localhost
+  port: 27017
+  database: glibrary
+  username: glibrary
+  password: glibrary
+  name: repoDB
+  connector: mongodb
