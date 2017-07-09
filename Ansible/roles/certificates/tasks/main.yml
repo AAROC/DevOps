@@ -17,7 +17,7 @@
     group: root
     mode: 0644
     force: true
-  when: (hostvars['{{ inventory_hostname }}'].needs_certificate == 'true') and (needs_certificate is defined)
+  when: "(hostvars['{{ inventory_hostname }}'].needs_certificate == 'true') and (needs_certificate is defined)"
   tags:
     - certificates
 
