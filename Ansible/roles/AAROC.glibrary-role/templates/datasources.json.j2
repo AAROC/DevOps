@@ -1,0 +1,23 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "repoDB": {
+    "host": "{{ repo.host }}",
+    "port": "{{ repo.port }}",
+    "database": "{{ repo.database }}",
+    "username": "{{ repo.username }}",
+    "password": "{{ repo.password }}",
+    "name": "repoDB",
+    "connector": "{{ repo.connector}}"
+  },
+  "swift_storage": {
+
+    "keys" : {
+      "AUTH_xxxx": "yyyy",
+      "AUTH_zzzz": "wwww"
+    },
+    "expirationTimeInSeconds" : 30
+  }
+}
