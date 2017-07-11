@@ -6,9 +6,8 @@
 #     - bootstrap
 
 - hosts: top-bdiis
-  name: BDII_TOP plays
+  name: top-bdii
   pre_tasks:
-    - action: setup
     - name: Include vars
       include_vars: "{{ item }}"
       with_items:
@@ -27,9 +26,7 @@
         - slack
   roles:
     - { role: common, become: true, tags: "common"}
-    - { role: certificates, become: true, tags: "certificates"}
-    - { role: umd, become: true, tags: "umd" }
-    - { role: top-bdii, become: true, tags: "top-bdii" }
+    - { role: UMD-role, become: true, tags: "umd", umd_service: "emi-bdii-top", enable_umd: true, enable_preview: false, umd_version: 4 }
     - { role: yaim, become: true, tags: "yaim" }
   post_tasks:
     - name: Tell the team
