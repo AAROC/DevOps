@@ -90,3 +90,6 @@
 [submodule "Ansible/roles/UMD-role"]
 	path = Ansible/roles/UMD-role
 	url = https://github.com/AAROC/UMD-role
+[submodule "Ansible/roles/community-shrink"]
+	path = Ansible/roles/community-shrink
+	url = https://github.com/AAROC/community-shrink.git
