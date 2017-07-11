@@ -93,3 +93,6 @@
 [submodule "Ansible/roles/community-shrink"]
 	path = Ansible/roles/community-shrink
 	url = https://github.com/AAROC/community-shrink.git
+[submodule "Ansible/roles/glibrary-role"]
+	path = Ansible/roles/glibrary-role
+	url = https://github.com/AAROC/glibrary-role
