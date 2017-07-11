@@ -1,26 +1,77 @@
-language: bash
-sudo: required
-services: docker
-# The bootstrap role will always be tested
-# Add the containers you need for the services you want to test here
-env:
-  - INVENTORY=inventory.travis BOOTSTRAP_CONTAINER="aaroc/code-rade-sl6-ansible" SITE_BDII_CONTAINER="aaroc/site-bdii:centos6.8"
-  - INVENTORY=inventory.travis BOOTSTRAP_CONTAINER="aaroc/code-rade-u1404-ansible" SITE_BDII_CONTAINER="aaroc/site-bdii:centos6.8"
+language: python
+python:
+- '2.7'
+- pypy
+sudo: true
+addons:
+  apt:
+    packages:
+    - python-pip
 before_install:
 # Pull the containers you need for the tests
-  - docker pull ${BOOTSTRAP_CONTAINER}
-  - docker pull ${SITE_BDII_CONTAINER}
+  # - docker pull ${BOOTSTRAP_CONTAINER}
+  # - docker pull ${SITE_BDII_CONTAINER}
 # basic connectivity test
 # Test Bootstrap role
 # Test Site-BDII playbook
-
 install:
-  - cd $TRAVIS_BUILD_DIR/Ansible
-  - chmod 400 $PWD/roles/bootstrap/files/public_keys/*
-  - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $BOOTSTRAP_CONTAINER ansible all -c local -vvvvv -i inventories/$INVENTORY -m ping
-#  - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $BOOTSTRAP_CONTAINER ansible-playbook -c local -i inventories/$INVENTORY bootstrap.yml
-#  - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $SITE_BDII_CONTAINER ansible-playbook -c local -i inventories/$INVENTORY -e "emi_service=BDII_site yaim_options='-n BDII_site'" site-bdiis.yml
-#  - docker run -h localhost.dev -v $PWD:$PWD -w $PWD $BOOTSTRAP_CONTAINER ansible-playbook -c local -i inventories/$INVENTORY cvmfs.yml -e slack_token=T02BJKQR4/B03ACH9CV/aSrsbdte1kY4B7taogRVxkWf
+- pip install ansible
+- pip install ansible-container[docker]
+- ansible-container version
+# The bootstrap role will always be tested
+# Add the containers you need for the services you want to test here
+script:
+- cd Ansible
+# check all the playbooks
+- ansible-playbook --syntax-check ansible-executors.yml
+- ansible-playbook --syntax-check CODE-RADE-jenkins-server.yml
+- ansible-playbook --syntax-check cvmfs.yml
+- ansible-playbook --syntax-check fts.yml
+- ansible-playbook --syntax-check liferay-gridengine.yml
+- ansible-playbook --syntax-check site.yml
+- ansible-playbook --syntax-check wms.yml
+- ansible-playbook --syntax-check argus.yml
+- ansible-playbook --syntax-check code-rade-slave.yml
+- ansible-playbook --syntax-check dirac.yml
+- ansible-playbook --syntax-check FutureGatewayAPIServer.yml
+- ansible-playbook --syntax-check new_user_into_ldap.yml
+- ansible-playbook --syntax-check top-bdiis.yml
+- ansible-playbook --syntax-check worker-nodes.yml
+- ansible-playbook --syntax-check bashpocalypse_fix.yml
+- ansible-playbook --syntax-check community-shrink.yml
+- ansible-playbook --syntax-check discourse-saml.yml
+- ansible-playbook --syntax-check FutureGatewayDB.yml
+- ansible-playbook --syntax-check sam-nagios.yml
+- ansible-playbook --syntax-check ui-container.yml
+- ansible-playbook --syntax-check xrootd.yml
+- ansible-playbook --syntax-check bootstrap.yml
+- ansible-playbook --syntax-check core-services.yml
+- ansible-playbook --syntax-check docker-ui.yml
+- ansible-playbook --syntax-check harden.yml
+- ansible-playbook --syntax-check sanbi.yml
+- ansible-playbook --syntax-check ui.yml
+- ansible-playbook --syntax-check build2repo.yml
+- ansible-playbook --syntax-check cream-ces.yml
+- ansible-playbook --syntax-check etoken.yml
+- ansible-playbook --syntax-check idp-ldap.yml
+- ansible-playbook --syntax-check shibv3idp-ldap.yml
+- ansible-playbook --syntax-check update-crls.yml
+- ansible-playbook --syntax-check certificate-authority.yml
+- ansible-playbook --syntax-check cvmfs-client-2.2.yml
+- ansible-playbook --syntax-check FG-API-stack.yml
+- ansible-playbook --syntax-check LagosMachines.yml
+- ansible-playbook --syntax-check site-bdiis.yml
+- ansible-playbook --syntax-check voms.yml
+- ansible-playbook --syntax-check code-rade-build-slave.yml
+- ansible-playbook --syntax-check cvmfs-static.yml
+- ansible-playbook --syntax-check fg.yml
+- ansible-playbook --syntax-check liferay-csgf.yml
+- ansible-playbook --syntax-check site-check.yml
+- ansible-playbook --syntax-check WinterSchoolCI.yml
+
+env:
+  - INVENTORY=inventory.travis BOOTSTRAP_CONTAINER="aaroc/code-rade-sl6-ansible" SITE_BDII_CONTAINER="aaroc/site-bdii:centos6.8"
+  - INVENTORY=inventory.travis BOOTSTRAP_CONTAINER="aaroc/code-rade-u1404-ansible" SITE_BDII_CONTAINER="aaroc/site-bdii:centos6.8"
 notifications:
   email: false
   slack:
