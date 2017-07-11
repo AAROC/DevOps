@@ -87,3 +87,6 @@
 [submodule "Ansible/roles/AAROC.fg-ge"]
 	path = Ansible/roles/AAROC.fg-ge
 	url = https://github.com/AAROC/AAROC.fg-ge
+[submodule "Ansible/roles/UMD-role"]
+	path = Ansible/roles/UMD-role
+	url = https://github.com/AAROC/UMD-role
