@@ -17,6 +17,8 @@
 # metadata catalogues
 [lfc-servers]
 
+[glibrary-servers]
+
 # CVMFS repos
 [cvmfs-servers]
 apprepo.sagrid.ac.za
