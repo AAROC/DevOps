@@ -1,18 +1,24 @@
 # Contributing
 
-This repository has been created to document and excute the configuration of e-Science services at sites in the Africa-Arabian region. That's a big place ! We want to  be able to collate the experience and expertise of site administrators into a repository of knowledge that will enable sustainable development of distributed computing in Africa and Arabia. However, we also want to make sure that if people **want** to contribute, they **can**.
+This repository has been created to document and execute the configuration of e-Science services at sites in the Africa-Arabian region. That's a big place ! We want to  be able to collate the experience and expertise of site administrators into a repository of knowledge that will enable sustainable development of distributed computing in Africa and Arabia. However, we also want to make sure that if people **want** to contribute, they **can**.
 
 We chose github because the workflow of contibuting to repositories maintained within it is pretty standard; we don't want to re-invent the wheel of collaboraiton. So, if you have an idea, some code lying around, or you've noticed some error in the way we've done things, please ***send us a pull request***. Don't be shy, we're nice people :)
 
 # Reporting issues
 
-If you use this code (and we want you to :smile:), we consider it a moral responsibility to help improve it. The easiest way to do this is to report issues. While we can't guarantee support, we will do our best to respond to and close tickets that are assigned to the repo. You can do your bit by trying to stick to a few guidelines :
+If you use this code (and we want you to :smile:), we consider it a moral responsibility to help improve it. The easiest way to do this is to report issues. While we can't guarantee support, we will do our best to respond to and close tickets that are assigned to the repo.
+
+We have a public board where you can see our plans and status of issues in a pipeline :
+https://waffle.io/AAROC/devops
+
+You can do your bit by trying to stick to a few guidelines :
 
 ## Opening issues
 
   1. Are you having an Ansible problem ? Please google the issue at least once and check if it has been reported before somewhere. It at all possible, provide a reference to this in your ticket. This will save us a lot of time to diagnose the issue.
   1. Are you reporting an issue, or commenting on the code ? Issues go here. Commenting and discussing the code can be done with us at [slack](https://africa-arabia-roc.slack.com) (ask for an invite if you're not on the team) or at the discussion forum (use the [Sci-GaIA discussion forum](http://discourse.sci-gaia.eu) for now, then we'll move on).
   1. Please report one and only one problem per issue. This may seem like a lot of overhead initially, but it helps us in the future to find solutions that actually work.
+  1.
   2. If you have an actual error from an Ansible playbook, send us the full output of the relevant role.
     1. Do not just send the last task, with the error - we will  need some context
     2. Be sure to mention relevant variables that you may have used
@@ -66,4 +72,26 @@ If you want to try out something new and need this repo for code base, please cr
 
 # Planning and issues
 
-Please feel free to use the github issues to submit support requests or discuss issues. Please make sure that you mark issues accurately with the provided tags (*e.g.* questions should be specifically marked as such, *etc*.
+Please feel free to use the github issues to submit support requests or discuss issues. Please make sure that you mark issues accurately with the provided tags (*e.g.* questions should be specifically marked as such, *etc*.). We use the [Waffle board](https://waffle.io/AAROC/devops) for project planning.
+
+# Authoring and  Scholarly output
+
+We treat this repository as _a piece of research infrastructure_. It is the expression, in code, of services which enable science, and is part of a platform.
+We believe that platform needs to be properly communicated, citable, re-usable and that contributions should be attributable to the correct people.
+This is an aspirational statement, since doing this properly can  be quite difficult.
+
+This is also a very fast-moving field... we do what we can to keep up, and keep with the principles above.
+
+## Publication workflow
+
+The typical workflow is :
+
+  1. If a new service or feature is contributed, this should be included as a submodule in the relevant directory
+  2. An example of how this functionality is expressed in the real world should be then sent as a pull request.
+  3. A period of peer review is under taken once automated tests are completed.
+  4. The contributor is added to the `.zenodo.json` description of the repository.
+  5. A release is written describing the new functionality  - this should be the equivalent of a mini-article.
+
+## Post-publication peer review
+
+This is experimental. We created a [Journal](http://dx.doi.org/10.14293/S2199-1006.1.SOR-COMPSCI.CL4DW1A.v1) to add these publications. The journal is edited by @brucellino and reviewed by ... a bunch of people... 
