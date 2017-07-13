@@ -1,0 +1,29 @@
+---
+# small playbook to talk to OpenStack and make machines
+- hosts: localhost
+  tasks:
+    - name: get the cloud information
+      os_client_config:
+    - name: flava flava !
+      os_flavor_facts:
+    # - name: tell us bout the flava !
+    #   debug:
+    #     var: openstack_flavors
+    - name: "What's your name, flava ?"
+      debug:
+        var: item
+      with_items: "{{ openstack_flavors | json_query('[*].name') }}"
+    - name: Create a VM
+      os_server:
+        name: anisble_vm
+        state: present
+        image: CentOS7
+        image_exclude: deprecated
+        flavor_ram: 4096
+      register: newhost
+    - name: what is your name, newcomer ?
+      debug:
+        var: newhost
+
+# now you have openstack.clouds !
+# - name: Get the list of images
