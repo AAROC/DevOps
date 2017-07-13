@@ -15,15 +15,28 @@
       with_items: "{{ openstack_flavors | json_query('[*].name') }}"
     - name: Create a VM
       os_server:
-        name: anisble_vm
-        state: present
+        name: batman_vm
+        state: absent
         image: CentOS7
         image_exclude: deprecated
         flavor_ram: 4096
+        # userdata: |
+        #                     #cloud-config
+        #                     phone_home:
+        #                       url: https://hooks.slack.com/services/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
+        #                       post: [ {"channel": "#devops-foundry", "username": "webhookbot", "text": "I'm alive, bitches" ]
+        userdata: |
+                            #cloud-config
+                            packages:
+                              - curl
+                            runcmd:
+                              - [ curl -X POST --data-urlencode 'payload={"channel": "#devops-foundry", "username": "Ansible", "text": "I'm ALIVE  BITCHES", "icon_emoji": ":batman:"}' https://hooks.slack.com/services/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 ]
       register: newhost
-    - name: what is your name, newcomer ?
+    - name: Password, newcomer !
       debug:
-        var: newhost
-
+        var: newhost.openstack.adminPass
+    - name: Where my homies at ?
+      debug:
+        var: newhost.openstack.interface_ip
 # now you have openstack.clouds !
 # - name: Get the list of images
