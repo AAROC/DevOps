@@ -6,10 +6,10 @@
     - bootstrap
     - common
     - certificates
-    - umd
+    - UMD-role
     - ui
     - yaim
-    - cvmfs
+    - cvmfs-client-2.2
   vars_files:
     - "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
     - roles/common/vars/middleware/igtf.yml
