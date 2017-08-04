@@ -1,0 +1,20 @@
+{
+  "builders": [
+    {
+      "type": "openstack",
+      "availability_zone": "nova",
+      "ssh_username": "centos",
+      "image_name": "ui",
+      "source_image": "96df9d07-9f14-4205-a254-8bd6b4eb324b",
+      "flavor": "3",
+      "floating_ip_pool": "ext-net",
+      "networks": "d258bdd6-bb32-4c61-871e-84bb2f7744a8"
+    }
+  ],
+  "provisioners": [
+      {
+        "type": "ansible",
+        "playbook_file": "../../Ansible/ui.yml"
+      }
+    ]
+}
