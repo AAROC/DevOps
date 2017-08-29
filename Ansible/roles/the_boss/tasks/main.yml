@@ -1,0 +1,230 @@
+---
+# File: tasks/main.yml - Main tasks for ansible-hubot
+
+- include: install_packages_Debian.yml
+  become: True
+  become_user: root
+  tags: package
+  when: "ansible_os_family == 'Debian'"
+
+- include: install_packages_RedHat.yml
+  become: True
+  become_user: root
+  tags: package
+  when: "ansible_os_family == 'RedHat'"
+
+- name: Install Node Version Manager
+  become: True
+  become_user: "{{ hubot_admin }}"
+  git:
+    repo: https://github.com/creationix/nvm.git
+    dest: "{{ hubot_nvm_dir }}"
+    accept_hostkey: True
+  tags:
+    - node_nvm
+
+- name: Install Node.js
+  become: True
+  become_user: "{{ hubot_admin }}"
+  shell: "source {{ hubot_nvm_dir }}/nvm.sh && nvm install {{ hubot_node_version }}"
+  args:
+    creates: "{{ hubot_node_dir }}"
+    executable: /bin/bash
+  changed_when: False
+  tags:
+    - node_packages
+
+# FIXME
+# This is now broken due to:
+# https://github.com/ansible/ansible-modules-extras/issues/2128
+# 
+# - name: Install hubot global dependencies
+#   become: True
+#   become_user: "{{ hubot_admin }}"
+#   npm:
+#     name: "{{ item }}"
+#     executable: "{{ hubot_node_dir }}/bin/npm"
+#     path: "{{ hubot_dir }}"
+#     state: present
+#     global: yes
+#   with_items: "{{ hubot_global_node_packages }}"
+#   tags:
+#     - node_packages
+
+# Doing things the hard way™ until above is fixed
+- name: Install hubot global dependencies
+  become: True
+  become_user: "{{ hubot_admin }}"
+  shell: "source {{ hubot_nvm_dir }}/nvm.sh && nvm use {{ hubot_node_version }} && npm i -g {{ item }}"
+  args:
+    executable: /bin/bash
+  with_items: "{{ hubot_global_node_packages }}"
+  tags:
+    - node_packages
+
+- name: Hubot home
+  file: "path={{ hubot_dir }} state=directory owner={{ hubot_admin }}"
+
+- name: Assemble Hubot
+  become: True
+  become_user: "{{ hubot_admin }}"
+  shell: "source {{ hubot_nvm_dir }}/nvm.sh && nvm use {{ hubot_node_version }} && echo 'n' | yo hubot --adapter={{ hubot_adapter }} --owner={{ hubot_owner }} --name={{ hubot_identity }} --description={{ hubot_description }} --defaults chdir={{ hubot_dir }}"
+  args:
+    executable: /bin/bash
+  changed_when: False
+
+# FIXME
+# This is now broken due to:
+# https://github.com/ansible/ansible-modules-extras/issues/2128
+# 
+# - name: Install hubot Node dependencies
+#   become: True
+#   become_user: "{{ hubot_admin }}"
+#   npm:
+#     name: "{{ item }}"
+#     executable: "{{ hubot_node_dir }}/bin/npm"
+#     path: "{{ hubot_dir }}"
+#     state: present
+#   with_items: "{{ hubot_node_packages }}"
+#   tags:
+#     - node_packages
+
+# Doing things the hard way™ until above is fixed
+- name: Install hubot Node dependencies
+  become: True
+  become_user: "{{ hubot_admin }}"
+  shell: "source {{ hubot_nvm_dir }}/nvm.sh && nvm use {{ hubot_node_version }} && npm i {{ item }}"
+  args:
+    executable: /bin/bash
+  with_items: "{{ hubot_node_packages }}"
+  tags:
+    - node_packages
+
+- name: Define Hubot environment
+  become: True
+  become_user: "{{ hubot_admin }}"
+  template:
+    src: hubot.env.j2
+    dest: "{{ hubot_dir }}/{{ hubot_identity }}.env"
+  tags:
+    - hubot_environment
+  notify:
+    - restart hubot
+
+- name: Install Hubot start script
+  become: True
+  become_user: "{{ hubot_admin }}"
+  template:
+    src: start-hubot.sh.j2
+    dest: "{{ hubot_dir }}/bin/start-hubot"
+    mode: "0744"
+
+- name: Install custom Hubot scripts
+  become: False
+  copy:
+    src: "scripts/{{ item }}"
+    dest: "{{ hubot_dir }}/scripts/{{ item }}"
+    owner: "{{ hubot_admin }}"
+    mode: "0644"
+  with_items: "{{ hubot_custom_scripts }}"
+  when: hubot_custom_scripts is defined
+  notify:
+    - restart hubot
+  tags:
+    - hubot_scripts
+
+- name: Install hubot external git scripts
+  become: False
+  git: "repo={{ item.repo_url }} version={{ item.version | default('master') }} dest={{ hubot_dir }}/node_modules/{{ item.name }}"
+  with_items: "{{ hubot_external_git_scripts }}"
+  when: hubot_external_git_scripts is defined
+  notify:
+    - restart hubot
+  tags:
+    - hubot_scripts
+
+- name: Configure Hubot external scripts
+  become: True
+  become_user: root
+  template:
+    src: external-scripts.json.j2
+    dest: "{{ hubot_dir }}/external-scripts.json"
+    owner: "{{ hubot_admin }}"
+    group: "{{ hubot_admin }}"
+    mode: "0644"
+  when: hubot_external_scripts is defined
+  notify:
+    - restart hubot
+  tags: hubot_scripts
+
+- name: Hubot log directory
+  file:
+    path: "{{ hubot_dir }}/log"
+    state: directory
+    owner: "{{ hubot_admin }}"
+    group: "{{ hubot_admin }}"
+  tags:
+    - hubot_environment
+
+- name: Hubot home ownership
+  become: True
+  become_user: root
+  file:
+    path: "{{ item }}"
+    owner: "{{ hubot_admin }}"
+    group: "{{ hubot_admin }}"
+    recurse: "yes"
+  with_items: "{{ hubot_all_dirs }}"
+  tags:
+    - hubot_environment
+
+- name: Start Redis
+  become: True
+  become_user: root
+  service:
+    name: "{{ redis_server }}"
+    state: started
+
+- name: Install service init script
+  become: True
+  become_user: root
+  template:
+    src: hubot.init.j2
+    dest: /etc/init.d/hubot
+    mode: "0755"
+  when: (ansible_os_family == "RedHat" and ansible_distribution_major_version < "7")
+  notify:
+    - enable hubot
+    - restart hubot
+
+- name: Install Upstart script
+  become: True
+  become_user: root
+  template:
+    src: hubot.conf.j2
+    dest: /etc/init/hubot.conf
+    mode: "0755"
+  when: (ansible_os_family == "Debian" and ansible_distribution_major_version < "15")
+  notify:
+    - enable hubot
+    - restart hubot
+  tags:
+    - hubot_service
+
+- name: Install systemd unit
+  become: True
+  become_user: root
+  template:
+    src: hubot.service.j2
+    dest: /etc/systemd/system/hubot.service
+    mode: "0755"
+  when: (ansible_os_family == "Debian" and ansible_distribution_major_version >= "15") or
+        (ansible_os_family == "RedHat" and ansible_distribution_major_version > "6")
+  notify:
+    - enable hubot
+    - restart hubot
+  tags:
+    - hubot_service
+
+- name: Start Hubot
+  service: name=hubot state=started

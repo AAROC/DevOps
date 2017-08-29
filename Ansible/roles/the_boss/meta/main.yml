@@ -1,0 +1,22 @@
+---
+galaxy_info:
+  author: Brian Shumate
+  description: "Role for Hubot, a delightful chat bot"
+  company:
+  license: Apache 2
+  min_ansible_version: 1.9
+  platforms:
+  - name: EL
+    versions:
+    - 6
+    - 7
+  - name: Ubuntu
+    versions:
+    - precise
+    - quantal
+    - raring
+    - saucy
+    - trusty
+  galaxy_tags:
+  - networking
+dependencies: []
