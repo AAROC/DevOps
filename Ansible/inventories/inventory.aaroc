@@ -58,7 +58,7 @@ discourse.sci-gaia.eu ansible_ssh_port=4422 ansible_ssh_user=discourse
 212.189.145.34 ansible_ssh_private_key_file=creds.pem ansible_ssh_user=cloudadm
 
 [bots]
-151.97.41.105 
+the_boss ansible_host=151.97.41.105 ansible_ssh_user=ansible
 
 [CentOS:children]
 voms-servers
