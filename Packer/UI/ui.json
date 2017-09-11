@@ -14,7 +14,9 @@
   "provisioners": [
       {
         "type": "ansible",
-        "playbook_file": "../../Ansible/ui.yml"
+        "playbook_file": "../../Ansible/ui.yml",
+        "empty_groups": "UIs",
+        "inventory_directory": "../../Ansible/inventories/"
       }
     ]
 }
