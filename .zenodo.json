@@ -1,0 +1,86 @@
+{
+  "id": "https://doi.org/10.5281/zenodo.59296",
+  "doi": "10.5281/zenodo.59296",
+  "creator": [
+    {
+      "type": "Person",
+      "name": "Bruce Becker",
+      "givenName": "Bruce",
+      "familyName": "Becker"
+    },
+    {
+      "type": "Person",
+      "name": "Marco Fargetta",
+      "givenName": "Marco",
+      "familyName": "Fargetta"
+    },
+    {
+      "type": "Person",
+      "name": "Chris Lee",
+      "givenName": "Chris",
+      "familyName": "Lee"
+    },
+    {
+      "type": "Person",
+      "name": "Paschalis Korosoglou",
+      "givenName": "Paschalis",
+      "familyName": "Korosoglou"
+    },
+    {
+      "type": "Person",
+      "name": "Pavlos Daoglou",
+      "givenName": "Pavlos",
+      "familyName": "Daoglou"
+    },
+    {
+      "name": "Rahimbouchra"
+    },
+    {
+      "name": "Sakhile Masoka"
+    },
+    {
+      "type": "Person",
+      "name": "Georgios Kaklamanos",
+      "givenName": "Georgios",
+      "familyName": "Kaklamanos"
+    },
+    {
+      "type": "Person",
+      "name": "Sean ",
+      "givenName": "Sean"
+    },
+    {
+      "name": "Qasims"
+    },
+    {
+      "type": "Person",
+      "name": "Gerrit Botha",
+      "givenName": "Gerrit",
+      "familyName": "Botha"
+    },
+    {
+      "name": "Ashrafkasem"
+    },
+    {
+      "type": "Person",
+      "name": "The Gitter Badger",
+      "givenName": "The Gitter",
+      "familyName": "Badger"
+    }
+  ],
+  "title": "Devops: Final Shibboleth-V2 Identity Provider Release",
+  "publisher": "Zenodo",
+  "resource_type_general": "Software",
+  "resource_type": "Software",
+  "date_published": "2016-08-03",
+  "publication_year": 2016,
+  "rights": {
+    "name": "Open Access"
+  },
+  "description": {
+    "type": "Abstract",
+    "text": "This release contains several contributions, but focusses on the stabilisation of the playbook and roles providing  the Shibboleth IdP (V2) functionality. Several fixes have been made to ensure that the Ansible code in the roles is updated to Ansible-2.x syntax. Work has also been done to put in place commerical certificates if they are present, right from the start, and  deploying self-signed certificates as a default fall-back approach.\n\nSome work has been done to move the sensitive ldap role variables to the vault-encrypted passwords file for the group (site) that the services fall under. \n\nThe release is not \"containerised\", meaning that there is no use yet of Ansible-Container."
+  },
+  "schemaVersion": "http://datacite.org/schema/kernel-3",
+  "provider": "DataCite"
+}
