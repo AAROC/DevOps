@@ -1,0 +1,7 @@
+---
+# Playbook to deploy the Boss, a slackbot to help us work. Born to Run.
+
+- name: Deploy the Boss
+  hosts: the_boss
+  roles:
+  - {role: the_boss}
