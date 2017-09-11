@@ -23,7 +23,7 @@ ui.ufs.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n UI'
 
 # Site BDII
 [site-bdiis]
-grid-bdii.ufs.ac.za needs_certificate='false' emi_service='BDII_site' yaim_options='-n BDII_site'
+#grid-bdii.ufs.ac.za needs_certificate='false' emi_service='BDII_site' yaim_options='-n BDII_site'
 
 # CREAM CE's
 [cream-ces]
@@ -39,7 +39,7 @@ grid-se.ufs.ac.za needs_certificate='true'
 # Worker Nodes
 [worker-nodes]
 
-gnode-1-1 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
+#gnode-1-1 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
 
 ############ grouping and children ############
 [site-services:children]
@@ -67,3 +67,6 @@ worker-nodes
 user-interfaces
 
 ############################ END #########################
+
+[CODE-RADE]
+ci.sagrid.ac.za ansible_user=ansible
