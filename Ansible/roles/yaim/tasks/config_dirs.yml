@@ -8,7 +8,7 @@
 
 - name: Create siteinfo directory
   file:
-    path: "/opt/glite/yaim/etc/{{ site_name | default(generic) }}/siteinfo"
+    path: "/opt/glite/yaim/etc/{{ site_name | default('generic') }}/siteinfo"
     owner: root
     group: root
     mode: 0750
@@ -17,7 +17,7 @@
     - yaim
 - name: Create VOs subdirectory
   file:
-    path: "/opt/glite/yaim/etc/{{ site_name | default(generic) }}/siteinfo/vo.d"
+    path: "/opt/glite/yaim/etc/{{ site_name | default('generic') }}/siteinfo/vo.d"
     owner: root
     group: root
     mode: 0770
@@ -27,7 +27,7 @@
 
 - name: Create siteinfo/services directory and VOs subdirectory
   file:
-    path: "/opt/glite/yaim/etc/{{ site_name | default(generic) }}/siteinfo/services"
+    path: "/opt/glite/yaim/etc/{{ site_name | default('generic') }}/siteinfo/services"
     owner: root
     group: root
     mode: 0770

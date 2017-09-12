@@ -1,5 +1,5 @@
 ---
-- hosts: UIs
+- hosts: ui
   become_user: root
   become: true
   roles:

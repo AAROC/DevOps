@@ -1,5 +1,5 @@
 [ci]
-ci.sagrid.ac.za
+ci.sagrid.ac.za ansible_ssh_user=ansible
 [cvmfs-servers]
 apprepo.sagrid.ac.za
 [build-slaves]

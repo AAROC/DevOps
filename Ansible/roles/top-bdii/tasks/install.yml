@@ -1,5 +1,5 @@
 - name: Install emi top BDII software
-  yum:
+  package:
     name: emi-bdii-top
     state: latest
   tags:
@@ -7,7 +7,7 @@
     - install
 
 - name: Install ruby (we will need it)
-  yum:
+  package:
     name: ruby
     state: present
   tags:

@@ -4,6 +4,8 @@
 #
 ############## Cluster oriented grouping #############
 
+# Web stuff 
+
 [ldap-servers]
 ldap.sagrid.ac.za needs_certificate=false
 
@@ -13,6 +15,14 @@ idp.sagrid.ac.za needs_certificate=false
 [identity-all:children]
 ldap-servers
 shibboleth-idps
+
+
+[CODE-RADE]
+ci.sagrid.ac.za ansible_user=ansible
+
+[science-gateways]
+science-gateway.sagrid.ac.za
+# Grid stuff
 
 [user-interfaces]
 ui.ufs.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n UI'
@@ -67,6 +77,3 @@ worker-nodes
 user-interfaces
 
 ############################ END #########################
-
-[CODE-RADE]
-ci.sagrid.ac.za ansible_user=ansible

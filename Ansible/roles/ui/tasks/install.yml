@@ -1,2 +1,12 @@
 ---
-- include: "install-{{ ansible_os_family }}.yml"
+- name: Install emi site UI software
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - emi-ui
+    - glite-ce-monitor-cli
+    - fts-client
+  tags:
+    - UI
+    - install
