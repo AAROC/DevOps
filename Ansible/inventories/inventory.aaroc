@@ -41,6 +41,10 @@ voms.sagrid.ac.za needs_certificate='true' ansible_user=ansible
 argus.c4.csir.co.za emi_service='ARGUS' yaim_options='-n ARGUS_server' needs_certificate='true'
 
 # monitoring
+[dashboard]
+151.97.41.66 ansible_user=drillbot
+[monitor]
+151.97.41.68 ansible_user=drillbot
 
 # Grid Site Services
 [site-bdiis]
