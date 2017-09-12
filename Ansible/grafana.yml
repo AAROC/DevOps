@@ -1,0 +1,5 @@
+---
+- name: Install grafana
+  hosts: dashboard
+  roles:
+  - grafana
