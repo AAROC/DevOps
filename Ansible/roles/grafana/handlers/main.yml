@@ -1,2 +1,7 @@
 ---
 # handlers file for grafana
+- name: start service
+  service:
+    name: grafana-server
+    state: started
+    enabled: yes

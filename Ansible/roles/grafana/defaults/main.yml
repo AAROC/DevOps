@@ -1,2 +1,12 @@
 ---
 # defaults file for grafana
+grafana_version: 
+  RedHat: 4.4.3-1
+  Debian: 4.4.3
+base_package:
+  RedHat: "https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-{{ grafana_version[ansible_os_family] }}.x86_64.rpm"
+  CentOS: "https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana_{{ grafana_version[ansible_os_family]}}_amd64.deb"
+prerequisites:
+  - fontconfig
+  - 'freetype*'
+  - urw-fonts 
