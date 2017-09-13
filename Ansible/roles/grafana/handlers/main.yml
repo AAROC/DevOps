@@ -4,4 +4,5 @@
   service:
     name: grafana-server
     state: started
-    enabled: yes
+    enabled: true
+    restarted: true
