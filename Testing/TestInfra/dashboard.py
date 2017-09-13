@@ -9,7 +9,7 @@ def test_init(host):
     assert file.exists
     assert file.user == 'root'
     assert file.group == 'grafana'
-    assert file.mode == 640
+    assert oct(file.mode) == '0640'
 
 
 
