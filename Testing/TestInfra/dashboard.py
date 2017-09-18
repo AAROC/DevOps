@@ -17,4 +17,4 @@ def test_service(host):
     service=host.service('grafana-server')
     assert service.is_running
     assert service.is_enabled
-    assert host.socket('tcp://3000').is_listening
+    assert host.socket('tcp://192.168.0.117:3000').is_listening
