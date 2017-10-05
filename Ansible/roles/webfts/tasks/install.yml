@@ -21,4 +21,5 @@
   package:
     name: "{{ item }}"
     state: present
-  when: optional_packages == true
+  with_items: "{{ optional_packages }}"
+  when: enable_optional_packages
