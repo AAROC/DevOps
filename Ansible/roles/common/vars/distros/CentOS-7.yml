@@ -1,7 +1,7 @@
 ---
 yum_flags: " "
 epel_release_url: http://mirror.ufs.ac.za/fedora-epel/7/x86_64/e
-epel_release_name: epel-release-7-9.noarch.rpm
+epel_release_name: epel-release-7-10.noarch.rpm
 base_packages:
   - python-simplejson
   - libselinux-python
