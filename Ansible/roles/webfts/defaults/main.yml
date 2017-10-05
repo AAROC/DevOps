@@ -1,0 +1,35 @@
+---
+# defaults file for webfts
+
+# the base url of the various repo files
+repo_url: http://grid-deployment.web.cern.ch/grid-deployment/dms/fts3/repos/
+
+# The FTS version.
+# See https://grid-deployment.web.cern.ch/grid-deployment/dms/fts3/docs/docs/install/fts3.html
+# This could be  :
+# - prod-el
+# - rc-el7
+# - continuous-el7
+fts_version: prod-el7
+
+fts_packages:
+ - fts-server 
+ - fts-client 
+ - fts-rest 
+ - fts-monitoring
+ - fts-server-selinux 
+ - fts-rest-selinux 
+ - fts-monitoring-selinux
+
+# this could be
+# - fts-mysql
+# - fts-oracle
+fts_db: fts-mysql
+
+#  Optional packages for the service
+# - fts-msg : message broker
+# - fts-infosys : bdii for the service
+enable_optional_packages: true
+optional_packages:
+- fts-msg
+- fts-infosys

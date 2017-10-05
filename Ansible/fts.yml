@@ -3,10 +3,10 @@
   become: true
   become_user: root
   roles:
-    - bootstrap
-    - common
-    - certificates
-    - fts
+    - {name: bootstrap, tags: bootstrap}
+    - {name: common, tags: common}
+    - {name: certificates, tags: certificates}
+    - {name: webfts, tags: webfts}
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/igtf.yml

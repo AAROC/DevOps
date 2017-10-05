@@ -1,0 +1,24 @@
+# Web FTS installation tasks.
+---
+- name: Enable the FTS production repo
+  get_url: 
+    url: '{{ repo_url }}/fts3-{{ fts_version }}.repo'
+    dest: '/etc/yum.repos.d/fts3-{{ fts_version }}.repo'
+  
+
+- name: Ensure base packages installed
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ fts_packages }}"
+
+- name: Ensure DB present
+  package: 
+    name: "{{ fts_db }}"
+    state: present
+
+- name: Apply optional packages
+  package:
+    name: "{{ item }}"
+    state: present
+  when: optional_packages == true
