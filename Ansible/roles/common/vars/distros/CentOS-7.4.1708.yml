@@ -1,0 +1,19 @@
+---
+yum_flags: " "
+epel_release_url: http://mirror.ufs.ac.za/fedora-epel/7/x86_64/e
+epel_release_name: epel-release-7-10.noarch.rpm
+base_packages:
+  - python-simplejson
+  - libselinux-python
+  - iptables
+  - mlocate
+  - initscripts
+  - chkconfig
+  - openssh-clients
+  - which
+  - yum-priorities
+  - yum-protectbase
+  - vim-minimal
+# name of the java 6 and 7 packages
+java6_name: java-1.6.0-openjdk
+java7_name: java-1.7.0-openjdk
