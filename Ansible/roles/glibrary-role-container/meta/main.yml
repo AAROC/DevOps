@@ -1,0 +1,21 @@
+galaxy_info:
+  author: Bruce Becker
+  description: A container-enabled role for glibrary metadata catalogue
+  company: C.S.I.R. Meraka Institute
+  license: Apache-2.0
+
+  min_ansible_container_version: 0.2.0
+
+  platforms:
+  - name: Debian
+    versions:
+      - squeeze
+
+  galaxy_tags:
+    - container
+    - node
+    - mongo
+    - database
+    - grid
+    - cloud
+dependencies: []

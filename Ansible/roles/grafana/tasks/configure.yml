@@ -1,0 +1,11 @@
+---
+# Grafana server configuration
+- name: Template server ini
+  template:
+    src: etc/grafana/grafana.ini.j2
+    dest: /etc/grafana/grafana.ini
+    mode: 0640
+    owner: root
+    group: grafana
+  notify:
+   - "start service"

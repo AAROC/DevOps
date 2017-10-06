@@ -5,4 +5,3 @@
     name: grafana-server
     state: started
     enabled: true
-    restarted: true

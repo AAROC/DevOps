@@ -1,0 +1,17 @@
+[jumpbox]
+146.64.74.15 ansible_ssh_user=bbecker
+
+[controllers]
+
+10.10.50.6 ansible_ssh_user=ansible
+10.10.50.7 ansible_ssh_user=bbecker
+10.10.50.8 ansible_ssh_user=bbecker
+
+[storage-controllers]
+
+10.10.50.9
+10.10.50.10
+10.10.50.11
+10.10.50.12
+10.10.50.13
+10.10.50.14

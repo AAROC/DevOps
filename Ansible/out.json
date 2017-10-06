@@ -1,0 +1,1649 @@
+{
+  "_meta": {
+    "hostvars": {
+      "387fff23-5961-4713-bc72-a2161fe89ea6": {
+        "ansible_host": "151.97.41.105", 
+        "ansible_ssh_host": "151.97.41.105", 
+        "openstack": {
+          "OS-DCF:diskConfig": "MANUAL", 
+          "OS-EXT-AZ:availability_zone": "nova", 
+          "OS-EXT-STS:power_state": 1, 
+          "OS-EXT-STS:task_state": null, 
+          "OS-EXT-STS:vm_state": "active", 
+          "OS-SRV-USG:launched_at": "2017-05-19T10:15:26.000000", 
+          "OS-SRV-USG:terminated_at": null, 
+          "accessIPv4": "151.97.41.105", 
+          "accessIPv6": "", 
+          "addresses": {
+            "aarroc-net": [
+              {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:bc:9e:4e", 
+                "OS-EXT-IPS:type": "fixed", 
+                "addr": "192.168.0.14", 
+                "version": 4
+              }, 
+              {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:bc:9e:4e", 
+                "OS-EXT-IPS:type": "floating", 
+                "addr": "151.97.41.105", 
+                "version": 4
+              }
+            ]
+          }, 
+          "adminPass": null, 
+          "az": "nova", 
+          "cloud": "envvars", 
+          "config_drive": "", 
+          "created": "2017-05-19T10:15:30Z", 
+          "disk_config": "MANUAL", 
+          "flavor": {
+            "id": "3", 
+            "name": "m1.medium"
+          }, 
+          "has_config_drive": false, 
+          "hostId": "9df8beae10ac123e8cb09fb94d515c94dd924db7b1749be4bed2d819", 
+          "host_id": "9df8beae10ac123e8cb09fb94d515c94dd924db7b1749be4bed2d819", 
+          "id": "387fff23-5961-4713-bc72-a2161fe89ea6", 
+          "image": {
+            "id": "e0b50e88-f984-4539-bdf4-3e28ff974d90", 
+            "name": "Ubuntu 16.04 64-bit"
+          }, 
+          "interface_ip": "151.97.41.105", 
+          "key_name": null, 
+          "launched_at": "2017-05-19T10:15:26.000000", 
+          "location": {
+            "cloud": "envvars", 
+            "project": {
+              "domain_id": null, 
+              "domain_name": null, 
+              "id": "3588be41a2114817ada7021de680715f", 
+              "name": "AAROC"
+            }, 
+            "region_name": "regionOne", 
+            "zone": "nova"
+          }, 
+          "metadata": {}, 
+          "name": "bots", 
+          "networks": {}, 
+          "os-extended-volumes:volumes_attached": [], 
+          "power_state": 1, 
+          "private_v4": "192.168.0.14", 
+          "progress": 0, 
+          "project_id": "3588be41a2114817ada7021de680715f", 
+          "properties": {
+            "OS-DCF:diskConfig": "MANUAL", 
+            "OS-EXT-AZ:availability_zone": "nova", 
+            "OS-EXT-STS:power_state": 1, 
+            "OS-EXT-STS:task_state": null, 
+            "OS-EXT-STS:vm_state": "active", 
+            "OS-SRV-USG:launched_at": "2017-05-19T10:15:26.000000", 
+            "OS-SRV-USG:terminated_at": null, 
+            "os-extended-volumes:volumes_attached": []
+          }, 
+          "public_v4": "151.97.41.105", 
+          "public_v6": "", 
+          "region": "regionOne", 
+          "security_groups": [
+            {
+              "description": "default", 
+              "id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+              "location": {
+                "cloud": "envvars", 
+                "project": {
+                  "domain_id": null, 
+                  "domain_name": null, 
+                  "id": "3588be41a2114817ada7021de680715f", 
+                  "name": "AAROC"
+                }, 
+                "region_name": "regionOne", 
+                "zone": null
+              }, 
+              "name": "default", 
+              "project_id": "3588be41a2114817ada7021de680715f", 
+              "properties": {}, 
+              "security_group_rules": [
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "03c26a3d-4b77-40b8-a0d0-f68313645e4e", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 22, 
+                  "port_range_min": 22, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "1acce09b-c141-4d97-8774-47d0ca076656", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 4422, 
+                  "port_range_min": 4422, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "193.206.208.169/32", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "48211f85-b3a3-4a2b-8fcd-7f80e73c2f10", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 4422, 
+                  "port_range_min": 4422, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "193.206.208.201/32", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "54efc382-91cd-4913-8b34-473288b61220", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 80, 
+                  "port_range_min": 80, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "5e921453-9b99-44d2-ae80-feb9a2436093", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 8443, 
+                  "port_range_min": 8443, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "b50f6643-291f-45f2-8cef-4d4d3dd73e3b", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 443, 
+                  "port_range_min": 443, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "c80038b1-2f01-44df-b551-c6e883919dae", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 8080, 
+                  "port_range_min": 8080, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }
+              ], 
+              "tenant_id": "3588be41a2114817ada7021de680715f"
+            }
+          ], 
+          "status": "ACTIVE", 
+          "task_state": null, 
+          "tenant_id": "3588be41a2114817ada7021de680715f", 
+          "terminated_at": null, 
+          "updated": "2017-05-19T10:15:38Z", 
+          "user_id": "c8eac61881e64287a93de14513af3f27", 
+          "vm_state": "active", 
+          "volumes": []
+        }
+      }, 
+      "584703b3-2967-4a3e-b75a-49560286b223": {
+        "ansible_host": "151.97.41.66", 
+        "ansible_ssh_host": "151.97.41.66", 
+        "openstack": {
+          "OS-DCF:diskConfig": "MANUAL", 
+          "OS-EXT-AZ:availability_zone": "nova", 
+          "OS-EXT-STS:power_state": 1, 
+          "OS-EXT-STS:task_state": null, 
+          "OS-EXT-STS:vm_state": "active", 
+          "OS-SRV-USG:launched_at": "2017-07-31T16:15:39.000000", 
+          "OS-SRV-USG:terminated_at": null, 
+          "accessIPv4": "151.97.41.66", 
+          "accessIPv6": "", 
+          "addresses": {
+            "aarroc-net": [
+              {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:63:a3:53", 
+                "OS-EXT-IPS:type": "fixed", 
+                "addr": "192.168.0.50", 
+                "version": 4
+              }, 
+              {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:63:a3:53", 
+                "OS-EXT-IPS:type": "floating", 
+                "addr": "151.97.41.66", 
+                "version": 4
+              }
+            ]
+          }, 
+          "adminPass": null, 
+          "az": "nova", 
+          "cloud": "envvars", 
+          "config_drive": "", 
+          "created": "2017-07-31T16:15:53Z", 
+          "disk_config": "MANUAL", 
+          "flavor": {
+            "id": "3", 
+            "name": "m1.medium"
+          }, 
+          "has_config_drive": false, 
+          "hostId": "9df8beae10ac123e8cb09fb94d515c94dd924db7b1749be4bed2d819", 
+          "host_id": "9df8beae10ac123e8cb09fb94d515c94dd924db7b1749be4bed2d819", 
+          "id": "584703b3-2967-4a3e-b75a-49560286b223", 
+          "image": {
+            "id": "41d944c3-d5d3-4f36-844e-8f0b0ffd1243", 
+            "name": "CentOS7"
+          }, 
+          "interface_ip": "151.97.41.66", 
+          "key_name": null, 
+          "launched_at": "2017-07-31T16:15:39.000000", 
+          "location": {
+            "cloud": "envvars", 
+            "project": {
+              "domain_id": null, 
+              "domain_name": null, 
+              "id": "3588be41a2114817ada7021de680715f", 
+              "name": "AAROC"
+            }, 
+            "region_name": "regionOne", 
+            "zone": "nova"
+          }, 
+          "metadata": {}, 
+          "name": "cvmfs-test-client-centos7", 
+          "networks": {}, 
+          "os-extended-volumes:volumes_attached": [], 
+          "power_state": 1, 
+          "private_v4": "192.168.0.50", 
+          "progress": 0, 
+          "project_id": "3588be41a2114817ada7021de680715f", 
+          "properties": {
+            "OS-DCF:diskConfig": "MANUAL", 
+            "OS-EXT-AZ:availability_zone": "nova", 
+            "OS-EXT-STS:power_state": 1, 
+            "OS-EXT-STS:task_state": null, 
+            "OS-EXT-STS:vm_state": "active", 
+            "OS-SRV-USG:launched_at": "2017-07-31T16:15:39.000000", 
+            "OS-SRV-USG:terminated_at": null, 
+            "os-extended-volumes:volumes_attached": []
+          }, 
+          "public_v4": "151.97.41.66", 
+          "public_v6": "", 
+          "region": "regionOne", 
+          "security_groups": [
+            {
+              "description": "default", 
+              "id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+              "location": {
+                "cloud": "envvars", 
+                "project": {
+                  "domain_id": null, 
+                  "domain_name": null, 
+                  "id": "3588be41a2114817ada7021de680715f", 
+                  "name": "AAROC"
+                }, 
+                "region_name": "regionOne", 
+                "zone": null
+              }, 
+              "name": "default", 
+              "project_id": "3588be41a2114817ada7021de680715f", 
+              "properties": {}, 
+              "security_group_rules": [
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "03c26a3d-4b77-40b8-a0d0-f68313645e4e", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 22, 
+                  "port_range_min": 22, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "1acce09b-c141-4d97-8774-47d0ca076656", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 4422, 
+                  "port_range_min": 4422, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "193.206.208.169/32", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "48211f85-b3a3-4a2b-8fcd-7f80e73c2f10", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 4422, 
+                  "port_range_min": 4422, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "193.206.208.201/32", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "54efc382-91cd-4913-8b34-473288b61220", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 80, 
+                  "port_range_min": 80, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "5e921453-9b99-44d2-ae80-feb9a2436093", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 8443, 
+                  "port_range_min": 8443, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "b50f6643-291f-45f2-8cef-4d4d3dd73e3b", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 443, 
+                  "port_range_min": 443, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "c80038b1-2f01-44df-b551-c6e883919dae", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 8080, 
+                  "port_range_min": 8080, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }
+              ], 
+              "tenant_id": "3588be41a2114817ada7021de680715f"
+            }
+          ], 
+          "status": "ACTIVE", 
+          "task_state": null, 
+          "tenant_id": "3588be41a2114817ada7021de680715f", 
+          "terminated_at": null, 
+          "updated": "2017-07-31T16:16:01Z", 
+          "user_id": "c8eac61881e64287a93de14513af3f27", 
+          "vm_state": "active", 
+          "volumes": []
+        }
+      }, 
+      "7fdfd13f-007a-4254-b5aa-5a7ead3c064e": {
+        "ansible_host": "151.97.41.47", 
+        "ansible_ssh_host": "151.97.41.47", 
+        "openstack": {
+          "OS-DCF:diskConfig": "AUTO", 
+          "OS-EXT-AZ:availability_zone": "nova", 
+          "OS-EXT-STS:power_state": 1, 
+          "OS-EXT-STS:task_state": null, 
+          "OS-EXT-STS:vm_state": "active", 
+          "OS-SRV-USG:launched_at": "2016-12-16T13:13:20.000000", 
+          "OS-SRV-USG:terminated_at": null, 
+          "accessIPv4": "151.97.41.47", 
+          "accessIPv6": "", 
+          "addresses": {
+            "aarroc-net": [
+              {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:49:42:de", 
+                "OS-EXT-IPS:type": "fixed", 
+                "addr": "192.168.0.4", 
+                "version": 4
+              }, 
+              {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:49:42:de", 
+                "OS-EXT-IPS:type": "floating", 
+                "addr": "151.97.41.47", 
+                "version": 4
+              }
+            ]
+          }, 
+          "adminPass": null, 
+          "az": "nova", 
+          "cloud": "envvars", 
+          "config_drive": "", 
+          "created": "2016-12-16T13:12:00Z", 
+          "disk_config": "AUTO", 
+          "flavor": {
+            "id": "3", 
+            "name": "m1.medium"
+          }, 
+          "has_config_drive": false, 
+          "hostId": "9df8beae10ac123e8cb09fb94d515c94dd924db7b1749be4bed2d819", 
+          "host_id": "9df8beae10ac123e8cb09fb94d515c94dd924db7b1749be4bed2d819", 
+          "id": "7fdfd13f-007a-4254-b5aa-5a7ead3c064e", 
+          "image": {
+            "id": "88bad1bb-2f36-4496-ad3d-5211d4e89e71"
+          }, 
+          "interface_ip": "151.97.41.47", 
+          "key_name": null, 
+          "launched_at": "2016-12-16T13:13:20.000000", 
+          "location": {
+            "cloud": "envvars", 
+            "project": {
+              "domain_id": null, 
+              "domain_name": null, 
+              "id": "3588be41a2114817ada7021de680715f", 
+              "name": "AAROC"
+            }, 
+            "region_name": "regionOne", 
+            "zone": "nova"
+          }, 
+          "metadata": {}, 
+          "name": "perun", 
+          "networks": {}, 
+          "os-extended-volumes:volumes_attached": [], 
+          "power_state": 1, 
+          "private_v4": "192.168.0.4", 
+          "progress": 0, 
+          "project_id": "3588be41a2114817ada7021de680715f", 
+          "properties": {
+            "OS-DCF:diskConfig": "AUTO", 
+            "OS-EXT-AZ:availability_zone": "nova", 
+            "OS-EXT-STS:power_state": 1, 
+            "OS-EXT-STS:task_state": null, 
+            "OS-EXT-STS:vm_state": "active", 
+            "OS-SRV-USG:launched_at": "2016-12-16T13:13:20.000000", 
+            "OS-SRV-USG:terminated_at": null, 
+            "os-extended-volumes:volumes_attached": []
+          }, 
+          "public_v4": "151.97.41.47", 
+          "public_v6": "", 
+          "region": "regionOne", 
+          "security_groups": [
+            {
+              "description": "default", 
+              "id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+              "location": {
+                "cloud": "envvars", 
+                "project": {
+                  "domain_id": null, 
+                  "domain_name": null, 
+                  "id": "3588be41a2114817ada7021de680715f", 
+                  "name": "AAROC"
+                }, 
+                "region_name": "regionOne", 
+                "zone": null
+              }, 
+              "name": "default", 
+              "project_id": "3588be41a2114817ada7021de680715f", 
+              "properties": {}, 
+              "security_group_rules": [
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "03c26a3d-4b77-40b8-a0d0-f68313645e4e", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 22, 
+                  "port_range_min": 22, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "1acce09b-c141-4d97-8774-47d0ca076656", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 4422, 
+                  "port_range_min": 4422, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "193.206.208.169/32", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "48211f85-b3a3-4a2b-8fcd-7f80e73c2f10", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 4422, 
+                  "port_range_min": 4422, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "193.206.208.201/32", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "54efc382-91cd-4913-8b34-473288b61220", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 80, 
+                  "port_range_min": 80, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "5e921453-9b99-44d2-ae80-feb9a2436093", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 8443, 
+                  "port_range_min": 8443, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "b50f6643-291f-45f2-8cef-4d4d3dd73e3b", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 443, 
+                  "port_range_min": 443, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "c80038b1-2f01-44df-b551-c6e883919dae", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 8080, 
+                  "port_range_min": 8080, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }
+              ], 
+              "tenant_id": "3588be41a2114817ada7021de680715f"
+            }
+          ], 
+          "status": "ACTIVE", 
+          "task_state": null, 
+          "tenant_id": "3588be41a2114817ada7021de680715f", 
+          "terminated_at": null, 
+          "updated": "2016-12-16T13:13:40Z", 
+          "user_id": "c8eac61881e64287a93de14513af3f27", 
+          "vm_state": "active", 
+          "volumes": []
+        }
+      }, 
+      "87c300a4-45cc-4d52-8e9c-ee9ad44051af": {
+        "ansible_host": "151.97.41.85", 
+        "ansible_ssh_host": "151.97.41.85", 
+        "openstack": {
+          "OS-DCF:diskConfig": "MANUAL", 
+          "OS-EXT-AZ:availability_zone": "nova", 
+          "OS-EXT-STS:power_state": 1, 
+          "OS-EXT-STS:task_state": null, 
+          "OS-EXT-STS:vm_state": "active", 
+          "OS-SRV-USG:launched_at": "2017-04-20T14:36:25.000000", 
+          "OS-SRV-USG:terminated_at": null, 
+          "accessIPv4": "151.97.41.85", 
+          "accessIPv6": "", 
+          "addresses": {
+            "aarroc-net": [
+              {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:0b:9d:b5", 
+                "OS-EXT-IPS:type": "fixed", 
+                "addr": "192.168.0.13", 
+                "version": 4
+              }, 
+              {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:0b:9d:b5", 
+                "OS-EXT-IPS:type": "floating", 
+                "addr": "151.97.41.85", 
+                "version": 4
+              }
+            ]
+          }, 
+          "adminPass": null, 
+          "az": "nova", 
+          "cloud": "envvars", 
+          "config_drive": "", 
+          "created": "2017-04-20T14:36:23Z", 
+          "disk_config": "MANUAL", 
+          "flavor": {
+            "id": "a0beecd0-79a5-4b16-9f57-972f1258763d", 
+            "name": "medium"
+          }, 
+          "has_config_drive": false, 
+          "hostId": "9df8beae10ac123e8cb09fb94d515c94dd924db7b1749be4bed2d819", 
+          "host_id": "9df8beae10ac123e8cb09fb94d515c94dd924db7b1749be4bed2d819", 
+          "id": "87c300a4-45cc-4d52-8e9c-ee9ad44051af", 
+          "image": {
+            "id": "e0b50e88-f984-4539-bdf4-3e28ff974d90", 
+            "name": "Ubuntu 16.04 64-bit"
+          }, 
+          "interface_ip": "151.97.41.85", 
+          "key_name": null, 
+          "launched_at": "2017-04-20T14:36:25.000000", 
+          "location": {
+            "cloud": "envvars", 
+            "project": {
+              "domain_id": null, 
+              "domain_name": null, 
+              "id": "3588be41a2114817ada7021de680715f", 
+              "name": "AAROC"
+            }, 
+            "region_name": "regionOne", 
+            "zone": "nova"
+          }, 
+          "metadata": {}, 
+          "name": "site-bdii", 
+          "networks": {}, 
+          "os-extended-volumes:volumes_attached": [], 
+          "power_state": 1, 
+          "private_v4": "192.168.0.13", 
+          "progress": 0, 
+          "project_id": "3588be41a2114817ada7021de680715f", 
+          "properties": {
+            "OS-DCF:diskConfig": "MANUAL", 
+            "OS-EXT-AZ:availability_zone": "nova", 
+            "OS-EXT-STS:power_state": 1, 
+            "OS-EXT-STS:task_state": null, 
+            "OS-EXT-STS:vm_state": "active", 
+            "OS-SRV-USG:launched_at": "2017-04-20T14:36:25.000000", 
+            "OS-SRV-USG:terminated_at": null, 
+            "os-extended-volumes:volumes_attached": []
+          }, 
+          "public_v4": "151.97.41.85", 
+          "public_v6": "", 
+          "region": "regionOne", 
+          "security_groups": [
+            {
+              "description": "default", 
+              "id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+              "location": {
+                "cloud": "envvars", 
+                "project": {
+                  "domain_id": null, 
+                  "domain_name": null, 
+                  "id": "3588be41a2114817ada7021de680715f", 
+                  "name": "AAROC"
+                }, 
+                "region_name": "regionOne", 
+                "zone": null
+              }, 
+              "name": "default", 
+              "project_id": "3588be41a2114817ada7021de680715f", 
+              "properties": {}, 
+              "security_group_rules": [
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "03c26a3d-4b77-40b8-a0d0-f68313645e4e", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 22, 
+                  "port_range_min": 22, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "1acce09b-c141-4d97-8774-47d0ca076656", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 4422, 
+                  "port_range_min": 4422, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "193.206.208.169/32", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "48211f85-b3a3-4a2b-8fcd-7f80e73c2f10", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 4422, 
+                  "port_range_min": 4422, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "193.206.208.201/32", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "54efc382-91cd-4913-8b34-473288b61220", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 80, 
+                  "port_range_min": 80, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "5e921453-9b99-44d2-ae80-feb9a2436093", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 8443, 
+                  "port_range_min": 8443, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "b50f6643-291f-45f2-8cef-4d4d3dd73e3b", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 443, 
+                  "port_range_min": 443, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "c80038b1-2f01-44df-b551-c6e883919dae", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 8080, 
+                  "port_range_min": 8080, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }
+              ], 
+              "tenant_id": "3588be41a2114817ada7021de680715f"
+            }
+          ], 
+          "status": "ACTIVE", 
+          "task_state": null, 
+          "tenant_id": "3588be41a2114817ada7021de680715f", 
+          "terminated_at": null, 
+          "updated": "2017-04-20T14:36:33Z", 
+          "user_id": "c8eac61881e64287a93de14513af3f27", 
+          "vm_state": "active", 
+          "volumes": []
+        }
+      }, 
+      "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe": {
+        "ansible_host": "151.97.41.58", 
+        "ansible_ssh_host": "151.97.41.58", 
+        "openstack": {
+          "OS-DCF:diskConfig": "MANUAL", 
+          "OS-EXT-AZ:availability_zone": "nova", 
+          "OS-EXT-STS:power_state": 1, 
+          "OS-EXT-STS:task_state": null, 
+          "OS-EXT-STS:vm_state": "active", 
+          "OS-SRV-USG:launched_at": "2017-07-11T13:48:51.000000", 
+          "OS-SRV-USG:terminated_at": null, 
+          "accessIPv4": "151.97.41.58", 
+          "accessIPv6": "", 
+          "addresses": {
+            "aarroc-net": [
+              {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:d3:09:5a", 
+                "OS-EXT-IPS:type": "fixed", 
+                "addr": "192.168.0.18", 
+                "version": 4
+              }, 
+              {
+                "OS-EXT-IPS-MAC:mac_addr": "fa:16:3e:d3:09:5a", 
+                "OS-EXT-IPS:type": "floating", 
+                "addr": "151.97.41.58", 
+                "version": 4
+              }
+            ]
+          }, 
+          "adminPass": null, 
+          "az": "nova", 
+          "cloud": "envvars", 
+          "config_drive": "", 
+          "created": "2017-07-11T13:49:02Z", 
+          "disk_config": "MANUAL", 
+          "flavor": {
+            "id": "a0beecd0-79a5-4b16-9f57-972f1258763d", 
+            "name": "medium"
+          }, 
+          "has_config_drive": false, 
+          "hostId": "9df8beae10ac123e8cb09fb94d515c94dd924db7b1749be4bed2d819", 
+          "host_id": "9df8beae10ac123e8cb09fb94d515c94dd924db7b1749be4bed2d819", 
+          "id": "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe", 
+          "image": {
+            "id": "41d944c3-d5d3-4f36-844e-8f0b0ffd1243", 
+            "name": "CentOS7"
+          }, 
+          "interface_ip": "151.97.41.58", 
+          "key_name": null, 
+          "launched_at": "2017-07-11T13:48:51.000000", 
+          "location": {
+            "cloud": "envvars", 
+            "project": {
+              "domain_id": null, 
+              "domain_name": null, 
+              "id": "3588be41a2114817ada7021de680715f", 
+              "name": "AAROC"
+            }, 
+            "region_name": "regionOne", 
+            "zone": "nova"
+          }, 
+          "metadata": {}, 
+          "name": "bdii", 
+          "networks": {}, 
+          "os-extended-volumes:volumes_attached": [], 
+          "power_state": 1, 
+          "private_v4": "192.168.0.18", 
+          "progress": 0, 
+          "project_id": "3588be41a2114817ada7021de680715f", 
+          "properties": {
+            "OS-DCF:diskConfig": "MANUAL", 
+            "OS-EXT-AZ:availability_zone": "nova", 
+            "OS-EXT-STS:power_state": 1, 
+            "OS-EXT-STS:task_state": null, 
+            "OS-EXT-STS:vm_state": "active", 
+            "OS-SRV-USG:launched_at": "2017-07-11T13:48:51.000000", 
+            "OS-SRV-USG:terminated_at": null, 
+            "os-extended-volumes:volumes_attached": []
+          }, 
+          "public_v4": "151.97.41.58", 
+          "public_v6": "", 
+          "region": "regionOne", 
+          "security_groups": [
+            {
+              "description": "default", 
+              "id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+              "location": {
+                "cloud": "envvars", 
+                "project": {
+                  "domain_id": null, 
+                  "domain_name": null, 
+                  "id": "3588be41a2114817ada7021de680715f", 
+                  "name": "AAROC"
+                }, 
+                "region_name": "regionOne", 
+                "zone": null
+              }, 
+              "name": "default", 
+              "project_id": "3588be41a2114817ada7021de680715f", 
+              "properties": {}, 
+              "security_group_rules": [
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "03c26a3d-4b77-40b8-a0d0-f68313645e4e", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 22, 
+                  "port_range_min": 22, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "1acce09b-c141-4d97-8774-47d0ca076656", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 4422, 
+                  "port_range_min": 4422, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "193.206.208.169/32", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "48211f85-b3a3-4a2b-8fcd-7f80e73c2f10", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 4422, 
+                  "port_range_min": 4422, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "193.206.208.201/32", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "54efc382-91cd-4913-8b34-473288b61220", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 80, 
+                  "port_range_min": 80, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "5e921453-9b99-44d2-ae80-feb9a2436093", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 8443, 
+                  "port_range_min": 8443, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "b50f6643-291f-45f2-8cef-4d4d3dd73e3b", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 443, 
+                  "port_range_min": 443, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }, 
+                {
+                  "direction": "ingress", 
+                  "ethertype": "IPv4", 
+                  "group": {}, 
+                  "id": "c80038b1-2f01-44df-b551-c6e883919dae", 
+                  "location": {
+                    "cloud": "envvars", 
+                    "project": {
+                      "domain_id": null, 
+                      "domain_name": null, 
+                      "id": "3588be41a2114817ada7021de680715f", 
+                      "name": "AAROC"
+                    }, 
+                    "region_name": "regionOne", 
+                    "zone": null
+                  }, 
+                  "port_range_max": 8080, 
+                  "port_range_min": 8080, 
+                  "project_id": "", 
+                  "properties": {
+                    "group": {}
+                  }, 
+                  "protocol": "tcp", 
+                  "remote_group_id": null, 
+                  "remote_ip_prefix": "0.0.0.0/0", 
+                  "security_group_id": "5cc58da4-1df0-44c4-8e95-803246e23f86", 
+                  "tenant_id": ""
+                }
+              ], 
+              "tenant_id": "3588be41a2114817ada7021de680715f"
+            }
+          ], 
+          "status": "ACTIVE", 
+          "task_state": null, 
+          "tenant_id": "3588be41a2114817ada7021de680715f", 
+          "terminated_at": null, 
+          "updated": "2017-07-11T13:49:10Z", 
+          "user_id": "c8eac61881e64287a93de14513af3f27", 
+          "vm_state": "active", 
+          "volumes": []
+        }
+      }
+    }
+  }, 
+  "bdii": [
+    "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe"
+  ], 
+  "bots": [
+    "387fff23-5961-4713-bc72-a2161fe89ea6"
+  ], 
+  "cvmfs-test-client-centos7": [
+    "584703b3-2967-4a3e-b75a-49560286b223"
+  ], 
+  "envvars": [
+    "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe", 
+    "387fff23-5961-4713-bc72-a2161fe89ea6", 
+    "584703b3-2967-4a3e-b75a-49560286b223", 
+    "7fdfd13f-007a-4254-b5aa-5a7ead3c064e", 
+    "87c300a4-45cc-4d52-8e9c-ee9ad44051af"
+  ], 
+  "envvars_regionOne": [
+    "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe", 
+    "387fff23-5961-4713-bc72-a2161fe89ea6", 
+    "584703b3-2967-4a3e-b75a-49560286b223", 
+    "7fdfd13f-007a-4254-b5aa-5a7ead3c064e", 
+    "87c300a4-45cc-4d52-8e9c-ee9ad44051af"
+  ], 
+  "envvars_regionOne_nova": [
+    "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe", 
+    "387fff23-5961-4713-bc72-a2161fe89ea6", 
+    "584703b3-2967-4a3e-b75a-49560286b223", 
+    "7fdfd13f-007a-4254-b5aa-5a7ead3c064e", 
+    "87c300a4-45cc-4d52-8e9c-ee9ad44051af"
+  ], 
+  "flavor-m1.medium": [
+    "387fff23-5961-4713-bc72-a2161fe89ea6", 
+    "584703b3-2967-4a3e-b75a-49560286b223", 
+    "7fdfd13f-007a-4254-b5aa-5a7ead3c064e"
+  ], 
+  "flavor-medium": [
+    "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe", 
+    "87c300a4-45cc-4d52-8e9c-ee9ad44051af"
+  ], 
+  "image-CentOS7": [
+    "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe", 
+    "584703b3-2967-4a3e-b75a-49560286b223"
+  ], 
+  "image-Ubuntu 16.04 64-bit": [
+    "387fff23-5961-4713-bc72-a2161fe89ea6", 
+    "87c300a4-45cc-4d52-8e9c-ee9ad44051af"
+  ], 
+  "instance-387fff23-5961-4713-bc72-a2161fe89ea6": [
+    "387fff23-5961-4713-bc72-a2161fe89ea6"
+  ], 
+  "instance-584703b3-2967-4a3e-b75a-49560286b223": [
+    "584703b3-2967-4a3e-b75a-49560286b223"
+  ], 
+  "instance-7fdfd13f-007a-4254-b5aa-5a7ead3c064e": [
+    "7fdfd13f-007a-4254-b5aa-5a7ead3c064e"
+  ], 
+  "instance-87c300a4-45cc-4d52-8e9c-ee9ad44051af": [
+    "87c300a4-45cc-4d52-8e9c-ee9ad44051af"
+  ], 
+  "instance-e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe": [
+    "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe"
+  ], 
+  "nova": [
+    "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe", 
+    "387fff23-5961-4713-bc72-a2161fe89ea6", 
+    "584703b3-2967-4a3e-b75a-49560286b223", 
+    "7fdfd13f-007a-4254-b5aa-5a7ead3c064e", 
+    "87c300a4-45cc-4d52-8e9c-ee9ad44051af"
+  ], 
+  "perun": [
+    "7fdfd13f-007a-4254-b5aa-5a7ead3c064e"
+  ], 
+  "regionOne": [
+    "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe", 
+    "387fff23-5961-4713-bc72-a2161fe89ea6", 
+    "584703b3-2967-4a3e-b75a-49560286b223", 
+    "7fdfd13f-007a-4254-b5aa-5a7ead3c064e", 
+    "87c300a4-45cc-4d52-8e9c-ee9ad44051af"
+  ], 
+  "regionOne_nova": [
+    "e2a520eb-67e0-4b6c-91ad-2e2a732cd9fe", 
+    "387fff23-5961-4713-bc72-a2161fe89ea6", 
+    "584703b3-2967-4a3e-b75a-49560286b223", 
+    "7fdfd13f-007a-4254-b5aa-5a7ead3c064e", 
+    "87c300a4-45cc-4d52-8e9c-ee9ad44051af"
+  ], 
+  "site-bdii": [
+    "87c300a4-45cc-4d52-8e9c-ee9ad44051af"
+  ]
+}

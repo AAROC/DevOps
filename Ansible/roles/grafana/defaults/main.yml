@@ -10,3 +10,8 @@ prerequisites:
   - fontconfig
   - 'freetype*'
   - urw-fonts 
+
+# Server parameters
+server:
+  protocol: http
+  db_type: sqlite3

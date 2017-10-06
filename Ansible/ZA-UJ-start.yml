@@ -4,5 +4,6 @@
   hosts: all
   tasks:
   - setup:
+    delegate_to: 
     
   

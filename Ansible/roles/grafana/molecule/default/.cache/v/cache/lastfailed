@@ -1,0 +1,3 @@
+{
+  "tests/test_default.py::test_hosts_file[ansible://instance]": true
+}

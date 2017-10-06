@@ -1,4 +1,4 @@
-[openstack-controller]
+[controller]
 152.106.18.205 ansible_user=bbecker
 [gateway]
 152.106.18.248 ansible_user=bbecker

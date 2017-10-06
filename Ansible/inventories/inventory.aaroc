@@ -26,6 +26,7 @@ apprepo.sagrid.ac.za
 
 # file transfer
 [fts-servers]
+151.97.41.81 ansible_ssh_user=drillbot needs_certificate=false
 
 # web user interface
 [dirac]

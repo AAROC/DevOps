@@ -1,0 +1,88 @@
+---
+- hosts: localhost
+  tasks:
+    - name: get the cloud information
+      os_client_config:
+    - name: flava flava !
+      os_flavor_facts:
+    - name: Create a VM
+      os_server:
+        name: "cvmfs-test-client-{{ item }}"
+        state: present
+        image: "{{ item }}"
+        image_exclude: deprecated
+        flavor_ram: 2048
+        userdata: |
+          {%- raw -%} #!/bin/bash
+          echo '{"channel": "#devops-foundry","username": "Ansible","text": "vm instantiated at UniCT OpenStack","icon_emoji": ":ansible:"}' > message.json
+          useradd -m ansible
+          mkdir -p /home/ansible/.ssh
+          echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+ajfknMIekBVAqGr8qVt49jmkwm54lriPDQO6TaHXueaR+ajkCvlTxmtNMv1sGmPdZKl8CMMZxvVekMKI/oWO+4ouZ4iVoAw6WP7GrbriF54O4uKb2QDgVz1KQv+zT2ofgh9rOzU+7oDMKVnRTOe/P2TNteG8zeE+z6vCd51TLMohBiw74N0vaM6LJthEjtpoyrD5NqksstYGdrKKVIu/Kyv6H0cc29lkuh8Ufb1PAkK4URKflJRLYHM2UZmQBncYknXqL5tHdpUKbLJdBX5ZZ2Vf4tG7+KUqf4YYNzuREyxHGQPcoPlIK1EnmnpApZXNxqda++KpAodwkHF3Kbe3 becker@serbaggio" > /home/ansible/.ssh/authorized_keys
+          echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+ajfknMIekBVAqGr8qVt49jmkwm54lriPDQO6TaHXueaR+ajkCvlTxmtNMv1sGmPdZKl8CMMZxvVekMKI/oWO+4ouZ4iVoAw6WP7GrbriF54O4uKb2QDgVz1KQv+zT2ofgh9rOzU+7oDMKVnRTOe/P2TNteG8zeE+z6vCd51TLMohBiw74N0vaM6LJthEjtpoyrD5NqksstYGdrKKVIu/Kyv6H0cc29lkuh8Ufb1PAkK4URKflJRLYHM2UZmQBncYknXqL5tHdpUKbLJdBX5ZZ2Vf4tG7+KUqf4YYNzuREyxHGQPcoPlIK1EnmnpApZXNxqda++KpAodwkHF3Kbe3 becker@serbaggio" > /home/centos/.ssh/authorized_keys
+          cat /home/ansible/.ssh/authorized_keys
+          chmod 600 /home/ansible/.ssh/authorized_keys
+          curl -X POST -d @message.json  https://hooks.slack.com/services/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
+          {% endraw %}
+      register: "newhost"
+      with_nested:
+        - [ 'CentOS7', 'Ubuntu 16.04 64-bit', 'Ubuntu 14.04 LTS']
+        - [ 'centos7', 'u1604', '1604']
+    - name: Password, newcomer !
+      debug:
+        var: "newhost.{{ item }}.openstack.adminPass"
+      with_items:
+        - CentOS7
+        - "Ubuntu 16.04 64-bit"
+        - "Ubuntu 14.04 LTS"
+
+#     - name: add to CVMFS clients
+#       add_host:
+#         hostname: cvmfs_client
+#         ansible_ssh_user: centos
+#         ansible_host: "{{ newhost-{{ os }}.openstack.interface_ip }}"
+#         ansible_ssh_pass: "{{ newhost.openstack.adminPass }}"
+#         groups: cvmfs_clients
+#         ansible_port: 22
+#         ansible_connection: paramiko
+#     with_items:
+#       - CentOS7
+#       - Ubuntu 16.04 64-bit
+#       - Ubuntu 14.04 LTS
+#     - name: Wait for host to become available
+#       wait_for:
+#         host: "{{newhost.openstack.interface_ip}}"
+#         port: 22
+#         state: present
+#         delay: 20
+#
+# #This playbook enables CODE-RADE access using CVMFS-2.2 clients on machines.
+# - hosts: cvmfs_clients
+#   remote_user: centos
+#   name: Enable CVMFS
+#   become: true
+#   roles:
+#     - cvmfs-client-2.2
+#
+# - hosts: cvmfs_clients
+#   remote_user: ansible
+#   vars:
+#     CODE_RADE_VERSION: "{{ lookup('file', '/cvmfs/code-rade.africa-grid.org/version') }}"
+#   tasks:
+#   - name: CODE-RADE version
+#     debug:
+#       msg: " CODE RADE version is {{ CODE_RADE_VERSION }}"
+
+- name: stop the testing vms
+  hosts: localhost
+  tasks:
+    - name: Destroy VM
+      os_server:
+        name: "cvmfs-test-client-{{item}}"
+        state: absent
+        image: "{{ item }}"
+        image_exclude: deprecated
+        flavor_ram: 4096
+      with_nested:
+        - CentOS7
+        - Ubuntu 16.04 64-bit
+        - Ubuntu 14.04 LTS

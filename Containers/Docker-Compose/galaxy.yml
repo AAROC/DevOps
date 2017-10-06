@@ -1,0 +1,14 @@
+---
+version: '2'
+services:
+ galaxy:
+  image: bgruening/galaxy-stable
+  ports: 
+   - 21
+   - 80:80
+   - 443
+   - 8800
+   - 9002
+   - 9001:9001
+
+  

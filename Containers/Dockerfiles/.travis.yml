@@ -1,0 +1,38 @@
+  # We need to test :
+# Client access to the repositories (for various targets)
+# build-slave configuration
+sudo: required
+
+language: bash
+
+env:
+  - OS=u1404
+  - OS=centos6
+
+services:
+  - docker
+
+before_install:
+  - git clone --recursive https://github.com/AAROC/DevOps
+
+# Build the container
+install:
+  - travis_wait docker build -t umd-ui -f Dockerfile.$OS .
+
+script:
+  # - docker run -t -P umd-ui ansible-playbook -i /etc/hosts/inventory all -m setup -c local
+  # - docker run -t -P -v /root/DevOps:/root/DevOps/ -w /root/DevOps/Ansible ansiblecontainer ansible-playbook -c local -i /etc/hosts/inventory ui-container.yml --skip-tags=slack
+  # check that we can run voms-proxy-info
+  # - docker run -P umd-ui voms-proxy-init --voms ops
+  # - docker run -P umd-ui lcg-infosites --vo ops ce
+
+
+after_success:
+
+after_failure:
+
+notifications:
+  slack:
+    rooms:
+      - africa-arabia-roc:qn956vBmV7VIyJ1Xod4Cmnd5#devops
+  webhooks: https://galaxy.ansible.com/api/v1/notifications/

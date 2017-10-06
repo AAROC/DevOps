@@ -101,7 +101,7 @@ hubot_node_packages:
   - hubot-httpcats
   - hubot-github-management
   - hubot-ansible-me
-  - @slack/client
+  - '@slack/client'
 
   
 
@@ -134,7 +134,7 @@ hubot_external_scripts:
   - hubot-excuse
   - hubot-httpcats
   - hubot-github-management
-  - @slack/client
+  - '@slack/client'
 
   
 

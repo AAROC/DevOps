@@ -1,0 +1,19 @@
+# Database configuration for WebFTS
+# See https://grid-deployment.web.cern.ch/grid-deployment/dms/fts3/docs/docs/install/quick.html
+---
+- name: create db
+  mysql_db:
+    state: import
+    name: all
+    target: "{{ db_import_file }}"
+
+# - name: Create FTS3 user on db
+#   mysql_user:
+#     name:
+#     password:
+
+
+# - name: Grant privileges to FTS3 user on db
+
+# - name: SUPER privileges
+

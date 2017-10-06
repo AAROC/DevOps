@@ -1,0 +1,21 @@
+---
+# Vars for Continuous Integration servers
+needs_cert: 'false'
+jenkins_admin_username: admin
+jenkins_admin_password: 67b8902f59144b17a9c7a86607a5d267
+slack_token: T02BJKQR4/B2RTBGEJH/UWM9ULQ2IQYkqY98dlplBXjD
+
+# The configuration repository for Jenkins is private
+jenkins_config_repo: https://github.com/AAROC/JenkinsConfig
+# Delegate access to the private config repo to the robot
+github_user: jenkinsSAGrid
+github_password: WguvpLZxqNd1yAmh9RrmDrHgbxfF3lKY
+# 2FA is enabled on the repo - use the github token
+github_token: b3a615543d3a8245bb1a20921cd011cd9f6d5650
+
+# This is for access to the jenkins admin
+github_oauth_client_id: 36387178641c9bdb154b
+github_oauth_client_secret: 57d82933d131ba990ca2c96b587e7eaf16da834b
+
+# GA
+google_analytics_code: UA-47422161-4

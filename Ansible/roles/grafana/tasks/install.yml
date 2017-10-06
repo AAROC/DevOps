@@ -1,0 +1,22 @@
+---
+- name: install prerequisites
+  yum: 
+    name: "{{ item }}"
+    state: present
+  with_items: "{{prerequisites}}"
+
+- name: Ensure RPM GPG key is present
+  rpm_key:
+    key: https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
+    state: present
+
+- name: Install base package
+  yum: 
+    name: "{{ base_package[ansible_os_family]}}"
+    state: present
+
+- name: Ensure service is started
+  service:
+    name: grafana-server
+    state: started
+    enabled: yes

@@ -1,0 +1,16 @@
+version: "1"
+defaults:
+  debug: 1
+services:
+  database:
+    image: mysql
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=changeme
+      - MYSQL_ROOT_PASSWORD=changeme
+    volumes:
+      - /tmp/fgapi-db-data:/var/lib/mysql
+
+registries: {}

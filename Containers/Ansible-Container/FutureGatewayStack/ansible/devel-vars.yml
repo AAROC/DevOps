@@ -1,0 +1,17 @@
+---
+# vars file for fgapiserver
+
+# the path to where the web-facing API server will be installed
+api_server_install_path: /tmp/apiserver
+docker_sql_image: "mysql"
+# What name do you want to give the running container ?
+db_container_name: "fg-db"
+# root password of the db - put this in your group_vars and then in a vault in production
+db_root_password: changeme
+# API Server db config
+# API Server user name and password - should be kept in group_vars
+api_db_username: "fgapiserver"
+api_db_userpass: "wo6YqaSCp-Ur-Nma4kPp2qJOMXhW_bUg"
+api_db_name: fgapiserver
+# where will we store the SQL data ?
+sql_data_dir: "/tmp/fgapi-server-db-data/"

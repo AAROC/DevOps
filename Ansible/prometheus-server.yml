@@ -1,0 +1,6 @@
+---
+- name: Deploy Prometheus server
+  hosts: monitors
+  roles:
+  - prometheus
+  

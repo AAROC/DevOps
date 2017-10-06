@@ -1,0 +1,43 @@
+version: "2"
+settings:
+
+  conductor:
+    # The Conductor container does the heavy lifting, and provides a portable
+    # Python runtime for building your target containers. It should be derived
+    # from the same distribution as you're building your target containers with.
+    base: centos:7
+    # roles_path:   # Specify a local path containing Ansible roles
+    # volumes:      # Provide a list of volumes to mount
+    # environment:  # List or mapping of environment variables
+
+  # Set the name of the project. Defaults to basename of the project directory.
+  # For built services, concatenated with service name to form the built image name.
+  project_name: hpccluster
+
+services:
+  # Add your containers here, specifying the base image you want to build from.
+  # To use this example, uncomment it and delete the curly braces after services key.
+  # You may need to run `docker pull ubuntu:trusty` for this to work.
+
+  head_node:
+    from: centos7
+    ports:
+      - 22:22
+      - pbs-mom
+    command: []
+  wn1:
+    from: centos7
+    ports:
+  # web:
+  #   from: "centos:7"
+  #   ports:
+  #     - "80:80"
+  #   command: ["/usr/bin/dumb-init", "/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+  #   dev_overrides:
+  #     environment:
+  #       - "DEBUG=1"
+registries: {}
+  # Add optional registries used for deployment. For example:
+  #  google:
+  #    url: https://gcr.io
+  #    namespace: my-cool-project-xxxxxx

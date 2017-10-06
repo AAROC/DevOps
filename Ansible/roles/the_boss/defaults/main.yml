@@ -92,6 +92,8 @@ hubot_node_packages:
   - nodepie
   - soupselect
   - textspark
+  - jsdom
+  - hubot-suggest
 
 #############################################################################
 #
@@ -106,6 +108,7 @@ hubot_external_scripts:
   - hubot-redis-brain
   - hubot-xkcd
   - hubot-youtube
+  - hubot-suggest
 
 #############################################################################
 #

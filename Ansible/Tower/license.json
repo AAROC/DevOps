@@ -1,0 +1,11 @@
+{
+    "company_name": "Meraka Institute, Council for Scientific and Industrial Research (CSIR)",
+    "contact_email": "bbecker@csir.co.za",
+    "contact_name": "Bruce Becker",
+    "hostname": "e9b8dd05a15c4db8b4511a71b4cc4af7",
+    "instance_count": 10,
+    "license_date": 2136282524,
+    "license_key": "a112335f1b6ab62584b4b2f56c54a330243c66552f757e83c365c1193f9a7eeb",
+    "license_type": "basic",
+    "subscription_name": "Ansible Tower by Red Hat, Self-Support (10 Managed Nodes)"
+}

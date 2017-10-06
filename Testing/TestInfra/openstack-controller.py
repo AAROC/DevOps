@@ -30,3 +30,6 @@ def test_python(host):
 # - logging hosts should have 50 GB space.
 # - block storage nodes must have lvm
 # - Ensure that hosts have a cinder-volume volume group 
+
+# Network 
+# - controller should have jumbo frames enabled

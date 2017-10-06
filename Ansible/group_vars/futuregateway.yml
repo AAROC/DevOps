@@ -1,0 +1,51 @@
+# Common FutureGateway configurable values are placed here
+#
+# Author: Riccardo Bruno <riccardo.bruno@ct.infn.it>
+
+# Contributions from Bruce Becker CSIR Meraka Institute
+
+# repo that the images are pushed to
+docker_repo_org: aaroc
+# Connect user
+fg_connect_user: fgtest
+
+# FutureGateway repositories settings
+fg_fgAPIServer_git: https://github.com/AAROC/fgAPIServer.git
+fg_fgAPIServer_gitver: master
+fg_fgSetup_git: https://github.com/AAROC/fgSetup.git
+fg_fgSetup_gitver: master
+fg_APIServerDaemon_git: https://github.com/indigo-dc/APIServerDaemon.git
+fg_APIServerDaemon_gitver: master
+
+# FutureGateway user settings
+fg_user: futuregateway
+fg_passauth: yes
+
+# FutureGateway DB settings
+fg_db_host: "{{ inventory_hostname }}" #  where is the db server
+fg_db_name: fgapiserver #
+fg_db_user: fgapiserver #
+fg_db_password: fgapiserver_password #
+fg_db_schemaver: 0.0.10 #
+
+# FutureGateway' fgdb  configuration script
+fg_fgdb: |
+         #!/bin/bash
+         #
+         # fgdb Environment settings configuration file
+         #
+         # Very specific FGDB service component environment must be set here
+         #
+         # Author: Riccardo Bruno <riccardo.bruno@ct.infn.it>
+
+         # FutureGateway location
+         export FGLOCATION=$HOME
+
+         # FGDB settings
+         export FGDB_HOST="{{ fg_db_host }}"
+         export FGDB_PORT="{{ mysql_port }}"
+         export FGDB_USER="{{ fg_db_user }}"
+         export FGDB_PASSWD="{{ fg_db_password }}"
+         export FGDB_NAME="{{ fg_db_name }}"
+         export ASDB_OPTS=''
+         export FGDB_ROOTPWD="{{ mysql_root_password }}"

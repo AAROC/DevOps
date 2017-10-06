@@ -1,0 +1,63 @@
+---
+# vars file for fgapi-db
+mysql_python_package:
+  RedHat: MySQL-python
+  Debian: python-mysqldb
+# What base image will you be using for the sql db
+docker_sql_image: "mysql"
+# What name do you want to give the running container ?
+db_container_name: "fg-db"
+# root password of the db - put this in your group_vars and then in a vault in production
+db_root_password: "changeme"
+# API Server db config
+# API Server user name and password - should be kept in group_vars
+api_db_username: "fgapiserver"
+api_db_userpass: "wo6YqaSCp-Ur-Nma4kPp2qJOMXhW_bUg"
+api_db_name: fgapiserver
+# where will we store the SQL data ?
+sql_data_dir: /tmp/fgapi-server-db-data/
+# Repos
+repos:
+  fg_api_server_repo: https://github.com/indigo-dc/fgAPIServer
+  api_server_daemon_repo: https://github.com/indigo-dc/ApiserverDaemon
+
+# FGAPI server version branch
+fg_api_server_release_version: v0.0.6
+# API installation path
+prereq:
+  RedHat:
+    - mysql-devel
+  Debian:
+    - libmysqlclient-dev
+extra_pips:
+  - "urllib3[secure]"
+  - flask_login
+install_path: /root/apiserver
+ver: v1.0
+name: "FutureGateway API Server"
+# host: "{{ groups['api-server'] | first }}"
+port: 8888
+debug: True
+iosandbox: /root
+geappid: 10000
+json_indent: 4
+#key:
+#crt:
+logcfg: fgapiserver_log.conf
+dbver:  0.0.8
+secret: 0123456789ABCDEF
+notoken: True
+notokenusr: test
+lnkptvflag: True
+ptvendpoint: "http://localhost:8889/checktoken"
+ptvuser: tokenver_user
+ptvpass: tokenver_pass
+ptvdefusr: futuregateway
+ptvmapfile: fgapiserver_ptvmap.json
+
+# fgapiserver database settings
+#db_host: "{{ hostvars[groups['db-servers'] | first]['ansible_docker_container']['NetworkSettings']['IPAddress'] }}"
+db_port: 3306
+db_user: fgapiserver
+db_pass: wo6YqaSCp-Ur-Nma4kPp2qJOMXhW_bUg
+db_name: fgapiserver

@@ -1,0 +1,8 @@
+---
+#  test playbook for UJ openstack site
+- name: ping UJ
+  hosts: gateway
+  tasks:
+  - setup:
+    delegate_to: ui.ufs.ac.za
+  

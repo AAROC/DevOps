@@ -1,0 +1,12 @@
+---
+mysql_pkgs:
+  - libselinux-python
+  - mysql-community-server
+  - MySQL-python
+  - mysql-community-common
+  - mysql-community-client
+  - mysql-community-libs
+
+mysql_service: mysqld
+
+mysql_conf_dir: "/etc/"
