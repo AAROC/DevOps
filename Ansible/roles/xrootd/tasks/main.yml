@@ -4,7 +4,7 @@
   yum:
     name: xrootd
     state: installed
-  sudo: true
+  become: true
   tags:
     - xrootd
     - install
