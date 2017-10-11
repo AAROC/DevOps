@@ -33,7 +33,7 @@
   service:
     name: autofs
     state: started
-  when: "( {{ ansible_virtualization_role }} != "guest") and ( {{ ansible_virtualization_type }} is not "docker")"
+  when: "( {{ ansible_virtualization_role }} != 'guest') and ( {{ ansible_virtualization_type }} is not 'docker')"
   tags:
     - cvmfs
 
@@ -41,7 +41,8 @@
   stat:
     path: /cvmfs/fastrepo.sagrid.ac.za
   register: p
-  when: ( {{ ansible_virtualization_role }} not "guest") and ( {{ ansible_virtualization_type }} not "docker")
+  when: "( {{ ansible_virtualization_role }} not 'guest') and ( {{ ansible_virtualization_type }} not 'docker')"
 
-- debug: msg="Path exists and is a directory"
+- debug: 
+    msg: "Path exists and is a directory"
   when: p.stat.isdir is defined and p.stat.isdir
