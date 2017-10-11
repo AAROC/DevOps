@@ -1,74 +1,98 @@
 ---
 - name: Ensure that the system is up to date (Deb)
-  apt: name=* state=latest
-  sudo: true
-  sudo_user: root
+  apt: 
+    name: '*' 
+    state: latest
+  become: true
+  become_user: root
   when: ansible_os_family == 'Debian'
 
+#  This should be a block TODO
 - name: Ensure EPEL is present
-  yum: name='epel-release' state=present
-  sudo: true
-  sudo_user: root
+  yum: 
+    name: epel-release 
+    state: present
+  become: true
+  become_user: root
   when: ansible_os_family == 'RedHat'
   register: epel_present
 
 - name: Ensure that system is up to date (EL)
-  yum: name=* state=latest
+  yum: 
+    name: '*' 
+    state: latest
   when: ansible_os_family == 'RedHat'
-  sudo: yes
-  sudo_user: root
+  become: yes
+  become_user: root
 
 - name: Add Liferay user
-  sudo: true
-  sudo_user: root
-  user: name=liferayadmin group=liferayadmin state=present
+  become: true
+  become_user: root
+  user: 
+    name: liferayadmin 
+    group: liferayadmin 
+    state: present
   tags:
     - prep
 
 - name: disable selinux
-  sudo: true
-  sudo_user: root
-  selinux: state=disabled
+  become: true
+  become_user: root
+  selinux: 
+    state: disabled
   notify: reboot
   tags:
     - prep
 
 - name: Ensure that the hostname is in /etc/hosts
-  sudo: true
-  sudo_user: root
+  become: true
+  become_user: root
   lineinfile:
-    dest=/etc/hosts
-    line="{{ ansible_eth0_ipv4 }} {{ ansible_fqdn }} {{ ansible_hostname }}"
-    state=present
+    dest: /etc/hosts
+    line: "{{ ansible_eth0_ipv4 }} {{ ansible_fqdn }} {{ ansible_hostname }}"
+    state: present
   tags:
     - prep
 
 - name: Update the open files limit
-  sudo: true
-  sudo_user: root
+  become: true
+  become_user: root
   lineinfile:
-    dest=/etc/sysctl.conf
-    regexp='^fs.file-max='
-    line="fs.file-max={{ file_max_open }}"
+    dest: /etc/sysctl.conf
+    regexp: '^fs.file-max='
+    line: "fs.file-max={{ file_max_open }}"
   tags:
     - prep
 
 - name: Ensure that VOMS directories are present
-  sudo: true
-  sudo_user: root
-  file: name=/etc/grid-security/vomsdir state=directory owner=root group=root
+  become: true
+  become_user: root
+  file: 
+    name: /etc/grid-security/vomsdir 
+    state: directory 
+    owner: root 
+    group: root
   tags:
     - prep
 
 - name: Ensure that liferayadmin can joboutput to /tmp
-  file: name=/tmp/jobOutput state=directory owner=liferayadmin group=liferayadmin
-  sudo: true
-  sudo_user: root
+  file: 
+    name: /tmp/jobOutput 
+    state: directory 
+    owner: liferayadmin 
+    group: liferayadmin
+  become: true
+  become_user: root
   tags:
     - prep
+
 - name: Ensure that GridEngine directory is writeabl
-  file: name=/opt/GridEngine state=directory owner=liferayadmin group=liferayadmin
-  sudo: true
-  sudo_user: root
+  file: 
+    name: /opt/GridEngine 
+    state: directory 
+    owner: liferayadmin 
+    group: liferayadmin
+  become: true
+  become_user: root
   tags:
     - prep

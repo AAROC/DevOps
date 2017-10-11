@@ -46,15 +46,14 @@
 # First, we stop the domain, then start it (checking that it has actually stopped)
 - name: stop-domain
   command: /opt/glassfish/glassfish3/glassfish/bin/asadmin stop-domain liferay
-  #when: domain_status.stdout.find('liferay not running') != -1
   async: 45
   poll: 5
   register: stop_domain
   when: domain_applications.stdout.find('federated-login-ext') == -1
 
 - name: check the domains (again)
-  sudo: true
-  sudo_user: liferayadmin
+  become: true
+  become_user: liferayadmin
   shell: ./asadmin list-domains chdir=/opt/glassfish/glassfish3/bin/
   register: domain_status
   when: domain_applications.stdout.find('federated-login-ext') == -1

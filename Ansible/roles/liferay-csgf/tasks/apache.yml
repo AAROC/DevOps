@@ -1,19 +1,23 @@
 ---
 - name: Copy apache ajp proxy cofiguration (RedHat)
-  sudo: true
-  sudo_user: root
-  copy: src=etc/proxy_ajp.conf dest=/etc/httpd/conf.d/proxy_ajp.conf
+  become: true
+  become_user: root
+  copy: 
+    src: etc/proxy_ajp.conf 
+    dest: /etc/httpd/conf.d/proxy_ajp.conf
   when: ansible_os_family == "RedHat"
 
 - name: Configure Virtualhost (RedHat)
-  sudo: true
-  sudo_user: root
-  template: src=etc/virtualhost.conf.j2 dest=/etc/httpd/conf.d/virtualhost.conf
+  become: true
+  become_user: root
+  template: 
+    src: etc/virtualhost.conf.j2 
+    dest: /etc/httpd/conf.d/virtualhost.conf
   when: ansible_os_family == "RedHat"
 
 - name: Check that Proxy AJP module is commented
-  sudo: true
-  sudo_user: root
+  become: true
+  become_user: root
   lineinfile:
     dest: /etc/httpd/conf/httpd.conf
     regexp: '^LoadModule proxy_ajp_module modules/mod_proxy_ajp.so'
@@ -23,14 +27,19 @@
   notify: restart httpd
 
 - name: KeepAlive On
-  sudo: true
-  sudo_user: root
-  lineinfile: dest=/etc/httpd/conf/httpd.conf regexp='^KeepAlive Off' line='KeepAlive On' state=present backrefs=yes
+  become: true
+  become_user: root
+  lineinfile: 
+    dest: /etc/httpd/conf/httpd.conf 
+    regexp: '^KeepAlive Off' 
+    line: 'KeepAlive On' 
+    state: present 
+    backrefs: yes
   when: ansible_os_family == "RedHat"
   notify: restart httpd
 
 - name: Ensure that httpd starts at boot
-  sudo: true
-  sudo_user: root
+  become: true
+  become_user: root
   command: /sbin/chkconfig httpd on
   when: ansible_os_family == "RedHat"

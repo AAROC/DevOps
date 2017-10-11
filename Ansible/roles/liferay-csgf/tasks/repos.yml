@@ -3,8 +3,8 @@
   become: true
   become_user: root
   copy:
-    src: etc/yum.repos.d/{{ item }}
-    dest: /etc/yum.repos.d/{{ item }}
+    src: "etc/yum.repos.d/{{ item }}"
+    dest: "/etc/yum.repos.d/{{ item }}"
     owner: root
     group: root
   with_items:

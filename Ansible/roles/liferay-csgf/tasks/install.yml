@@ -1,10 +1,17 @@
 ---
 - name: Download the GridEngine dependencies
-  get_url: url=http://sourceforge.net/p/ctsciencegtwys/liferay/HEAD/tree/trunk/core/GridEngine/JSAGA_Package/GridEngine_dependencies.tar.gz?format=raw dest=/tmp/GridEngine_dependencies.tar.gz
+  get_url:
+    url: http://sourceforge.net/p/ctsciencegtwys/liferay/HEAD/tree/trunk/core/GridEngine/JSAGA_Package/GridEngine_dependencies.tar.gz?format=raw 
+    dest: /tmp/GridEngine_dependencies.tar.gz
 
 - name: Download Job Manangement library
-  get_url: url=http://sourceforge.net/p/ctsciencegtwys/liferay/HEAD/tree/trunk/core/GridEngine/lib/jsaga-job-management-1.5.9.jar?format=raw dest="{{ glassfish_install_dir }}/glassfish3/glassfish/lib/jsaga-job-management-1.5.9.jar" owner=liferayadmin group=liferayadmin
+  get_url: 
+    url: http://sourceforge.net/p/ctsciencegtwys/liferay/HEAD/tree/trunk/core/GridEngine/lib/jsaga-job-management-1.5.9.jar?format=raw 
+    dest: "{{ glassfish_install_dir }}/glassfish3/glassfish/lib/jsaga-job-management-1.5.9.jar" 
+    owner: liferayadmin 
+    group: liferayadmin
 
+# Use unarchive here TODO
 - name: unpack the dependencies
   command: "tar xvfz /tmp/GridEngine_dependencies.tar.gz --strip-components=1 -C /opt/glassfish/glassfish3/glassfish/lib"
   args:
