@@ -1,5 +1,7 @@
 ---
 # handlers for Debian http server role
 - name: restart service
-  sudo: true
-  service: name="{{ package_name }}" state=started
+  become: true
+  service: 
+    name: "{{ package_name }}" 
+    state: started

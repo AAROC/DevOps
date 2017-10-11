@@ -1,17 +1,23 @@
 ---
 # install tasks for RedHat
 - name: Install the package
-  sudo: true
-  yum: name={{ package_name }} state=present
+  become: true
+  yum: 
+    name: "{{ package_name }}" 
+    state: present
 
 - name: Ensure that the service is running
-  sudo: true
-  service: name={{ package_name }} state=restarted
+  become: true
+  service: 
+    name: "{{ package_name }}" 
+    state: restarted
 
 - name: Configure virtualhosts
-  debug: msg="TODO"
+  debug: 
+    msg: "TODO"
 
 
 - name: Configure SSL
-  debug: msg="TODO"
+  debug: 
+    msg: "TODO"
   when: ssl_enabled
