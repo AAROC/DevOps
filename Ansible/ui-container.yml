@@ -6,7 +6,7 @@
   roles:
     - common
     - certificates
-    - umd
+    - { role: UMD-role}
     - ui
     # - yaim
     # - cvmfs-client-2.2
