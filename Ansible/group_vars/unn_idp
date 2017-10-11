@@ -1,0 +1,34 @@
+# institute metadata
+site_name: UNN IdP
+host_institute:
+  name: University of Nigeria
+  url: http://www.unn.edu.ng
+
+# LDAP variables
+server_country: NG
+server_state:
+server_location: Nsukka
+server_organization: NGREN
+server_organization_unit: UNN
+ldap_server: ldap.grid.unn.edu.ng
+root_password_clear: HiPIC#17
+sgw_admin: collins.udanor@unn.edu.ng
+
+# institute metadata
+host_institute:
+  name: University of Nigeria Nsukka
+  url: http://www.unn.edu.ng
+
+organisation:
+  name: UNN
+  logo: unnlogo.jpg
+
+mail_contact: collins.udanor@unn.edu.ng
+# IDP variables. these are specifically related to the IdPOpen Web front end.
+idp:
+  name: UNN IdP
+  admin_user: Collins Udanor
+  admin_email: collins.udanor@unn.edu.ng
+  metadata_url: https://{{ hostvars[groups['shibboleth-idps'][0]]['ansible_fqdn']}}/idp/shibboleth
+  mail_server: 
+  header_logo: Logo.jpg
