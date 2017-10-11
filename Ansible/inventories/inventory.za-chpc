@@ -6,7 +6,7 @@
 ######################################################
 
 [uis]
-grid-ui.chpc.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n UI'
+#grid-ui.chpc.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n UI'
 
 #############
 # site services #
@@ -30,6 +30,8 @@ cream-ces
 # Xrootd machine
 grid-se.chpc.ac.za needs_certificate='true'
 grid-se2.chpc.ac.za needs_certificate='true'
+grid-xrootd01.chpc.ac.za needs_certificate='true'
+grid-xrootd02.chpc.ac.za needs_certificate='true'
 
 # Worker Nodes
 [worker-nodes]
@@ -83,12 +85,12 @@ gnode-1-47 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
 gnode-1-48 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
 gnode-1-49 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
 gnode-1-50 emi_service='WN' yaim_options=' -n WN -n TORQUE_client'
-gnode-2-1 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
-gnode-2-2 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
-gnode-2-3 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
-gnode-2-4 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
-gnode-2-5 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
-gnode-2-6 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+#gnode-2-1 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+#gnode-2-2 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+#gnode-2-3 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+#gnode-2-4 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+#gnode-2-5 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
+#gnode-2-6 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
 gnode-2-7 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
 gnode-2-8 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
 gnode-2-9 emi_service='WN' yaim_options='-n MPI_WN -n WN -n TORQUE_client'
