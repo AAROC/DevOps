@@ -2,7 +2,9 @@
 # tasks for launching the discourse container
 - name: restart docker
   become: true
-  service: name=docker state=restarted
+  service: 
+    name: docker 
+    state: restarted
   changed_when: false
 
 - name: bootstrap the app
