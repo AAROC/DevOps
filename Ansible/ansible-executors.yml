@@ -3,8 +3,8 @@
   name: Make all the hosts ansible executors
   become: true
   roles:
-    - bootstrap
-    - ansible-executor
+    - {role: bootstrap, tags: bootstrap}
+    - {role: ansible-executor, tags: ansible-executor}
   vars_files:
     - group_vars/passwords-{{ site_name }}.yml
   pre_tasks:

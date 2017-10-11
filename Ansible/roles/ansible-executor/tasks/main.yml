@@ -2,7 +2,7 @@
 # tasks file for ansible-executor
 - name: Install some basic stuff
   yum: name={{ item }} state=present
-  sudo: true
+  become: true
   with_items:
     - git
     - python-pip
@@ -11,21 +11,20 @@
 
 - name: Install pip for Ansible prerequisites
   easy_install: name=pip
-  sudo: true
+  become: true
 
 - name: Install Ansible prerequisites
   pip: name={{ item }} state=present
-  sudo: true
+  become: true
   with_items:
     - paramiko
     - PyYAML
     - Jinja2
     - httplib2
 #    - backports.ssl_match_hostname  # this is needed for the newer instance of slack, apparently ? 
-  sudo: true
 
 - name: Hand Ansible to ansible
-  sudo: true
+  become: true
   file: name=/opt/ansible state=directory owner=ansible group=ansible
 
 
@@ -34,5 +33,5 @@
     repo: https://github.com/ansible/ansible.git
     dest: /opt/ansible/
     recursive: true
-  sudo: false
-  sudo_user: ansible
+  become: false
+  become_user: ansible
