@@ -7,6 +7,7 @@
 
 - name: Create Shibboleth certificate
   command: "/usr/sbin/shib-keygen"
+  args:
     creates:
       - /etc/shibboleth/sp-cert.pem
       - /etc/shibboleth/sp-key.pem
