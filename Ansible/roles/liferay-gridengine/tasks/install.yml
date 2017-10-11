@@ -1,17 +1,11 @@
 ---
-
-# get the dependencies from
-- name: Download the GridEngine dependencies
-  get_url: url=sourceforge.net/p/ctsciencegtwys/liferay/HEAD/tree/trunk/core/GridEngine/JSAGA_Package/GridEngine_dependencies.tar.gz?format=raw dest=/tmp/GridEngine_dependencies.tar.gz creates=/tmp/GridEngine_dependencies.tar.gz
-
-- name: unpack the dependencies
-  command: tar xvfz /tmp/GridEngine_dependencies.tar.gz --strip-components=1
-    args:
-      chdir: /opt/GridEngine
-      creates: /opt/GridEngine/jsaga-adaptor-linux-1.1.0.jar
-
-
 # the grid engine  code is at https://github.com/csgf/grid-and-cloud-engine
 # See https://github.com/csgf/grid-and-cloud-engine/blob/master/.travis.yml for how to build it
 - name: get grid engine
-  url:
+  unarchive:
+    remote_src: yes
+    src: "https://github.com/csgf/grid-and-cloud-engine/archive/{{ gridengine_version}}.tar.gz"
+    owner: "{{ liferay_admin_user }}"
+    validate_certs: no
+    dest: "{{grid_engine_install_dir}}"
+

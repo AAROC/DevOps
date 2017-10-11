@@ -1,2 +1,11 @@
 ---
 # defaults file for roles/liferay-gridengine
+
+# Tagged version on the repo
+gridengine_version: 1.5.12-fg
+# User that will managed liferay
+liferay_admin_user: liferayadmin
+liferay_admin_group: liferayadmin
+
+# where will the grid engine be installed  ?
+grid_engine_install_dir: /opt/GridEngine

@@ -1,9 +1,21 @@
 ---
 - name: Ensure that VOMS directories are present
-  file: name=/etc/grid-security/vomsdir state=directory owner=root group=root
+  file: 
+    name: /etc/grid-security/vomsdir 
+    state: directory 
+    owner: root 
+    group: root
 
-- name: Ensure that liferayadmin can joboutput to /tmp
-  file: name=/tmp/jobOutput state=directory owner=liferayadmin group=liferayadmin
+- name: "Ensure that {{ liferay_admin_user }}  can joboutput to /tmp"
+  file: 
+    name: /tmp/jobOutput 
+    state: directory 
+    owner:  "{{ liferay_admin_user }}"
+    group: "{{ liferay_admin_group }}"
 
-- name: Ensure that GridEngine directory is writeabl
-  file: name=/opt/GridEngine state=directory owner=liferayadmin group=liferayadmin
+- name: Ensure that GridEngine directory is writeable
+  file: 
+    name: "{{ grid_engine_install_dir}}" 
+    state: directory 
+    owner: "{{ liferay_admin_user }}" 
+    group: "{{ liferay_admin_group}}"
