@@ -1,14 +1,5 @@
-# playbooks for a normal site
-
+# playbook for a normal site
 ---
-# - name: Run Bootstrap play on all hosts
-#   hosts: all
-#   user: ansible
-#   become: true
-#   roles:
-#     - bootstrap
-#   vars_files:
-#     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
 
 - hosts: site-services
   user: ansible
@@ -18,7 +9,7 @@
     - name: Send slack message
       slack:
         domain: africa-arabia-roc.slack.com
-        token: 6EJfIMngdMiwrmnScAA4znB5
+        token: "{{ slack_token }}"
         msg: "Starting site playbook on {{ site_name }} ( including {{ inventory_hostname }})"
         channel: "#devopssite"
         username: "Ansible on site {{ site_name }}"
@@ -42,7 +33,7 @@
   user: ansible
   become: true
   roles:
-    - umd
+    - UMD-role
     - site-bdii
     - yaim
 
@@ -52,7 +43,7 @@
   become: true
   roles:
     - certificates
-    - umd
+    - UMD-role
     - cream-ce
   handlers:
     - include: roles/common/handlers/main.yml
