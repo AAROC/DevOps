@@ -7,7 +7,7 @@
     - {role: bootstrap, tags: bootstrap}
     - {role: common, tags: common}
     - {role: certificates, tags: certificates}
-    - {role: umd, tags: umd}
+    - {role: UMD-role, tags: umd}
     - {role: voms, tags: voms}
   vars_files:
     - "group_vars/passwords-{{ site_name }}.yml"

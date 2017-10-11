@@ -7,8 +7,8 @@
   roles:
     - { role: common, become: true, tags: "common" }
     - { role: certificates, become: true, tags: "certificates" }
-    - { role: code-rade-build-slave, become: true, tags: "wn" }
-    - { role: umd, become: true, tags: "umd" }
+    - { role: CODE-RADE-container, become: true, tags: "wn" }
+    - { role: UMD-role, become: true, tags: "umd" }
     - { role: emi-worker-node, become: true, tags: "emi" }
   pre_tasks:
     - name: Pull in the relevant variables

@@ -34,9 +34,9 @@
   user: ansible
   become: true
   roles:
-    - umd
-    - top-bdii
-    - yaim
+    - { role: UMD-role, tags: "umd"}
+    - { role: top-bdii, tags: "top-bdii"}
+    - { role: yaim, tags: yaim}
   vars_files:
     - group_vars/passwords-{{ site_name }}.yml
   pre_tasks:
@@ -44,66 +44,6 @@
         domain: africa-arabia-roc.slack.com
         token: "{{ slack_token }}"
         msg: "Starting Top-BDII deploys at {{ site_name }}"
-        channel: "#devopssite"
-        username: "Ansible on {{ inventory_hostname }}"
-        link_names: 1
-        parse: 'full'
-  post_tasks:
-    - slack:
-        domain: africa-arabia-roc.slack.com
-        token: "{{ slack_token }}"
-        msg: "Just finished Yaim at {{ site_name }} on {{ ansible_fqdn }}"
-        channel: "#devopssite"
-        username: "Ansible on {{ inventory_hostname }}"
-        link_names: 1
-        parse: 'full'
-
-- name: Deploy WMS
-  hosts: wms-servers
-  user: ansible
-  become: true
-  roles:
-    - certificates
-    - umd
-    - wms
-    - yaim
-  vars_files:
-    - group_vars/passwords-{{ site_name }}.yml
-  pre_tasks:
-    - slack:
-        domain: africa-arabia-roc.slack.com
-        token: "{{ slack_token }}"
-        msg: "Starting WMS deploys at {{ site_name }}"
-        channel: "#devopssite"
-        username: "Ansible on {{ inventory_hostname }}"
-        link_names: 1
-        parse: 'full'
-  post_tasks:
-    - slack:
-        domain: africa-arabia-roc.slack.com
-        token: "{{ slack_token }}"
-        msg: "Just finished Yaim at {{ site_name }} on {{ ansible_fqdn }}"
-        channel: "#devopssite"
-        username: "Ansible on {{ inventory_hostname }}"
-        link_names: 1
-        parse: 'full'
-
-- name: Deploy SAM-NAGIOS
-  hosts: ngi-nagios
-  user: ansible
-  become: true
-  roles:
-    - certificates
-    - umd
-    - sam-nagios
-    - yaim
-  vars_files:
-    - group_vars/passwords-{{ site_name }}.yml
-  pre_tasks:
-    - slack:
-        domain: africa-arabia-roc.slack.com
-        token: "{{ slack_token }}"
-        msg: "Starting SAM-NAGIOS deploys at {{ site_name }}"
         channel: "#devopssite"
         username: "Ansible on {{ inventory_hostname }}"
         link_names: 1

@@ -3,14 +3,14 @@
   user: root
   become: true
   roles:
-    - container-bootstrap
-    - common
-    - certificates
-    - umd
-    - ui
-    - yaim
-    - cvmfs
-    - perun-slave
+    - { role: container-bootstrap, tags: "boostrap, container"}
+    - { role: common, tags: "common"}
+    - { role: certificates, tags: "certificates"}
+    - { role: UMD-role, tags: "umd"}
+    - { role: ui, tags: "ui"}
+    - { role: yaim, tags: "yaim"}
+    - { role: cvmfs, tags: "cvmfs"}
+    - { role: perun-slave, "perun"}
   vars_files:
     - roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml
     - roles/common/vars/middleware/igtf.yml

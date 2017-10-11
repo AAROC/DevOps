@@ -6,7 +6,7 @@
   roles:
     - { role: common, become: true }
     - { role: AAROC.certificates, become: true , tags: certificates}
-    - { role: umd, become: true, tags: umd }
+    - { role: UMD-role, become: true, tags: umd }
     - { role: argus, become: true, tags: argus }
     - { role: yaim, become: true, tags: yaim }
   vars_files:

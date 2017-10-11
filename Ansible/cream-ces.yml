@@ -31,7 +31,7 @@
   roles:
   - { role: common, become: true }
   - { role: certificates, become: true }
-  - { role: umd, become: true }
+  - { role: UMD-role, become: true }
   - { role: cream-ce, become: true }
   handlers:
   - include: roles/common/handlers/main.yml

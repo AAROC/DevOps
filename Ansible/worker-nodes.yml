@@ -23,7 +23,7 @@
     - { role: common, become: true, tags: "common" }
     - { role: certificates, become: true, tags: "certificates" }
     - { role: worker-node, become: true, tags: "wn" }
-    - { role: umd, become: true, tags: "umd" }
+    - { role: UMD-role, become: true, tags: "umd" }
     - { role: emi-worker-node, become: true, tags: "emi" }
     - { role: yaim, become: true, tags: "yaim", emi_service: "WN"}
   pre_tasks:

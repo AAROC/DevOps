@@ -24,7 +24,7 @@
 #    - bootstrap
     - common
     - certificates
-    - umd
+    - UMD-role
     - wms
     - yaim
 

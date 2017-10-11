@@ -27,7 +27,7 @@
   pre_tasks:
     - name: Ensure that the system is up to date (Deb)
       apt:
-        name: *
+        name: '*'
         state: latest
       when: ansible_os_family == 'Debian'
       become: yes
@@ -41,7 +41,7 @@
       when: ansible_os_family == 'RedHat'
     - name: Ensure that system is up to date (EL)
       yum:
-        name: *
+        name: '*'
         state: latest
       when: ansible_os_family == 'RedHat'
       become: yes
