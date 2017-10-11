@@ -1,16 +1,18 @@
 ---
 - name: Create the database's
-  mysql_db: name={{ item.name }} state=present
+  mysql_db: 
+    name: "{{ item.name }}" 
+    state: present
   with_items: mysql_db
   when: mysql_db|lower() != 'none'
 
 - name: Create the database users
   mysql_user:
-    name={{ item[0].name }}
-    password={{ item[0].pass|default("foobar") }}
-    priv='{{ item[0].priv|default("*.*:ALL") }}'
-    state=present
-    host='{{ item[1] | default("localhost") }}'
+    name: "{{ item[0].name }}"
+    password: '{{ item[0].pass|default("foobar") }}'
+    priv: '{{ item[0].priv|default("*.*:ALL") }}'
+    state: present
+    host: '{{ item[1] | default("localhost") }}'
   with_nested:
     - mysql_users
     - "{{ groups['science-gateways'] }}"
@@ -18,13 +20,18 @@
 
 - name: mysql db present
   mysql_db:
-    name: {{ mysql_db }}
-  with_items mysql_db
+    name: "{{ mysql_db }}"
+  with_items: mysql_db
   register: db_state
 
 - name: copy schema
-  copy: src=UsersTrackingDB.sql dest=/tmp/UserTrackingDB.sql
+  copy: 
+    src: UsersTrackingDB.sql 
+    dest: /tmp/UserTrackingDB.sql
 
 - name: import schema
-  mysql_db: name=userstracking state=import target=/tmp/UserTrackingDB.sql
+  mysql_db: 
+    name: userstracking 
+    state: import 
+    target: /tmp/UserTrackingDB.sql
   when: mysql_db != present
