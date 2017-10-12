@@ -1,9 +1,43 @@
 ---
 #  test playbook for UJ openstack site
-- name: ping UJ
+- name: "Do what https://docs.openstack.org/project-deploy-guide/openstack-ansible/pike/deploymenthost.html says"
   hosts: controller
+  become: true
   tasks:
-  - setup:
-    delegate_to: gateway
+    - name: 'pick up sensitive variables'
+      include_vars: "group_vars/passwords-{{ site_name | lower }}.yml"
+    - name: Inform the team of the preparation
+      slack: 
+        token: "{{ slack_token }}"
+        link_names: 1
+        msg: "Preparing {{ inventory_hostname }} for Openstack Pike installation"
+        attachments: 
+          - text: "See https://docs.openstack.org/project-deploy-guide/openstack-ansible/pike/deploymenthost.html"
+    - name: Install Pike release
+      yum: 
+        name: https://rdoproject.org/repos/openstack-pike/rdo-release-pike.rpm
+        state: present
+    - name: Update all packages
+      yum:
+        name: '*'
+        state: latest
+    - name: Install prerequistes
+      yum: 
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - ntp 
+        - ntpdate 
+        - openssh-server 
+        - python-devel
+        - sudo 
+        - '@Development Tools'
+    - name: Inform the team of tasks done
+      slack: 
+        token: "{{ slack_token }}"
+        link_names: 1
+        msg: "Prerequisites for Openstack Pike on  {{ inventory_hostname }} have been applied"
+        attachments: "See https://docs.openstack.org/project-deploy-guide/openstack-ansible/pike/deploymenthost.html"
+
     
   
