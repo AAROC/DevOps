@@ -1,0 +1,9 @@
+---
+# defaults file for openstack-prep
+prerequisites:
+- ntp 
+- ntpdate 
+- openssh-server 
+- python-devel
+- sudo 
+- '@Development Tools'

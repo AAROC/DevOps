@@ -1,0 +1,5 @@
+---
+# tasks file for openstack-prep
+- include: install.yml
+- include: openstack-install.yml
+- include: openstack-bootstrap.yml

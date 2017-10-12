@@ -1,0 +1,27 @@
+- name: Inform the team of the preparation
+  slack: 
+    token: "{{ slack_token }}"
+    link_names: 1
+    color: warning
+    msg: "Preparing {{ inventory_hostname }} for Openstack Ansible bootstrap"
+  tags: 
+       - slack
+- name: Get the Openstack Ansible repo
+  git:
+    repo:  https://git.openstack.org/openstack/openstack-ansible
+    version: 16.0.1
+    dest: /opt/openstack-ansible
+    clone: yes
+- name: Bootstrap the OpenStack Ansible
+  shell: ./bootstrap-ansible.sh
+  args:
+    chdir: /opt/openstack-ansible/scripts/
+    executable: /bin/bash
+- name: Inform the team of the preparation
+  slack: 
+    token: "{{ slack_token }}"
+    link_names: 1
+    color: good
+    msg: "{{ inventory_hostname }} has been bootstrapped for Ansiblisation :zap: :batman:"
+  tags:
+    - slack

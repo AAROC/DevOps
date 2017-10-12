@@ -64,7 +64,7 @@ script:
 - ansible-playbook --syntax-check liferay-csgf.yml
 - ansible-playbook --syntax-check site-check.yml
 - ansible-playbook --syntax-check WinterSchoolCI.yml
-
+- ansible-playbook --syntax-check ZA-UJ-start.yml
 env:
   - INVENTORY=inventory.travis BOOTSTRAP_CONTAINER="aaroc/code-rade-sl6-ansible" SITE_BDII_CONTAINER="aaroc/site-bdii:centos6.8"
   - INVENTORY=inventory.travis BOOTSTRAP_CONTAINER="aaroc/code-rade-u1404-ansible" SITE_BDII_CONTAINER="aaroc/site-bdii:centos6.8"

@@ -1,0 +1,28 @@
+- name: Inform the team of the preparation
+  slack: 
+    token: "{{ slack_token }}"
+    link_names: 1
+    color: warning
+    msg: "Configuring Ansible deployment on {{ inventory_hostname }}"
+    attachments:
+      - text: "see https://docs.openstack.org/project-deploy-guide/openstack-ansible/ocata/configure.html"
+      - text: "This will install Ansible, and the roles and code necessary to template OpenStack components."
+    tags: 
+    - slack
+- name: Copy Openstack Deploy
+  command: cp -rf /opt/openstack-ansible/etc/openstack_deploy /etc/
+  args:
+    creates: /etc/openstack_deploy/openstack_user_config.yml.example
+- name: Create openstack user config
+  copy:
+    src: /etc/openstack_deploy/openstack_user_config.yml.example
+    dest: /etc/openstack_deploy/openstack_user_config.yml
+    remote_src: yes
+- name: Inform the team of the preparation
+  slack: 
+    token: "{{ slack_token }}"
+    link_names: 1
+    color: good
+    msg: "Ansible for OpenStack deployed on {{ inventory_hostname }}. Time to be awesome, yo :sign_of_the_horns:"
+    tags: 
+    - slack
