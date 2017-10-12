@@ -1,0 +1,96 @@
+---
+bdii_port: 2170
+vo_sw_dir: /opt/exp_soft
+vos:
+  - dteam
+  - ops
+#  - sagrid
+#  - eumed
+#  - africacert
+queues:
+  - dteam
+  - ops
+#  - cert
+#  - shared
+# See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
+# use the site name as registered in GOCDB (use the same case)
+site_name: ZA-UJ
+# contact details
+site_email: 
+site_security_email:
+site_support_email: 
+# location
+site_latitude: 
+site_longitude: 
+site_description: 
+site_other_grid: "EGI|AfricaArabia"
+site_bdii_host: 
+site_location: "Johannesburg, South Africa"
+site_website: "http://grid.uj.ac.za"
+site_domain: uj.ac.za
+
+# services at the site
+bdii_host: top-bdii.africa-grid.org
+apel_mysql_host: 
+px_host: myproxy.cern.ch
+wms_host: wms.hellasgrid.gr
+argus_status: no
+
+ce_host: 
+# Replace the following specs with your own
+ce_cpu_model: Opteron
+ce_cpu_vendor: AMD
+ce_cpu_speed: 2600
+ce_os: ScientificSL
+ce_os_release: 7.4
+ce_os_version: Final
+ce_os_arch: x86_64
+ce_minphysmem: 2048
+ce_minvirtmem: 6144
+ce_physcpu: 1
+ce_logcpu: 
+ce_smpsize: 1
+ce_si00: 2105
+ce_sf00: 2601
+ce_outboundip: "TRUE"
+ce_inboundip: "FALSE"
+ce_runtimeenv:
+  - AfricaArabia
+  - SAGrid
+  - UJ cloud
+  - ZA-UJ
+ce_otherdescr: Cores=1.0,Benchmark=8.42-HEP-SPEC06
+batch_server: 
+job_manager: 
+ce_batch_sys: 
+batch_log_dir: 
+batch_version: 
+
+# vars for service: emi_dpm_mysql
+dpm_host: 
+dpmmgr: { uid: 400, gid: 4000 }
+dpm_filesystems: "{{dpm_host}}:$DPM_HOST:/storage"
+dpm_db:   { user: dpmmgr,  pass: redacted }
+dpm_info: { user: dpminfo, pass: redacted }
+
+# vars for service: BDII_site
+bdii_regions:
+- name: CREAM
+  endpoint: ldap://{{ ce_host }}:2170/mds-vo-name=resource,o=grid
+- name: SITEBDII
+  endpoint: ldap://{{ site_bdii_host}}:2170/mds-vo-name=resource,o=grid
+#- name: SE
+#  endpoint: ldap://se01.localdomain:2170/mds-vo-name=resource,o=grid
+#- name: LFC
+#  endpoint: ldap://lfc01.localdomain:2170/mds-vo-name=resource,o=grid
+#- name: PX
+#  endpoint: ldap://myproxy01.localdomain:2170/mds-vo-name=resource,o=grid
+
+se_list:
+  - se01.localdomain
+
+se_mount_info_list: none
+se_gridftp_logfile: /var/log/dpm-gsiftp/dpm-gsiftp.log
+
+sandboxdir_on_ce: /var/cream_sandbox
+sandboxdir_on_wn: /cream_sandbox
