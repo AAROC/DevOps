@@ -9,10 +9,10 @@
 # will happen
     - bootstrap
   pre_tasks:
-  - name: debug
-    debug: var=site_name
   - name: pull in site variables
     include_vars: "group_vars/passwords-{{ site_name | lower }}.yml"
+  - name: Pull in OS-specific variables
+    include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
   post_tasks:
   - name: Send notification message via Slack
     slack:
