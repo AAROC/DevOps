@@ -10,6 +10,7 @@
       slack: 
         token: "{{ slack_token }}"
         link_names: 1
+        color: warning
         msg: "Preparing {{ inventory_hostname }} for Openstack Pike installation"
         attachments: 
           - text: "See https://docs.openstack.org/project-deploy-guide/openstack-ansible/pike/deploymenthost.html"
@@ -32,12 +33,18 @@
         - python-devel
         - sudo 
         - '@Development Tools'
+    - name: Disable firewall
+      service:
+        name: firewalld
+        state: stopped
+        enabled: no
     - name: Inform the team of tasks done
       slack: 
         token: "{{ slack_token }}"
         link_names: 1
         msg: "Prerequisites for Openstack Pike on  {{ inventory_hostname }} have been applied"
-        attachments: "See https://docs.openstack.org/project-deploy-guide/openstack-ansible/pike/deploymenthost.html"
+        color: good
+    
 
     
   
