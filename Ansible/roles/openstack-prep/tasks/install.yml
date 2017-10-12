@@ -1,0 +1,28 @@
+# Install tasks for OpenStack Ocataa
+---
+- name: Install Openstack release
+  yum: 
+    name: https://rdoproject.org/repos/openstack-ocata/rdo-release-ocata.rpm
+    state: present
+- name: Update all packages
+  yum:
+    name: '*'
+    state: latest
+- name: Install prerequistes
+  yum: 
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ prerequisites }}"
+- name: Disable firewall
+  service:
+    name: firewalld
+    state: stopped
+    enabled: no
+- name: Inform the team of tasks done
+  slack: 
+    token: "{{ slack_token }}"
+    link_names: 1
+    msg: "Prerequisites for Openstack on  {{ inventory_hostname }} have been applied"
+    color: good
+  tags:
+    - slack

@@ -1,9 +1,10 @@
 ---
 #  test playbook for UJ openstack site
-- name: "Do what https://docs.openstack.org/project-deploy-guide/openstack-ansible/pike/deploymenthost.html says"
+- name: "Do what https://docs.openstack.org/project-deploy-guide/openstack-ansible/ocata/deploymenthost.html says"
   hosts: controller
-  become: true
-  tasks:
+  roles:
+    - { role: openstack-prep, become: true}
+  pre_tasks:
     - name: 'pick up sensitive variables'
       include_vars: "group_vars/passwords-{{ site_name | lower }}.yml"
     - name: Inform the team of the preparation
@@ -11,74 +12,12 @@
         token: "{{ slack_token }}"
         link_names: 1
         color: warning
-        msg: "Preparing {{ inventory_hostname }} for Openstack Pike installation"
+        msg: "Preparing {{ inventory_hostname }} for Openstack Ocata installation"
         attachments: 
-          - text: "See https://docs.openstack.org/project-deploy-guide/openstack-ansible/pike/deploymenthost.html"
+          - text: "See https://docs.openstack.org/project-deploy-guide/openstack-ansible/ocata/deploymenthost.html"
       tags: 
         - slack
-    - name: Install Pike release
-      yum: 
-        name: https://rdoproject.org/repos/openstack-pike/rdo-release-pike.rpm
-        state: present
-    - name: Update all packages
-      yum:
-        name: '*'
-        state: latest
-    - name: Install prerequistes
-      yum: 
-        name: "{{ item }}"
-        state: present
-      with_items:
-        - ntp 
-        - ntpdate 
-        - openssh-server 
-        - python-devel
-        - sudo 
-        - '@Development Tools'
-    - name: Disable firewall
-      service:
-        name: firewalld
-        state: stopped
-        enabled: no  
-    - name: Inform the team of tasks done
-      slack: 
-        token: "{{ slack_token }}"
-        link_names: 1
-        msg: "Prerequisites for Openstack Pike on  {{ inventory_hostname }} have been applied"
-        color: good
-      tags:
-        - slack
-- name: Boostrap the controller for OpenStack Ansible
-  hosts: controller
-  become: true
-  tasks: 
-    - name: Inform the team of the preparation
-      slack: 
-        token: "{{ slack_token }}"
-        link_names: 1
-        color: warning
-        msg: "Preparing {{ inventory_hostname }} for Openstack Ansible bootstrap"
-      tags: 
-       - slack
-    - name: Get the Openstack Ansible repo
-      git:
-        repo:  https://git.openstack.org/openstack/openstack-ansible
-        version: 16.0.1
-        dest: /opt/openstack-ansible
-        clone: yes
-    - name: Bootstrap the OpenStack Ansible
-      shell: ./bootstrap-ansible.sh
-      args:
-        chdir: /opt/openstack-ansible/scripts/
-        executable: /bin/bash
-    - name: Inform the team of the preparation
-      slack: 
-        token: "{{ slack_token }}"
-        link_names: 1
-        color: good
-        msg: "{{ inventory_hostname }} has been bootstrapped for "
-      tags:
-        - slack
+        
 
 
     
