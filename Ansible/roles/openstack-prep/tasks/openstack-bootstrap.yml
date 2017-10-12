@@ -24,6 +24,5 @@
     link_names: 1
     color: good
     msg: "Ansible for OpenStack deployed on {{ inventory_hostname }}. Time to be awesome, yo :sign_of_the_horns:"
-    attachments:
     tags: 
     - slack
