@@ -1,0 +1,11 @@
+galaxy_info:
+  author: Bruce Becker
+  description: Containers with Unified Middlware Distribution (UMD) on board.
+  company: C.S.I.R. Meraka Institute
+  license: Apache-2.0
+  min_ansible_container_version: 0.9.2rc0
+  tags:
+    - grid
+    - egi
+    - aaroc
+    - cloud
