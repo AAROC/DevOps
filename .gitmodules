@@ -96,3 +96,6 @@
 [submodule "Ansible/roles/glibrary-role"]
 	path = Ansible/roles/glibrary-role
 	url = https://github.com/AAROC/glibrary-role
+[submodule "Ansible/roles/ansible-role-tripleo-overcloud"]
+	path = Ansible/roles/ansible-role-tripleo-overcloud
+	url = https://github.com/AAROC/ansible-role-tripleo-overcloud.git
