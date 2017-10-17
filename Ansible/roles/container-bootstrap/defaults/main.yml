@@ -1,2 +1,16 @@
 ---
 # defaults file for container-bootstrap
+prerequisites:
+  RedHat:
+    - python-simplejson
+    - mlocate
+    - openssh-clients
+    - redhat-lsb-core
+    - vim-minimal
+  Debian:
+    - python-simplejson
+    - mlocate
+    - openssh-client
+    - vim
+    - lsb-core
+    - htop
