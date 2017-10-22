@@ -13,18 +13,16 @@
     include_vars: "group_vars/passwords-{{ site_name | lower }}.yml"
   - name: Pull in OS-specific variables
     include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+  - debug:
+      var: slack_token
   post_tasks:
   - name: Send notification message via Slack
     slack:
       token: "{{ slack_token }}"
       msg: "bootstrap on {{ inventory_hostname }} has run at {{ site_name }}"
-      # this should be the site channel, not the bootstrap channel.
-      channel: "#{{ site_name | lower }}-ops"
       username: "Ansible on {{ inventory_hostname }}"
-      #icon_url: "http://www.example.com/some-image-file.png"
       link_names: 1
       parse: 'full'
       validate_certs: False
-      icon_emoji: ansible
     tags:
       - slack
