@@ -1,4 +1,6 @@
+---
 # Python packages that the bot needs
+
 python_packages: 
 - ansible
 
@@ -40,8 +42,9 @@ hubot_env:
    # HUBOT_HIPCHAT_ROOMS: "FIXME"        # Comma separated list of rooms to join
    # HUBOT_HIPCHAT_JOIN_ROOMS_ON_INVITE: "FIXME" # Replace with boolean value
 
-   # Slack variables
-   HUBOT_SLACK_TOKEN: "{{ slack_token }}"
+   # Slack variables 
+   # The API token is  kept in the vault file : passwords-bots.yml
+   HUBOT_SLACK_TOKEN: "{{ api_token }}"
 
    # Weather stuff
    # HUBOT_WUNDERGROUND_API_KEY: "FIXME" # Replace with Wunderground API key
@@ -101,7 +104,6 @@ hubot_node_packages:
   - hubot-httpcats
   - hubot-github-management
   - hubot-ansible-me
-  - '@slack/client'
 
   
 
@@ -134,7 +136,6 @@ hubot_external_scripts:
   - hubot-excuse
   - hubot-httpcats
   - hubot-github-management
-  - '@slack/client'
 
   
 
