@@ -1,5 +1,8 @@
 ---
 # File: tasks/main.yml - Main tasks for ansible-hubot
+- include_vars: group_vars/passwords-bots.yml
+- debug:
+    var: api_token 
 
 - include: install_packages_Debian.yml
   become: True
@@ -63,7 +66,10 @@
     - node_packages
 
 - name: Hubot home
-  file: "path={{ hubot_dir }} state=directory owner={{ hubot_admin }}"
+  file: 
+    path: "{{ hubot_dir }}" 
+    state: directory 
+    owner: "{{ hubot_admin }}"
 
 - name: Assemble Hubot
   become: True
@@ -90,6 +96,7 @@
 #     - node_packages
 
 # Doing things the hard way™ until above is fixed
+
 - name: Install hubot Node dependencies
   become: True
   become_user: "{{ hubot_admin }}"
@@ -135,7 +142,10 @@
 
 - name: Install hubot external git scripts
   become: False
-  git: "repo={{ item.repo_url }} version={{ item.version | default('master') }} dest={{ hubot_dir }}/node_modules/{{ item.name }}"
+  git: 
+    repo: "{{ item.repo_url }}" 
+    version: "{{ item.version | default('master') }}"
+    dest: "{{ hubot_dir }}/node_modules/{{ item.name }}"
   with_items: "{{ hubot_external_git_scripts }}"
   when: hubot_external_git_scripts is defined
   notify:
@@ -228,4 +238,6 @@
 
 - name: Start Hubot
   become: True
-  service: name=hubot state=started
+  service: 
+    name: hubot 
+    state: started

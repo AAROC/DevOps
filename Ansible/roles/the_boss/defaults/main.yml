@@ -16,7 +16,7 @@
 # hubot_env:                  Environment variables for Hubot adapters
 #############################################################################
 
-hubot_admin: vagrant
+hubot_admin: ansible
 
 hubot_adapter: slack
 
