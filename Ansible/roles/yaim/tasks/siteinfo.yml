@@ -206,8 +206,8 @@
 
 - name: Tell the team the yaim output
   slack:
-    token: "{{ slack_token}}"
-    msg: "yaim on {{ inventory_hostname }} with {{ yaim_options }} has finished "
+    token: "{{ slack_token }}"
+    msg: "yaim on {{ inventory_hostname }} with {{ yaim_options }} has finished"
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
     icon_emoji: ansible
     validate_certs: false
