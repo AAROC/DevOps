@@ -23,6 +23,19 @@ site_support_email:
 site_latitude: 
 site_longitude: 
 site_description: 
+
+# OpenStack stuff
+cidr_networks:
+  container: 172.29.236.0/22
+openstack_used_ips:
+  - 172.29.236.1
+shared_infra_hosts:
+  infra1:
+    ip: 172.29.236.1
+
+
+#  Grid stuff
+
 site_other_grid: "EGI|AfricaArabia"
 site_bdii_host: 
 site_location: "Johannesburg, South Africa"
