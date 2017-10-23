@@ -1,8 +1,11 @@
 ---
 # File: tasks/main.yml - Main tasks for ansible-hubot
-- include_vars: group_vars/passwords-bots.yml
+- include_vars: group_vars/passwords-the_boss.yml
 - debug:
-    var: api_token 
+    var: "{{ item }}"
+  with_items:
+    - python_pips
+    - hubot_owner
 
 - include: install_packages_Debian.yml
   become: True

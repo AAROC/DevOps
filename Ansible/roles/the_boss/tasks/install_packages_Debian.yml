@@ -4,7 +4,11 @@
 - name: Install Debian packages
   become: True
   become_user: root
-  apt: name={{ item }} state=present update_cache=yes cache_valid_time=86400
+  apt: 
+    name: "{{ item }}"
+    state: present 
+    update_cache: yes 
+    cache_valid_time: 86400
   with_items:
     - build-essential
     - curl
@@ -19,7 +23,7 @@
 - name: Install pip packages
   pip:
     name: "{{ item }}"
-  with_items: "{{python_packages}}"
+  with_items: "{{python_pips}}"
 
 - set_fact:
     redis_server: redis-server
