@@ -3,7 +3,8 @@
 - name: "Do what https://docs.openstack.org/project-deploy-guide/openstack-ansible/ocata/deploymenthost.html says"
   hosts: controller
   roles:
-    - { role: openstack-prep, become: true}
+    # - { role: openstack-prep, become: true}
+    - { role: ansible-role-tripleo-overcloud}
   pre_tasks:
     - name: 'pick up sensitive variables'
       include_vars: "group_vars/passwords-{{ site_name | lower }}.yml"
