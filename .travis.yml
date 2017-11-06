@@ -7,6 +7,7 @@ addons:
   apt:
     packages:
     - python-pip
+    - libssl-dev
 before_install:
 # Pull the containers you need for the tests
   # - docker pull ${BOOTSTRAP_CONTAINER}
@@ -15,6 +16,7 @@ before_install:
 # Test Bootstrap role
 # Test Site-BDII playbook
 install:
+- pip install molecule
 - pip install ansible
 - pip install ansible-container[docker]
 - ansible-container version
