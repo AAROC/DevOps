@@ -1,8 +1,8 @@
 ---
 # Python packages that the bot needs
 
-python_packages: 
-- ansible
+python_pips:
+  - ansible
 
 hubot_admin: ansible
 
@@ -62,17 +62,17 @@ hubot_description: "'Bot to help us get stuff done. Born to run.'"
 hubot_node_packages:
   - cheerio
   - htmlparser
-  - hubot-ascii-art
-  - hubot-coin
-  - hubot-calculator
-  - hubot-{{ hubot_adapter }}
-  - hubot-redis-brain
-  - hubot-xkcd
   - lodash
   - moment
   - nodepie
   - soupselect
   - textspark
+  - hubot-suggest
+  - hubot-ascii-art
+  - hubot-coin
+  - hubot-calculator
+  - hubot-{{ hubot_adapter }}
+  - hubot-redis-brain
   - hubot-ascii-art
   - hubot-coin
   - hubot-help
@@ -88,6 +88,7 @@ hubot_node_packages:
   - hubot-excuse
   - hubot-github-management
   - hubot-ansible-me
+  - hubot-jenkins-enhanced
 
   
 
@@ -98,24 +99,28 @@ hubot_node_packages:
 #############################################################################
 
 hubot_external_scripts:
+  - hubot-suggest
+  - hubot-ascii-art
+  - hubot-coin
+  - hubot-calculator
+  - hubot-{{ hubot_adapter }}
+  - hubot-redis-brain
   - hubot-ascii-art
   - hubot-coin
   - hubot-help
   - hubot-redis-brain
-  - hubot-xkcd
-  - hubot-youtube
   - hubot-diagnostics
   - hubot-help
   - hubot-google-images
   - hubot-maps
-  - hubot-redis-brain
   - hubot-rules
-  - hubot-shipit
   - hubot-tomato-timer
   - hubot-encourage
   - hubot-waffle-board
   - hubot-excuse
   - hubot-github-management
+  - hubot-ansible-me
+  - hubot-jenkins-enhanced
 
   
 

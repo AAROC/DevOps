@@ -15,7 +15,7 @@
 - name: Deploy Shibboleth IdP and Web Interface
   hosts: shibboleth-idps
   roles:
-  #- { role: fmarco76.tomcat }
+  - { role: fmarco76.tomcat }
   - { role: shibboleth-idp, tags: "shibboleth-idp" }
   - { role: fmarco76.IDPPublic, become: true, tags: "idppublic" }
   pre_tasks:

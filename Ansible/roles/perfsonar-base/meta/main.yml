@@ -8,12 +8,14 @@ galaxy_info:
   min_ansible_version: 2.3
 
   platforms:
-  - name: CEntOS
-    versions:
-      - 7
-  - name: Debian
-    versions:
-      - squeeze
+    - name: CEntOS
+      versions:
+        - 7
+    - name: Debian
+      versions:
+        - wheezy
+        - jessie
+        - stretch
 
   galaxy_tags:
     - monitoring

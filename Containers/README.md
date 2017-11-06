@@ -28,5 +28,5 @@ of Docker Compose and the idempotence and re-usability of Ansible playbooks.
 # Contributing
 
 Please see [contributing](CONTRIBUTING.md) for general considerations of contributing
-to this repo. Furthermore, please provide some means for tesitng your containers
+to this repo. Furthermore, please provide some means for testing your containers
 if you send pull requests.

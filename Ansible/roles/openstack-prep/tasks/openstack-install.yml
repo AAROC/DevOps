@@ -5,7 +5,7 @@
     color: warning
     msg: "Preparing {{ inventory_hostname }} for Openstack Ansible bootstrap"
   tags: 
-       - slack
+    - slack
 - name: Get the Openstack Ansible repo
   git:
     repo:  https://git.openstack.org/openstack/openstack-ansible
@@ -17,6 +17,7 @@
   args:
     chdir: /opt/openstack-ansible/scripts/
     executable: /bin/bash
+    creates: /etc/ansible-runtime/
 - name: Inform the team of the preparation
   slack: 
     token: "{{ slack_token }}"

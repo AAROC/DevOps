@@ -1,2 +1,3 @@
 ---
 # tasks file for perfsonar-base
+- include: "install-{{ ansible_os_family | lower }}.yml"

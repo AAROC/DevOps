@@ -1,0 +1,6 @@
+---
+# install tasks for perfSONAR base on Debian
+- name: Ensure repo list is present
+  get_url:
+    url: "http://downloads.perfsonar.net/debian/perfsonar-{{ ansible_distribution_release | lower }}-release.list"
+    dest: "/etc/apt/sources.list.d/{{ ansible_distribution_release | lower}}-release.list"

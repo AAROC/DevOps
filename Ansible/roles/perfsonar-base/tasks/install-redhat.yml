@@ -1,0 +1,6 @@
+---
+# install tasks for redhat family
+- name: Ensure epel release present
+  package:
+    name: epel-release
+    state: present

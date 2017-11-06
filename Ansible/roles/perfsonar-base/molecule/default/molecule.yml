@@ -6,8 +6,10 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
+  - name: CentOS7
     image: centos:7
+  - name: Wheezy
+    image: debian:wheezy
 provisioner:
   name: ansible
   lint:
