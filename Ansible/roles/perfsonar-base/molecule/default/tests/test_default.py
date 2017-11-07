@@ -1,3 +1,4 @@
+# Write tests for the hosts here.
 import os
 
 import testinfra.utils.ansible_runner
@@ -12,3 +13,4 @@ def test_hosts_file(host):
     assert f.exists
     assert f.user == 'root'
     assert f.group == 'root'
+

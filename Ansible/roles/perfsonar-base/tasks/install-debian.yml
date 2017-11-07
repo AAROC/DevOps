@@ -4,3 +4,7 @@
   get_url:
     url: "http://downloads.perfsonar.net/debian/perfsonar-{{ ansible_distribution_release | lower }}-release.list"
     dest: "/etc/apt/sources.list.d/{{ ansible_distribution_release | lower}}-release.list"
+- name: Ensure repo key is present
+  apt_key:
+    url: "{{gpg_key_url[ansible_os_family] }}"
+    state: present
