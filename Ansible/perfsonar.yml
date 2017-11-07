@@ -1,0 +1,8 @@
+---
+# PerfSONAR deployment example
+# First, prepare all the nodes.
+- hosts: all
+  roles:
+    - { role: perfsonar-base, become: true }
+  
+# next - deploy the various kinds of endpoints; WIP.
