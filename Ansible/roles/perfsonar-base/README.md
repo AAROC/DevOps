@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/AAROC/perfsonar-base.svg?branch=master)](https://travis-ci.org/AAROC/perfsonar-base)
+
 Perfsonar Base
 =========
 
