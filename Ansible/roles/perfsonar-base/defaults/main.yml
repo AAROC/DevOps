@@ -6,6 +6,14 @@ gpg_key_url:
   RedHat:
   Debian: http://downloads.perfsonar.net/debian/perfsonar-debian-official.gpg.key
 
+prerequisites:
+  RedHat:
+    - ntp
+    - ntpdate
+  Debian:
+    - ntp
+    - ntpdate
+
 # EL has packages for the PerfSONAR repo, Debian does not.
 repo_package_base_url: http://software.internet2.edu/rpms
 repo_package: "perfSONAR-repo-{{ perf_sonar_version }}.noarch.rpm"

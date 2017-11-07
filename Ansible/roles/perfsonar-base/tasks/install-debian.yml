@@ -8,3 +8,8 @@
   apt_key:
     url: "{{gpg_key_url[ansible_os_family] }}"
     state: present
+- name: Ensure prerequisites present
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ prerequisites[ansible_os_family]}}"

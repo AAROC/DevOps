@@ -5,6 +5,12 @@
     name: epel-release
     state: present
 
+- name: Ensure prerequisites present
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ prerequisites[ansible_os_family]}}"
+
 - name: Ensure repo package present
   yum:
     name: "{{ repo_package_base_url}}/el{{ansible_distribution_major_version}}/x86_64/main/RPMS/{{repo_package}}"

@@ -14,3 +14,5 @@ def test_hosts_file(host):
     assert f.user == 'root'
     assert f.group == 'root'
 
+def test_ntp(host):
+    assert host.package('ntp').is_installed
