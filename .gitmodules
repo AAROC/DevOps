@@ -60,10 +60,6 @@
 	path = Ansible/roles/CODE-RADE-jenkins-role
 	url = https://github.com/AAROC/CODE-RADE-jenkins-role
 	branch = master
-[submodule "Ansible/roles/osct.tomcat-8"]
-	path = Ansible/roles/osct.tomcat-8
-	url = https://github.com/osct/tomcat-8
-	branch = master
 [submodule "Ansible/roles/osct.shibboleth-idp-v3"]
 	path = Ansible/roles/osct.shibboleth-idp-v3
 	url = https://github.com/osct/shibboleth-idp-v3
@@ -99,3 +95,9 @@
 [submodule "Ansible/roles/ansible-role-tripleo-overcloud"]
 	path = Ansible/roles/ansible-role-tripleo-overcloud
 	url = https://github.com/AAROC/ansible-role-tripleo-overcloud.git
+[submodule "Ansible/roles/perfsonar-base"]
+	path = Ansible/roles/perfsonar-base
+	url = https://github.com/AAROC/perfsonar-base.git
+[submodule "Ansible/roles/perfsonar-toolkit"]
+	path = Ansible/roles/perfsonar-toolkit
+	url = https://github.com/AAROC/perfsonar-toolkit.git
