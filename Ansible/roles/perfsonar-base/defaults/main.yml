@@ -13,6 +13,10 @@ prerequisites:
   Debian:
     - ntp
     - ntpdate
+    - apt-utils
+    - debconf
+    - debconf-utils
+
 
 # EL has packages for the PerfSONAR repo, Debian does not.
 repo_package_base_url: http://software.internet2.edu/rpms
