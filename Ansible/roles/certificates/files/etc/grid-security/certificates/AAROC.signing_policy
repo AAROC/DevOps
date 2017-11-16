@@ -1,3 +1,0 @@
-access_id_CA            X509    '/C=ZA/O=AAROC/CN=AAROC CA'
-pos_rights              globus  CA:sign
-cond_subjects           globus  '"/C=ZA/O=AAROC/*"'
