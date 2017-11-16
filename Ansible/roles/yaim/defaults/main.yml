@@ -1,0 +1,11 @@
+yaim_prereq:
+  - glite-yaim-core
+  - glite-yaim-clients
+  - glite-yaim-bdii
+yaim_middleware_component:
+  bdii:
+    - glite-yaim-bdii
+  top_bdii:
+    - glite-yaim-bdii
+  site_bdii:
+    - glite-yaim-bdii
