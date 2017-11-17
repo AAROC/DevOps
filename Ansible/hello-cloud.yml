@@ -14,14 +14,17 @@
     - name: debug server facts
       debug:
         var: openstack_servers
-    - name: Create a VM
+      tags:
+        - debug
+    - name: Bring VM to desired state
       os_server:
         name: "{{ vm_name | default('drill')}}"
         state: "{{ state | default('present') }}"
         image: CentOS7
         image_exclude: deprecated
         flavor_ram: 4096
-        auto_ip: yes
+        floating_ips: 151.97.41.105
+        # floating_ip_pools: "ext-net"
         userdata: |
           #cloud-config
           users:
@@ -32,20 +35,52 @@
           runcmd:
             - curl -X POST -d '''{"channel" ':' "#devops-foundry", "username" ':' "ansible","text" ':' "{{vm_name}}  instantiated at area {{ lookup('env','OS_TENET_NAME')}} cloud", "icon_emoji"  ':' " ':'ansible':' " }''' https':'//hooks.slack.com/services/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
       register: newhost
-    - name: Password, newcomer !
-      debug:
-        var: newhost.openstack.adminPass
-    - name: Where my homies at ?
-      debug:
-        var: newhost.openstack.interface_ip
-    - name: Add host to groups
-      add_host:
-        name: "{{ newhost.openstack.interface_ip }}"
-        groups: just_created
+    - name: Update config
+      block:
+        - name: Password, newcomer !
+          debug:
+            var: newhost.openstack.adminPass
+          tags: 
+            - debug
+        - name: Where my homies at ?
+          debug:
+            var: newhost.openstack.interface_ip
+          tags:
+            - debug
+        - name: Add host to groups
+          add_host:
+            name: "{{ newhost.openstack.interface_ip }}"
+            groups: just_created
+        - debug:
+            var: "{{ item }}"
+          with_items:
+            - groups
+            - hostvars[groups['just_created'][0]]
+          tags:
+            - debug
+        - wait_for:
+            port: 22
+            host: "{{ item }}"
+            search_regex: SSH
+            delay: 30
+          with_items: "{{groups['just_created'][0]}}"
+      when: state == 'present'
+      rescue:
+        - slack:
+            token:  "{{ slack_token }}"
 
 
 - name: Talk to this new beast
   hosts: just_created
-  remote_user: drillbot
+  vars:
+    - ansible_ssh_user: drillbot
+    - vm_state: "{{ state | default('present')}}"
   tasks:
-    - ping:
+    - name: Wait for SSH to come to us
+      block:
+        -  wait_for:
+            port: 22
+            search_regex: SSH
+            delay: 10
+        - ping:
+      when: vm_state == 'present'
