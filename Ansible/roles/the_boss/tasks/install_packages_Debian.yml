@@ -19,6 +19,7 @@
     - redis-server
     - python-pip
     - virtualenv
+    - vim
 
 - name: Install pip packages
   pip:

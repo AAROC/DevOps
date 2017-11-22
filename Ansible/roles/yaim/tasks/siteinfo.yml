@@ -189,7 +189,6 @@
     token: "{{ slack_token }}"
     msg: "running yaim on {{ inventory_hostname }} with {{ yaim_options }}"
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
-    channel: "#{{ site_name | lower }}-ops"
     validate_certs: false
     icon_emoji: ansible
   tags:
@@ -211,7 +210,6 @@
     username: "Ansible on {{ ansible_hostname }} at {{ site_name }}"
     icon_emoji: ansible
     validate_certs: false
-    channel: "{{ site_name | lower}}-ops"
   tags:
     - yaim
     - slack

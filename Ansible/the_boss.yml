@@ -4,4 +4,4 @@
 - name: Deploy the Boss
   hosts: the_boss
   roles:
-  - {role: the_boss}
+  - {role: the_boss, hubot_admin: drillbot}
