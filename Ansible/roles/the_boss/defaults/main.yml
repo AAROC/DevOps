@@ -76,16 +76,19 @@ hubot_owner: "'Stephie Andretti <stephie@example.com>'"
 hubot_description: "'A helpful chat robot'"
 
 hubot_node_packages:
+  - hubot-ascii-art
+  - hubot-coin
+  - hubot-help
+  - hubot-redis-brain
+  - hubot-xkcd
+  - hubot-youtube
+  - hubot-suggest
   - cheerio
   - chrono-node
   - clark
   - htmlparser
-  - hubot-ascii-art
-  - hubot-coin
   - hubot-calculator
   - hubot-{{ hubot_adapter }}
-  - hubot-redis-brain
-  - hubot-xkcd
   - hubot-youtube
   - lodash
   - moment
@@ -93,7 +96,7 @@ hubot_node_packages:
   - soupselect
   - textspark
   - jsdom
-  - hubot-suggest
+
 
 #############################################################################
 #
@@ -109,6 +112,19 @@ hubot_external_scripts:
   - hubot-xkcd
   - hubot-youtube
   - hubot-suggest
+  - cheerio
+  - chrono-node
+  - clark
+  - htmlparser
+  - hubot-calculator
+  - hubot-{{ hubot_adapter }}
+  - hubot-youtube
+  - lodash
+  - moment
+  - nodepie
+  - soupselect
+  - textspark
+  - jsdom
 
 #############################################################################
 #
