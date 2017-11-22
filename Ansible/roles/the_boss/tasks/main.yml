@@ -7,17 +7,22 @@
     - python_pips
     - hubot_owner
 
-- include: install_packages_Debian.yml
-  become: True
+- include: "install_packages_{{ ansible_os_family | capitalize }}"
+  become: true
   become_user: root
-  tags: package
-  when: "ansible_os_family == 'Debian'"
+  tags:
+    - package
+# - include: install_packages_Debian.yml
+#   become: True
+#   become_user: root
+#   tags: package
+#   when: "ansible_os_family == 'Debian'"
 
-- include: install_packages_RedHat.yml
-  become: True
-  become_user: root
-  tags: package
-  when: "ansible_os_family == 'RedHat'"
+# - include: install_packages_RedHat.yml
+#   become: True
+#   become_user: root
+#   tags: package
+#   when: "ansible_os_family == 'RedHat'"
 
 - name: Install Node Version Manager
   become: True
