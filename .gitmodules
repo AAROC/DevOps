@@ -97,3 +97,6 @@
 [submodule "Ansible/roles/perfsonar-toolkit"]
 	path = Ansible/roles/perfsonar-toolkit
 	url = https://github.com/AAROC/perfsonar-toolkit.git
+[submodule "Ansible/roles/the-boss-role"]
+	path = Ansible/roles/the-boss-role
+	url = https://github.com/AAROC/the-boss-role.git
