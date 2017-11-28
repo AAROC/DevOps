@@ -3,5 +3,7 @@
 
 - name: Deploy the Boss
   hosts: the_boss
+  pre_tasks:
+    - include_vars: group_vars/passwords-the_boss.yml
   roles:
-  - {role: the_boss, hubot_admin: drillbot}
+    - {role: the-boss-role, hubot_admin: drillbot}
