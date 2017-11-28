@@ -34,7 +34,7 @@ hubot_all_dirs:
 
 hubot_env:
    # General Hubot stuff
-   HUBOT_AUTH_ADMIN: brucellino           # Replace with hubot admin username
+   HUBOT_AUTH_ADMIN: U02BJKQR6            # Replace with hubot admin username
    HUBOT_LOGLEVEL: "warning"
 
    # Slack variables 
