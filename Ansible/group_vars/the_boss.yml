@@ -24,6 +24,8 @@ hubot_global_node_packages:
   - generator-hubot
   - jsdom
   - scraper
+  - hubot-slack
+  - hubot-help
 
 hubot_all_dirs:
   - "{{ hubot_dir }}"
@@ -32,7 +34,7 @@ hubot_all_dirs:
 
 hubot_env:
    # General Hubot stuff
-   # HUBOT_AUTH_ADMIN: "FIXME"           # Replace with hubot admin username
+   HUBOT_AUTH_ADMIN: brucellino           # Replace with hubot admin username
    HUBOT_LOGLEVEL: "warning"
 
    # Slack variables 
@@ -40,6 +42,7 @@ hubot_env:
    HUBOT_SLACK_TOKEN: "{{ api_token }}"
    HUBOT_GITHUB_ORG_TOKEN: "{{ github_org_token }}"
    HUBOT_GITHUB_ORG_NAME: AAROC
+   HUBOT_JENKINS_URL: https://ci.sagrid.ac.za
 
    # Weather stuff
    # HUBOT_WUNDERGROUND_API_KEY: "FIXME" # Replace with Wunderground API key
@@ -59,37 +62,9 @@ hubot_owner: "'Bruce Becker <bruce.becker@africa-grid.org'"
 
 hubot_description: "'Bot to help us get stuff done. Born to run.'"
 
-hubot_node_packages:
-  - cheerio
-  - htmlparser
-  - lodash
-  - moment
-  - nodepie
-  - soupselect
-  - textspark
-  - hubot-suggest
-  - hubot-ascii-art
-  - hubot-coin
-  - hubot-calculator
-  - hubot-{{ hubot_adapter }}
-  - hubot-redis-brain
-  - hubot-ascii-art
-  - hubot-coin
-  - hubot-help
-  - hubot-redis-brain
-  - hubot-diagnostics
-  - hubot-help
-  - hubot-google-images
-  - hubot-maps
-  - hubot-rules
-  - hubot-tomato-timer
-  - hubot-encourage
-  - hubot-waffle-board
-  - hubot-excuse
-  - hubot-github-management
-  - hubot-ansible-me
-  - hubot-jenkins-enhanced
-
+# packages that some of the scripts might need
+# these are not hubot external packages
+external_packages:
   
 
 #############################################################################
@@ -103,15 +78,6 @@ hubot_external_scripts:
   - hubot-ascii-art
   - hubot-coin
   - hubot-calculator
-  - hubot-{{ hubot_adapter }}
-  - hubot-redis-brain
-  - hubot-ascii-art
-  - hubot-coin
-  - hubot-help
-  - hubot-redis-brain
-  - hubot-diagnostics
-  - hubot-help
-  - hubot-google-images
   - hubot-maps
   - hubot-rules
   - hubot-tomato-timer
@@ -121,8 +87,7 @@ hubot_external_scripts:
   - hubot-github-management
   - hubot-ansible-me
   - hubot-jenkins-enhanced
-
-  
+  - hubot-auth
 
 #############################################################################
 #
