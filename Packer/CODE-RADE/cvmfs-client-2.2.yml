@@ -5,9 +5,7 @@
   become: true
   tasks:
     - name: install python
-      apt:
-        name: python
-        state: present
+      raw: 'apt-get update -qq && apt-get install -y python'
 
 - hosts: all
   name: Enable CVMFS

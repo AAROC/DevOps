@@ -4,7 +4,7 @@
       "type": "openstack",
       "availability_zone": "nova",
       "ssh_username": "ubuntu",
-      "image_name": "packer-made",
+      "image_name": "code-rade",
       "source_image": "e0b50e88-f984-4539-bdf4-3e28ff974d90",
       "flavor": "3",
       "floating_ip_pool": "ext-net",
