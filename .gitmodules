@@ -100,3 +100,6 @@
 [submodule "Ansible/roles/the-boss-role"]
 	path = Ansible/roles/the-boss-role
 	url = https://github.com/AAROC/the-boss-role.git
+[submodule "Ansible/roles/cvmfs-server"]
+	path = Ansible/roles/cvmfs-server
+	url = https://github.com/AAROC/cvmfs-server
