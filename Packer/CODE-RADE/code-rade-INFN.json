@@ -1,0 +1,19 @@
+{
+  "builders": [
+    {
+      "type": "openstack",
+      "availability_zone": "nova",
+      "ssh_username": "centos",
+      "image_name": "code-rade",
+      "source_image": "670371ce-518e-410c-a429-339f9847ea85",
+      "flavor": "3",
+      "networks": "a1cb7f44-d92b-4ab5-9f39-ee0799424c27"
+    }
+  ],
+  "provisioners": [
+      {
+        "type": "ansible",
+        "playbook_file": "cvmfs-client-2.2.yml"
+      }
+    ]
+}
