@@ -13,7 +13,7 @@
   "provisioners": [
       {
         "type": "ansible",
-        "playbook_file": "cvmfs-client-2.2.yml"
+        "playbook_file": "cvmfs-client-redhat-2.2.yml"
       }
     ]
 }
