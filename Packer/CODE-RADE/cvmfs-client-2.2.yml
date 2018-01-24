@@ -1,5 +1,7 @@
 ---
 # This playbook enables CODE-RADE access using CVMFS-2.2 clients on machines.
+# It is meant to be used in conjunctio with a Packer template in the same
+# repository.
 - hosts: all
   gather_facts: false
   become: true
@@ -13,6 +15,29 @@
   roles:
     - cvmfs-client-2.2
 
+
+# We need to set up a generic user for this VM
+# Specifically, we need to give that user the proper
+# environment for CODE-RADE.
+- hosts: all
+  name: Set up Generic CODE-RADE user
+  become: true
+  tasks:
+    - name: Ensure a generic user is present
+      user: 
+        name: cvmfs
+        createhome: true
+        state: present
+    - name: Provide CODE-RADE script for environment setup
+      copy:
+        dest: /etc/profile.d/code-rade.sh
+        content: | 
+          SITE="generic"
+          OS="u1610"
+          ARCH="x86_64"
+          CVMFS_DIR="/cvmfs/code-rade.africa-grid.org"
+
+
 - hosts: all
   remote_user: cvmfs
   vars:
@@ -21,3 +46,5 @@
   - name: CODE-RADE version
     debug:
       msg: " CODE RADE version is {{ CODE_RADE_VERSION }}"
+  - name: Use CODE-RADE
+    shell: /cvmfs/code-rade.africa-grid.org/use.sh
