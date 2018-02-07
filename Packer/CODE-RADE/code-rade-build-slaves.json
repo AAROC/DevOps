@@ -1,0 +1,49 @@
+{
+  "builders": [
+    {
+      "name": "centos7",
+      "type": "openstack",
+      "availability_zone": "nova",
+      "ssh_username": "centos",
+      "image_name": "code-rade-build-slave-centos7",
+      "source_image": "41d944c3-d5d3-4f36-844e-8f0b0ffd1243",
+      "flavor": "2",
+      "networks": "d258bdd6-bb32-4c61-871e-84bb2f7744a8",
+      "image_visibility": "public",
+      "floating_ip_pool": "ext-net",
+      "reuse_ips": "true"
+    },
+    {
+        "name": "centos6",
+        "type": "openstack",
+        "availability_zone": "nova",
+        "ssh_username": "centos",
+        "image_name": "code-rade-build-slave-centos6",
+        "source_image": "f80bab8f-c800-494b-a4dc-2d7f04c2a285",
+        "flavor": "2",
+        "networks": "d258bdd6-bb32-4c61-871e-84bb2f7744a8",
+        "image_visibility": "public",
+        "floating_ip_pool": "ext-net",
+        "reuse_ips": "true"
+      },
+      {
+          "name": "ubuntu14.04",
+          "type": "openstack",
+          "availability_zone": "nova",
+          "ssh_username": "ubuntu",
+          "image_name": "code-rade-build-slave-ubuntu14-04  ",
+          "source_image": "dd66a06a-7414-49ea-becc-04a45f5bfb6c",
+          "flavor": "2",
+          "networks": "d258bdd6-bb32-4c61-871e-84bb2f7744a8",
+          "image_visibility": "public",
+          "floating_ip_pool": "ext-net",
+          "reuse_ips": "true"
+      }
+  ],
+  "provisioners": [
+      {
+        "type": "ansible",
+        "playbook_file": "code-rade-build-slave.yml"
+      }
+    ]
+}
