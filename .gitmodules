@@ -103,3 +103,6 @@
 [submodule "Ansible/roles/cvmfs-server"]
 	path = Ansible/roles/cvmfs-server
 	url = https://github.com/AAROC/cvmfs-server
+[submodule "Ansible/roles/AAROC.regional-apel-server"]
+	path = Ansible/roles/AAROC.regional-apel-server
+	url = https://github.com/AAROC/AAROC.regional-apel-server
