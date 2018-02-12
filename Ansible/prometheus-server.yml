@@ -1,6 +1,55 @@
 ---
+- name: Ensure the VM is up
+  hosts: localhost
+  tasks:
+    - name: get the cloud information
+      os_client_config:
+    - name: flava flava !
+      os_flavor_facts:
+    - name: Get server facts
+      os_server_facts:
+        server: "prometheus"
+        wait: yes
+  # now you have openstack_servers
+    - name: Bring VM to desired state
+      os_server:
+        name: "prometheus"
+        state: "present"
+        image: CentOS7
+        image_exclude: deprecated
+        flavor_ram: 4096
+        floating_ip_pools: "ext-net"
+        userdata: |
+          #cloud-config
+          users:
+            - name: drillbot
+              sudo: ALL=(ALL) NOPASSWD:ALL
+              ssh-authorized-keys:
+                - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC+ajfknMIekBVAqGr8qVt49jmkwm54lriPDQO6TaHXueaR+ajkCvlTxmtNMv1sGmPdZKl8CMMZxvVekMKI/oWO+4ouZ4iVoAw6WP7GrbriF54O4uKb2QDgVz1KQv+zT2ofgh9rOzU+7oDMKVnRTOe/P2TNteG8zeE+z6vCd51TLMohBiw74N0vaM6LJthEjtpoyrD5NqksstYGdrKKVIu/Kyv6H0cc29lkuh8Ufb1PAkK4URKflJRLYHM2UZmQBncYknXqL5tHdpUKbLJdBX5ZZ2Vf4tG7+KUqf4YYNzuREyxHGQPcoPlIK1EnmnpApZXNxqda++KpAodwkHF3Kbe3 becker@serbaggio
+          runcmd:
+            - curl -X POST -d '''{"channel" ':' "#devops-foundry", "username" ':' "ansible","text" ':' "Prometheus server  instantiated at area {{ lookup('env','OS_TENANT_NAME')}} cloud", "icon_emoji"  ':' " ':'ansible':' " }''' https':'//hooks.slack.com/services/{{ slack_token }}
+      register: newhost
+    - name: Update config
+      block:
+        - name: Add host to groups
+          add_host:
+            name: "{{ newhost.openstack.interface_ip }}"
+            groups: monitors
+        - wait_for:
+            port: 22
+            host: "{{ item }}"
+            search_regex: SSH
+            delay: 5
+          with_items: "{{groups['monitors'][0]}}"
+      rescue:
+        - slack:
+            token:  "{{ slack_token }}"
+            msg: "There was a problem starting the server on OpenStack"
+            color: bad
+
 - name: Deploy Prometheus server
   hosts: monitors
+  user: drillbot
   roles:
-  - prometheus
+  - {role: prometheus-role, become: true}
   

@@ -6,6 +6,8 @@ gpg_key_url:
   RedHat:
   Debian: http://downloads.perfsonar.net/debian/perfsonar-debian-official.gpg.key
 
+# Packages you need in order to configure the installation of any
+# perfsonar bundle
 prerequisites:
   RedHat:
     - ntp
@@ -17,6 +19,12 @@ prerequisites:
     - debconf
     - debconf-utils
 
+# Specific packages that provide perfsonar base.
+# The list is hierarchical. See http://docs.perfsonar.net/install_options.html
+
+perfsonar_packages:
+  - perfsonar-tools
+  - perfsonar-core
 
 # EL has packages for the PerfSONAR repo, Debian does not.
 repo_package_base_url: http://software.internet2.edu/rpms

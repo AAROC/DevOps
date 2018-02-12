@@ -1,0 +1,30 @@
+---
+version: '2'
+settings:
+  conductor:
+    base: centos:7
+  project_name: APEL
+
+  
+services:
+  apel:
+    from: centos:7
+    roles:
+      - { role: AAROC.certificates, needs_certificate: false }
+      - AAROC.regional-apel-server
+    ports:
+      - 3306:3306
+    command: ['/bin/sleep','infinity']
+    links:
+      - db
+  db:
+    from: mysql:5.7
+    ports: 
+      - 3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=example
+    command: ['mysqld']
+registries:
+  quay:
+    url: https://quay.io
+    namespace: aaroc

@@ -47,4 +47,4 @@
     debug:
       msg: " CODE RADE version is {{ CODE_RADE_VERSION }}"
   - name: Use CODE-RADE
-    shell: /cvmfs/code-rade.africa-grid.org/use.sh
+    shell: source /cvmfs/code-rade.africa-grid.org/use.sh

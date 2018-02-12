@@ -1,3 +1,5 @@
 ---
 # tasks file for perfsonar-base
-- include: "install-{{ ansible_os_family | lower }}.yml"
+- include: "install-{{ ansible_os_family | lower }}-{{ ansible_virtualization_type }}.yml"
+- include: prep.yml
+- include: install-perfsonar.yml

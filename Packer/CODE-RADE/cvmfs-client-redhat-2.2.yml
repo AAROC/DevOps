@@ -12,6 +12,21 @@
   become: true
   roles:
     - cvmfs-client-2.2
+  post_tasks:
+    - name: Ensure a generic user is present
+      user: 
+        name: cvmfs
+        createhome: true
+        state: present
+    - name: Provide CODE-RADE script for environment setup
+      copy:
+        dest: /etc/profile.d/code-rade.sh
+        content: | 
+          SITE="generic"
+          OS="centos7"
+          ARCH="x86_64"
+          CVMFS_DIR="/cvmfs/code-rade.africa-grid.org"
+
 
 - hosts: all
   remote_user: cvmfs
@@ -21,3 +36,5 @@
   - name: CODE-RADE version
     debug:
       msg: " CODE RADE version is {{ CODE_RADE_VERSION }}"
+  - name: Use CODE-RADE
+    command: ls /cvmfs/code-rade.africa-grid.org/use.sh
