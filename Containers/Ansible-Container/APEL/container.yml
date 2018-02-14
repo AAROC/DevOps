@@ -1,29 +1,32 @@
 ---
 version: '2'
 settings:
+  vars_files: 
+    - db.yml
   conductor:
     base: centos:7
-  project_name: APEL
-
-  
+  project_name: apel
 services:
-  apel:
-    from: centos:7
+  db:
+    hostname: db
+    from: mysql
+    ports: 
+      - 3306:3306
+    environment:
+      - "MYSQL_ROOT_PASSWORD={{ db_root_password }}"
+    command: ['mysqld']
+  server:
+    hostname: server
+    from: centos/systemd
+    ports:
+      - 6163:6163
+    command: ['/usr/sbin/init']
+    depends_on: 
+      - db
     roles:
       - { role: AAROC.certificates, needs_certificate: false }
-      - AAROC.regional-apel-server
-    ports:
-      - 3306:3306
-    command: ['/bin/sleep','infinity']
-    links:
-      - db
-  db:
-    from: mysql:5.7
-    ports: 
-      - 3306
-    environment:
-      - MYSQL_ROOT_PASSWORD=example
-    command: ['mysqld']
+      - { role: AAROC.regional-apel-server }
+  
 registries:
   quay:
     url: https://quay.io
