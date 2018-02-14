@@ -1,0 +1,23 @@
+{
+  "builders": [
+    {
+      "name": "apel-regional-server",
+      "type": "openstack",
+      "availability_zone": "nova",
+      "ssh_username": "centos",
+      "image_name": "apel-regional-server",
+      "source_image": "41d944c3-d5d3-4f36-844e-8f0b0ffd1243",
+      "flavor": "2",
+      "networks": "d258bdd6-bb32-4c61-871e-84bb2f7744a8",
+      "image_visibility": "public",
+      "floating_ip_pool": "ext-net",
+      "reuse_ips": "true"
+    }
+  ],
+  "provisioners": [
+      {
+        "type": "ansible",
+        "playbook_file": "apel-regional-server.yml"
+      }
+    ]
+}

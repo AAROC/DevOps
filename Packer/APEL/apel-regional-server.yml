@@ -1,0 +1,6 @@
+---
+- hosts: all
+  vars: 
+    - needs_certificate: false
+  roles:
+    - { role: AAROC.regional-apel-server, become: true}
