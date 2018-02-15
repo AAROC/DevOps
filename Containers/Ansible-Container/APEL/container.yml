@@ -4,8 +4,13 @@ settings:
   vars_files: 
     - db.yml
   conductor:
-    base: centos:7
+    base: "centos:7"
   project_name: apel
+
+volumes:
+  apel-config:
+    docker: {}
+
 services:
   db:
     hostname: db
@@ -14,18 +19,23 @@ services:
       - 3306:3306
     environment:
       - "MYSQL_ROOT_PASSWORD={{ db_root_password }}"
+      - "MYSQL_USER={{ db_user }}"
+      - "MYSQL_USER_PASSWORD={{ db_user_password }}"
     command: ['mysqld']
+    volumes:
+      - apel-config:/docker-entrypoint-initdb.d
+
   server:
     hostname: server
     from: centos/systemd
     ports:
       - 6163:6163
     command: ['/usr/sbin/init']
-    depends_on: 
-      - db
     roles:
       - { role: AAROC.certificates, needs_certificate: false }
       - { role: AAROC.regional-apel-server }
+    volumes:
+      - apel-config:/deploy/
   
 registries:
   quay:
