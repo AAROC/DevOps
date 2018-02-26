@@ -14,15 +14,16 @@ vos:
 queues:
   - alice
   - atlas
+  - atlas8core
   - ops
   - sagrid
 # See https://wiki.egi.eu/wiki/MAN01_How_to_publish_Site_Information
 # use the site name as registered in GOCDB (use the same case)
 site_name: ZA-CHPC
 # contact details
-site_email: smasoka@csir.co.za
-site_security_email: smasoka@csir.co.za
-site_support_email: smasoka@csir.co.za
+site_email: murrays@cern.ch
+site_security_email: murrays@cern.ch
+site_support_email: murrays@cern.ch
 # location
 site_latitude: -33.9552
 site_longitude: 18.4748
@@ -34,6 +35,7 @@ site_website: "http://www.chpc.ac.za"
 site_domain: chpc.ac.za
 
 # services at the site
+#this server is not there, probably died with accounting system
 bdii_host: top-bdii.c4.csir.co.za
 #apel_mysql_host: ce01-node001.c4.csir.co.za
 px_host: myproxy.cern.ch
@@ -61,7 +63,7 @@ ce_cpu_model: XEON
 ce_cpu_vendor: Intel
 ce_cpu_speed: 2800
 ce_os: ScientificSL
-ce_os_release: 6.5
+ce_os_release: 6.9
 ce_os_version: Final
 ce_os_arch: x86_64
 ce_minphysmem: 16000
