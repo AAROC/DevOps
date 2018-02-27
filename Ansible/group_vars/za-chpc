@@ -36,7 +36,7 @@ site_domain: chpc.ac.za
 
 # services at the site
 #this server is not there, probably died with accounting system
-bdii_host: top-bdii.c4.csir.co.za
+bdii_host: top-bdii.africa-grid.org
 #apel_mysql_host: ce01-node001.c4.csir.co.za
 px_host: myproxy.cern.ch
 wms_host: wms.c4.csir.co.za 
