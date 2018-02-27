@@ -129,7 +129,8 @@ worker-nodes
 ############## Service oriented grouping ##############
 # (here comes the magical power of ansible... Group things
 # in as much as you can)
-
+[EOS]
+storage-elements
 
 ############## Middleware oriented grouping ##############
 
