@@ -1,5 +1,5 @@
 ---
 # tasks file for shibboleth-sp
-- include: install.yml
+- include: "install-{{ ansible_os_family | lower }}.yml"
 - include: certificates.yml
 - include: configure.yml

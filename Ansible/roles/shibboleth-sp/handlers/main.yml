@@ -1,2 +1,6 @@
 ---
 # handlers file for shibboleth-sp
+- name: Restart shibd
+  service:
+    name: shibd
+    status: restarted

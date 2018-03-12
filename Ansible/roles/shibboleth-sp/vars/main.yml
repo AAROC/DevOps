@@ -1,8 +1,26 @@
 ---
 # vars file for shibboleth-sp
 dependencies:
-  - apache2
-  - libapache2-mod-shib2
-  - openssl
-  - php5
-  - ntp
+  debian:
+    - apache2
+    - libapache2-mod-shib2
+    - openssl
+    - php5
+    - ntp
+  redhat:
+    - httpd
+    - openssl
+    - ntp
+    - ntpdate
+    - boost-devel
+    - boost
+    - xerces-c-devel
+    - xerces-c
+
+# If you want to build natively, these are required
+# they will be built from source.
+# see https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPLinuxSourceBuild
+native_shib_dependencies:
+  - name: log4shib
+    url: https://shibboleth.net/downloads/log4shib/
+    version: 1.0.9
