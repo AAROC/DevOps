@@ -1,0 +1,8 @@
+[security_shibboleth]
+# If the mirrors stop working, change download to downloadcontent...
+name=Shibboleth (CentOS_7)
+type=rpm-md
+baseurl=http://download.opensuse.org/repositories/security:/shibboleth/CentOS_7/
+gpgcheck=1
+gpgkey=http://download.opensuse.org/repositories/security:/shibboleth/CentOS_7/repodata/repomd.xml.key
+enabled=1
