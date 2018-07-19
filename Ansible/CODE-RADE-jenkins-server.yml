@@ -1,8 +1,8 @@
 ---
 # CODE-RADE Jenkins server
 - name: apply basic and common roles
-  strategy: debug
-  hosts: dev-ci
+  # strategy: debug
+  hosts: ci
   remote_user: root
   pre_tasks:
     - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
@@ -18,9 +18,9 @@
         - slack
   roles:
     - {role: bootstrap, become: true, tags: bootstrap}
-    - {role: certificates, become: true, tags: certificates}
+    - {role: AAROC.certificates, needs_certificate: true, become: true, tags: certificates}
     - {role: harden-ssh, become: true, tags: harden-ssh}
-    - {role: mongrelion.ansible-role-docker, become: true, vagrant: no, docker-py: yes, tags: docker}
+    - {role: ansible-role-docker, become: true, docker_compose: yes, docker_version: latest, docker_users: jenkins, tags: docker}
   post_tasks:
     - include_vars: "roles/common/vars/distros/{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
     - name: Inform the team of successful base
