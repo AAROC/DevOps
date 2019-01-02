@@ -132,6 +132,8 @@ worker-nodes
 [EOS]
 storage-elements
 
+[Monitoring]
+mon01
 ############## Middleware oriented grouping ##############
 
 [CRL]
