@@ -1,0 +1,36 @@
+---
+# install tasks for RedHat
+- name: Add the shibboleth repo
+  copy:
+    src: "etc/yum.repos.d/shibboleth-{{ ansible_distribution | lower }}-{{ ansible_distribution_major_version}}.repo"
+    dest: "/etc/yum.repos.d/shibboleth-{{ ansible_distribution | lower}}-{{ ansible_distribution_major_version}}.repo"
+  register: "shib_repo"
+
+- name: update packages
+  package:
+    name: '*'
+    state: latest
+  when: shib_repo.changed
+
+- name: Install dependencies
+  package:
+    name: "{{ dependencies[ansible_os_family | lower]}}"
+    state: latest
+    update_cache: true
+
+- name: Install shib SP
+  package:
+    name: shibboleth
+    state: present
+  notify: Restart shibd
+
+# do some Native :poop: 
+# https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPLinuxSourceBuild
+# - name: Native build
+#   block: 
+#     - name: Get src tarballs.
+#       get_url:
+#         url: "{{ native_shib_dependencies }}"
+
+
+        

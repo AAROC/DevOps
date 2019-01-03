@@ -1,13 +1,23 @@
 ---
-- name: "Download the Idem federation certificate"
-  get_url:
-    url: https://sp.lab.unimo.it/metadata-signer.crt
-    dest: /etc/shibboleth/metadata-signer.crt
+# - name: "Download the Idem federation certificate"
+#   get_url:
+#     url: https://sp.lab.unimo.it/metadata-signer.crt
+#     dest: /etc/shibboleth/metadata-signer.crt
 
 
-- name: Create Shibboleth certificate
+- name: Create Shibboleth certificate (Debian)
   command: "/usr/sbin/shib-keygen"
   args:
     creates:
       - /etc/shibboleth/sp-cert.pem
       - /etc/shibboleth/sp-key.pem
+  when: ansible_os_family == 'Debian'
+
+- name: Create Shibboleth certificate (RedHat)
+  command: "/etc/shibboleth/keygen.sh -f"
+  args:
+    chdir: /etc/shibboleth/
+    creates:
+      - /etc/shibboleth/sp-cert.pem
+      - /etc/shibboleth/sp-key.pem
+  when: ansible_os_family == 'RedHat'
