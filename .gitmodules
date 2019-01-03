@@ -106,3 +106,6 @@
 [submodule "Ansible/roles/AAROC.regional-apel-server"]
 	path = Ansible/roles/AAROC.regional-apel-server
 	url = https://github.com/AAROC/AAROC.regional-apel-server
+[submodule "Ansible/roles/ansible-role-postgresql"]
+	path = Ansible/roles/ansible-role-postgresql
+	url = git@github.com:geerlingguy/ansible-role-postgresql.git
