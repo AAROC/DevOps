@@ -105,3 +105,12 @@
 [submodule "Ansible/roles/ansible-role-postgresql"]
 	path = Ansible/roles/ansible-role-postgresql
 	url = git@github.com:geerlingguy/ansible-role-postgresql.git
+[submodule "Ansible/roles/ansible-zabbix-server"]
+	path = Ansible/roles/ansible-zabbix-server
+	url = git@github.com:dj-wasabi/ansible-zabbix-server
+[submodule "Ansible/roles/ansible-zabbix-web"]
+	path = Ansible/roles/ansible-zabbix-web
+	url = git@github.com:dj-wasabi/ansible-zabbix-server
+[submodule "Ansible/roles/ansible-zabbix-proxy"]
+	path = Ansible/roles/ansible-zabbix-proxy
+	url = git@github.com:dj-wasabi/ansible-zabbix-server
