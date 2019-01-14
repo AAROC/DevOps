@@ -1,0 +1,75 @@
+
+- hosts: ldap01.chpc.ac.za
+  pre_tasks:
+  - name: install PostgreSQL 10 repository
+    yum:
+      name: https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7.5-x86_64/pgdg-redhat10-10-2.noarch.rpm
+      state: present
+    become: yes
+    become_user: root
+  roles:
+  - role: ansible-role-postgresql
+    postgresql_enablerepo: "pgdg10"
+    postgresql_version: 10
+    postgresql_data_dir: /var/lib/pgsql/10/data
+    postgresql_bin_path: /usr/pgsql-10/bin
+    postgresql_config_path: /var/lib/pgsql/10/data
+    postgresql_daemon: postgresql-10.service
+    postgresql_packages:
+      - postgresql10
+      - postgresql10-server
+      - postgresql10-libs
+      - postgresql10-contrib
+      - postgresql10-devel
+    become: yes
+    become_user: root
+    postgresql_service_state: started
+    postgresql_service_enabled: true
+    selinux_allow_zabbix_can_network: True
+    selinux_allow_zabbix_can_http: True
+
+    postgresql_databases:
+    - name: zabbix
+    postgreql_users:
+    - name: zabbix
+      password: zabbixit3:41
+    postgresql_hba_entries:
+      - {type: local, database: postgres, user: postgres, auth_method: ident}
+      - {type: local, database: all, user: postgres, auth_method: ident}
+      - {type: host, database: all, user: all, address: '127.0.0.1/32', auth_method: md5}
+      - {type: host, database: all, user: all, address: '::1/128', auth_method: md5}
+      - {type: local, database: zabbix, user: zabbix, auth_method: trust } 
+      - {type: local, database: all, user: all , auth_method: ident}
+     #- {type: local, database: all, user: all, auth_method: peer}
+  - role: ansible-zabbix-server
+    zabbix_version: 4.0
+    zabbix_server_database: pgsql
+    zabbix_server_database_long: postgresql
+    zabbix_server_package_state: latest
+    zabbix_server_dbhost: localhost
+    zabbix_server_dbuser: zabbix
+    zabbix_server_dbpassword: zabbixit3:41
+    zabbix_server_pgsql_login_user: zabbix
+    zabbix_server_pgsql_login_password: zabbixit3:41
+
+    become: yes
+    become_user: root
+  - role: ansible-zabbix-web
+    zabbix_version: 4.0
+    become: yes
+    become_user: root
+    zabbix_web_package_state: latest
+
+#i       - role: dj-wasabi.zabbix-agent
+#         zabbix_agent_server: 172.20.100.3
+#         zabbix_agent_serveractive: 172.20.100.3
+#         zabbix_url: https://mon01.chpc.ac.za/zabbix/
+#         zabbix_api_use: true
+#         zabbix_api_user: Ansible
+#         zabbix_api_pass: zabbxiit3:41
+#         zabbix_create_host: present
+#         zabbix_host_groups:
+#                - Linux Servers
+#         zabbix_link_templates:
+#                - Template OS Linux
+#         zabbix_agent_firewalld_enable: True
