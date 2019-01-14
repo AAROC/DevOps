@@ -5,7 +5,7 @@
 ############## Cluster oriented grouping ###################
 ######################################################
 
-[uis]
+#[uis]
 #grid-ui.chpc.ac.za needs_certificate='false' emi_service='UI' yaim_options='-n UI'
 
 #############
@@ -134,18 +134,20 @@ storage-elements
 
 [Monitoring]
 mon01
+[MonTest]
+ldap01
 ############## Middleware oriented grouping ##############
 
 [CRL]
 [CRL:children]
 cream-ces
-uis
 storage-elements
+#uis
 
 [za-chpc:children]
 cream-ces
 site-bdiis
 worker-nodes
-uis
+#uis
 
 ############################ END #########################
